@@ -68,7 +68,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   T1_Size_Done( FT_Size  t1size )          /* T1_Size */
   {
     T1_Size  size = (T1_Size)t1size;
@@ -88,7 +88,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   T1_Size_Init( FT_Size  t1size )      /* T1_Size */
   {
     T1_Size            size  = (T1_Size)t1size;
@@ -112,7 +112,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   T1_Size_Request( FT_Size          t1size,     /* T1_Size */
                    FT_Size_Request  req )
   {
@@ -143,7 +143,7 @@
    *
    */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   T1_GlyphSlot_Done( FT_GlyphSlot  slot )
   {
     /* `slot->internal` might be NULL in out-of-memory situations. */
@@ -152,7 +152,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   T1_GlyphSlot_Init( FT_GlyphSlot  slot )
   {
     T1_Face           face;
@@ -201,7 +201,7 @@
    *   face ::
    *     A typeless pointer to the face object to destroy.
    */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   T1_Face_Done( FT_Face  t1face )         /* T1_Face */
   {
     T1_Face    face = (T1_Face)t1face;
@@ -308,7 +308,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   T1_Face_Init( FT_Stream      stream,
                 FT_Face        t1face,          /* T1_Face */
                 FT_Int         face_index,
@@ -595,7 +595,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   T1_Driver_Init( FT_Module  module )
   {
     PS_Driver  driver = (PS_Driver)module;
@@ -645,7 +645,7 @@
    *   driver ::
    *     A handle to the target Type 1 driver.
    */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   T1_Driver_Done( FT_Module  driver )
   {
     FT_UNUSED( driver );

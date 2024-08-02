@@ -248,7 +248,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   Load_SBit_Png( FT_GlyphSlot     slot,
                  FT_Int           x_offset,
                  FT_Int           y_offset,

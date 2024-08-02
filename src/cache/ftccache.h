@@ -80,14 +80,14 @@ FT_BEGIN_HEADER
               ? ( ( hash ) & ( ( cache )->mask >> 1 ) )            \
               : ( ( hash ) &   ( cache )->mask ) ) )
 #else
-  FT_LOCAL( FTC_Node* )
+  fn FTC_Node* /* internal */
   ftc_get_top_node_for_hash( FTC_Cache  cache,
                              FT_Offset  hash );
 #define FTC_NODE_TOP_FOR_HASH( cache, hash )             \
         ftc_get_top_node_for_hash( ( cache ), ( hash ) )
 #endif
 
-  FT_LOCAL( void )
+  fn void /* internal */
   ftc_node_destroy( FTC_Node     node,
                     FTC_Manager  manager );
 
@@ -170,11 +170,11 @@ FT_BEGIN_HEADER
 
 
   /* default cache initialize */
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   FTC_Cache_Init( FTC_Cache  cache );
 
   /* default cache finalizer */
-  FT_LOCAL( void )
+  fn void /* internal */
   FTC_Cache_Done( FTC_Cache  cache );
 
   /* Call this function to look up the cache.  If no corresponding
@@ -184,14 +184,14 @@ FT_BEGIN_HEADER
    */
 
 #ifndef FTC_INLINE
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   FTC_Cache_Lookup( FTC_Cache   cache,
                     FT_Offset   hash,
                     FT_Pointer  query,
                     FTC_Node   *anode );
 #endif
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   FTC_Cache_NewNode( FTC_Cache   cache,
                      FT_Offset   hash,
                      FT_Pointer  query,
@@ -207,7 +207,7 @@ FT_BEGIN_HEADER
    * in further lookup requests, and will be flushed on demand from
    * the cache normally when its reference count reaches 0.
    */
-  FT_LOCAL( void )
+  fn void /* internal */
   FTC_Cache_RemoveFaceID( FTC_Cache   cache,
                           FTC_FaceID  face_id );
 

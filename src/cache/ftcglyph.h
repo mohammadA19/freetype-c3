@@ -173,24 +173,24 @@ FT_BEGIN_HEADER
    */
 
   /* must be called by derived FTC_Node_InitFunc routines */
-  FT_LOCAL( void )
+  fn void /* internal */
   FTC_GNode_Init( FTC_GNode   node,
                   FT_UInt     gindex,  /* glyph index for node */
                   FTC_Family  family );
 
   /* call this function to clear a node's family -- this is necessary */
   /* to implement the `node_remove_faceid' cache method correctly     */
-  FT_LOCAL( void )
+  fn void /* internal */
   FTC_GNode_UnselectFamily( FTC_GNode  gnode,
                             FTC_Cache  cache );
 
   /* must be called by derived FTC_Node_DoneFunc routines */
-  FT_LOCAL( void )
+  fn void /* internal */
   FTC_GNode_Done( FTC_GNode  node,
                   FTC_Cache  cache );
 
 
-  FT_LOCAL( void )
+  fn void /* internal */
   FTC_Family_Init( FTC_Family  family,
                    FTC_Cache   cache );
 
@@ -206,14 +206,14 @@ FT_BEGIN_HEADER
 
 #if 0
   /* can be used as @FTC_Cache_InitFunc */
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   FTC_GCache_Init( FTC_GCache  cache );
 #endif
 
 
 #if 0
   /* can be used as @FTC_Cache_DoneFunc */
-  FT_LOCAL( void )
+  fn void /* internal */
   FTC_GCache_Done( FTC_GCache  cache );
 #endif
 
@@ -237,13 +237,13 @@ FT_BEGIN_HEADER
 
 
   /* convenience function; use it instead of FTC_Manager_Register_Cache */
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   FTC_GCache_New( FTC_Manager       manager,
                   FTC_GCacheClass   clazz,
                   FTC_GCache       *acache );
 
 #ifndef FTC_INLINE
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   FTC_GCache_Lookup( FTC_GCache   cache,
                      FT_Offset    hash,
                      FT_UInt      gindex,

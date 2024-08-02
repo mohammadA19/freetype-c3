@@ -25,21 +25,21 @@
 FT_BEGIN_HEADER
 
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   T1_Read_Metrics( FT_Face    face,
                    FT_Stream  stream );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   T1_Done_Metrics( FT_Memory     memory,
                    AFM_FontInfo  fi );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   T1_Get_Kerning( AFM_FontInfo  fi,
                   FT_UInt       glyph1,
                   FT_UInt       glyph2,
                   FT_Vector*    kerning );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   T1_Get_Track_Kerning( FT_Face    face,
                         FT_Fixed   ptsize,
                         FT_Int     degree,

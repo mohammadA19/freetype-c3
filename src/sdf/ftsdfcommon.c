@@ -43,7 +43,7 @@
    * use an 8-bit format for `FT_SDFFormat`, or increase the buffer size in
    * `ftsdfrend.c`.
    */
-  FT_LOCAL_DEF( FT_SDFFormat )
+  fn FT_SDFFormat /* internal */
   map_fixed_to_sdf( FT_16D16  dist,
                     FT_16D16  max_value )
   {
@@ -94,7 +94,7 @@
    *         conversion has not been done, then simply invert the sign
    *         and use the above function to pack the values.
    */
-  FT_LOCAL_DEF( FT_SDFFormat )
+  fn FT_SDFFormat /* internal */
   invert_sign( FT_SDFFormat  dist )
   {
     return 255 - dist;

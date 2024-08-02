@@ -27,7 +27,7 @@
 
   /* Initialize glyph loader. */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   af_loader_init( AF_Loader      loader,
                   AF_GlyphHints  hints )
   {
@@ -39,7 +39,7 @@
 
   /* Reset glyph loader and compute globals if necessary. */
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   af_loader_reset( AF_Loader  loader,
                    AF_Module  module,
                    FT_Face    face )
@@ -66,7 +66,7 @@
 
   /* Finalize glyph loader. */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   af_loader_done( AF_Loader  loader )
   {
     loader->face    = NULL;
@@ -204,7 +204,7 @@
 
   /* Load the glyph at index into the current slot of a face and hint it. */
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   af_loader_load_glyph( AF_Loader  loader,
                         AF_Module  module,
                         FT_Face    face,
@@ -580,7 +580,7 @@
    *
    * XXX: Currently a crude adaption of the original algorithm.  Do better?
    */
-  FT_LOCAL_DEF( FT_Fixed )
+  fn FT_Fixed /* internal */
   af_loader_compute_darkening( AF_Loader  loader,
                                FT_Face    face,
                                FT_Pos     standard_width )

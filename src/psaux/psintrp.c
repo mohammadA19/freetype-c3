@@ -63,7 +63,7 @@
 #define FT_COMPONENT  cf2interp
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cf2_hintmask_init( CF2_HintMask  hintmask,
                      FT_Error*     error )
   {
@@ -73,21 +73,21 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Bool )
+  fn FT_Bool /* internal */
   cf2_hintmask_isValid( const CF2_HintMask  hintmask )
   {
     return hintmask->isValid;
   }
 
 
-  FT_LOCAL_DEF( FT_Bool )
+  fn FT_Bool /* internal */
   cf2_hintmask_isNew( const CF2_HintMask  hintmask )
   {
     return hintmask->isNew;
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cf2_hintmask_setNew( CF2_HintMask  hintmask,
                        FT_Bool       val )
   {
@@ -98,7 +98,7 @@
   /* clients call `getMaskPtr' in order to iterate */
   /* through hint mask                             */
 
-  FT_LOCAL_DEF( FT_Byte* )
+  fn FT_Byte* /* internal */
   cf2_hintmask_getMaskPtr( CF2_HintMask  hintmask )
   {
     return hintmask->mask;
@@ -170,7 +170,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cf2_hintmask_setAll( CF2_HintMask  hintmask,
                        size_t        bitCount )
   {
@@ -474,7 +474,7 @@
    * Unimplemented opcodes are ignored.
    *
    */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cf2_interpT2CharString( CF2_Font              font,
                           const CF2_Buffer      buf,
                           CF2_OutlineCallbacks  callbacks,

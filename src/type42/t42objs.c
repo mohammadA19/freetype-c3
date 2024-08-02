@@ -158,7 +158,7 @@
   /***************** Driver Functions *************/
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   T42_Face_Init( FT_Stream      stream,
                  FT_Face        t42face,       /* T42_Face */
                  FT_Int         face_index,
@@ -400,7 +400,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   T42_Face_Done( FT_Face  t42face )
   {
     T42_Face     face = (T42_Face)t42face;
@@ -471,7 +471,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   T42_Driver_Init( FT_Module  module )        /* T42_Driver */
   {
     T42_Driver  driver = (T42_Driver)module;
@@ -491,14 +491,14 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   T42_Driver_Done( FT_Module  module )
   {
     FT_UNUSED( module );
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   T42_Size_Init( FT_Size  size )         /* T42_Size */
   {
     T42_Size  t42size = (T42_Size)size;
@@ -518,7 +518,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   T42_Size_Request( FT_Size          t42size,      /* T42_Size */
                     FT_Size_Request  req )
   {
@@ -537,7 +537,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   T42_Size_Select( FT_Size   t42size,         /* T42_Size */
                    FT_ULong  strike_index )
   {
@@ -557,7 +557,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   T42_Size_Done( FT_Size  t42size )             /* T42_Size */
   {
     T42_Size     size    = (T42_Size)t42size;
@@ -575,7 +575,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   T42_GlyphSlot_Init( FT_GlyphSlot  t42slot )        /* T42_GlyphSlot */
   {
     T42_GlyphSlot  slot    = (T42_GlyphSlot)t42slot;
@@ -607,7 +607,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   T42_GlyphSlot_Done( FT_GlyphSlot  t42slot )       /* T42_GlyphSlot */
   {
     T42_GlyphSlot  slot = (T42_GlyphSlot)t42slot;
@@ -644,7 +644,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   T42_GlyphSlot_Load( FT_GlyphSlot  glyph,
                       FT_Size       size,
                       FT_UInt       glyph_index,

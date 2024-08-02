@@ -174,7 +174,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   T1_Get_Multi_Master( FT_Face           face,    /* T1_Face */
                        FT_Multi_Master*  master )
   {
@@ -286,7 +286,7 @@
    * Just a wrapper around T1_Get_Multi_Master to support the different
    * arguments needed by the GX var distortable fonts.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   T1_Get_MM_Var( FT_Face      face,    /* T1_Face */
                  FT_MM_Var*  *master )
   {
@@ -440,7 +440,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   T1_Set_MM_Blend( FT_Face    face,       /* T1_Face */
                    FT_UInt    num_coords,
                    FT_Fixed*  coords )
@@ -449,7 +449,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   T1_Get_MM_Blend( FT_Face    face,       /* T1_Face */
                    FT_UInt    num_coords,
                    FT_Fixed*  coords )
@@ -485,7 +485,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   T1_Set_MM_WeightVector( FT_Face    face,          /* T1_Face */
                           FT_UInt    len,
                           FT_Fixed*  weightvector )
@@ -521,7 +521,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   T1_Get_MM_WeightVector( FT_Face    face,          /* T1_Face */
                           FT_UInt*   len,
                           FT_Fixed*  weightvector )
@@ -551,7 +551,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   T1_Set_MM_Design( FT_Face   face,       /* T1_Face */
                     FT_UInt   num_coords,
                     FT_Long*  coords )
@@ -634,7 +634,7 @@
 
   /* MM fonts don't have named instances, so only the design is reset */
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   T1_Reset_MM_Blend( FT_Face  face,
                      FT_UInt  instance_index )
   {
@@ -649,7 +649,7 @@
    * Just a wrapper around T1_Set_MM_Design to support the different
    * arguments needed by the GX var distortable fonts.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   T1_Set_Var_Design( FT_Face    face,       /* T1_Face */
                      FT_UInt    num_coords,
                      FT_Fixed*  coords )
@@ -668,7 +668,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   T1_Get_Var_Design( FT_Face    face,       /* T1_Face */
                      FT_UInt    num_coords,
                      FT_Fixed*  coords )
@@ -705,7 +705,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   T1_Done_Blend( FT_Face  face )    /* T1_Face */
   {
     T1_Face    t1face = (T1_Face)face;
@@ -2513,7 +2513,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   T1_Open_Face( T1_Face  face )
   {
     T1_LoaderRec   loader;

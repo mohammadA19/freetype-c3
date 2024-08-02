@@ -147,19 +147,19 @@ FT_BEGIN_HEADER
   } FT_LzwStateRec, *FT_LzwState;
 
 
-  FT_LOCAL( void )
+  fn void /* internal */
   ft_lzwstate_init( FT_LzwState  state,
                     FT_Stream    source );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   ft_lzwstate_done( FT_LzwState  state );
 
 
-  FT_LOCAL( void )
+  fn void /* internal */
   ft_lzwstate_reset( FT_LzwState  state );
 
 
-  FT_LOCAL( FT_ULong )
+  fn FT_ULong /* internal */
   ft_lzwstate_io( FT_LzwState  state,
                   FT_Byte*     buffer,
                   FT_ULong     out_size );

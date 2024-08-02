@@ -26,7 +26,7 @@
 
 
   /* finalize a given glyph image node */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   ftc_inode_free( FTC_Node   ftcinode,
                   FTC_Cache  cache )
   {
@@ -41,7 +41,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   FTC_INode_Free( FTC_INode  inode,
                   FTC_Cache  cache )
   {
@@ -50,7 +50,7 @@
 
 
   /* initialize a new glyph image node */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   FTC_INode_New( FTC_INode   *pinode,
                  FTC_GQuery   gquery,
                  FTC_Cache    cache )
@@ -87,7 +87,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   ftc_inode_new( FTC_Node   *ftcpinode,
                  FT_Pointer  ftcgquery,
                  FTC_Cache   cache )
@@ -100,7 +100,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Offset )
+  fn FT_Offset /* internal */
   ftc_inode_weight( FTC_Node   ftcinode,
                     FTC_Cache  ftccache )
   {
@@ -146,7 +146,7 @@
 
 #if 0
 
-  FT_LOCAL_DEF( FT_Offset )
+  fn FT_Offset /* internal */
   FTC_INode_Weight( FTC_INode  inode )
   {
     return ftc_inode_weight( FTC_NODE( inode ), NULL );

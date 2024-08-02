@@ -47,23 +47,23 @@
 FT_BEGIN_HEADER
 
 
-  FT_LOCAL( void )
+  fn void /* internal */
   cf2_hintmask_init( CF2_HintMask  hintmask,
                      FT_Error*     error );
-  FT_LOCAL( FT_Bool )
+  fn FT_Bool /* internal */
   cf2_hintmask_isValid( const CF2_HintMask  hintmask );
-  FT_LOCAL( FT_Bool )
+  fn FT_Bool /* internal */
   cf2_hintmask_isNew( const CF2_HintMask  hintmask );
-  FT_LOCAL( void )
+  fn void /* internal */
   cf2_hintmask_setNew( CF2_HintMask  hintmask,
                        FT_Bool       val );
-  FT_LOCAL( FT_Byte* )
+  fn FT_Byte* /* internal */
   cf2_hintmask_getMaskPtr( CF2_HintMask  hintmask );
-  FT_LOCAL( void )
+  fn void /* internal */
   cf2_hintmask_setAll( CF2_HintMask  hintmask,
                        size_t        bitCount );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   cf2_interpT2CharString( CF2_Font              font,
                           const CF2_Buffer      buf,
                           CF2_OutlineCallbacks  callbacks,

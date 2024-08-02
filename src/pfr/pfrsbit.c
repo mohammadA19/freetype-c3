@@ -580,7 +580,7 @@
   /*************************************************************************/
   /*************************************************************************/
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   pfr_slot_load_bitmap( PFR_Slot  glyph,
                         PFR_Size  size,
                         FT_UInt   glyph_index,

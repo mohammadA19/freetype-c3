@@ -127,7 +127,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_face_goto_table( TT_Face    face,
                       FT_ULong   tag,
                       FT_Stream  stream,
@@ -338,7 +338,7 @@
    * @Note:
    *   The stream cursor must be at the beginning of the font directory.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_face_load_font_dir( TT_Face    face,
                          FT_Stream  stream )
   {
@@ -564,7 +564,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_face_load_any( TT_Face    face,
                     FT_ULong   tag,
                     FT_Long    offset,
@@ -686,7 +686,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_face_load_head( TT_Face    face,
                      FT_Stream  stream )
   {
@@ -696,7 +696,7 @@
 
 #ifdef TT_CONFIG_OPTION_EMBEDDED_BITMAPS
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_face_load_bhed( TT_Face    face,
                      FT_Stream  stream )
   {
@@ -724,7 +724,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_face_load_maxp( TT_Face    face,
                      FT_Stream  stream )
   {
@@ -834,7 +834,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_face_load_name( TT_Face    face,
                      FT_Stream  stream )
   {
@@ -1043,7 +1043,7 @@
    *   face ::
    *     A handle to the target face object.
    */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   tt_face_free_name( TT_Face  face )
   {
     FT_Memory     memory = face->root.memory;
@@ -1101,7 +1101,7 @@
    *   FreeType error code.  0 means success.
    */
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_face_load_cmap( TT_Face    face,
                      FT_Stream  stream )
   {
@@ -1139,7 +1139,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_face_load_os2( TT_Face    face,
                     FT_Stream  stream )
   {
@@ -1301,7 +1301,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_face_load_post( TT_Face    face,
                      FT_Stream  stream )
   {
@@ -1369,7 +1369,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_face_load_pclt( TT_Face    face,
                      FT_Stream  stream )
   {
@@ -1432,7 +1432,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_face_load_gasp( TT_Face    face,
                      FT_Stream  stream )
   {

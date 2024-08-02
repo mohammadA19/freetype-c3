@@ -32,7 +32,7 @@ THE SOFTWARE.
 
 FT_BEGIN_HEADER
 
-  FT_LOCAL( PCF_Property )
+  fn PCF_Property /* internal */
   pcf_find_property( PCF_Face          face,
                      const FT_String*  prop );
 

@@ -201,7 +201,7 @@
   /* sets otvalid->extra2 (GPOS lookup count) */
   /* sets otvalid->glyph_count                */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   otv_JSTF_validate( FT_Bytes      table,
                      FT_Bytes      gsub,
                      FT_Bytes      gpos,

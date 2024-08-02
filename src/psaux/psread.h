@@ -53,9 +53,9 @@ FT_BEGIN_HEADER
   } CF2_BufferRec, *CF2_Buffer;
 
 
-  FT_LOCAL( CF2_Int )
+  fn CF2_Int /* internal */
   cf2_buf_readByte( CF2_Buffer  buf );
-  FT_LOCAL( FT_Bool )
+  fn FT_Bool /* internal */
   cf2_buf_isEnd( CF2_Buffer  buf );
 
 

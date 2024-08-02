@@ -32,7 +32,7 @@
 #define FT_COMPONENT  afhints
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   af_sort_pos( FT_UInt  count,
                FT_Pos*  table )
   {
@@ -55,7 +55,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   af_sort_and_quantize_widths( FT_UInt*  count,
                                AF_Width  table,
                                FT_Pos    threshold )
@@ -132,7 +132,7 @@
 
   /* Get new segment for given axis. */
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   af_axis_hints_new_segment( AF_AxisHints  axis,
                              FT_Memory     memory,
                              AF_Segment   *asegment )
@@ -193,7 +193,7 @@
   /* Get new edge for given axis, direction, and position, */
   /* without initializing the edge itself.                 */
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   af_axis_hints_new_edge( AF_AxisHints  axis,
                           FT_Int        fpos,
                           AF_Direction  dir,
@@ -747,7 +747,7 @@
 
   /* Compute the direction value of a given vector. */
 
-  FT_LOCAL_DEF( AF_Direction )
+  fn AF_Direction /* internal */
   af_direction_compute( FT_Pos  dx,
                         FT_Pos  dy )
   {
@@ -796,7 +796,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   af_glyph_hints_init( AF_GlyphHints  hints,
                        FT_Memory      memory )
   {
@@ -806,7 +806,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   af_glyph_hints_done( AF_GlyphHints  hints )
   {
     FT_Memory  memory;
@@ -854,7 +854,7 @@
 
   /* Reset metrics. */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   af_glyph_hints_rescale( AF_GlyphHints    hints,
                           AF_StyleMetrics  metrics )
   {
@@ -866,7 +866,7 @@
   /* Recompute all AF_Point in AF_GlyphHints from the definitions */
   /* in a source outline.                                         */
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   af_glyph_hints_reload( AF_GlyphHints  hints,
                          FT_Outline*    outline )
   {
@@ -1285,7 +1285,7 @@
 
   /* Store the hinted outline in an FT_Outline structure. */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   af_glyph_hints_save( AF_GlyphHints  hints,
                        FT_Outline*    outline )
   {
@@ -1320,7 +1320,7 @@
   /* Align all points of an edge to the same coordinate value, */
   /* either horizontally or vertically.                        */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   af_glyph_hints_align_edge_points( AF_GlyphHints  hints,
                                     AF_Dimension   dim )
   {
@@ -1395,7 +1395,7 @@
   /* Hint the strong points -- this is equivalent to the TrueType `IP' */
   /* hinting instruction.                                              */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   af_glyph_hints_align_strong_points( AF_GlyphHints  hints,
                                       AF_Dimension   dim )
   {
@@ -1669,7 +1669,7 @@
   /* Hint the weak points -- this is equivalent to the TrueType `IUP' */
   /* hinting instruction.                                             */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   af_glyph_hints_align_weak_points( AF_GlyphHints  hints,
                                     AF_Dimension   dim )
   {

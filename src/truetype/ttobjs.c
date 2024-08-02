@@ -66,7 +66,7 @@
    *   zone ::
    *     A pointer to the target glyph zone.
    */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   tt_glyphzone_done( TT_GlyphZone  zone )
   {
     FT_Memory  memory = zone->memory;
@@ -112,7 +112,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_glyphzone_new( FT_Memory     memory,
                     FT_UShort     maxPoints,
                     FT_UShort     maxContours,
@@ -659,7 +659,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_face_init( FT_Stream      stream,
                 FT_Face        ttface,      /* TT_Face */
                 FT_Int         face_index,
@@ -820,7 +820,7 @@
    *   face ::
    *     A pointer to the face object to destroy.
    */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   tt_face_done( FT_Face  ttface )           /* TT_Face */
   {
     TT_Face       face = (TT_Face)ttface;
@@ -891,7 +891,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_size_run_fpgm( TT_Size  size,
                     FT_Bool  pedantic )
   {
@@ -985,7 +985,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_size_run_prep( TT_Size  size,
                     FT_Bool  pedantic )
   {
@@ -1228,7 +1228,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_size_ready_bytecode( TT_Size  size,
                           FT_Bool  pedantic )
   {
@@ -1291,7 +1291,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_size_init( FT_Size  ttsize )           /* TT_Size */
   {
     TT_Size   size  = (TT_Size)ttsize;
@@ -1322,7 +1322,7 @@
    *   size ::
    *     A handle to the target size object.
    */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   tt_size_done( FT_Size  ttsize )           /* TT_Size */
   {
     TT_Size  size = (TT_Size)ttsize;
@@ -1353,7 +1353,7 @@
    *     function must take `FT_Size` as a result. The passed `FT_Size` is
    *     expected to point to a `TT_Size`.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_size_reset_height( FT_Size  ft_size )
   {
     TT_Size           size         = (TT_Size)ft_size;
@@ -1405,7 +1405,7 @@
    *   size ::
    *     A handle to the target size object.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_size_reset( TT_Size  size )
   {
     FT_Error          error;
@@ -1476,7 +1476,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_driver_init( FT_Module  ttdriver )     /* TT_Driver */
   {
 
@@ -1511,7 +1511,7 @@
    *   driver ::
    *     A handle to the target TrueType driver.
    */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   tt_driver_done( FT_Module  ttdriver )     /* TT_Driver */
   {
     FT_UNUSED( ttdriver );
@@ -1533,7 +1533,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_slot_init( FT_GlyphSlot  slot )
   {
     return FT_GlyphLoader_CreateExtra( slot->internal->loader );

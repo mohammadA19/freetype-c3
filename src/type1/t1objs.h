@@ -94,14 +94,14 @@ FT_BEGIN_HEADER
   } T1_SizeRec;
 
 
-  FT_LOCAL( void )
+  fn void /* internal */
   T1_Size_Done( FT_Size  size );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   T1_Size_Request( FT_Size          size,
                    FT_Size_Request  req );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   T1_Size_Init( FT_Size  size );
 
 
@@ -129,26 +129,26 @@ FT_BEGIN_HEADER
   } T1_GlyphSlotRec;
 
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   T1_Face_Init( FT_Stream      stream,
                 FT_Face        face,
                 FT_Int         face_index,
                 FT_Int         num_params,
                 FT_Parameter*  params );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   T1_Face_Done( FT_Face  face );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   T1_GlyphSlot_Init( FT_GlyphSlot  slot );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   T1_GlyphSlot_Done( FT_GlyphSlot  slot );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   T1_Driver_Init( FT_Module  driver );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   T1_Driver_Done( FT_Module  driver );
 
 

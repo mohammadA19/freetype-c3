@@ -206,7 +206,7 @@
 #define MapViewOfFile( a, b, c, d, e )                                 \
           MapViewOfFileFromApp( a, b, PACK_DWORD64( c, d ), e )
 
-  FT_LOCAL_DEF( HANDLE )
+  fn HANDLE /* internal */
   CreateFileA( LPCSTR                 lpFileName,
                DWORD                  dwDesiredAccess,
                DWORD                  dwShareMode,
@@ -257,7 +257,7 @@
   /* malloc.h provides implementation of alloca()/_alloca() */
   #include <malloc.h>
 
-  FT_LOCAL_DEF( HANDLE )
+  fn HANDLE /* internal */
   CreateFileA( LPCSTR                 lpFileName,
                DWORD                  dwDesiredAccess,
                DWORD                  dwShareMode,
@@ -298,7 +298,7 @@
 #if defined( _WIN32_WCE ) || defined ( _WIN32_WINDOWS ) || \
     !defined( _WIN32_WINNT ) || _WIN32_WINNT <= 0x0400
 
-  FT_LOCAL_DEF( BOOL )
+  fn BOOL /* internal */
   GetFileSizeEx( HANDLE          hFile,
                  PLARGE_INTEGER  lpFileSize )
   {

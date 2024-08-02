@@ -28,7 +28,7 @@ FT_BEGIN_HEADER
 
 #ifdef FT_CONFIG_OPTION_USE_PNG
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   Load_SBit_Png( FT_GlyphSlot     slot,
                  FT_Int           x_offset,
                  FT_Int           y_offset,

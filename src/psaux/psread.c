@@ -76,7 +76,7 @@
   /* Reads bytes with check for end of buffer.          */
 
   /* reading past the end of the buffer sets error and returns zero */
-  FT_LOCAL_DEF( CF2_Int )
+  fn CF2_Int /* internal */
   cf2_buf_readByte( CF2_Buffer  buf )
   {
     if ( buf->ptr < buf->end )
@@ -102,7 +102,7 @@
 
 
   /* note: end condition can occur without error */
-  FT_LOCAL_DEF( FT_Bool )
+  fn FT_Bool /* internal */
   cf2_buf_isEnd( CF2_Buffer  buf )
   {
     return FT_BOOL( buf->ptr >= buf->end );

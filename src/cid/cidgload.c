@@ -51,7 +51,7 @@
    * `fd_select`; `off1` and `off2` are not validated.
    *
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cid_compute_fd_and_offsets( CID_Face   face,
                               FT_UInt    glyph_index,
                               FT_ULong*  fd_select_p,
@@ -369,7 +369,7 @@
   /*************************************************************************/
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cid_face_compute_max_advance( CID_Face  face,
                                 FT_Int*   max_advance )
   {
@@ -421,7 +421,7 @@
 #endif /* 0 */
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cid_slot_load_glyph( FT_GlyphSlot  cidglyph,      /* CID_GlyphSlot */
                        FT_Size       cidsize,       /* CID_Size      */
                        FT_UInt       glyph_index,

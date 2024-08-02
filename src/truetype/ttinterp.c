@@ -116,7 +116,7 @@
    *   exec ::
    *     The target execution context.
    */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   TT_Goto_CodeRange( TT_ExecContext  exec,
                      FT_Int          range,
                      FT_Long         IP )
@@ -165,7 +165,7 @@
    *   exec ::
    *     The target execution context.
    */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   TT_Set_CodeRange( TT_ExecContext  exec,
                     FT_Int          range,
                     void*           base,
@@ -194,7 +194,7 @@
    *   exec ::
    *     The target execution context.
    */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   TT_Clear_CodeRange( TT_ExecContext  exec,
                       FT_Int          range )
   {
@@ -230,7 +230,7 @@
    * @Note:
    *   Only the glyph loader and debugger should call this function.
    */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   TT_Done_Context( TT_ExecContext  exec )
   {
     FT_Memory  memory = exec->memory;
@@ -295,7 +295,7 @@
    *
    *   Note that not all members of `TT_ExecContext` get initialized.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   TT_Load_Context( TT_ExecContext  exec,
                    TT_Face         face,
                    TT_Size         size )
@@ -390,7 +390,7 @@
    * @Note:
    *   Only the glyph loader and debugger should call this function.
    */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   TT_Save_Context( TT_ExecContext  exec,
                    TT_Size         size )
   {
@@ -426,7 +426,7 @@
    * @Return:
    *   TrueType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   TT_Run_Context( TT_ExecContext  exec )
   {
     TT_Goto_CodeRange( exec, tt_coderange_glyph, 0 );

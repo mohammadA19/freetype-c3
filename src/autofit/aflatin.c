@@ -50,7 +50,7 @@
   /* Find segments and links, compute all stem widths, and initialize */
   /* standard width and height for the glyph with given charcode.     */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   af_latin_metrics_init_widths( AF_LatinMetrics  metrics,
                                 FT_Face          face )
   {
@@ -1061,7 +1061,7 @@
 
   /* Check whether all ASCII digits have the same advance width. */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   af_latin_metrics_check_digits( AF_LatinMetrics  metrics,
                                  FT_Face          face )
   {
@@ -1130,7 +1130,7 @@
 
   /* Initialize global metrics. */
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   af_latin_metrics_init( AF_StyleMetrics  metrics_,   /* AF_LatinMetrics */
                          FT_Face          face )
   {
@@ -1486,7 +1486,7 @@
 
   /* Scale global values in both directions. */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   af_latin_metrics_scale( AF_StyleMetrics  metrics_,   /* AF_LatinMetrics */
                           AF_Scaler        scaler )
   {
@@ -1532,7 +1532,7 @@
 
   /* Walk over all contours and compute its segments. */
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   af_latin_hints_compute_segments( AF_GlyphHints  hints,
                                    AF_Dimension   dim )
   {
@@ -1985,7 +1985,7 @@
   /* Link segments to form stems and serifs.  If `width_count' and      */
   /* `widths' are non-zero, use them to fine-tune the scoring function. */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   af_latin_hints_link_segments( AF_GlyphHints  hints,
                                 FT_UInt        width_count,
                                 AF_WidthRec*   widths,
@@ -2123,7 +2123,7 @@
 
   /* Link segments to edges, using feature analysis for selection. */
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   af_latin_hints_compute_edges( AF_GlyphHints  hints,
                                 AF_Dimension   dim )
   {
@@ -2475,7 +2475,7 @@
 
   /* Detect segments and edges for given dimension. */
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   af_latin_hints_detect_features( AF_GlyphHints  hints,
                                   FT_UInt        width_count,
                                   AF_WidthRec*   widths,

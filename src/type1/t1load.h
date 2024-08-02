@@ -60,57 +60,57 @@ FT_BEGIN_HEADER
 #define T1_FONTDIR_AFTER_PRIVATE  ( 1 << 1 )
 
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   T1_Open_Face( T1_Face  face );
 
 #ifndef T1_CONFIG_OPTION_NO_MM_SUPPORT
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   T1_Get_Multi_Master( FT_Face           face,
                        FT_Multi_Master*  master );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   T1_Get_MM_Var( FT_Face      face,
                  FT_MM_Var*  *master );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   T1_Set_MM_Blend( FT_Face    face,
                    FT_UInt    num_coords,
                    FT_Fixed*  coords );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   T1_Get_MM_Blend( FT_Face    face,
                    FT_UInt    num_coords,
                    FT_Fixed*  coords );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   T1_Set_MM_Design( FT_Face   face,
                     FT_UInt   num_coords,
                     FT_Long*  coords );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   T1_Reset_MM_Blend( FT_Face  face,
                      FT_UInt  instance_index );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   T1_Get_Var_Design( FT_Face    face,
                      FT_UInt    num_coords,
                      FT_Fixed*  coords );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   T1_Set_Var_Design( FT_Face    face,
                      FT_UInt    num_coords,
                      FT_Fixed*  coords );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   T1_Done_Blend( FT_Face  face );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   T1_Set_MM_WeightVector( FT_Face    face,
                           FT_UInt    len,
                           FT_Fixed*  weightvector );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   T1_Get_MM_WeightVector( FT_Face    face,
                           FT_UInt*   len,
                           FT_Fixed*  weightvector );

@@ -144,21 +144,21 @@ FT_BEGIN_HEADER
    * style-specific items
    */
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   af_face_globals_new( FT_Face          face,
                        AF_FaceGlobals  *aglobals,
                        AF_Module        module );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   af_face_globals_get_metrics( AF_FaceGlobals    globals,
                                FT_UInt           gindex,
                                FT_UInt           options,
                                AF_StyleMetrics  *ametrics );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   af_face_globals_free( void*  globals );
 
-  FT_LOCAL( FT_Bool )
+  fn FT_Bool /* internal */
   af_face_globals_is_digit( AF_FaceGlobals  globals,
                             FT_UInt         gindex );
 

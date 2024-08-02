@@ -68,7 +68,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_face_load_hmtx( TT_Face    face,
                      FT_Stream  stream,
                      FT_Bool    vertical )
@@ -125,7 +125,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_face_load_hhea( TT_Face    face,
                      FT_Stream  stream,
                      FT_Bool    vertical )
@@ -224,7 +224,7 @@
    *     The advance width or advance height, depending on
    *     the `vertical' flag.
    */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   tt_face_get_metrics( TT_Face     face,
                        FT_Bool     vertical,
                        FT_UInt     gindex,

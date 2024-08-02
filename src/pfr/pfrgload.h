@@ -24,15 +24,15 @@
 FT_BEGIN_HEADER
 
 
-  FT_LOCAL( void )
+  fn void /* internal */
   pfr_glyph_init( PFR_Glyph       glyph,
                   FT_GlyphLoader  loader );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   pfr_glyph_done( PFR_Glyph  glyph );
 
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   pfr_glyph_load( PFR_Glyph  glyph,
                   FT_Stream  stream,
                   FT_ULong   gps_offset,

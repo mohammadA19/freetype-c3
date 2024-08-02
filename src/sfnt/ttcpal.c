@@ -70,7 +70,7 @@
 #define FT_COMPONENT  ttcpal
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_face_load_cpal( TT_Face    face,
                      FT_Stream  stream )
   {
@@ -240,7 +240,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   tt_face_free_cpal( TT_Face  face )
   {
     FT_Stream  stream = face->root.stream;
@@ -257,7 +257,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_face_palette_set( TT_Face  face,
                        FT_UInt  palette_index )
   {

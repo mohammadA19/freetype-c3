@@ -94,7 +94,7 @@
    *
    * Return the horizontal metrics in font units for a given glyph.
    */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   TT_Get_HMetrics( TT_Face     face,
                    FT_UInt     idx,
                    FT_Short*   lsb,
@@ -112,7 +112,7 @@
    * Return the vertical metrics in font units for a given glyph.
    * See function `tt_loader_set_pp' below for explanations.
    */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   TT_Get_VMetrics( TT_Face     face,
                    FT_UInt     idx,
                    FT_Pos      yMax,
@@ -736,7 +736,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   TT_Init_Glyph_Loading( TT_Face  face )
   {
     face->access_glyph_frame   = TT_Access_Glyph_Frame;
@@ -2415,7 +2415,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   TT_Load_Glyph( TT_Size       size,
                  TT_GlyphSlot  glyph,
                  FT_UInt       glyph_index,

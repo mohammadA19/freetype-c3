@@ -36,7 +36,7 @@
 #define FT_COMPONENT  ttbdf
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   tt_face_free_bdf_props( TT_Face  face )
   {
     TT_BDF  bdf = &face->bdf;
@@ -135,7 +135,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_face_find_bdf_prop( FT_Face           face,          /* TT_Face */
                          const char*       property_name,
                          BDF_PropertyRec  *aprop )

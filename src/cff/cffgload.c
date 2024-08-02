@@ -48,7 +48,7 @@
 #define FT_COMPONENT  cffgload
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cff_get_glyph_data( TT_Face    face,
                       FT_UInt    glyph_index,
                       FT_Byte**  pointer,
@@ -84,7 +84,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cff_free_glyph_data( TT_Face    face,
                        FT_Byte**  pointer,
                        FT_ULong   length )
@@ -140,7 +140,7 @@
 #if 0 /* unused until we support pure CFF fonts */
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cff_compute_max_advance( TT_Face  face,
                            FT_Int*  max_advance )
   {
@@ -198,7 +198,7 @@
 #endif /* 0 */
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cff_slot_load( CFF_GlyphSlot  glyph,
                  CFF_Size       size,
                  FT_UInt        glyph_index,

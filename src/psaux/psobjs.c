@@ -70,7 +70,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   ps_table_new( PS_Table   table,
                 FT_Int     count,
                 FT_Memory  memory )
@@ -158,7 +158,7 @@
    *   FreeType error code.  0 means success.  An error is returned if a
    *   reallocation fails.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   ps_table_add( PS_Table     table,
                 FT_Int       idx,
                 const void*  object,
@@ -223,7 +223,7 @@
    *   table ::
    *     The target table.
    */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   ps_table_done( PS_Table  table )
   {
     /* no problem if shrinking fails */
@@ -231,7 +231,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   ps_table_release( PS_Table  table )
   {
     FT_Memory  memory = table->memory;
@@ -481,7 +481,7 @@
    */
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   ps_parser_skip_PS_token( PS_Parser  parser )
   {
     /* Note: PostScript allows any non-delimiting, non-whitespace        */
@@ -579,7 +579,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   ps_parser_skip_spaces( PS_Parser  parser )
   {
     skip_spaces( &parser->cursor, parser->limit );
@@ -589,7 +589,7 @@
   /* `token' here means either something between balanced delimiters */
   /* or the next token; the delimiters are not removed.              */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   ps_parser_to_token( PS_Parser  parser,
                       T1_Token   token )
   {
@@ -692,7 +692,7 @@
   /* NB: `tokens' can be NULL if we only want to count */
   /* the number of array elements                      */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   ps_parser_to_token_array( PS_Parser  parser,
                             T1_Token   tokens,
                             FT_UInt    max_tokens,
@@ -996,7 +996,7 @@
 
   /* load a simple field (i.e. non-table) into the current list of objects */
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   ps_parser_load_field( PS_Parser       parser,
                         const T1_Field  field,
                         void**          objects,
@@ -1292,7 +1292,7 @@
 #define T1_MAX_TABLE_ELEMENTS  32
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   ps_parser_load_field_table( PS_Parser       parser,
                               const T1_Field  field,
                               void**          objects,
@@ -1369,7 +1369,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Long )
+  fn FT_Long /* internal */
   ps_parser_to_int( PS_Parser  parser )
   {
     ps_parser_skip_spaces( parser );
@@ -1379,7 +1379,7 @@
 
   /* first character must be `<' if `delimiters' is non-zero */
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   ps_parser_to_bytes( PS_Parser  parser,
                       FT_Byte*   bytes,
                       FT_Offset  max_bytes,
@@ -1432,7 +1432,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Fixed )
+  fn FT_Fixed /* internal */
   ps_parser_to_fixed( PS_Parser  parser,
                       FT_Int     power_ten )
   {
@@ -1441,7 +1441,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Int )
+  fn FT_Int /* internal */
   ps_parser_to_coord_array( PS_Parser  parser,
                             FT_Int     max_coords,
                             FT_Short*  coords )
@@ -1452,7 +1452,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Int )
+  fn FT_Int /* internal */
   ps_parser_to_fixed_array( PS_Parser  parser,
                             FT_Int     max_values,
                             FT_Fixed*  values,
@@ -1466,14 +1466,14 @@
 
 #if 0
 
-  FT_LOCAL_DEF( FT_String* )
+  fn FT_String* /* internal */
   T1_ToString( PS_Parser  parser )
   {
     return ps_tostring( &parser->cursor, parser->limit, parser->memory );
   }
 
 
-  FT_LOCAL_DEF( FT_Bool )
+  fn FT_Bool /* internal */
   T1_ToBool( PS_Parser  parser )
   {
     return ps_tobool( &parser->cursor, parser->limit );
@@ -1482,7 +1482,7 @@
 #endif /* 0 */
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   ps_parser_init( PS_Parser  parser,
                   FT_Byte*   base,
                   FT_Byte*   limit,
@@ -1497,7 +1497,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   ps_parser_done( PS_Parser  parser )
   {
     FT_UNUSED( parser );
@@ -1537,7 +1537,7 @@
    *   hinting ::
    *     Whether hinting should be applied.
    */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   t1_builder_init( T1_Builder    builder,
                    FT_Face       face,
                    FT_Size       size,
@@ -1594,7 +1594,7 @@
    *   builder ::
    *     A pointer to the glyph builder to finalize.
    */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   t1_builder_done( T1_Builder  builder )
   {
     FT_GlyphSlot  glyph = builder->glyph;
@@ -1606,7 +1606,7 @@
 
 
   /* check that there is enough space for `count' more points */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   t1_builder_check_points( T1_Builder  builder,
                            FT_Int      count )
   {
@@ -1615,7 +1615,7 @@
 
 
   /* add a new point, do not check space */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   t1_builder_add_point( T1_Builder  builder,
                         FT_Pos      x,
                         FT_Pos      y,
@@ -1639,7 +1639,7 @@
 
 
   /* check space for a new on-curve point, then add it */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   t1_builder_add_point1( T1_Builder  builder,
                          FT_Pos      x,
                          FT_Pos      y )
@@ -1656,7 +1656,7 @@
 
 
   /* check space for a new contour, then add it */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   t1_builder_add_contour( T1_Builder  builder )
   {
     FT_Outline*  outline = builder->current;
@@ -1690,7 +1690,7 @@
 
 
   /* if a path was begun, add its first on-curve point */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   t1_builder_start_point( T1_Builder  builder,
                           FT_Pos      x,
                           FT_Pos      y )
@@ -1715,7 +1715,7 @@
 
 
   /* close the current contour */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   t1_builder_close_contour( T1_Builder  builder )
   {
     FT_Outline*  outline = builder->current;
@@ -1801,7 +1801,7 @@
    *   hinting ::
    *     Whether hinting is active.
    */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cff_builder_init( CFF_Builder*   builder,
                     TT_Face        face,
                     CFF_Size       size,
@@ -1867,7 +1867,7 @@
    *   builder ::
    *     A pointer to the glyph builder to finalize.
    */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cff_builder_done( CFF_Builder*  builder )
   {
     CFF_GlyphSlot  glyph = builder->glyph;
@@ -1879,7 +1879,7 @@
 
 
   /* check that there is enough space for `count' more points */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cff_check_points( CFF_Builder*  builder,
                     FT_Int        count )
   {
@@ -1888,7 +1888,7 @@
 
 
   /* add a new point, do not check space */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cff_builder_add_point( CFF_Builder*  builder,
                          FT_Pos        x,
                          FT_Pos        y,
@@ -1926,7 +1926,7 @@
 
 
   /* check space for a new on-curve point, then add it */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cff_builder_add_point1( CFF_Builder*  builder,
                           FT_Pos        x,
                           FT_Pos        y )
@@ -1943,7 +1943,7 @@
 
 
   /* check space for a new contour, then add it */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cff_builder_add_contour( CFF_Builder*  builder )
   {
     FT_Outline*  outline = builder->current;
@@ -1970,7 +1970,7 @@
 
 
   /* if a path was begun, add its first on-curve point */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cff_builder_start_point( CFF_Builder*  builder,
                            FT_Pos        x,
                            FT_Pos        y )
@@ -1992,7 +1992,7 @@
 
 
   /* close the current contour */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cff_builder_close_contour( CFF_Builder*  builder )
   {
     FT_Outline*  outline = builder->current;
@@ -2077,7 +2077,7 @@
    *   hinting ::
    *     Whether hinting should be applied.
    */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   ps_builder_init( PS_Builder*  ps_builder,
                    void*        builder,
                    FT_Bool      is_t1 )
@@ -2154,7 +2154,7 @@
    *   builder ::
    *     A pointer to the glyph builder to finalize.
    */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   ps_builder_done( PS_Builder*  builder )
   {
     CFF_GlyphSlot  glyph = builder->glyph;
@@ -2166,7 +2166,7 @@
 
 
   /* check that there is enough space for `count' more points */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   ps_builder_check_points( PS_Builder*  builder,
                            FT_Int       count )
   {
@@ -2175,7 +2175,7 @@
 
 
   /* add a new point, do not check space */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   ps_builder_add_point( PS_Builder*  builder,
                         FT_Pos       x,
                         FT_Pos       y,
@@ -2225,7 +2225,7 @@
 
 
   /* check space for a new on-curve point, then add it */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   ps_builder_add_point1( PS_Builder*  builder,
                          FT_Pos       x,
                          FT_Pos       y )
@@ -2242,7 +2242,7 @@
 
 
   /* check space for a new contour, then add it */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   ps_builder_add_contour( PS_Builder*  builder )
   {
     FT_Outline*  outline = builder->current;
@@ -2276,7 +2276,7 @@
 
 
   /* if a path was begun, add its first on-curve point */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   ps_builder_start_point( PS_Builder*  builder,
                           FT_Pos       x,
                           FT_Pos       y )
@@ -2298,7 +2298,7 @@
 
 
   /* close the current contour */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   ps_builder_close_contour( PS_Builder*  builder )
   {
     FT_Outline*  outline = builder->current;
@@ -2379,7 +2379,7 @@
    *   is_t1 ::
    *     Flag indicating Type 1 or CFF
    */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   ps_decoder_init( PS_Decoder*  ps_decoder,
                    void*        decoder,
                    FT_Bool      is_t1 )
@@ -2446,7 +2446,7 @@
 
   /* Synthesize a SubFont object for Type 1 fonts, for use in the  */
   /* new interpreter to access Private dict data.                  */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   t1_make_subfont( FT_Face      face,
                    PS_Private   priv,
                    CFF_SubFont  subfont )
@@ -2532,7 +2532,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   t1_decrypt( FT_Byte*   buffer,
               FT_Offset  length,
               FT_UShort  seed )
@@ -2545,7 +2545,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_UInt32 )
+  fn FT_UInt32 /* internal */
   cff_random( FT_UInt32  r )
   {
     /* a 32bit version of the `xorshift' algorithm */

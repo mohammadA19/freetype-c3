@@ -28,7 +28,7 @@ FT_BEGIN_HEADER
 
 #ifdef FT_CONFIG_OPTION_USE_BROTLI
 
-  FT_LOCAL( FT_Tag )
+  fn FT_Tag /* internal */
   woff2_known_tags( FT_Byte  index );
 
 #endif

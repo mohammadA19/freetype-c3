@@ -418,7 +418,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Int )
+  fn FT_Int /* internal */
   cff_lookup_glyph_by_stdcharcode( CFF_Font  cff,
                                    FT_Int    charcode )
   {
@@ -493,7 +493,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cff_decoder_parse_charstrings( CFF_Decoder*  decoder,
                                  FT_Byte*      charstring_base,
                                  FT_ULong      charstring_len,
@@ -2314,7 +2314,7 @@
    *   hint_mode ::
    *     The hinting mode.
    */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cff_decoder_init( CFF_Decoder*                     decoder,
                     TT_Face                          face,
                     CFF_Size                         size,
@@ -2350,7 +2350,7 @@
 
   /* this function is used to select the subfont */
   /* and the locals subrs array                  */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cff_decoder_prepare( CFF_Decoder*  decoder,
                        CFF_Size      size,
                        FT_UInt       glyph_index )

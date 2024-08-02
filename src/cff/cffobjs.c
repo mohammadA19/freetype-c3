@@ -79,7 +79,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cff_size_done( FT_Size  cffsize )        /* CFF_Size */
   {
     FT_Memory     memory   = cffsize->face->memory;
@@ -162,7 +162,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cff_size_init( FT_Size  cffsize )         /* CFF_Size */
   {
     CFF_Size           size  = (CFF_Size)cffsize;
@@ -223,7 +223,7 @@
 
 #ifdef TT_CONFIG_OPTION_EMBEDDED_BITMAPS
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cff_size_select( FT_Size   size,
                    FT_ULong  strike_index )
   {
@@ -280,7 +280,7 @@
 #endif /* TT_CONFIG_OPTION_EMBEDDED_BITMAPS */
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cff_size_request( FT_Size          size,
                     FT_Size_Request  req )
   {
@@ -361,7 +361,7 @@
    *
    */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cff_slot_done( FT_GlyphSlot  slot )
   {
     if ( slot->internal )
@@ -369,7 +369,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cff_slot_init( FT_GlyphSlot  slot )
   {
     CFF_Face          face     = (CFF_Face)slot->face;
@@ -467,7 +467,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cff_face_init( FT_Stream      stream,
                  FT_Face        cffface,        /* CFF_Face */
                  FT_Int         face_index,
@@ -1092,7 +1092,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cff_face_done( FT_Face  cffface )         /* CFF_Face */
   {
     CFF_Face      face = (CFF_Face)cffface;
@@ -1127,7 +1127,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cff_driver_init( FT_Module  module )        /* CFF_Driver */
   {
     PS_Driver  driver = (PS_Driver)module;
@@ -1165,7 +1165,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cff_driver_done( FT_Module  module )        /* CFF_Driver */
   {
     FT_UNUSED( module );

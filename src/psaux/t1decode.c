@@ -131,7 +131,7 @@
    *   A glyph index in the font face.  Returns -1 if the corresponding
    *   glyph wasn't found.
    */
-  FT_LOCAL_DEF( FT_Int )
+  fn FT_Int /* internal */
   t1_lookup_glyph_by_stdcharcode_ps( PS_Decoder*  decoder,
                                      FT_Int       charcode )
   {
@@ -216,7 +216,7 @@
 
 
   /* parse a single Type 1 glyph */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   t1_decoder_parse_glyph( T1_Decoder  decoder,
                           FT_UInt     glyph )
   {
@@ -442,7 +442,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   t1_decoder_parse_charstrings( T1_Decoder  decoder,
                                 FT_Byte*    charstring_base,
                                 FT_UInt     charstring_len )
@@ -1691,7 +1691,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   t1_decoder_parse_metrics( T1_Decoder  decoder,
                             FT_Byte*    charstring_base,
                             FT_UInt     charstring_len )
@@ -2092,7 +2092,7 @@
 
 
   /* initialize T1 decoder */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   t1_decoder_init( T1_Decoder           decoder,
                    FT_Face              face,
                    FT_Size              size,
@@ -2140,7 +2140,7 @@
 
 
   /* finalize T1 decoder */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   t1_decoder_done( T1_Decoder  decoder )
   {
     FT_Memory  memory = decoder->builder.memory;

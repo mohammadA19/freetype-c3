@@ -28,7 +28,7 @@ FT_BEGIN_HEADER
 
 #ifdef FT_CONFIG_OPTION_USE_ZLIB
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   woff_open_font( FT_Stream  stream,
                   TT_Face    face );
 

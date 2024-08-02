@@ -52,7 +52,7 @@
 #define SFNTS_LEN      ( sizeof ( SFNTS ) - 1 )
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cid_parser_new( CID_Parser*    parser,
                   FT_Stream      stream,
                   FT_Memory      memory,
@@ -293,7 +293,7 @@
 #undef SFNTS_LEN
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cid_parser_done( CID_Parser*  parser )
   {
     /* always free the private dictionary */

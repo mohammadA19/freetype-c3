@@ -35,7 +35,7 @@
 #define FT_COMPONENT  t1afm
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   T1_Done_Metrics( FT_Memory     memory,
                    AFM_FontInfo  fi )
   {
@@ -225,7 +225,7 @@
 
   /* parse a metrics file -- either AFM or PFM depending on what */
   /* it turns out to be                                          */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   T1_Read_Metrics( FT_Face    t1_face,
                    FT_Stream  stream )
   {
@@ -324,7 +324,7 @@
 
 
   /* find the kerning for a given glyph pair */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   T1_Get_Kerning( AFM_FontInfo  fi,
                   FT_UInt       glyph1,
                   FT_UInt       glyph2,
@@ -365,7 +365,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   T1_Get_Track_Kerning( FT_Face    face,
                         FT_Fixed   ptsize,
                         FT_Int     degree,

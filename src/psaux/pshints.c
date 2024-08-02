@@ -214,7 +214,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Bool )
+  fn FT_Bool /* internal */
   cf2_hint_isValid( const CF2_Hint  hint )
   {
     return FT_BOOL( hint->flags );
@@ -235,14 +235,14 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Bool )
+  fn FT_Bool /* internal */
   cf2_hint_isTop( const CF2_Hint  hint )
   {
     return FT_BOOL( hint->flags & ( CF2_PairTop | CF2_GhostTop ) );
   }
 
 
-  FT_LOCAL_DEF( FT_Bool )
+  fn FT_Bool /* internal */
   cf2_hint_isBottom( const CF2_Hint  hint )
   {
     return FT_BOOL( hint->flags & ( CF2_PairBottom | CF2_GhostBottom ) );
@@ -263,14 +263,14 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cf2_hint_lock( CF2_Hint  hint )
   {
     hint->flags |= CF2_Locked;
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cf2_hintmap_init( CF2_HintMap   hintmap,
                     CF2_Font      font,
                     CF2_HintMap   initialMap,
@@ -810,7 +810,7 @@
    * maps, including the initial one.
    *
    */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cf2_hintmap_build( CF2_HintMap   hintmap,
                      CF2_ArrStack  hStemHintArray,
                      CF2_ArrStack  vStemHintArray,
@@ -1092,7 +1092,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cf2_glyphpath_init( CF2_GlyphPath         glyphpath,
                       CF2_Font              font,
                       CF2_OutlineCallbacks  callbacks,
@@ -1163,7 +1163,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cf2_glyphpath_finalize( CF2_GlyphPath  glyphpath )
   {
     cf2_arrstack_finalize( &glyphpath->hintMoves );
@@ -1690,7 +1690,7 @@
    * Device Space (DS) and passing it on to the outline consumer.
    *
    */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cf2_glyphpath_moveTo( CF2_GlyphPath  glyphpath,
                         CF2_Fixed      x,
                         CF2_Fixed      y )
@@ -1720,7 +1720,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cf2_glyphpath_lineTo( CF2_GlyphPath  glyphpath,
                         CF2_Fixed      x,
                         CF2_Fixed      y )
@@ -1826,7 +1826,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cf2_glyphpath_curveTo( CF2_GlyphPath  glyphpath,
                          CF2_Fixed      x1,
                          CF2_Fixed      y1,
@@ -1916,7 +1916,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cf2_glyphpath_closeOpenPath( CF2_GlyphPath  glyphpath )
   {
     if ( glyphpath->pathIsOpen )

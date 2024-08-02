@@ -32,10 +32,10 @@ FT_BEGIN_HEADER
   tt_face_load_kern( TT_Face    face,
                      FT_Stream  stream );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   tt_face_done_kern( TT_Face  face );
 
-  FT_LOCAL( FT_Int )
+  fn FT_Int /* internal */
   tt_face_get_kerning( TT_Face     face,
                        FT_UInt     left_glyph,
                        FT_UInt     right_glyph );

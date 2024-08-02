@@ -554,7 +554,7 @@
   /* sets otvalid->type_funcs  */
   /* sets otvalid->glyph_count */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   otv_GSUB_validate( FT_Bytes      table,
                      FT_UInt       glyph_count,
                      FT_Validator  ftvalid )

@@ -372,18 +372,18 @@ FT_BEGIN_HEADER
 
 
 #ifdef TT_USE_BYTECODE_INTERPRETER
-  FT_LOCAL( void )
+  fn void /* internal */
   TT_Goto_CodeRange( TT_ExecContext  exec,
                      FT_Int          range,
                      FT_Long         IP );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   TT_Set_CodeRange( TT_ExecContext  exec,
                     FT_Int          range,
                     void*           base,
                     FT_Long         length );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   TT_Clear_CodeRange( TT_ExecContext  exec,
                       FT_Int          range );
 #endif /* TT_USE_BYTECODE_INTERPRETER */
@@ -414,19 +414,19 @@ FT_BEGIN_HEADER
 
 
 #ifdef TT_USE_BYTECODE_INTERPRETER
-  FT_LOCAL( void )
+  fn void /* internal */
   TT_Done_Context( TT_ExecContext  exec );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   TT_Load_Context( TT_ExecContext  exec,
                    TT_Face         face,
                    TT_Size         size );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   TT_Save_Context( TT_ExecContext  exec,
                    TT_Size         ins );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   TT_Run_Context( TT_ExecContext  exec );
 #endif /* TT_USE_BYTECODE_INTERPRETER */
 

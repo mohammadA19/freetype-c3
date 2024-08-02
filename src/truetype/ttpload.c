@@ -59,7 +59,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_face_load_loca( TT_Face    face,
                      FT_Stream  stream )
   {
@@ -179,7 +179,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_ULong )
+  fn FT_ULong /* internal */
   tt_face_get_location( FT_Face    face,   /* TT_Face */
                         FT_UInt    gindex,
                         FT_ULong  *asize )
@@ -277,7 +277,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   tt_face_done_loca( TT_Face  face )
   {
     FT_Stream  stream = face->root.stream;
@@ -308,7 +308,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_face_load_cvt( TT_Face    face,
                     FT_Stream  stream )
   {
@@ -391,7 +391,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_face_load_fpgm( TT_Face    face,
                      FT_Stream  stream )
   {
@@ -455,7 +455,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_face_load_prep( TT_Face    face,
                      FT_Stream  stream )
   {
@@ -526,7 +526,7 @@
    *   FreeType error code.  0 means success.
    */
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_face_load_hdmx( TT_Face    face,
                      FT_Stream  stream )
   {
@@ -614,7 +614,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   tt_face_free_hdmx( TT_Face  face )
   {
     FT_Stream  stream = face->root.stream;
@@ -632,7 +632,7 @@
    * in the font's `hdmx' table (if any).  The records must be sorted for
    * the binary search to work properly.
    */
-  FT_LOCAL_DEF( FT_Byte* )
+  fn FT_Byte* /* internal */
   tt_face_get_device_metrics( TT_Face  face,
                               FT_UInt  ppem,
                               FT_UInt  gindex )

@@ -56,32 +56,32 @@ FT_BEGIN_HEADER
   } PFR_SlotRec;
 
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   pfr_face_init( FT_Stream      stream,
                  FT_Face        face,           /* PFR_Face */
                  FT_Int         face_index,
                  FT_Int         num_params,
                  FT_Parameter*  params );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   pfr_face_done( FT_Face  face );               /* PFR_Face */
 
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   pfr_face_get_kerning( FT_Face     face,       /* PFR_Face */
                         FT_UInt     glyph1,
                         FT_UInt     glyph2,
                         FT_Vector*  kerning );
 
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   pfr_slot_init( FT_GlyphSlot  slot );          /* PFR_Slot */
 
-  FT_LOCAL( void )
+  fn void /* internal */
   pfr_slot_done( FT_GlyphSlot  slot );          /* PFR_Slot */
 
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   pfr_slot_load( FT_GlyphSlot  slot,            /* PFR_Slot */
                  FT_Size       size,            /* PFR_Size */
                  FT_UInt       gindex,

@@ -358,7 +358,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   tt_face_free_ps_names( TT_Face  face )
   {
     FT_Memory      memory = face->root.memory;
@@ -406,7 +406,7 @@
    * @Output:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_face_get_ps_name( TT_Face      face,
                        FT_UInt      idx,
                        FT_String**  PSname )

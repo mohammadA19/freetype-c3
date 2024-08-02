@@ -24,7 +24,7 @@
 #include "ftcerror.h"
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   FTC_MruNode_Prepend( FTC_MruNode  *plist,
                        FTC_MruNode   node )
   {
@@ -68,7 +68,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   FTC_MruNode_Up( FTC_MruNode  *plist,
                   FTC_MruNode   node )
   {
@@ -117,7 +117,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   FTC_MruNode_Remove( FTC_MruNode  *plist,
                       FTC_MruNode   node )
   {
@@ -164,7 +164,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   FTC_MruList_Init( FTC_MruList       list,
                     FTC_MruListClass  clazz,
                     FT_UInt           max_nodes,
@@ -180,7 +180,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   FTC_MruList_Reset( FTC_MruList  list )
   {
     while ( list->nodes )
@@ -190,7 +190,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   FTC_MruList_Done( FTC_MruList  list )
   {
     FTC_MruList_Reset( list );
@@ -198,7 +198,7 @@
 
 
 #ifndef FTC_INLINE
-  FT_LOCAL_DEF( FTC_MruNode )
+  fn FTC_MruNode /* internal */
   FTC_MruList_Find( FTC_MruList  list,
                     FT_Pointer   key )
   {
@@ -231,7 +231,7 @@
   }
 #endif
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   FTC_MruList_New( FTC_MruList   list,
                    FT_Pointer    key,
                    FTC_MruNode  *anode )
@@ -279,7 +279,7 @@
 
 
 #ifndef FTC_INLINE
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   FTC_MruList_Lookup( FTC_MruList   list,
                       FT_Pointer    key,
                       FTC_MruNode  *anode )
@@ -296,7 +296,7 @@
   }
 #endif /* FTC_INLINE */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   FTC_MruList_Remove( FTC_MruList  list,
                       FTC_MruNode  node )
   {
@@ -313,7 +313,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   FTC_MruList_RemoveSelection( FTC_MruList              list,
                                FTC_MruNode_CompareFunc  selection,
                                FT_Pointer               key )

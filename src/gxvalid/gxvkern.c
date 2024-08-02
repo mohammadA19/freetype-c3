@@ -894,7 +894,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   gxv_kern_validate( FT_Bytes      table,
                      FT_Face       face,
                      FT_Validator  ftvalid )
@@ -903,7 +903,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   gxv_kern_validate_classic( FT_Bytes      table,
                              FT_Face       face,
                              FT_Int        dialect_flags,

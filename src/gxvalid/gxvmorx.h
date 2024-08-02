@@ -39,27 +39,27 @@
 FT_BEGIN_HEADER
 
 
-  FT_LOCAL( void )
+  fn void /* internal */
   gxv_morx_subtable_type0_validate( FT_Bytes       table,
                                     FT_Bytes       limit,
                                     GXV_Validator  gxvalid );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   gxv_morx_subtable_type1_validate( FT_Bytes       table,
                                     FT_Bytes       limit,
                                     GXV_Validator  gxvalid );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   gxv_morx_subtable_type2_validate( FT_Bytes       table,
                                     FT_Bytes       limit,
                                     GXV_Validator  gxvalid );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   gxv_morx_subtable_type4_validate( FT_Bytes       table,
                                     FT_Bytes       limit,
                                     GXV_Validator  gxvalid );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   gxv_morx_subtable_type5_validate( FT_Bytes       table,
                                     FT_Bytes       limit,
                                     GXV_Validator  gxvalid );

@@ -131,7 +131,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   T1_New_Parser( T1_Parser      parser,
                  FT_Stream      stream,
                  FT_Memory      memory,
@@ -239,7 +239,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   T1_Finalize_Parser( T1_Parser  parser )
   {
     FT_Memory  memory = parser->root.memory;
@@ -256,7 +256,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   T1_Get_Private_Dict( T1_Parser      parser,
                        PSAux_Service  psaux )
   {

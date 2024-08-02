@@ -377,7 +377,7 @@
    * AFM_Stream directly.
    */
 
-  FT_LOCAL_DEF( FT_Int )
+  fn FT_Int /* internal */
   afm_parser_read_vals( AFM_Parser  parser,
                         AFM_Value   vals,
                         FT_Int      n )
@@ -451,7 +451,7 @@
   }
 
 
-  FT_LOCAL_DEF( char* )
+  fn char* /* internal */
   afm_parser_next_key( AFM_Parser  parser,
                        FT_Bool     line,
                        FT_Offset*  len )
@@ -535,7 +535,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   afm_parser_init( AFM_Parser  parser,
                    FT_Memory   memory,
                    FT_Byte*    base,
@@ -563,7 +563,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   afm_parser_done( AFM_Parser  parser )
   {
     FT_Memory  memory = parser->memory;
@@ -965,7 +965,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   afm_parser_parse( AFM_Parser  parser )
   {
     FT_Memory     memory = parser->memory;

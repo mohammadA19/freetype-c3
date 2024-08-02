@@ -59,7 +59,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   ftc_snode_free( FTC_Node   ftcsnode,
                   FTC_Cache  cache )
   {
@@ -78,7 +78,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   FTC_SNode_Free( FTC_SNode  snode,
                   FTC_Cache  cache )
   {
@@ -209,7 +209,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   FTC_SNode_New( FTC_SNode  *psnode,
                  FTC_GQuery  gquery,
                  FTC_Cache   cache )
@@ -269,7 +269,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   ftc_snode_new( FTC_Node   *ftcpsnode,
                  FT_Pointer  ftcgquery,
                  FTC_Cache   cache )
@@ -282,7 +282,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Offset )
+  fn FT_Offset /* internal */
   ftc_snode_weight( FTC_Node   ftcsnode,
                     FTC_Cache  cache )
   {
@@ -319,7 +319,7 @@
 
 #if 0
 
-  FT_LOCAL_DEF( FT_Offset )
+  fn FT_Offset /* internal */
   FTC_SNode_Weight( FTC_SNode  snode )
   {
     return ftc_snode_weight( FTC_NODE( snode ), NULL );
@@ -328,7 +328,7 @@
 #endif /* 0 */
 
 
-  FT_LOCAL_DEF( FT_Bool )
+  fn FT_Bool /* internal */
   ftc_snode_compare( FTC_Node    ftcsnode,
                      FT_Pointer  ftcgquery,
                      FTC_Cache   cache,

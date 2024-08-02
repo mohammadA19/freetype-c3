@@ -49,7 +49,7 @@
   /* Allocate and initialize an instance of CF2_Stack.       */
   /* Note: This function returns NULL on error (does not set */
   /* `error').                                               */
-  FT_LOCAL_DEF( CF2_Stack )
+  fn CF2_Stack /* internal */
   cf2_stack_init( FT_Memory  memory,
                   FT_Error*  e,
                   FT_UInt    stackSize )
@@ -78,7 +78,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cf2_stack_free( CF2_Stack  stack )
   {
     if ( stack )
@@ -94,14 +94,14 @@
   }
 
 
-  FT_LOCAL_DEF( CF2_UInt )
+  fn CF2_UInt /* internal */
   cf2_stack_count( CF2_Stack  stack )
   {
     return (CF2_UInt)( stack->top - stack->buffer );
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cf2_stack_pushInt( CF2_Stack  stack,
                      CF2_Int    val )
   {
@@ -117,7 +117,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cf2_stack_pushFixed( CF2_Stack  stack,
                        CF2_Fixed  val )
   {
@@ -134,7 +134,7 @@
 
 
   /* this function is only allowed to pop an integer type */
-  FT_LOCAL_DEF( CF2_Int )
+  fn CF2_Int /* internal */
   cf2_stack_popInt( CF2_Stack  stack )
   {
     if ( stack->top == stack->buffer )
@@ -156,7 +156,7 @@
 
   /* Note: type mismatch is silently cast */
   /* TODO: check this                     */
-  FT_LOCAL_DEF( CF2_Fixed )
+  fn CF2_Fixed /* internal */
   cf2_stack_popFixed( CF2_Stack  stack )
   {
     if ( stack->top == stack->buffer )
@@ -181,7 +181,7 @@
 
   /* Note: type mismatch is silently cast */
   /* TODO: check this                     */
-  FT_LOCAL_DEF( CF2_Fixed )
+  fn CF2_Fixed /* internal */
   cf2_stack_getReal( CF2_Stack  stack,
                      CF2_UInt   idx )
   {
@@ -206,7 +206,7 @@
 
 
   /* provide random access to stack */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cf2_stack_setReal( CF2_Stack  stack,
                      CF2_UInt   idx,
                      CF2_Fixed  val )
@@ -223,7 +223,7 @@
 
 
   /* discard (pop) num values from stack */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cf2_stack_pop( CF2_Stack  stack,
                  CF2_UInt   num )
   {
@@ -236,7 +236,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cf2_stack_roll( CF2_Stack  stack,
                   CF2_Int    count,
                   CF2_Int    shift )
@@ -319,7 +319,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cf2_stack_clear( CF2_Stack  stack )
   {
     stack->top = stack->buffer;

@@ -132,7 +132,7 @@
 
   /* documentation is in sfnt.h */
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_face_get_name( TT_Face      face,
                     FT_UShort    nameid,
                     FT_String**  name )
@@ -491,7 +491,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   sfnt_init_face( FT_Stream      stream,
                   TT_Face        face,
                   FT_Int         face_instance_index,
@@ -790,7 +790,7 @@
   } while ( 0 )
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   sfnt_load_face( FT_Stream      stream,
                   TT_Face        face,
                   FT_Int         face_instance_index,
@@ -1437,7 +1437,7 @@
 #undef GET_NAME
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   sfnt_done_face( TT_Face  face )
   {
     FT_Memory     memory;

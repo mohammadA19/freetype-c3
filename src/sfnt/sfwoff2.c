@@ -1763,7 +1763,7 @@
   /* Replace `face->root.stream' with a stream containing the extracted */
   /* SFNT of a WOFF2 font.                                              */
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   woff2_open_font( FT_Stream  stream,
                    TT_Face    face,
                    FT_Int*    face_instance_index,

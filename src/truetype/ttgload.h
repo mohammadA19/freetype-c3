@@ -30,23 +30,23 @@
 FT_BEGIN_HEADER
 
 
-  FT_LOCAL( void )
+  fn void /* internal */
   TT_Init_Glyph_Loading( TT_Face  face );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   TT_Get_HMetrics( TT_Face     face,
                    FT_UInt     idx,
                    FT_Short*   lsb,
                    FT_UShort*  aw );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   TT_Get_VMetrics( TT_Face     face,
                    FT_UInt     idx,
                    FT_Pos      yMax,
                    FT_Short*   tsb,
                    FT_UShort*  ah );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   TT_Load_Glyph( TT_Size       size,
                  TT_GlyphSlot  glyph,
                  FT_UInt       glyph_index,

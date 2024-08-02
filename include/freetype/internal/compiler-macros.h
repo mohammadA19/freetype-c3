@@ -157,13 +157,13 @@ FT_BEGIN_HEADER
 #ifdef FT_MAKE_OPTION_SINGLE_OBJECT
 
 #define FT_LOCAL( x )      static x
-#define FT_LOCAL_DEF( x )  static x
+#define fn x /* internal */  static x
 
 #else
 
 #define FT_LOCAL( x )      FT_INTERNAL_FUNCTION_ATTRIBUTE \
                            x
-#define FT_LOCAL_DEF( x )  x
+#define fn x /* internal */  x
 
 #endif  /* FT_MAKE_OPTION_SINGLE_OBJECT */
 
@@ -176,14 +176,6 @@ FT_BEGIN_HEADER
 #define FT_LOCAL_ARRAY( x )      FT_INTERNAL_FUNCTION_ATTRIBUTE \
                                  extern const x
 #define FT_LOCAL_ARRAY_DEF( x )  const x
-
-  /*
-   * `Use FT_BASE` and `FT_BASE_DEF` to declare and define, respectively, an
-   * internal library function that is used by more than a single module.
-   */
-#define FT_BASE( x )      FT_INTERNAL_FUNCTION_ATTRIBUTE \
-                          x
-#define FT_BASE_DEF( x )  x
 
 
   /*

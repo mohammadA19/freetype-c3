@@ -515,7 +515,7 @@
 
   /* documentation is in ftcmanag.h */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   FTC_Manager_Compress( FTC_Manager  manager )
   {
     FTC_Node   node, prev, first;
@@ -553,7 +553,7 @@
 
   /* documentation is in ftcmanag.h */
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   FTC_Manager_RegisterCache( FTC_Manager      manager,
                              FTC_CacheClass   clazz,
                              FTC_Cache       *acache )
@@ -605,7 +605,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_UInt )
+  fn FT_UInt /* internal */
   FTC_Manager_FlushN( FTC_Manager  manager,
                       FT_UInt      count )
   {

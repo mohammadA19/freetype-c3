@@ -31,7 +31,7 @@
    *
    * for details.
    */
-  FT_LOCAL_DEF( FT_Tag )
+  fn FT_Tag /* internal */
   woff2_known_tags( FT_Byte  index )
   {
     static const FT_Tag  known_tags[63] =

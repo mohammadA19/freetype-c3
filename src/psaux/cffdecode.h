@@ -25,7 +25,7 @@
 
 FT_BEGIN_HEADER
 
-  FT_LOCAL( void )
+  fn void /* internal */
   cff_decoder_init( CFF_Decoder*                     decoder,
                     TT_Face                          face,
                     CFF_Size                         size,
@@ -35,19 +35,19 @@ FT_BEGIN_HEADER
                     CFF_Decoder_Get_Glyph_Callback   get_callback,
                     CFF_Decoder_Free_Glyph_Callback  free_callback );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   cff_decoder_prepare( CFF_Decoder*  decoder,
                        CFF_Size      size,
                        FT_UInt       glyph_index );
 
 
-  FT_LOCAL( FT_Int )
+  fn FT_Int /* internal */
   cff_lookup_glyph_by_stdcharcode( CFF_Font  cff,
                                    FT_Int    charcode );
 
 
 #ifdef CFF_CONFIG_OPTION_OLD_ENGINE
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   cff_decoder_parse_charstrings( CFF_Decoder*  decoder,
                                  FT_Byte*      charstring_base,
                                  FT_ULong      charstring_len,

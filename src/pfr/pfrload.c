@@ -122,7 +122,7 @@
   /*************************************************************************/
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   pfr_extra_items_skip( FT_Byte*  *pp,
                         FT_Byte*   limit )
   {
@@ -130,7 +130,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   pfr_extra_items_parse( FT_Byte*       *pp,
                          FT_Byte*        limit,
                          PFR_ExtraItem   item_list,
@@ -237,7 +237,7 @@
    };
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   pfr_header_load( PFR_Header  header,
                    FT_Stream   stream )
   {
@@ -257,7 +257,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Bool )
+  fn FT_Bool /* internal */
   pfr_header_check( PFR_Header  header )
   {
     FT_Bool  result = 1;
@@ -283,7 +283,7 @@
   /***********************************************************************/
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   pfr_log_font_count( FT_Stream  stream,
                       FT_UInt32  section_offset,
                       FT_Long   *acount )
@@ -321,7 +321,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   pfr_log_font_load( PFR_LogFont  log_font,
                      FT_Stream    stream,
                      FT_UInt      idx,
@@ -773,7 +773,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   pfr_phy_font_done( PFR_PhyFont  phy_font,
                      FT_Memory    memory )
   {
@@ -817,7 +817,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   pfr_phy_font_load( PFR_PhyFont  phy_font,
                      FT_Stream    stream,
                      FT_UInt32    offset,

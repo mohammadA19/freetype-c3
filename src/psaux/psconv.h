@@ -25,36 +25,36 @@
 FT_BEGIN_HEADER
 
 
-  FT_LOCAL( FT_Long )
+  fn FT_Long /* internal */
   PS_Conv_Strtol( FT_Byte**  cursor,
                   FT_Byte*   limit,
                   FT_Long    base );
 
 
-  FT_LOCAL( FT_Long )
+  fn FT_Long /* internal */
   PS_Conv_ToInt( FT_Byte**  cursor,
                  FT_Byte*   limit );
 
-  FT_LOCAL( FT_Fixed )
+  fn FT_Fixed /* internal */
   PS_Conv_ToFixed( FT_Byte**  cursor,
                    FT_Byte*   limit,
                    FT_Long    power_ten );
 
 #if 0
-  FT_LOCAL( FT_UInt )
+  fn FT_UInt /* internal */
   PS_Conv_StringDecode( FT_Byte**  cursor,
                         FT_Byte*   limit,
                         FT_Byte*   buffer,
                         FT_Offset  n );
 #endif
 
-  FT_LOCAL( FT_UInt )
+  fn FT_UInt /* internal */
   PS_Conv_ASCIIHexDecode( FT_Byte**  cursor,
                           FT_Byte*   limit,
                           FT_Byte*   buffer,
                           FT_Offset  n );
 
-  FT_LOCAL( FT_UInt )
+  fn FT_UInt /* internal */
   PS_Conv_EexecDecode( FT_Byte**   cursor,
                        FT_Byte*    limit,
                        FT_Byte*    buffer,

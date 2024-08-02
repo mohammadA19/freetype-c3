@@ -26,7 +26,7 @@
 
 
   /* create a new chunk node, setting its cache index and ref count */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   FTC_GNode_Init( FTC_GNode   gnode,
                   FT_UInt     gindex,
                   FTC_Family  family )
@@ -37,7 +37,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   FTC_GNode_UnselectFamily( FTC_GNode  gnode,
                             FTC_Cache  cache )
   {
@@ -50,7 +50,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   FTC_GNode_Done( FTC_GNode  gnode,
                   FTC_Cache  cache )
   {
@@ -61,7 +61,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Bool )
+  fn FT_Bool /* internal */
   ftc_gnode_compare( FTC_Node    ftcgnode,
                      FT_Pointer  ftcgquery,
                      FTC_Cache   cache,
@@ -87,7 +87,7 @@
   /*************************************************************************/
   /*************************************************************************/
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   FTC_Family_Init( FTC_Family  family,
                    FTC_Cache   cache )
   {
@@ -100,7 +100,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   ftc_gcache_init( FTC_Cache  cache )
   {
     FTC_GCache  gcache = (FTC_GCache)cache;
@@ -125,7 +125,7 @@
 
 #if 0
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   FTC_GCache_Init( FTC_GCache  gcache )
   {
     return ftc_gcache_init( FTC_CACHE( gcache ) );
@@ -134,7 +134,7 @@
 #endif /* 0 */
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   ftc_gcache_done( FTC_Cache  cache )
   {
     FTC_GCache  gcache = (FTC_GCache)cache;
@@ -147,7 +147,7 @@
 
 #if 0
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   FTC_GCache_Done( FTC_GCache  gcache )
   {
     ftc_gcache_done( FTC_CACHE( gcache ) );
@@ -156,7 +156,7 @@
 #endif /* 0 */
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   FTC_GCache_New( FTC_Manager       manager,
                   FTC_GCacheClass   clazz,
                   FTC_GCache       *acache )
@@ -168,7 +168,7 @@
 
 #ifndef FTC_INLINE
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   FTC_GCache_Lookup( FTC_GCache   gcache,
                      FT_Offset    hash,
                      FT_UInt      gindex,

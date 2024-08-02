@@ -65,11 +65,11 @@ FT_BEGIN_HEADER
   typedef const struct PFR_ExtraItemRec_*  PFR_ExtraItem;
 
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   pfr_extra_items_skip( FT_Byte*  *pp,
                         FT_Byte*  limit );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   pfr_extra_items_parse( FT_Byte*      *pp,
                          FT_Byte*       limit,
                          PFR_ExtraItem  item_list,
@@ -77,23 +77,23 @@ FT_BEGIN_HEADER
 
 
   /* load a PFR header */
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   pfr_header_load( PFR_Header  header,
                    FT_Stream   stream );
 
   /* check a PFR header */
-  FT_LOCAL( FT_Bool )
+  fn FT_Bool /* internal */
   pfr_header_check( PFR_Header  header );
 
 
   /* return number of logical fonts in this file */
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   pfr_log_font_count( FT_Stream   stream,
                       FT_UInt32   log_section_offset,
                       FT_Long    *acount );
 
   /* load a pfr logical font entry */
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   pfr_log_font_load( PFR_LogFont  log_font,
                      FT_Stream    stream,
                      FT_UInt      face_index,
@@ -102,14 +102,14 @@ FT_BEGIN_HEADER
 
 
   /* load a physical font entry */
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   pfr_phy_font_load( PFR_PhyFont  phy_font,
                      FT_Stream    stream,
                      FT_UInt32    offset,
                      FT_UInt32    size );
 
   /* finalize a physical font */
-  FT_LOCAL( void )
+  fn void /* internal */
   pfr_phy_font_done( PFR_PhyFont  phy_font,
                      FT_Memory    memory );
 

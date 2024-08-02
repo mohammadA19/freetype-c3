@@ -412,7 +412,7 @@
 
   /* sets otvalid->glyph_count */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   otv_MATH_validate( FT_Bytes      table,
                      FT_UInt       glyph_count,
                      FT_Validator  ftvalid )

@@ -131,20 +131,20 @@ FT_BEGIN_HEADER
    *   The reason this function is exported is to allow client-specific
    *   cache classes.
    */
-  FT_LOCAL( void )
+  fn void /* internal */
   FTC_Manager_Compress( FTC_Manager  manager );
 
 
   /* try to flush `count' old nodes from the cache; return the number
    * of really flushed nodes
    */
-  FT_LOCAL( FT_UInt )
+  fn FT_UInt /* internal */
   FTC_Manager_FlushN( FTC_Manager  manager,
                       FT_UInt      count );
 
 
   /* this must be used internally for the moment */
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   FTC_Manager_RegisterCache( FTC_Manager      manager,
                              FTC_CacheClass   clazz,
                              FTC_Cache       *acache );

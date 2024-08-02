@@ -92,7 +92,7 @@
   /* Replace `face->root.stream' with a stream containing the extracted */
   /* SFNT of a WOFF font.                                               */
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   woff_open_font( FT_Stream  stream,
                   TT_Face    face )
   {

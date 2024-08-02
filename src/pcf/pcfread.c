@@ -453,7 +453,7 @@ THE SOFTWARE.
   };
 
 
-  FT_LOCAL_DEF( PCF_Property )
+  fn PCF_Property /* internal */
   pcf_find_property( PCF_Face          face,
                      const FT_String*  prop )
   {
@@ -1405,7 +1405,7 @@ THE SOFTWARE.
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   pcf_load_font( FT_Stream  stream,
                  PCF_Face   face,
                  FT_Long    face_index )

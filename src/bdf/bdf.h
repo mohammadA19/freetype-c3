@@ -230,16 +230,16 @@ FT_BEGIN_HEADER
    *
    */
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   bdf_load_font( FT_Stream       stream,
                  FT_Memory       memory,
                  bdf_options_t*  opts,
                  bdf_font_t*    *font );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   bdf_free_font( bdf_font_t*  font );
 
-  FT_LOCAL( bdf_property_t * )
+  fn bdf_property_t * /* internal */
   bdf_get_font_property( bdf_font_t*  font,
                          const char*  name );
 

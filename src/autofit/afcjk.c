@@ -59,7 +59,7 @@
   /* Basically the Latin version with AF_CJKMetrics */
   /* to replace AF_LatinMetrics.                    */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   af_cjk_metrics_init_widths( AF_CJKMetrics  metrics,
                               FT_Face        face )
   {
@@ -563,7 +563,7 @@
 
   /* Basically the Latin version with type AF_CJKMetrics for metrics. */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   af_cjk_metrics_check_digits( AF_CJKMetrics  metrics,
                                FT_Face        face )
   {
@@ -632,7 +632,7 @@
 
   /* Initialize global metrics. */
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   af_cjk_metrics_init( AF_StyleMetrics  metrics_,  /* AF_CJKMetrics */
                        FT_Face          face )
   {
@@ -754,7 +754,7 @@
 
   /* Scale global values in both directions. */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   af_cjk_metrics_scale( AF_StyleMetrics  metrics_,   /* AF_CJKMetrics */
                         AF_Scaler        scaler )
   {
@@ -1380,7 +1380,7 @@
 
   /* Initalize hinting engine. */
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   af_cjk_hints_init( AF_GlyphHints    hints,
                      AF_StyleMetrics  metrics_ )   /* AF_CJKMetrics */
   {
@@ -2273,7 +2273,7 @@
 
   /* Apply the complete hinting algorithm to a CJK glyph. */
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   af_cjk_hints_apply( FT_UInt          glyph_index,
                       AF_GlyphHints    hints,
                       FT_Outline*      outline,

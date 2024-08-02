@@ -46,7 +46,7 @@
    *
    */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cid_slot_done( FT_GlyphSlot  slot )
   {
     if ( slot->internal )
@@ -54,7 +54,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cid_slot_init( FT_GlyphSlot  slot )
   {
     CID_Face          face;
@@ -107,7 +107,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cid_size_done( FT_Size  cidsize )         /* CID_Size */
   {
     CID_Size  size = (CID_Size)cidsize;
@@ -127,7 +127,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cid_size_init( FT_Size  cidsize )     /* CID_Size */
   {
     CID_Size           size  = (CID_Size)cidsize;
@@ -152,7 +152,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cid_size_request( FT_Size          size,
                     FT_Size_Request  req )
   {
@@ -196,7 +196,7 @@
    *   face ::
    *     A pointer to the face object to destroy.
    */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cid_face_done( FT_Face  cidface )         /* CID_Face */
   {
     CID_Face      face = (CID_Face)cidface;
@@ -286,7 +286,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cid_face_init( FT_Stream      stream,
                  FT_Face        cidface,        /* CID_Face */
                  FT_Int         face_index,
@@ -483,7 +483,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cid_driver_init( FT_Module  module )
   {
     PS_Driver  driver = (PS_Driver)module;
@@ -533,7 +533,7 @@
    *   driver ::
    *     A handle to the target CID driver.
    */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cid_driver_done( FT_Module  driver )
   {
     FT_UNUSED( driver );

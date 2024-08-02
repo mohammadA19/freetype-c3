@@ -37,7 +37,7 @@
   /*************************************************************************/
   /*************************************************************************/
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   otv_Coverage_validate( FT_Bytes       table,
                          OTV_Validator  otvalid,
                          FT_Int         expected_count )
@@ -130,7 +130,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_UInt )
+  fn FT_UInt /* internal */
   otv_Coverage_get_first( FT_Bytes  table )
   {
     FT_Bytes  p = table;
@@ -142,7 +142,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_UInt )
+  fn FT_UInt /* internal */
   otv_Coverage_get_last( FT_Bytes  table )
   {
     FT_Bytes  p = table;
@@ -174,7 +174,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_UInt )
+  fn FT_UInt /* internal */
   otv_Coverage_get_count( FT_Bytes  table )
   {
     FT_Bytes  p              = table;
@@ -220,7 +220,7 @@
   /*************************************************************************/
   /*************************************************************************/
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   otv_ClassDef_validate( FT_Bytes       table,
                          OTV_Validator  otvalid )
   {
@@ -306,7 +306,7 @@
   /*************************************************************************/
   /*************************************************************************/
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   otv_Device_validate( FT_Bytes       table,
                        OTV_Validator  otvalid )
   {
@@ -352,7 +352,7 @@
   /* uses otvalid->type_count */
   /* uses otvalid->type_funcs */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   otv_Lookup_validate( FT_Bytes       table,
                        OTV_Validator  otvalid )
   {
@@ -392,7 +392,7 @@
 
   /* uses valid->lookup_count */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   otv_LookupList_validate( FT_Bytes       table,
                            OTV_Validator  otvalid )
   {
@@ -436,7 +436,7 @@
 
   /* uses otvalid->lookup_count */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   otv_Feature_validate( FT_Bytes       table,
                         OTV_Validator  otvalid )
   {
@@ -472,7 +472,7 @@
 
   /* sets otvalid->lookup_count */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   otv_FeatureList_validate( FT_Bytes       table,
                             FT_Bytes       lookups,
                             OTV_Validator  otvalid )
@@ -516,7 +516,7 @@
 
   /* uses otvalid->extra1 (number of features) */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   otv_LangSys_validate( FT_Bytes       table,
                         OTV_Validator  otvalid )
   {
@@ -557,7 +557,7 @@
   /*************************************************************************/
   /*************************************************************************/
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   otv_Script_validate( FT_Bytes       table,
                        OTV_Validator  otvalid )
   {
@@ -593,7 +593,7 @@
 
   /* sets otvalid->extra1 (number of features) */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   otv_ScriptList_validate( FT_Bytes       table,
                            FT_Bytes       features,
                            OTV_Validator  otvalid )
@@ -651,7 +651,7 @@
      Onx: Offset (NULL) [x]
   */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   otv_x_Ox( FT_Bytes       table,
             OTV_Validator  otvalid )
   {
@@ -681,7 +681,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   otv_u_C_x_Ox( FT_Bytes       table,
                 OTV_Validator  otvalid )
   {
@@ -718,7 +718,7 @@
 
   /* uses otvalid->extra1 (if > 0: array value limit) */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   otv_x_ux( FT_Bytes       table,
             OTV_Validator  otvalid )
   {
@@ -751,7 +751,7 @@
 
   /* uses otvalid->extra1 (array value limit) */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   otv_x_y_ux_sy( FT_Bytes       table,
                  OTV_Validator  otvalid )
   {
@@ -792,7 +792,7 @@
 
   /* uses otvalid->extra1 (array value limit) */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   otv_x_ux_y_uy_z_uz_p_sp( FT_Bytes       table,
                            OTV_Validator  otvalid )
   {
@@ -848,7 +848,7 @@
 
   /* sets otvalid->extra1 (valid->lookup_count) */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   otv_u_O_O_x_Onx( FT_Bytes       table,
                    OTV_Validator  otvalid )
   {
@@ -894,7 +894,7 @@
 
   /* uses otvalid->lookup_count */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   otv_u_x_y_Ox_sy( FT_Bytes       table,
                    OTV_Validator  otvalid )
   {
@@ -933,7 +933,7 @@
 
   /* sets otvalid->extra1 (valid->lookup_count)    */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   otv_u_O_O_O_O_x_Onx( FT_Bytes       table,
                        OTV_Validator  otvalid )
   {
@@ -986,7 +986,7 @@
 
   /* uses otvalid->lookup_count */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   otv_u_x_Ox_y_Oy_z_Oz_p_sp( FT_Bytes       table,
                              OTV_Validator  otvalid )
   {
@@ -1046,7 +1046,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_UInt )
+  fn FT_UInt /* internal */
   otv_GSUBGPOS_get_Lookup_count( FT_Bytes  table )
   {
     FT_Bytes  p = table + 8;
@@ -1056,7 +1056,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_UInt )
+  fn FT_UInt /* internal */
   otv_GSUBGPOS_have_MarkAttachmentType_flag( FT_Bytes  table )
   {
     FT_Bytes  p, lookup;

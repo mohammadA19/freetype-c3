@@ -322,7 +322,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   af_face_globals_new( FT_Face          face,
                        AF_FaceGlobals  *aglobals,
                        AF_Module        module )
@@ -375,7 +375,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   af_face_globals_free( void*  globals_ )
   {
     AF_FaceGlobals  globals = (AF_FaceGlobals)globals_;
@@ -416,7 +416,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   af_face_globals_get_metrics( AF_FaceGlobals    globals,
                                FT_UInt           gindex,
                                FT_UInt           options,
@@ -499,7 +499,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Bool )
+  fn FT_Bool /* internal */
   af_face_globals_is_digit( AF_FaceGlobals  globals,
                             FT_UInt         gindex )
   {

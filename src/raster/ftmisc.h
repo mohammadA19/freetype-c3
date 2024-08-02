@@ -34,7 +34,7 @@
 #define FT_BEGIN_HEADER
 #define FT_END_HEADER
 
-#define FT_LOCAL_DEF( x )   static x
+#define fn x /* internal */   static x
 
 
   /* from include/freetype/fttypes.h */

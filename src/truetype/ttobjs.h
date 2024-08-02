@@ -99,10 +99,10 @@ FT_BEGIN_HEADER
 
 #ifdef TT_USE_BYTECODE_INTERPRETER
 
-  FT_LOCAL( void )
+  fn void /* internal */
   tt_glyphzone_done( TT_GlyphZone  zone );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   tt_glyphzone_new( FT_Memory     memory,
                     FT_UShort     maxPoints,
                     FT_UShort     maxContours,
@@ -351,14 +351,14 @@ FT_BEGIN_HEADER
    *
    * Face functions
    */
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   tt_face_init( FT_Stream      stream,
                 FT_Face        ttface,      /* TT_Face */
                 FT_Int         face_index,
                 FT_Int         num_params,
                 FT_Parameter*  params );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   tt_face_done( FT_Face  ttface );          /* TT_Face */
 
 
@@ -366,32 +366,32 @@ FT_BEGIN_HEADER
    *
    * Size functions
    */
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   tt_size_init( FT_Size  ttsize );          /* TT_Size */
 
-  FT_LOCAL( void )
+  fn void /* internal */
   tt_size_done( FT_Size  ttsize );          /* TT_Size */
 
 #ifdef TT_USE_BYTECODE_INTERPRETER
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   tt_size_run_fpgm( TT_Size  size,
                     FT_Bool  pedantic );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   tt_size_run_prep( TT_Size  size,
                     FT_Bool  pedantic );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   tt_size_ready_bytecode( TT_Size  size,
                           FT_Bool  pedantic );
 
 #endif /* TT_USE_BYTECODE_INTERPRETER */
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   tt_size_reset_height( FT_Size  size );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   tt_size_reset( TT_Size  size );
 
 
@@ -399,10 +399,10 @@ FT_BEGIN_HEADER
    *
    * Driver functions
    */
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   tt_driver_init( FT_Module  ttdriver );    /* TT_Driver */
 
-  FT_LOCAL( void )
+  fn void /* internal */
   tt_driver_done( FT_Module  ttdriver );    /* TT_Driver */
 
 
@@ -410,7 +410,7 @@ FT_BEGIN_HEADER
    *
    * Slot functions
    */
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   tt_slot_init( FT_GlyphSlot  slot );
 
 

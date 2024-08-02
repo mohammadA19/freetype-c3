@@ -82,11 +82,11 @@ extern void*  af_debug_hints_;
   } AF_WidthRec, *AF_Width;
 
 
-  FT_LOCAL( void )
+  fn void /* internal */
   af_sort_pos( FT_UInt  count,
                FT_Pos*  table );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   af_sort_and_quantize_widths( FT_UInt*  count,
                                AF_Width  widths,
                                FT_Pos    threshold );

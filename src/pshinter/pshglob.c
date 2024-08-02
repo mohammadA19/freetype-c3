@@ -81,7 +81,7 @@
 #if 0
 
   /* org_width is in font units, result in device pixels, 26.6 format */
-  FT_LOCAL_DEF( FT_Pos )
+  fn FT_Pos /* internal */
   psh_dimension_snap_width( PSH_Dimension  dimension,
                             FT_Int         org_width )
   {
@@ -544,7 +544,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   psh_blues_snap_stem( PSH_Blues      blues,
                        FT_Int         stem_top,
                        FT_Int         stem_bot,
@@ -750,7 +750,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   psh_globals_set_scale( PSH_Globals  globals,
                          FT_Fixed     x_scale,
                          FT_Fixed     y_scale,
@@ -783,7 +783,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   psh_globals_funcs_init( PSH_Globals_FuncsRec*  funcs )
   {
     funcs->create    = psh_globals_new;

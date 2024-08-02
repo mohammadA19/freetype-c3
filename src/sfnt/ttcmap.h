@@ -109,11 +109,11 @@ FT_BEGIN_HEADER
 
   FT_CALLBACK_TABLE const TT_CMap_ClassRec  tt_cmap_unicode_class_rec;
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   tt_face_build_cmaps( TT_Face  face );
 
   /* used in tt-cmaps service */
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   tt_get_cmap_info( FT_CharMap    charmap,
                     TT_CMapInfo  *cmap_info );
 

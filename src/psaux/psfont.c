@@ -482,7 +482,7 @@
 
 
   /* equivalent to AdobeGetOutline */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cf2_getGlyphOutline( CF2_Font           font,
                        CF2_Buffer         charstring,
                        const CF2_Matrix*  transform,

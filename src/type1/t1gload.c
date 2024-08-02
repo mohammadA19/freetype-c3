@@ -208,7 +208,7 @@
   /*************************************************************************/
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   T1_Compute_Max_Advance( T1_Face  face,
                           FT_Pos*  max_advance )
   {
@@ -272,7 +272,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   T1_Get_Advances( FT_Face    t1face,        /* T1_Face */
                    FT_UInt    first,
                    FT_UInt    count,
@@ -343,7 +343,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   T1_Load_Glyph( FT_GlyphSlot  t1glyph,          /* T1_GlyphSlot */
                  FT_Size       t1size,           /* T1_Size      */
                  FT_UInt       glyph_index,

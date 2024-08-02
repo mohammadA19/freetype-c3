@@ -132,7 +132,7 @@
 
   /********************* Parsing Functions ******************/
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   t42_parser_init( T42_Parser     parser,
                    FT_Stream      stream,
                    FT_Memory      memory,
@@ -216,7 +216,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   t42_parser_done( T42_Parser  parser )
   {
     FT_Memory  memory = parser->root.memory;
@@ -1187,7 +1187,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   t42_parse_dict( T42_Face    face,
                   T42_Loader  loader,
                   FT_Byte*    base,
@@ -1314,7 +1314,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   t42_loader_init( T42_Loader  loader,
                    T42_Face    face )
   {
@@ -1331,7 +1331,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   t42_loader_done( T42_Loader  loader )
   {
     T42_Parser  parser = &loader->parser;

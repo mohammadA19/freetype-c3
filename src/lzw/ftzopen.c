@@ -195,7 +195,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   ft_lzwstate_reset( FT_LzwState  state )
   {
     state->in_eof     = 0;
@@ -209,7 +209,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   ft_lzwstate_init( FT_LzwState  state,
                     FT_Stream    source )
   {
@@ -229,7 +229,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   ft_lzwstate_done( FT_LzwState  state )
   {
     FT_Memory  memory = state->memory;
@@ -257,7 +257,7 @@
   FT_END_STMNT
 
 
-  FT_LOCAL_DEF( FT_ULong )
+  fn FT_ULong /* internal */
   ft_lzwstate_io( FT_LzwState  state,
                   FT_Byte*     buffer,
                   FT_ULong     out_size )

@@ -346,99 +346,99 @@ FT_BEGIN_HEADER
 #define TTAG_ital  FT_MAKE_TAG( 'i', 't', 'a', 'l' )
 
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   TT_Set_MM_Blend( FT_Face    face,
                    FT_UInt    num_coords,
                    FT_Fixed*  coords );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   TT_Get_MM_Blend( FT_Face    face,
                    FT_UInt    num_coords,
                    FT_Fixed*  coords );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   TT_Set_Var_Design( FT_Face    face,
                      FT_UInt    num_coords,
                      FT_Fixed*  coords );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   TT_Get_MM_Var( FT_Face      face,
                  FT_MM_Var*  *master );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   TT_Get_Var_Design( FT_Face    face,
                      FT_UInt    num_coords,
                      FT_Fixed*  coords );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   TT_Set_Named_Instance( FT_Face  face,
                          FT_UInt  instance_index );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   TT_Get_Default_Named_Instance( FT_Face   face,
                                  FT_UInt  *instance_index );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   tt_construct_ps_name( FT_Face  face );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   tt_face_vary_cvt( TT_Face    face,
                     FT_Stream  stream );
 
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   TT_Vary_Apply_Glyph_Deltas( TT_Loader    loader,
                               FT_Outline*  outline,
                               FT_Vector*   unrounded );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   tt_hadvance_adjust( FT_Face  face,
                       FT_UInt  gindex,
                       FT_Int  *adelta );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   tt_vadvance_adjust( FT_Face  face,
                       FT_UInt  gindex,
                       FT_Int  *adelta );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   tt_apply_mvar( FT_Face  face );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   tt_var_load_item_variation_store( FT_Face          face,
                                     FT_ULong         offset,
                                     GX_ItemVarStore  itemStore );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   tt_var_load_delta_set_index_mapping( FT_Face            face,
                                        FT_ULong           offset,
                                        GX_DeltaSetIdxMap  map,
                                        GX_ItemVarStore    itemStore,
                                        FT_ULong           table_len );
 
-  FT_LOCAL( FT_ItemVarDelta )
+  fn FT_ItemVarDelta /* internal */
   tt_var_get_item_delta( FT_Face          face,
                          GX_ItemVarStore  itemStore,
                          FT_UInt          outerIndex,
                          FT_UInt          innerIndex );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   tt_var_done_item_variation_store( FT_Face          face,
                                     GX_ItemVarStore  itemStore );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   tt_var_done_delta_set_index_map( FT_Face            face,
                                    GX_DeltaSetIdxMap  deltaSetIdxMap );
 
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   tt_get_var_blend( FT_Face      face,
                     FT_UInt     *num_coords,
                     FT_Fixed*   *coords,
                     FT_Fixed*   *normalizedcoords,
                     FT_MM_Var*  *mm_var );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   tt_done_blend( FT_Face  face );
 
 #endif /* TT_CONFIG_OPTION_GX_VAR_SUPPORT */

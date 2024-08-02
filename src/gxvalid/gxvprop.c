@@ -253,7 +253,7 @@
   /*************************************************************************/
   /*************************************************************************/
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   gxv_prop_validate( FT_Bytes      table,
                      FT_Face       face,
                      FT_Validator  ftvalid )

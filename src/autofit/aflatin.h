@@ -115,19 +115,19 @@ FT_BEGIN_HEADER
   } AF_LatinMetricsRec, *AF_LatinMetrics;
 
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   af_latin_metrics_init( AF_StyleMetrics  metrics,
                          FT_Face          face );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   af_latin_metrics_scale( AF_StyleMetrics  metrics,
                           AF_Scaler        scaler );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   af_latin_metrics_init_widths( AF_LatinMetrics  metrics,
                                 FT_Face          face );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   af_latin_metrics_check_digits( AF_LatinMetrics  metrics,
                                  FT_Face          face );
 
@@ -164,21 +164,21 @@ FT_BEGIN_HEADER
    * The next functions shouldn't normally be exported.  However, other
    * writing systems might like to use these functions as-is.
    */
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   af_latin_hints_compute_segments( AF_GlyphHints  hints,
                                    AF_Dimension   dim );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   af_latin_hints_link_segments( AF_GlyphHints  hints,
                                 FT_UInt        width_count,
                                 AF_WidthRec*   widths,
                                 AF_Dimension   dim );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   af_latin_hints_compute_edges( AF_GlyphHints  hints,
                                 AF_Dimension   dim );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   af_latin_hints_detect_features( AF_GlyphHints  hints,
                                   FT_UInt        width_count,
                                   AF_WidthRec*   widths,

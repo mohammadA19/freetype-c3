@@ -86,7 +86,7 @@
    * nFeatureFlags is typed to FT_ULong to accept that in
    * mort (typed FT_UShort) and morx (typed FT_ULong).
    */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   gxv_mort_featurearray_validate( FT_Bytes       table,
                                   FT_Bytes       limit,
                                   FT_ULong       nFeatureFlags,
@@ -118,7 +118,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   gxv_mort_coverage_validate( FT_UShort      coverage,
                               GXV_Validator  gxvalid )
   {
@@ -258,7 +258,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   gxv_mort_validate( FT_Bytes      table,
                      FT_Face       face,
                      FT_Validator  ftvalid )

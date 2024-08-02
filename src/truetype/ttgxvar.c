@@ -474,7 +474,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_var_load_item_variation_store( FT_Face          face,      /* TT_Face */
                                     FT_ULong         offset,
                                     GX_ItemVarStore  itemStore )
@@ -689,7 +689,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_var_load_delta_set_index_mapping( FT_Face            face, /* TT_Face */
                                        FT_ULong           offset,
                                        GX_DeltaSetIdxMap  map,
@@ -967,7 +967,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_ItemVarDelta )
+  fn FT_ItemVarDelta /* internal */
   tt_var_get_item_delta( FT_Face          face,        /* TT_Face */
                          GX_ItemVarStore  itemStore,
                          FT_UInt          outerIndex,
@@ -1239,7 +1239,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_hadvance_adjust( FT_Face  face,    /* TT_Face */
                       FT_UInt  gindex,
                       FT_Int  *avalue )
@@ -1248,7 +1248,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_vadvance_adjust( FT_Face  face,    /* TT_Face */
                       FT_UInt  gindex,
                       FT_Int  *avalue )
@@ -1498,7 +1498,7 @@
    *   face ::
    *     The font face.
    */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   tt_apply_mvar( FT_Face  face )  /* TT_Face */
   {
     TT_Face  ttface = (TT_Face)face;
@@ -2271,7 +2271,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   TT_Get_MM_Var( FT_Face      face,    /* TT_Face */
                  FT_MM_Var*  *master )
   {
@@ -2977,7 +2977,7 @@
    *   FreeType error code.  0 means success, -1 means success and unchanged
    *   axis values.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   TT_Set_MM_Blend( FT_Face    face,       /* TT_Face */
                    FT_UInt    num_coords,
                    FT_Fixed*  coords )
@@ -3013,7 +3013,7 @@
    *   FreeType error code.  0 means success, -1 means success and unchanged
    *   axis values.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   TT_Get_MM_Blend( FT_Face    face,       /* TT_Face */
                    FT_UInt    num_coords,
                    FT_Fixed*  coords )
@@ -3096,7 +3096,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   TT_Set_Var_Design( FT_Face    face,       /* TT_Face */
                      FT_UInt    num_coords,
                      FT_Fixed*  coords )
@@ -3234,7 +3234,7 @@
    * @Return:
    *   FreeType error code.  0~means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   TT_Get_Var_Design( FT_Face    face,       /* TT_Face */
                      FT_UInt    num_coords,
                      FT_Fixed*  coords )
@@ -3309,7 +3309,7 @@
    *   FreeType error code.  0~means success, -1 means success and unchanged
    *   axis values.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   TT_Set_Named_Instance( FT_Face  face,            /* TT_Face */
                          FT_UInt  instance_index )
   {
@@ -3399,7 +3399,7 @@
    * @Return:
    *   FreeType error code.  0~means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   TT_Get_Default_Named_Instance( FT_Face   face,
                                  FT_UInt  *instance_index )
   {
@@ -3423,7 +3423,7 @@
   /* This function triggers (lazy) recomputation of the `postscript_name` */
   /* field in `TT_Face`.                                                  */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   tt_construct_ps_name( FT_Face  face )
   {
     TT_Face    ttface = (TT_Face)face;
@@ -3486,7 +3486,7 @@
    *   Most errors are ignored.  It is perfectly valid not to have a
    *   `cvar' table even if there is a `gvar' and `fvar' table.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_face_vary_cvt( TT_Face    face,
                     FT_Stream  stream )
   {
@@ -4024,7 +4024,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   TT_Vary_Apply_Glyph_Deltas( TT_Loader    loader,
                               FT_Outline*  outline,
                               FT_Vector*   unrounded )
@@ -4427,7 +4427,7 @@
    *   pointers instead of copying data, without any initialization of
    *   the MM machinery in case it isn't loaded yet.
    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_get_var_blend( FT_Face      face,             /* TT_Face */
                     FT_UInt     *num_coords,
                     FT_Fixed*   *coords,
@@ -4462,7 +4462,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   tt_var_done_item_variation_store( FT_Face          face,
                                     GX_ItemVarStore  itemStore )
   {
@@ -4491,7 +4491,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   tt_var_done_delta_set_index_map( FT_Face            face,
                                    GX_DeltaSetIdxMap  deltaSetIdxMap )
   {
@@ -4511,7 +4511,7 @@
    * @Description:
    *   Free the blend internal data structure.
    */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   tt_done_blend( FT_Face  face )
   {
     TT_Face    ttface = (TT_Face)face;

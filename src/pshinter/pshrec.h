@@ -136,20 +136,20 @@ FT_BEGIN_HEADER
   /* */
 
   /* initialize hints recorder */
-  FT_LOCAL( void )
+  fn void /* internal */
   ps_hints_init( PS_Hints   hints,
                  FT_Memory  memory );
 
   /* finalize hints recorder */
-  FT_LOCAL( void )
+  fn void /* internal */
   ps_hints_done( PS_Hints  hints );
 
   /* initialize Type1 hints recorder interface */
-  FT_LOCAL( void )
+  fn void /* internal */
   t1_hints_funcs_init( T1_Hints_FuncsRec*  funcs );
 
   /* initialize Type2 hints recorder interface */
-  FT_LOCAL( void )
+  fn void /* internal */
   t2_hints_funcs_init( T2_Hints_FuncsRec*  funcs );
 
 

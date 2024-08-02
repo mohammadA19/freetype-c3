@@ -1734,7 +1734,7 @@
 
   /* Create a new FT_Face given a buffer and a driver name. */
   /* From `ftmac.c'.                                        */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   open_face_from_buffer( FT_Library   library,
                          FT_Byte*     base,
                          FT_ULong     size,
@@ -1865,7 +1865,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   open_face_PS_from_sfnt_stream( FT_Library     library,
                                  FT_Stream      stream,
                                  FT_Long        face_index,

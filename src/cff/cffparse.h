@@ -72,15 +72,15 @@ FT_BEGIN_HEADER
   } CFF_ParserRec, *CFF_Parser;
 
 
-  FT_LOCAL( FT_Long )
+  fn FT_Long /* internal */
   cff_parse_num( CFF_Parser  parser,
                  FT_Byte**   d );
 
-  FT_LOCAL( FT_Fixed )
+  fn FT_Fixed /* internal */
   cff_parse_fixed( CFF_Parser  parser,
                    FT_Byte**   d );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   cff_parser_init( CFF_Parser  parser,
                    FT_UInt     code,
                    void*       object,
@@ -89,10 +89,10 @@ FT_BEGIN_HEADER
                    FT_UShort   num_designs,
                    FT_UShort   num_axes );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   cff_parser_done( CFF_Parser  parser );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   cff_parser_run( CFF_Parser  parser,
                   FT_Byte*    start,
                   FT_Byte*    limit );

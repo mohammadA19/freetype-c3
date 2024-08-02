@@ -167,10 +167,10 @@ FT_BEGIN_HEADER
   } CF2_BluesRec, *CF2_Blues;
 
 
-  FT_LOCAL( void )
+  fn void /* internal */
   cf2_blues_init( CF2_Blues  blues,
                   CF2_Font   font );
-  FT_LOCAL( FT_Bool )
+  fn FT_Bool /* internal */
   cf2_blues_capture( const CF2_Blues  blues,
                      CF2_Hint         bottomHintEdge,
                      CF2_Hint         topHintEdge );

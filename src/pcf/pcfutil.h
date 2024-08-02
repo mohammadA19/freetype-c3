@@ -35,15 +35,15 @@ THE SOFTWARE.
 
 FT_BEGIN_HEADER
 
-  FT_LOCAL( void )
+  fn void /* internal */
   BitOrderInvert( unsigned char*  buf,
                   size_t          nbytes );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   TwoByteSwap( unsigned char*  buf,
                size_t          nbytes );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   FourByteSwap( unsigned char*  buf,
                 size_t          nbytes );
 

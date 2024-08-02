@@ -39,7 +39,7 @@
 
 
   /* read a single offset */
-  FT_LOCAL_DEF( FT_ULong )
+  fn FT_ULong /* internal */
   cid_get_offset( FT_Byte*  *start,
                   FT_UInt    offsize )
   {
@@ -759,7 +759,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cid_face_open( CID_Face  face,
                  FT_Int    face_index )
   {

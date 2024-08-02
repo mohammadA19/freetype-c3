@@ -36,7 +36,7 @@
   /*************************************************************************/
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   pfr_glyph_init( PFR_Glyph       glyph,
                   FT_GlyphLoader  loader )
   {
@@ -48,7 +48,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   pfr_glyph_done( PFR_Glyph  glyph )
   {
     FT_Memory  memory = glyph->loader->memory;
@@ -829,7 +829,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   pfr_glyph_load( PFR_Glyph  glyph,
                   FT_Stream  stream,
                   FT_ULong   gps_offset,

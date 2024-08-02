@@ -488,7 +488,7 @@
   /*
    * For this function, refer ftbase.h.
    */
-  FT_LOCAL_DEF( FT_Bool )
+  fn FT_Bool /* internal */
   ft_raccess_rule_by_darwin_vfs( FT_Library  library,
                                  FT_UInt     rule_index )
   {

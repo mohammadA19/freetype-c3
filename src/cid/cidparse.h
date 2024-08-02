@@ -83,13 +83,13 @@ FT_BEGIN_HEADER
   } CID_Parser;
 
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   cid_parser_new( CID_Parser*    parser,
                   FT_Stream      stream,
                   FT_Memory      memory,
                   PSAux_Service  psaux );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   cid_parser_done( CID_Parser*  parser );
 
 

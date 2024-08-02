@@ -2159,7 +2159,7 @@
    */
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   bdf_load_font( FT_Stream       stream,
                  FT_Memory       memory,
                  bdf_options_t*  opts,
@@ -2292,7 +2292,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   bdf_free_font( bdf_font_t*  font )
   {
     bdf_property_t*  prop;
@@ -2359,7 +2359,7 @@
   }
 
 
-  FT_LOCAL_DEF( bdf_property_t * )
+  fn bdf_property_t * /* internal */
   bdf_get_font_property( bdf_font_t*  font,
                          const char*  name )
   {

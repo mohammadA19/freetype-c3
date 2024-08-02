@@ -83,7 +83,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   gxv_morx_subtable_type0_validate( FT_Bytes       table,
                                     FT_Bytes       limit,
                                     GXV_Validator  gxvalid )

@@ -62,7 +62,7 @@ FT_BEGIN_HEADER
   /* */
 
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   T42_Face_Init( FT_Stream      stream,
                  FT_Face        face,
                  FT_Int         face_index,
@@ -70,46 +70,46 @@ FT_BEGIN_HEADER
                  FT_Parameter*  params );
 
 
-  FT_LOCAL( void )
+  fn void /* internal */
   T42_Face_Done( FT_Face  face );
 
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   T42_Size_Init( FT_Size  size );
 
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   T42_Size_Request( FT_Size          size,
                     FT_Size_Request  req );
 
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   T42_Size_Select( FT_Size   size,
                    FT_ULong  strike_index );
 
 
-  FT_LOCAL( void )
+  fn void /* internal */
   T42_Size_Done( FT_Size  size );
 
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   T42_GlyphSlot_Init( FT_GlyphSlot  slot );
 
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   T42_GlyphSlot_Load( FT_GlyphSlot  glyph,
                       FT_Size       size,
                       FT_UInt       glyph_index,
                       FT_Int32      load_flags );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   T42_GlyphSlot_Done( FT_GlyphSlot  slot );
 
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   T42_Driver_Init( FT_Module  module );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   T42_Driver_Done( FT_Module  module );
 
  /* */

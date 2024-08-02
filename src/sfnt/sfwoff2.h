@@ -62,7 +62,7 @@ FT_BEGIN_HEADER
 #define CONTOUR_OFFSET_END_POINT  10
 
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   woff2_open_font( FT_Stream  stream,
                    TT_Face    face,
                    FT_Int*    face_index,

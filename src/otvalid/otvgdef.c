@@ -177,7 +177,7 @@
 
   /* sets otvalid->glyph_count */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   otv_GDEF_validate( FT_Bytes      table,
                      FT_Bytes      gsub,
                      FT_Bytes      gpos,

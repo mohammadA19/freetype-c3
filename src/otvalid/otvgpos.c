@@ -957,7 +957,7 @@
   /* sets otvalid->type_count */
   /* sets otvalid->type_funcs */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   otv_GPOS_subtable_validate( FT_Bytes       table,
                               OTV_Validator  otvalid )
   {
@@ -978,7 +978,7 @@
 
   /* sets otvalid->glyph_count */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   otv_GPOS_validate( FT_Bytes      table,
                      FT_UInt       glyph_count,
                      FT_Validator  ftvalid )

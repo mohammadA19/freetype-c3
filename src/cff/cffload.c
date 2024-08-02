@@ -187,7 +187,7 @@
 #endif /* 1 */
 
 
-  FT_LOCAL_DEF( FT_UShort )
+  fn FT_UShort /* internal */
   cff_get_standard_encoding( FT_UInt  charcode )
   {
     return (FT_UShort)( charcode < 256 ? cff_standard_encoding[charcode]
@@ -500,7 +500,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cff_index_access_element( CFF_Index  idx,
                             FT_UInt    element,
                             FT_Byte**  pbytes,
@@ -598,7 +598,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cff_index_forget_element( CFF_Index  idx,
                             FT_Byte**  pbytes )
   {
@@ -613,7 +613,7 @@
 
 
   /* get an entry from Name INDEX */
-  FT_LOCAL_DEF( FT_String* )
+  fn FT_String* /* internal */
   cff_index_get_name( CFF_Font  font,
                       FT_UInt   element )
   {
@@ -647,7 +647,7 @@
 
 
   /* get an entry from String INDEX */
-  FT_LOCAL_DEF( FT_String* )
+  fn FT_String* /* internal */
   cff_index_get_string( CFF_Font  font,
                         FT_UInt   element )
   {
@@ -657,7 +657,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_String* )
+  fn FT_String* /* internal */
   cff_index_get_sid_string( CFF_Font  font,
                             FT_UInt   sid )
   {
@@ -751,7 +751,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Byte )
+  fn FT_Byte /* internal */
   cff_fd_select_get( CFF_FDSelect  fdselect,
                      FT_UInt       glyph_index )
   {
@@ -864,7 +864,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_UInt )
+  fn FT_UInt /* internal */
   cff_charset_cid_to_gindex( CFF_Charset  charset,
                              FT_UInt      cid )
   {
@@ -1275,7 +1275,7 @@
   /*       ref is not available there.                    */
   /*                                                      */
   /* Allocation is not changed when stack is cleared.     */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cff_blend_clear( CFF_SubFont  subFont )
   {
     subFont->blend_top  = subFont->blend_stack;
@@ -1293,7 +1293,7 @@
   /* using reserved operator 255.                          */
   /*                                                       */
   /* Blend calculation is done in 16.16 fixed-point.       */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cff_blend_doBlend( CFF_SubFont  subFont,
                      CFF_Parser   parser,
                      FT_UInt      numBlends )
@@ -1401,7 +1401,7 @@
   /* vector based on pseudo-code in OpenType Font Variations Overview. */
   /*                                                                   */
   /* Note: lenNDV == 0 produces a default blend vector, (1,0,0,...).   */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cff_blend_build_vector( CFF_Blend  blend,
                           FT_UInt    vsindex,
                           FT_UInt    lenNDV,
@@ -1556,7 +1556,7 @@
 
   /* `lenNDV' is zero for default vector;           */
   /* return TRUE if blend vector needs to be built. */
-  FT_LOCAL_DEF( FT_Bool )
+  fn FT_Bool /* internal */
   cff_blend_check_vector( CFF_Blend  blend,
                           FT_UInt    vsindex,
                           FT_UInt    lenNDV,
@@ -1580,7 +1580,7 @@
 
 #ifdef TT_CONFIG_OPTION_GX_VAR_SUPPORT
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cff_get_var_blend( FT_Face      face,             /* CFF_Face */
                      FT_UInt     *num_coords,
                      FT_Fixed*   *coords,
@@ -1599,7 +1599,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cff_done_blend( FT_Face  face )    /* CFF_Face */
   {
     CFF_Face                 cffface = (CFF_Face)face;
@@ -1867,7 +1867,7 @@
   /* so NDV has not been set for CFF2 variation.                          */
   /*                                                                      */
   /* `cff_slot_load' must call this function each time NDV changes.       */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cff_load_private_dict( CFF_Font     font,
                          CFF_SubFont  subfont,
                          FT_UInt      lenNDV,
@@ -2171,7 +2171,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cff_font_load( FT_Library library,
                  FT_Stream  stream,
                  FT_Int     face_index,
@@ -2519,7 +2519,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cff_font_done( CFF_Font  font )
   {
     FT_Memory  memory = font->memory;

@@ -401,12 +401,12 @@ FT_BEGIN_HEADER
           !AF_HINTS_TEST_SCALER( h, AF_SCALER_FLAG_NO_ADVANCE )
 
 
-  FT_LOCAL( AF_Direction )
+  fn AF_Direction /* internal */
   af_direction_compute( FT_Pos  dx,
                         FT_Pos  dy );
 
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   af_axis_hints_new_segment( AF_AxisHints  axis,
                              FT_Memory     memory,
                              AF_Segment   *asegment );
@@ -419,35 +419,35 @@ FT_BEGIN_HEADER
                           FT_Memory     memory,
                           AF_Edge      *edge );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   af_glyph_hints_init( AF_GlyphHints  hints,
                        FT_Memory      memory );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   af_glyph_hints_rescale( AF_GlyphHints    hints,
                           AF_StyleMetrics  metrics );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   af_glyph_hints_reload( AF_GlyphHints  hints,
                          FT_Outline*    outline );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   af_glyph_hints_save( AF_GlyphHints  hints,
                        FT_Outline*    outline );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   af_glyph_hints_align_edge_points( AF_GlyphHints  hints,
                                     AF_Dimension   dim );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   af_glyph_hints_align_strong_points( AF_GlyphHints  hints,
                                       AF_Dimension   dim );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   af_glyph_hints_align_weak_points( AF_GlyphHints  hints,
                                     AF_Dimension   dim );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   af_glyph_hints_done( AF_GlyphHints  hints );
 
 /* */

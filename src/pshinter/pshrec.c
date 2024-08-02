@@ -765,7 +765,7 @@
 
 
   /* destroy hints */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   ps_hints_done( PS_Hints  hints )
   {
     FT_Memory  memory = hints->memory;
@@ -779,7 +779,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   ps_hints_init( PS_Hints   hints,
                  FT_Memory  memory )
   {
@@ -1123,7 +1123,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   t1_hints_funcs_init( T1_Hints_FuncsRec*  funcs )
   {
     FT_ZERO( funcs );
@@ -1207,7 +1207,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   t2_hints_funcs_init( T2_Hints_FuncsRec*  funcs )
   {
     FT_ZERO( funcs );

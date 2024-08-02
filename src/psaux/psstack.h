@@ -70,46 +70,46 @@ FT_BEGIN_HEADER
   } CF2_StackRec, *CF2_Stack;
 
 
-  FT_LOCAL( CF2_Stack )
+  fn CF2_Stack /* internal */
   cf2_stack_init( FT_Memory  memory,
                   FT_Error*  error,
                   FT_UInt    stackSize );
-  FT_LOCAL( void )
+  fn void /* internal */
   cf2_stack_free( CF2_Stack  stack );
 
-  FT_LOCAL( CF2_UInt )
+  fn CF2_UInt /* internal */
   cf2_stack_count( CF2_Stack  stack );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   cf2_stack_pushInt( CF2_Stack  stack,
                      CF2_Int    val );
-  FT_LOCAL( void )
+  fn void /* internal */
   cf2_stack_pushFixed( CF2_Stack  stack,
                        CF2_Fixed  val );
 
-  FT_LOCAL( CF2_Int )
+  fn CF2_Int /* internal */
   cf2_stack_popInt( CF2_Stack  stack );
-  FT_LOCAL( CF2_Fixed )
+  fn CF2_Fixed /* internal */
   cf2_stack_popFixed( CF2_Stack  stack );
 
-  FT_LOCAL( CF2_Fixed )
+  fn CF2_Fixed /* internal */
   cf2_stack_getReal( CF2_Stack  stack,
                      CF2_UInt   idx );
-  FT_LOCAL( void )
+  fn void /* internal */
   cf2_stack_setReal( CF2_Stack  stack,
                      CF2_UInt   idx,
                      CF2_Fixed  val );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   cf2_stack_pop( CF2_Stack  stack,
                  CF2_UInt   num );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   cf2_stack_roll( CF2_Stack  stack,
                   CF2_Int    count,
                   CF2_Int    idx );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   cf2_stack_clear( CF2_Stack  stack );
 
 

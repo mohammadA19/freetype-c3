@@ -124,11 +124,11 @@ FT_BEGIN_HEADER
 
 #define square_root( x )  (FT_16D16)FT_SqrtFixed( (FT_UInt32)( x ) )
 
-  FT_LOCAL( FT_SDFFormat )
+  fn FT_SDFFormat /* internal */
   map_fixed_to_sdf( FT_16D16  dist,
                     FT_16D16  max_value );
 
-  FT_LOCAL( FT_SDFFormat )
+  fn FT_SDFFormat /* internal */
   invert_sign( FT_SDFFormat  dist );
 
 

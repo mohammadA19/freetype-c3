@@ -54,7 +54,7 @@
 #define FT_COMPONENT  cf2blues
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cf2_blues_init( CF2_Blues  blues,
                   CF2_Font   font )
   {
@@ -449,7 +449,7 @@
    *    edge at the nearest device pixel.
    *
    */
-  FT_LOCAL_DEF( FT_Bool )
+  fn FT_Bool /* internal */
   cf2_blues_capture( const CF2_Blues  blues,
                      CF2_Hint         bottomHintEdge,
                      CF2_Hint         topHintEdge )

@@ -86,7 +86,7 @@
   /* get a top bucket for specified hash from cache,
    * body for FTC_NODE_TOP_FOR_HASH( cache, hash )
    */
-  FT_LOCAL_DEF( FTC_Node* )
+  fn FTC_Node* /* internal */
   ftc_get_top_node_for_hash( FTC_Cache  cache,
                              FT_Offset  hash )
   {
@@ -263,7 +263,7 @@
 
 
   /* remove a node from the cache manager */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   ftc_node_destroy( FTC_Node     node,
                     FTC_Manager  manager )
   {
@@ -318,7 +318,7 @@
   /*************************************************************************/
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   ftc_cache_init( FTC_Cache  cache )
   {
     FT_Memory  memory = cache->memory;
@@ -334,14 +334,14 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   FTC_Cache_Init( FTC_Cache  cache )
   {
     return ftc_cache_init( cache );
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   ftc_cache_done( FTC_Cache  cache )
   {
     FT_Memory  memory = cache->memory;
@@ -384,7 +384,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   FTC_Cache_Done( FTC_Cache  cache )
   {
     ftc_cache_done( cache );
@@ -419,7 +419,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   FTC_Cache_NewNode( FTC_Cache   cache,
                      FT_Offset   hash,
                      FT_Pointer  query,
@@ -458,7 +458,7 @@
 
 #ifndef FTC_INLINE
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   FTC_Cache_Lookup( FTC_Cache   cache,
                     FT_Offset   hash,
                     FT_Pointer  query,
@@ -539,7 +539,7 @@
 #endif /* !FTC_INLINE */
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   FTC_Cache_RemoveFaceID( FTC_Cache   cache,
                           FTC_FaceID  face_id )
   {

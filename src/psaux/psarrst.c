@@ -52,7 +52,7 @@
    * recorded.
    */
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cf2_arrstack_init( CF2_ArrStack  arrstack,
                      FT_Memory     memory,
                      FT_Error*     error,
@@ -71,7 +71,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cf2_arrstack_finalize( CF2_ArrStack  arrstack )
   {
     FT_Memory  memory = arrstack->memory;     /* for FT_FREE */
@@ -135,7 +135,7 @@
 
 
   /* set the count, ensuring allocation is sufficient */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cf2_arrstack_setCount( CF2_ArrStack  arrstack,
                          size_t        numElements )
   {
@@ -153,7 +153,7 @@
 
 
   /* clear the count */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cf2_arrstack_clear( CF2_ArrStack  arrstack )
   {
     FT_ASSERT( arrstack );
@@ -163,7 +163,7 @@
 
 
   /* current number of items */
-  FT_LOCAL_DEF( size_t )
+  fn size_t /* internal */
   cf2_arrstack_size( const CF2_ArrStack  arrstack )
   {
     FT_ASSERT( arrstack );
@@ -172,7 +172,7 @@
   }
 
 
-  FT_LOCAL_DEF( void* )
+  fn void* /* internal */
   cf2_arrstack_getBuffer( const CF2_ArrStack  arrstack )
   {
     FT_ASSERT( arrstack );
@@ -182,7 +182,7 @@
 
 
   /* return pointer to the given element */
-  FT_LOCAL_DEF( void* )
+  fn void* /* internal */
   cf2_arrstack_getPointer( const CF2_ArrStack  arrstack,
                            size_t              idx )
   {
@@ -207,7 +207,7 @@
   /* push (append) an element at the end of the list;         */
   /* return false on memory error                             */
   /* TODO: should there be a length param for extra checking? */
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cf2_arrstack_push( CF2_ArrStack  arrstack,
                      const void*   ptr )
   {

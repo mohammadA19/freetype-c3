@@ -3776,7 +3776,7 @@
   /* parse the `cmap' table and build the corresponding TT_CMap objects */
   /* in the current face                                                */
   /*                                                                    */
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_face_build_cmaps( TT_Face  face )
   {
     FT_Byte* const     table   = face->cmap_table;
@@ -3884,7 +3884,7 @@
   }
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   tt_get_cmap_info( FT_CharMap    charmap,
                     TT_CMapInfo  *cmap_info )
   {

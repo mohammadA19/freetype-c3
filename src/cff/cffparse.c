@@ -37,7 +37,7 @@
 #define FT_COMPONENT  cffparse
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cff_parser_init( CFF_Parser  parser,
                    FT_UInt     code,
                    void*       object,
@@ -73,7 +73,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   cff_parser_done( CFF_Parser  parser )
   {
     FT_Memory  memory = parser->library->memory;    /* for FT_FREE */
@@ -454,7 +454,7 @@
 
 
   /* read a number, either integer or real */
-  FT_LOCAL_DEF( FT_Long )
+  fn FT_Long /* internal */
   cff_parse_num( CFF_Parser  parser,
                  FT_Byte**   d )
   {
@@ -554,7 +554,7 @@
 
 
   /* read a floating point number, either integer or real */
-  FT_LOCAL_DEF( FT_Fixed )
+  fn FT_Fixed /* internal */
   cff_parse_fixed( CFF_Parser  parser,
                    FT_Byte**   d )
   {
@@ -1149,7 +1149,7 @@
 #endif /* FT_DEBUG_LEVEL_TRACE */
 
 
-  FT_LOCAL_DEF( FT_Error )
+  fn FT_Error /* internal */
   cff_parser_run( CFF_Parser  parser,
                   FT_Byte*    start,
                   FT_Byte*    limit )

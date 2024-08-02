@@ -39,60 +39,60 @@
 FT_BEGIN_HEADER
 
 
-  FT_LOCAL( void )
+  fn void /* internal */
   gxv_feat_validate( FT_Bytes      table,
                      FT_Face       face,
                      FT_Validator  valid );
 
 
-  FT_LOCAL( void )
+  fn void /* internal */
   gxv_bsln_validate( FT_Bytes      table,
                      FT_Face       face,
                      FT_Validator  valid );
 
 
-  FT_LOCAL( void )
+  fn void /* internal */
   gxv_trak_validate( FT_Bytes      table,
                      FT_Face       face,
                      FT_Validator  valid );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   gxv_just_validate( FT_Bytes      table,
                      FT_Face       face,
                      FT_Validator  valid );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   gxv_mort_validate( FT_Bytes      table,
                      FT_Face       face,
                      FT_Validator  valid );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   gxv_morx_validate( FT_Bytes      table,
                      FT_Face       face,
                      FT_Validator  valid );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   gxv_kern_validate( FT_Bytes      table,
                      FT_Face       face,
                      FT_Validator  valid );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   gxv_kern_validate_classic( FT_Bytes      table,
                              FT_Face       face,
                              FT_Int        dialect_flags,
                              FT_Validator  valid );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   gxv_opbd_validate( FT_Bytes      table,
                      FT_Face       face,
                      FT_Validator  valid );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   gxv_prop_validate( FT_Bytes      table,
                      FT_Face       face,
                      FT_Validator  valid );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   gxv_lcar_validate( FT_Bytes      table,
                      FT_Face       face,
                      FT_Validator  valid );

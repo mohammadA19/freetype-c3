@@ -24,14 +24,14 @@
 
 FT_BEGIN_HEADER
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   tt_face_load_svg( TT_Face    face,
                     FT_Stream  stream );
 
-  FT_LOCAL( void )
+  fn void /* internal */
   tt_face_free_svg( TT_Face  face );
 
-  FT_LOCAL( FT_Error )
+  fn FT_Error /* internal */
   tt_face_load_svg_doc( FT_GlyphSlot  glyph,
                         FT_UInt       glyph_index );
 

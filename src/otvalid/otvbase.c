@@ -276,7 +276,7 @@
   }
 
 
-  FT_LOCAL_DEF( void )
+  fn void /* internal */
   otv_BASE_validate( FT_Bytes      table,
                      FT_Validator  ftvalid )
   {
