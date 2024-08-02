@@ -315,7 +315,7 @@
 
         state->phase = FT_LZW_PHASE_CODE;
       }
-      FALL_THROUGH;
+      nextcase;
 
     case FT_LZW_PHASE_CODE:
       {
@@ -373,7 +373,7 @@
 
         state->phase = FT_LZW_PHASE_STACK;
       }
-      FALL_THROUGH;
+      nextcase;
 
     case FT_LZW_PHASE_STACK:
       {

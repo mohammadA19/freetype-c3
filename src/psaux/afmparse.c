@@ -1061,7 +1061,7 @@
         if ( error )
           goto Fail;
         /* we only support kern data, so ... */
-        FALL_THROUGH;
+        nextcase;
 
       case AFM_TOKEN_ENDFONTMETRICS:
         return FT_Err_Ok;

@@ -423,13 +423,13 @@ typedef ptrdiff_t  FT_PtrDist;
     unsigned char* q = d;                            \
     switch ( count )                                 \
     {                                                \
-      case 7: *q++ = (unsigned char)s; FALL_THROUGH; \
-      case 6: *q++ = (unsigned char)s; FALL_THROUGH; \
-      case 5: *q++ = (unsigned char)s; FALL_THROUGH; \
-      case 4: *q++ = (unsigned char)s; FALL_THROUGH; \
-      case 3: *q++ = (unsigned char)s; FALL_THROUGH; \
-      case 2: *q++ = (unsigned char)s; FALL_THROUGH; \
-      case 1: *q   = (unsigned char)s; FALL_THROUGH; \
+      case 7: *q++ = (unsigned char)s; nextcase; \
+      case 6: *q++ = (unsigned char)s; nextcase; \
+      case 5: *q++ = (unsigned char)s; nextcase; \
+      case 4: *q++ = (unsigned char)s; nextcase; \
+      case 3: *q++ = (unsigned char)s; nextcase; \
+      case 2: *q++ = (unsigned char)s; nextcase; \
+      case 1: *q   = (unsigned char)s; nextcase; \
       case 0: break;                                 \
       default: FT_MEM_SET( d, s, count );            \
     }                                                \

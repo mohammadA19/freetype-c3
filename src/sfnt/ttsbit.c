@@ -1193,7 +1193,7 @@
           goto Fail;
 
         p += 1;  /* skip padding */
-        FALL_THROUGH;
+        nextcase;
 
       case 9:
         loader = tt_sbit_decoder_load_compound;

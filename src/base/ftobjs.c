@@ -508,7 +508,7 @@
 
     case FT_PIXEL_MODE_LCD_V:
       height *= 3;
-      FALL_THROUGH;
+      nextcase;
 
     case FT_PIXEL_MODE_GRAY:
     default:
