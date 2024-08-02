@@ -35,8 +35,8 @@
 
 #include FT_CONFIG_STANDARD_LIBRARY_H
 
-  FT_BASE_DEF( const char* )  ft_debug_file_   = NULL;
-  FT_BASE_DEF( long )         ft_debug_lineno_ = 0;
+  fn const char* /* private */  ft_debug_file_   = NULL;
+  fn long /* private */         ft_debug_lineno_ = 0;
 
   extern void
   FT_DumpMemory( FT_Memory  memory );

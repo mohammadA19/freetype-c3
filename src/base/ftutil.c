@@ -45,7 +45,7 @@
   /*************************************************************************/
 
 
-  FT_BASE_DEF( FT_Pointer )
+  fn FT_Pointer /* private */
   ft_mem_alloc( FT_Memory  memory,
                 FT_Long    size,
                 FT_Error  *p_error )
@@ -61,7 +61,7 @@
   }
 
 
-  FT_BASE_DEF( FT_Pointer )
+  fn FT_Pointer /* private */
   ft_mem_qalloc( FT_Memory  memory,
                  FT_Long    size,
                  FT_Error  *p_error )
@@ -87,7 +87,7 @@
   }
 
 
-  FT_BASE_DEF( FT_Pointer )
+  fn FT_Pointer /* private */
   ft_mem_realloc( FT_Memory  memory,
                   FT_Long    item_size,
                   FT_Long    cur_count,
@@ -109,7 +109,7 @@
   }
 
 
-  FT_BASE_DEF( FT_Pointer )
+  fn FT_Pointer /* private */
   ft_mem_qrealloc( FT_Memory  memory,
                    FT_Long    item_size,
                    FT_Long    cur_count,
@@ -165,7 +165,7 @@
   }
 
 
-  FT_BASE_DEF( void )
+  fn void /* private */
   ft_mem_free( FT_Memory   memory,
                const void *P )
   {
@@ -174,7 +174,7 @@
   }
 
 
-  FT_BASE_DEF( FT_Pointer )
+  fn FT_Pointer /* private */
   ft_mem_dup( FT_Memory    memory,
               const void*  address,
               FT_ULong     size,
@@ -192,7 +192,7 @@
   }
 
 
-  FT_BASE_DEF( FT_Pointer )
+  fn FT_Pointer /* private */
   ft_mem_strdup( FT_Memory    memory,
                  const char*  str,
                  FT_Error    *p_error )
@@ -205,7 +205,7 @@
   }
 
 
-  FT_BASE_DEF( FT_Int )
+  fn FT_Int /* private */
   ft_mem_strcpyn( char*        dst,
                   const char*  src,
                   FT_ULong     size )

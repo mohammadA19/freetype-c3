@@ -111,7 +111,7 @@
                          FT_Bool              test_mac_fonts );
 
 
-  FT_BASE_DEF( FT_Pointer )
+  fn FT_Pointer /* private */
   ft_service_list_lookup( FT_ServiceDesc  service_descriptors,
                           const char*     service_id )
   {
@@ -135,7 +135,7 @@
   }
 
 
-  FT_BASE_DEF( void )
+  fn void /* private */
   ft_validator_init( FT_Validator        valid,
                      const FT_Byte*      base,
                      const FT_Byte*      limit,
@@ -148,7 +148,7 @@
   }
 
 
-  FT_BASE_DEF( FT_Int )
+  fn FT_Int /* private */
   ft_validator_run( FT_Validator  valid )
   {
     /* This function doesn't work!  None should call it. */
@@ -158,7 +158,7 @@
   }
 
 
-  FT_BASE_DEF( void )
+  fn void /* private */
   ft_validator_error( FT_Validator  valid,
                       FT_Error      error )
   {
@@ -191,7 +191,7 @@
 
   /* create a new input stream from an FT_Open_Args structure */
   /*                                                          */
-  FT_BASE_DEF( FT_Error )
+  fn FT_Error /* private */
   FT_Stream_New( FT_Library           library,
                  const FT_Open_Args*  args,
                  FT_Stream           *astream )
@@ -267,7 +267,7 @@
   }
 
 
-  FT_BASE_DEF( void )
+  fn void /* private */
   FT_Stream_Free( FT_Stream  stream,
                   FT_Int     external )
   {
@@ -348,7 +348,7 @@
   }
 
 
-  FT_BASE_DEF( void )
+  fn void /* private */
   ft_glyphslot_free_bitmap( FT_GlyphSlot  slot )
   {
     if ( slot->internal && ( slot->internal->flags & FT_GLYPH_OWN_BITMAP ) )
@@ -370,7 +370,7 @@
 
   /* overflow-resistant presetting of bitmap position and dimensions; */
   /* also check whether the size is too large for rendering           */
-  FT_BASE_DEF( FT_Bool )
+  fn FT_Bool /* private */
   ft_glyphslot_preset_bitmap( FT_GlyphSlot      slot,
                               FT_Render_Mode    mode,
                               const FT_Vector*  origin )
@@ -536,7 +536,7 @@
   }
 
 
-  FT_BASE_DEF( void )
+  fn void /* private */
   ft_glyphslot_set_bitmap( FT_GlyphSlot  slot,
                            FT_Byte*      buffer )
   {
@@ -548,7 +548,7 @@
   }
 
 
-  FT_BASE_DEF( FT_Error )
+  fn FT_Error /* private */
   ft_glyphslot_alloc_bitmap( FT_GlyphSlot  slot,
                              FT_ULong      size )
   {
@@ -670,7 +670,7 @@
 
   /* documentation is in ftobjs.h */
 
-  FT_BASE_DEF( FT_Error )
+  fn FT_Error /* private */
   FT_New_GlyphSlot( FT_Face        face,
                     FT_GlyphSlot  *aslot )
   {
@@ -723,7 +723,7 @@
 
   /* documentation is in ftobjs.h */
 
-  FT_BASE_DEF( void )
+  fn void /* private */
   FT_Done_GlyphSlot( FT_GlyphSlot  slot )
   {
     if ( slot )
@@ -3090,7 +3090,7 @@
 
   /* documentation is in ftobjs.h */
 
-  FT_BASE_DEF( FT_Error )
+  fn FT_Error /* private */
   FT_Match_Size( FT_Face          face,
                  FT_Size_Request  req,
                  FT_Bool          ignore_width,
@@ -3148,7 +3148,7 @@
 
   /* documentation is in ftobjs.h */
 
-  FT_BASE_DEF( void )
+  fn void /* private */
   ft_synthesize_vertical_metrics( FT_Glyph_Metrics*  metrics,
                                   FT_Pos             advance )
   {
@@ -3208,7 +3208,7 @@
   }
 
 
-  FT_BASE_DEF( void )
+  fn void /* private */
   FT_Select_Metrics( FT_Face   face,
                      FT_ULong  strike_index )
   {
@@ -3243,7 +3243,7 @@
   }
 
 
-  FT_BASE_DEF( FT_Error )
+  fn FT_Error /* private */
   FT_Request_Metrics( FT_Face          face,
                       FT_Size_Request  req )
   {
@@ -3826,7 +3826,7 @@
   }
 
 
-  FT_BASE_DEF( void )
+  fn void /* private */
   FT_CMap_Done( FT_CMap  cmap )
   {
     if ( cmap )
@@ -3872,7 +3872,7 @@
   }
 
 
-  FT_BASE_DEF( FT_Error )
+  fn FT_Error /* private */
   FT_CMap_New( FT_CMap_Class  clazz,
                FT_Pointer     init_data,
                FT_CharMap     charmap,
@@ -4522,7 +4522,7 @@
   /*************************************************************************/
 
   /* lookup a renderer by glyph format in the library's list */
-  FT_BASE_DEF( FT_Renderer )
+  fn FT_Renderer /* private */
   FT_Lookup_Renderer( FT_Library       library,
                       FT_Glyph_Format  format,
                       FT_ListNode*     node )
@@ -4746,7 +4746,7 @@
   }
 
 
-  FT_BASE_DEF( FT_Error )
+  fn FT_Error /* private */
   FT_Render_Glyph_Internal( FT_Library      library,
                             FT_GlyphSlot    slot,
                             FT_Render_Mode  render_mode )
@@ -5212,7 +5212,7 @@
 
   /* documentation is in ftobjs.h */
 
-  FT_BASE_DEF( const void* )
+  fn const void* /* private */
   FT_Get_Module_Interface( FT_Library   library,
                            const char*  mod_name )
   {
@@ -5227,7 +5227,7 @@
   }
 
 
-  FT_BASE_DEF( FT_Pointer )
+  fn FT_Pointer /* private */
   ft_module_get_service( FT_Module    module,
                          const char*  service_id,
                          FT_Bool      global )
@@ -5439,7 +5439,7 @@
   /* this variant is used for handling the FREETYPE_PROPERTIES */
   /* environment variable                                      */
 
-  FT_BASE_DEF( FT_Error )
+  fn FT_Error /* private */
   ft_property_string_set( FT_Library        library,
                           const FT_String*  module_name,
                           const FT_String*  property_name,

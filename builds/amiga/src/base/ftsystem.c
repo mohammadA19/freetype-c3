@@ -5,7 +5,7 @@
 /*    Amiga-specific FreeType low-level system interface (body).           */
 /*                                                                         */
 /*  Copyright (C) 1996-2024 by                                             */
-/*  David Turner, Robert Wilhelm, Werner Lemberg and Detlef Würkner.       */
+/*  David Turner, Robert Wilhelm, Werner Lemberg and Detlef Wï¿½rkner.       */
 /*                                                                         */
 /*  This file is part of the FreeType project, and may only be used,       */
 /*  modified, and distributed under the terms of the FreeType project      */
@@ -26,7 +26,7 @@
 
   /*************************************************************************/
   /*                                                                       */
-  /* Maintained by Detlef Würkner <TetiSoft@apg.lahn.de>                   */
+  /* Maintained by Detlef Wï¿½rkner <TetiSoft@apg.lahn.de>                   */
   /*                                                                       */
   /* Based on the original ftsystem.c,                                     */
   /* modified to avoid fopen(), fclose(), fread(), fseek(), ftell(),       */
@@ -377,7 +377,7 @@ Free_VecPooled( APTR  poolHeader,
 
   /* documentation is in ftobjs.h */
 
-  FT_BASE_DEF( FT_Error )
+  fn FT_Error /* private */
   FT_Stream_Open( FT_Stream    stream,
                   const char*  filepathname )
   {
@@ -471,7 +471,7 @@ Free_VecPooled( APTR  poolHeader,
 
   /* documentation is in ftobjs.h */
 
-  FT_BASE_DEF( FT_Memory )
+  fn FT_Memory /* private */
   FT_New_Memory( void )
   {
     FT_Memory  memory;
@@ -511,7 +511,7 @@ Free_VecPooled( APTR  poolHeader,
 
   /* documentation is in ftobjs.h */
 
-  FT_BASE_DEF( void )
+  fn void /* private */
   FT_Done_Memory( FT_Memory  memory )
   {
 #ifdef FT_DEBUG_MEMORY

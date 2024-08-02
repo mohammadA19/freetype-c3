@@ -243,7 +243,7 @@
 
   /* documentation is in ftobjs.h */
 
-  FT_BASE_DEF( FT_Error )
+  fn FT_Error /* private */
   FT_Stream_Open( FT_Stream    stream,
                   const char*  filepathname )
   {
@@ -399,7 +399,7 @@
 
   /* documentation is in ftobjs.h */
 
-  FT_BASE_DEF( FT_Memory )
+  fn FT_Memory /* private */
   FT_New_Memory( void )
   {
     FT_Memory  memory;
@@ -423,7 +423,7 @@
 
   /* documentation is in ftobjs.h */
 
-  FT_BASE_DEF( void )
+  fn void /* private */
   FT_Done_Memory( FT_Memory  memory )
   {
 #ifdef FT_DEBUG_MEMORY

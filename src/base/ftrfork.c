@@ -46,7 +46,7 @@
   /*************************************************************************/
   /*************************************************************************/
 
-  FT_BASE_DEF( FT_Error )
+  fn FT_Error /* private */
   FT_Raccess_Get_HeaderInfo( FT_Library  library,
                              FT_Stream   stream,
                              FT_Long     rfork_offset,
@@ -175,7 +175,7 @@
   }
 
 
-  FT_BASE_DEF( FT_Error )
+  fn FT_Error /* private */
   FT_Raccess_Get_DataOffsets( FT_Library  library,
                               FT_Stream   stream,
                               FT_Long     map_offset,
@@ -439,7 +439,7 @@
                           const char  *original_name,
                           const char  *insertion );
 
-  FT_BASE_DEF( void )
+  fn void /* private */
   FT_Raccess_Guess( FT_Library  library,
                     FT_Stream   stream,
                     char*       base_name,
@@ -904,7 +904,7 @@
    *                 Dummy function; just sets errors
    */
 
-  FT_BASE_DEF( void )
+  fn void /* private */
   FT_Raccess_Guess( FT_Library  library,
                     FT_Stream   stream,
                     char       *base_name,

@@ -360,7 +360,7 @@ FT_BEGIN_HEADER
    * This function can be used by modules to implement their `get_service'
    * method.
    */
-  FT_BASE( FT_Pointer )
+  fn FT_Pointer /* private */
   ft_service_list_lookup( FT_ServiceDesc  service_descriptors,
                           const char*     service_id );
 

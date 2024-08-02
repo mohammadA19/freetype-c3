@@ -111,7 +111,7 @@
 
 #ifndef FT_MSB
 
-  FT_BASE_DEF( FT_Int )
+  fn FT_Int /* private */
   FT_MSB( FT_UInt32 z )
   {
     FT_Int  shift = 0;
@@ -152,7 +152,7 @@
 
   /* documentation is in ftcalc.h */
 
-  FT_BASE_DEF( FT_Fixed )
+  fn FT_Fixed /* private */
   FT_Hypot( FT_Fixed  x,
             FT_Fixed  y )
   {
@@ -196,7 +196,7 @@
 
   /* documentation is in ftcalc.h */
 
-  FT_BASE_DEF( FT_Long )
+  fn FT_Long /* private */
   FT_MulDiv_No_Round( FT_Long  a_,
                       FT_Long  b_,
                       FT_Long  c_ )
@@ -446,7 +446,7 @@
   }
 
 
-  FT_BASE_DEF( FT_Long )
+  fn FT_Long /* private */
   FT_MulDiv_No_Round( FT_Long  a_,
                       FT_Long  b_,
                       FT_Long  c_ )
@@ -692,7 +692,7 @@
 
   /* documentation is in ftcalc.h */
 
-  FT_BASE_DEF( void )
+  fn void /* private */
   FT_Matrix_Multiply_Scaled( const FT_Matrix*  a,
                              FT_Matrix        *b,
                              FT_Long           scaling )
@@ -723,7 +723,7 @@
 
   /* documentation is in ftcalc.h */
 
-  FT_BASE_DEF( FT_Bool )
+  fn FT_Bool /* private */
   FT_Matrix_Check( const FT_Matrix*  matrix )
   {
     FT_Fixed  xx, xy, yx, yy;
@@ -771,7 +771,7 @@
 
   /* documentation is in ftcalc.h */
 
-  FT_BASE_DEF( void )
+  fn void /* private */
   FT_Vector_Transform_Scaled( FT_Vector*        vector,
                               const FT_Matrix*  matrix,
                               FT_Long           scaling )
@@ -796,7 +796,7 @@
 
   /* documentation is in ftcalc.h */
 
-  FT_BASE_DEF( FT_UInt32 )
+  fn FT_UInt32 /* private */
   FT_Vector_NormLen( FT_Vector*  vector )
   {
     FT_Int32   x_ = vector->x;
@@ -889,7 +889,7 @@
 
   /* documentation is in ftcalc.h */
 
-  FT_BASE_DEF( FT_UInt32 )
+  fn FT_UInt32 /* private */
   FT_SqrtFixed( FT_UInt32  v )
   {
     if ( v == 0 )
@@ -956,7 +956,7 @@
 
   /* documentation is in ftcalc.h */
 
-  FT_BASE_DEF( FT_Int )
+  fn FT_Int /* private */
   ft_corner_orientation( FT_Pos  in_x,
                          FT_Pos  in_y,
                          FT_Pos  out_x,
@@ -1022,7 +1022,7 @@
 
   /* documentation is in ftcalc.h */
 
-  FT_BASE_DEF( FT_Int )
+  fn FT_Int /* private */
   ft_corner_is_flat( FT_Pos  in_x,
                      FT_Pos  in_y,
                      FT_Pos  out_x,
@@ -1065,7 +1065,7 @@
   }
 
 
-  FT_BASE_DEF( FT_Int32 )
+  fn FT_Int32 /* private */
   FT_MulAddFix( FT_Fixed*  s,
                 FT_Int32*  f,
                 FT_UInt    count )

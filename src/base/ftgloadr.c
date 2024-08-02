@@ -65,7 +65,7 @@
 
 
   /* create a new glyph loader */
-  FT_BASE_DEF( FT_Error )
+  fn FT_Error /* private */
   FT_GlyphLoader_New( FT_Memory        memory,
                       FT_GlyphLoader  *aloader )
   {
@@ -83,7 +83,7 @@
 
 
   /* rewind the glyph loader - reset counters to 0 */
-  FT_BASE_DEF( void )
+  fn void /* private */
   FT_GlyphLoader_Rewind( FT_GlyphLoader  loader )
   {
     FT_GlyphLoad  base    = &loader->base;
@@ -101,7 +101,7 @@
 
   /* reset glyph loader, free all allocated tables, */
   /* and start from zero                            */
-  FT_BASE_DEF( void )
+  fn void /* private */
   FT_GlyphLoader_Reset( FT_GlyphLoader  loader )
   {
     FT_Memory  memory = loader->memory;
@@ -124,7 +124,7 @@
 
 
   /* delete a glyph loader */
-  FT_BASE_DEF( void )
+  fn void /* private */
   FT_GlyphLoader_Done( FT_GlyphLoader  loader )
   {
     if ( loader )
@@ -162,7 +162,7 @@
   }
 
 
-  FT_BASE_DEF( FT_Error )
+  fn FT_Error /* private */
   FT_GlyphLoader_CreateExtra( FT_GlyphLoader  loader )
   {
     FT_Error   error;
@@ -201,7 +201,7 @@
   /* This function reallocates its outline tables if necessary.  Note that */
   /* it DOESN'T change the number of points within the loader!             */
   /*                                                                       */
-  FT_BASE_DEF( FT_Error )
+  fn FT_Error /* private */
   FT_GlyphLoader_CheckPoints( FT_GlyphLoader  loader,
                               FT_UInt         n_points,
                               FT_UInt         n_contours )
@@ -305,7 +305,7 @@
   /* reallocates its subglyphs table if necessary.  Note that it DOES */
   /* NOT change the number of subglyphs within the loader!            */
   /*                                                                  */
-  FT_BASE_DEF( FT_Error )
+  fn FT_Error /* private */
   FT_GlyphLoader_CheckSubGlyphs( FT_GlyphLoader  loader,
                                  FT_UInt         n_subs )
   {
@@ -336,7 +336,7 @@
 
 
   /* prepare loader for the addition of a new glyph on top of the base one */
-  FT_BASE_DEF( void )
+  fn void /* private */
   FT_GlyphLoader_Prepare( FT_GlyphLoader  loader )
   {
     FT_GlyphLoad  current = &loader->current;
@@ -352,7 +352,7 @@
 
 
   /* add current glyph to the base image -- and prepare for another */
-  FT_BASE_DEF( void )
+  fn void /* private */
   FT_GlyphLoader_Add( FT_GlyphLoader  loader )
   {
     FT_Outline*  base;

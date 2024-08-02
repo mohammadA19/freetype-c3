@@ -30,7 +30,7 @@
 #define FT_COMPONENT  stream
 
 
-  FT_BASE_DEF( void )
+  fn void /* private */
   FT_Stream_OpenMemory( FT_Stream       stream,
                         const FT_Byte*  base,
                         FT_ULong        size )
@@ -44,7 +44,7 @@
   }
 
 
-  FT_BASE_DEF( void )
+  fn void /* private */
   FT_Stream_Close( FT_Stream  stream )
   {
     if ( stream && stream->close )
@@ -52,7 +52,7 @@
   }
 
 
-  FT_BASE_DEF( FT_Error )
+  fn FT_Error /* private */
   FT_Stream_Seek( FT_Stream  stream,
                   FT_ULong   pos )
   {
@@ -87,7 +87,7 @@
   }
 
 
-  FT_BASE_DEF( FT_Error )
+  fn FT_Error /* private */
   FT_Stream_Skip( FT_Stream  stream,
                   FT_Long    distance )
   {
@@ -98,14 +98,14 @@
   }
 
 
-  FT_BASE_DEF( FT_ULong )
+  fn FT_ULong /* private */
   FT_Stream_Pos( FT_Stream  stream )
   {
     return stream->pos;
   }
 
 
-  FT_BASE_DEF( FT_Error )
+  fn FT_Error /* private */
   FT_Stream_Read( FT_Stream  stream,
                   FT_Byte*   buffer,
                   FT_ULong   count )
@@ -114,7 +114,7 @@
   }
 
 
-  FT_BASE_DEF( FT_Error )
+  fn FT_Error /* private */
   FT_Stream_ReadAt( FT_Stream  stream,
                     FT_ULong   pos,
                     FT_Byte*   buffer,
@@ -161,7 +161,7 @@
   }
 
 
-  FT_BASE_DEF( FT_ULong )
+  fn FT_ULong /* private */
   FT_Stream_TryRead( FT_Stream  stream,
                      FT_Byte*   buffer,
                      FT_ULong   count )
@@ -192,7 +192,7 @@
   }
 
 
-  FT_BASE_DEF( FT_Error )
+  fn FT_Error /* private */
   FT_Stream_ExtractFrame( FT_Stream  stream,
                           FT_ULong   count,
                           FT_Byte**  pbytes )
@@ -214,7 +214,7 @@
   }
 
 
-  FT_BASE_DEF( void )
+  fn void /* private */
   FT_Stream_ReleaseFrame( FT_Stream  stream,
                           FT_Byte**  pbytes )
   {
@@ -234,7 +234,7 @@
   }
 
 
-  FT_BASE_DEF( FT_Error )
+  fn FT_Error /* private */
   FT_Stream_EnterFrame( FT_Stream  stream,
                         FT_ULong   count )
   {
@@ -317,7 +317,7 @@
   }
 
 
-  FT_BASE_DEF( void )
+  fn void /* private */
   FT_Stream_ExitFrame( FT_Stream  stream )
   {
     /* IMPORTANT: The assertion stream->cursor != 0 was removed, given    */
@@ -351,7 +351,7 @@
   }
 
 
-  FT_BASE_DEF( FT_Byte )
+  fn FT_Byte /* private */
   FT_Stream_GetByte( FT_Stream  stream )
   {
     FT_Byte  result;
@@ -367,7 +367,7 @@
   }
 
 
-  FT_BASE_DEF( FT_UInt16 )
+  fn FT_UInt16 /* private */
   FT_Stream_GetUShort( FT_Stream  stream )
   {
     FT_Byte*   p;
@@ -386,7 +386,7 @@
   }
 
 
-  FT_BASE_DEF( FT_UInt16 )
+  fn FT_UInt16 /* private */
   FT_Stream_GetUShortLE( FT_Stream  stream )
   {
     FT_Byte*   p;
@@ -405,7 +405,7 @@
   }
 
 
-  FT_BASE_DEF( FT_UInt32 )
+  fn FT_UInt32 /* private */
   FT_Stream_GetUOffset( FT_Stream  stream )
   {
     FT_Byte*  p;
@@ -423,7 +423,7 @@
   }
 
 
-  FT_BASE_DEF( FT_UInt32 )
+  fn FT_UInt32 /* private */
   FT_Stream_GetULong( FT_Stream  stream )
   {
     FT_Byte*  p;
@@ -441,7 +441,7 @@
   }
 
 
-  FT_BASE_DEF( FT_UInt32 )
+  fn FT_UInt32 /* private */
   FT_Stream_GetULongLE( FT_Stream  stream )
   {
     FT_Byte*  p;
@@ -459,7 +459,7 @@
   }
 
 
-  FT_BASE_DEF( FT_Byte )
+  fn FT_Byte /* private */
   FT_Stream_ReadByte( FT_Stream  stream,
                       FT_Error*  error )
   {
@@ -497,7 +497,7 @@
   }
 
 
-  FT_BASE_DEF( FT_UInt16 )
+  fn FT_UInt16 /* private */
   FT_Stream_ReadUShort( FT_Stream  stream,
                         FT_Error*  error )
   {
@@ -542,7 +542,7 @@
   }
 
 
-  FT_BASE_DEF( FT_UInt16 )
+  fn FT_UInt16 /* private */
   FT_Stream_ReadUShortLE( FT_Stream  stream,
                           FT_Error*  error )
   {
@@ -587,7 +587,7 @@
   }
 
 
-  FT_BASE_DEF( FT_ULong )
+  fn FT_ULong /* private */
   FT_Stream_ReadUOffset( FT_Stream  stream,
                          FT_Error*  error )
   {
@@ -632,7 +632,7 @@
   }
 
 
-  FT_BASE_DEF( FT_UInt32 )
+  fn FT_UInt32 /* private */
   FT_Stream_ReadULong( FT_Stream  stream,
                        FT_Error*  error )
   {
@@ -677,7 +677,7 @@
   }
 
 
-  FT_BASE_DEF( FT_UInt32 )
+  fn FT_UInt32 /* private */
   FT_Stream_ReadULongLE( FT_Stream  stream,
                          FT_Error*  error )
   {
@@ -722,7 +722,7 @@
   }
 
 
-  FT_BASE_DEF( FT_Error )
+  fn FT_Error /* private */
   FT_Stream_ReadFields( FT_Stream              stream,
                         const FT_Frame_Field*  fields,
                         void*                  structure )

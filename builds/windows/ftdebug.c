@@ -127,7 +127,7 @@
 
   /* documentation is in ftdebug.h */
 
-  FT_BASE_DEF( void )
+  fn void /* private */
   FT_Message( const char*  fmt,
               ... )
   {
@@ -153,7 +153,7 @@
 
   /* documentation is in ftdebug.h */
 
-  FT_BASE_DEF( void )
+  fn void /* private */
   FT_Panic( const char*  fmt,
             ... )
   {
@@ -181,7 +181,7 @@
 
   /* documentation is in ftdebug.h */
 
-  FT_BASE_DEF( int )
+  fn int /* private */
   FT_Throw( FT_Error     error,
             int          line,
             const char*  file )
@@ -233,7 +233,7 @@
 
   /* documentation is in ftdebug.h */
 
-  FT_BASE_DEF( FT_Int )
+  fn FT_Int /* private */
   FT_Trace_Get_Count( void )
   {
     return trace_count;
@@ -242,7 +242,7 @@
 
   /* documentation is in ftdebug.h */
 
-  FT_BASE_DEF( const char * )
+  fn const char * /* private */
   FT_Trace_Get_Name( FT_Int  idx )
   {
     int  max = FT_Trace_Get_Count();
@@ -257,7 +257,7 @@
 
   /* documentation is in ftdebug.h */
 
-  FT_BASE_DEF( void )
+  fn void /* private */
   FT_Trace_Disable( void )
   {
     ft_trace_levels = ft_trace_levels_disabled;
@@ -266,7 +266,7 @@
 
   /* documentation is in ftdebug.h */
 
-  FT_BASE_DEF( void )
+  fn void /* private */
   FT_Trace_Enable( void )
   {
     ft_trace_levels = ft_trace_levels_enabled;
@@ -291,7 +291,7 @@
    * The level must be between 0 and 7; 0 means quiet (except for serious
    * runtime errors), and 7 means _very_ verbose.
    */
-  FT_BASE_DEF( void )
+  fn void /* private */
   ft_debug_init( void )
   {
     const char*  ft2_debug = NULL;
@@ -424,21 +424,21 @@
 #else  /* !FT_DEBUG_LEVEL_TRACE */
 
 
-  FT_BASE_DEF( void )
+  fn void /* private */
   ft_debug_init( void )
   {
     /* nothing */
   }
 
 
-  FT_BASE_DEF( FT_Int )
+  fn FT_Int /* private */
   FT_Trace_Get_Count( void )
   {
     return 0;
   }
 
 
-  FT_BASE_DEF( const char * )
+  fn const char * /* private */
   FT_Trace_Get_Name( FT_Int  idx )
   {
     FT_UNUSED( idx );
@@ -447,7 +447,7 @@
   }
 
 
-  FT_BASE_DEF( void )
+  fn void /* private */
   FT_Trace_Disable( void )
   {
     /* nothing */
@@ -456,7 +456,7 @@
 
   /* documentation is in ftdebug.h */
 
-  FT_BASE_DEF( void )
+  fn void /* private */
   FT_Trace_Enable( void )
   {
     /* nothing */
@@ -473,7 +473,7 @@
    *
    */
 
-  FT_BASE_DEF( void )
+  fn void /* private */
   ft_logging_init( void )
   {
     ft_default_log_handler = ft_log_handler;
@@ -491,7 +491,7 @@
   }
 
 
-  FT_BASE_DEF( void )
+  fn void /* private */
   ft_logging_deinit( void )
   {
     if ( ft_fileptr != stderr )
@@ -504,7 +504,7 @@
    * An output log handler for FreeType.
    *
    */
-  FT_BASE_DEF( void )
+  fn void /* private */
   ft_log_handler( const struct dlg_origin*  origin,
                   const char*               string,
                   void*                     data )
@@ -583,7 +583,7 @@
 
 
   /* documentation is in ftdebug.h */
-  FT_BASE_DEF( void )
+  fn void /* private */
   ft_add_tag( const char*  tag )
   {
     ft_component = tag;
@@ -593,7 +593,7 @@
 
 
   /* documentation is in ftdebug.h */
-  FT_BASE_DEF( void )
+  fn void /* private */
   ft_remove_tag( const char*  tag )
   {
     dlg_remove_tag( tag, NULL );
@@ -651,7 +651,7 @@
 
 
   /* documentation is in ftdebug.h */
-  FT_BASE_DEF( void )
+  fn void /* private */
   FT_Logging_Callback( const char*  fmt,
                        ... )
   {

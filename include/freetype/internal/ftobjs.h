@@ -258,19 +258,19 @@ FT_BEGIN_HEADER
 
 
   /* create a new charmap and add it to charmap->face */
-  FT_BASE( FT_Error )
+  fn FT_Error /* private */
   FT_CMap_New( FT_CMap_Class  clazz,
                FT_Pointer     init_data,
                FT_CharMap     charmap,
                FT_CMap       *acmap );
 
   /* destroy a charmap and remove it from face's list */
-  FT_BASE( void )
+  fn void /* private */
   FT_CMap_Done( FT_CMap  cmap );
 
 
   /* add LCD padding to CBox */
-  FT_BASE( void )
+  fn void /* private */
   ft_lcd_padding( FT_BBox*        cbox,
                   FT_GlyphSlot    slot,
                   FT_Render_Mode  mode );
@@ -282,7 +282,7 @@ FT_BEGIN_HEADER
 
 
   /* This is the default LCD filter, an in-place, 5-tap FIR filter. */
-  FT_BASE( void )
+  fn void /* private */
   ft_lcd_filter_fir( FT_Bitmap*           bitmap,
                      FT_LcdFiveTapFilter  weights );
 
@@ -561,17 +561,17 @@ FT_BEGIN_HEADER
    *   You should better be familiar with FreeType internals to know which
    *   module to look for, and what its interface is :-)
    */
-  FT_BASE( const void* )
+  fn const void* /* private */
   FT_Get_Module_Interface( FT_Library   library,
                            const char*  mod_name );
 
-  FT_BASE( FT_Pointer )
+  fn FT_Pointer /* private */
   ft_module_get_service( FT_Module    module,
                          const char*  service_id,
                          FT_Bool      global );
 
 #ifdef FT_CONFIG_OPTION_ENVIRONMENT_PROPERTIES
-  FT_BASE( FT_Error )
+  fn FT_Error /* private */
   ft_property_string_set( FT_Library        library,
                           const FT_String*  module_name,
                           const FT_String*  property_name,
@@ -626,7 +626,7 @@ FT_BEGIN_HEADER
    * @return:
    *   FreeType error code.  0 means success.
    */
-  FT_BASE( FT_Error )
+  fn FT_Error /* private */
   FT_New_GlyphSlot( FT_Face        face,
                     FT_GlyphSlot  *aslot );
 
@@ -645,7 +645,7 @@ FT_BEGIN_HEADER
    *   slot ::
    *     A handle to a target glyph slot.
    */
-  FT_BASE( void )
+  fn void /* private */
   FT_Done_GlyphSlot( FT_GlyphSlot  slot );
 
   /* */
@@ -662,19 +662,19 @@ FT_BEGIN_HEADER
 
 
   /* Set the metrics according to a bitmap strike. */
-  FT_BASE( void )
+  fn void /* private */
   FT_Select_Metrics( FT_Face   face,
                      FT_ULong  strike_index );
 
 
   /* Set the metrics according to a size request. */
-  FT_BASE( FT_Error )
+  fn FT_Error /* private */
   FT_Request_Metrics( FT_Face          face,
                       FT_Size_Request  req );
 
 
   /* Match a size request against `available_sizes'. */
-  FT_BASE( FT_Error )
+  fn FT_Error /* private */
   FT_Match_Size( FT_Face          face,
                  FT_Size_Request  req,
                  FT_Bool          ignore_width,
@@ -683,33 +683,33 @@ FT_BEGIN_HEADER
 
   /* Use the horizontal metrics to synthesize the vertical metrics. */
   /* If `advance' is zero, it is also synthesized.                  */
-  FT_BASE( void )
+  fn void /* private */
   ft_synthesize_vertical_metrics( FT_Glyph_Metrics*  metrics,
                                   FT_Pos             advance );
 
 
   /* Free the bitmap of a given glyphslot when needed (i.e., only when it */
   /* was allocated with ft_glyphslot_alloc_bitmap).                       */
-  FT_BASE( void )
+  fn void /* private */
   ft_glyphslot_free_bitmap( FT_GlyphSlot  slot );
 
 
   /* Preset bitmap metrics of an outline glyphslot prior to rendering */
   /* and check whether the truncated bbox is too large for rendering. */
-  FT_BASE( FT_Bool )
+  fn FT_Bool /* private */
   ft_glyphslot_preset_bitmap( FT_GlyphSlot      slot,
                               FT_Render_Mode    mode,
                               const FT_Vector*  origin );
 
   /* Allocate a new bitmap buffer in a glyph slot. */
-  FT_BASE( FT_Error )
+  fn FT_Error /* private */
   ft_glyphslot_alloc_bitmap( FT_GlyphSlot  slot,
                              FT_ULong      size );
 
 
   /* Set the bitmap buffer in a glyph slot to a given pointer.  The buffer */
   /* will not be freed by a later call to ft_glyphslot_free_bitmap.        */
-  FT_BASE( void )
+  fn void /* private */
   ft_glyphslot_set_bitmap( FT_GlyphSlot  slot,
                            FT_Byte*      buffer );
 
@@ -914,12 +914,12 @@ FT_BEGIN_HEADER
   } FT_LibraryRec;
 
 
-  FT_BASE( FT_Renderer )
+  fn FT_Renderer /* private */
   FT_Lookup_Renderer( FT_Library       library,
                       FT_Glyph_Format  format,
                       FT_ListNode*     node );
 
-  FT_BASE( FT_Error )
+  fn FT_Error /* private */
   FT_Render_Glyph_Internal( FT_Library      library,
                             FT_GlyphSlot    slot,
                             FT_Render_Mode  render_mode );
@@ -951,7 +951,7 @@ FT_BEGIN_HEADER
    * @return:
    *   A pointer to the new memory object.  0 in case of error.
    */
-  FT_BASE( FT_Memory )
+  fn FT_Memory /* private */
   FT_New_Memory( void );
 
 
@@ -967,7 +967,7 @@ FT_BEGIN_HEADER
    *   memory ::
    *     A handle to the memory manager.
    */
-  FT_BASE( void )
+  fn void /* private */
   FT_Done_Memory( FT_Memory  memory );
 
 #endif /* !FT_CONFIG_OPTION_NO_DEFAULT_SYSTEM */

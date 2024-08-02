@@ -272,7 +272,7 @@ FT_BEGIN_HEADER
    *   divide by zero; it simply returns 'MaxInt' or 'MinInt' depending on
    *   the signs of 'a' and 'b'.
    */
-  FT_BASE( FT_Long )
+  fn FT_Long /* private */
   FT_MulDiv_No_Round( FT_Long  a,
                       FT_Long  b,
                       FT_Long  c );
@@ -306,7 +306,7 @@ FT_BEGIN_HEADER
    *   performance in comparison to the implementation base on `int64_t`.
    *
    */
-  FT_BASE( FT_Int32 )
+  fn FT_Int32 /* private */
   FT_MulAddFix( FT_Fixed*  s,
                 FT_Int32*  f,
                 FT_UInt    count );
@@ -319,7 +319,7 @@ FT_BEGIN_HEADER
    * 64bit multiplication.  Let `sa' and `sb' be the scaling factors of `a'
    * and `b', respectively, then the scaling factor of the result is `sa*sb'.
    */
-  FT_BASE( void )
+  fn void /* private */
   FT_Matrix_Multiply_Scaled( const FT_Matrix*  a,
                              FT_Matrix        *b,
                              FT_Long           scaling );
@@ -336,7 +336,7 @@ FT_BEGIN_HEADER
    *
    * Value 32 is heuristic.
    */
-  FT_BASE( FT_Bool )
+  fn FT_Bool /* private */
   FT_Matrix_Check( const FT_Matrix*  matrix );
 
 
@@ -344,7 +344,7 @@ FT_BEGIN_HEADER
    * A variant of FT_Vector_Transform.  See comments for
    * FT_Matrix_Multiply_Scaled.
    */
-  FT_BASE( void )
+  fn void /* private */
   FT_Vector_Transform_Scaled( FT_Vector*        vector,
                               const FT_Matrix*  matrix,
                               FT_Long           scaling );
@@ -358,7 +358,7 @@ FT_BEGIN_HEADER
    * without divisions and square roots relying on Newton's iterations
    * instead.
    */
-  FT_BASE( FT_UInt32 )
+  fn FT_UInt32 /* private */
   FT_Vector_NormLen( FT_Vector*  vector );
 
 
@@ -368,7 +368,7 @@ FT_BEGIN_HEADER
    * upwards.  The function returns +1 if the corner turns to the left, -1 to
    * the right, and 0 for undecidable cases.
    */
-  FT_BASE( FT_Int )
+  fn FT_Int /* private */
   ft_corner_orientation( FT_Pos  in_x,
                          FT_Pos  in_y,
                          FT_Pos  out_x,
@@ -380,7 +380,7 @@ FT_BEGIN_HEADER
    * saying that the corner point is close to its neighbors, or inside an
    * ellipse defined by the neighbor focal points to be more precise.
    */
-  FT_BASE( FT_Int )
+  fn FT_Int /* private */
   ft_corner_is_flat( FT_Pos  in_x,
                      FT_Pos  in_y,
                      FT_Pos  out_x,
@@ -480,7 +480,7 @@ FT_BEGIN_HEADER
 
 #ifndef FT_MSB
 
-  FT_BASE( FT_Int )
+  fn FT_Int /* private */
   FT_MSB( FT_UInt32  z );
 
 #endif
@@ -490,7 +490,7 @@ FT_BEGIN_HEADER
    * Return sqrt(x*x+y*y), which is the same as `FT_Vector_Length' but uses
    * two fixed-point arguments instead.
    */
-  FT_BASE( FT_Fixed )
+  fn FT_Fixed /* private */
   FT_Hypot( FT_Fixed  x,
             FT_Fixed  y );
 
@@ -514,7 +514,7 @@ FT_BEGIN_HEADER
    *   This function is slow and should be avoided.  Consider `FT_Hypot` or
    *   `FT_Vector_NormLen' instead.
    */
-  FT_BASE( FT_UInt32 )
+  fn FT_UInt32 /* private */
   FT_SqrtFixed( FT_UInt32  x );
 
 

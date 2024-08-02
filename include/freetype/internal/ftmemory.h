@@ -96,8 +96,8 @@ extern "C++"
 
 #ifdef FT_DEBUG_MEMORY
 
-  FT_BASE( const char* )  ft_debug_file_;
-  FT_BASE( long )         ft_debug_lineno_;
+  fn const char* /* private */  ft_debug_file_;
+  fn long /* private */         ft_debug_lineno_;
 
 #define FT_DEBUG_INNER( exp )  ( ft_debug_file_   = __FILE__, \
                                  ft_debug_lineno_ = __LINE__, \
@@ -123,17 +123,17 @@ extern "C++"
   /* The `q' variants of the functions below (`q' for `quick') don't fill */
   /* the allocated or reallocated memory with zero bytes.                 */
 
-  FT_BASE( FT_Pointer )
+  fn FT_Pointer /* private */
   ft_mem_alloc( FT_Memory  memory,
                 FT_Long    size,
                 FT_Error  *p_error );
 
-  FT_BASE( FT_Pointer )
+  fn FT_Pointer /* private */
   ft_mem_qalloc( FT_Memory  memory,
                  FT_Long    size,
                  FT_Error  *p_error );
 
-  FT_BASE( FT_Pointer )
+  fn FT_Pointer /* private */
   ft_mem_realloc( FT_Memory  memory,
                   FT_Long    item_size,
                   FT_Long    cur_count,
@@ -141,7 +141,7 @@ extern "C++"
                   void*      block,
                   FT_Error  *p_error );
 
-  FT_BASE( FT_Pointer )
+  fn FT_Pointer /* private */
   ft_mem_qrealloc( FT_Memory  memory,
                    FT_Long    item_size,
                    FT_Long    cur_count,
@@ -149,7 +149,7 @@ extern "C++"
                    void*      block,
                    FT_Error  *p_error );
 
-  FT_BASE( void )
+  fn void /* private */
   ft_mem_free( FT_Memory    memory,
                const void*  P );
 
@@ -353,12 +353,12 @@ extern "C++"
           FT_MEM_SET_ERROR( FT_MEM_QRENEW_ARRAY( ptr, curcnt, newcnt ) )
 
 
-  FT_BASE( FT_Pointer )
+  fn FT_Pointer /* private */
   ft_mem_strdup( FT_Memory    memory,
                  const char*  str,
                  FT_Error    *p_error );
 
-  FT_BASE( FT_Pointer )
+  fn FT_Pointer /* private */
   ft_mem_dup( FT_Memory    memory,
               const void*  address,
               FT_ULong     size,
@@ -384,7 +384,7 @@ extern "C++"
   /* Return >= 1 if a truncation occurs.            */
   /* Return 0 if the source string fits the buffer. */
   /* This is *not* the same as strlcpy().           */
-  FT_BASE( FT_Int )
+  fn FT_Int /* private */
   ft_mem_strcpyn( char*        dst,
                   const char*  src,
                   FT_ULong     size );

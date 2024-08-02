@@ -32,7 +32,7 @@
 
 
   /* add padding according to filter weights */
-  FT_BASE_DEF( void )
+  fn void /* private */
   ft_lcd_padding( FT_BBox*        cbox,
                   FT_GlyphSlot    slot,
                   FT_Render_Mode  mode )
@@ -74,7 +74,7 @@
 
 
   /* FIR filter used by the default and light filters */
-  FT_BASE_DEF( void )
+  fn void /* private */
   ft_lcd_filter_fir( FT_Bitmap*           bitmap,
                      FT_LcdFiveTapFilter  weights )
   {
@@ -368,7 +368,7 @@
 #else /* !FT_CONFIG_OPTION_SUBPIXEL_RENDERING */
 
   /* add padding to accommodate outline shifts */
-  FT_BASE_DEF( void )
+  fn void /* private */
   ft_lcd_padding( FT_BBox*        cbox,
                   FT_GlyphSlot    slot,
                   FT_Render_Mode  mode )
