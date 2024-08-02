@@ -66,7 +66,7 @@
 #define WRITING_SYSTEM( ws, WS )               \
           &af_ ## ws ## _writing_system_class,
 
-  FT_LOCAL_ARRAY_DEF( AF_WritingSystemClass )
+  AF_WritingSystemClass /* const array */
   af_writing_system_classes[] =
   {
 
@@ -80,7 +80,7 @@
 #define SCRIPT( s, S, d, h, H, ss )   \
           &af_ ## s ## _script_class,
 
-  FT_LOCAL_ARRAY_DEF( AF_ScriptClass )
+  AF_ScriptClass /* const array */
   af_script_classes[] =
   {
 
@@ -94,7 +94,7 @@
 #define STYLE( s, S, d, ws, sc, ss, c ) \
           &af_ ## s ## _style_class,
 
-  FT_LOCAL_ARRAY_DEF( AF_StyleClass )
+  AF_StyleClass /* const array */
   af_style_classes[] =
   {
 
@@ -109,7 +109,7 @@
 #undef  STYLE
 #define STYLE( s, S, d, ws, sc, ss, c )  #s,
 
-  FT_LOCAL_ARRAY_DEF( char* )
+  char* /* const array */
   af_style_names[] =
   {
 

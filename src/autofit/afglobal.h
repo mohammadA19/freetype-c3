@@ -29,7 +29,7 @@
 FT_BEGIN_HEADER
 
 
-  FT_LOCAL_ARRAY( AF_WritingSystemClass )
+  AF_WritingSystemClass /* const array */
   af_writing_system_classes[];
 
 
@@ -39,7 +39,7 @@ FT_BEGIN_HEADER
 
 #include "afscript.h"
 
-  FT_LOCAL_ARRAY( AF_ScriptClass )
+  AF_ScriptClass /* const array */
   af_script_classes[];
 
 
@@ -49,12 +49,12 @@ FT_BEGIN_HEADER
 
 #include "afstyles.h"
 
-  FT_LOCAL_ARRAY( AF_StyleClass )
+  AF_StyleClass /* const array */
   af_style_classes[];
 
 
 #ifdef FT_DEBUG_LEVEL_TRACE
-  FT_LOCAL_ARRAY( char* )
+  char* /* const array */
   af_style_names[];
 #endif
 

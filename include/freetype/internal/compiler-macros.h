@@ -158,16 +158,6 @@ FT_BEGIN_HEADER
 
 #endif  /* FT_MAKE_OPTION_SINGLE_OBJECT */
 
-  /*
-   * Use `FT_LOCAL_ARRAY` and `FT_LOCAL_ARRAY_DEF` to declare and define,
-   * respectively, a constant array that must be accessed from several
-   * sources in the same `src/module/` sub-directory, and which are internal
-   * to the library.
-   */
-#define FT_LOCAL_ARRAY( x )      FT_INTERNAL_FUNCTION_ATTRIBUTE \
-                                 extern const x
-#define FT_LOCAL_ARRAY_DEF( x )  const x
-
 
 
   /*

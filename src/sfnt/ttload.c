@@ -53,7 +53,7 @@
    * @Return:
    *   A pointer to the table directory entry.  0 if not found.
    */
-  FT_LOCAL_DEF( TT_Table  )
+  TT_Table /* internal */
   tt_face_lookup_table( TT_Face   face,
                         FT_ULong  tag  )
   {

@@ -411,7 +411,7 @@ FT_BEGIN_HEADER
                              FT_Memory     memory,
                              AF_Segment   *asegment );
 
-  FT_LOCAL( FT_Error)
+  fn FT_Error /* internal */
   af_axis_hints_new_edge( AF_AxisHints  axis,
                           FT_Int        fpos,
                           AF_Direction  dir,

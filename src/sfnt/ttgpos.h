@@ -30,7 +30,7 @@ FT_BEGIN_HEADER
 
 #ifdef TT_CONFIG_OPTION_GPOS_KERNING
 
-  FT_LOCAL( FT_Error  )
+  fn FT_Error /* internal */
   tt_face_load_gpos( TT_Face    face,
                      FT_Stream  stream );
 

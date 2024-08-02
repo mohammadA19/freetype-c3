@@ -296,7 +296,7 @@ FT_BEGIN_HEADER
   } AF_Blue_String;
 
 
-  FT_LOCAL_ARRAY( char )
+  char /* const array */
   af_blue_strings[];
 
 
@@ -415,7 +415,7 @@ FT_BEGIN_HEADER
   } AF_Blue_StringRec;
 
 
-  FT_LOCAL_ARRAY( AF_Blue_StringRec )
+  AF_Blue_StringRec /* const array */
   af_blue_stringsets[];
 
 /* */

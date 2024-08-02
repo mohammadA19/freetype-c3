@@ -28,7 +28,7 @@
 FT_BEGIN_HEADER
 
 
-  FT_LOCAL( TT_Table  )
+  fn TT_Table /* internal */
   tt_face_lookup_table( TT_Face   face,
                         FT_ULong  tag );
 

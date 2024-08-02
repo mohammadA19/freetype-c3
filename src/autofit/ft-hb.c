@@ -92,7 +92,7 @@ hb_ft_face_create_ (FT_Face           ft_face,
   return face;
 }
 
-FT_LOCAL_DEF(hb_font_t *)
+fn hb_font_t * /* internal */
 hb_ft_font_create_ (FT_Face           ft_face,
                     hb_destroy_func_t destroy)
 {

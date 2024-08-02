@@ -28,7 +28,7 @@
 FT_BEGIN_HEADER
 
 
-  FT_LOCAL( FT_Error  )
+  fn FT_Error /* internal */
   tt_face_load_kern( TT_Face    face,
                      FT_Stream  stream );
 

@@ -22,7 +22,7 @@
 #include "aftypes.h"
 
 
-  FT_LOCAL_ARRAY_DEF( char )
+  char /* const array */
   af_blue_strings[] =
   {
     /* */
@@ -463,7 +463,7 @@
 
 
   /* stringsets are specific to styles */
-  FT_LOCAL_ARRAY_DEF( AF_Blue_StringRec )
+  AF_Blue_StringRec /* const array */
   af_blue_stringsets[] =
   {
     /* */
