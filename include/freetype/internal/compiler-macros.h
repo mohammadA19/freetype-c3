@@ -156,15 +156,6 @@ FT_BEGIN_HEADER
    */
 #ifdef FT_MAKE_OPTION_SINGLE_OBJECT
 
-#define FT_LOCAL( x )      static x
-#define fn x /* internal */  static x
-
-#else
-
-#define FT_LOCAL( x )      FT_INTERNAL_FUNCTION_ATTRIBUTE \
-                           x
-#define fn x /* internal */  x
-
 #endif  /* FT_MAKE_OPTION_SINGLE_OBJECT */
 
   /*
