@@ -27,7 +27,6 @@
 FT_BEGIN_HEADER
 
 
-  FT_CALLBACK_TABLE
   const T1_Decoder_FuncsRec  t1_decoder_funcs;
 
   fn FT_Int /* internal */

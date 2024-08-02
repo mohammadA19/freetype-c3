@@ -34,7 +34,7 @@ FT_BEGIN_HEADER
   } PFR_CMapRec, *PFR_CMap;
 
 
-  FT_CALLBACK_TABLE const FT_CMap_ClassRec  pfr_cmap_class_rec;
+  const FT_CMap_ClassRec  pfr_cmap_class_rec;
 
 FT_END_HEADER
 

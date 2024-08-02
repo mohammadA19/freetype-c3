@@ -185,16 +185,6 @@ FT_BEGIN_HEADER
 #define FT_COMPARE_DEF( x )  FT_CALLBACK_DEF( x )
 #endif
 
-#ifndef FT_CALLBACK_TABLE
-#ifdef __cplusplus
-#define FT_CALLBACK_TABLE      extern "C"
-#define FT_CALLBACK_TABLE_DEF  extern "C"
-#else
-#define FT_CALLBACK_TABLE      extern
-#define FT_CALLBACK_TABLE_DEF  /* nothing */
-#endif
-#endif /* FT_CALLBACK_TABLE */
-
 FT_END_HEADER
 
 #endif  /* INTERNAL_COMPILER_MACROS_H_ */

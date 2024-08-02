@@ -26,7 +26,7 @@
 
   /* declare an extern to access `ft_outline_glyph_class' globally */
   /* allocated  in `ftglyph.c'                                     */
-  FT_CALLBACK_TABLE const FT_Glyph_Class  ft_outline_glyph_class;
+  const FT_Glyph_Class  ft_outline_glyph_class;
 
 
   /* documentation is in ftstroke.h */

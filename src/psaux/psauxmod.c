@@ -28,7 +28,6 @@
 #endif
 
 
-  FT_CALLBACK_TABLE_DEF
   const PS_Table_FuncsRec  ps_table_funcs =
   {
     ps_table_new,     /* init    */
@@ -38,7 +37,6 @@
   };
 
 
-  FT_CALLBACK_TABLE_DEF
   const PS_Parser_FuncsRec  ps_parser_funcs =
   {
     ps_parser_init,             /* init             */
@@ -60,7 +58,6 @@
   };
 
 
-  FT_CALLBACK_TABLE_DEF
   const PS_Builder_FuncsRec  ps_builder_funcs =
   {
     ps_builder_init,          /* init */
@@ -68,7 +65,6 @@
   };
 
 
-  FT_CALLBACK_TABLE_DEF
   const T1_Builder_FuncsRec  t1_builder_funcs =
   {
     t1_builder_init,          /* init */
@@ -83,7 +79,6 @@
   };
 
 
-  FT_CALLBACK_TABLE_DEF
   const T1_Decoder_FuncsRec  t1_decoder_funcs =
   {
     t1_decoder_init,               /* init                  */
@@ -98,7 +93,6 @@
 
 
 #ifndef T1_CONFIG_OPTION_NO_AFM
-  FT_CALLBACK_TABLE_DEF
   const AFM_Parser_FuncsRec  afm_parser_funcs =
   {
     afm_parser_init,  /* init  */
@@ -108,7 +102,6 @@
 #endif
 
 
-  FT_CALLBACK_TABLE_DEF
   const T1_CMap_ClassesRec  t1_cmap_classes =
   {
     &t1_cmap_standard_class_rec,
@@ -118,7 +111,6 @@
   };
 
 
-  FT_CALLBACK_TABLE_DEF
   const CFF_Builder_FuncsRec  cff_builder_funcs =
   {
     cff_builder_init,          /* init */
@@ -133,7 +125,6 @@
   };
 
 
-  FT_CALLBACK_TABLE_DEF
   const CFF_Decoder_FuncsRec  cff_decoder_funcs =
   {
     cff_decoder_init,              /* init    */

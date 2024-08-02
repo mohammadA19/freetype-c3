@@ -1175,7 +1175,6 @@
 
 
 
-  FT_CALLBACK_TABLE_DEF
   const FT_Driver_ClassRec  winfnt_driver_class =
   {
     {

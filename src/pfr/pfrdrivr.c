@@ -167,7 +167,6 @@
   }
 
 
-  FT_CALLBACK_TABLE_DEF
   const FT_Driver_ClassRec  pfr_driver_class =
   {
     {

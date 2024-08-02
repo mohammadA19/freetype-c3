@@ -49,10 +49,10 @@ FT_BEGIN_HEADER
   } T1_CMapStdRec;
 
 
-  FT_CALLBACK_TABLE const FT_CMap_ClassRec
+  const FT_CMap_ClassRec
   t1_cmap_standard_class_rec;
 
-  FT_CALLBACK_TABLE const FT_CMap_ClassRec
+  const FT_CMap_ClassRec
   t1_cmap_expert_class_rec;
 
 
@@ -76,7 +76,7 @@ FT_BEGIN_HEADER
   } T1_CMapCustomRec;
 
 
-  FT_CALLBACK_TABLE const FT_CMap_ClassRec
+  const FT_CMap_ClassRec
   t1_cmap_custom_class_rec;
 
 
@@ -90,7 +90,7 @@ FT_BEGIN_HEADER
 
   /* unicode (synthetic) cmaps */
 
-  FT_CALLBACK_TABLE const FT_CMap_ClassRec
+  const FT_CMap_ClassRec
   t1_cmap_unicode_class_rec;
 
  /* */

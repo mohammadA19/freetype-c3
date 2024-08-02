@@ -69,7 +69,6 @@ FT_BEGIN_HEADER
                            format_,            \
                            validate_,          \
                            get_cmap_info_ )    \
-  FT_CALLBACK_TABLE_DEF                        \
   const TT_CMap_ClassRec  class_ =             \
   {                                            \
     { size_,                                   \
@@ -91,7 +90,7 @@ FT_BEGIN_HEADER
 
 
 #undef  TTCMAPCITEM
-#define TTCMAPCITEM( a )  FT_CALLBACK_TABLE  const TT_CMap_ClassRec  a;
+#define TTCMAPCITEM( a )  const TT_CMap_ClassRec  a;
 #include "ttcmapc.h"
 
 
@@ -107,7 +106,7 @@ FT_BEGIN_HEADER
 #define TT_VALID_GLYPH_COUNT( x )  TT_VALIDATOR( x )->num_glyphs
 
 
-  FT_CALLBACK_TABLE const TT_CMap_ClassRec  tt_cmap_unicode_class_rec;
+  const TT_CMap_ClassRec  tt_cmap_unicode_class_rec;
 
   fn FT_Error /* internal */
   tt_face_build_cmaps( TT_Face  face );

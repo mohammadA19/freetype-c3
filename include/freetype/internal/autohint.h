@@ -208,7 +208,7 @@ FT_BEGIN_HEADER
 
 
 #define FT_DECLARE_AUTOHINTER_INTERFACE( class_ )            \
-  FT_CALLBACK_TABLE const FT_AutoHinter_InterfaceRec  class_;
+  const FT_AutoHinter_InterfaceRec  class_;
 
 #define FT_DEFINE_AUTOHINTER_INTERFACE(       \
           class_,                             \
@@ -216,7 +216,6 @@ FT_BEGIN_HEADER
           get_global_hints_,                  \
           done_global_hints_,                 \
           load_glyph_ )                       \
-  FT_CALLBACK_TABLE_DEF                       \
   const FT_AutoHinter_InterfaceRec  class_ =  \
   {                                           \
     reset_face_,                              \

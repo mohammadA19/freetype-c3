@@ -427,7 +427,7 @@ extern void*  af_debug_hints_;
 
   /* Declare and define vtables for classes */
 #define AF_DECLARE_WRITING_SYSTEM_CLASS( writing_system_class ) \
-  FT_CALLBACK_TABLE const AF_WritingSystemClassRec              \
+  const AF_WritingSystemClassRec              \
   writing_system_class;
 
 #define AF_DEFINE_WRITING_SYSTEM_CLASS(                  \
@@ -440,7 +440,6 @@ extern void*  af_debug_hints_;
           m_stdw,                                        \
           h_init,                                        \
           h_apply )                                      \
-  FT_CALLBACK_TABLE_DEF                                  \
   const AF_WritingSystemClassRec  writing_system_class = \
   {                                                      \
     system,                                              \
@@ -458,7 +457,7 @@ extern void*  af_debug_hints_;
 
 
 #define AF_DECLARE_SCRIPT_CLASS( script_class ) \
-  FT_CALLBACK_TABLE const AF_ScriptClassRec     \
+  const AF_ScriptClassRec     \
   script_class;
 
 #define AF_DEFINE_SCRIPT_CLASS(           \
@@ -468,7 +467,6 @@ extern void*  af_debug_hints_;
           nonbase_ranges,                 \
           top_to_bottom,                  \
           std_charstring )                \
-  FT_CALLBACK_TABLE_DEF                   \
   const AF_ScriptClassRec  script_class = \
   {                                       \
     script,                               \
@@ -480,7 +478,7 @@ extern void*  af_debug_hints_;
 
 
 #define AF_DECLARE_STYLE_CLASS( style_class ) \
-  FT_CALLBACK_TABLE const AF_StyleClassRec    \
+  const AF_StyleClassRec    \
   style_class;
 
 #define AF_DEFINE_STYLE_CLASS(          \
@@ -490,7 +488,6 @@ extern void*  af_debug_hints_;
           script,                       \
           blue_stringset,               \
           coverage )                    \
-  FT_CALLBACK_TABLE_DEF                 \
   const AF_StyleClassRec  style_class = \
   {                                     \
     style,                              \

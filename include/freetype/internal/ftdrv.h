@@ -215,7 +215,6 @@ FT_BEGIN_HEADER
    *   the macro is used).
    */
 #define FT_DECLARE_DRIVER( class_ )  \
-  FT_CALLBACK_TABLE                  \
   const FT_Driver_ClassRec  class_;
 
 #define FT_DEFINE_DRIVER(                    \
@@ -244,7 +243,6 @@ FT_BEGIN_HEADER
           get_advances_,                     \
           request_size_,                     \
           select_size_ )                     \
-  FT_CALLBACK_TABLE_DEF                      \
   const FT_Driver_ClassRec  class_ =         \
   {                                          \
     FT_DEFINE_ROOT_MODULE( flags_,           \

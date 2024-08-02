@@ -227,7 +227,7 @@ FT_BEGIN_HEADER
 
 
 #define FT_DECLARE_CMAP_CLASS( class_ )            \
-  FT_CALLBACK_TABLE const FT_CMap_ClassRec  class_;
+  const FT_CMap_ClassRec  class_;
 
 #define FT_DEFINE_CMAP_CLASS(       \
           class_,                   \
@@ -241,7 +241,6 @@ FT_BEGIN_HEADER
           variant_list_,            \
           charvariant_list_,        \
           variantchar_list_ )       \
-  FT_CALLBACK_TABLE_DEF             \
   const FT_CMap_ClassRec  class_ =  \
   {                                 \
     size_,                          \
@@ -1053,7 +1052,7 @@ FT_BEGIN_HEADER
    *   the macro is used).
    */
 #define FT_DECLARE_GLYPH( class_ )                \
-  FT_CALLBACK_TABLE const FT_Glyph_Class  class_;
+  const FT_Glyph_Class  class_;
 
 #define FT_DEFINE_GLYPH(          \
           class_,                 \
@@ -1065,7 +1064,6 @@ FT_BEGIN_HEADER
           transform_,             \
           bbox_,                  \
           prepare_ )              \
-  FT_CALLBACK_TABLE_DEF           \
   const FT_Glyph_Class  class_ =  \
   {                               \
     size_,                        \
@@ -1117,7 +1115,6 @@ FT_BEGIN_HEADER
           get_glyph_cbox_,                   \
           set_mode_,                         \
           raster_class_ )                    \
-  FT_CALLBACK_TABLE_DEF                      \
   const FT_Renderer_Class  class_ =          \
   {                                          \
     FT_DEFINE_ROOT_MODULE( flags_,           \
@@ -1167,7 +1164,6 @@ FT_BEGIN_HEADER
    *   containing struct.
    */
 #define FT_DECLARE_MODULE( class_ )  \
-  FT_CALLBACK_TABLE                  \
   const FT_Module_Class  class_;
 
 #define FT_DEFINE_ROOT_MODULE(  \
@@ -1206,7 +1202,6 @@ FT_BEGIN_HEADER
           init_,                  \
           done_,                  \
           get_interface_ )        \
-  FT_CALLBACK_TABLE_DEF           \
   const FT_Module_Class class_ =  \
   {                               \
     flags_,                       \
