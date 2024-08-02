@@ -26,13 +26,13 @@
 FT_BEGIN_HEADER
 
 
-  FT_BASE_CALLBACK( FT_Error )
+  FT_Error
   ps_property_set( FT_Module    module,         /* PS_Driver */
                    const char*  property_name,
                    const void*  value,
                    FT_Bool      value_is_string );
 
-  FT_BASE_CALLBACK( FT_Error )
+  FT_Error
   ps_property_get( FT_Module    module,         /* PS_Driver */
                    const char*  property_name,
                    void*        value );

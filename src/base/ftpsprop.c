@@ -34,7 +34,7 @@
 #define FT_COMPONENT  psprops
 
 
-  FT_BASE_CALLBACK_DEF( FT_Error )
+  FT_Error
   ps_property_set( FT_Module    module,         /* PS_Driver */
                    const char*  property_name,
                    const void*  value,
@@ -226,7 +226,7 @@
   }
 
 
-  FT_BASE_CALLBACK_DEF( FT_Error )
+  FT_Error
   ps_property_get( FT_Module    module,         /* PS_Driver */
                    const char*  property_name,
                    void*        value )

@@ -281,9 +281,6 @@ FT_BEGIN_HEADER
 #define FT_COMPARE_DEF( x )  FT_CALLBACK_DEF( x )
 #endif
 
-#define FT_BASE_CALLBACK( x )      x
-#define FT_BASE_CALLBACK_DEF( x )  x
-
 #ifndef FT_CALLBACK_TABLE
 #ifdef __cplusplus
 #define FT_CALLBACK_TABLE      extern "C"
