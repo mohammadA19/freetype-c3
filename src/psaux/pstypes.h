@@ -65,7 +65,7 @@ FT_BEGIN_HEADER
 
 
   /* fixed-float numbers */
-  typedef FT_Int32  CF2_F16Dot16;
+  typedef int  CF2_F16Dot16;
 
 
 FT_END_HEADER

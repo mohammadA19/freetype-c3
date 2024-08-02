@@ -112,7 +112,7 @@ FT_BEGIN_HEADER
 
   /* Do not use this. It's broken and will cause your validator to crash */
   /* if you run it on an invalid font.                                   */
-  fn FT_Int /* private */
+  fn int /* private */
   ft_validator_run( FT_Validator  valid );
 
   /* Sets the error field in a validator, then calls `longjmp' to return */

@@ -138,8 +138,8 @@ FT_BEGIN_HEADER
    */
   typedef struct  FT_Multi_Master_
   {
-    FT_UInt     num_axis;
-    FT_UInt     num_designs;
+    uint     num_axis;
+    uint     num_designs;
     FT_MM_Axis  axis[T1_MAX_MM_AXIS];
 
   } FT_Multi_Master;
@@ -193,7 +193,7 @@ FT_BEGIN_HEADER
     FT_Fixed    maximum;
 
     FT_ULong    tag;
-    FT_UInt     strid;
+    uint     strid;
 
   } FT_Var_Axis;
 
@@ -224,8 +224,8 @@ FT_BEGIN_HEADER
   typedef struct  FT_Var_Named_Style_
   {
     FT_Fixed*  coords;
-    FT_UInt    strid;
-    FT_UInt    psid;   /* since 2.7.1 */
+    uint    strid;
+    uint    psid;   /* since 2.7.1 */
 
   } FT_Var_Named_Style;
 
@@ -273,9 +273,9 @@ FT_BEGIN_HEADER
    */
   typedef struct  FT_MM_Var_
   {
-    FT_UInt              num_axis;
-    FT_UInt              num_designs;
-    FT_UInt              num_namedstyles;
+    uint              num_axis;
+    uint              num_designs;
+    uint              num_namedstyles;
     FT_Var_Axis*         axis;
     FT_Var_Named_Style*  namedstyle;
 
@@ -396,7 +396,7 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Error )
   FT_Set_MM_Design_Coordinates( FT_Face   face,
-                                FT_UInt   num_coords,
+                                uint   num_coords,
                                 FT_Long*  coords );
 
 
@@ -443,7 +443,7 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Error )
   FT_Set_Var_Design_Coordinates( FT_Face    face,
-                                 FT_UInt    num_coords,
+                                 uint    num_coords,
                                  FT_Fixed*  coords );
 
 
@@ -483,7 +483,7 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Error )
   FT_Get_Var_Design_Coordinates( FT_Face    face,
-                                 FT_UInt    num_coords,
+                                 uint    num_coords,
                                  FT_Fixed*  coords );
 
 
@@ -529,7 +529,7 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Error )
   FT_Set_MM_Blend_Coordinates( FT_Face    face,
-                               FT_UInt    num_coords,
+                               uint    num_coords,
                                FT_Fixed*  coords );
 
 
@@ -566,7 +566,7 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Error )
   FT_Get_MM_Blend_Coordinates( FT_Face    face,
-                               FT_UInt    num_coords,
+                               uint    num_coords,
                                FT_Fixed*  coords );
 
 
@@ -580,7 +580,7 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Error )
   FT_Set_Var_Blend_Coordinates( FT_Face    face,
-                                FT_UInt    num_coords,
+                                uint    num_coords,
                                 FT_Fixed*  coords );
 
 
@@ -597,7 +597,7 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Error )
   FT_Get_Var_Blend_Coordinates( FT_Face    face,
-                                FT_UInt    num_coords,
+                                uint    num_coords,
                                 FT_Fixed*  coords );
 
 
@@ -647,7 +647,7 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Error )
   FT_Set_MM_WeightVector( FT_Face    face,
-                          FT_UInt    len,
+                          uint    len,
                           FT_Fixed*  weightvector );
 
 
@@ -691,7 +691,7 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Error )
   FT_Get_MM_WeightVector( FT_Face    face,
-                          FT_UInt*   len,
+                          uint*   len,
                           FT_Fixed*  weightvector );
 
 
@@ -743,8 +743,8 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Error )
   FT_Get_Var_Axis_Flags( FT_MM_Var*  master,
-                         FT_UInt     axis_index,
-                         FT_UInt*    flags );
+                         uint     axis_index,
+                         uint*    flags );
 
 
   /**************************************************************************
@@ -782,7 +782,7 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Error )
   FT_Set_Named_Instance( FT_Face  face,
-                         FT_UInt  instance_index );
+                         uint  instance_index );
 
 
   /**************************************************************************
@@ -821,7 +821,7 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Error )
   FT_Get_Default_Named_Instance( FT_Face   face,
-                                 FT_UInt  *instance_index );
+                                 uint  *instance_index );
 
   /* */
 

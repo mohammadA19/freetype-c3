@@ -526,7 +526,7 @@
     bdf_line_func_t_  cb;
     unsigned long     lineno, buf_size;
     int               refill, hold, to_skip;
-    ptrdiff_t         bytes, start, end, cursor, avail;
+    isz         bytes, start, end, cursor, avail;
     char*             buf    = NULL;
     FT_Memory         memory = stream->memory;
     FT_Error          error  = FT_Err_Ok;
@@ -558,7 +558,7 @@
     {
       if ( refill )
       {
-        bytes  = (ptrdiff_t)FT_Stream_TryRead(
+        bytes  = (isz)FT_Stream_TryRead(
                    stream, (FT_Byte*)buf + cursor,
                    buf_size - (unsigned long)cursor );
         avail  = cursor + bytes;
@@ -761,11 +761,11 @@
   }
 
 
-  /* Routine to convert a decimal ASCII string to an unsigned short integer. */
-  static unsigned short
+  /* Routine to convert a decimal ASCII string to an ushort integer. */
+  static ushort
   bdf_atous_( const char*  s )
   {
-    unsigned short  v;
+    ushort  v;
 
 
     if ( s == NULL || *s == 0 )
@@ -774,7 +774,7 @@
     for ( v = 0; sbitset( ddigits, *s ); s++ )
     {
       if ( v < ( FT_USHORT_MAX - 9 ) / 10 )
-        v = (unsigned short)( v * 10 + a2i[(int)*s] );
+        v = (ushort)( v * 10 + a2i[(int)*s] );
       else
       {
         v = FT_USHORT_MAX;
@@ -845,7 +845,7 @@
                        int          format,
                        bdf_font_t*  font )
   {
-    size_t           n;
+    usz           n;
     bdf_property_t*  p;
     FT_Memory        memory = font->memory;
     FT_Error         error  = FT_Err_Ok;
@@ -888,7 +888,7 @@
   bdf_get_property( const char*  name,
                     bdf_font_t*  font )
   {
-    size_t*  propid;
+    usz*  propid;
 
 
     if ( name == NULL || *name == 0 )
@@ -973,7 +973,7 @@
                             bdf_options_t*  opts,
                             unsigned long   lineno )
   {
-    size_t       len;
+    usz       len;
     char         name[256];
     bdf_list_t_  list;
     FT_Memory    memory;
@@ -1106,7 +1106,7 @@
                      char*          value,
                      unsigned long  lineno )
   {
-    size_t*         propid;
+    usz*         propid;
     bdf_property_t  *prop, *fp;
     FT_Memory       memory = font->memory;
     FT_Error        error  = FT_Err_Ok;
@@ -1634,7 +1634,7 @@
         /* the scalable width from the device width.                      */
         FT_TRACE2(( "bdf_parse_glyphs_: " ACMSG9, lineno ));
 
-        glyph->swidth = (unsigned short)FT_MulDiv(
+        glyph->swidth = (ushort)FT_MulDiv(
                           glyph->dwidth, 72000L,
                           (FT_Long)( font->point_size *
                                      font->resolution_x ) );
@@ -1684,7 +1684,7 @@
       if ( p->opts->correct_metrics )
       {
         /* Determine the point size of the glyph. */
-        unsigned short  sw = (unsigned short)FT_MulDiv(
+        ushort  sw = (ushort)FT_MulDiv(
                                glyph->dwidth, 72000L,
                                (FT_Long)( font->point_size *
                                           font->resolution_x ) );
@@ -1727,7 +1727,7 @@
         goto Exit;
       }
       else
-        glyph->bytes = (unsigned short)bitmap_size;
+        glyph->bytes = (ushort)bitmap_size;
 
       if ( FT_ALLOC( glyph->bitmap, glyph->bytes ) )
         goto Exit;
@@ -1925,7 +1925,7 @@
       font->memory = p->memory;
 
       { /* setup */
-        size_t           i;
+        usz           i;
         bdf_property_t*  prop;
 
 
@@ -2079,7 +2079,7 @@
       /* Check for the bits per pixel field. */
       if ( p->list.used == 5 )
       {
-        unsigned short bpp;
+        ushort bpp;
 
 
         bpp = bdf_atous_( p->list.field[4] );
@@ -2211,7 +2211,7 @@
         {
           FT_TRACE2(( "bdf_load_font: " ACMSG3,
                       p->font->bbx.width, p->maxrb - p->minlb ));
-          p->font->bbx.width = (unsigned short)( p->maxrb - p->minlb );
+          p->font->bbx.width = (ushort)( p->maxrb - p->minlb );
         }
 
         if ( p->font->bbx.x_offset != p->minlb )
@@ -2240,7 +2240,7 @@
         {
           FT_TRACE2(( "bdf_load_font: " ACMSG7,
                       p->font->bbx.height, p->maxas + p->maxds ));
-          p->font->bbx.height = (unsigned short)( p->maxas + p->maxds );
+          p->font->bbx.height = (ushort)( p->maxas + p->maxds );
         }
 
         if ( p->flags & BDF_SWIDTH_ADJ_ )
@@ -2363,7 +2363,7 @@
   bdf_get_font_property( bdf_font_t*  font,
                          const char*  name )
   {
-    size_t*  propid;
+    usz*  propid;
 
 
     if ( font == NULL || font->props_size == 0 || name == NULL || *name == 0 )

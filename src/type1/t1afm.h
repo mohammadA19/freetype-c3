@@ -35,14 +35,14 @@ FT_BEGIN_HEADER
 
   fn void /* internal */
   T1_Get_Kerning( AFM_FontInfo  fi,
-                  FT_UInt       glyph1,
-                  FT_UInt       glyph2,
+                  uint       glyph1,
+                  uint       glyph2,
                   FT_Vector*    kerning );
 
   fn FT_Error /* internal */
   T1_Get_Track_Kerning( FT_Face    face,
                         FT_Fixed   ptsize,
-                        FT_Int     degree,
+                        int     degree,
                         FT_Fixed*  kerning );
 
 FT_END_HEADER

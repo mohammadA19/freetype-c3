@@ -57,7 +57,7 @@ FT_BEGIN_HEADER
 
   typedef struct  PFR_ExtraItemRec_
   {
-    FT_UInt                  type;
+    uint                  type;
     PFR_ExtraItem_ParseFunc  parser;
 
   } PFR_ExtraItemRec;
@@ -89,15 +89,15 @@ FT_BEGIN_HEADER
   /* return number of logical fonts in this file */
   fn FT_Error /* internal */
   pfr_log_font_count( FT_Stream   stream,
-                      FT_UInt32   log_section_offset,
+                      uint   log_section_offset,
                       FT_Long    *acount );
 
   /* load a pfr logical font entry */
   fn FT_Error /* internal */
   pfr_log_font_load( PFR_LogFont  log_font,
                      FT_Stream    stream,
-                     FT_UInt      face_index,
-                     FT_UInt32    section_offset,
+                     uint      face_index,
+                     uint    section_offset,
                      FT_Bool      size_increment );
 
 
@@ -105,8 +105,8 @@ FT_BEGIN_HEADER
   fn FT_Error /* internal */
   pfr_phy_font_load( PFR_PhyFont  phy_font,
                      FT_Stream    stream,
-                     FT_UInt32    offset,
-                     FT_UInt32    size );
+                     uint    offset,
+                     uint    size );
 
   /* finalize a physical font */
   fn void /* internal */

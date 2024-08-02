@@ -43,11 +43,11 @@ FT_BEGIN_HEADER
 
   /* documentation is in freetype.h */
 
-  static __inline FT_Int32
-  FT_MulFix_arm( FT_Int32  a,
-                 FT_Int32  b )
+  static __inline int
+  FT_MulFix_arm( int  a,
+                 int  b )
   {
-    FT_Int32  t, t2;
+    int  t, t2;
 
 
     __asm
@@ -76,11 +76,11 @@ FT_BEGIN_HEADER
 
   /* documentation is in freetype.h */
 
-  static __inline__ FT_Int32
-  FT_MulFix_arm( FT_Int32  a,
-                 FT_Int32  b )
+  static __inline__ int
+  FT_MulFix_arm( int  a,
+                 int  b )
   {
-    FT_Int32  t, t2;
+    int  t, t2;
 
 
     __asm__ __volatile__ (
@@ -112,11 +112,11 @@ FT_BEGIN_HEADER
 
   /* documentation is in freetype.h */
 
-  static __inline__ FT_Int32
-  FT_MulFix_i386( FT_Int32  a,
-                  FT_Int32  b )
+  static __inline__ int
+  FT_MulFix_i386( int  a,
+                  int  b )
   {
-    FT_Int32  result;
+    int  result;
 
 
     __asm__ __volatile__ (
@@ -148,11 +148,11 @@ FT_BEGIN_HEADER
 
   /* documentation is in freetype.h */
 
-  static __inline FT_Int32
-  FT_MulFix_i386( FT_Int32  a,
-                  FT_Int32  b )
+  static __inline int
+  FT_MulFix_i386( int  a,
+                  int  b )
   {
-    FT_Int32  result;
+    int  result;
 
     __asm
     {
@@ -181,9 +181,9 @@ FT_BEGIN_HEADER
 
 #define FT_MULFIX_ASSEMBLER  FT_MulFix_x86_64
 
-  static __inline__ FT_Int32
-  FT_MulFix_x86_64( FT_Int32  a,
-                    FT_Int32  b )
+  static __inline__ int
+  FT_MulFix_x86_64( int  a,
+                    int  b )
   {
     /* Temporarily disable the warning that C90 doesn't support */
     /* `long long'.                                             */
@@ -202,7 +202,7 @@ FT_BEGIN_HEADER
     tmp  = ret >> 63;
     ret += 0x8000 + tmp;
 
-    return (FT_Int32)( ret >> 16 );
+    return (int)( ret >> 16 );
 #else
 
     /* For some reason, GCC 4.6 on Ubuntu 12.04 generates invalid machine  */
@@ -226,7 +226,7 @@ FT_BEGIN_HEADER
       : "r"(wide_b)
       : "cc" );
 
-    return (FT_Int32)result;
+    return (int)result;
 #endif
 
 #if __GNUC__ > 4 || ( __GNUC__ == 4 && __GNUC_MINOR__ >= 6 )
@@ -241,7 +241,7 @@ FT_BEGIN_HEADER
 
 #ifdef FT_CONFIG_OPTION_INLINE_MULFIX
 #ifdef FT_MULFIX_ASSEMBLER
-#define FT_MulFix( a, b )  FT_MULFIX_ASSEMBLER( (FT_Int32)(a), (FT_Int32)(b) )
+#define FT_MulFix( a, b )  FT_MULFIX_ASSEMBLER( (int)(a), (int)(b) )
 #endif
 #endif
 
@@ -306,10 +306,10 @@ FT_BEGIN_HEADER
    *   performance in comparison to the implementation base on `int64_t`.
    *
    */
-  fn FT_Int32 /* private */
+  fn int /* private */
   FT_MulAddFix( FT_Fixed*  s,
-                FT_Int32*  f,
-                FT_UInt    count );
+                int*  f,
+                uint    count );
 
 
   /*
@@ -358,7 +358,7 @@ FT_BEGIN_HEADER
    * without divisions and square roots relying on Newton's iterations
    * instead.
    */
-  fn FT_UInt32 /* private */
+  fn uint /* private */
   FT_Vector_NormLen( FT_Vector*  vector );
 
 
@@ -368,7 +368,7 @@ FT_BEGIN_HEADER
    * upwards.  The function returns +1 if the corner turns to the left, -1 to
    * the right, and 0 for undecidable cases.
    */
-  fn FT_Int /* private */
+  fn int /* private */
   ft_corner_orientation( FT_Pos  in_x,
                          FT_Pos  in_y,
                          FT_Pos  out_x,
@@ -380,7 +380,7 @@ FT_BEGIN_HEADER
    * saying that the corner point is close to its neighbors, or inside an
    * ellipse defined by the neighbor focal points to be more precise.
    */
-  fn FT_Int /* private */
+  fn int /* private */
   ft_corner_is_flat( FT_Pos  in_x,
                      FT_Pos  in_y,
                      FT_Pos  out_x,
@@ -427,15 +427,15 @@ FT_BEGIN_HEADER
 #include <intrin.h>
 #pragma intrinsic( _BitScanReverse )
 
-  static __inline FT_Int32
-  FT_MSB_i386( FT_UInt32  x )
+  static __inline int
+  FT_MSB_i386( uint  x )
   {
     unsigned long  where;
 
 
     _BitScanReverse( &where, x );
 
-    return (FT_Int32)where;
+    return (int)where;
   }
 
 #define FT_MSB( x )  FT_MSB_i386( x )
@@ -444,8 +444,8 @@ FT_BEGIN_HEADER
 
 #elif defined( __WATCOMC__ ) && defined( __386__ )
 
-  extern __inline FT_Int32
-  FT_MSB_i386( FT_UInt32  x );
+  extern __inline int
+  FT_MSB_i386( uint  x );
 
 #pragma aux FT_MSB_i386 =             \
   "bsr eax, eax"                      \
@@ -465,13 +465,13 @@ FT_BEGIN_HEADER
 
 #include <builtins.h>
 
-#define FT_MSB( x )  (FT_Int)( 63 - _leadz( x ) )
+#define FT_MSB( x )  (int)( 63 - _leadz( x ) )
 
 #elif defined( _CRAYC )
 
 #include <intrinsics.h>
 
-#define FT_MSB( x )  (FT_Int)( 31 - _leadz32( x ) )
+#define FT_MSB( x )  (int)( 31 - _leadz32( x ) )
 
 #endif /* FT_MSB macro definitions */
 
@@ -480,8 +480,8 @@ FT_BEGIN_HEADER
 
 #ifndef FT_MSB
 
-  fn FT_Int /* private */
-  FT_MSB( FT_UInt32  z );
+  fn int /* private */
+  FT_MSB( uint  z );
 
 #endif
 
@@ -514,8 +514,8 @@ FT_BEGIN_HEADER
    *   This function is slow and should be avoided.  Consider `FT_Hypot` or
    *   `FT_Vector_NormLen' instead.
    */
-  fn FT_UInt32 /* private */
-  FT_SqrtFixed( FT_UInt32  x );
+  fn uint /* private */
+  FT_SqrtFixed( uint  x );
 
 
 #define INT_TO_F26DOT6( x )    ( (FT_Long)(x) * 64  )    /* << 6  */
@@ -536,13 +536,13 @@ FT_BEGIN_HEADER
    * Use with care!
    */
 #define ADD_INT( a, b )                           \
-          (FT_Int)( (FT_UInt)(a) + (FT_UInt)(b) )
+          (int)( (uint)(a) + (uint)(b) )
 #define SUB_INT( a, b )                           \
-          (FT_Int)( (FT_UInt)(a) - (FT_UInt)(b) )
+          (int)( (uint)(a) - (uint)(b) )
 #define MUL_INT( a, b )                           \
-          (FT_Int)( (FT_UInt)(a) * (FT_UInt)(b) )
+          (int)( (uint)(a) * (uint)(b) )
 #define NEG_INT( a )                              \
-          (FT_Int)( (FT_UInt)0 - (FT_UInt)(a) )
+          (int)( (uint)0 - (uint)(a) )
 
 #define ADD_LONG( a, b )                             \
           (FT_Long)( (FT_ULong)(a) + (FT_ULong)(b) )
@@ -554,13 +554,13 @@ FT_BEGIN_HEADER
           (FT_Long)( (FT_ULong)0 - (FT_ULong)(a) )
 
 #define ADD_INT32( a, b )                               \
-          (FT_Int32)( (FT_UInt32)(a) + (FT_UInt32)(b) )
+          (int)( (uint)(a) + (uint)(b) )
 #define SUB_INT32( a, b )                               \
-          (FT_Int32)( (FT_UInt32)(a) - (FT_UInt32)(b) )
+          (int)( (uint)(a) - (uint)(b) )
 #define MUL_INT32( a, b )                               \
-          (FT_Int32)( (FT_UInt32)(a) * (FT_UInt32)(b) )
+          (int)( (uint)(a) * (uint)(b) )
 #define NEG_INT32( a )                                  \
-          (FT_Int32)( (FT_UInt32)0 - (FT_UInt32)(a) )
+          (int)( (uint)0 - (uint)(a) )
 
 #ifdef FT_INT64
 

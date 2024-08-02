@@ -63,7 +63,7 @@ FT_BEGIN_HEADER
   /* standard and snap width */
   typedef struct  PSH_WidthRec_
   {
-    FT_Int  org;
+    int  org;
     FT_Pos  cur;
     FT_Pos  fit;
 
@@ -73,7 +73,7 @@ FT_BEGIN_HEADER
   /* standard and snap widths table */
   typedef struct  PSH_WidthsRec_
   {
-    FT_UInt       count;
+    uint       count;
     PSH_WidthRec  widths[PS_GLOBALS_MAX_STD_WIDTHS];
 
   } PSH_WidthsRec, *PSH_Widths;
@@ -91,10 +91,10 @@ FT_BEGIN_HEADER
   /* blue zone descriptor */
   typedef struct  PSH_Blue_ZoneRec_
   {
-    FT_Int  org_ref;
-    FT_Int  org_delta;
-    FT_Int  org_top;
-    FT_Int  org_bottom;
+    int  org_ref;
+    int  org_delta;
+    int  org_top;
+    int  org_bottom;
 
     FT_Pos  cur_ref;
     FT_Pos  cur_delta;
@@ -106,7 +106,7 @@ FT_BEGIN_HEADER
 
   typedef struct  PSH_Blue_TableRec_
   {
-    FT_UInt           count;
+    uint           count;
     PSH_Blue_ZoneRec  zones[PS_GLOBALS_MAX_BLUE_ZONES];
 
   } PSH_Blue_TableRec, *PSH_Blue_Table;
@@ -121,9 +121,9 @@ FT_BEGIN_HEADER
     PSH_Blue_TableRec  family_bottom;
 
     FT_Fixed           blue_scale;
-    FT_Int             blue_shift;
-    FT_Int             blue_threshold;
-    FT_Int             blue_fuzz;
+    int             blue_shift;
+    int             blue_threshold;
+    int             blue_fuzz;
     FT_Bool            no_overshoots;
 
   } PSH_BluesRec, *PSH_Blues;
@@ -164,7 +164,7 @@ FT_BEGIN_HEADER
   /* units.  The result is in device pixels (26.6 format).            */
   fn FT_Pos /* internal */
   psh_dimension_snap_width( PSH_Dimension  dimension,
-                            FT_Int         org_width );
+                            int         org_width );
 #endif
 
   fn void /* internal */
@@ -177,8 +177,8 @@ FT_BEGIN_HEADER
   /* snap a stem to one or two blue zones */
   fn void /* internal */
   psh_blues_snap_stem( PSH_Blues      blues,
-                       FT_Int         stem_top,
-                       FT_Int         stem_bot,
+                       int         stem_top,
+                       int         stem_bot,
                        PSH_Alignment  alignment );
   /* */
 

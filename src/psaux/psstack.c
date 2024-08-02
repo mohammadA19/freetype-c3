@@ -52,7 +52,7 @@
   fn CF2_Stack /* internal */
   cf2_stack_init( FT_Memory  memory,
                   FT_Error*  e,
-                  FT_UInt    stackSize )
+                  uint    stackSize )
   {
     FT_Error   error;        /* for FT_QNEW */
     CF2_Stack  stack = NULL;

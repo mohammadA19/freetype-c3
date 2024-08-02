@@ -111,7 +111,7 @@
     FT_Byte*        sfnt_header;
     FT_ULong        sfnt_offset;
 
-    FT_Int          nn;
+    int          nn;
     FT_Tag          old_tag = 0;
 
     static const FT_Frame_Field  woff_header_fields[] =
@@ -171,9 +171,9 @@
 
     /* Write sfnt header. */
     {
-      FT_Int  entrySelector = FT_MSB( woff.num_tables );
-      FT_Int  searchRange   = ( 1 << entrySelector ) * 16;
-      FT_Int  rangeShift    = woff.num_tables * 16 - searchRange;
+      int  entrySelector = FT_MSB( woff.num_tables );
+      int  searchRange   = ( 1 << entrySelector ) * 16;
+      int  rangeShift    = woff.num_tables * 16 - searchRange;
 
 
       WRITE_ULONG ( sfnt_header, woff.flavor );

@@ -252,7 +252,7 @@
      typedef unsigned NO_SIZE_T z_size_t;
 #  elif defined(STDC)
 #    include <stddef.h>
-     typedef size_t z_size_t;
+     typedef usz z_size_t;
 #  else
      typedef unsigned long z_size_t;
 #  endif
@@ -400,7 +400,7 @@
 #if !defined(__MACTYPES__)
 typedef unsigned char  Byte;  /* 8 bits */
 #endif
-typedef unsigned int   uInt;  /* 16 bits or more */
+typedef uint   uInt;  /* 16 bits or more */
 typedef unsigned long  uLong; /* 32 bits or more */
 
 #ifdef SMALL_MEDIUM
@@ -431,7 +431,7 @@ typedef uLong FAR uLongf;
 #  elif (ULONG_MAX == 0xffffffffUL)
 #    define Z_U4 unsigned long
 #  elif (USHRT_MAX == 0xffffffffUL)
-#    define Z_U4 unsigned short
+#    define Z_U4 ushort
 #  endif
 #endif
 

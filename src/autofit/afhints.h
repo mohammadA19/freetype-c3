@@ -238,12 +238,12 @@ FT_BEGIN_HEADER
 
   typedef struct  AF_PointRec_
   {
-    FT_UShort  flags;    /* point flags used by hinter   */
+    ushort  flags;    /* point flags used by hinter   */
     FT_Char    in_dir;   /* direction of inwards vector  */
     FT_Char    out_dir;  /* direction of outwards vector */
 
     FT_Pos     ox, oy;   /* original, scaled position                   */
-    FT_Short   fx, fy;   /* original, unscaled position (in font units) */
+    short   fx, fy;   /* original, unscaled position (in font units) */
     FT_Pos     x, y;     /* current position                            */
     FT_Pos     u, v;     /* current (x,y) or (y,x) depending on context */
 
@@ -263,11 +263,11 @@ FT_BEGIN_HEADER
   {
     FT_Byte     flags;       /* edge/segment flags for this segment */
     FT_Char     dir;         /* segment direction                   */
-    FT_Short    pos;         /* position of segment                 */
-    FT_Short    delta;       /* deviation from segment position     */
-    FT_Short    min_coord;   /* minimum coordinate of segment       */
-    FT_Short    max_coord;   /* maximum coordinate of segment       */
-    FT_Short    height;      /* the hinted segment height           */
+    short    pos;         /* position of segment                 */
+    short    delta;       /* deviation from segment position     */
+    short    min_coord;   /* minimum coordinate of segment       */
+    short    max_coord;   /* maximum coordinate of segment       */
+    short    height;      /* the hinted segment height           */
 
     AF_Edge     edge;        /* the segment's parent edge           */
     AF_Segment  edge_next;   /* link to next segment in parent edge */
@@ -285,7 +285,7 @@ FT_BEGIN_HEADER
 
   typedef struct  AF_EdgeRec_
   {
-    FT_Short    fpos;       /* original, unscaled position (in font units) */
+    short    fpos;       /* original, unscaled position (in font units) */
     FT_Pos      opos;       /* original, scaled position                   */
     FT_Pos      pos;        /* current position                            */
 
@@ -296,7 +296,7 @@ FT_BEGIN_HEADER
     AF_Width    blue_edge;  /* non-NULL if this is a blue edge */
     AF_Edge     link;       /* link edge                       */
     AF_Edge     serif;      /* primary edge for serifs         */
-    FT_Int      score;      /* used during stem matching       */
+    int      score;      /* used during stem matching       */
 
     AF_Segment  first;      /* first segment in edge */
     AF_Segment  last;       /* last segment in edge  */
@@ -308,12 +308,12 @@ FT_BEGIN_HEADER
 
   typedef struct  AF_AxisHintsRec_
   {
-    FT_UInt       num_segments; /* number of used segments      */
-    FT_UInt       max_segments; /* number of allocated segments */
+    uint       num_segments; /* number of used segments      */
+    uint       max_segments; /* number of allocated segments */
     AF_Segment    segments;     /* segments array               */
 
-    FT_UInt       num_edges;    /* number of used edges      */
-    FT_UInt       max_edges;    /* number of allocated edges */
+    uint       num_edges;    /* number of used edges      */
+    uint       max_edges;    /* number of allocated edges */
     AF_Edge       edges;        /* edges array               */
 
     AF_Direction  major_dir;    /* either vertical or horizontal */
@@ -342,18 +342,18 @@ FT_BEGIN_HEADER
     FT_Fixed         y_scale;
     FT_Pos           y_delta;
 
-    FT_Int           max_points;    /* number of allocated points */
-    FT_Int           num_points;    /* number of used points      */
+    int           max_points;    /* number of allocated points */
+    int           num_points;    /* number of used points      */
     AF_Point         points;        /* points array               */
 
-    FT_Int           max_contours;  /* number of allocated contours */
-    FT_Int           num_contours;  /* number of used contours      */
+    int           max_contours;  /* number of allocated contours */
+    int           num_contours;  /* number of used contours      */
     AF_Point*        contours;      /* contours array               */
 
     AF_AxisHintsRec  axis[AF_DIMENSION_MAX];
 
-    FT_UInt32        scaler_flags;  /* copy of scaler flags    */
-    FT_UInt32        other_flags;   /* free for style-specific */
+    uint        scaler_flags;  /* copy of scaler flags    */
+    uint        other_flags;   /* free for style-specific */
                                     /* implementations         */
     AF_StyleMetrics  metrics;
 
@@ -413,7 +413,7 @@ FT_BEGIN_HEADER
 
   fn FT_Error /* internal */
   af_axis_hints_new_edge( AF_AxisHints  axis,
-                          FT_Int        fpos,
+                          int        fpos,
                           AF_Direction  dir,
                           FT_Bool       top_to_bottom_hinting,
                           FT_Memory     memory,

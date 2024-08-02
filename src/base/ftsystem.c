@@ -73,7 +73,7 @@
   {
     FT_UNUSED( memory );
 
-    return ft_smalloc( (size_t)size );
+    return ft_smalloc( (usz)size );
   }
 
 
@@ -110,7 +110,7 @@
     FT_UNUSED( memory );
     FT_UNUSED( cur_size );
 
-    return ft_srealloc( block, (size_t)new_size );
+    return ft_srealloc( block, (usz)new_size );
   }
 
 
@@ -290,7 +290,7 @@
 
 #ifdef FT_DEBUG_MEMORY
 
-  extern FT_Int
+  extern int
   ft_mem_debug_init( FT_Memory  memory );
 
   extern void

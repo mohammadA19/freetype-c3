@@ -74,8 +74,8 @@ FT_BEGIN_HEADER
     FT_Bool  isValid;
     FT_Bool  isNew;
 
-    size_t  bitCount;
-    size_t  byteCount;
+    usz  bitCount;
+    usz  byteCount;
 
     FT_Byte  mask[( CF2_MAX_HINTS + 7 ) / 8];
 

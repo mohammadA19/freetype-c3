@@ -86,7 +86,7 @@ FT_BEGIN_HEADER
   FT_Get_CID_Registry_Ordering_Supplement( FT_Face       face,
                                            const char*  *registry,
                                            const char*  *ordering,
-                                           FT_Int       *supplement );
+                                           int       *supplement );
 
 
   /**************************************************************************
@@ -139,7 +139,7 @@ FT_BEGIN_HEADER
    *
    * @output:
    *    cid ::
-   *      The CID as an @FT_UInt.
+   *      The CID as an @uint.
    *
    * @return:
    *    FreeType error code.  0~means success.
@@ -153,8 +153,8 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Error )
   FT_Get_CID_From_Glyph_Index( FT_Face   face,
-                               FT_UInt   glyph_index,
-                               FT_UInt  *cid );
+                               uint   glyph_index,
+                               uint  *cid );
 
   /* */
 

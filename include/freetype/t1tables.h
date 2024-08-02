@@ -94,8 +94,8 @@ FT_BEGIN_HEADER
     FT_String*  weight;
     FT_Long     italic_angle;
     FT_Bool     is_fixed_pitch;
-    FT_Short    underline_position;
-    FT_UShort   underline_thickness;
+    short    underline_position;
+    ushort   underline_thickness;
 
   } PS_FontInfoRec;
 
@@ -135,41 +135,41 @@ FT_BEGIN_HEADER
    */
   typedef struct  PS_PrivateRec_
   {
-    FT_Int     unique_id;
-    FT_Int     lenIV;
+    int     unique_id;
+    int     lenIV;
 
     FT_Byte    num_blue_values;
     FT_Byte    num_other_blues;
     FT_Byte    num_family_blues;
     FT_Byte    num_family_other_blues;
 
-    FT_Short   blue_values[14];
-    FT_Short   other_blues[10];
+    short   blue_values[14];
+    short   other_blues[10];
 
-    FT_Short   family_blues      [14];
-    FT_Short   family_other_blues[10];
+    short   family_blues      [14];
+    short   family_other_blues[10];
 
     FT_Fixed   blue_scale;
-    FT_Int     blue_shift;
-    FT_Int     blue_fuzz;
+    int     blue_shift;
+    int     blue_fuzz;
 
-    FT_UShort  standard_width[1];
-    FT_UShort  standard_height[1];
+    ushort  standard_width[1];
+    ushort  standard_height[1];
 
     FT_Byte    num_snap_widths;
     FT_Byte    num_snap_heights;
     FT_Bool    force_bold;
     FT_Bool    round_stem_up;
 
-    FT_Short   snap_widths [13];  /* including std width  */
-    FT_Short   snap_heights[13];  /* including std height */
+    short   snap_widths [13];  /* including std width  */
+    short   snap_heights[13];  /* including std height */
 
     FT_Fixed   expansion_factor;
 
     FT_Long    language_group;
     FT_Long    password;
 
-    FT_Short   min_feature[2];
+    short   min_feature[2];
 
   } PS_PrivateRec;
 
@@ -290,7 +290,7 @@ FT_BEGIN_HEADER
   {
     PS_PrivateRec  private_dict;
 
-    FT_UInt        len_buildchar;
+    uint        len_buildchar;
     FT_Fixed       forcebold_threshold;
     FT_Pos         stroke_width;
     FT_Fixed       expansion_factor;   /* this is a duplicate of           */
@@ -300,9 +300,9 @@ FT_BEGIN_HEADER
     FT_Matrix      font_matrix;
     FT_Vector      font_offset;
 
-    FT_UInt        num_subrs;
+    uint        num_subrs;
     FT_ULong       subrmap_offset;
-    FT_UInt        sd_bytes;
+    uint        sd_bytes;
 
   } CID_FaceDictRec;
 
@@ -343,25 +343,25 @@ FT_BEGIN_HEADER
   {
     FT_String*      cid_font_name;
     FT_Fixed        cid_version;
-    FT_Int          cid_font_type;
+    int          cid_font_type;
 
     FT_String*      registry;
     FT_String*      ordering;
-    FT_Int          supplement;
+    int          supplement;
 
     PS_FontInfoRec  font_info;
     FT_BBox         font_bbox;
     FT_ULong        uid_base;
 
-    FT_Int          num_xuid;
+    int          num_xuid;
     FT_ULong        xuid[16];
 
     FT_ULong        cidmap_offset;
-    FT_UInt         fd_bytes;
-    FT_UInt         gd_bytes;
+    uint         fd_bytes;
+    uint         gd_bytes;
     FT_ULong        cid_count;
 
-    FT_UInt         num_dicts;
+    uint         num_dicts;
     CID_FaceDict    font_dicts;
 
     FT_ULong        data_offset;
@@ -413,7 +413,7 @@ FT_BEGIN_HEADER
    *   Boolean.  True if glyph names are reliable.
    *
    */
-  FT_EXPORT( FT_Int )
+  FT_EXPORT( int )
   FT_Has_PS_Glyph_Names( FT_Face  face );
 
 
@@ -601,37 +601,37 @@ FT_BEGIN_HEADER
     PS_DICT_FONT_BBOX,              /* FT_Fixed        */
     PS_DICT_PAINT_TYPE,             /* FT_Byte         */
     PS_DICT_FONT_NAME,              /* FT_String*      */
-    PS_DICT_UNIQUE_ID,              /* FT_Int          */
-    PS_DICT_NUM_CHAR_STRINGS,       /* FT_Int          */
+    PS_DICT_UNIQUE_ID,              /* int          */
+    PS_DICT_NUM_CHAR_STRINGS,       /* int          */
     PS_DICT_CHAR_STRING_KEY,        /* FT_String*      */
     PS_DICT_CHAR_STRING,            /* FT_String*      */
     PS_DICT_ENCODING_TYPE,          /* T1_EncodingType */
     PS_DICT_ENCODING_ENTRY,         /* FT_String*      */
 
     /* conventionally in the font Private dictionary */
-    PS_DICT_NUM_SUBRS,              /* FT_Int     */
+    PS_DICT_NUM_SUBRS,              /* int     */
     PS_DICT_SUBR,                   /* FT_String* */
-    PS_DICT_STD_HW,                 /* FT_UShort  */
-    PS_DICT_STD_VW,                 /* FT_UShort  */
+    PS_DICT_STD_HW,                 /* ushort  */
+    PS_DICT_STD_VW,                 /* ushort  */
     PS_DICT_NUM_BLUE_VALUES,        /* FT_Byte    */
-    PS_DICT_BLUE_VALUE,             /* FT_Short   */
-    PS_DICT_BLUE_FUZZ,              /* FT_Int     */
+    PS_DICT_BLUE_VALUE,             /* short   */
+    PS_DICT_BLUE_FUZZ,              /* int     */
     PS_DICT_NUM_OTHER_BLUES,        /* FT_Byte    */
-    PS_DICT_OTHER_BLUE,             /* FT_Short   */
+    PS_DICT_OTHER_BLUE,             /* short   */
     PS_DICT_NUM_FAMILY_BLUES,       /* FT_Byte    */
-    PS_DICT_FAMILY_BLUE,            /* FT_Short   */
+    PS_DICT_FAMILY_BLUE,            /* short   */
     PS_DICT_NUM_FAMILY_OTHER_BLUES, /* FT_Byte    */
-    PS_DICT_FAMILY_OTHER_BLUE,      /* FT_Short   */
+    PS_DICT_FAMILY_OTHER_BLUE,      /* short   */
     PS_DICT_BLUE_SCALE,             /* FT_Fixed   */
-    PS_DICT_BLUE_SHIFT,             /* FT_Int     */
+    PS_DICT_BLUE_SHIFT,             /* int     */
     PS_DICT_NUM_STEM_SNAP_H,        /* FT_Byte    */
-    PS_DICT_STEM_SNAP_H,            /* FT_Short   */
+    PS_DICT_STEM_SNAP_H,            /* short   */
     PS_DICT_NUM_STEM_SNAP_V,        /* FT_Byte    */
-    PS_DICT_STEM_SNAP_V,            /* FT_Short   */
+    PS_DICT_STEM_SNAP_V,            /* short   */
     PS_DICT_FORCE_BOLD,             /* FT_Bool    */
     PS_DICT_RND_STEM_UP,            /* FT_Bool    */
-    PS_DICT_MIN_FEATURE,            /* FT_Short   */
-    PS_DICT_LEN_IV,                 /* FT_Int     */
+    PS_DICT_MIN_FEATURE,            /* short   */
+    PS_DICT_LEN_IV,                 /* int     */
     PS_DICT_PASSWORD,               /* FT_Long    */
     PS_DICT_LANGUAGE_GROUP,         /* FT_Long    */
 
@@ -642,9 +642,9 @@ FT_BEGIN_HEADER
     PS_DICT_FAMILY_NAME,            /* FT_String* */
     PS_DICT_WEIGHT,                 /* FT_String* */
     PS_DICT_IS_FIXED_PITCH,         /* FT_Bool    */
-    PS_DICT_UNDERLINE_POSITION,     /* FT_Short   */
-    PS_DICT_UNDERLINE_THICKNESS,    /* FT_UShort  */
-    PS_DICT_FS_TYPE,                /* FT_UShort  */
+    PS_DICT_UNDERLINE_POSITION,     /* short   */
+    PS_DICT_UNDERLINE_THICKNESS,    /* ushort  */
+    PS_DICT_FS_TYPE,                /* ushort  */
     PS_DICT_ITALIC_ANGLE,           /* FT_Long    */
 
     PS_DICT_MAX = PS_DICT_ITALIC_ANGLE
@@ -721,7 +721,7 @@ FT_BEGIN_HEADER
   FT_EXPORT( FT_Long )
   FT_Get_PS_Font_Value( FT_Face       face,
                         PS_Dict_Keys  key,
-                        FT_UInt       idx,
+                        uint       idx,
                         void         *value,
                         FT_Long       value_len );
 

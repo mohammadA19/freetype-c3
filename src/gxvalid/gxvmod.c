@@ -109,16 +109,16 @@
 
   static FT_Error
   gxv_validate( FT_Face   face,
-                FT_UInt   gx_flags,
+                uint   gx_flags,
                 FT_Bytes  tables[FT_VALIDATE_GX_LENGTH],
-                FT_UInt   table_count )
+                uint   table_count )
   {
     FT_Memory volatile        memory = FT_FACE_MEMORY( face );
 
     FT_Error                  error = FT_Err_Ok;
     FT_ValidatorRec volatile  valid;
 
-    FT_UInt  i;
+    uint  i;
 
 
     GXV_TABLE_DECL( feat );
@@ -192,7 +192,7 @@
 
   static FT_Error
   classic_kern_validate( FT_Face    face,
-                         FT_UInt    ckern_flags,
+                         uint    ckern_flags,
                          FT_Bytes*  ckern_table )
   {
     FT_Memory volatile        memory = FT_FACE_MEMORY( face );

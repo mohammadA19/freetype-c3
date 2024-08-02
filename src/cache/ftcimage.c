@@ -64,7 +64,7 @@
     {
       FTC_GNode         gnode  = FTC_GNODE( inode );
       FTC_Family        family = gquery->family;
-      FT_UInt           gindex = gquery->gindex;
+      uint           gindex = gquery->gindex;
       FTC_IFamilyClass  clazz  = FTC_CACHE_IFAMILY_CLASS( cache );
 
 
@@ -130,7 +130,7 @@
 
         size = (FT_Offset)outg->outline.n_points *
                  ( sizeof ( FT_Vector ) + sizeof ( FT_Byte ) ) +
-               (FT_Offset)outg->outline.n_contours * sizeof ( FT_Short ) +
+               (FT_Offset)outg->outline.n_contours * sizeof ( short ) +
                sizeof ( *outg );
       }
       break;

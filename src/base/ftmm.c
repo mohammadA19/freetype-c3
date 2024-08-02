@@ -167,7 +167,7 @@
 
   FT_Error
   FT_Set_MM_Design_Coordinates( FT_Face   face,
-                                FT_UInt   num_coords,
+                                uint   num_coords,
                                 FT_Long*  coords )
   {
     FT_Error                 error;
@@ -210,7 +210,7 @@
 
   FT_Error
   FT_Set_MM_WeightVector( FT_Face    face,
-                          FT_UInt    len,
+                          uint    len,
                           FT_Fixed*  weightvector )
   {
     FT_Error                 error;
@@ -251,7 +251,7 @@
 
   FT_Error
   FT_Get_MM_WeightVector( FT_Face    face,
-                          FT_UInt*   len,
+                          uint*   len,
                           FT_Fixed*  weightvector )
   {
     FT_Error                 error;
@@ -279,7 +279,7 @@
 
   FT_Error
   FT_Set_Var_Design_Coordinates( FT_Face    face,
-                                 FT_UInt    num_coords,
+                                 uint    num_coords,
                                  FT_Fixed*  coords )
   {
     FT_Error                      error;
@@ -351,7 +351,7 @@
 
   FT_Error
   FT_Get_Var_Design_Coordinates( FT_Face    face,
-                                 FT_UInt    num_coords,
+                                 uint    num_coords,
                                  FT_Fixed*  coords )
   {
     FT_Error                 error;
@@ -379,7 +379,7 @@
 
   FT_Error
   FT_Set_MM_Blend_Coordinates( FT_Face    face,
-                               FT_UInt    num_coords,
+                               uint    num_coords,
                                FT_Fixed*  coords )
   {
     FT_Error                      error;
@@ -454,7 +454,7 @@
 
   FT_Error
   FT_Set_Var_Blend_Coordinates( FT_Face    face,
-                                FT_UInt    num_coords,
+                                uint    num_coords,
                                 FT_Fixed*  coords )
   {
     FT_Error                      error;
@@ -526,7 +526,7 @@
 
   FT_Error
   FT_Get_MM_Blend_Coordinates( FT_Face    face,
-                               FT_UInt    num_coords,
+                               uint    num_coords,
                                FT_Fixed*  coords )
   {
     FT_Error                 error;
@@ -557,7 +557,7 @@
 
   FT_Error
   FT_Get_Var_Blend_Coordinates( FT_Face    face,
-                                FT_UInt    num_coords,
+                                uint    num_coords,
                                 FT_Fixed*  coords )
   {
     FT_Error                 error;
@@ -585,10 +585,10 @@
 
   FT_Error
   FT_Get_Var_Axis_Flags( FT_MM_Var*  master,
-                         FT_UInt     axis_index,
-                         FT_UInt*    flags )
+                         uint     axis_index,
+                         uint*    flags )
   {
-    FT_UShort*  axis_flags;
+    ushort*  axis_flags;
 
 
     if ( !master || !flags )
@@ -598,7 +598,7 @@
       return FT_THROW( Invalid_Argument );
 
     /* the axis flags array immediately follows the data of `master' */
-    axis_flags = (FT_UShort*)&( master[1] );
+    axis_flags = (ushort*)&( master[1] );
     *flags     = axis_flags[axis_index];
 
     return FT_Err_Ok;
@@ -609,7 +609,7 @@
 
   FT_Error
   FT_Set_Named_Instance( FT_Face  face,
-                         FT_UInt  instance_index )
+                         uint  instance_index )
   {
     FT_Error  error;
 
@@ -677,7 +677,7 @@
 
   FT_Error
   FT_Get_Default_Named_Instance( FT_Face   face,
-                                 FT_UInt  *instance_index )
+                                 uint  *instance_index )
   {
     FT_Error  error;
 

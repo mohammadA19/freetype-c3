@@ -28,7 +28,7 @@ FT_BEGIN_HEADER
 
   fn FT_Error /* internal */
   cff_get_glyph_data( TT_Face    face,
-                      FT_UInt    glyph_index,
+                      uint    glyph_index,
                       FT_Byte**  pointer,
                       FT_ULong*  length );
   fn void /* internal */
@@ -42,7 +42,7 @@ FT_BEGIN_HEADER
   /* Compute the maximum advance width of a font through quick parsing */
   fn FT_Error /* internal */
   cff_compute_max_advance( TT_Face  face,
-                           FT_Int*  max_advance );
+                           int*  max_advance );
 
 #endif /* 0 */
 
@@ -50,8 +50,8 @@ FT_BEGIN_HEADER
   fn FT_Error /* internal */
   cff_slot_load( CFF_GlyphSlot  glyph,
                  CFF_Size       size,
-                 FT_UInt        glyph_index,
-                 FT_Int32       load_flags );
+                 uint        glyph_index,
+                 int       load_flags );
 
 
 FT_END_HEADER

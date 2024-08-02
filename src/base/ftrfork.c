@@ -281,13 +281,13 @@
 
           FT_TRACE3(( "             [%d]:"
                       " resource_id=0x%04x, offset=0x%08lx\n",
-                      j, (FT_UShort)ref[j].res_id, ref[j].offset ));
+                      j, (ushort)ref[j].res_id, ref[j].offset ));
         }
 
         if ( sort_by_res_id )
         {
           ft_qsort( ref,
-                    (size_t)*count,
+                    (usz)*count,
                     sizeof ( FT_RFork_Ref ),
                     ft_raccess_sort_ref_by_id );
 
@@ -426,7 +426,7 @@
   raccess_guess_apple_generic( FT_Library  library,
                                FT_Stream   stream,
                                char       *base_file_name,
-                               FT_Int32    magic,
+                               int    magic,
                                FT_Long    *result_offset );
 
   static FT_Error
@@ -447,7 +447,7 @@
                     FT_Long    *offsets,
                     FT_Error   *errors )
   {
-    FT_Int  i;
+    int  i;
 
 
     for ( i = 0; i < FT_RACCESS_N_RULES; i++ )
@@ -474,7 +474,7 @@
 #if defined( FT_CONFIG_OPTION_MAC_FONTS ) && !defined( FT_MACINTOSH )
   static FT_RFork_Rule
   raccess_get_rule_type_from_rule_index( FT_Library  library,
-                                         FT_UInt     rule_index )
+                                         uint     rule_index )
   {
     FT_UNUSED( library );
 
@@ -490,7 +490,7 @@
    */
   fn FT_Bool /* internal */
   ft_raccess_rule_by_darwin_vfs( FT_Library  library,
-                                 FT_UInt     rule_index )
+                                 uint     rule_index )
   {
     switch( raccess_get_rule_type_from_rule_index( library, rule_index ) )
     {
@@ -512,7 +512,7 @@
                               char      **result_file_name,
                               FT_Long    *result_offset )
   {
-    FT_Int32  magic = ( 0x00 << 24 ) |
+    int  magic = ( 0x00 << 24 ) |
                       ( 0x05 << 16 ) |
                       ( 0x16 <<  8 ) |
                         0x07;
@@ -534,7 +534,7 @@
                               char      **result_file_name,
                               FT_Long    *result_offset )
   {
-    FT_Int32  magic = ( 0x00 << 24 ) |
+    int  magic = ( 0x00 << 24 ) |
                       ( 0x05 << 16 ) |
                       ( 0x16 <<  8 ) |
                         0x00;
@@ -771,18 +771,18 @@
   raccess_guess_apple_generic( FT_Library  library,
                                FT_Stream   stream,
                                char       *base_file_name,
-                               FT_Int32    magic,
+                               int    magic,
                                FT_Long    *result_offset )
   {
-    FT_Int32   magic_from_stream;
+    int   magic_from_stream;
     FT_Error   error;
-    FT_Int32   version_number = 0;
-    FT_UShort  n_of_entries;
+    int   version_number = 0;
+    ushort  n_of_entries;
 
     int        i;
-    FT_Int32   entry_id, entry_offset, entry_length = 0;
+    int   entry_id, entry_offset, entry_length = 0;
 
-    const FT_Int32  resource_fork_entry_id = 0x2;
+    const int  resource_fork_entry_id = 0x2;
 
     FT_UNUSED( library );
     FT_UNUSED( base_file_name );
@@ -867,7 +867,7 @@
     char*        new_name = NULL;
     const char*  tmp;
     const char*  slash;
-    size_t       new_length;
+    usz       new_length;
     FT_Error     error;
 
 
@@ -880,7 +880,7 @@
     {
       ft_strncpy( new_name,
                   original_name,
-                  (size_t)( tmp - original_name + 1 ) );
+                  (usz)( tmp - original_name + 1 ) );
       new_name[tmp - original_name + 1] = '\0';
       slash = tmp + 1;
     }
@@ -912,7 +912,7 @@
                     FT_Long    *offsets,
                     FT_Error   *errors )
   {
-    FT_Int  i;
+    int  i;
 
     FT_UNUSED( library );
     FT_UNUSED( stream );

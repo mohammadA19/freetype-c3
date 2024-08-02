@@ -367,11 +367,11 @@
   }
 
 
-  fn FT_UInt16 /* private */
+  fn ushort /* private */
   FT_Stream_GetUShort( FT_Stream  stream )
   {
     FT_Byte*   p;
-    FT_UInt16  result;
+    ushort  result;
 
 
     FT_ASSERT( stream && stream->cursor );
@@ -386,11 +386,11 @@
   }
 
 
-  fn FT_UInt16 /* private */
+  fn ushort /* private */
   FT_Stream_GetUShortLE( FT_Stream  stream )
   {
     FT_Byte*   p;
-    FT_UInt16  result;
+    ushort  result;
 
 
     FT_ASSERT( stream && stream->cursor );
@@ -405,11 +405,11 @@
   }
 
 
-  fn FT_UInt32 /* private */
+  fn uint /* private */
   FT_Stream_GetUOffset( FT_Stream  stream )
   {
     FT_Byte*  p;
-    FT_UInt32 result;
+    uint result;
 
 
     FT_ASSERT( stream && stream->cursor );
@@ -423,11 +423,11 @@
   }
 
 
-  fn FT_UInt32 /* private */
+  fn uint /* private */
   FT_Stream_GetULong( FT_Stream  stream )
   {
     FT_Byte*  p;
-    FT_UInt32 result;
+    uint result;
 
 
     FT_ASSERT( stream && stream->cursor );
@@ -441,11 +441,11 @@
   }
 
 
-  fn FT_UInt32 /* private */
+  fn uint /* private */
   FT_Stream_GetULongLE( FT_Stream  stream )
   {
     FT_Byte*  p;
-    FT_UInt32 result;
+    uint result;
 
 
     FT_ASSERT( stream && stream->cursor );
@@ -497,13 +497,13 @@
   }
 
 
-  fn FT_UInt16 /* private */
+  fn ushort /* private */
   FT_Stream_ReadUShort( FT_Stream  stream,
                         FT_Error*  error )
   {
     FT_Byte    reads[2];
     FT_Byte*   p;
-    FT_UInt16  result = 0;
+    ushort  result = 0;
 
 
     FT_ASSERT( stream );
@@ -542,13 +542,13 @@
   }
 
 
-  fn FT_UInt16 /* private */
+  fn ushort /* private */
   FT_Stream_ReadUShortLE( FT_Stream  stream,
                           FT_Error*  error )
   {
     FT_Byte    reads[2];
     FT_Byte*   p;
-    FT_UInt16  result = 0;
+    ushort  result = 0;
 
 
     FT_ASSERT( stream );
@@ -632,13 +632,13 @@
   }
 
 
-  fn FT_UInt32 /* private */
+  fn uint /* private */
   FT_Stream_ReadULong( FT_Stream  stream,
                        FT_Error*  error )
   {
     FT_Byte   reads[4];
     FT_Byte*  p;
-    FT_UInt32 result = 0;
+    uint result = 0;
 
 
     FT_ASSERT( stream );
@@ -677,13 +677,13 @@
   }
 
 
-  fn FT_UInt32 /* private */
+  fn uint /* private */
   FT_Stream_ReadULongLE( FT_Stream  stream,
                          FT_Error*  error )
   {
     FT_Byte   reads[4];
     FT_Byte*  p;
-    FT_UInt32 result = 0;
+    uint result = 0;
 
 
     FT_ASSERT( stream );
@@ -744,7 +744,7 @@
     do
     {
       FT_ULong  value;
-      FT_Int    sign_shift;
+      int    sign_shift;
       FT_Byte*  p;
 
 
@@ -763,7 +763,7 @@
       case ft_frame_bytes:  /* read a byte sequence */
       case ft_frame_skip:   /* skip some bytes      */
         {
-          FT_UInt  len = fields->size;
+          uint  len = fields->size;
 
 
           if ( cursor + len > stream->limit )
@@ -832,7 +832,7 @@
 
       /* now, compute the signed value if necessary */
       if ( fields->value & FT_FRAME_OP_SIGNED )
-        value = (FT_ULong)( (FT_Int32)( value << sign_shift ) >> sign_shift );
+        value = (FT_ULong)( (int)( value << sign_shift ) >> sign_shift );
 
       /* finally, store the value in the object */
 
@@ -844,11 +844,11 @@
         break;
 
       case ( 16 / FT_CHAR_BIT ):
-        *(FT_UShort*)p = (FT_UShort)value;
+        *(ushort*)p = (ushort)value;
         break;
 
       case ( 32 / FT_CHAR_BIT ):
-        *(FT_UInt32*)p = (FT_UInt32)value;
+        *(uint*)p = (uint)value;
         break;
 
       default:  /* for 64-bit systems */

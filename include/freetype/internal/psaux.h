@@ -42,10 +42,10 @@ FT_BEGIN_HEADER
   {
     FT_DriverRec  root;
 
-    FT_UInt   hinting_engine;
+    uint   hinting_engine;
     FT_Bool   no_stem_darkening;
-    FT_Int    darken_params[8];
-    FT_Int32  random_seed;
+    int    darken_params[8];
+    int  random_seed;
 
   } PS_DriverRec, *PS_Driver;
 
@@ -88,7 +88,7 @@ FT_BEGIN_HEADER
   {
     FT_Error
     (*init)( PS_Table   table,
-             FT_Int     count,
+             int     count,
              FT_Memory  memory );
 
     void
@@ -96,9 +96,9 @@ FT_BEGIN_HEADER
 
     FT_Error
     (*add)( PS_Table     table,
-            FT_Int       idx,
+            int       idx,
             const void*  object,
-            FT_UInt      length );
+            uint      length );
 
     void
     (*release)( PS_Table  table );
@@ -151,9 +151,9 @@ FT_BEGIN_HEADER
     FT_Offset          capacity;       /* current size of memory block   */
     FT_ULong           init;
 
-    FT_Int             max_elems;
+    int             max_elems;
     FT_Byte**          elements;       /* addresses of table elements */
-    FT_UInt*           lengths;        /* lengths of table elements   */
+    uint*           lengths;        /* lengths of table elements   */
 
     FT_Memory          memory;
     PS_Table_FuncsRec  funcs;
@@ -250,22 +250,22 @@ FT_BEGIN_HEADER
   /* structure type used to model object fields */
   typedef struct  T1_FieldRec_
   {
-    FT_UInt             len;          /* field identifier length        */
+    uint             len;          /* field identifier length        */
     const char*         ident;        /* field identifier               */
     T1_FieldLocation    location;
     T1_FieldType        type;         /* type of field                  */
     T1_Field_ParseFunc  reader;
-    FT_UInt             offset;       /* offset of field in object      */
+    uint             offset;       /* offset of field in object      */
     FT_Byte             size;         /* size of field in bytes         */
-    FT_UInt             array_max;    /* maximum number of elements for */
+    uint             array_max;    /* maximum number of elements for */
                                       /* array                          */
-    FT_UInt             count_offset; /* offset of element count for    */
+    uint             count_offset; /* offset of element count for    */
                                       /* arrays; must not be zero if in */
                                       /* use -- in other words, a       */
                                       /* `num_FOO' element must not     */
                                       /* start the used structure if we */
                                       /* parse a `FOO' array            */
-    FT_UInt             dict;         /* where we expect it             */
+    uint             dict;         /* where we expect it             */
   } T1_FieldRec;
 
 #define T1_FIELD_DICT_FONTDICT ( 1 << 0 ) /* also FontInfo and FDArray */
@@ -398,7 +398,7 @@ FT_BEGIN_HEADER
     (*to_int)( PS_Parser  parser );
     FT_Fixed
     (*to_fixed)( PS_Parser  parser,
-                 FT_Int     power_ten );
+                 int     power_ten );
 
     FT_Error
     (*to_bytes)( PS_Parser  parser,
@@ -407,15 +407,15 @@ FT_BEGIN_HEADER
                  FT_ULong*  pnum_bytes,
                  FT_Bool    delimiters );
 
-    FT_Int
+    int
     (*to_coord_array)( PS_Parser  parser,
-                       FT_Int     max_coords,
-                       FT_Short*  coords );
-    FT_Int
+                       int     max_coords,
+                       short*  coords );
+    int
     (*to_fixed_array)( PS_Parser  parser,
-                       FT_Int     max_values,
+                       int     max_values,
                        FT_Fixed*  values,
-                       FT_Int     power_ten );
+                       int     power_ten );
 
     void
     (*to_token)( PS_Parser  parser,
@@ -423,21 +423,21 @@ FT_BEGIN_HEADER
     void
     (*to_token_array)( PS_Parser  parser,
                        T1_Token   tokens,
-                       FT_UInt    max_tokens,
-                       FT_Int*    pnum_tokens );
+                       uint    max_tokens,
+                       int*    pnum_tokens );
 
     FT_Error
     (*load_field)( PS_Parser       parser,
                    const T1_Field  field,
                    void**          objects,
-                   FT_UInt         max_objects,
+                   uint         max_objects,
                    FT_ULong*       pflags );
 
     FT_Error
     (*load_field_table)( PS_Parser       parser,
                          const T1_Field  field,
                          void**          objects,
-                         FT_UInt         max_objects,
+                         uint         max_objects,
                          FT_ULong*       pflags );
 
   } PS_Parser_FuncsRec;
@@ -626,7 +626,7 @@ FT_BEGIN_HEADER
 
   typedef FT_Error
   (*CFF_Decoder_Get_Glyph_Callback)( TT_Face    face,
-                                     FT_UInt    glyph_index,
+                                     uint    glyph_index,
                                      FT_Byte**  pointer,
                                      FT_ULong*  length );
 
@@ -646,8 +646,8 @@ FT_BEGIN_HEADER
     PS_Decoder_Zone   zones[PS_MAX_SUBRS_CALLS + 1];
     PS_Decoder_Zone*  zone;
 
-    FT_Int     flex_state;
-    FT_Int     num_flex_vectors;
+    int     flex_state;
+    int     num_flex_vectors;
     FT_Vector  flex_vectors[7];
 
     CFF_Font     cff;
@@ -656,19 +656,19 @@ FT_BEGIN_HEADER
 
     FT_Pos*  glyph_width;
     FT_Bool  width_only;
-    FT_Int   num_hints;
+    int   num_hints;
 
-    FT_UInt  num_locals;
-    FT_UInt  num_globals;
+    uint  num_locals;
+    uint  num_globals;
 
-    FT_Int  locals_bias;
-    FT_Int  globals_bias;
+    int  locals_bias;
+    int  globals_bias;
 
     FT_Byte**  locals;
     FT_Byte**  globals;
 
     FT_Byte**  glyph_names;   /* for pure CFF fonts only  */
-    FT_UInt    num_glyphs;    /* number of glyphs in font */
+    uint    num_glyphs;    /* number of glyphs in font */
 
     FT_Render_Mode  hint_mode;
 
@@ -680,8 +680,8 @@ FT_BEGIN_HEADER
     /* Type 1 stuff */
     FT_Service_PsCMaps  psnames;      /* for seac */
 
-    FT_Int    lenIV;         /* internal for sub routine calls   */
-    FT_UInt*  locals_len;    /* array of subrs length (optional) */
+    int    lenIV;         /* internal for sub routine calls   */
+    uint*  locals_len;    /* array of subrs length (optional) */
     FT_Hash   locals_hash;   /* used if `num_subrs' was massaged */
 
     FT_Matrix  font_matrix;
@@ -690,7 +690,7 @@ FT_BEGIN_HEADER
     PS_Blend  blend;         /* for multiple master support */
 
     FT_Long*  buildchar;
-    FT_UInt   len_buildchar;
+    uint   len_buildchar;
 
   } PS_Decoder;
 
@@ -709,7 +709,7 @@ FT_BEGIN_HEADER
 
   typedef FT_Error
   (*T1_Builder_Check_Points_Func)( T1_Builder  builder,
-                                   FT_Int      count );
+                                   int      count );
 
   typedef void
   (*T1_Builder_Add_Point_Func)( T1_Builder  builder,
@@ -906,7 +906,7 @@ FT_BEGIN_HEADER
 
   typedef FT_Error
   (*T1_Decoder_Callback)( T1_Decoder  decoder,
-                          FT_UInt     glyph_index );
+                          uint     glyph_index );
 
 
   typedef struct  T1_Decoder_FuncsRec_
@@ -929,12 +929,12 @@ FT_BEGIN_HEADER
     FT_Error
     (*parse_charstrings_old)( T1_Decoder  decoder,
                               FT_Byte*    base,
-                              FT_UInt     len );
+                              uint     len );
 #else
     FT_Error
     (*parse_metrics)( T1_Decoder  decoder,
                       FT_Byte*    base,
-                      FT_UInt     len );
+                      uint     len );
 #endif
 
     FT_Error
@@ -957,20 +957,20 @@ FT_BEGIN_HEADER
     T1_Decoder_Zone      zone;
 
     FT_Service_PsCMaps   psnames;      /* for seac */
-    FT_UInt              num_glyphs;
+    uint              num_glyphs;
     FT_Byte**            glyph_names;
 
-    FT_Int               lenIV;        /* internal for sub routine calls */
-    FT_Int               num_subrs;
+    int               lenIV;        /* internal for sub routine calls */
+    int               num_subrs;
     FT_Byte**            subrs;
-    FT_UInt*             subrs_len;    /* array of subrs length (optional) */
+    uint*             subrs_len;    /* array of subrs length (optional) */
     FT_Hash              subrs_hash;   /* used if `num_subrs' was massaged */
 
     FT_Matrix            font_matrix;
     FT_Vector            font_offset;
 
-    FT_Int               flex_state;
-    FT_Int               num_flex_vectors;
+    int               flex_state;
+    int               num_flex_vectors;
     FT_Vector            flex_vectors[7];
 
     PS_Blend             blend;       /* for multiple master support */
@@ -981,7 +981,7 @@ FT_BEGIN_HEADER
     T1_Decoder_FuncsRec  funcs;
 
     FT_Long*             buildchar;
-    FT_UInt              len_buildchar;
+    uint              len_buildchar;
 
     FT_Bool              seac;
 
@@ -1004,7 +1004,7 @@ FT_BEGIN_HEADER
 
   typedef FT_Error
   (*CFF_Builder_Check_Points_Func)( CFF_Builder*  builder,
-                                    FT_Int        count );
+                                    int        count );
 
   typedef void
   (*CFF_Builder_Add_Point_Func)( CFF_Builder*  builder,
@@ -1183,8 +1183,8 @@ FT_BEGIN_HEADER
     CFF_Decoder_Zone   zones[CFF_MAX_SUBRS_CALLS + 1];
     CFF_Decoder_Zone*  zone;
 
-    FT_Int     flex_state;
-    FT_Int     num_flex_vectors;
+    int     flex_state;
+    int     num_flex_vectors;
     FT_Vector  flex_vectors[7];
 
     FT_Pos  glyph_width;
@@ -1192,20 +1192,20 @@ FT_BEGIN_HEADER
 
     FT_Bool   read_width;
     FT_Bool   width_only;
-    FT_Int    num_hints;
+    int    num_hints;
     FT_Fixed  buildchar[CFF_MAX_TRANS_ELEMENTS];
 
-    FT_UInt  num_locals;
-    FT_UInt  num_globals;
+    uint  num_locals;
+    uint  num_globals;
 
-    FT_Int  locals_bias;
-    FT_Int  globals_bias;
+    int  locals_bias;
+    int  globals_bias;
 
     FT_Byte**  locals;
     FT_Byte**  globals;
 
     FT_Byte**  glyph_names;   /* for pure CFF fonts only  */
-    FT_UInt    num_glyphs;    /* number of glyphs in font */
+    uint    num_glyphs;    /* number of glyphs in font */
 
     FT_Render_Mode  hint_mode;
 
@@ -1236,7 +1236,7 @@ FT_BEGIN_HEADER
     FT_Error
     (*prepare)( CFF_Decoder*  decoder,
                 CFF_Size      size,
-                FT_UInt       glyph_index );
+                uint       glyph_index );
 
 #ifdef CFF_CONFIG_OPTION_OLD_ENGINE
     FT_Error
@@ -1312,7 +1312,7 @@ FT_BEGIN_HEADER
 
     AFM_FontInfo  FontInfo;
 
-    FT_Int
+    int
     (*get_index)( const char*  name,
                   FT_Offset    len,
                   void*        user_data );
@@ -1361,10 +1361,10 @@ FT_BEGIN_HEADER
     void
     (*t1_decrypt)( FT_Byte*   buffer,
                    FT_Offset  length,
-                   FT_UShort  seed );
+                   ushort  seed );
 
-    FT_UInt32
-    (*cff_random)( FT_UInt32  r );
+    uint
+    (*cff_random)( uint  r );
 
     void
     (*ps_decoder_init)( PS_Decoder*  ps_decoder,

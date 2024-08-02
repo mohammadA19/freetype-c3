@@ -114,7 +114,7 @@
   cid_get_ros( FT_Face       face,        /* CID_Face */
                const char*  *registry,
                const char*  *ordering,
-               FT_Int       *supplement )
+               int       *supplement )
   {
     CID_Face      cidface = (CID_Face)face;
     CID_FaceInfo  cid     = &cidface->cid;
@@ -156,8 +156,8 @@
 
   static FT_Error
   cid_get_cid_from_glyph_index( FT_Face   face,        /* CID_Face */
-                                FT_UInt   glyph_index,
-                                FT_UInt  *cid )
+                                uint   glyph_index,
+                                uint  *cid )
   {
     FT_Error  error   = FT_Err_Ok;
     CID_Face  cidface = (CID_Face)face;

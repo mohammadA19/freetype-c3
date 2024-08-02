@@ -33,10 +33,10 @@
 
 
   fn void /* internal */
-  af_sort_pos( FT_UInt  count,
+  af_sort_pos( uint  count,
                FT_Pos*  table )
   {
-    FT_UInt  i, j;
+    uint  i, j;
     FT_Pos   swap;
 
 
@@ -56,12 +56,12 @@
 
 
   fn void /* internal */
-  af_sort_and_quantize_widths( FT_UInt*  count,
+  af_sort_and_quantize_widths( uint*  count,
                                AF_Width  table,
                                FT_Pos    threshold )
   {
-    FT_UInt      i, j;
-    FT_UInt      cur_idx;
+    uint      i, j;
+    uint      cur_idx;
     FT_Pos       cur_val;
     FT_Pos       sum;
     AF_WidthRec  swap;
@@ -151,9 +151,9 @@
     }
     else if ( axis->num_segments >= axis->max_segments )
     {
-      FT_UInt  old_max = axis->max_segments;
-      FT_UInt  new_max = old_max;
-      FT_UInt  big_max = FT_INT_MAX / sizeof ( *segment );
+      uint  old_max = axis->max_segments;
+      uint  new_max = old_max;
+      uint  big_max = FT_INT_MAX / sizeof ( *segment );
 
 
       if ( old_max >= big_max )
@@ -195,7 +195,7 @@
 
   fn FT_Error /* internal */
   af_axis_hints_new_edge( AF_AxisHints  axis,
-                          FT_Int        fpos,
+                          int        fpos,
                           AF_Direction  dir,
                           FT_Bool       top_to_bottom_hinting,
                           FT_Memory     memory,
@@ -216,9 +216,9 @@
     }
     else if ( axis->num_edges >= axis->max_edges )
     {
-      FT_UInt  old_max = axis->max_edges;
-      FT_UInt  new_max = old_max;
-      FT_UInt  big_max = FT_INT_MAX / sizeof ( *edge );
+      uint  old_max = axis->max_edges;
+      uint  new_max = old_max;
+      uint  big_max = FT_INT_MAX / sizeof ( *edge );
 
 
       if ( old_max >= big_max )
@@ -321,7 +321,7 @@
 
   static char*
   af_print_idx( char*   p,
-                size_t  n,
+                usz  n,
                 int     idx )
   {
     if ( idx == -1 )
@@ -502,7 +502,7 @@
 
 
   static const char*
-  af_edge_flags_to_string( FT_UInt  flags )
+  af_edge_flags_to_string( uint  flags )
   {
     static char  temp[32];
     int          pos = 0;
@@ -538,7 +538,7 @@
   af_glyph_hints_dump_segments( AF_GlyphHints  hints,
                                 FT_Bool        to_stdout )
   {
-    FT_Int  dimension;
+    int  dimension;
 
 
     for ( dimension = 1; dimension >= 0; dimension-- )
@@ -604,8 +604,8 @@
 #endif
   FT_Error
   af_glyph_hints_get_num_segments( AF_GlyphHints  hints,
-                                   FT_Int         dimension,
-                                   FT_UInt*       num_segments )
+                                   int         dimension,
+                                   uint*       num_segments )
   {
     AF_Dimension  dim;
     AF_AxisHints  axis;
@@ -630,8 +630,8 @@
 #endif
   FT_Error
   af_glyph_hints_get_segment_offset( AF_GlyphHints  hints,
-                                     FT_Int         dimension,
-                                     FT_UInt        idx,
+                                     int         dimension,
+                                     uint        idx,
                                      FT_Pos        *offset,
                                      FT_Bool       *is_blue,
                                      FT_Pos        *blue_offset )
@@ -680,7 +680,7 @@
   af_glyph_hints_dump_edges( AF_GlyphHints  hints,
                              FT_Bool        to_stdout )
   {
-    FT_Int  dimension;
+    int  dimension;
 
 
     for ( dimension = 1; dimension >= 0; dimension-- )
@@ -872,7 +872,7 @@
   {
     FT_Error   error   = FT_Err_Ok;
     AF_Point   points;
-    FT_Int     old_max, new_max;
+    int     old_max, new_max;
     FT_Fixed   x_scale = hints->x_scale;
     FT_Fixed   y_scale = hints->y_scale;
     FT_Pos     x_delta = hints->x_delta;
@@ -972,18 +972,18 @@
       AF_Point  point_limit = points + hints->num_points;
 
       /* value 20 in `near_limit' is heuristic */
-      FT_UInt  units_per_em = hints->metrics->scaler.face->units_per_EM;
-      FT_Int   near_limit   = 20 * units_per_em / 2048;
+      uint  units_per_em = hints->metrics->scaler.face->units_per_EM;
+      int   near_limit   = 20 * units_per_em / 2048;
 
 
       /* compute coordinates & Bezier flags, next and prev */
       {
         FT_Vector*  vec           = outline->points;
         FT_Byte*    tag           = outline->tags;
-        FT_UShort   endpoint      = outline->contours[0];
+        ushort   endpoint      = outline->contours[0];
         AF_Point    end           = points + endpoint;
         AF_Point    prev          = end;
-        FT_Int      contour_index = 0;
+        int      contour_index = 0;
 
 
         for ( point = points; point < point_limit; point++, vec++, tag++ )
@@ -994,13 +994,13 @@
           point->in_dir  = (FT_Char)AF_DIR_NONE;
           point->out_dir = (FT_Char)AF_DIR_NONE;
 
-          point->fx = (FT_Short)vec->x;
-          point->fy = (FT_Short)vec->y;
+          point->fx = (short)vec->x;
+          point->fy = (short)vec->y;
           point->ox = point->x = FT_MulFix( vec->x, x_scale ) + x_delta;
           point->oy = point->y = FT_MulFix( vec->y, y_scale ) + y_delta;
 
-          end->fx = (FT_Short)outline->points[endpoint].x;
-          end->fy = (FT_Short)outline->points[endpoint].y;
+          end->fx = (short)outline->points[endpoint].x;
+          end->fy = (short)outline->points[endpoint].y;
 
           switch ( FT_CURVE_TAG( *tag ) )
           {
@@ -1048,8 +1048,8 @@
       {
         AF_Point*   contour       = hints->contours;
         AF_Point*   contour_limit = contour + hints->num_contours;
-        FT_UShort*  end           = outline->contours;
-        FT_Int      idx           = 0;
+        ushort*  end           = outline->contours;
+        int      idx           = 0;
 
 
         for ( ; contour < contour_limit; contour++, end++ )
@@ -1072,7 +1072,7 @@
          * be equal to the accumulated one.
          */
 
-        FT_Int  near_limit2 = 2 * near_limit - 1;
+        int  near_limit2 = 2 * near_limit - 1;
 
         AF_Point*  contour;
         AF_Point*  contour_limit = hints->contours + hints->num_contours;
@@ -1404,7 +1404,7 @@
     AF_AxisHints  axis        = &hints->axis[dim];
     AF_Edge       edges       = axis->edges;
     AF_Edge       edge_limit  = FT_OFFSET( edges, axis->num_edges );
-    FT_UInt       touch_flag;
+    uint       touch_flag;
 
 
     if ( dim == AF_DIMENSION_HORZ )
@@ -1477,7 +1477,7 @@
         }
 
         {
-          FT_PtrDist  min, max, mid;
+          isz  min, max, mid;
           FT_Pos      fpos;
 
 
@@ -1489,7 +1489,7 @@
           /* for a small number of edges, a linear search is better */
           if ( max <= 8 )
           {
-            FT_PtrDist  nn;
+            isz  nn;
 
 
             for ( nn = 0; nn < max; nn++ )
@@ -1677,7 +1677,7 @@
     AF_Point   point_limit   = points + hints->num_points;
     AF_Point*  contour       = hints->contours;
     AF_Point*  contour_limit = contour + hints->num_contours;
-    FT_UInt    touch_flag;
+    uint    touch_flag;
     AF_Point   point;
     AF_Point   end_point;
     AF_Point   first_point;

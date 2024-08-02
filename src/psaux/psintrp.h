@@ -61,7 +61,7 @@ FT_BEGIN_HEADER
   cf2_hintmask_getMaskPtr( CF2_HintMask  hintmask );
   fn void /* internal */
   cf2_hintmask_setAll( CF2_HintMask  hintmask,
-                       size_t        bitCount );
+                       usz        bitCount );
 
   fn void /* internal */
   cf2_interpT2CharString( CF2_Font              font,

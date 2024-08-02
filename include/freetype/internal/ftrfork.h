@@ -42,7 +42,7 @@ FT_BEGIN_HEADER
 
   typedef struct  FT_RFork_Ref_
   {
-    FT_Short  res_id;
+    short  res_id;
     FT_Long   offset;
 
   } FT_RFork_Ref;

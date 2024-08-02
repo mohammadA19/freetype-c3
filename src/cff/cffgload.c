@@ -50,7 +50,7 @@
 
   fn FT_Error /* internal */
   cff_get_glyph_data( TT_Face    face,
-                      FT_UInt    glyph_index,
+                      uint    glyph_index,
                       FT_Byte**  pointer,
                       FT_ULong*  length )
   {
@@ -102,7 +102,7 @@
 
 
       data.pointer = *pointer;
-      data.length  = (FT_UInt)length;
+      data.length  = (uint)length;
 
       face->root.internal->incremental_interface->funcs->free_glyph_data(
         face->root.internal->incremental_interface->object, &data );
@@ -142,11 +142,11 @@
 
   fn FT_Error /* internal */
   cff_compute_max_advance( TT_Face  face,
-                           FT_Int*  max_advance )
+                           int*  max_advance )
   {
     FT_Error     error = FT_Err_Ok;
     CFF_Decoder  decoder;
-    FT_Int       glyph_index;
+    int       glyph_index;
     CFF_Font     cff = (CFF_Font)face->other;
 
     PSAux_Service            psaux         = (PSAux_Service)face->psaux;
@@ -201,8 +201,8 @@
   fn FT_Error /* internal */
   cff_slot_load( CFF_GlyphSlot  glyph,
                  CFF_Size       size,
-                 FT_UInt        glyph_index,
-                 FT_Int32       load_flags )
+                 uint        glyph_index,
+                 int       load_flags )
   {
     FT_Error     error;
     CFF_Decoder  decoder;
@@ -272,7 +272,7 @@
         error = sfnt->load_sbit_image( face,
                                        size->strike_index,
                                        glyph_index,
-                                       (FT_UInt)load_flags,
+                                       (uint)load_flags,
                                        stream,
                                        &glyph->root.bitmap,
                                        &metrics );
@@ -280,8 +280,8 @@
         if ( !error )
         {
           FT_Bool    has_vertical_info;
-          FT_UShort  advance;
-          FT_Short   dummy;
+          ushort  advance;
+          short   dummy;
 
 
           glyph->root.outline.n_points   = 0;
@@ -383,9 +383,9 @@
         FT_Fixed  x_scale = size->root.metrics.x_scale;
         FT_Fixed  y_scale = size->root.metrics.y_scale;
 
-        FT_Short   dummy;
-        FT_UShort  advanceX;
-        FT_UShort  advanceY;
+        short   dummy;
+        ushort  advanceX;
+        ushort  advanceY;
 
 
         FT_TRACE3(( "Successfully loaded SVG glyph\n" ));
@@ -626,8 +626,8 @@
 
         if ( face->horizontal.number_Of_HMetrics )
         {
-          FT_Short   horiBearingX = 0;
-          FT_UShort  horiAdvance  = 0;
+          short   horiBearingX = 0;
+          ushort  horiAdvance  = 0;
 
 
           ( (SFNT_Service)face->sfnt )->get_metrics( face, 0,
@@ -653,8 +653,8 @@
         /* get the vertical metrics from the vmtx table if we have one */
         if ( has_vertical_info )
         {
-          FT_Short   vertBearingY = 0;
-          FT_UShort  vertAdvance  = 0;
+          short   vertBearingY = 0;
+          ushort  vertAdvance  = 0;
 
 
           ( (SFNT_Service)face->sfnt )->get_metrics( face, 1,
@@ -710,7 +710,7 @@
         if ( ( load_flags & FT_LOAD_NO_SCALE ) == 0 || force_scaling )
         {
           /* scale the outline and the metrics */
-          FT_Int       n;
+          int       n;
           FT_Outline*  cur     = &glyph->root.outline;
           FT_Vector*   vec     = cur->points;
           FT_Fixed     x_scale = glyph->x_scale;

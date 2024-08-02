@@ -83,7 +83,7 @@
     NULL
   };
 
-  static unsigned int  error_count    = 1;
+  static uint  error_count    = 1;
   static double        error_fraction = 0.0;
 
   static FT_F26Dot6  font_size = 12 * 64;
@@ -92,13 +92,13 @@
   {
     char*         name;
     long          len;
-    unsigned int  isbinary: 1;
-    unsigned int  isascii: 1;
-    unsigned int  ishex: 1;
+    uint  isbinary: 1;
+    uint  isascii: 1;
+    uint  ishex: 1;
 
   } *fontlist;
 
-  static unsigned int  fcnt;
+  static uint  fcnt;
 
 
   static int
@@ -164,7 +164,7 @@
   static void
   TestFace( FT_Face  face )
   {
-    unsigned int  gid;
+    uint  gid;
     int           load_flags = FT_LOAD_DEFAULT;
 
 
@@ -349,7 +349,7 @@
              char**  extensions )
   {
     int           i;
-    unsigned int  max;
+    uint  max;
     char          buffer[1025];
     struct stat   statb;
 
@@ -412,13 +412,13 @@
   }
 
 
-  static unsigned int
+  static uint
   getErrorCnt( struct fontlist*  item )
   {
     if ( error_count == 0 && error_fraction == 0.0 )
       return 0;
 
-    return error_count + (unsigned int)( error_fraction * item->len );
+    return error_count + (uint)( error_fraction * item->len );
   }
 
 
@@ -439,8 +439,8 @@
   {
     static char   buffer[8096];
     FILE          *good, *newf;
-    size_t        len;
-    unsigned int  i, err_cnt;
+    usz        len;
+    uint  i, err_cnt;
 
 
     good = fopen( item->name, "r" );
@@ -606,8 +606,8 @@
     char*   testfile = NULL;
 
 
-    dirs = calloc( (size_t)( argc + 1 ), sizeof ( char ** ) );
-    exts = calloc( (size_t)( argc + 1 ), sizeof ( char ** ) );
+    dirs = calloc( (usz)( argc + 1 ), sizeof ( char ** ) );
+    exts = calloc( (usz)( argc + 1 ), sizeof ( char ** ) );
 
     for ( i = 1; i < argc; i++ )
     {
@@ -629,7 +629,7 @@
         if ( !rset )
           error_fraction = 0.0;
         rset = true;
-        error_count = (unsigned int)strtoul( argv[++i], &end, 10 );
+        error_count = (uint)strtoul( argv[++i], &end, 10 );
         if ( *end != '\0' )
         {
           fprintf( stderr, "Bad value for error-count: %s\n", argv[i] );
@@ -705,7 +705,7 @@
       ExecuteTest( testfile );         /* This should never return */
 
     time( &now );
-    srandom( (unsigned int)now );
+    srandom( (uint)now );
 
     FindFonts( dirs, exts );
     mkdir( results_dir, 0755 );

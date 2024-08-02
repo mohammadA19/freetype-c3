@@ -78,16 +78,16 @@
   ft_lcd_filter_fir( FT_Bitmap*           bitmap,
                      FT_LcdFiveTapFilter  weights )
   {
-    FT_UInt   width  = (FT_UInt)bitmap->width;
-    FT_UInt   height = (FT_UInt)bitmap->rows;
-    FT_Int    pitch  = bitmap->pitch;
+    uint   width  = (uint)bitmap->width;
+    uint   height = (uint)bitmap->rows;
+    int    pitch  = bitmap->pitch;
     FT_Byte*  origin = bitmap->buffer;
     FT_Byte   mode   = bitmap->pixel_mode;
 
 
     /* take care of bitmap flow */
     if ( pitch > 0 && height > 0 )
-      origin += pitch * (FT_Int)( height - 1 );
+      origin += pitch * (int)( height - 1 );
 
     /* horizontal in-place FIR filter */
     if ( mode == FT_PIXEL_MODE_LCD && width >= 2 )
@@ -100,8 +100,8 @@
 
       for ( ; height > 0; height--, line -= pitch )
       {
-        FT_UInt  fir[5];
-        FT_UInt  val, xx;
+        uint  fir[5];
+        uint  val, xx;
 
 
         val    = line[0];
@@ -141,8 +141,8 @@
       for ( ; width > 0; width--, column++ )
       {
         FT_Byte*  col = column;
-        FT_UInt   fir[5];
-        FT_UInt   val, yy;
+        uint   fir[5];
+        uint   val, yy;
 
 
         val    = col[0];
@@ -184,13 +184,13 @@
   _ft_lcd_filter_legacy( FT_Bitmap*      bitmap,
                          FT_Byte*        weights )
   {
-    FT_UInt   width  = (FT_UInt)bitmap->width;
-    FT_UInt   height = (FT_UInt)bitmap->rows;
-    FT_Int    pitch  = bitmap->pitch;
+    uint   width  = (uint)bitmap->width;
+    uint   height = (uint)bitmap->rows;
+    int    pitch  = bitmap->pitch;
     FT_Byte*  origin = bitmap->buffer;
     FT_Byte   mode   = bitmap->pixel_mode;
 
-    static const unsigned int  filters[3][3] =
+    static const uint  filters[3][3] =
     {
       { 65538 * 9/13, 65538 * 1/6, 65538 * 1/13 },
       { 65538 * 3/13, 65538 * 4/6, 65538 * 3/13 },
@@ -202,7 +202,7 @@
 
     /* take care of bitmap flow */
     if ( pitch > 0 && height > 0 )
-      origin += pitch * (FT_Int)( height - 1 );
+      origin += pitch * (int)( height - 1 );
 
     /* horizontal in-place intra-pixel filter */
     if ( mode == FT_PIXEL_MODE_LCD && width >= 3 )
@@ -212,13 +212,13 @@
 
       for ( ; height > 0; height--, line -= pitch )
       {
-        FT_UInt  xx;
+        uint  xx;
 
 
         for ( xx = 0; xx < width; xx += 3 )
         {
-          FT_UInt  r, g, b;
-          FT_UInt  p;
+          uint  r, g, b;
+          uint  p;
 
 
           p  = line[xx];
@@ -254,8 +254,8 @@
 
         for ( ; height > 0; height -= 3, col -= 3 * pitch )
         {
-          FT_UInt  r, g, b;
-          FT_UInt  p;
+          uint  r, g, b;
+          uint  p;
 
 
           p  = col[0];

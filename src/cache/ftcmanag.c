@@ -334,8 +334,8 @@
 
   FT_Error
   FTC_Manager_New( FT_Library          library,
-                   FT_UInt             max_faces,
-                   FT_UInt             max_sizes,
+                   uint             max_faces,
+                   uint             max_sizes,
                    FT_ULong            max_bytes,
                    FTC_Face_Requester  requester,
                    FT_Pointer          req_data,
@@ -403,7 +403,7 @@
   FTC_Manager_Done( FTC_Manager  manager )
   {
     FT_Memory  memory;
-    FT_UInt    idx;
+    uint    idx;
 
 
     if ( !manager || !manager->library )
@@ -605,13 +605,13 @@
   }
 
 
-  fn FT_UInt /* internal */
+  fn uint /* internal */
   FTC_Manager_FlushN( FTC_Manager  manager,
-                      FT_UInt      count )
+                      uint      count )
   {
     FTC_Node  first = manager->nodes_list;
     FTC_Node  prev, node;
-    FT_UInt   result = 0;
+    uint   result = 0;
 
 
     /* try to remove `count' nodes from the list */
@@ -643,7 +643,7 @@
   FTC_Manager_RemoveFaceID( FTC_Manager  manager,
                             FTC_FaceID   face_id )
   {
-    FT_UInt  nn;
+    uint  nn;
 
 
     if ( !manager )

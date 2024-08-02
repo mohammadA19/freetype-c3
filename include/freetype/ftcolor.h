@@ -169,12 +169,12 @@ FT_BEGIN_HEADER
    *   2.10
    */
   typedef struct  FT_Palette_Data_ {
-    FT_UShort         num_palettes;
-    const FT_UShort*  palette_name_ids;
-    const FT_UShort*  palette_flags;
+    ushort         num_palettes;
+    const ushort*  palette_name_ids;
+    const ushort*  palette_flags;
 
-    FT_UShort         num_palette_entries;
-    const FT_UShort*  palette_entry_name_ids;
+    ushort         num_palette_entries;
+    const ushort*  palette_entry_name_ids;
 
   } FT_Palette_Data;
 
@@ -262,7 +262,7 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Error )
   FT_Palette_Select( FT_Face     face,
-                     FT_UShort   palette_index,
+                     ushort   palette_index,
                      FT_Color*  *apalette );
 
 
@@ -342,8 +342,8 @@ FT_BEGIN_HEADER
    */
   typedef struct  FT_LayerIterator_
   {
-    FT_UInt   num_layers;
-    FT_UInt   layer;
+    uint   num_layers;
+    uint   layer;
     FT_Byte*  p;
 
   } FT_LayerIterator;
@@ -418,8 +418,8 @@ FT_BEGIN_HEADER
    *     FT_LayerIterator  iterator;
    *
    *     FT_Bool  have_layers;
-   *     FT_UInt  layer_glyph_index;
-   *     FT_UInt  layer_color_index;
+   *     uint  layer_glyph_index;
+   *     uint  layer_color_index;
    *
    *
    *     error = FT_Palette_Select( face, palette_index, &palette );
@@ -462,9 +462,9 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Bool )
   FT_Get_Color_Glyph_Layer( FT_Face            face,
-                            FT_UInt            base_glyph,
-                            FT_UInt           *aglyph_index,
-                            FT_UInt           *acolor_index,
+                            uint            base_glyph,
+                            uint           *aglyph_index,
+                            uint           *acolor_index,
                             FT_LayerIterator*  iterator );
 
 
@@ -548,8 +548,8 @@ FT_BEGIN_HEADER
    */
   typedef struct  FT_ColorStopIterator_
   {
-    FT_UInt  num_color_stops;
-    FT_UInt  current_color_stop;
+    uint  num_color_stops;
+    uint  current_color_stop;
 
     FT_Byte*  p;
 
@@ -579,7 +579,7 @@ FT_BEGIN_HEADER
    */
   typedef struct  FT_ColorIndex_
   {
-    FT_UInt16   palette_index;
+    ushort   palette_index;
     FT_F2Dot14  alpha;
 
   } FT_ColorIndex;
@@ -1003,7 +1003,7 @@ FT_BEGIN_HEADER
   typedef struct  FT_PaintGlyph_
   {
     FT_OpaquePaint  paint;
-    FT_UInt         glyphID;
+    uint         glyphID;
 
   } FT_PaintGlyph;
 
@@ -1026,7 +1026,7 @@ FT_BEGIN_HEADER
    */
   typedef struct  FT_PaintColrGlyph_
   {
-    FT_UInt  glyphID;
+    uint  glyphID;
 
   } FT_PaintColrGlyph;
 
@@ -1487,7 +1487,7 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Bool )
   FT_Get_Color_Glyph_Paint( FT_Face                  face,
-                            FT_UInt                  base_glyph,
+                            uint                  base_glyph,
                             FT_Color_Root_Transform  root_transform,
                             FT_OpaquePaint*          paint );
 
@@ -1529,7 +1529,7 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Bool )
   FT_Get_Color_Glyph_ClipBox( FT_Face      face,
-                              FT_UInt      base_glyph,
+                              uint      base_glyph,
                               FT_ClipBox*  clip_box );
 
 

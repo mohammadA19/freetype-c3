@@ -99,7 +99,7 @@ THE SOFTWARE.
     PCF_Table  tables;
 
     FT_Memory  memory = FT_FACE( face )->memory;
-    FT_UInt    n;
+    uint    n;
 
     FT_ULong   size;
 
@@ -145,7 +145,7 @@ THE SOFTWARE.
 
     for ( n = 0; n < toc->count - 1; n++ )
     {
-      FT_UInt  i, have_change;
+      uint  i, have_change;
 
 
       have_change = 0;
@@ -225,7 +225,7 @@ THE SOFTWARE.
 #ifdef FT_DEBUG_LEVEL_TRACE
 
     {
-      FT_UInt      i, j;
+      uint      i, j;
       const char*  name = "?";
 
 
@@ -344,11 +344,11 @@ THE SOFTWARE.
       if ( FT_STREAM_READ_FIELDS( pcf_compressed_metric_header, &compr ) )
         goto Exit;
 
-      metric->leftSideBearing  = (FT_Short)( compr.leftSideBearing  - 0x80 );
-      metric->rightSideBearing = (FT_Short)( compr.rightSideBearing - 0x80 );
-      metric->characterWidth   = (FT_Short)( compr.characterWidth   - 0x80 );
-      metric->ascent           = (FT_Short)( compr.ascent           - 0x80 );
-      metric->descent          = (FT_Short)( compr.descent          - 0x80 );
+      metric->leftSideBearing  = (short)( compr.leftSideBearing  - 0x80 );
+      metric->rightSideBearing = (short)( compr.rightSideBearing - 0x80 );
+      metric->characterWidth   = (short)( compr.characterWidth   - 0x80 );
+      metric->ascent           = (short)( compr.ascent           - 0x80 );
+      metric->descent          = (short)( compr.descent          - 0x80 );
       metric->attributes       = 0;
     }
 
@@ -981,10 +981,10 @@ THE SOFTWARE.
     FT_ULong    format, size;
     PCF_Enc     enc = &face->enc;
     FT_ULong    nencoding;
-    FT_UShort*  offset;
-    FT_UShort   defaultCharRow, defaultCharCol;
-    FT_UShort   encodingOffset, defaultCharEncodingOffset;
-    FT_UShort   i, j;
+    ushort*  offset;
+    ushort   defaultCharRow, defaultCharCol;
+    ushort   encodingOffset, defaultCharEncodingOffset;
+    ushort   i, j;
     FT_Byte*    pos;
 
 
@@ -1306,7 +1306,7 @@ THE SOFTWARE.
     PCF_Property  prop;
 
     const char*  strings[4] = { NULL, NULL, NULL, NULL };
-    size_t       lengths[4], nn, len;
+    usz       lengths[4], nn, len;
 
 
     face->style_flags = 0;
@@ -1388,7 +1388,7 @@ THE SOFTWARE.
         /* add_style_name and setwidth_name     */
         if ( nn == 0 || nn == 3 )
         {
-          size_t  mm;
+          usz  mm;
 
 
           for ( mm = 0; mm < len; mm++ )
@@ -1565,7 +1565,7 @@ THE SOFTWARE.
 
       {
         FT_Bitmap_Size*  bsize = root->available_sizes;
-        FT_Short         resolution_x = 0, resolution_y = 0;
+        short         resolution_x = 0, resolution_y = 0;
 
 
         /* for simplicity, we take absolute values of integer properties */
@@ -1586,7 +1586,7 @@ THE SOFTWARE.
                       bsize->height ));
         }
         else
-          bsize->height = FT_ABS( (FT_Short)( face->accel.fontAscent +
+          bsize->height = FT_ABS( (short)( face->accel.fontAscent +
                                               face->accel.fontDescent ) );
 
         prop = pcf_find_property( face, "AVERAGE_WIDTH" );
@@ -1603,7 +1603,7 @@ THE SOFTWARE.
                         bsize->width ));
           }
           else
-            bsize->width = FT_ABS( (FT_Short)( ( prop->value.l + 5 ) / 10 ) );
+            bsize->width = FT_ABS( (short)( ( prop->value.l + 5 ) / 10 ) );
         }
         else
         {
@@ -1645,7 +1645,7 @@ THE SOFTWARE.
                         bsize->y_ppem ));
           }
           else
-            bsize->y_ppem = FT_ABS( (FT_Short)prop->value.l ) << 6;
+            bsize->y_ppem = FT_ABS( (short)prop->value.l ) << 6;
         }
 
         prop = pcf_find_property( face, "RESOLUTION_X" );
@@ -1662,7 +1662,7 @@ THE SOFTWARE.
                         resolution_x ));
           }
           else
-            resolution_x = FT_ABS( (FT_Short)prop->value.l );
+            resolution_x = FT_ABS( (short)prop->value.l );
         }
 
         prop = pcf_find_property( face, "RESOLUTION_Y" );
@@ -1679,7 +1679,7 @@ THE SOFTWARE.
                         resolution_y ));
           }
           else
-            resolution_y = FT_ABS( (FT_Short)prop->value.l );
+            resolution_y = FT_ABS( (short)prop->value.l );
         }
 
         if ( bsize->y_ppem == 0 )

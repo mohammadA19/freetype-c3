@@ -41,12 +41,12 @@
 
   typedef struct  GXV_mort_subtable_type2_StateOptRec_
   {
-    FT_UShort  ligActionTable;
-    FT_UShort  componentTable;
-    FT_UShort  ligatureTable;
-    FT_UShort  ligActionTable_length;
-    FT_UShort  componentTable_length;
-    FT_UShort  ligatureTable_length;
+    ushort  ligActionTable;
+    ushort  componentTable;
+    ushort  ligatureTable;
+    ushort  ligActionTable_length;
+    ushort  componentTable_length;
+    ushort  ligatureTable_length;
 
   }  GXV_mort_subtable_type2_StateOptRec,
     *GXV_mort_subtable_type2_StateOptRecData;
@@ -80,18 +80,18 @@
 
 
   static void
-  gxv_mort_subtable_type2_subtable_setup( FT_UShort      table_size,
-                                          FT_UShort      classTable,
-                                          FT_UShort      stateArray,
-                                          FT_UShort      entryTable,
-                                          FT_UShort      *classTable_length_p,
-                                          FT_UShort      *stateArray_length_p,
-                                          FT_UShort      *entryTable_length_p,
+  gxv_mort_subtable_type2_subtable_setup( ushort      table_size,
+                                          ushort      classTable,
+                                          ushort      stateArray,
+                                          ushort      entryTable,
+                                          ushort      *classTable_length_p,
+                                          ushort      *stateArray_length_p,
+                                          ushort      *entryTable_length_p,
                                           GXV_Validator  gxvalid )
   {
-    FT_UShort  o[6];
-    FT_UShort  *l[6];
-    FT_UShort  buff[7];
+    ushort  o[6];
+    ushort  *l[6];
+    ushort  buff[7];
 
     GXV_mort_subtable_type2_StateOptRecData  optdata =
       (GXV_mort_subtable_type2_StateOptRecData)gxvalid->statetable.optdata;
@@ -137,7 +137,7 @@
   static void
   gxv_mort_subtable_type2_ligActionOffset_validate(
     FT_Bytes       table,
-    FT_UShort      ligActionOffset,
+    ushort      ligActionOffset,
     GXV_Validator  gxvalid )
   {
     /* access ligActionTable */
@@ -171,16 +171,16 @@
       /* validate entry in ligActionTable */
       FT_ULong   lig_action;
 #ifdef GXV_LOAD_UNUSED_VARS
-      FT_UShort  last;
-      FT_UShort  store;
+      ushort  last;
+      ushort  store;
 #endif
       FT_ULong   offset;
 
 
       lig_action = FT_NEXT_ULONG( p );
 #ifdef GXV_LOAD_UNUSED_VARS
-      last   = (FT_UShort)( ( lig_action >> 31 ) & 1 );
-      store  = (FT_UShort)( ( lig_action >> 30 ) & 1 );
+      last   = (ushort)( ( lig_action >> 31 ) & 1 );
+      store  = (ushort)( ( lig_action >> 30 ) & 1 );
 #endif
 
       /* Apple spec defines this offset as a word offset */
@@ -211,17 +211,17 @@
   static void
   gxv_mort_subtable_type2_entry_validate(
     FT_Byte                         state,
-    FT_UShort                       flags,
+    ushort                       flags,
     GXV_StateTable_GlyphOffsetCPtr  glyphOffset_p,
     FT_Bytes                        table,
     FT_Bytes                        limit,
     GXV_Validator                   gxvalid )
   {
 #ifdef GXV_LOAD_UNUSED_VARS
-    FT_UShort setComponent;
-    FT_UShort dontAdvance;
+    ushort setComponent;
+    ushort dontAdvance;
 #endif
-    FT_UShort offset;
+    ushort offset;
 
     FT_UNUSED( state );
     FT_UNUSED( glyphOffset_p );
@@ -229,11 +229,11 @@
 
 
 #ifdef GXV_LOAD_UNUSED_VARS
-    setComponent = (FT_UShort)( ( flags >> 15 ) & 1 );
-    dontAdvance  = (FT_UShort)( ( flags >> 14 ) & 1 );
+    setComponent = (ushort)( ( flags >> 15 ) & 1 );
+    dontAdvance  = (ushort)( ( flags >> 14 ) & 1 );
 #endif
 
-    offset = (FT_UShort)( flags & 0x3FFFU );
+    offset = (ushort)( flags & 0x3FFFU );
 
     if ( 0 < offset )
       gxv_mort_subtable_type2_ligActionOffset_validate( table, offset,
@@ -259,7 +259,7 @@
       /* Apple does not give specification of ligatureTable format */
       while ( p < limit )
       {
-        FT_UShort  lig_gid;
+        ushort  lig_gid;
 
 
         GXV_LIMIT_CHECK( 2 );

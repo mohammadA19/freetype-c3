@@ -39,11 +39,11 @@
   /* scale the widths/heights table */
   static void
   psh_globals_scale_widths( PSH_Globals  globals,
-                            FT_UInt      direction )
+                            uint      direction )
   {
     PSH_Dimension  dim   = &globals->dimension[direction];
     PSH_Widths     stdw  = &dim->stdw;
-    FT_UInt        count = stdw->count;
+    uint        count = stdw->count;
     PSH_Width      width = stdw->widths;
     PSH_Width      stand = width;               /* standard width/height */
     FT_Fixed       scale = dim->scale_mult;
@@ -83,9 +83,9 @@
   /* org_width is in font units, result in device pixels, 26.6 format */
   fn FT_Pos /* internal */
   psh_dimension_snap_width( PSH_Dimension  dimension,
-                            FT_Int         org_width )
+                            int         org_width )
   {
-    FT_UInt  n;
+    uint  n;
     FT_Pos   width     = FT_MulFix( org_width, dimension->scale_mult );
     FT_Pos   best      = 64 + 32 + 2;
     FT_Pos   reference = width;
@@ -138,13 +138,13 @@
   static void
   psh_blues_set_zones_0( PSH_Blues       target,
                          FT_Bool         is_others,
-                         FT_UInt         read_count,
-                         FT_Short*       read,
+                         uint         read_count,
+                         short*       read,
                          PSH_Blue_Table  top_table,
                          PSH_Blue_Table  bot_table )
   {
-    FT_UInt  count_top = top_table->count;
-    FT_UInt  count_bot = bot_table->count;
+    uint  count_top = top_table->count;
+    uint  count_bot = bot_table->count;
     FT_Bool  first     = 1;
 
     FT_UNUSED( target );
@@ -152,8 +152,8 @@
 
     for ( ; read_count > 1; read_count -= 2 )
     {
-      FT_Int         reference, delta;
-      FT_UInt        count;
+      int         reference, delta;
+      uint        count;
       PSH_Blue_Zone  zones, zone;
       FT_Bool        top;
 
@@ -188,7 +188,7 @@
 
         if ( reference == zone->org_ref )
         {
-          FT_Int  delta0 = zone->org_delta;
+          int  delta0 = zone->org_delta;
 
 
           /* we have two zones on the same reference position -- */
@@ -232,15 +232,15 @@
   /* fuzz-expands the zones as well.                                    */
   static void
   psh_blues_set_zones( PSH_Blues  target,
-                       FT_UInt    count,
-                       FT_Short*  blues,
-                       FT_UInt    count_others,
-                       FT_Short*  other_blues,
-                       FT_Int     fuzz,
-                       FT_Int     family )
+                       uint    count,
+                       short*  blues,
+                       uint    count_others,
+                       short*  other_blues,
+                       int     fuzz,
+                       int     family )
   {
     PSH_Blue_Table  top_table, bot_table;
-    FT_UInt         count_top, count_bot;
+    uint         count_top, count_bot;
 
 
     if ( family )
@@ -276,7 +276,7 @@
 
       for ( count = count_top; count > 0; count--, zone++ )
       {
-        FT_Int  delta;
+        int  delta;
 
 
         if ( count > 1 )
@@ -299,7 +299,7 @@
 
       for ( count = count_bot; count > 0; count--, zone++ )
       {
-        FT_Int  delta;
+        int  delta;
 
 
         if ( count > 1 )
@@ -316,7 +316,7 @@
 
     /* expand top and bottom tables with blue fuzz */
     {
-      FT_Int         dim, top, bot, delta;
+      int         dim, top, bot, delta;
       PSH_Blue_Zone  zone;
 
 
@@ -367,8 +367,8 @@
                          FT_Fixed   scale,
                          FT_Pos     delta )
   {
-    FT_UInt         count;
-    FT_UInt         num;
+    uint         count;
+    uint         num;
     PSH_Blue_Table  table = NULL;
 
     /*                                                        */
@@ -417,7 +417,7 @@
     /*    dist <= BlueShift && dist*scale <= 0.5 pixels       */
     /*                                                        */
     {
-      FT_Int  threshold = blues->blue_shift;
+      int  threshold = blues->blue_shift;
 
 
       while ( threshold > 0 && FT_MulFix( threshold, scale ) > 32 )
@@ -473,7 +473,7 @@
     for ( num = 0; num < 2; num++ )
     {
       PSH_Blue_Zone   zone1, zone2;
-      FT_UInt         count1, count2;
+      uint         count1, count2;
       PSH_Blue_Table  normal, family;
 
 
@@ -523,17 +523,17 @@
 
 
   /* calculate the maximum height of given blue zones */
-  static FT_Short
-  psh_calc_max_height( FT_UInt          num,
-                       const FT_Short*  values,
-                       FT_Short         cur_max )
+  static short
+  psh_calc_max_height( uint          num,
+                       const short*  values,
+                       short         cur_max )
   {
-    FT_UInt  count;
+    uint  count;
 
 
     for ( count = 0; count < num; count += 2 )
     {
-      FT_Short  cur_height = values[count + 1] - values[count];
+      short  cur_height = values[count + 1] - values[count];
 
 
       if ( cur_height > cur_max )
@@ -546,15 +546,15 @@
 
   fn void /* internal */
   psh_blues_snap_stem( PSH_Blues      blues,
-                       FT_Int         stem_top,
-                       FT_Int         stem_bot,
+                       int         stem_top,
+                       int         stem_bot,
                        PSH_Alignment  alignment )
   {
     PSH_Blue_Table  table;
-    FT_UInt         count;
+    uint         count;
     FT_Pos          delta;
     PSH_Blue_Zone   zone;
-    FT_Int          no_shoots;
+    int          no_shoots;
 
 
     alignment->align = PSH_BLUE_ALIGN_NONE;
@@ -652,8 +652,8 @@
 
     if ( !FT_QNEW( globals ) )
     {
-      FT_UInt    count;
-      FT_Short*  read;
+      uint    count;
+      short*  read;
 
 
       globals->memory = memory;
@@ -709,7 +709,7 @@
       /* limit the BlueScale value to `1 / max_of_blue_zone_heights' */
       {
         FT_Fixed  max_scale;
-        FT_Short  max_height = 1;
+        short  max_height = 1;
 
 
         max_height = psh_calc_max_height( priv->num_blue_values,

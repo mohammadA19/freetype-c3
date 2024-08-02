@@ -40,7 +40,7 @@
     /* just for safety, check that the character entries are correctly */
     /* sorted in increasing character code order                       */
     {
-      FT_UInt  n;
+      uint  n;
 
 
       for ( n = 1; n < pfrcmap->num_chars; n++ )
@@ -69,14 +69,14 @@
   }
 
 
-  static FT_UInt
+  static uint
   pfr_cmap_char_index( FT_CMap    cmap,       /* PFR_CMap */
-                       FT_UInt32  char_code )
+                       uint  char_code )
   {
     PFR_CMap  pfrcmap = (PFR_CMap)cmap;
-    FT_UInt   min     = 0;
-    FT_UInt   max     = pfrcmap->num_chars;
-    FT_UInt   mid     = min + ( max - min ) / 2;
+    uint   min     = 0;
+    uint   max     = pfrcmap->num_chars;
+    uint   mid     = min + ( max - min ) / 2;
     PFR_Char  gchar;
 
 
@@ -101,20 +101,20 @@
   }
 
 
-  static FT_UInt
+  static uint
   pfr_cmap_char_next( FT_CMap     cmap,        /* PFR_CMap */
-                      FT_UInt32  *pchar_code )
+                      uint  *pchar_code )
   {
     PFR_CMap   pfrcmap   = (PFR_CMap)cmap;
-    FT_UInt    result    = 0;
-    FT_UInt32  char_code = *pchar_code + 1;
+    uint    result    = 0;
+    uint  char_code = *pchar_code + 1;
 
 
   Restart:
     {
-      FT_UInt   min = 0;
-      FT_UInt   max = pfrcmap->num_chars;
-      FT_UInt   mid = min + ( max - min ) / 2;
+      uint   min = 0;
+      uint   max = pfrcmap->num_chars;
+      uint   mid = min + ( max - min ) / 2;
       PFR_Char  gchar;
 
 

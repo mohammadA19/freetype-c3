@@ -31,20 +31,20 @@ FT_BEGIN_HEADER
 
   typedef FT_Error
   (*FT_PFR_GetMetricsFunc)( FT_Face    face,
-                            FT_UInt   *aoutline,
-                            FT_UInt   *ametrics,
+                            uint   *aoutline,
+                            uint   *ametrics,
                             FT_Fixed  *ax_scale,
                             FT_Fixed  *ay_scale );
 
   typedef FT_Error
   (*FT_PFR_GetKerningFunc)( FT_Face     face,
-                            FT_UInt     left,
-                            FT_UInt     right,
+                            uint     left,
+                            uint     right,
                             FT_Vector  *avector );
 
   typedef FT_Error
   (*FT_PFR_GetAdvanceFunc)( FT_Face   face,
-                            FT_UInt   gindex,
+                            uint   gindex,
                             FT_Pos   *aadvance );
 
 

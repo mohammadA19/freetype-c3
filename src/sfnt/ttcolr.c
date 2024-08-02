@@ -91,16 +91,16 @@
 
   typedef struct  BaseGlyphRecord_
   {
-    FT_UShort  gid;
-    FT_UShort  first_layer_index;
-    FT_UShort  num_layers;
+    ushort  gid;
+    ushort  first_layer_index;
+    ushort  num_layers;
 
   } BaseGlyphRecord;
 
 
   typedef struct  BaseGlyphV1Record_
   {
-    FT_UShort  gid;
+    ushort  gid;
     /* Offset from start of BaseGlyphV1List, i.e., from base_glyphs_v1. */
     FT_ULong   paint_offset;
 
@@ -109,9 +109,9 @@
 
   typedef struct  Colr_
   {
-    FT_UShort  version;
-    FT_UShort  num_base_glyphs;
-    FT_UShort  num_layers;
+    ushort  version;
+    ushort  num_base_glyphs;
+    ushort  num_layers;
 
     FT_Byte*  base_glyphs;
     FT_Byte*  layers;
@@ -410,20 +410,20 @@
 
   static FT_Bool
   find_base_glyph_record( FT_Byte*          base_glyph_begin,
-                          FT_UInt           num_base_glyph,
-                          FT_UInt           glyph_id,
+                          uint           num_base_glyph,
+                          uint           glyph_id,
                           BaseGlyphRecord*  record )
   {
-    FT_UInt  min = 0;
-    FT_UInt  max = num_base_glyph;
+    uint  min = 0;
+    uint  max = num_base_glyph;
 
 
     while ( min < max )
     {
-      FT_UInt   mid = min + ( max - min ) / 2;
+      uint   mid = min + ( max - min ) / 2;
       FT_Byte*  p   = base_glyph_begin + mid * BASE_GLYPH_SIZE;
 
-      FT_UShort  gid = FT_NEXT_USHORT( p );
+      ushort  gid = FT_NEXT_USHORT( p );
 
 
       if ( gid < glyph_id )
@@ -446,9 +446,9 @@
 
   fn FT_Bool /* internal */
   tt_face_get_colr_layer( TT_Face            face,
-                          FT_UInt            base_glyph,
-                          FT_UInt           *aglyph_index,
-                          FT_UInt           *acolor_index,
+                          uint            base_glyph,
+                          uint           *aglyph_index,
+                          uint           *acolor_index,
                           FT_LayerIterator*  iterator )
   {
     Colr*            colr = (Colr*)face->colr;
@@ -492,7 +492,7 @@
     *aglyph_index = FT_NEXT_USHORT( iterator->p );
     *acolor_index = FT_NEXT_USHORT( iterator->p );
 
-    if ( *aglyph_index >= (FT_UInt)( FT_FACE( face )->num_glyphs )   ||
+    if ( *aglyph_index >= (uint)( FT_FACE( face )->num_glyphs )   ||
          ( *acolor_index != 0xFFFF                                 &&
            *acolor_index >= face->palette_data.num_palette_entries ) )
       return 0;
@@ -543,7 +543,7 @@
                             FT_Byte**  p,
                             FT_Byte**  child_table_pointer )
   {
-    FT_UInt32  paint_offset;
+    uint  paint_offset;
     FT_Byte*   child_table_p;
 
 
@@ -575,16 +575,16 @@
   get_deltas_for_var_index_base ( TT_Face           face,
                                   Colr*             colr,
                                   FT_ULong          var_index_base,
-                                  FT_UInt           num_deltas,
+                                  uint           num_deltas,
                                   FT_ItemVarDelta*  deltas )
   {
-    FT_UInt   outer_index    = 0;
-    FT_UInt   inner_index    = 0;
+    uint   outer_index    = 0;
+    uint   inner_index    = 0;
     FT_ULong  loop_var_index = var_index_base;
 
     FT_Service_MultiMasters  mm = (FT_Service_MultiMasters)face->mm;
 
-    FT_UInt  i = 0;
+    uint  i = 0;
 
 
     if ( var_index_base == 0xFFFFFFFF )
@@ -659,7 +659,7 @@
     {
       /* Initialize layer iterator/ */
       FT_Byte    num_layers;
-      FT_UInt32  first_layer_index;
+      uint  first_layer_index;
 
 
       ENSURE_READ_BYTES( 5 );
@@ -1131,7 +1131,7 @@
            (FT_PaintFormat_Internal)apaint->format ==
              FT_COLR_PAINTFORMAT_INTERNAL_VAR_ROTATE_CENTER )
       {
-        FT_UInt  num_deltas = 0;
+        uint  num_deltas = 0;
 
 
         ENSURE_READ_BYTES( 4 );
@@ -1240,7 +1240,7 @@
 
     else if ( apaint->format == FT_COLR_PAINTFORMAT_COMPOSITE )
     {
-      FT_UInt  composite_mode;
+      uint  composite_mode;
 
 
       apaint->u.composite.source_paint.p                     = child_table_p;
@@ -1270,18 +1270,18 @@
 
   static FT_Bool
   find_base_glyph_v1_record( FT_Byte *           base_glyph_begin,
-                             FT_UInt             num_base_glyph,
-                             FT_UInt             glyph_id,
+                             uint             num_base_glyph,
+                             uint             glyph_id,
                              BaseGlyphV1Record  *record )
   {
-    FT_UInt  min = 0;
-    FT_UInt  max = num_base_glyph;
+    uint  min = 0;
+    uint  max = num_base_glyph;
 
 
     while ( min < max )
     {
-      FT_UInt    mid = min + ( max - min ) / 2;
-      FT_UShort  gid;
+      uint    mid = min + ( max - min ) / 2;
+      ushort  gid;
 
       /*
        * `base_glyph_begin` is the beginning of `BaseGlyphV1List`;
@@ -1310,7 +1310,7 @@
 
   fn FT_Bool /* internal */
   tt_face_get_colr_glyph_paint( TT_Face                  face,
-                                FT_UInt                  base_glyph,
+                                uint                  base_glyph,
                                 FT_Color_Root_Transform  root_transform,
                                 FT_OpaquePaint*          opaque_paint )
   {
@@ -1356,7 +1356,7 @@
 
   fn FT_Bool /* internal */
   tt_face_get_color_glyph_clipbox( TT_Face      face,
-                                   FT_UInt      base_glyph,
+                                   uint      base_glyph,
                                    FT_ClipBox*  clip_box )
   {
     Colr*  colr;
@@ -1365,8 +1365,8 @@
 
     FT_Byte    clip_list_format;
     FT_ULong   num_clip_boxes, i;
-    FT_UShort  gid_start, gid_end;
-    FT_UInt32  clip_box_offset;
+    ushort  gid_start, gid_end;
+    uint  clip_box_offset;
     FT_Byte    format;
 
     const FT_Byte  num_corners = 4;
@@ -1523,7 +1523,7 @@
     FT_Byte*   p             = NULL;
     FT_Byte*   p_first_layer = NULL;
     FT_Byte*   p_paint       = NULL;
-    FT_UInt32  paint_offset;
+    uint  paint_offset;
 
     Colr*  colr;
 
@@ -1596,7 +1596,7 @@
     FT_Byte*  p;
     FT_ULong  var_index_base;
     FT_Byte*  last_entry_p = NULL;
-    FT_UInt   entry_size   = COLOR_STOP_SIZE;
+    uint   entry_size   = COLOR_STOP_SIZE;
 
 
     if ( !colr || !colr->table || !iterator )
@@ -1638,7 +1638,7 @@
 
 #ifdef TT_CONFIG_OPTION_GX_VAR_SUPPORT
       {
-        FT_Int  item_deltas[2];
+        int  item_deltas[2];
 
 
         if ( !get_deltas_for_var_index_base( face, colr,
@@ -1740,13 +1740,13 @@
 
   fn FT_Error /* internal */
   tt_face_colr_blend_layer( TT_Face       face,
-                            FT_UInt       color_index,
+                            uint       color_index,
                             FT_GlyphSlot  dstSlot,
                             FT_GlyphSlot  srcSlot )
   {
     FT_Error  error;
 
-    FT_UInt  x, y;
+    uint  x, y;
     FT_Byte  b, g, r, alpha;
 
     FT_ULong  size;
@@ -1767,7 +1767,7 @@
       dstSlot->bitmap.pitch      = (int)dstSlot->bitmap.width * 4;
       dstSlot->bitmap.num_grays  = 256;
 
-      size = dstSlot->bitmap.rows * (unsigned int)dstSlot->bitmap.pitch;
+      size = dstSlot->bitmap.rows * (uint)dstSlot->bitmap.pitch;
 
       error = ft_glyphslot_alloc_bitmap( dstSlot, size );
       if ( error )
@@ -1778,27 +1778,27 @@
     else
     {
       /* Resize destination if needed such that new component fits. */
-      FT_Int  x_min, x_max, y_min, y_max;
+      int  x_min, x_max, y_min, y_max;
 
 
       x_min = FT_MIN( dstSlot->bitmap_left, srcSlot->bitmap_left );
-      x_max = FT_MAX( dstSlot->bitmap_left + (FT_Int)dstSlot->bitmap.width,
-                      srcSlot->bitmap_left + (FT_Int)srcSlot->bitmap.width );
+      x_max = FT_MAX( dstSlot->bitmap_left + (int)dstSlot->bitmap.width,
+                      srcSlot->bitmap_left + (int)srcSlot->bitmap.width );
 
-      y_min = FT_MIN( dstSlot->bitmap_top - (FT_Int)dstSlot->bitmap.rows,
-                      srcSlot->bitmap_top - (FT_Int)srcSlot->bitmap.rows );
+      y_min = FT_MIN( dstSlot->bitmap_top - (int)dstSlot->bitmap.rows,
+                      srcSlot->bitmap_top - (int)srcSlot->bitmap.rows );
       y_max = FT_MAX( dstSlot->bitmap_top, srcSlot->bitmap_top );
 
       if ( x_min != dstSlot->bitmap_left                                 ||
-           x_max != dstSlot->bitmap_left + (FT_Int)dstSlot->bitmap.width ||
-           y_min != dstSlot->bitmap_top - (FT_Int)dstSlot->bitmap.rows   ||
+           x_max != dstSlot->bitmap_left + (int)dstSlot->bitmap.width ||
+           y_min != dstSlot->bitmap_top - (int)dstSlot->bitmap.rows   ||
            y_max != dstSlot->bitmap_top                                  )
       {
         FT_Memory  memory = face->root.memory;
 
-        FT_UInt  width = (FT_UInt)( x_max - x_min );
-        FT_UInt  rows  = (FT_UInt)( y_max - y_min );
-        FT_UInt  pitch = width * 4;
+        uint  width = (uint)( x_max - x_min );
+        uint  rows  = (uint)( y_max - y_min );
+        uint  pitch = width * 4;
 
         FT_Byte*  buf = NULL;
         FT_Byte*  p;

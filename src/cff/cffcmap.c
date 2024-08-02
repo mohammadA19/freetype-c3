@@ -59,12 +59,12 @@
   }
 
 
-  static FT_UInt
+  static uint
   cff_cmap_encoding_char_index( FT_CMap    cmap,
-                                FT_UInt32  char_code )
+                                uint  char_code )
   {
     CFF_CMapStd  cffcmap = (CFF_CMapStd)cmap;
-    FT_UInt      result  = 0;
+    uint      result  = 0;
 
 
     if ( char_code < 256 )
@@ -74,13 +74,13 @@
   }
 
 
-  static FT_UInt
+  static uint
   cff_cmap_encoding_char_next( FT_CMap     cmap,
-                               FT_UInt32  *pchar_code )
+                               uint  *pchar_code )
   {
     CFF_CMapStd  cffcmap   = (CFF_CMapStd)cmap;
-    FT_UInt      result    = 0;
-    FT_UInt32    char_code = *pchar_code;
+    uint      result    = 0;
+    uint    char_code = *pchar_code;
 
 
     while ( char_code < 255 )
@@ -125,12 +125,12 @@
 
   static const char*
   cff_sid_to_glyph_name( void*    face_,  /* TT_Face */
-                         FT_UInt  idx )
+                         uint  idx )
   {
     TT_Face      face    = (TT_Face)face_;
     CFF_Font     cff     = (CFF_Font)face->extra.data;
     CFF_Charset  charset = &cff->charset;
-    FT_UInt      sid     = charset->sids[idx];
+    uint      sid     = charset->sids[idx];
 
 
     return cff_index_get_sid_string( cff, sid );
@@ -181,9 +181,9 @@
   }
 
 
-  static FT_UInt
+  static uint
   cff_cmap_unicode_char_index( FT_CMap    cmap,       /* PS_Unicodes */
-                               FT_UInt32  char_code )
+                               uint  char_code )
   {
     PS_Unicodes         unicodes = (PS_Unicodes)cmap;
     TT_Face             face     = (TT_Face)FT_CMAP_FACE( cmap );
@@ -195,9 +195,9 @@
   }
 
 
-  static FT_UInt
+  static uint
   cff_cmap_unicode_char_next( FT_CMap     cmap,        /* PS_Unicodes */
-                              FT_UInt32  *pchar_code )
+                              uint  *pchar_code )
   {
     PS_Unicodes         unicodes = (PS_Unicodes)cmap;
     TT_Face             face     = (TT_Face)FT_CMAP_FACE( cmap );

@@ -69,8 +69,8 @@ FT_BEGIN_HEADER
   {
     FT_Stream  stream;
     FT_ULong   start;
-    FT_UInt    hdr_size;
-    FT_UInt    count;
+    uint    hdr_size;
+    uint    count;
     FT_Byte    off_size;
     FT_ULong   data_offset;
     FT_ULong   data_size;
@@ -83,12 +83,12 @@ FT_BEGIN_HEADER
 
   typedef struct  CFF_EncodingRec_
   {
-    FT_UInt     format;
+    uint     format;
     FT_ULong    offset;
 
-    FT_UInt     count;
-    FT_UShort   sids [256];  /* avoid dynamic allocations */
-    FT_UShort   codes[256];
+    uint     count;
+    ushort   sids [256];  /* avoid dynamic allocations */
+    ushort   codes[256];
 
   } CFF_EncodingRec, *CFF_Encoding;
 
@@ -96,14 +96,14 @@ FT_BEGIN_HEADER
   typedef struct  CFF_CharsetRec_
   {
 
-    FT_UInt     format;
+    uint     format;
     FT_ULong    offset;
 
-    FT_UShort*  sids;
-    FT_UShort*  cids;       /* the inverse mapping of `sids'; only needed */
+    ushort*  sids;
+    ushort*  cids;       /* the inverse mapping of `sids'; only needed */
                             /* for CID-keyed fonts                        */
-    FT_UInt     max_cid;
-    FT_UInt     num_glyphs;
+    uint     max_cid;
+    uint     num_glyphs;
 
   } CFF_CharsetRec, *CFF_Charset;
 
@@ -113,12 +113,12 @@ FT_BEGIN_HEADER
   typedef struct  CFF_VarData_
   {
 #if 0
-    FT_UInt  itemCount;       /* not used; always zero */
-    FT_UInt  shortDeltaCount; /* not used; always zero */
+    uint  itemCount;       /* not used; always zero */
+    uint  shortDeltaCount; /* not used; always zero */
 #endif
 
-    FT_UInt   regionIdxCount; /* number of region indexes           */
-    FT_UInt*  regionIndices;  /* array of `regionIdxCount' indices; */
+    uint   regionIdxCount; /* number of region indexes           */
+    uint*  regionIndices;  /* array of `regionIdxCount' indices; */
                               /* these index `varRegionList'        */
   } CFF_VarData;
 
@@ -142,11 +142,11 @@ FT_BEGIN_HEADER
 
   typedef struct  CFF_VStoreRec_
   {
-    FT_UInt         dataCount;
+    uint         dataCount;
     CFF_VarData*    varData;        /* array of dataCount records      */
                                     /* vsindex indexes this array      */
-    FT_UShort       axisCount;
-    FT_UInt         regionCount;    /* total number of regions defined */
+    ushort       axisCount;
+    uint         regionCount;    /* total number of regions defined */
     CFF_VarRegion*  varRegionList;
 
   } CFF_VStoreRec, *CFF_VStore;
@@ -166,35 +166,35 @@ FT_BEGIN_HEADER
   /* `usedBV' is reset at the start of each parse or charstring.   */
   /* vsindex cannot be changed after a BV is used.                 */
   /*                                                               */
-  /* Note: NDV is long (32/64 bit), while BV is 16.16 (FT_Int32).  */
+  /* Note: NDV is long (32/64 bit), while BV is 16.16 (int).  */
   typedef struct  CFF_BlendRec_
   {
     FT_Bool    builtBV;        /* blendV has been built           */
     FT_Bool    usedBV;         /* blendV has been used            */
     CFF_Font   font;           /* top level font struct           */
-    FT_UInt    lastVsindex;    /* last vsindex used               */
-    FT_UInt    lenNDV;         /* normDV length (aka numAxes)     */
+    uint    lastVsindex;    /* last vsindex used               */
+    uint    lenNDV;         /* normDV length (aka numAxes)     */
     FT_Fixed*  lastNDV;        /* last NDV used                   */
-    FT_UInt    lenBV;          /* BlendV length (aka numMasters)  */
-    FT_Int32*  BV;             /* current blendV (per DICT/glyph) */
+    uint    lenBV;          /* BlendV length (aka numMasters)  */
+    int*  BV;             /* current blendV (per DICT/glyph) */
 
   } CFF_BlendRec, *CFF_Blend;
 
 
   typedef struct  CFF_FontRecDictRec_
   {
-    FT_UInt    version;
-    FT_UInt    notice;
-    FT_UInt    copyright;
-    FT_UInt    full_name;
-    FT_UInt    family_name;
-    FT_UInt    weight;
+    uint    version;
+    uint    notice;
+    uint    copyright;
+    uint    full_name;
+    uint    family_name;
+    uint    weight;
     FT_Bool    is_fixed_pitch;
     FT_Fixed   italic_angle;
     FT_Fixed   underline_position;
     FT_Fixed   underline_thickness;
-    FT_Int     paint_type;
-    FT_Int     charstring_type;
+    int     paint_type;
+    int     charstring_type;
     FT_Matrix  font_matrix;
     FT_Bool    has_font_matrix;
     FT_ULong   units_per_em;  /* temporarily used as scaling value also */
@@ -208,11 +208,11 @@ FT_BEGIN_HEADER
     FT_ULong   private_offset;
     FT_ULong   private_size;
     FT_Long    synthetic_base;
-    FT_UInt    embedded_postscript;
+    uint    embedded_postscript;
 
     /* these should only be used for the top-level font dictionary */
-    FT_UInt    cid_registry;
-    FT_UInt    cid_ordering;
+    uint    cid_registry;
+    uint    cid_ordering;
     FT_Long    cid_supplement;
 
     FT_Long    cid_font_version;
@@ -222,17 +222,17 @@ FT_BEGIN_HEADER
     FT_ULong   cid_uid_base;
     FT_ULong   cid_fd_array_offset;
     FT_ULong   cid_fd_select_offset;
-    FT_UInt    cid_font_name;
+    uint    cid_font_name;
 
     /* the next fields come from the data of the deprecated          */
     /* `MultipleMaster' operator; they are needed to parse the (also */
     /* deprecated) `blend' operator in Type 2 charstrings            */
-    FT_UShort  num_designs;
-    FT_UShort  num_axes;
+    ushort  num_designs;
+    ushort  num_axes;
 
     /* fields for CFF2 */
     FT_ULong   vstore_offset;
-    FT_UInt    maxstack;
+    uint    maxstack;
 
   } CFF_FontRecDictRec, *CFF_FontRecDict;
 
@@ -265,8 +265,8 @@ FT_BEGIN_HEADER
     FT_Pos    snap_heights[13];
     FT_Bool   force_bold;
     FT_Fixed  force_bold_threshold;
-    FT_Int    lenIV;
-    FT_Int    language_group;
+    int    lenIV;
+    int    language_group;
     FT_Fixed  expansion_factor;
     FT_Long   initial_random_seed;
     FT_ULong  local_subrs_offset;
@@ -274,7 +274,7 @@ FT_BEGIN_HEADER
     FT_Pos    nominal_width;
 
     /* fields for CFF2 */
-    FT_UInt      vsindex;
+    uint      vsindex;
     CFF_SubFont  subfont;
 
   } CFF_PrivateRec, *CFF_Private;
@@ -283,15 +283,15 @@ FT_BEGIN_HEADER
   typedef struct  CFF_FDSelectRec_
   {
     FT_Byte   format;
-    FT_UInt   range_count;
+    uint   range_count;
 
     /* that's the table, taken from the file `as is' */
     FT_Byte*  data;
-    FT_UInt   data_size;
+    uint   data_size;
 
     /* small cache for format 3 only */
-    FT_UInt   cache_first;
-    FT_UInt   cache_count;
+    uint   cache_first;
+    uint   cache_count;
     FT_Byte   cache_fd;
 
   } CFF_FDSelectRec, *CFF_FDSelect;
@@ -306,7 +306,7 @@ FT_BEGIN_HEADER
 
     /* fields for CFF2 */
     CFF_BlendRec  blend;      /* current blend vector       */
-    FT_UInt       lenNDV;     /* current length NDV or zero */
+    uint       lenNDV;     /* current length NDV or zero */
     FT_Fixed*     NDV;        /* ptr to current NDV or NULL */
 
     /* `blend_stack' is a writable buffer to hold blend results.          */
@@ -319,14 +319,14 @@ FT_BEGIN_HEADER
 
     FT_Byte*  blend_stack;    /* base of stack allocation     */
     FT_Byte*  blend_top;      /* first empty slot             */
-    FT_UInt   blend_used;     /* number of bytes in use       */
-    FT_UInt   blend_alloc;    /* number of bytes allocated    */
+    uint   blend_used;     /* number of bytes in use       */
+    uint   blend_alloc;    /* number of bytes allocated    */
 
     CFF_IndexRec  local_subrs_index;
     FT_Byte**     local_subrs; /* array of pointers           */
                                /* into Local Subrs INDEX data */
 
-    FT_UInt32  random;
+    uint  random;
 
   } CFF_SubFontRec;
 
@@ -340,14 +340,14 @@ FT_BEGIN_HEADER
     FT_Stream        stream;
     FT_Memory        memory;        /* TODO: take this from stream->memory? */
     FT_ULong         base_offset;   /* offset to start of CFF */
-    FT_UInt          num_faces;
-    FT_UInt          num_glyphs;
+    uint          num_faces;
+    uint          num_glyphs;
 
     FT_Byte          version_major;
     FT_Byte          version_minor;
     FT_Byte          header_size;
 
-    FT_UInt          top_dict_length;   /* cff2 only */
+    uint          top_dict_length;   /* cff2 only */
 
     FT_Bool          cff2;
 
@@ -369,13 +369,13 @@ FT_BEGIN_HEADER
     FT_Byte**        global_subrs;
 
     /* array of pointers into String INDEX data stored at string_pool */
-    FT_UInt          num_strings;
+    uint          num_strings;
     FT_Byte**        strings;
     FT_Byte*         string_pool;
     FT_ULong         string_pool_size;
 
     CFF_SubFontRec   top_font;
-    FT_UInt          num_subfonts;
+    uint          num_subfonts;
     CFF_SubFont      subfonts[CFF_MAX_CID_FONTS];
 
     CFF_FDSelectRec  fd_select;

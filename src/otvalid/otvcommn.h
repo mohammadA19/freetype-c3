@@ -43,22 +43,22 @@ FT_BEGIN_HEADER
   typedef struct  OTV_ValidatorRec_
   {
     FT_Validator        root;
-    FT_UInt             type_count;
+    uint             type_count;
     OTV_Validate_Func*  type_funcs;
 
-    FT_UInt             lookup_count;
-    FT_UInt             glyph_count;
+    uint             lookup_count;
+    uint             glyph_count;
 
-    FT_UInt             nesting_level;
+    uint             nesting_level;
 
     OTV_Validate_Func   func[3];
 
-    FT_UInt             extra1;     /* for passing parameters */
-    FT_UInt             extra2;
+    uint             extra1;     /* for passing parameters */
+    uint             extra2;
     FT_Bytes            extra3;
 
 #ifdef FT_DEBUG_LEVEL_TRACE
-    FT_UInt             debug_indent;
+    uint             debug_indent;
     const FT_String*    debug_function_name[3];
 #endif
 
@@ -69,7 +69,7 @@ FT_BEGIN_HEADER
 #define FT_INVALID_( _error )                                     \
           ft_validator_error( otvalid->root, FT_THROW( _error ) )
 
-#define OTV_OPTIONAL_TABLE( _table )  FT_UShort  _table;      \
+#define OTV_OPTIONAL_TABLE( _table )  ushort  _table;      \
                                       FT_Bytes   _table ## _p
 
 #define OTV_OPTIONAL_TABLE32( _table )  FT_ULong  _table;       \
@@ -247,18 +247,18 @@ FT_BEGIN_HEADER
   fn void /* internal */
   otv_Coverage_validate( FT_Bytes       table,
                          OTV_Validator  otvalid,
-                         FT_Int         expected_count );
+                         int         expected_count );
 
   /* return first covered glyph */
-  fn FT_UInt /* internal */
+  fn uint /* internal */
   otv_Coverage_get_first( FT_Bytes  table );
 
   /* return last covered glyph */
-  fn FT_UInt /* internal */
+  fn uint /* internal */
   otv_Coverage_get_last( FT_Bytes  table );
 
   /* return number of covered glyphs */
-  fn FT_UInt /* internal */
+  fn uint /* internal */
   otv_Coverage_get_count( FT_Bytes  table );
 
 
@@ -452,10 +452,10 @@ FT_BEGIN_HEADER
                              OTV_Validator  otvalid );
 
 
-  fn FT_UInt /* internal */
+  fn uint /* internal */
   otv_GSUBGPOS_get_Lookup_count( FT_Bytes  table );
 
-  fn FT_UInt /* internal */
+  fn uint /* internal */
   otv_GSUBGPOS_have_MarkAttachmentType_flag( FT_Bytes  table );
 
  /* */

@@ -33,13 +33,13 @@
 
   static void
   t1_cmap_std_init( T1_CMapStd  cmap,
-                    FT_Int      is_expert )
+                    int      is_expert )
   {
     T1_Face             face    = (T1_Face)FT_CMAP_FACE( cmap );
     FT_Service_PsCMaps  psnames = (FT_Service_PsCMaps)face->psnames;
 
 
-    cmap->num_glyphs    = (FT_UInt)face->type1.num_glyphs;
+    cmap->num_glyphs    = (uint)face->type1.num_glyphs;
     cmap->glyph_names   = (const char* const*)face->type1.glyph_names;
     cmap->sid_to_string = psnames->adobe_std_strings;
     cmap->code_to_sid   = is_expert ? psnames->adobe_expert_encoding
@@ -62,17 +62,17 @@
   }
 
 
-  static FT_UInt
+  static uint
   t1_cmap_std_char_index( FT_CMap    cmap,       /* T1_CMapStd */
-                          FT_UInt32  char_code )
+                          uint  char_code )
   {
     T1_CMapStd  t1cmap = (T1_CMapStd)cmap;
-    FT_UInt     result = 0;
+    uint     result = 0;
 
 
     if ( char_code < 256 )
     {
-      FT_UInt      code, n;
+      uint      code, n;
       const char*  glyph_name;
 
 
@@ -99,12 +99,12 @@
   }
 
 
-  static FT_UInt
+  static uint
   t1_cmap_std_char_next( FT_CMap     cmap,
-                         FT_UInt32  *pchar_code )
+                         uint  *pchar_code )
   {
-    FT_UInt    result    = 0;
-    FT_UInt32  char_code = *pchar_code + 1;
+    uint    result    = 0;
+    uint  char_code = *pchar_code + 1;
 
 
     while ( char_code < 256 )
@@ -204,8 +204,8 @@
     FT_UNUSED( pointer );
 
 
-    t1cmap->first   = (FT_UInt)encoding->code_first;
-    t1cmap->count   = (FT_UInt)encoding->code_last - t1cmap->first;
+    t1cmap->first   = (uint)encoding->code_first;
+    t1cmap->count   = (uint)encoding->code_last - t1cmap->first;
     t1cmap->indices = encoding->char_index;
 
     FT_ASSERT( t1cmap->indices );
@@ -227,12 +227,12 @@
   }
 
 
-  static FT_UInt
+  static uint
   t1_cmap_custom_char_index( FT_CMap    cmap,       /* T1_CMapCustom */
-                             FT_UInt32  char_code )
+                             uint  char_code )
   {
     T1_CMapCustom  t1cmap = (T1_CMapCustom)cmap;
-    FT_UInt        result = 0;
+    uint        result = 0;
 
 
     if ( char_code >= t1cmap->first                    &&
@@ -243,13 +243,13 @@
   }
 
 
-  static FT_UInt
+  static uint
   t1_cmap_custom_char_next( FT_CMap     cmap,        /* T1_CMapCustom */
-                            FT_UInt32  *pchar_code )
+                            uint  *pchar_code )
   {
     T1_CMapCustom  t1cmap    = (T1_CMapCustom)cmap;
-    FT_UInt        result    = 0;
-    FT_UInt32      char_code = *pchar_code;
+    uint        result    = 0;
+    uint      char_code = *pchar_code;
 
 
     char_code++;
@@ -300,7 +300,7 @@
 
   static const char *
   psaux_get_glyph_name( void*    face_,
-                        FT_UInt  idx )
+                        uint  idx )
   {
     T1_Face  face = (T1_Face)face_;
 
@@ -326,7 +326,7 @@
 
     return psnames->unicodes_init( memory,
                                    unicodes,
-                                   (FT_UInt)face->type1.num_glyphs,
+                                   (uint)face->type1.num_glyphs,
                                    &psaux_get_glyph_name,
                                    (PS_FreeGlyphNameFunc)NULL,
                                    (FT_Pointer)face );
@@ -346,9 +346,9 @@
   }
 
 
-  static FT_UInt
+  static uint
   t1_cmap_unicode_char_index( FT_CMap    cmap,       /* PS_Unicodes */
-                              FT_UInt32  char_code )
+                              uint  char_code )
   {
     PS_Unicodes         unicodes = (PS_Unicodes)cmap;
     T1_Face             face     = (T1_Face)FT_CMAP_FACE( cmap );
@@ -359,9 +359,9 @@
   }
 
 
-  static FT_UInt
+  static uint
   t1_cmap_unicode_char_next( FT_CMap     cmap,        /* PS_Unicodes */
-                             FT_UInt32  *pchar_code )
+                             uint  *pchar_code )
   {
     PS_Unicodes         unicodes = (PS_Unicodes)cmap;
     T1_Face             face     = (T1_Face)FT_CMAP_FACE( cmap );

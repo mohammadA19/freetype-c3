@@ -205,7 +205,7 @@
   }
 
 
-  fn FT_Int /* private */
+  fn int /* private */
   ft_mem_strcpyn( char*        dst,
                   const char*  src,
                   FT_ULong     size )

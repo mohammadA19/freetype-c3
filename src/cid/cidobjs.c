@@ -215,7 +215,7 @@
     /* release subrs */
     if ( face->subrs )
     {
-      FT_UInt  n;
+      uint  n;
 
 
       for ( n = 0; n < cid->num_dicts; n++ )
@@ -289,8 +289,8 @@
   fn FT_Error /* internal */
   cid_face_init( FT_Stream      stream,
                  FT_Face        cidface,        /* CID_Face */
-                 FT_Int         face_index,
-                 FT_Int         num_params,
+                 int         face_index,
+                 int         num_params,
                  FT_Parameter*  params )
   {
     CID_Face          face = (CID_Face)cidface;
@@ -452,15 +452,15 @@
       if ( !cidface->units_per_EM )
         cidface->units_per_EM = 1000;
 
-      cidface->ascender  = (FT_Short)( cidface->bbox.yMax );
-      cidface->descender = (FT_Short)( cidface->bbox.yMin );
+      cidface->ascender  = (short)( cidface->bbox.yMax );
+      cidface->descender = (short)( cidface->bbox.yMin );
 
-      cidface->height = (FT_Short)( ( cidface->units_per_EM * 12 ) / 10 );
+      cidface->height = (short)( ( cidface->units_per_EM * 12 ) / 10 );
       if ( cidface->height < cidface->ascender - cidface->descender )
-        cidface->height = (FT_Short)( cidface->ascender - cidface->descender );
+        cidface->height = (short)( cidface->ascender - cidface->descender );
 
-      cidface->underline_position  = (FT_Short)info->underline_position;
-      cidface->underline_thickness = (FT_Short)info->underline_thickness;
+      cidface->underline_position  = (short)info->underline_position;
+      cidface->underline_thickness = (short)info->underline_thickness;
     }
 
   Exit:
@@ -488,7 +488,7 @@
   {
     PS_Driver  driver = (PS_Driver)module;
 
-    FT_UInt32  seed;
+    uint  seed;
 
 
     /* set default property values, cf. `ftt1drv.h' */
@@ -506,12 +506,12 @@
     driver->darken_params[7] = CFF_CONFIG_OPTION_DARKENING_PARAMETER_Y4;
 
     /* compute random seed from some memory addresses */
-    seed = (FT_UInt32)( (FT_Offset)(char*)&seed          ^
+    seed = (uint)( (FT_Offset)(char*)&seed          ^
                         (FT_Offset)(char*)&module        ^
                         (FT_Offset)(char*)module->memory );
     seed = seed ^ ( seed >> 10 ) ^ ( seed >> 20 );
 
-    driver->random_seed = (FT_Int32)seed;
+    driver->random_seed = (int)seed;
     if ( driver->random_seed < 0 )
       driver->random_seed = -driver->random_seed;
     else if ( driver->random_seed == 0 )

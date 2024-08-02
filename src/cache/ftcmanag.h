@@ -95,10 +95,10 @@ FT_BEGIN_HEADER
     FTC_Node            nodes_list;
     FT_Offset           max_weight;
     FT_Offset           cur_weight;
-    FT_UInt             num_nodes;
+    uint             num_nodes;
 
     FTC_Cache           caches[FTC_MAX_CACHES];
-    FT_UInt             num_caches;
+    uint             num_caches;
 
     FTC_MruListRec      faces;
     FTC_MruListRec      sizes;
@@ -138,9 +138,9 @@ FT_BEGIN_HEADER
   /* try to flush `count' old nodes from the cache; return the number
    * of really flushed nodes
    */
-  fn FT_UInt /* internal */
+  fn uint /* internal */
   FTC_Manager_FlushN( FTC_Manager  manager,
-                      FT_UInt      count );
+                      uint      count );
 
 
   /* this must be used internally for the moment */

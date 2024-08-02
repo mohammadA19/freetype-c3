@@ -67,8 +67,8 @@
   fn FT_Error /* internal */
   pfr_face_init( FT_Stream      stream,
                  FT_Face        pfrface,
-                 FT_Int         face_index,
-                 FT_Int         num_params,
+                 int         face_index,
+                 int         num_params,
                  FT_Parameter*  params )
   {
     PFR_Face  face = (PFR_Face)pfrface;
@@ -124,7 +124,7 @@
     error = pfr_log_font_load(
               &face->log_font,
               stream,
-              (FT_UInt)( face_index & 0xFFFF ),
+              (uint)( face_index & 0xFFFF ),
               face->header.log_dir_offset,
               FT_BOOL( face->header.phy_font_max_size_high ) );
     if ( error )
@@ -150,7 +150,7 @@
       /* if gps_offset == 0 for all characters, we  */
       /* assume that the font only contains bitmaps */
       {
-        FT_UInt  nn;
+        uint  nn;
 
 
         for ( nn = 0; nn < phy_font->num_chars; nn++ )
@@ -201,17 +201,17 @@
       pfrface->available_sizes = NULL;
 
       pfrface->bbox         = phy_font->bbox;
-      pfrface->units_per_EM = (FT_UShort)phy_font->outline_resolution;
-      pfrface->ascender     = (FT_Short) phy_font->bbox.yMax;
-      pfrface->descender    = (FT_Short) phy_font->bbox.yMin;
+      pfrface->units_per_EM = (ushort)phy_font->outline_resolution;
+      pfrface->ascender     = (short) phy_font->bbox.yMax;
+      pfrface->descender    = (short) phy_font->bbox.yMin;
 
-      pfrface->height = (FT_Short)( ( pfrface->units_per_EM * 12 ) / 10 );
+      pfrface->height = (short)( ( pfrface->units_per_EM * 12 ) / 10 );
       if ( pfrface->height < pfrface->ascender - pfrface->descender )
-        pfrface->height = (FT_Short)( pfrface->ascender - pfrface->descender );
+        pfrface->height = (short)( pfrface->ascender - pfrface->descender );
 
       if ( phy_font->num_strikes > 0 )
       {
-        FT_UInt          n, count = phy_font->num_strikes;
+        uint          n, count = phy_font->num_strikes;
         FT_Bitmap_Size*  size;
         PFR_Strike       strike;
         FT_Memory        memory = pfrface->memory;
@@ -224,22 +224,22 @@
         strike = phy_font->strikes;
         for ( n = 0; n < count; n++, size++, strike++ )
         {
-          size->height = (FT_Short)strike->y_ppm;
-          size->width  = (FT_Short)strike->x_ppm;
+          size->height = (short)strike->y_ppm;
+          size->width  = (short)strike->x_ppm;
           size->size   = (FT_Pos)( strike->y_ppm << 6 );
           size->x_ppem = (FT_Pos)( strike->x_ppm << 6 );
           size->y_ppem = (FT_Pos)( strike->y_ppm << 6 );
         }
-        pfrface->num_fixed_sizes = (FT_Int)count;
+        pfrface->num_fixed_sizes = (int)count;
       }
 
       /* now compute maximum advance width */
       if ( ( phy_font->flags & PFR_PHY_PROPORTIONAL ) == 0 )
-        pfrface->max_advance_width = (FT_Short)phy_font->standard_advance;
+        pfrface->max_advance_width = (short)phy_font->standard_advance;
       else
       {
-        FT_Int    max = 0;
-        FT_UInt   count = phy_font->num_chars;
+        int    max = 0;
+        uint   count = phy_font->num_chars;
         PFR_Char  gchar = phy_font->chars;
 
 
@@ -249,13 +249,13 @@
             max = gchar->advance;
         }
 
-        pfrface->max_advance_width = (FT_Short)max;
+        pfrface->max_advance_width = (short)max;
       }
 
       pfrface->max_advance_height = pfrface->height;
 
-      pfrface->underline_position  = (FT_Short)( -pfrface->units_per_EM / 10 );
-      pfrface->underline_thickness = (FT_Short)(  pfrface->units_per_EM / 30 );
+      pfrface->underline_position  = (short)( -pfrface->units_per_EM / 10 );
+      pfrface->underline_thickness = (short)(  pfrface->units_per_EM / 30 );
 
       /* create charmap */
       {
@@ -314,8 +314,8 @@
   fn FT_Error /* internal */
   pfr_slot_load( FT_GlyphSlot  pfrslot,         /* PFR_Slot */
                  FT_Size       pfrsize,         /* PFR_Size */
-                 FT_UInt       gindex,
-                 FT_Int32      load_flags )
+                 uint       gindex,
+                 int      load_flags )
   {
     PFR_Slot     slot    = (PFR_Slot)pfrslot;
     PFR_Size     size    = (PFR_Size)pfrsize;
@@ -370,7 +370,7 @@
       FT_BBox            cbox;
       FT_Glyph_Metrics*  metrics = &pfrslot->metrics;
       FT_Pos             advance;
-      FT_UInt            em_metrics, em_outline;
+      uint            em_metrics, em_outline;
       FT_Bool            scaling;
 
 
@@ -431,7 +431,7 @@
       /* scale when needed */
       if ( scaling )
       {
-        FT_Int      n;
+        int      n;
         FT_Fixed    x_scale = pfrsize->metrics.x_scale;
         FT_Fixed    y_scale = pfrsize->metrics.y_scale;
         FT_Vector*  vec     = outline->points;
@@ -473,14 +473,14 @@
 
   fn FT_Error /* internal */
   pfr_face_get_kerning( FT_Face     pfrface,        /* PFR_Face */
-                        FT_UInt     glyph1,
-                        FT_UInt     glyph2,
+                        uint     glyph1,
+                        uint     glyph2,
                         FT_Vector*  kerning )
   {
     PFR_Face     face     = (PFR_Face)pfrface;
     FT_Error     error    = FT_Err_Ok;
     PFR_PhyFont  phy_font = &face->phy_font;
-    FT_UInt32    code1, code2, pair;
+    uint    code1, code2, pair;
 
 
     kerning->x = 0;
@@ -519,16 +519,16 @@
         goto Exit;
 
       {
-        FT_UInt    count       = item->pair_count;
-        FT_UInt    size        = item->pair_size;
-        FT_UInt    power       = 1 << FT_MSB( count );
-        FT_UInt    probe       = power * size;
-        FT_UInt    extra       = count - power;
+        uint    count       = item->pair_count;
+        uint    size        = item->pair_size;
+        uint    power       = 1 << FT_MSB( count );
+        uint    probe       = power * size;
+        uint    extra       = count - power;
         FT_Byte*   base        = stream->cursor;
         FT_Bool    twobytes    = FT_BOOL( item->flags & PFR_KERN_2BYTE_CHAR );
         FT_Bool    twobyte_adj = FT_BOOL( item->flags & PFR_KERN_2BYTE_ADJ  );
         FT_Byte*   p;
-        FT_UInt32  cpair;
+        uint  cpair;
 
 
         if ( extra > 0 )
@@ -579,7 +579,7 @@
 
         if ( cpair == pair )
         {
-          FT_Int  value;
+          int  value;
 
 
         Found:

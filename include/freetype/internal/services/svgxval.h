@@ -39,14 +39,14 @@ FT_BEGIN_HEADER
 
   typedef FT_Error
   (*gxv_validate_func)( FT_Face   face,
-                        FT_UInt   gx_flags,
+                        uint   gx_flags,
                         FT_Bytes  tables[FT_VALIDATE_GX_LENGTH],
-                        FT_UInt   table_length );
+                        uint   table_length );
 
 
   typedef FT_Error
   (*ckern_validate_func)( FT_Face   face,
-                          FT_UInt   ckern_flags,
+                          uint   ckern_flags,
                           FT_Bytes  *ckern_table );
 
 

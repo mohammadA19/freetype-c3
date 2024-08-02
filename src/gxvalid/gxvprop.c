@@ -75,7 +75,7 @@
   /*************************************************************************/
 
   static void
-  gxv_prop_zero_advance_validate( FT_UShort      gid,
+  gxv_prop_zero_advance_validate( ushort      gid,
                                   GXV_Validator  gxvalid )
   {
     FT_Face       face;
@@ -108,8 +108,8 @@
 
   /* Pass 0 as GLYPH to check the default property */
   static void
-  gxv_prop_property_validate( FT_UShort      property,
-                              FT_UShort      glyph,
+  gxv_prop_property_validate( ushort      property,
+                              ushort      glyph,
                               GXV_Validator  gxvalid )
   {
     if ( glyph != 0 && ( property & GXV_PROP_FLOATER ) )
@@ -117,11 +117,11 @@
 
     if ( property & GXV_PROP_USE_COMPLEMENTARY_BRACKET )
     {
-      FT_UShort  offset;
+      ushort  offset;
       char       complement;
 
 
-      offset = (FT_UShort)( property & GXV_PROP_COMPLEMENTARY_BRACKET_OFFSET );
+      offset = (ushort)( property & GXV_PROP_COMPLEMENTARY_BRACKET_OFFSET );
       if ( offset == 0 )
       {
         GXV_TRACE(( "  found zero offset to property\n" ));
@@ -146,7 +146,7 @@
       else
       {
         /* The gid for complement must be the face. */
-        gxv_glyphid_validate( (FT_UShort)( glyph + complement ), gxvalid );
+        gxv_glyphid_validate( (ushort)( glyph + complement ), gxvalid );
       }
     }
     else
@@ -186,7 +186,7 @@
 
 
   static void
-  gxv_prop_LookupValue_validate( FT_UShort            glyph,
+  gxv_prop_LookupValue_validate( ushort            glyph,
                                  GXV_LookupValueCPtr  value_p,
                                  GXV_Validator        gxvalid )
   {
@@ -222,19 +222,19 @@
   */
 
   static GXV_LookupValueDesc
-  gxv_prop_LookupFmt4_transit( FT_UShort            relative_gindex,
+  gxv_prop_LookupFmt4_transit( ushort            relative_gindex,
                                GXV_LookupValueCPtr  base_value_p,
                                FT_Bytes             lookuptbl_limit,
                                GXV_Validator        gxvalid )
   {
     FT_Bytes             p;
     FT_Bytes             limit;
-    FT_UShort            offset;
+    ushort            offset;
     GXV_LookupValueDesc  value;
 
     /* XXX: check range? */
-    offset = (FT_UShort)( base_value_p->u +
-                          relative_gindex * sizeof ( FT_UShort ) );
+    offset = (ushort)( base_value_p->u +
+                          relative_gindex * sizeof ( ushort ) );
     p      = gxvalid->lookuptbl_head + offset;
     limit  = lookuptbl_limit;
 
@@ -267,8 +267,8 @@
     GXV_prop_Data     prop = &proprec;
 
     FT_Fixed          version;
-    FT_UShort         format;
-    FT_UShort         defaultProp;
+    ushort         format;
+    ushort         defaultProp;
 
 
     gxvalid->root       = ftvalid;

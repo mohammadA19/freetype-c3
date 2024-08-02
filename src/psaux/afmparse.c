@@ -60,7 +60,7 @@
     FT_Byte*  base;
     FT_Byte*  limit;
 
-    FT_Int    status;
+    int    status;
 
   } AFM_StreamRec;
 
@@ -377,14 +377,14 @@
    * AFM_Stream directly.
    */
 
-  fn FT_Int /* internal */
+  fn int /* internal */
   afm_parser_read_vals( AFM_Parser  parser,
                         AFM_Value   vals,
-                        FT_Int      n )
+                        int      n )
   {
     AFM_Stream  stream = parser->stream;
     char*       str;
-    FT_Int      i;
+    int      i;
 
 
     if ( n > AFM_MAX_ARGUMENTS )
@@ -575,7 +575,7 @@
 
   static FT_Error
   afm_parser_read_int( AFM_Parser  parser,
-                       FT_Int*     aint )
+                       int*     aint )
   {
     AFM_ValueRec  val;
 
@@ -603,7 +603,7 @@
     char*      key;
     FT_Offset  len;
     int        n = -1;
-    FT_Int     tmp;
+    int     tmp;
 
 
     if ( afm_parser_read_int( parser, &tmp ) )
@@ -615,7 +615,7 @@
       goto Fail;
     }
 
-    fi->NumTrackKern = (FT_UInt)tmp;
+    fi->NumTrackKern = (uint)tmp;
     FT_TRACE3(( "afm_parse_track_kern: %u track kern%s expected\n",
                 fi->NumTrackKern,
                 fi->NumTrackKern == 1 ? "" : "s" ));
@@ -683,13 +683,13 @@
       case AFM_TOKEN_ENDKERNDATA:
       case AFM_TOKEN_ENDFONTMETRICS:
         tmp = n + 1;
-        if ( (FT_UInt)tmp != fi->NumTrackKern )
+        if ( (uint)tmp != fi->NumTrackKern )
         {
           FT_TRACE1(( "afm_parse_track_kern: %s%d track kern entr%s seen\n",
                       tmp == 0 ? "" : "only ",
                       tmp,
                       tmp == 1 ? "y" : "ies" ));
-          fi->NumTrackKern = (FT_UInt)tmp;
+          fi->NumTrackKern = (uint)tmp;
         }
         else
           FT_TRACE3(( "afm_parse_track_kern: %d track kern entr%s seen\n",
@@ -744,7 +744,7 @@
     char*         key;
     FT_Offset     len;
     int           n = -1;
-    FT_Int        tmp;
+    int        tmp;
 
 
     if ( afm_parser_read_int( parser, &tmp ) )
@@ -756,7 +756,7 @@
       goto Fail;
     }
 
-    fi->NumKernPair = (FT_UInt)tmp;
+    fi->NumKernPair = (uint)tmp;
     FT_TRACE3(( "afm_parse_kern_pairs: %u kern pair%s expected\n",
                 fi->NumKernPair,
                 fi->NumKernPair == 1 ? "" : "s" ));
@@ -793,7 +793,7 @@
       case AFM_TOKEN_KPX:
       case AFM_TOKEN_KPY:
         {
-          FT_Int        r;
+          int        r;
           AFM_ValueRec  shared_vals[4];
 
 
@@ -841,13 +841,13 @@
       case AFM_TOKEN_ENDKERNDATA:
       case AFM_TOKEN_ENDFONTMETRICS:
         tmp = n + 1;
-        if ( (FT_UInt)tmp != fi->NumKernPair )
+        if ( (uint)tmp != fi->NumKernPair )
         {
           FT_TRACE1(( "afm_parse_kern_pairs: %s%d kern pair%s seen\n",
                       tmp == 0 ? "" : "only ",
                       tmp,
                       tmp == 1 ? "" : "s" ));
-          fi->NumKernPair = (FT_UInt)tmp;
+          fi->NumKernPair = (uint)tmp;
         }
         else
           FT_TRACE3(( "afm_parse_kern_pairs: %d kern pair%s seen\n",
@@ -937,7 +937,7 @@
 
   static FT_Error
   afm_parser_skip_section( AFM_Parser  parser,
-                           FT_Int      n,
+                           int      n,
                            AFM_Token   end_section )
   {
     char*      key;
@@ -973,7 +973,7 @@
     FT_Error      error  = FT_ERR( Syntax_Error );
     char*         key;
     FT_Offset     len;
-    FT_Int        metrics_sets = 0;
+    int        metrics_sets = 0;
 
 
     if ( !fi )
@@ -1043,7 +1043,7 @@
 
       case AFM_TOKEN_STARTCHARMETRICS:
         {
-          FT_Int  n = 0;
+          int  n = 0;
 
 
           if ( afm_parser_read_int( parser, &n ) )

@@ -30,7 +30,7 @@ FT_BEGIN_HEADER
 
   typedef FT_ULong
   (*TT_Glyf_GetLocationFunc)( FT_Face    face,
-                              FT_UInt    gindex,
+                              uint    gindex,
                               FT_ULong  *psize );
 
   FT_DEFINE_SERVICE( TTGlyf )

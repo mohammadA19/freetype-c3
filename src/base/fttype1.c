@@ -51,10 +51,10 @@
 
   /* documentation is in t1tables.h */
 
-  FT_Int
+  int
   FT_Has_PS_Glyph_Names( FT_Face  face )
   {
-    FT_Int             result = 0;
+    int             result = 0;
     FT_Service_PsInfo  service;
 
 
@@ -102,11 +102,11 @@
   FT_Long
   FT_Get_PS_Font_Value( FT_Face       face,
                         PS_Dict_Keys  key,
-                        FT_UInt       idx,
+                        uint       idx,
                         void         *value,
                         FT_Long       value_len )
   {
-    FT_Int             result  = 0;
+    int             result  = 0;
     FT_Service_PsInfo  service = NULL;
 
 

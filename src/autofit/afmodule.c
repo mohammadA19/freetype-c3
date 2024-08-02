@@ -118,7 +118,7 @@
     if ( !ft_strcmp( property_name, "fallback-script" ) )
     {
       AF_Script*  fallback_script;
-      FT_UInt     ss;
+      uint     ss;
 
 
 #ifdef FT_CONFIG_OPTION_ENVIRONMENT_PROPERTIES
@@ -190,11 +190,11 @@
     }
     else if ( !ft_strcmp( property_name, "darkening-parameters" ) )
     {
-      FT_Int*  darken_params;
-      FT_Int   x1, y1, x2, y2, x3, y3, x4, y4;
+      int*  darken_params;
+      int   x1, y1, x2, y2, x3, y3, x4, y4;
 
 #ifdef FT_CONFIG_OPTION_ENVIRONMENT_PROPERTIES
-      FT_Int   dp[8];
+      int   dp[8];
 
 
       if ( value_is_string )
@@ -207,14 +207,14 @@
         /* eight comma-separated numbers */
         for ( i = 0; i < 7; i++ )
         {
-          dp[i] = (FT_Int)ft_strtol( s, &ep, 10 );
+          dp[i] = (int)ft_strtol( s, &ep, 10 );
           if ( *ep != ',' || s == ep )
             return FT_THROW( Invalid_Argument );
 
           s = ep + 1;
         }
 
-        dp[7] = (FT_Int)ft_strtol( s, &ep, 10 );
+        dp[7] = (int)ft_strtol( s, &ep, 10 );
         if ( !( *ep == '\0' || *ep == ' ' ) || s == ep )
           return FT_THROW( Invalid_Argument );
 
@@ -222,7 +222,7 @@
       }
       else
 #endif
-        darken_params = (FT_Int*)value;
+        darken_params = (int*)value;
 
       x1 = darken_params[0];
       y1 = darken_params[1];
@@ -337,8 +337,8 @@
     }
     else if ( !ft_strcmp( property_name, "darkening-parameters" ) )
     {
-      FT_Int*  darken_params = module->darken_params;
-      FT_Int*  val           = (FT_Int*)value;
+      int*  darken_params = module->darken_params;
+      int*  val           = (int*)value;
 
 
       val[0] = darken_params[0];
@@ -432,8 +432,8 @@
   af_autofitter_load_glyph( FT_AutoHinter  module_,
                             FT_GlyphSlot   slot,
                             FT_Size        size,
-                            FT_UInt        glyph_index,
-                            FT_Int32       load_flags )
+                            uint        glyph_index,
+                            int       load_flags )
   {
     AF_Module  module = (AF_Module)module_;
 

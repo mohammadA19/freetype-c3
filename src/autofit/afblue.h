@@ -34,7 +34,7 @@ FT_BEGIN_HEADER
             ch = (unsigned char)*p++;               \
             if ( ch >= 0x80 )                       \
             {                                       \
-              FT_UInt  len_;                        \
+              uint  len_;                        \
                                                     \
                                                     \
               if ( ch < 0xE0 )                      \
@@ -410,7 +410,7 @@ FT_BEGIN_HEADER
   typedef struct  AF_Blue_StringRec_
   {
     AF_Blue_String  string;
-    FT_UShort       properties;
+    ushort       properties;
 
   } AF_Blue_StringRec;
 

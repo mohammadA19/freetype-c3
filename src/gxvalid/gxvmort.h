@@ -39,8 +39,8 @@ FT_BEGIN_HEADER
 
   typedef struct  GXV_mort_featureRec_
   {
-    FT_UShort  featureType;
-    FT_UShort  featureSetting;
+    ushort  featureType;
+    ushort  featureSetting;
     FT_ULong   enableFlags;
     FT_ULong   disableFlags;
 
@@ -62,7 +62,7 @@ FT_BEGIN_HEADER
                                   GXV_Validator  gxvalid );
 
   fn void /* internal */
-  gxv_mort_coverage_validate( FT_UShort      coverage,
+  gxv_mort_coverage_validate( ushort      coverage,
                               GXV_Validator  gxvalid );
 
   fn void /* internal */

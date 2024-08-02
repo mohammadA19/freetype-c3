@@ -230,7 +230,7 @@ FT_BEGIN_HEADER
   FT_EXPORT( FT_Error )
   FT_Set_Renderer( FT_Library     library,
                    FT_Renderer    renderer,
-                   FT_UInt        num_params,
+                   uint        num_params,
                    FT_Parameter*  parameters );
 
   /* */

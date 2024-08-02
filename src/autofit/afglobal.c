@@ -128,10 +128,10 @@
     FT_Error    error;
     FT_Face     face        = globals->face;
     FT_CharMap  old_charmap = face->charmap;
-    FT_UShort*  gstyles     = globals->glyph_styles;
-    FT_UShort   ss;
-    FT_UShort   dflt        = 0xFFFFU; /* a non-valid value */
-    FT_UInt     i;
+    ushort*  gstyles     = globals->glyph_styles;
+    ushort   ss;
+    ushort   dflt        = 0xFFFFU; /* a non-valid value */
+    uint     i;
 
 
     /* the value AF_STYLE_UNASSIGNED means `uncovered glyph' */
@@ -176,7 +176,7 @@
               range++ )
         {
           FT_ULong  charcode = range->first;
-          FT_UInt   gindex;
+          uint   gindex;
 
 
           gindex = FT_Get_Char_Index( face, charcode );
@@ -205,7 +205,7 @@
               range++ )
         {
           FT_ULong  charcode = range->first;
-          FT_UInt   gindex;
+          uint   gindex;
 
 
           gindex = FT_Get_Char_Index( face, charcode );
@@ -251,7 +251,7 @@
     /* mark ASCII digits */
     for ( i = 0x30; i <= 0x39; i++ )
     {
-      FT_UInt  gindex = FT_Get_Char_Index( face, i );
+      uint  gindex = FT_Get_Char_Index( face, i );
 
 
       if ( gindex != 0 && gindex < globals->glyph_count )
@@ -265,7 +265,7 @@
      */
     if ( globals->module->fallback_style != AF_STYLE_UNASSIGNED )
     {
-      FT_UInt  nn;
+      uint  nn;
 
 
       for ( nn = 0; nn < globals->glyph_count; nn++ )
@@ -288,8 +288,8 @@
     for ( ss = 0; af_style_classes[ss]; ss++ )
     {
       AF_StyleClass  style_class = af_style_classes[ss];
-      FT_UInt        count       = 0;
-      FT_UInt        idx;
+      uint        count       = 0;
+      uint        idx;
 
 
       FT_TRACE4(( "%s:\n", af_style_names[style_class->style] ));
@@ -338,15 +338,15 @@
     /* with the glyph_styles array                      */
     if ( FT_QALLOC( globals,
                     sizeof ( *globals ) +
-                      (FT_ULong)face->num_glyphs * sizeof ( FT_UShort ) ) )
+                      (FT_ULong)face->num_glyphs * sizeof ( ushort ) ) )
       goto Exit;
 
     FT_ZERO( &globals->metrics );
 
     globals->face                      = face;
-    globals->glyph_count               = (FT_UInt)face->num_glyphs;
+    globals->glyph_count               = (uint)face->num_glyphs;
     /* right after the globals structure come the glyph styles */
-    globals->glyph_styles              = (FT_UShort*)( globals + 1 );
+    globals->glyph_styles              = (ushort*)( globals + 1 );
     globals->module                    = module;
     globals->stem_darkening_for_ppem   = 0;
     globals->darken_x                  = 0;
@@ -384,7 +384,7 @@
     if ( globals )
     {
       FT_Memory  memory = globals->face->memory;
-      FT_UInt    nn;
+      uint    nn;
 
 
       for ( nn = 0; nn < AF_STYLE_MAX; nn++ )
@@ -418,8 +418,8 @@
 
   fn FT_Error /* internal */
   af_face_globals_get_metrics( AF_FaceGlobals    globals,
-                               FT_UInt           gindex,
-                               FT_UInt           options,
+                               uint           gindex,
+                               uint           options,
                                AF_StyleMetrics  *ametrics )
   {
     AF_StyleMetrics  metrics = NULL;
@@ -501,7 +501,7 @@
 
   fn FT_Bool /* internal */
   af_face_globals_is_digit( AF_FaceGlobals  globals,
-                            FT_UInt         gindex )
+                            uint         gindex )
   {
     if ( gindex < globals->glyph_count )
       return FT_BOOL( globals->glyph_styles[gindex] & AF_DIGIT );

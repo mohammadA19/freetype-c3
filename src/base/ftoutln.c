@@ -57,13 +57,13 @@
 
     FT_Error    error;
 
-    FT_Int   n;         /* index of contour in outline     */
-    FT_Int   first;     /* index of first point in contour */
-    FT_Int   last;      /* index of last point in contour  */
+    int   n;         /* index of contour in outline     */
+    int   first;     /* index of first point in contour */
+    int   last;      /* index of last point in contour  */
 
-    FT_Int   tag;       /* current point's state           */
+    int   tag;       /* current point's state           */
 
-    FT_Int   shift;
+    int   shift;
     FT_Pos   delta;
 
 
@@ -302,8 +302,8 @@
 
   FT_Error
   FT_Outline_New( FT_Library   library,
-                  FT_UInt      numPoints,
-                  FT_Int       numContours,
+                  uint      numPoints,
+                  int       numContours,
                   FT_Outline  *anoutline )
   {
     FT_Error   error;
@@ -321,7 +321,7 @@
     *anoutline = null_outline;
 
     if ( numContours < 0                  ||
-         (FT_UInt)numContours > numPoints )
+         (uint)numContours > numPoints )
       return FT_THROW( Invalid_Argument );
 
     if ( numPoints > FT_OUTLINE_POINTS_MAX )
@@ -332,8 +332,8 @@
          FT_NEW_ARRAY( anoutline->contours, numContours ) )
       goto Fail;
 
-    anoutline->n_points    = (FT_UShort)numPoints;
-    anoutline->n_contours  = (FT_UShort)numContours;
+    anoutline->n_points    = (ushort)numPoints;
+    anoutline->n_contours  = (ushort)numContours;
     anoutline->flags      |= FT_OUTLINE_OWNER;
 
     return FT_Err_Ok;
@@ -353,10 +353,10 @@
   {
     if ( outline )
     {
-      FT_Int  n_points   = outline->n_points;
-      FT_Int  n_contours = outline->n_contours;
-      FT_Int  end0, end;
-      FT_Int  n;
+      int  n_points   = outline->n_points;
+      int  n_contours = outline->n_contours;
+      int  end0, end;
+      int  n;
 
 
       FT_TRACE5(( "FT_Outline_Check: contours = %d, points = %d\n",
@@ -399,7 +399,7 @@
   FT_Outline_Copy( const FT_Outline*  source,
                    FT_Outline        *target )
   {
-    FT_Int  is_owner;
+    int  is_owner;
 
 
     if ( !source || !target )
@@ -521,7 +521,7 @@
                         FT_Pos             xOffset,
                         FT_Pos             yOffset )
   {
-    FT_UShort   n;
+    ushort   n;
     FT_Vector*  vec;
 
 
@@ -544,8 +544,8 @@
   void
   FT_Outline_Reverse( FT_Outline*  outline )
   {
-    FT_UShort  n;
-    FT_Int     first, last;
+    ushort  n;
+    int     first, last;
 
 
     if ( !outline )
@@ -753,14 +753,14 @@
   /* but disallow false negatives.  (XXX really?)    */
   static FT_Bool
   ft_contour_has( FT_Outline*  outline,
-                  FT_Short     c,
+                  short     c,
                   FT_Vector*   point )
   {
     FT_Vector*  first;
     FT_Vector*  last;
     FT_Vector*  a;
     FT_Vector*  b;
-    FT_UInt     n = 0;
+    uint     n = 0;
 
 
     FT_OUTLINE_GET_CONTOUR( outline, c, first, last );
@@ -768,7 +768,7 @@
     for ( a = first; a <= last; a++ )
     {
       FT_Pos  x;
-      FT_Int  intersect;
+      int  intersect;
 
 
       b = ( a == last ) ? first : a + 1;
@@ -802,11 +802,11 @@
 
   static FT_Bool
   ft_contour_enclosed( FT_Outline*  outline,
-                       FT_UShort    c )
+                       ushort    c )
   {
     FT_Vector*  first;
     FT_Vector*  last;
-    FT_Short    i;
+    short    i;
 
 
     FT_OUTLINE_GET_CONTOUR( outline, c, first, last );
@@ -837,7 +837,7 @@
   static FT_Orientation
   ft_outline_get_orientation( FT_Outline*  outline )
   {
-    FT_Short        i;
+    short        i;
     FT_Vector*      first;
     FT_Vector*      last;
     FT_Orientation  orient = FT_ORIENTATION_NONE;
@@ -919,7 +919,7 @@
                          FT_Pos       ystrength )
   {
     FT_Vector*      points;
-    FT_Int          c, first, last;
+    int          c, first, last;
     FT_Orientation  orientation;
 
 
@@ -947,7 +947,7 @@
     {
       FT_Vector  in, out, anchor, shift;
       FT_Fixed   l_in, l_out, l_anchor = 0, l, q, d;
-      FT_Int     i, j, k;
+      int     i, j, k;
 
 
       first = last + 1;
@@ -1051,10 +1051,10 @@
   FT_Outline_Get_Orientation( FT_Outline*  outline )
   {
     FT_BBox     cbox = { 0, 0, 0, 0 };
-    FT_Int      xshift, yshift;
+    int      xshift, yshift;
     FT_Vector*  points;
     FT_Vector   v_prev, v_cur;
-    FT_Int      c, n, first, last;
+    int      c, n, first, last;
     FT_Pos      area = 0;
 
 
@@ -1077,11 +1077,11 @@
          cbox.xMax >  0x1000000L || cbox.yMax >  0x1000000L )
       return FT_ORIENTATION_NONE;
 
-    xshift = FT_MSB( (FT_UInt32)( FT_ABS( cbox.xMax ) |
+    xshift = FT_MSB( (uint)( FT_ABS( cbox.xMax ) |
                                   FT_ABS( cbox.xMin ) ) ) - 14;
     xshift = FT_MAX( xshift, 0 );
 
-    yshift = FT_MSB( (FT_UInt32)( cbox.yMax - cbox.yMin ) ) - 14;
+    yshift = FT_MSB( (uint)( cbox.yMax - cbox.yMin ) ) - 14;
     yshift = FT_MAX( yshift, 0 );
 
     points = outline->points;

@@ -230,8 +230,8 @@
   {
     ED*  distance_map;
 
-    FT_Int  width;
-    FT_Int  rows;
+    int  width;
+    int  rows;
 
     SDF_Raster_Params  params;
 
@@ -308,14 +308,14 @@
 
   static FT_Bool
   bsdf_is_edge( ED*     dm,   /* distance map              */
-                FT_Int  x,    /* x index of point to check */
-                FT_Int  y,    /* y index of point to check */
-                FT_Int  w,    /* width                     */
-                FT_Int  r )   /* rows                      */
+                int  x,    /* x index of point to check */
+                int  y,    /* y index of point to check */
+                int  w,    /* width                     */
+                int  r )   /* rows                      */
   {
     FT_Bool  is_edge       = 0;
     ED*      to_check      = NULL;
-    FT_Int   num_neighbors = 0;
+    int   num_neighbors = 0;
 
 
     if ( dm->alpha == 0 )
@@ -399,10 +399,10 @@
    */
   static FT_16D16_Vec
   compute_edge_distance( ED*     current,
-                         FT_Int  x,
-                         FT_Int  y,
-                         FT_Int  w,
-                         FT_Int  r )
+                         int  x,
+                         int  y,
+                         int  w,
+                         int  r )
   {
     /*
      * This function, based on the paper presented by Stefan Gustavson and
@@ -570,8 +570,8 @@
   bsdf_approximate_edge( BSDF_Worker*  worker )
   {
     FT_Error  error = FT_Err_Ok;
-    FT_Int    i, j;
-    FT_Int    index;
+    int    i, j;
+    int    index;
     ED*       ed;
 
 
@@ -645,8 +645,8 @@
   {
     FT_Error  error = FT_Err_Ok;
 
-    FT_Int    x_diff, y_diff;
-    FT_Int    t_i, t_j, s_i, s_j;
+    int    x_diff, y_diff;
+    int    t_i, t_j, s_i, s_j;
     FT_Byte*  s;
     ED*       t;
 
@@ -662,8 +662,8 @@
     /* i.e., aligning the source to the center of the */
     /* target, the target's width and rows must be    */
     /* checked before copying.                        */
-    if ( worker->width < (FT_Int)source->width ||
-         worker->rows  < (FT_Int)source->rows  )
+    if ( worker->width < (int)source->width ||
+         worker->rows  < (int)source->rows  )
     {
       error = FT_THROW( Invalid_Argument );
       goto Exit;
@@ -717,19 +717,19 @@
     {
     case FT_PIXEL_MODE_MONO:
       {
-        FT_Int  t_width = worker->width;
-        FT_Int  t_rows  = worker->rows;
-        FT_Int  s_width = (int)source->width;
-        FT_Int  s_rows  = (int)source->rows;
+        int  t_width = worker->width;
+        int  t_rows  = worker->rows;
+        int  s_width = (int)source->width;
+        int  s_rows  = (int)source->rows;
 
 
         for ( t_j = 0; t_j < t_rows; t_j++ )
         {
           for ( t_i = 0; t_i < t_width; t_i++ )
           {
-            FT_Int   t_index = t_j * t_width + t_i;
-            FT_Int   s_index;
-            FT_Int   div, mod;
+            int   t_index = t_j * t_width + t_i;
+            int   s_index;
+            int   div, mod;
             FT_Byte  pixel, byte;
 
 
@@ -763,10 +763,10 @@
 
     case FT_PIXEL_MODE_GRAY:
       {
-        FT_Int  t_width = worker->width;
-        FT_Int  t_rows  = worker->rows;
-        FT_Int  s_width = (int)source->width;
-        FT_Int  s_rows  = (int)source->rows;
+        int  t_width = worker->width;
+        int  t_rows  = worker->rows;
+        int  s_width = (int)source->width;
+        int  s_rows  = (int)source->rows;
 
 
         /* loop over all pixels and assign pixel values from source */
@@ -774,8 +774,8 @@
         {
           for ( t_i = 0; t_i < t_width; t_i++ )
           {
-            FT_Int  t_index = t_j * t_width + t_i;
-            FT_Int  s_index;
+            int  t_index = t_j * t_width + t_i;
+            int  s_index;
 
 
             t[t_index] = zero_ed;
@@ -844,9 +844,9 @@
    */
   static void
   compare_neighbor( ED*     current,
-                    FT_Int  x_offset,
-                    FT_Int  y_offset,
-                    FT_Int  width )
+                    int  x_offset,
+                    int  y_offset,
+                    int  width )
   {
     ED*           to_check;
     FT_16D16      dist;
@@ -904,8 +904,8 @@
   static void
   first_pass( BSDF_Worker*  worker )
   {
-    FT_Int  i, j; /* iterators    */
-    FT_Int  w, r; /* width, rows  */
+    int  i, j; /* iterators    */
+    int  w, r; /* width, rows  */
     ED*     dm;   /* distance map */
 
 
@@ -920,7 +920,7 @@
     /* the image (from bottom to top).                     */
     for ( j = 1; j < r; j++ )
     {
-      FT_Int  index;
+      int  index;
       ED*     current;
 
 
@@ -973,8 +973,8 @@
   static void
   second_pass( BSDF_Worker*  worker )
   {
-    FT_Int  i, j; /* iterators    */
-    FT_Int  w, r; /* width, rows  */
+    int  i, j; /* iterators    */
+    int  w, r; /* width, rows  */
     ED*     dm;   /* distance map */
 
 
@@ -989,7 +989,7 @@
     /* of the image (from top to bottom).                  */
     for ( j = r - 2; j >= 0; j-- )
     {
-      FT_Int  index;
+      int  index;
       ED*     current;
 
 
@@ -1092,8 +1092,8 @@
   {
     FT_Error  error = FT_Err_Ok;
 
-    FT_Int  w, r;
-    FT_Int  i, j;
+    int  w, r;
+    int  i, j;
 
     FT_SDFFormat*  t_buffer;
     FT_16D16       sp_sq, spread;
@@ -1129,7 +1129,7 @@
     {
       for ( i = 0; i < w; i++ )
       {
-        FT_Int        index;
+        int        index;
         FT_16D16      dist;
         FT_SDFFormat  final_dist;
         FT_Char       sign;

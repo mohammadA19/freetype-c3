@@ -65,17 +65,17 @@
     CF2_Fixed  maxZoneHeight = 0;
     CF2_Fixed  csUnitsPerPixel;
 
-    size_t  numBlueValues;
-    size_t  numOtherBlues;
-    size_t  numFamilyBlues;
-    size_t  numFamilyOtherBlues;
+    usz  numBlueValues;
+    usz  numOtherBlues;
+    usz  numFamilyBlues;
+    usz  numFamilyOtherBlues;
 
     FT_Fixed*  blueValues;
     FT_Fixed*  otherBlues;
     FT_Fixed*  familyBlues;
     FT_Fixed*  familyOtherBlues;
 
-    size_t     i;
+    usz     i;
     CF2_Fixed  emBoxBottom, emBoxTop;
 
 #if 0
@@ -269,7 +269,7 @@
     /* loop on all zones in this font */
     for ( i = 0; i < blues->count; i++ )
     {
-      size_t     j;
+      usz     j;
       CF2_Fixed  minDiff;
       CF2_Fixed  flatFamilyEdge, diff;
       /* value for this font */

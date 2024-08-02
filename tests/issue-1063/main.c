@@ -34,7 +34,7 @@ main( void )
 
   for ( FT_ULong  i = 59; i < 171; i++ )
   {
-    FT_UInt   gid  = FT_Get_Char_Index( face, i );
+    uint   gid  = FT_Get_Char_Index( face, i );
     FT_Error  code = FT_Load_Glyph( face, gid, FT_LOAD_DEFAULT );
 
 

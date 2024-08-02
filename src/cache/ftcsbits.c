@@ -44,7 +44,7 @@
                         FT_Memory   memory )
   {
     FT_Error  error;
-    FT_Int    pitch = bitmap->pitch;
+    int    pitch = bitmap->pitch;
     FT_ULong  size;
 
 
@@ -65,7 +65,7 @@
   {
     FTC_SNode  snode  = (FTC_SNode)ftcsnode;
     FTC_SBit   sbit   = snode->sbits;
-    FT_UInt    count  = snode->count;
+    uint    count  = snode->count;
     FT_Memory  memory = cache->memory;
 
 
@@ -99,7 +99,7 @@
   static FT_Error
   ftc_snode_load( FTC_SNode    snode,
                   FTC_Manager  manager,
-                  FT_UInt      gindex,
+                  uint      gindex,
                   FT_ULong    *asize )
   {
     FT_Error          error;
@@ -124,7 +124,7 @@
       goto BadGlyph;
 
     {
-      FT_Int        temp;
+      int        temp;
       FT_GlyphSlot  slot   = face->glyph;
       FT_Bitmap*    bitmap = &slot->bitmap;
       FT_Pos        xadvance, yadvance; /* FT_GlyphSlot->advance.{x|y} */
@@ -141,9 +141,9 @@
       /* If this is not the case, our bitmap is too large       */
       /* and we will leave it as `missing' with sbit.buffer = 0 */
 
-#define CHECK_CHAR( d )  ( temp = (FT_Char)d, (FT_Int) temp == (FT_Int) d )
-#define CHECK_BYTE( d )  ( temp = (FT_Byte)d, (FT_UInt)temp == (FT_UInt)d )
-#define CHECK_SHRT( d )  ( temp = (FT_Short)d, (FT_Int)temp == (FT_Int) d )
+#define CHECK_CHAR( d )  ( temp = (FT_Char)d, (int) temp == (int) d )
+#define CHECK_BYTE( d )  ( temp = (FT_Byte)d, (uint)temp == (uint)d )
+#define CHECK_SHRT( d )  ( temp = (short)d, (int)temp == (int) d )
 
       /* horizontal advance in pixels */
       xadvance = ( slot->advance.x + 32 ) >> 6;
@@ -164,7 +164,7 @@
 
       sbit->width     = (FT_Byte)bitmap->width;
       sbit->height    = (FT_Byte)bitmap->rows;
-      sbit->pitch     = (FT_Short)bitmap->pitch;
+      sbit->pitch     = (short)bitmap->pitch;
       sbit->left      = (FT_Char)slot->bitmap_left;
       sbit->top       = (FT_Char)slot->bitmap_top;
       sbit->xadvance  = (FT_Char)xadvance;
@@ -217,12 +217,12 @@
     FT_Memory   memory = cache->memory;
     FT_Error    error;
     FTC_SNode   snode  = NULL;
-    FT_UInt     gindex = gquery->gindex;
+    uint     gindex = gquery->gindex;
     FTC_Family  family = gquery->family;
 
     FTC_SFamilyClass  clazz = FTC_CACHE_SFAMILY_CLASS( cache );
-    FT_UInt           total;
-    FT_UInt           node_count;
+    uint           total;
+    uint           node_count;
 
 
     total = clazz->family_get_count( family, cache->manager );
@@ -234,7 +234,7 @@
 
     if ( !FT_QNEW( snode ) )
     {
-      FT_UInt  count, start;
+      uint  count, start;
 
 
       start = gindex - ( gindex % FTC_SBIT_ITEMS_PER_NODE );
@@ -287,9 +287,9 @@
                     FTC_Cache  cache )
   {
     FTC_SNode  snode = (FTC_SNode)ftcsnode;
-    FT_UInt    count = snode->count;
+    uint    count = snode->count;
     FTC_SBit   sbit  = snode->sbits;
-    FT_Int     pitch;
+    int     pitch;
     FT_Offset  size;
 
     FT_UNUSED( cache );
@@ -337,7 +337,7 @@
     FTC_SNode   snode  = (FTC_SNode)ftcsnode;
     FTC_GQuery  gquery = (FTC_GQuery)ftcgquery;
     FTC_GNode   gnode  = FTC_GNODE( snode );
-    FT_UInt     gindex = gquery->gindex;
+    uint     gindex = gquery->gindex;
     FT_Bool     result;
 
 

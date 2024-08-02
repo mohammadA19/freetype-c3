@@ -30,15 +30,15 @@ FT_BEGIN_HEADER
   fn FT_Error /* internal */
   sfnt_init_face( FT_Stream      stream,
                   TT_Face        face,
-                  FT_Int         face_instance_index,
-                  FT_Int         num_params,
+                  int         face_instance_index,
+                  int         num_params,
                   FT_Parameter*  params );
 
   fn FT_Error /* internal */
   sfnt_load_face( FT_Stream      stream,
                   TT_Face        face,
-                  FT_Int         face_instance_index,
-                  FT_Int         num_params,
+                  int         face_instance_index,
+                  int         num_params,
                   FT_Parameter*  params );
 
   fn void /* internal */
@@ -46,7 +46,7 @@ FT_BEGIN_HEADER
 
   fn FT_Error /* internal */
   tt_face_get_name( TT_Face      face,
-                    FT_UShort    nameid,
+                    ushort    nameid,
                     FT_String**  name );
 
 

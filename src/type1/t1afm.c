@@ -50,13 +50,13 @@
 
 
   /* read a glyph name and return the equivalent glyph index */
-  static FT_Int
+  static int
   t1_get_index( const char*  name,
                 FT_Offset    len,
                 void*        user_data )
   {
     T1_Font  type1 = (T1_Font)user_data;
-    FT_Int   n;
+    int   n;
 
 
     /* PS string/name length must be < 16-bit */
@@ -115,10 +115,10 @@
     FT_Byte*      limit;
     FT_Byte*      p;
     AFM_KernPair  kp;
-    FT_Int        width_table_length;
+    int        width_table_length;
     FT_CharMap    oldcharmap;
     FT_CharMap    charmap;
-    FT_Int        n;
+    int        n;
 
 
     start = (FT_Byte*)stream->cursor;
@@ -200,7 +200,7 @@
       kp->index1 = FT_Get_Char_Index( t1_face, p[0] );
       kp->index2 = FT_Get_Char_Index( t1_face, p[1] );
 
-      kp->x = (FT_Int)FT_PEEK_SHORT_LE( p + 2 );
+      kp->x = (int)FT_PEEK_SHORT_LE( p + 2 );
       kp->y = 0;
 
       kp++;
@@ -301,8 +301,8 @@
       if ( fi->Ascender > fi->Descender )
       {
         /* no `U' suffix here to 0x8000! */
-        t1_face->ascender  = (FT_Short)( ( fi->Ascender  + 0x8000 ) >> 16 );
-        t1_face->descender = (FT_Short)( ( fi->Descender + 0x8000 ) >> 16 );
+        t1_face->ascender  = (short)( ( fi->Ascender  + 0x8000 ) >> 16 );
+        t1_face->descender = (short)( ( fi->Descender + 0x8000 ) >> 16 );
       }
 
       if ( fi->NumKernPair )
@@ -326,8 +326,8 @@
   /* find the kerning for a given glyph pair */
   fn void /* internal */
   T1_Get_Kerning( AFM_FontInfo  fi,
-                  FT_UInt       glyph1,
-                  FT_UInt       glyph2,
+                  uint       glyph1,
+                  uint       glyph2,
                   FT_Vector*    kerning )
   {
     AFM_KernPair  min, mid, max;
@@ -368,11 +368,11 @@
   fn FT_Error /* internal */
   T1_Get_Track_Kerning( FT_Face    face,
                         FT_Fixed   ptsize,
-                        FT_Int     degree,
+                        int     degree,
                         FT_Fixed*  kerning )
   {
     AFM_FontInfo  fi = (AFM_FontInfo)( (T1_Face)face )->afm_data;
-    FT_UInt       i;
+    uint       i;
 
 
     if ( !fi )

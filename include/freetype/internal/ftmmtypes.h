@@ -24,17 +24,17 @@
 FT_BEGIN_HEADER
 
 
-  typedef FT_Int32  FT_ItemVarDelta;
+  typedef int  FT_ItemVarDelta;
 
   typedef struct  GX_ItemVarDataRec_
   {
-    FT_UInt            itemCount;      /* Number of delta sets per item.   */
-    FT_UInt            regionIdxCount; /* Number of region indices.        */
-    FT_UInt*           regionIndices;  /* Array of `regionCount` indices;  */
+    uint            itemCount;      /* Number of delta sets per item.   */
+    uint            regionIdxCount; /* Number of region indices.        */
+    uint*           regionIndices;  /* Array of `regionCount` indices;  */
                                        /* these index `varRegionList`.     */
     FT_Byte*           deltaSet;       /* Array of `itemCount` deltas;     */
                                        /* use `innerIndex` for this array. */
-    FT_UShort          wordDeltaCount; /* Number of the first 32-bit ints  */
+    ushort          wordDeltaCount; /* Number of the first 32-bit ints  */
                                        /* or 16-bit ints of `deltaSet`     */
                                        /* depending on `longWords`.        */
     FT_Bool            longWords;      /* If true, `deltaSet` is a 32-bit  */
@@ -64,11 +64,11 @@ FT_BEGIN_HEADER
   /* item variation store */
   typedef struct  GX_ItemVarStoreRec_
   {
-    FT_UInt         dataCount;
+    uint         dataCount;
     GX_ItemVarData  varData;            /* array of dataCount records;     */
                                         /* use `outerIndex' for this array */
-    FT_UShort     axisCount;
-    FT_UInt       regionCount;          /* total number of regions defined */
+    ushort     axisCount;
+    uint       regionCount;          /* total number of regions defined */
     GX_VarRegion  varRegionList;
 
   } GX_ItemVarStoreRec, *GX_ItemVarStore;
@@ -77,8 +77,8 @@ FT_BEGIN_HEADER
   typedef struct  GX_DeltaSetIdxMapRec_
   {
     FT_ULong  mapCount;
-    FT_UInt*  outerIndex;               /* indices to item var data */
-    FT_UInt*  innerIndex;               /* indices to delta set     */
+    uint*  outerIndex;               /* indices to item var data */
+    uint*  innerIndex;               /* indices to delta set     */
 
   } GX_DeltaSetIdxMapRec, *GX_DeltaSetIdxMap;
 

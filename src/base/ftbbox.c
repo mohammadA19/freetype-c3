@@ -279,7 +279,7 @@
               FT_Pos  q4 )
   {
     FT_Pos  peak = 0;
-    FT_Int  shift;
+    int  shift;
 
 
     /* This function finds a peak of a cubic segment if it is above 0    */
@@ -291,7 +291,7 @@
     /* It is called with either q2 or q3 positive, which is necessary    */
     /* for the peak to exist and avoids undefined FT_MSB.                */
 
-    shift = 27 - FT_MSB( (FT_UInt32)( FT_ABS( q1 ) |
+    shift = 27 - FT_MSB( (uint)( FT_ABS( q1 ) |
                                       FT_ABS( q2 ) |
                                       FT_ABS( q3 ) |
                                       FT_ABS( q4 ) ) );
@@ -479,7 +479,7 @@
     FT_BBox     bbox = {  0x7FFFFFFFL,  0x7FFFFFFFL,
                          -0x7FFFFFFFL, -0x7FFFFFFFL };
     FT_Vector*  vec;
-    FT_UShort   n;
+    ushort   n;
 
 
     if ( !abbox )

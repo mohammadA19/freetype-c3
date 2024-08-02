@@ -227,15 +227,15 @@
   fn void /* internal */
   tt_face_get_metrics( TT_Face     face,
                        FT_Bool     vertical,
-                       FT_UInt     gindex,
-                       FT_Short   *abearing,
-                       FT_UShort  *aadvance )
+                       uint     gindex,
+                       short   *abearing,
+                       ushort  *aadvance )
   {
     FT_Error        error;
     FT_Stream       stream = face->root.stream;
     TT_HoriHeader*  header;
     FT_ULong        table_pos, table_size, table_end;
-    FT_UShort       k;
+    ushort       k;
 
 #ifdef TT_CONFIG_OPTION_GX_VAR_SUPPORT
     FT_Service_MetricsVariations  var =
@@ -265,7 +265,7 @@
 
     if ( k > 0 )
     {
-      if ( gindex < (FT_UInt)k )
+      if ( gindex < (uint)k )
       {
         table_pos += 4 * gindex;
         if ( table_pos + 4 > table_end )
@@ -309,8 +309,8 @@
     if ( var && face->blend )
     {
       FT_Face  f = FT_FACE( face );
-      FT_Int   a = (FT_Int)*aadvance;
-      FT_Int   b = (FT_Int)*abearing;
+      int   a = (int)*aadvance;
+      int   b = (int)*abearing;
 
 
       if ( vertical )
@@ -328,8 +328,8 @@
           var->lsb_adjust( f, gindex, &b );
       }
 
-      *aadvance = (FT_UShort)a;
-      *abearing = (FT_Short)b;
+      *aadvance = (ushort)a;
+      *abearing = (short)b;
     }
 #endif
   }

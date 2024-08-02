@@ -123,8 +123,8 @@ FT_BEGIN_HEADER
     FT_Fixed         x_scale;
     FT_Fixed         y_scale;
 
-    FT_Int           max_points;
-    FT_Int           max_contours;
+    int           max_points;
+    int           max_contours;
 
   } T1_GlyphSlotRec;
 
@@ -132,8 +132,8 @@ FT_BEGIN_HEADER
   fn FT_Error /* internal */
   T1_Face_Init( FT_Stream      stream,
                 FT_Face        face,
-                FT_Int         face_index,
-                FT_Int         num_params,
+                int         face_index,
+                int         num_params,
                 FT_Parameter*  params );
 
   fn void /* internal */

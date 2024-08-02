@@ -34,7 +34,7 @@ FT_BEGIN_HEADER
   {
     FT_CMapRec  cmap;
     FT_Byte*    data;           /* pointer to in-memory cmap table */
-    FT_Int      flags;          /* for format 4 only               */
+    int      flags;          /* for format 4 only               */
 
   } TT_CMapRec, *TT_CMap;
 
@@ -48,7 +48,7 @@ FT_BEGIN_HEADER
   typedef struct  TT_CMap_ClassRec_
   {
     FT_CMap_ClassRec      clazz;
-    FT_UInt               format;
+    uint               format;
     TT_CMap_ValidateFunc  validate;
     TT_CMap_Info_GetFunc  get_cmap_info;
 
@@ -97,7 +97,7 @@ FT_BEGIN_HEADER
   typedef struct  TT_ValidatorRec_
   {
     FT_ValidatorRec  validator;
-    FT_UInt          num_glyphs;
+    uint          num_glyphs;
 
   } TT_ValidatorRec, *TT_Validator;
 

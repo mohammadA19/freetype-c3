@@ -109,8 +109,8 @@
    */
   static FT_Error
   cff_get_kerning( FT_Face     face,          /* CFF_Face */
-                   FT_UInt     left_glyph,
-                   FT_UInt     right_glyph,
+                   uint     left_glyph,
+                   uint     right_glyph,
                    FT_Vector*  kerning )
   {
     CFF_Face      cffface = (CFF_Face)face;
@@ -160,8 +160,8 @@
   static FT_Error
   cff_glyph_load( FT_GlyphSlot  slot,        /* CFF_GlyphSlot */
                   FT_Size       size,        /* CFF_Size      */
-                  FT_UInt       glyph_index,
-                  FT_Int32      load_flags )
+                  uint       glyph_index,
+                  int      load_flags )
   {
     FT_Error       error;
     CFF_GlyphSlot  cffslot = (CFF_GlyphSlot)slot;
@@ -200,12 +200,12 @@
 
   static FT_Error
   cff_get_advances( FT_Face    face,
-                    FT_UInt    start,
-                    FT_UInt    count,
-                    FT_Int32   flags,
+                    uint    start,
+                    uint    count,
+                    int   flags,
                     FT_Fixed*  advances )
   {
-    FT_UInt       nn;
+    uint       nn;
     FT_Error      error = FT_Err_Ok;
     FT_GlyphSlot  slot  = face->glyph;
 
@@ -217,7 +217,7 @@
       /* the values in the `CFF' table                                  */
 
       CFF_Face  cffface = (CFF_Face)face;
-      FT_Short  dummy;
+      short  dummy;
 
 
       if ( flags & FT_LOAD_VERTICAL_LAYOUT )
@@ -238,7 +238,7 @@
 
         for ( nn = 0; nn < count; nn++ )
         {
-          FT_UShort  ah;
+          ushort  ah;
 
 
           ( (SFNT_Service)cffface->sfnt )->get_metrics( cffface,
@@ -269,7 +269,7 @@
 
         for ( nn = 0; nn < count; nn++ )
         {
-          FT_UShort  aw;
+          ushort  aw;
 
 
           ( (SFNT_Service)cffface->sfnt )->get_metrics( cffface,
@@ -290,7 +290,7 @@
     }
 
   Missing_Table:
-    flags |= (FT_UInt32)FT_LOAD_ADVANCE_ONLY;
+    flags |= (uint)FT_LOAD_ADVANCE_ONLY;
 
     for ( nn = 0; nn < count; nn++ )
     {
@@ -314,14 +314,14 @@
 
   static FT_Error
   cff_get_glyph_name( FT_Face     face,        /* CFF_Face */
-                      FT_UInt     glyph_index,
+                      uint     glyph_index,
                       FT_Pointer  buffer,
-                      FT_UInt     buffer_max )
+                      uint     buffer_max )
   {
     CFF_Face    cffface = (CFF_Face)face;
     CFF_Font    font    = (CFF_Font)cffface->extra.data;
     FT_String*  gname;
-    FT_UShort   sid;
+    ushort   sid;
     FT_Error    error;
 
 
@@ -377,7 +377,7 @@
   }
 
 
-  static FT_UInt
+  static uint
   cff_get_name_index( FT_Face           face,        /* CFF_Face */
                       const FT_String*  glyph_name )
   {
@@ -386,8 +386,8 @@
     CFF_Charset         charset = &cff->charset;
     FT_Service_PsCMaps  psnames;
     FT_String*          name;
-    FT_UShort           sid;
-    FT_UInt             i;
+    ushort           sid;
+    uint             i;
 
 
     /* CFF2 table does not have glyph names; */
@@ -452,7 +452,7 @@
    *
    */
 
-  static FT_Int
+  static int
   cff_ps_has_glyph_names( FT_Face  face )
   {
     return ( face->face_flags & FT_FACE_FLAG_GLYPH_NAMES ) > 0;
@@ -496,8 +496,8 @@
                                                          dict->weight );
       font_info->italic_angle        = dict->italic_angle;
       font_info->is_fixed_pitch      = dict->is_fixed_pitch;
-      font_info->underline_position  = (FT_Short)dict->underline_position;
-      font_info->underline_thickness = (FT_UShort)dict->underline_thickness;
+      font_info->underline_position  = (short)dict->underline_position;
+      font_info->underline_thickness = (ushort)dict->underline_thickness;
 
       cff->font_info = font_info;
     }
@@ -565,7 +565,7 @@
               }
 
               font_extra->fs_type *= 10;
-              font_extra->fs_type += (FT_UShort)( *s - '0' );
+              font_extra->fs_type += (ushort)( *s - '0' );
             }
             else if ( *s != ' ' && *s != '\n' && *s != '\r' )
             {
@@ -700,7 +700,7 @@
   cff_get_ros( FT_Face       face,        /* FT_Face */
                const char*  *registry,
                const char*  *ordering,
-               FT_Int       *supplement )
+               int       *supplement )
   {
     FT_Error  error   = FT_Err_Ok;
     CFF_Face  cffface = (CFF_Face)face;
@@ -745,7 +745,7 @@
              dict->cid_supplement > FT_INT_MAX )
           FT_TRACE1(( "cff_get_ros: too large supplement %ld is truncated\n",
                       dict->cid_supplement ));
-        *supplement = (FT_Int)dict->cid_supplement;
+        *supplement = (int)dict->cid_supplement;
       }
     }
 
@@ -780,8 +780,8 @@
 
   static FT_Error
   cff_get_cid_from_glyph_index( FT_Face   face,        /* CFF_Face */
-                                FT_UInt   glyph_index,
-                                FT_UInt  *cid )
+                                uint   glyph_index,
+                                uint  *cid )
   {
     FT_Error  error   = FT_Err_Ok;
     CFF_Face  cffface = (CFF_Face)face;
@@ -790,7 +790,7 @@
 
     if ( cff )
     {
-      FT_UInt          c;
+      uint          c;
       CFF_FontRecDict  dict = &cff->top_font.font_dict;
 
 
@@ -850,7 +850,7 @@
 
   static FT_Error
   cff_set_mm_blend( FT_Face    face,        /* CFF_Face */
-                    FT_UInt    num_coords,
+                    uint    num_coords,
                     FT_Fixed*  coords )
   {
     CFF_Face                 cffface = (CFF_Face)face;
@@ -863,7 +863,7 @@
 
   static FT_Error
   cff_get_mm_blend( FT_Face    face,       /* CFF_Face */
-                    FT_UInt    num_coords,
+                    uint    num_coords,
                     FT_Fixed*  coords )
   {
     CFF_Face                 cffface = (CFF_Face)face;
@@ -876,7 +876,7 @@
 
   static FT_Error
   cff_set_mm_weightvector( FT_Face    face,          /* CFF_Face */
-                           FT_UInt    len,
+                           uint    len,
                            FT_Fixed*  weightvector )
   {
     CFF_Face                 cffface = (CFF_Face)face;
@@ -889,7 +889,7 @@
 
   static FT_Error
   cff_get_mm_weightvector( FT_Face    face,          /* CFF_Face */
-                           FT_UInt*   len,
+                           uint*   len,
                            FT_Fixed*  weightvector )
   {
     CFF_Face                 cffface = (CFF_Face)face;
@@ -925,7 +925,7 @@
 
   static FT_Error
   cff_set_var_design( FT_Face    face,       /* CFF_Face */
-                      FT_UInt    num_coords,
+                      uint    num_coords,
                       FT_Fixed*  coords )
   {
     CFF_Face                 cffface = (CFF_Face)face;
@@ -938,7 +938,7 @@
 
   static FT_Error
   cff_get_var_design( FT_Face    face,       /* CFF_Face */
-                      FT_UInt    num_coords,
+                      uint    num_coords,
                       FT_Fixed*  coords )
   {
     CFF_Face                 cffface = (CFF_Face)face;
@@ -951,7 +951,7 @@
 
   static FT_Error
   cff_set_named_instance( FT_Face   face,            /* CFF_Face */
-                          FT_UInt   instance_index )
+                          uint   instance_index )
   {
     CFF_Face                 cffface = (CFF_Face)face;
     FT_Service_MultiMasters  mm      = (FT_Service_MultiMasters)cffface->mm;
@@ -963,7 +963,7 @@
 
   static FT_Error
   cff_get_default_named_instance( FT_Face   face,            /* CFF_Face */
-                                  FT_UInt  *instance_index )
+                                  uint  *instance_index )
   {
     CFF_Face                 cffface = (CFF_Face)face;
     FT_Service_MultiMasters  mm      = (FT_Service_MultiMasters)cffface->mm;
@@ -1002,11 +1002,11 @@
   }
 
 
-  static FT_Int
+  static int
   cff_get_item_delta( FT_Face          face,        /* CFF_Face */
                       GX_ItemVarStore  itemStore,
-                      FT_UInt          outerIndex,
-                      FT_UInt          innerIndex )
+                      uint          outerIndex,
+                      uint          innerIndex )
   {
     CFF_Face                 cffface = (CFF_Face)face;
     FT_Service_MultiMasters  mm      = (FT_Service_MultiMasters)cffface->mm;
@@ -1083,8 +1083,8 @@
 
   static FT_Error
   cff_hadvance_adjust( FT_Face   face,    /* CFF_Face */
-                       FT_UInt   gindex,
-                       FT_Int   *avalue )
+                       uint   gindex,
+                       int   *avalue )
   {
     CFF_Face  cffface = (CFF_Face)face;
     FT_Service_MetricsVariations

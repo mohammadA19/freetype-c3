@@ -35,9 +35,9 @@
 
   FT_Error
   FT_TrueTypeGX_Validate( FT_Face   face,
-                          FT_UInt   validation_flags,
+                          uint   validation_flags,
                           FT_Bytes  tables[FT_VALIDATE_GX_LENGTH],
-                          FT_UInt   table_length )
+                          uint   table_length )
   {
     FT_Service_GXvalidate  service;
     FT_Error               error;
@@ -88,7 +88,7 @@
 
   FT_Error
   FT_ClassicKern_Validate( FT_Face    face,
-                           FT_UInt    validation_flags,
+                           uint    validation_flags,
                            FT_Bytes  *ckern_table )
   {
     FT_Service_CKERNvalidate  service;

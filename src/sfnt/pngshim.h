@@ -30,13 +30,13 @@ FT_BEGIN_HEADER
 
   fn FT_Error /* internal */
   Load_SBit_Png( FT_GlyphSlot     slot,
-                 FT_Int           x_offset,
-                 FT_Int           y_offset,
-                 FT_Int           pix_bits,
+                 int           x_offset,
+                 int           y_offset,
+                 int           pix_bits,
                  TT_SBit_Metrics  metrics,
                  FT_Memory        memory,
                  FT_Byte*         data,
-                 FT_UInt          png_len,
+                 uint          png_len,
                  FT_Bool          populate_map_and_metrics,
                  FT_Bool          metrics_only );
 

@@ -45,14 +45,14 @@ FT_BEGIN_HEADER
 
   fn FT_Error /* internal */
   ps_table_new( PS_Table   table,
-                FT_Int     count,
+                int     count,
                 FT_Memory  memory );
 
   fn FT_Error /* internal */
   ps_table_add( PS_Table     table,
-                FT_Int       idx,
+                int       idx,
                 const void*  object,
-                FT_UInt      length );
+                uint      length );
 
   fn void /* internal */
   ps_table_done( PS_Table  table );
@@ -84,21 +84,21 @@ FT_BEGIN_HEADER
   fn void /* internal */
   ps_parser_to_token_array( PS_Parser  parser,
                             T1_Token   tokens,
-                            FT_UInt    max_tokens,
-                            FT_Int*    pnum_tokens );
+                            uint    max_tokens,
+                            int*    pnum_tokens );
 
   fn FT_Error /* internal */
   ps_parser_load_field( PS_Parser       parser,
                         const T1_Field  field,
                         void**          objects,
-                        FT_UInt         max_objects,
+                        uint         max_objects,
                         FT_ULong*       pflags );
 
   fn FT_Error /* internal */
   ps_parser_load_field_table( PS_Parser       parser,
                               const T1_Field  field,
                               void**          objects,
-                              FT_UInt         max_objects,
+                              uint         max_objects,
                               FT_ULong*       pflags );
 
   fn FT_Long /* internal */
@@ -115,19 +115,19 @@ FT_BEGIN_HEADER
 
   fn FT_Fixed /* internal */
   ps_parser_to_fixed( PS_Parser  parser,
-                      FT_Int     power_ten );
+                      int     power_ten );
 
 
-  fn FT_Int /* internal */
+  fn int /* internal */
   ps_parser_to_coord_array( PS_Parser  parser,
-                            FT_Int     max_coords,
-                            FT_Short*  coords );
+                            int     max_coords,
+                            short*  coords );
 
-  fn FT_Int /* internal */
+  fn int /* internal */
   ps_parser_to_fixed_array( PS_Parser  parser,
-                            FT_Int     max_values,
+                            int     max_values,
                             FT_Fixed*  values,
-                            FT_Int     power_ten );
+                            int     power_ten );
 
 
   fn void /* internal */
@@ -160,7 +160,7 @@ FT_BEGIN_HEADER
 
   fn FT_Error /* internal */
   t1_builder_check_points( T1_Builder  builder,
-                           FT_Int      count );
+                           int      count );
 
   fn void /* internal */
   t1_builder_add_point( T1_Builder  builder,
@@ -207,7 +207,7 @@ FT_BEGIN_HEADER
 
   fn FT_Error /* internal */
   cff_check_points( CFF_Builder*  builder,
-                    FT_Int        count );
+                    int        count );
 
   fn void /* internal */
   cff_builder_add_point( CFF_Builder*  builder,
@@ -248,7 +248,7 @@ FT_BEGIN_HEADER
 
   fn FT_Error /* internal */
   ps_builder_check_points( PS_Builder*  builder,
-                           FT_Int       count );
+                           int       count );
 
   fn void /* internal */
   ps_builder_add_point( PS_Builder*  builder,
@@ -294,11 +294,11 @@ FT_BEGIN_HEADER
   fn void /* internal */
   t1_decrypt( FT_Byte*   buffer,
               FT_Offset  length,
-              FT_UShort  seed );
+              ushort  seed );
 
 
-  fn FT_UInt32 /* internal */
-  cff_random( FT_UInt32  r );
+  fn uint /* internal */
+  cff_random( uint  r );
 
 
 FT_END_HEADER

@@ -25,11 +25,11 @@
   static FT_Error
   ft_face_scale_advances_( FT_Face    face,
                            FT_Fixed*  advances,
-                           FT_UInt    count,
-                           FT_Int32   flags )
+                           uint    count,
+                           int   flags )
   {
     FT_Fixed  scale;
-    FT_UInt   nn;
+    uint   nn;
 
 
     if ( flags & FT_LOAD_NO_SCALE )
@@ -72,8 +72,8 @@
 
   FT_Error
   FT_Get_Advance( FT_Face    face,
-                  FT_UInt    gindex,
-                  FT_Int32   flags,
+                  uint    gindex,
+                  int   flags,
                   FT_Fixed  *padvance )
   {
     FT_Face_GetAdvancesFunc  func;
@@ -85,7 +85,7 @@
     if ( !padvance )
       return FT_THROW( Invalid_Argument );
 
-    if ( gindex >= (FT_UInt)face->num_glyphs )
+    if ( gindex >= (uint)face->num_glyphs )
       return FT_THROW( Invalid_Glyph_Index );
 
     func = face->driver->clazz->get_advances;
@@ -110,17 +110,17 @@
 
   FT_Error
   FT_Get_Advances( FT_Face    face,
-                   FT_UInt    start,
-                   FT_UInt    count,
-                   FT_Int32   flags,
+                   uint    start,
+                   uint    count,
+                   int   flags,
                    FT_Fixed  *padvances )
   {
     FT_Error  error = FT_Err_Ok;
 
     FT_Face_GetAdvancesFunc  func;
 
-    FT_UInt  num, end, nn;
-    FT_Int   factor;
+    uint  num, end, nn;
+    int   factor;
 
 
     if ( !face )
@@ -129,7 +129,7 @@
     if ( !padvances )
       return FT_THROW( Invalid_Argument );
 
-    num = (FT_UInt)face->num_glyphs;
+    num = (uint)face->num_glyphs;
     end = start + count;
     if ( start >= num || end < start || end > num )
       return FT_THROW( Invalid_Glyph_Index );
@@ -153,7 +153,7 @@
     if ( flags & FT_ADVANCE_FLAG_FAST_ONLY )
       return FT_THROW( Unimplemented_Feature );
 
-    flags |= (FT_UInt32)FT_LOAD_ADVANCE_ONLY;
+    flags |= (uint)FT_LOAD_ADVANCE_ONLY;
     factor = ( flags & FT_LOAD_NO_SCALE ) ? 1 : 1024;
     for ( nn = 0; nn < count; nn++ )
     {

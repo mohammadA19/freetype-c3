@@ -40,11 +40,11 @@
   fn void /* internal */
   otv_Coverage_validate( FT_Bytes       table,
                          OTV_Validator  otvalid,
-                         FT_Int         expected_count )
+                         int         expected_count )
   {
     FT_Bytes  p = table;
-    FT_UInt   CoverageFormat;
-    FT_UInt   total = 0;
+    uint   CoverageFormat;
+    uint   total = 0;
 
 
     OTV_NAME_ENTER( "Coverage" );
@@ -58,8 +58,8 @@
     {
     case 1:     /* CoverageFormat1 */
       {
-        FT_UInt  GlyphCount;
-        FT_UInt  i;
+        uint  GlyphCount;
+        uint  i;
 
 
         GlyphCount = FT_NEXT_USHORT( p );
@@ -70,7 +70,7 @@
 
         for ( i = 0; i < GlyphCount; i++ )
         {
-          FT_UInt  gid;
+          uint  gid;
 
 
           gid = FT_NEXT_USHORT( p );
@@ -84,8 +84,8 @@
 
     case 2:     /* CoverageFormat2 */
       {
-        FT_UInt  n, RangeCount;
-        FT_UInt  Start, End, StartCoverageIndex, last = 0;
+        uint  n, RangeCount;
+        uint  Start, End, StartCoverageIndex, last = 0;
 
 
         RangeCount = FT_NEXT_USHORT( p );
@@ -123,14 +123,14 @@
     /* Generally, a coverage table offset has an associated count field.  */
     /* The number of glyphs in the table should match this field.  If     */
     /* there is no associated count, a value of -1 tells us not to check. */
-    if ( expected_count != -1 && (FT_UInt)expected_count != total )
+    if ( expected_count != -1 && (uint)expected_count != total )
       FT_INVALID_DATA;
 
     OTV_EXIT;
   }
 
 
-  fn FT_UInt /* internal */
+  fn uint /* internal */
   otv_Coverage_get_first( FT_Bytes  table )
   {
     FT_Bytes  p = table;
@@ -142,13 +142,13 @@
   }
 
 
-  fn FT_UInt /* internal */
+  fn uint /* internal */
   otv_Coverage_get_last( FT_Bytes  table )
   {
     FT_Bytes  p = table;
-    FT_UInt   CoverageFormat = FT_NEXT_USHORT( p );
-    FT_UInt   count          = FT_NEXT_USHORT( p );     /* Glyph/RangeCount */
-    FT_UInt   result = 0;
+    uint   CoverageFormat = FT_NEXT_USHORT( p );
+    uint   count          = FT_NEXT_USHORT( p );     /* Glyph/RangeCount */
+    uint   result = 0;
 
 
     if ( !count )
@@ -174,13 +174,13 @@
   }
 
 
-  fn FT_UInt /* internal */
+  fn uint /* internal */
   otv_Coverage_get_count( FT_Bytes  table )
   {
     FT_Bytes  p              = table;
-    FT_UInt   CoverageFormat = FT_NEXT_USHORT( p );
-    FT_UInt   count          = FT_NEXT_USHORT( p );     /* Glyph/RangeCount */
-    FT_UInt   result         = 0;
+    uint   CoverageFormat = FT_NEXT_USHORT( p );
+    uint   count          = FT_NEXT_USHORT( p );     /* Glyph/RangeCount */
+    uint   result         = 0;
 
 
     switch ( CoverageFormat )
@@ -190,7 +190,7 @@
 
     case 2:
       {
-        FT_UInt  Start, End;
+        uint  Start, End;
 
 
         for ( ; count > 0; count-- )
@@ -225,7 +225,7 @@
                          OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   ClassFormat;
+    uint   ClassFormat;
 
 
     OTV_NAME_ENTER( "ClassDef" );
@@ -239,8 +239,8 @@
     {
     case 1:     /* ClassDefFormat1 */
       {
-        FT_UInt  StartGlyph;
-        FT_UInt  GlyphCount;
+        uint  StartGlyph;
+        uint  GlyphCount;
 
 
         OTV_LIMIT_CHECK( 4 );
@@ -259,8 +259,8 @@
 
     case 2:     /* ClassDefFormat2 */
       {
-        FT_UInt  n, ClassRangeCount;
-        FT_UInt  Start, End, last = 0;
+        uint  n, ClassRangeCount;
+        uint  Start, End, last = 0;
 
 
         ClassRangeCount = FT_NEXT_USHORT( p );
@@ -311,7 +311,7 @@
                        OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   StartSize, EndSize, DeltaFormat, count;
+    uint   StartSize, EndSize, DeltaFormat, count;
 
 
     OTV_NAME_ENTER( "Device" );
@@ -357,7 +357,7 @@
                        OTV_Validator  otvalid )
   {
     FT_Bytes           p = table;
-    FT_UInt            LookupType, LookupFlag, SubTableCount;
+    uint            LookupType, LookupFlag, SubTableCount;
     OTV_Validate_Func  validate;
 
 
@@ -397,7 +397,7 @@
                            OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   LookupCount;
+    uint   LookupCount;
 
 
     OTV_NAME_ENTER( "LookupList" );
@@ -419,7 +419,7 @@
   }
 
 
-  static FT_UInt
+  static uint
   otv_LookupList_get_count( FT_Bytes  table )
   {
     return FT_NEXT_USHORT( table );
@@ -441,7 +441,7 @@
                         OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   LookupCount;
+    uint   LookupCount;
 
 
     OTV_NAME_ENTER( "Feature" );
@@ -463,7 +463,7 @@
   }
 
 
-  static FT_UInt
+  static uint
   otv_Feature_get_count( FT_Bytes  table )
   {
     return FT_NEXT_USHORT( table );
@@ -478,7 +478,7 @@
                             OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   FeatureCount;
+    uint   FeatureCount;
 
 
     OTV_NAME_ENTER( "FeatureList" );
@@ -521,8 +521,8 @@
                         OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   ReqFeatureIndex;
-    FT_UInt   FeatureCount;
+    uint   ReqFeatureIndex;
+    uint   FeatureCount;
 
 
     OTV_NAME_ENTER( "LangSys" );
@@ -561,7 +561,7 @@
   otv_Script_validate( FT_Bytes       table,
                        OTV_Validator  otvalid )
   {
-    FT_UInt   DefaultLangSys, LangSysCount;
+    uint   DefaultLangSys, LangSysCount;
     FT_Bytes  p = table;
 
 
@@ -598,7 +598,7 @@
                            FT_Bytes       features,
                            OTV_Validator  otvalid )
   {
-    FT_UInt   ScriptCount;
+    uint   ScriptCount;
     FT_Bytes  p = table;
 
 
@@ -656,7 +656,7 @@
             OTV_Validator  otvalid )
   {
     FT_Bytes           p = table;
-    FT_UInt            Count;
+    uint            Count;
     OTV_Validate_Func  func;
 
 
@@ -686,7 +686,7 @@
                 OTV_Validator  otvalid )
   {
     FT_Bytes           p = table;
-    FT_UInt            Count, Coverage;
+    uint            Count, Coverage;
     OTV_Validate_Func  func;
 
 
@@ -700,7 +700,7 @@
 
     OTV_TRACE(( " (Count = %d)\n", Count ));
 
-    otv_Coverage_validate( table + Coverage, otvalid, (FT_Int)Count );
+    otv_Coverage_validate( table + Coverage, otvalid, (int)Count );
 
     OTV_LIMIT_CHECK( Count * 2 );
 
@@ -723,7 +723,7 @@
             OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   Count;
+    uint   Count;
 
 
     OTV_ENTER;
@@ -756,7 +756,7 @@
                  OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   Count1, Count2;
+    uint   Count1, Count2;
 
 
     OTV_ENTER;
@@ -797,8 +797,8 @@
                            OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   BacktrackCount, InputCount, LookaheadCount;
-    FT_UInt   Count;
+    uint   BacktrackCount, InputCount, LookaheadCount;
+    uint   Count;
 
 
     OTV_ENTER;
@@ -853,7 +853,7 @@
                    OTV_Validator  otvalid )
   {
     FT_Bytes           p = table;
-    FT_UInt            Coverage, ClassDef, ClassSetCount;
+    uint            Coverage, ClassDef, ClassSetCount;
     OTV_Validate_Func  func;
 
 
@@ -879,7 +879,7 @@
 
     for ( ; ClassSetCount > 0; ClassSetCount-- )
     {
-      FT_UInt  offset = FT_NEXT_USHORT( p );
+      uint  offset = FT_NEXT_USHORT( p );
 
 
       if ( offset )
@@ -899,7 +899,7 @@
                    OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   GlyphCount, Count, count1;
+    uint   GlyphCount, Count, count1;
 
 
     OTV_ENTER;
@@ -938,9 +938,9 @@
                        OTV_Validator  otvalid )
   {
     FT_Bytes           p = table;
-    FT_UInt            Coverage;
-    FT_UInt            BacktrackClassDef, InputClassDef, LookaheadClassDef;
-    FT_UInt            ChainClassSetCount;
+    uint            Coverage;
+    uint            BacktrackClassDef, InputClassDef, LookaheadClassDef;
+    uint            ChainClassSetCount;
     OTV_Validate_Func  func;
 
 
@@ -971,7 +971,7 @@
 
     for ( ; ChainClassSetCount > 0; ChainClassSetCount-- )
     {
-      FT_UInt  offset = FT_NEXT_USHORT( p );
+      uint  offset = FT_NEXT_USHORT( p );
 
 
       if ( offset )
@@ -991,8 +991,8 @@
                              OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   BacktrackGlyphCount, InputGlyphCount, LookaheadGlyphCount;
-    FT_UInt   count1, count2;
+    uint   BacktrackGlyphCount, InputGlyphCount, LookaheadGlyphCount;
+    uint   count1, count2;
 
 
     OTV_ENTER;
@@ -1046,7 +1046,7 @@
   }
 
 
-  fn FT_UInt /* internal */
+  fn uint /* internal */
   otv_GSUBGPOS_get_Lookup_count( FT_Bytes  table )
   {
     FT_Bytes  p = table + 8;
@@ -1056,11 +1056,11 @@
   }
 
 
-  fn FT_UInt /* internal */
+  fn uint /* internal */
   otv_GSUBGPOS_have_MarkAttachmentType_flag( FT_Bytes  table )
   {
     FT_Bytes  p, lookup;
-    FT_UInt   count;
+    uint   count;
 
 
     if ( !table )

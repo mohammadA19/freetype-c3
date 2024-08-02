@@ -28,41 +28,41 @@ FT_BEGIN_HEADER
   /* the PFR Header structure */
   typedef struct  PFR_HeaderRec_
   {
-    FT_UInt32  signature;
-    FT_UInt    version;
-    FT_UInt    signature2;
-    FT_UInt    header_size;
+    uint  signature;
+    uint    version;
+    uint    signature2;
+    uint    header_size;
 
-    FT_UInt    log_dir_size;
-    FT_UInt    log_dir_offset;
+    uint    log_dir_size;
+    uint    log_dir_offset;
 
-    FT_UInt    log_font_max_size;
-    FT_UInt32  log_font_section_size;
-    FT_UInt32  log_font_section_offset;
+    uint    log_font_max_size;
+    uint  log_font_section_size;
+    uint  log_font_section_offset;
 
-    FT_UInt32  phy_font_max_size;
-    FT_UInt32  phy_font_section_size;
-    FT_UInt32  phy_font_section_offset;
+    uint  phy_font_max_size;
+    uint  phy_font_section_size;
+    uint  phy_font_section_offset;
 
-    FT_UInt    gps_max_size;
-    FT_UInt32  gps_section_size;
-    FT_UInt32  gps_section_offset;
+    uint    gps_max_size;
+    uint  gps_section_size;
+    uint  gps_section_offset;
 
-    FT_UInt    max_blue_values;
-    FT_UInt    max_x_orus;
-    FT_UInt    max_y_orus;
+    uint    max_blue_values;
+    uint    max_x_orus;
+    uint    max_y_orus;
 
-    FT_UInt    phy_font_max_size_high;
-    FT_UInt    color_flags;
+    uint    phy_font_max_size_high;
+    uint    color_flags;
 
-    FT_UInt32  bct_max_size;
-    FT_UInt32  bct_set_max_size;
-    FT_UInt32  phy_bct_set_max_size;
+    uint  bct_max_size;
+    uint  bct_set_max_size;
+    uint  phy_bct_set_max_size;
 
-    FT_UInt    num_phy_fonts;
-    FT_UInt    max_vert_stem_snap;
-    FT_UInt    max_horz_stem_snap;
-    FT_UInt    max_chars;
+    uint    num_phy_fonts;
+    uint    max_vert_stem_snap;
+    uint    max_horz_stem_snap;
+    uint    max_chars;
 
   } PFR_HeaderRec, *PFR_Header;
 
@@ -76,17 +76,17 @@ FT_BEGIN_HEADER
 
   typedef struct  PFR_LogFontRec_
   {
-    FT_UInt32  size;
-    FT_UInt32  offset;
+    uint  size;
+    uint  offset;
 
-    FT_Int32   matrix[4];
-    FT_UInt    stroke_flags;
-    FT_Int     stroke_thickness;
-    FT_Int     bold_thickness;
-    FT_Int32   miter_limit;
+    int   matrix[4];
+    uint    stroke_flags;
+    int     stroke_thickness;
+    int     bold_thickness;
+    int   miter_limit;
 
-    FT_UInt32  phys_size;
-    FT_UInt32  phys_offset;
+    uint  phys_size;
+    uint  phys_offset;
 
   } PFR_LogFontRec, *PFR_LogFont;
 
@@ -116,9 +116,9 @@ FT_BEGIN_HEADER
 
   typedef struct  PFR_BitmapCharRec_
   {
-    FT_UInt    char_code;
-    FT_UInt    gps_size;
-    FT_UInt32  gps_offset;
+    uint    char_code;
+    uint    gps_size;
+    uint  gps_offset;
 
   } PFR_BitmapCharRec, *PFR_BitmapChar;
 
@@ -132,18 +132,18 @@ FT_BEGIN_HEADER
 
   typedef struct  PFR_StrikeRec_
   {
-    FT_UInt         x_ppm;
-    FT_UInt         y_ppm;
-    FT_UInt         flags;
+    uint         x_ppm;
+    uint         y_ppm;
+    uint         flags;
 
-    FT_UInt32       gps_size;
-    FT_UInt32       gps_offset;
+    uint       gps_size;
+    uint       gps_offset;
 
-    FT_UInt32       bct_size;
-    FT_UInt32       bct_offset;
+    uint       bct_size;
+    uint       bct_offset;
 
     /* optional */
-    FT_UInt         num_bitmaps;
+    uint         num_bitmaps;
     PFR_BitmapChar  bitmaps;
 
   } PFR_StrikeRec, *PFR_Strike;
@@ -153,10 +153,10 @@ FT_BEGIN_HEADER
 
   typedef struct  PFR_CharRec_
   {
-    FT_UInt    char_code;
-    FT_Int     advance;
-    FT_UInt    gps_size;
-    FT_UInt32  gps_offset;
+    uint    char_code;
+    int     advance;
+    uint    gps_size;
+    uint  gps_offset;
 
   } PFR_CharRec, *PFR_Char;
 
@@ -165,9 +165,9 @@ FT_BEGIN_HEADER
 
   typedef struct  PFR_DimensionRec_
   {
-    FT_UInt  standard;
-    FT_UInt  num_stem_snaps;
-    FT_Int*  stem_snaps;
+    uint  standard;
+    uint  num_stem_snaps;
+    int*  stem_snaps;
 
   } PFR_DimensionRec, *PFR_Dimension;
 
@@ -180,23 +180,23 @@ FT_BEGIN_HEADER
     PFR_KernItem  next;
     FT_Byte       pair_count;
     FT_Byte       flags;
-    FT_Short      base_adj;
-    FT_UInt       pair_size;
+    short      base_adj;
+    uint       pair_size;
     FT_Offset     offset;
-    FT_UInt32     pair1;
-    FT_UInt32     pair2;
+    uint     pair1;
+    uint     pair2;
 
   } PFR_KernItemRec;
 
 
 #define PFR_KERN_INDEX( g1, g2 )                          \
-          ( ( (FT_UInt32)(g1) << 16 ) | (FT_UInt16)(g2) )
+          ( ( (uint)(g1) << 16 ) | (ushort)(g2) )
 
 #define PFR_KERN_PAIR_INDEX( pair )                        \
           PFR_KERN_INDEX( (pair)->glyph1, (pair)->glyph2 )
 
 #define PFR_NEXT_KPAIR( p )  ( p += 2,                              \
-                               ( (FT_UInt32)p[-2] << 16 ) | p[-1] )
+                               ( (uint)p[-2] << 16 ) | p[-1] )
 
 
   /************************************************************************/
@@ -204,18 +204,18 @@ FT_BEGIN_HEADER
   typedef struct  PFR_PhyFontRec_
   {
     FT_Memory          memory;
-    FT_UInt32          offset;
+    uint          offset;
 
-    FT_UInt            font_ref_number;
-    FT_UInt            outline_resolution;
-    FT_UInt            metrics_resolution;
+    uint            font_ref_number;
+    uint            outline_resolution;
+    uint            metrics_resolution;
     FT_BBox            bbox;
-    FT_UInt            flags;
-    FT_Int             standard_advance;
+    uint            flags;
+    int             standard_advance;
 
-    FT_Int             ascent;   /* optional, bbox.yMax if not present */
-    FT_Int             descent;  /* optional, bbox.yMin if not present */
-    FT_Int             leading;  /* optional, 0 if not present         */
+    int             ascent;   /* optional, bbox.yMax if not present */
+    int             descent;  /* optional, bbox.yMin if not present */
+    int             leading;  /* optional, 0 if not present         */
 
     PFR_DimensionRec   horizontal;
     PFR_DimensionRec   vertical;
@@ -224,20 +224,20 @@ FT_BEGIN_HEADER
     FT_String*         family_name;
     FT_String*         style_name;
 
-    FT_UInt            num_strikes;
-    FT_UInt            max_strikes;
+    uint            num_strikes;
+    uint            max_strikes;
     PFR_StrikeRec*     strikes;
 
-    FT_UInt            num_blue_values;
-    FT_Int            *blue_values;
-    FT_UInt            blue_fuzz;
-    FT_UInt            blue_scale;
+    uint            num_blue_values;
+    int            *blue_values;
+    uint            blue_fuzz;
+    uint            blue_scale;
 
-    FT_UInt            num_chars;
+    uint            num_chars;
     FT_Offset          chars_offset;
     PFR_Char           chars;
 
-    FT_UInt            num_kern_pairs;
+    uint            num_kern_pairs;
     PFR_KernItem       kern_items;
     PFR_KernItem*      kern_items_tail;
 
@@ -276,8 +276,8 @@ FT_BEGIN_HEADER
   /* controlled coordinate */
   typedef struct  PFR_CoordRec_
   {
-    FT_UInt  org;
-    FT_UInt  cur;
+    uint  org;
+    uint  cur;
 
   } PFR_CoordRec, *PFR_Coord;
 
@@ -286,10 +286,10 @@ FT_BEGIN_HEADER
   {
     FT_Fixed   x_scale;
     FT_Fixed   y_scale;
-    FT_Int     x_delta;
-    FT_Int     y_delta;
-    FT_UInt32  gps_offset;
-    FT_UInt    gps_size;
+    int     x_delta;
+    int     y_delta;
+    uint  gps_offset;
+    uint    gps_size;
 
   } PFR_SubGlyphRec, *PFR_SubGlyph;
 
@@ -305,16 +305,16 @@ FT_BEGIN_HEADER
     FT_Byte           format;
 
 #if 0
-    FT_UInt           num_x_control;
-    FT_UInt           num_y_control;
+    uint           num_x_control;
+    uint           num_y_control;
 #endif
-    FT_UInt           max_xy_control;
+    uint           max_xy_control;
     FT_Pos*           x_control;
     FT_Pos*           y_control;
 
 
-    FT_UInt           num_subs;
-    FT_UInt           max_subs;
+    uint           num_subs;
+    uint           max_subs;
     PFR_SubGlyphRec*  subs;
 
     FT_GlyphLoader    loader;

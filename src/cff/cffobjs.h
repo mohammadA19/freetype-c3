@@ -57,8 +57,8 @@ FT_BEGIN_HEADER
   fn FT_Error /* internal */
   cff_face_init( FT_Stream      stream,
                  FT_Face        face,           /* CFF_Face */
-                 FT_Int         face_index,
-                 FT_Int         num_params,
+                 int         face_index,
+                 int         num_params,
                  FT_Parameter*  params );
 
   fn void /* internal */

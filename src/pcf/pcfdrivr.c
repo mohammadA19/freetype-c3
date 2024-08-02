@@ -100,51 +100,51 @@ THE SOFTWARE.
   }
 
 
-  static FT_UInt
+  static uint
   pcf_cmap_char_index( FT_CMap    cmap,      /* PCF_CMap */
-                       FT_UInt32  charcode )
+                       uint  charcode )
   {
     PCF_Enc  enc = ( (PCF_CMap)cmap )->enc;
 
-    FT_UInt32  i = ( charcode >> 8   ) - enc->firstRow;
-    FT_UInt32  j = ( charcode & 0xFF ) - enc->firstCol;
-    FT_UInt32  h = enc->lastRow - enc->firstRow + 1;
-    FT_UInt32  w = enc->lastCol - enc->firstCol + 1;
+    uint  i = ( charcode >> 8   ) - enc->firstRow;
+    uint  j = ( charcode & 0xFF ) - enc->firstCol;
+    uint  h = enc->lastRow - enc->firstRow + 1;
+    uint  w = enc->lastCol - enc->firstCol + 1;
 
 
     /* wrapped around "negative" values are also rejected */
     if ( i >= h || j >= w )
       return 0;
 
-    return (FT_UInt)enc->offset[i * w + j];
+    return (uint)enc->offset[i * w + j];
   }
 
 
-  static FT_UInt
+  static uint
   pcf_cmap_char_next( FT_CMap     cmap,       /* PCF_CMap */
-                      FT_UInt32  *acharcode )
+                      uint  *acharcode )
   {
     PCF_Enc    enc = ( (PCF_CMap)cmap )->enc;
-    FT_UInt32  charcode = *acharcode + 1;
+    uint  charcode = *acharcode + 1;
 
-    FT_UInt32  i = ( charcode >> 8   ) - enc->firstRow;
-    FT_UInt32  j = ( charcode & 0xFF ) - enc->firstCol;
-    FT_UInt32  h = enc->lastRow - enc->firstRow + 1;
-    FT_UInt32  w = enc->lastCol - enc->firstCol + 1;
+    uint  i = ( charcode >> 8   ) - enc->firstRow;
+    uint  j = ( charcode & 0xFF ) - enc->firstCol;
+    uint  h = enc->lastRow - enc->firstRow + 1;
+    uint  w = enc->lastCol - enc->firstCol + 1;
 
-    FT_UInt  result = 0;
+    uint  result = 0;
 
 
     /* adjust wrapped around "negative" values */
-    if ( (FT_Int32)i < 0 )
+    if ( (int)i < 0 )
       i = 0;
-    if ( (FT_Int32)j < 0 )
+    if ( (int)j < 0 )
       j = 0;
 
     for ( ; i < h; i++, j = 0 )
       for ( ; j < w; j++ )
       {
-        result = (FT_UInt)enc->offset[i * w + j];
+        result = (uint)enc->offset[i * w + j];
         if ( result != 0xFFFFU )
           goto Exit;
       }
@@ -187,7 +187,7 @@ THE SOFTWARE.
     /* free properties */
     if ( pcfface->properties )
     {
-      FT_Int  i;
+      int  i;
 
 
       for ( i = 0; i < pcfface->nprops; i++ )
@@ -225,8 +225,8 @@ THE SOFTWARE.
   static FT_Error
   PCF_Face_Init( FT_Stream      stream,
                  FT_Face        face,       /* PCF_Face */
-                 FT_Int         face_index,
-                 FT_Int         num_params,
+                 int         face_index,
+                 int         num_params,
                  FT_Parameter*  params )
   {
     PCF_Face  pcfface = (PCF_Face)face;
@@ -450,8 +450,8 @@ THE SOFTWARE.
   static FT_Error
   PCF_Glyph_Load( FT_GlyphSlot  slot,
                   FT_Size       size,
-                  FT_UInt       glyph_index,
-                  FT_Int32      load_flags )
+                  uint       glyph_index,
+                  int      load_flags )
   {
     PCF_Face    face   = (PCF_Face)size->face;
     FT_Stream   stream;
@@ -469,7 +469,7 @@ THE SOFTWARE.
       goto Exit;
     }
 
-    if ( glyph_index >= (FT_UInt)face->root.num_glyphs )
+    if ( glyph_index >= (uint)face->root.num_glyphs )
     {
       error = FT_THROW( Invalid_Argument );
       goto Exit;
@@ -479,9 +479,9 @@ THE SOFTWARE.
 
     metric = face->metrics + glyph_index;
 
-    bitmap->rows       = (unsigned int)( metric->ascent +
+    bitmap->rows       = (uint)( metric->ascent +
                                          metric->descent );
-    bitmap->width      = (unsigned int)( metric->rightSideBearing -
+    bitmap->width      = (uint)( metric->rightSideBearing -
                                          metric->leftSideBearing );
     bitmap->num_grays  = 1;
     bitmap->pixel_mode = FT_PIXEL_MODE_MONO;
@@ -602,7 +602,7 @@ THE SOFTWARE.
          * sufficient for any meaningful values.
          */
         aproperty->type      = BDF_PROPERTY_TYPE_INTEGER;
-        aproperty->u.integer = (FT_Int32)prop->value.l;
+        aproperty->u.integer = (int)prop->value.l;
       }
 
       return FT_Err_Ok;

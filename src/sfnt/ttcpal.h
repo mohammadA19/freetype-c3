@@ -37,7 +37,7 @@ FT_BEGIN_HEADER
 
   fn FT_Error /* internal */
   tt_face_palette_set( TT_Face  face,
-                       FT_UInt  palette_index );
+                       uint  palette_index );
 
 
 FT_END_HEADER

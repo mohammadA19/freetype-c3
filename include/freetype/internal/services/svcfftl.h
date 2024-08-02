@@ -29,29 +29,29 @@ FT_BEGIN_HEADER
 #define FT_SERVICE_ID_CFF_LOAD  "cff-load"
 
 
-  typedef FT_UShort
-  (*FT_Get_Standard_Encoding_Func)( FT_UInt  charcode );
+  typedef ushort
+  (*FT_Get_Standard_Encoding_Func)( uint  charcode );
 
   typedef FT_Error
   (*FT_Load_Private_Dict_Func)( CFF_Font     font,
                                 CFF_SubFont  subfont,
-                                FT_UInt      lenNDV,
+                                uint      lenNDV,
                                 FT_Fixed*    NDV );
 
   typedef FT_Byte
   (*FT_FD_Select_Get_Func)( CFF_FDSelect  fdselect,
-                            FT_UInt       glyph_index );
+                            uint       glyph_index );
 
   typedef FT_Bool
   (*FT_Blend_Check_Vector_Func)( CFF_Blend  blend,
-                                 FT_UInt    vsindex,
-                                 FT_UInt    lenNDV,
+                                 uint    vsindex,
+                                 uint    lenNDV,
                                  FT_Fixed*  NDV );
 
   typedef FT_Error
   (*FT_Blend_Build_Vector_Func)( CFF_Blend  blend,
-                                 FT_UInt    vsindex,
-                                 FT_UInt    lenNDV,
+                                 uint    vsindex,
+                                 uint    lenNDV,
                                  FT_Fixed*  NDV );
 
 

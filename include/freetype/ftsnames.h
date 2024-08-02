@@ -106,13 +106,13 @@ FT_BEGIN_HEADER
    */
   typedef struct  FT_SfntName_
   {
-    FT_UShort  platform_id;
-    FT_UShort  encoding_id;
-    FT_UShort  language_id;
-    FT_UShort  name_id;
+    ushort  platform_id;
+    ushort  encoding_id;
+    ushort  language_id;
+    ushort  name_id;
 
     FT_Byte*   string;      /* this string is *not* null-terminated! */
-    FT_UInt    string_len;  /* in bytes                              */
+    uint    string_len;  /* in bytes                              */
 
   } FT_SfntName;
 
@@ -136,7 +136,7 @@ FT_BEGIN_HEADER
    *   This function always returns an error if the config macro
    *   `TT_CONFIG_OPTION_SFNT_NAMES` is not defined in `ftoption.h`.
    */
-  FT_EXPORT( FT_UInt )
+  FT_EXPORT( uint )
   FT_Get_Sfnt_Name_Count( FT_Face  face );
 
 
@@ -179,7 +179,7 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Error )
   FT_Get_Sfnt_Name( FT_Face       face,
-                    FT_UInt       idx,
+                    uint       idx,
                     FT_SfntName  *aname );
 
 
@@ -209,7 +209,7 @@ FT_BEGIN_HEADER
   typedef struct  FT_SfntLangTag_
   {
     FT_Byte*  string;      /* this string is *not* null-terminated! */
-    FT_UInt   string_len;  /* in bytes                              */
+    uint   string_len;  /* in bytes                              */
 
   } FT_SfntLangTag;
 
@@ -257,7 +257,7 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Error )
   FT_Get_Sfnt_LangTag( FT_Face          face,
-                       FT_UInt          langID,
+                       uint          langID,
                        FT_SfntLangTag  *alangTag );
 
 

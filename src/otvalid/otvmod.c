@@ -65,7 +65,7 @@
 
   static FT_Error
   otv_validate( FT_Face volatile   face,
-                FT_UInt            ot_flags,
+                uint            ot_flags,
                 FT_Bytes          *ot_base,
                 FT_Bytes          *ot_gdef,
                 FT_Bytes          *ot_gpos,
@@ -81,7 +81,7 @@
     FT_Byte* volatile         math;
     FT_ULong                  len_base, len_gdef, len_gpos, len_gsub, len_jstf;
     FT_ULong                  len_math;
-    FT_UInt                   num_glyphs = (FT_UInt)face->num_glyphs;
+    uint                   num_glyphs = (uint)face->num_glyphs;
     FT_ValidatorRec volatile  valid;
 
 

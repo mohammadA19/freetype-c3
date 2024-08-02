@@ -218,7 +218,7 @@
     /* skip the extra field */
     if ( head[3] & FT_GZIP_EXTRA_FIELD )
     {
-      FT_UInt  len;
+      uint  len;
 
 
       if ( FT_READ_USHORT_LE( len ) ||
@@ -230,7 +230,7 @@
     if ( head[3] & FT_GZIP_ORIG_NAME )
       for (;;)
       {
-        FT_UInt  c;
+        uint  c;
 
 
         if ( FT_READ_BYTE( c ) )
@@ -244,7 +244,7 @@
     if ( head[3] & FT_GZIP_COMMENT )
       for (;;)
       {
-        FT_UInt  c;
+        uint  c;
 
 
         if ( FT_READ_BYTE( c ) )

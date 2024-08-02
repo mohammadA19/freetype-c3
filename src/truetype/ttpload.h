@@ -32,7 +32,7 @@ FT_BEGIN_HEADER
 
   fn FT_ULong /* internal */
   tt_face_get_location( FT_Face    face,
-                        FT_UInt    gindex,
+                        uint    gindex,
                         FT_ULong  *asize );
 
   fn void /* internal */
@@ -63,8 +63,8 @@ FT_BEGIN_HEADER
 
   fn FT_Byte* /* internal */
   tt_face_get_device_metrics( TT_Face    face,
-                              FT_UInt    ppem,
-                              FT_UInt    gindex );
+                              uint    ppem,
+                              uint    gindex );
 
 FT_END_HEADER
 

@@ -37,7 +37,7 @@
   typedef struct  FTC_BasicAttrRec_
   {
     FTC_ScalerRec  scaler;
-    FT_Int32       load_flags;
+    int       load_flags;
 
   } FTC_BasicAttrRec, *FTC_BasicAttrs;
 
@@ -93,14 +93,14 @@
   }
 
 
-  static FT_UInt
+  static uint
   ftc_basic_family_get_count( FTC_Family   ftcfamily,
                               FTC_Manager  manager )
   {
     FTC_BasicFamily  family = (FTC_BasicFamily)ftcfamily;
     FT_Error         error;
     FT_Face          face;
-    FT_UInt          result = 0;
+    uint          result = 0;
 
 
     error = FTC_Manager_LookupFace( manager, family->attrs.scaler.face_id,
@@ -120,7 +120,7 @@
     }
 #endif
 
-    result = (FT_UInt)face->num_glyphs;
+    result = (uint)face->num_glyphs;
 
     return result;
   }
@@ -128,7 +128,7 @@
 
   static FT_Error
   ftc_basic_family_load_bitmap( FTC_Family   ftcfamily,
-                                FT_UInt      gindex,
+                                uint      gindex,
                                 FTC_Manager  manager,
                                 FT_Face     *aface )
   {
@@ -156,7 +156,7 @@
 
   static FT_Error
   ftc_basic_family_load_glyph( FTC_Family  ftcfamily,
-                               FT_UInt     gindex,
+                               uint     gindex,
                                FTC_Cache   cache,
                                FT_Glyph   *aglyph )
   {
@@ -285,7 +285,7 @@
   FT_Error
   FTC_ImageCache_Lookup( FTC_ImageCache  cache,
                          FTC_ImageType   type,
-                         FT_UInt         gindex,
+                         uint         gindex,
                          FT_Glyph       *aglyph,
                          FTC_Node       *anode )
   {
@@ -349,7 +349,7 @@
   FTC_ImageCache_LookupScaler( FTC_ImageCache  cache,
                                FTC_Scaler      scaler,
                                FT_ULong        load_flags,
-                               FT_UInt         gindex,
+                               uint         gindex,
                                FT_Glyph       *aglyph,
                                FTC_Node       *anode )
   {
@@ -368,7 +368,7 @@
       *anode = NULL;
 
     /*
-     * Internal `FTC_BasicAttr->load_flags' is of type `FT_Int32',
+     * Internal `FTC_BasicAttr->load_flags' is of type `int',
      * but public `FT_Face->face_flags' is of type `FT_Long'.
      *
      * On long > int systems, higher bits of load_flags cannot be handled.
@@ -381,7 +381,7 @@
 #endif
 
     query.attrs.scaler     = scaler[0];
-    query.attrs.load_flags = (FT_Int32)load_flags;
+    query.attrs.load_flags = (int)load_flags;
 
     hash = FTC_BASIC_ATTR_HASH( &query.attrs ) + gindex;
 
@@ -463,7 +463,7 @@
   FT_Error
   FTC_SBitCache_Lookup( FTC_SBitCache  cache,
                         FTC_ImageType  type,
-                        FT_UInt        gindex,
+                        uint        gindex,
                         FTC_SBit      *ansbit,
                         FTC_Node      *anode )
   {
@@ -532,7 +532,7 @@
   FTC_SBitCache_LookupScaler( FTC_SBitCache  cache,
                               FTC_Scaler     scaler,
                               FT_ULong       load_flags,
-                              FT_UInt        gindex,
+                              uint        gindex,
                               FTC_SBit      *ansbit,
                               FTC_Node      *anode )
   {
@@ -551,7 +551,7 @@
       *anode = NULL;
 
     /*
-     * Internal `FTC_BasicAttr->load_flags' is of type `FT_Int32',
+     * Internal `FTC_BasicAttr->load_flags' is of type `int',
      * but public `FT_Face->face_flags' is of type `FT_Long'.
      *
      * On long > int systems, higher bits of load_flags cannot be handled.
@@ -564,7 +564,7 @@
 #endif
 
     query.attrs.scaler     = scaler[0];
-    query.attrs.load_flags = (FT_Int32)load_flags;
+    query.attrs.load_flags = (int)load_flags;
 
     /* beware, the hash must be the same for all glyph ranges! */
     hash = FTC_BASIC_ATTR_HASH( &query.attrs ) +

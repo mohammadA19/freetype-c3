@@ -203,8 +203,8 @@
   /*                                                                       */
   fn FT_Error /* private */
   FT_GlyphLoader_CheckPoints( FT_GlyphLoader  loader,
-                              FT_UInt         n_points,
-                              FT_UInt         n_contours )
+                              uint         n_points,
+                              uint         n_contours )
   {
     FT_Memory    memory  = loader->memory;
     FT_Error     error   = FT_Err_Ok;
@@ -212,7 +212,7 @@
     FT_Outline*  current = &loader->current.outline;
     FT_Bool      adjust  = 0;
 
-    FT_UInt  new_max, old_max, min_new_max;
+    uint  new_max, old_max, min_new_max;
 
 
     error = FT_GlyphLoader_CreateExtra( loader );
@@ -220,7 +220,7 @@
       goto Exit;
 
     /* check points & tags */
-    new_max = (FT_UInt)base->n_points + (FT_UInt)current->n_points +
+    new_max = (uint)base->n_points + (uint)current->n_points +
               n_points;
     old_max = loader->max_points;
 
@@ -266,7 +266,7 @@
 
     /* check contours */
     old_max = loader->max_contours;
-    new_max = (FT_UInt)base->n_contours + (FT_UInt)current->n_contours +
+    new_max = (uint)base->n_contours + (uint)current->n_contours +
               n_contours;
     if ( new_max > old_max )
     {
@@ -307,11 +307,11 @@
   /*                                                                  */
   fn FT_Error /* private */
   FT_GlyphLoader_CheckSubGlyphs( FT_GlyphLoader  loader,
-                                 FT_UInt         n_subs )
+                                 uint         n_subs )
   {
     FT_Memory     memory = loader->memory;
     FT_Error      error  = FT_Err_Ok;
-    FT_UInt       new_max, old_max;
+    uint       new_max, old_max;
 
     FT_GlyphLoad  base    = &loader->base;
     FT_GlyphLoad  current = &loader->current;
@@ -357,7 +357,7 @@
   {
     FT_Outline*  base;
     FT_Outline*  current;
-    FT_Int       n;
+    int       n;
 
 
     if ( !loader )

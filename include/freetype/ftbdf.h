@@ -119,8 +119,8 @@ FT_BEGIN_HEADER
     BDF_PropertyType  type;
     union {
       const char*     atom;
-      FT_Int32        integer;
-      FT_UInt32       cardinal;
+      int        integer;
+      uint       cardinal;
 
     } u;
 

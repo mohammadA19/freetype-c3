@@ -49,7 +49,7 @@
   {
     FT_Bytes           p = table;
     FT_Bytes           Coverage;
-    FT_UInt            GlyphCount;
+    uint            GlyphCount;
     OTV_Validate_Func  func;
 
 
@@ -61,7 +61,7 @@
 
     OTV_TRACE(( " (GlyphCount = %d)\n", GlyphCount ));
 
-    otv_Coverage_validate( Coverage, otvalid, (FT_Int)GlyphCount );
+    otv_Coverage_validate( Coverage, otvalid, (int)GlyphCount );
     if ( GlyphCount != otv_Coverage_get_count( Coverage ) )
       FT_INVALID_DATA;
 
@@ -95,7 +95,7 @@
                            OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   CaretValueFormat;
+    uint   CaretValueFormat;
 
 
     OTV_ENTER;
@@ -146,7 +146,7 @@
                               OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   MarkGlyphSetCount;
+    uint   MarkGlyphSetCount;
 
 
     OTV_NAME_ENTER( "MarkGlyphSets" );
@@ -181,14 +181,14 @@
   otv_GDEF_validate( FT_Bytes      table,
                      FT_Bytes      gsub,
                      FT_Bytes      gpos,
-                     FT_UInt       glyph_count,
+                     uint       glyph_count,
                      FT_Validator  ftvalid )
   {
     OTV_ValidatorRec  otvalidrec;
     OTV_Validator     otvalid = &otvalidrec;
     FT_Bytes          p       = table;
-    FT_UInt           table_size;
-    FT_UShort         version;
+    uint           table_size;
+    ushort         version;
     FT_Bool           need_MarkAttachClassDef = 1;
 
     OTV_OPTIONAL_TABLE( GlyphClassDef );

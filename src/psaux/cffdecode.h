@@ -38,12 +38,12 @@ FT_BEGIN_HEADER
   fn FT_Error /* internal */
   cff_decoder_prepare( CFF_Decoder*  decoder,
                        CFF_Size      size,
-                       FT_UInt       glyph_index );
+                       uint       glyph_index );
 
 
-  fn FT_Int /* internal */
+  fn int /* internal */
   cff_lookup_glyph_by_stdcharcode( CFF_Font  cff,
-                                   FT_Int    charcode );
+                                   int    charcode );
 
 
 #ifdef CFF_CONFIG_OPTION_OLD_ENGINE

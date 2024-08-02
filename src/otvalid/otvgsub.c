@@ -45,7 +45,7 @@
                             OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   SubstFormat;
+    uint   SubstFormat;
 
 
     OTV_NAME_ENTER( "SingleSubst" );
@@ -60,9 +60,9 @@
     case 1:     /* SingleSubstFormat1 */
       {
         FT_Bytes  Coverage;
-        FT_Int    DeltaGlyphID;
-        FT_UInt   first_cov, last_cov;
-        FT_UInt   first_idx, last_idx;
+        int    DeltaGlyphID;
+        uint   first_cov, last_cov;
+        uint   first_idx, last_idx;
 
 
         OTV_LIMIT_CHECK( 4 );
@@ -75,8 +75,8 @@
         last_cov  = otv_Coverage_get_last( Coverage );
 
         /* These additions are modulo 65536. */
-        first_idx = (FT_UInt)( (FT_Int)first_cov + DeltaGlyphID ) & 0xFFFFU;
-        last_idx  = (FT_UInt)( (FT_Int)last_cov + DeltaGlyphID ) & 0xFFFFU;
+        first_idx = (uint)( (int)first_cov + DeltaGlyphID ) & 0xFFFFU;
+        last_idx  = (uint)( (int)last_cov + DeltaGlyphID ) & 0xFFFFU;
 
         /* Since the maximum number of glyphs is 2^16 - 1 = 65535, */
         /* the largest possible glyph index is 65534.  For this    */
@@ -92,7 +92,7 @@
 
     case 2:     /* SingleSubstFormat2 */
       {
-        FT_UInt  Coverage, GlyphCount;
+        uint  Coverage, GlyphCount;
 
 
         OTV_LIMIT_CHECK( 4 );
@@ -103,7 +103,7 @@
 
         otv_Coverage_validate( table + Coverage,
                                otvalid,
-                               (FT_Int)GlyphCount );
+                               (int)GlyphCount );
 
         OTV_LIMIT_CHECK( GlyphCount * 2 );
 
@@ -137,7 +137,7 @@
                               OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   SubstFormat;
+    uint   SubstFormat;
 
 
     OTV_NAME_ENTER( "MultipleSubst" );
@@ -178,7 +178,7 @@
                                OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   SubstFormat;
+    uint   SubstFormat;
 
 
     OTV_NAME_ENTER( "AlternateSubst" );
@@ -221,7 +221,7 @@
                          OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   LigatureGlyph, CompCount;
+    uint   LigatureGlyph, CompCount;
 
 
     OTV_ENTER;
@@ -253,7 +253,7 @@
                               OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   SubstFormat;
+    uint   SubstFormat;
 
 
     OTV_NAME_ENTER( "LigatureSubst" );
@@ -293,7 +293,7 @@
                              OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   SubstFormat;
+    uint   SubstFormat;
 
 
     OTV_NAME_ENTER( "ContextSubst" );
@@ -352,7 +352,7 @@
                                   OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   SubstFormat;
+    uint   SubstFormat;
 
 
     OTV_NAME_ENTER( "ChainContextSubst" );
@@ -413,7 +413,7 @@
                                OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   SubstFormat;
+    uint   SubstFormat;
 
 
     OTV_NAME_ENTER( "ExtensionSubst" );
@@ -427,7 +427,7 @@
     {
     case 1:     /* ExtensionSubstFormat1 */
       {
-        FT_UInt            ExtensionLookupType;
+        uint            ExtensionLookupType;
         FT_ULong           ExtensionOffset;
         OTV_Validate_Func  validate;
 
@@ -469,8 +469,8 @@
                                         OTV_Validator  otvalid )
   {
     FT_Bytes  p = table, Coverage;
-    FT_UInt   SubstFormat;
-    FT_UInt   BacktrackGlyphCount, LookaheadGlyphCount, GlyphCount;
+    uint   SubstFormat;
+    uint   BacktrackGlyphCount, LookaheadGlyphCount, GlyphCount;
 
 
     OTV_NAME_ENTER( "ReverseChainSingleSubst" );
@@ -556,15 +556,15 @@
 
   fn void /* internal */
   otv_GSUB_validate( FT_Bytes      table,
-                     FT_UInt       glyph_count,
+                     uint       glyph_count,
                      FT_Validator  ftvalid )
   {
     OTV_ValidatorRec  otvalidrec;
     OTV_Validator     otvalid = &otvalidrec;
     FT_Bytes          p       = table;
-    FT_UInt           table_size;
-    FT_UShort         version;
-    FT_UInt           ScriptList, FeatureList, LookupList;
+    uint           table_size;
+    ushort         version;
+    uint           ScriptList, FeatureList, LookupList;
 
     OTV_OPTIONAL_TABLE32( featureVariations );
 

@@ -66,8 +66,8 @@
   {
     FT_Memory  memory;
     FT_Error   error  = FT_Err_Ok;
-    FT_Int     pitch;
-    FT_Int     flip;
+    int     pitch;
+    int     flip;
 
 
     if ( !library )
@@ -104,7 +104,7 @@
       if ( flip )
       {
         /* take care of bitmap flow */
-        FT_UInt   i;
+        uint   i;
         FT_Byte*  s = source->buffer;
         FT_Byte*  t = target->buffer;
 
@@ -134,20 +134,20 @@
   static FT_Error
   ft_bitmap_assure_buffer( FT_Memory   memory,
                            FT_Bitmap*  bitmap,
-                           FT_UInt     xpixels,
-                           FT_UInt     ypixels )
+                           uint     xpixels,
+                           uint     ypixels )
   {
     FT_Error        error;
-    unsigned int    pitch;
-    unsigned int    new_pitch;
-    FT_UInt         bpp;
-    FT_UInt         width, height;
+    uint    pitch;
+    uint    new_pitch;
+    uint         bpp;
+    uint         width, height;
     unsigned char*  buffer = NULL;
 
 
     width  = bitmap->width;
     height = bitmap->rows;
-    pitch  = (unsigned int)FT_ABS( bitmap->pitch );
+    pitch  = (uint)FT_ABS( bitmap->pitch );
 
     switch ( bitmap->pixel_mode )
     {
@@ -177,17 +177,17 @@
     if ( ypixels == 0 && new_pitch <= pitch )
     {
       /* zero the padding */
-      FT_UInt  bit_width = pitch * 8;
-      FT_UInt  bit_last  = ( width + xpixels ) * bpp;
+      uint  bit_width = pitch * 8;
+      uint  bit_last  = ( width + xpixels ) * bpp;
 
 
       if ( bit_last < bit_width )
       {
         FT_Byte*  line  = bitmap->buffer + ( bit_last >> 3 );
         FT_Byte*  end   = bitmap->buffer + pitch;
-        FT_UInt   shift = bit_last & 7;
-        FT_UInt   mask  = 0xFF00U >> shift;
-        FT_UInt   count = height;
+        uint   shift = bit_last & 7;
+        uint   mask  = 0xFF00U >> shift;
+        uint   count = height;
 
 
         for ( ; count > 0; count--, line += pitch, end += pitch )
@@ -216,13 +216,13 @@
     /* thus take care of the flow direction         */
     if ( bitmap->pitch > 0 )
     {
-      FT_UInt  len = ( width * bpp + 7 ) >> 3;
+      uint  len = ( width * bpp + 7 ) >> 3;
 
       unsigned char*  in  = bitmap->buffer;
       unsigned char*  out = buffer;
 
       unsigned char*  limit = bitmap->buffer + pitch * bitmap->rows;
-      unsigned int    delta = new_pitch - len;
+      uint    delta = new_pitch - len;
 
 
       FT_MEM_ZERO( out, new_pitch * ypixels );
@@ -242,13 +242,13 @@
     }
     else
     {
-      FT_UInt  len = ( width * bpp + 7 ) >> 3;
+      uint  len = ( width * bpp + 7 ) >> 3;
 
       unsigned char*  in  = bitmap->buffer;
       unsigned char*  out = buffer;
 
       unsigned char*  limit = bitmap->buffer + pitch * bitmap->rows;
-      unsigned int    delta = new_pitch - len;
+      uint    delta = new_pitch - len;
 
 
       while ( in < limit )
@@ -287,9 +287,9 @@
   {
     FT_Error        error;
     unsigned char*  p;
-    FT_Int          i, x, pitch;
-    FT_UInt         y;
-    FT_Int          xstr, ystr;
+    int          i, x, pitch;
+    uint         y;
+    int          xstr, ystr;
 
 
     if ( !library )
@@ -302,8 +302,8 @@
          ( ( FT_PIX_ROUND( yStrength ) >> 6 ) > FT_INT_MAX ) )
       return FT_THROW( Invalid_Argument );
 
-    xstr = (FT_Int)FT_PIX_ROUND( xStrength ) >> 6;
-    ystr = (FT_Int)FT_PIX_ROUND( yStrength ) >> 6;
+    xstr = (int)FT_PIX_ROUND( xStrength ) >> 6;
+    ystr = (int)FT_PIX_ROUND( yStrength ) >> 6;
 
     if ( xstr == 0 && ystr == 0 )
       return FT_Err_Ok;
@@ -348,7 +348,7 @@
     }
 
     error = ft_bitmap_assure_buffer( library->memory, bitmap,
-                                     (FT_UInt)xstr, (FT_UInt)ystr );
+                                     (uint)xstr, (uint)ystr );
     if ( error )
       return error;
 
@@ -359,7 +359,7 @@
     else
     {
       pitch = -pitch;
-      p = bitmap->buffer + (FT_UInt)pitch * ( bitmap->rows - 1 );
+      p = bitmap->buffer + (uint)pitch * ( bitmap->rows - 1 );
     }
 
     /* for each row */
@@ -432,8 +432,8 @@
       p += bitmap->pitch;
     }
 
-    bitmap->width += (FT_UInt)xstr;
-    bitmap->rows += (FT_UInt)ystr;
+    bitmap->width += (uint)xstr;
+    bitmap->rows += (uint)ystr;
 
     return FT_Err_Ok;
   }
@@ -442,8 +442,8 @@
   static FT_Byte
   ft_gray_for_premultiplied_srgb_bgra( const FT_Byte*  bgra )
   {
-    FT_UInt  a = bgra[3];
-    FT_UInt  l;
+    uint  a = bgra[3];
+    uint  l;
 
 
     /* Short-circuit transparent color to avoid division by zero. */
@@ -491,7 +491,7 @@
   FT_Bitmap_Convert( FT_Library        library,
                      const FT_Bitmap  *source,
                      FT_Bitmap        *target,
-                     FT_Int            alignment )
+                     int            alignment )
   {
     FT_Error   error = FT_Err_Ok;
     FT_Memory  memory;
@@ -518,8 +518,8 @@
     case FT_PIXEL_MODE_LCD_V:
     case FT_PIXEL_MODE_BGRA:
       {
-        FT_Int  width = (FT_Int)source->width;
-        FT_Int  neg   = ( target->pitch == 0 && source->pitch < 0 ) ||
+        int  width = (int)source->width;
+        int  neg   = ( target->pitch == 0 && source->pitch < 0 ) ||
                           target->pitch  < 0;
 
 
@@ -531,7 +531,7 @@
 
         if ( alignment )
         {
-          FT_Int  rem = width % alignment;
+          int  rem = width % alignment;
 
 
           if ( rem )
@@ -555,15 +555,15 @@
 
     /* take care of bitmap flow */
     if ( source->pitch < 0 )
-      s -= source->pitch * (FT_Int)( source->rows - 1 );
+      s -= source->pitch * (int)( source->rows - 1 );
     if ( target->pitch < 0 )
-      t -= target->pitch * (FT_Int)( target->rows - 1 );
+      t -= target->pitch * (int)( target->rows - 1 );
 
     switch ( source->pixel_mode )
     {
     case FT_PIXEL_MODE_MONO:
       {
-        FT_UInt  i;
+        uint  i;
 
 
         target->num_grays = 2;
@@ -572,13 +572,13 @@
         {
           FT_Byte*  ss = s;
           FT_Byte*  tt = t;
-          FT_UInt   j;
+          uint   j;
 
 
           /* get the full bytes */
           for ( j = source->width >> 3; j > 0; j-- )
           {
-            FT_Int  val = ss[0]; /* avoid a byte->int cast on each line */
+            int  val = ss[0]; /* avoid a byte->int cast on each line */
 
 
             tt[0] = (FT_Byte)( ( val & 0x80 ) >> 7 );
@@ -598,7 +598,7 @@
           j = source->width & 7;
           if ( j > 0 )
           {
-            FT_Int  val = *ss;
+            int  val = *ss;
 
 
             for ( ; j > 0; j-- )
@@ -620,8 +620,8 @@
     case FT_PIXEL_MODE_LCD:
     case FT_PIXEL_MODE_LCD_V:
       {
-        FT_UInt  width = source->width;
-        FT_UInt  i;
+        uint  width = source->width;
+        uint  i;
 
 
         target->num_grays = 256;
@@ -639,7 +639,7 @@
 
     case FT_PIXEL_MODE_GRAY2:
       {
-        FT_UInt  i;
+        uint  i;
 
 
         target->num_grays = 4;
@@ -648,13 +648,13 @@
         {
           FT_Byte*  ss = s;
           FT_Byte*  tt = t;
-          FT_UInt   j;
+          uint   j;
 
 
           /* get the full bytes */
           for ( j = source->width >> 2; j > 0; j-- )
           {
-            FT_Int  val = ss[0];
+            int  val = ss[0];
 
 
             tt[0] = (FT_Byte)( ( val & 0xC0 ) >> 6 );
@@ -669,7 +669,7 @@
           j = source->width & 3;
           if ( j > 0 )
           {
-            FT_Int  val = ss[0];
+            int  val = ss[0];
 
 
             for ( ; j > 0; j-- )
@@ -689,7 +689,7 @@
 
     case FT_PIXEL_MODE_GRAY4:
       {
-        FT_UInt  i;
+        uint  i;
 
 
         target->num_grays = 16;
@@ -698,13 +698,13 @@
         {
           FT_Byte*  ss = s;
           FT_Byte*  tt = t;
-          FT_UInt   j;
+          uint   j;
 
 
           /* get the full bytes */
           for ( j = source->width >> 1; j > 0; j-- )
           {
-            FT_Int  val = ss[0];
+            int  val = ss[0];
 
 
             tt[0] = (FT_Byte)( ( val & 0xF0 ) >> 4 );
@@ -726,7 +726,7 @@
 
     case FT_PIXEL_MODE_BGRA:
       {
-        FT_UInt  i;
+        uint  i;
 
 
         target->num_grays = 256;
@@ -735,7 +735,7 @@
         {
           FT_Byte*  ss = s;
           FT_Byte*  tt = t;
-          FT_UInt   j;
+          uint   j;
 
 
           for ( j = source->width; j > 0; j-- )
@@ -786,7 +786,7 @@
     FT_Pos  target_llx, target_lly, target_urx, target_ury;
     FT_Pos  final_llx, final_lly, final_urx, final_ury;
 
-    unsigned int  final_rows, final_width;
+    uint  final_rows, final_width;
     long          x, y;
 
 

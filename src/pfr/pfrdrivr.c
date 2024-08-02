@@ -28,8 +28,8 @@
 
   static FT_Error
   pfr_get_kerning( FT_Face     face,     /* PFR_Face */
-                   FT_UInt     left,
-                   FT_UInt     right,
+                   uint     left,
+                   uint     right,
                    FT_Vector  *avector )
   {
     PFR_Face     pfrface = (PFR_Face)face;
@@ -63,7 +63,7 @@
 
   static FT_Error
   pfr_get_advance( FT_Face   face,       /* PFR_Face */
-                   FT_UInt   gindex,
+                   uint   gindex,
                    FT_Pos   *anadvance )
   {
     PFR_Face  pfrface = (PFR_Face)face;
@@ -96,8 +96,8 @@
 
   static FT_Error
   pfr_get_metrics( FT_Face    face,                 /* PFR_Face */
-                   FT_UInt   *anoutline_resolution,
-                   FT_UInt   *ametrics_resolution,
+                   uint   *anoutline_resolution,
+                   uint   *ametrics_resolution,
                    FT_Fixed  *ametrics_x_scale,
                    FT_Fixed  *ametrics_y_scale )
   {

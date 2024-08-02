@@ -57,7 +57,7 @@
 
   typedef struct  CF2_HintMoveRec_
   {
-    size_t     j;          /* index of upper hint map edge   */
+    usz     j;          /* index of upper hint map edge   */
     CF2_Fixed  moveUp;     /* adjustment to optimum position */
 
   } CF2_HintMoveRec, *CF2_HintMove;
@@ -89,7 +89,7 @@
   static void
   cf2_hint_init( CF2_Hint            hint,
                  const CF2_ArrStack  stemHintArray,
-                 size_t              indexStemHint,
+                 usz              indexStemHint,
                  const CF2_Font      font,
                  CF2_Fixed           hintOrigin,
                  CF2_Fixed           scale,
@@ -395,7 +395,7 @@
   static void
   cf2_hintmap_adjustHints( CF2_HintMap  hintmap )
   {
-    size_t  i, j;
+    usz  i, j;
 
 
     cf2_arrstack_clear( hintmap->hintMoves );      /* working storage */
@@ -823,7 +823,7 @@
     CF2_Font         font = hintmap->font;
     CF2_HintMaskRec  tempHintMask;
 
-    size_t   bitCount, i;
+    usz   bitCount, i;
     FT_Byte  maskByte;
 
 

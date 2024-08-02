@@ -390,7 +390,7 @@ FT_BEGIN_HEADER
    *    module 'foo' to value~1.
    *
    *    ```
-   *      FT_UInt  bar;
+   *      uint  bar;
    *
    *
    *      bar = 1;
@@ -454,8 +454,8 @@ FT_BEGIN_HEADER
    *    ```
    *      typedef  range_
    *      {
-   *        FT_Int32  min;
-   *        FT_Int32  max;
+   *        int  min;
+   *        int  max;
    *
    *      } range;
    *
@@ -697,7 +697,7 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( void )
   FT_Set_Debug_Hook( FT_Library         library,
-                     FT_UInt            hook_index,
+                     uint            hook_index,
                      FT_DebugHook_Func  debug_hook );
 
 

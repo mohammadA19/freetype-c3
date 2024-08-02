@@ -460,7 +460,7 @@ Free_VecPooled( APTR  poolHeader,
 
 #ifdef FT_DEBUG_MEMORY
 
-  extern FT_Int
+  extern int
   ft_mem_debug_init( FT_Memory  memory );
 
   extern void

@@ -41,25 +41,25 @@ FT_BEGIN_HEADER
                    FT_Long    power_ten );
 
 #if 0
-  fn FT_UInt /* internal */
+  fn uint /* internal */
   PS_Conv_StringDecode( FT_Byte**  cursor,
                         FT_Byte*   limit,
                         FT_Byte*   buffer,
                         FT_Offset  n );
 #endif
 
-  fn FT_UInt /* internal */
+  fn uint /* internal */
   PS_Conv_ASCIIHexDecode( FT_Byte**  cursor,
                           FT_Byte*   limit,
                           FT_Byte*   buffer,
                           FT_Offset  n );
 
-  fn FT_UInt /* internal */
+  fn uint /* internal */
   PS_Conv_EexecDecode( FT_Byte**   cursor,
                        FT_Byte*    limit,
                        FT_Byte*    buffer,
                        FT_Offset   n,
-                       FT_UShort*  seed );
+                       ushort*  seed );
 
 
 FT_END_HEADER

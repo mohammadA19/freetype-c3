@@ -68,7 +68,7 @@
 
     if ( ft_strcmp( property_name, "spread" ) == 0 )
     {
-      FT_Int  val = *(const FT_Int*)value;
+      int  val = *(const int*)value;
 
 
       if ( val > MAX_SPREAD || val < MIN_SPREAD )
@@ -83,14 +83,14 @@
         goto Exit;
       }
 
-      render->spread = (FT_UInt)val;
+      render->spread = (uint)val;
       FT_TRACE7(( "[sdf] sdf_property_set:"
                   " updated property `spread' to %d\n", val ));
     }
 
     else if ( ft_strcmp( property_name, "flip_sign" ) == 0 )
     {
-      FT_Int  val = *(const FT_Int*)value;
+      int  val = *(const int*)value;
 
 
       render->flip_sign = val ? 1 : 0;
@@ -100,7 +100,7 @@
 
     else if ( ft_strcmp( property_name, "flip_y" ) == 0 )
     {
-      FT_Int  val = *(const FT_Int*)value;
+      int  val = *(const int*)value;
 
 
       render->flip_y = val ? 1 : 0;
@@ -142,7 +142,7 @@
 
     if ( ft_strcmp( property_name, "spread" ) == 0 )
     {
-      FT_UInt*  val = (FT_UInt*)value;
+      uint*  val = (uint*)value;
 
 
       *val = render->spread;
@@ -150,7 +150,7 @@
 
     else if ( ft_strcmp( property_name, "flip_sign" ) == 0 )
     {
-      FT_Int*  val = (FT_Int*)value;
+      int*  val = (int*)value;
 
 
       *val = render->flip_sign;
@@ -158,7 +158,7 @@
 
     else if ( ft_strcmp( property_name, "flip_y" ) == 0 )
     {
-      FT_Int*  val = (FT_Int*)value;
+      int*  val = (int*)value;
 
 
       *val = render->flip_y;
@@ -166,7 +166,7 @@
 
     else if ( ft_strcmp( property_name, "overlaps" ) == 0 )
     {
-      FT_Int*  val = (FT_Int*)value;
+      int*  val = (int*)value;
 
 
       *val = render->overlaps;
@@ -326,7 +326,7 @@
 
     x_shift  = 64 * -slot->bitmap_left;
     y_shift  = 64 * -slot->bitmap_top;
-    y_shift += 64 * (FT_Int)bitmap->rows;
+    y_shift += 64 * (int)bitmap->rows;
 
     if ( origin )
     {

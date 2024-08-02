@@ -48,8 +48,8 @@
 
   typedef struct  Svg_
   {
-    FT_UShort  version;                 /* table version (starting at 0)  */
-    FT_UShort  num_entries;             /* number of SVG document records */
+    ushort  version;                 /* table version (starting at 0)  */
+    ushort  num_entries;             /* number of SVG document records */
 
     FT_Byte*  svg_doc_list;  /* pointer to the start of SVG Document List */
 
@@ -157,8 +157,8 @@
 
   typedef struct  Svg_doc_
   {
-    FT_UShort  start_glyph_id;
-    FT_UShort  end_glyph_id;
+    ushort  start_glyph_id;
+    ushort  end_glyph_id;
 
     FT_ULong  offset;
     FT_ULong  length;
@@ -182,9 +182,9 @@
   }
 
 
-  static FT_Int
+  static int
   compare_svg_doc( Svg_doc  doc,
-                   FT_UInt  glyph_index )
+                   uint  glyph_index )
   {
     if ( glyph_index < doc.start_glyph_id )
       return -1;
@@ -197,12 +197,12 @@
 
   static FT_Error
   find_doc( FT_Byte*    document_records,
-            FT_UShort   num_entries,
-            FT_UInt     glyph_index,
+            ushort   num_entries,
+            uint     glyph_index,
             FT_ULong   *doc_offset,
             FT_ULong   *doc_length,
-            FT_UShort  *start_glyph,
-            FT_UShort  *end_glyph )
+            ushort  *start_glyph,
+            ushort  *end_glyph )
   {
     FT_Error  error;
 
@@ -211,11 +211,11 @@
     Svg_doc  end_doc;
 
     FT_Bool  found = FALSE;
-    FT_UInt  i     = 0;
+    uint  i     = 0;
 
-    FT_UInt  start_index = 0;
-    FT_UInt  end_index   = num_entries - 1;
-    FT_Int   comp_res;
+    uint  start_index = 0;
+    uint  end_index   = num_entries - 1;
+    int   comp_res;
 
 
     /* search algorithm */
@@ -281,7 +281,7 @@
 
   fn FT_Error /* internal */
   tt_face_load_svg_doc( FT_GlyphSlot  glyph,
-                        FT_UInt       glyph_index )
+                        uint       glyph_index )
   {
     FT_Error   error  = FT_Err_Ok;
     TT_Face    face   = (TT_Face)glyph->face;
@@ -294,8 +294,8 @@
     FT_Byte*   doc;
     FT_ULong   doc_offset;
     FT_ULong   doc_length;
-    FT_UShort  doc_start_glyph_id;
-    FT_UShort  doc_end_glyph_id;
+    ushort  doc_start_glyph_id;
+    ushort  doc_end_glyph_id;
 
     FT_SVG_Document  svg_document = (FT_SVG_Document)glyph->other;
 
@@ -394,7 +394,7 @@
     FT_TRACE5(( "start_glyph_id: %d\n", doc_start_glyph_id ));
     FT_TRACE5(( "end_glyph_id:   %d\n", doc_end_glyph_id ));
     FT_TRACE5(( "svg_document:\n" ));
-    FT_TRACE5(( " %.*s\n", (FT_UInt)doc_length, doc ));
+    FT_TRACE5(( " %.*s\n", (uint)doc_length, doc ));
 
     glyph->other = svg_document;
 

@@ -146,7 +146,7 @@
 
   static FT_Error
   sfnt_table_info( FT_Face    face,    /* TT_Face */
-                   FT_UInt    idx,
+                   uint    idx,
                    FT_ULong  *tag,
                    FT_ULong  *offset,
                    FT_ULong  *length )
@@ -191,9 +191,9 @@
 
   static FT_Error
   sfnt_get_glyph_name( FT_Face     face,
-                       FT_UInt     glyph_index,
+                       uint     glyph_index,
                        FT_Pointer  buffer,
-                       FT_UInt     buffer_max )
+                       uint     buffer_max )
   {
     FT_String*  gname;
     FT_Error    error;
@@ -207,19 +207,19 @@
   }
 
 
-  static FT_UInt
+  static uint
   sfnt_get_name_index( FT_Face           face,
                        const FT_String*  glyph_name )
   {
     TT_Face  ttface = (TT_Face)face;
 
-    FT_UInt  i, max_gid = FT_UINT_MAX;
+    uint  i, max_gid = FT_UINT_MAX;
 
 
     if ( face->num_glyphs < 0 )
       return 0;
     else if ( (FT_ULong)face->num_glyphs < FT_UINT_MAX )
-      max_gid = (FT_UInt)face->num_glyphs;
+      max_gid = (uint)face->num_glyphs;
     else
       FT_TRACE0(( "Ignore glyph names for invalid GID 0x%08x - 0x%08lx\n",
                   FT_UINT_MAX, face->num_glyphs ));
@@ -274,13 +274,13 @@
   static int
   sfnt_is_postscript( int  c )
   {
-    unsigned int  cc;
+    uint  cc;
 
 
     if ( c < 0 || c >= 0x80 )
       return 0;
 
-    cc = (unsigned int)c;
+    cc = (uint)c;
 
     return sfnt_ps_map[cc >> 3] & ( 1 << ( cc & 0x07 ) );
   }
@@ -306,8 +306,8 @@
 #define ROTL32( x, r )  ( x << r ) | ( x >> ( 32 - r ) )
 
 
-  static FT_UInt32
-  fmix32( FT_UInt32  h )
+  static uint
+  fmix32( uint  h )
   {
     h ^= h >> 16;
     h *= 0x85ebca6b;
@@ -321,34 +321,34 @@
 
   static void
   murmur_hash_3_128( const void*         key,
-                     const unsigned int  len,
-                     FT_UInt32           seed,
+                     const uint  len,
+                     uint           seed,
                      void*               out )
   {
     const FT_Byte*  data    = (const FT_Byte*)key;
     const int       nblocks = (int)len / 16;
 
-    FT_UInt32  h1 = seed;
-    FT_UInt32  h2 = seed;
-    FT_UInt32  h3 = seed;
-    FT_UInt32  h4 = seed;
+    uint  h1 = seed;
+    uint  h2 = seed;
+    uint  h3 = seed;
+    uint  h4 = seed;
 
-    const FT_UInt32  c1 = 0x239b961b;
-    const FT_UInt32  c2 = 0xab0e9789;
-    const FT_UInt32  c3 = 0x38b34ae5;
-    const FT_UInt32  c4 = 0xa1e38b93;
+    const uint  c1 = 0x239b961b;
+    const uint  c2 = 0xab0e9789;
+    const uint  c3 = 0x38b34ae5;
+    const uint  c4 = 0xa1e38b93;
 
-    const FT_UInt32*  blocks = (const FT_UInt32*)( data + nblocks * 16 );
+    const uint*  blocks = (const uint*)( data + nblocks * 16 );
 
     int  i;
 
 
     for( i = -nblocks; i; i++ )
     {
-      FT_UInt32  k1 = blocks[i * 4 + 0];
-      FT_UInt32  k2 = blocks[i * 4 + 1];
-      FT_UInt32  k3 = blocks[i * 4 + 2];
-      FT_UInt32  k4 = blocks[i * 4 + 3];
+      uint  k1 = blocks[i * 4 + 0];
+      uint  k2 = blocks[i * 4 + 1];
+      uint  k3 = blocks[i * 4 + 2];
+      uint  k4 = blocks[i * 4 + 3];
 
 
       k1 *= c1;
@@ -391,22 +391,22 @@
     {
       const FT_Byte*  tail = (const FT_Byte*)( data + nblocks * 16 );
 
-      FT_UInt32  k1 = 0;
-      FT_UInt32  k2 = 0;
-      FT_UInt32  k3 = 0;
-      FT_UInt32  k4 = 0;
+      uint  k1 = 0;
+      uint  k2 = 0;
+      uint  k3 = 0;
+      uint  k4 = 0;
 
 
       switch ( len & 15 )
       {
       case 15:
-        k4 ^= (FT_UInt32)tail[14] << 16;
+        k4 ^= (uint)tail[14] << 16;
         nextcase;
       case 14:
-        k4 ^= (FT_UInt32)tail[13] << 8;
+        k4 ^= (uint)tail[13] << 8;
         nextcase;
       case 13:
-        k4 ^= (FT_UInt32)tail[12];
+        k4 ^= (uint)tail[12];
         k4 *= c4;
         k4  = ROTL32( k4, 18 );
         k4 *= c1;
@@ -414,16 +414,16 @@
         nextcase;
 
       case 12:
-        k3 ^= (FT_UInt32)tail[11] << 24;
+        k3 ^= (uint)tail[11] << 24;
         nextcase;
       case 11:
-        k3 ^= (FT_UInt32)tail[10] << 16;
+        k3 ^= (uint)tail[10] << 16;
         nextcase;
       case 10:
-        k3 ^= (FT_UInt32)tail[9] << 8;
+        k3 ^= (uint)tail[9] << 8;
         nextcase;
       case 9:
-        k3 ^= (FT_UInt32)tail[8];
+        k3 ^= (uint)tail[8];
         k3 *= c3;
         k3  = ROTL32( k3, 17 );
         k3 *= c4;
@@ -431,16 +431,16 @@
         nextcase;
 
       case 8:
-        k2 ^= (FT_UInt32)tail[7] << 24;
+        k2 ^= (uint)tail[7] << 24;
         nextcase;
       case 7:
-        k2 ^= (FT_UInt32)tail[6] << 16;
+        k2 ^= (uint)tail[6] << 16;
         nextcase;
       case 6:
-        k2 ^= (FT_UInt32)tail[5] << 8;
+        k2 ^= (uint)tail[5] << 8;
         nextcase;
       case 5:
-        k2 ^= (FT_UInt32)tail[4];
+        k2 ^= (uint)tail[4];
         k2 *= c2;
         k2  = ROTL32( k2, 16 );
         k2 *= c3;
@@ -448,16 +448,16 @@
         nextcase;
 
       case 4:
-        k1 ^= (FT_UInt32)tail[3] << 24;
+        k1 ^= (uint)tail[3] << 24;
         nextcase;
       case 3:
-        k1 ^= (FT_UInt32)tail[2] << 16;
+        k1 ^= (uint)tail[2] << 16;
         nextcase;
       case 2:
-        k1 ^= (FT_UInt32)tail[1] << 8;
+        k1 ^= (uint)tail[1] << 8;
         nextcase;
       case 1:
-        k1 ^= (FT_UInt32)tail[0];
+        k1 ^= (uint)tail[0];
         k1 *= c1;
         k1  = ROTL32( k1, 15 );
         k1 *= c2;
@@ -491,10 +491,10 @@
     h3 += h1;
     h4 += h1;
 
-    ((FT_UInt32*)out)[0] = h1;
-    ((FT_UInt32*)out)[1] = h2;
-    ((FT_UInt32*)out)[2] = h3;
-    ((FT_UInt32*)out)[3] = h4;
+    ((uint*)out)[0] = h1;
+    ((uint*)out)[1] = h2;
+    ((uint*)out)[2] = h3;
+    ((uint*)out)[3] = h4;
   }
 
 
@@ -523,7 +523,7 @@
     char*       result = NULL;
     FT_String*  r;
     FT_Char*    p;
-    FT_UInt     len;
+    uint     len;
 
 
     if ( FT_QALLOC( result, entry->stringLength / 2 + 1 ) )
@@ -579,7 +579,7 @@
     char*       result = NULL;
     FT_String*  r;
     FT_Char*    p;
-    FT_UInt     len;
+    uint     len;
 
 
     if ( FT_QALLOC( result, entry->stringLength + 1 ) )
@@ -625,11 +625,11 @@
 
   static FT_Bool
   sfnt_get_name_id( TT_Face    face,
-                    FT_UShort  id,
-                    FT_Int    *win,
-                    FT_Int    *apple )
+                    ushort  id,
+                    int    *win,
+                    int    *apple )
   {
-    FT_Int  n;
+    int  n;
 
 
     *win   = -1;
@@ -684,17 +684,17 @@
    */
 
   static char*
-  fixed2float( FT_Int  fixed,
+  fixed2float( int  fixed,
                char*   buf )
   {
     char*  p;
     char*  q;
     char   tmp[5];
 
-    FT_Int  int_part;
-    FT_Int  frac_part;
+    int  int_part;
+    int  frac_part;
 
-    FT_Int  i;
+    int  i;
 
 
     p = buf;
@@ -808,12 +808,12 @@
 
     FT_Service_MultiMasters  mm = (FT_Service_MultiMasters)face->mm;
 
-    FT_UInt     num_coords;
+    uint     num_coords;
     FT_Fixed*   coords;
     FT_MM_Var*  mm_var;
 
-    FT_Int   found, win, apple;
-    FT_UInt  i, j;
+    int   found, win, apple;
+    uint  i, j;
 
     char*  result = NULL;
     char*  p;
@@ -821,7 +821,7 @@
 
     if ( !face->var_postscript_prefix )
     {
-      FT_UInt  len;
+      uint  len;
 
 
       /* check whether we have a Variations PostScript Name Prefix */
@@ -914,7 +914,7 @@
       SFNT_Service  sfnt = (SFNT_Service)face->sfnt;
 
       FT_Long  instance = ( ( face->root.face_index & 0x7FFF0000L ) >> 16 ) - 1;
-      FT_UInt  psid     = mm_var->namedstyle[instance].psid;
+      uint  psid     = mm_var->namedstyle[instance].psid;
 
       char*  ps_name = NULL;
 
@@ -922,7 +922,7 @@
       /* try first to load the name string with index `postScriptNameID' */
       if ( psid == 6                      ||
            ( psid > 255 && psid < 32768 ) )
-        (void)sfnt->get_name( face, (FT_UShort)psid, &ps_name );
+        (void)sfnt->get_name( face, (ushort)psid, &ps_name );
 
       if ( ps_name )
       {
@@ -934,13 +934,13 @@
       else
       {
         /* otherwise construct a name using `subfamilyNameID' */
-        FT_UInt  strid = mm_var->namedstyle[instance].strid;
+        uint  strid = mm_var->namedstyle[instance].strid;
 
         char*  subfamily_name;
         char*  s;
 
 
-        (void)sfnt->get_name( face, (FT_UShort)strid, &subfamily_name );
+        (void)sfnt->get_name( face, (ushort)strid, &subfamily_name );
 
         if ( !subfamily_name )
         {
@@ -1027,10 +1027,10 @@
       /* the PS name is too long; replace the part after the prefix with */
       /* a checksum; we use MurmurHash 3 with a hash length of 128 bit   */
 
-      FT_UInt32  seed = 123456789;
+      uint  seed = 123456789;
 
-      FT_UInt32   hash[4];
-      FT_UInt32*  h;
+      uint   hash[4];
+      uint*  h;
 
 
       murmur_hash_3_128( result, p - result, seed, hash );
@@ -1049,7 +1049,7 @@
 
       for ( i = 0; i < 4; i++, h-- )
       {
-        FT_UInt32  v = *h;
+        uint  v = *h;
 
 
         for ( j = 0; j < 8; j++ )
@@ -1071,7 +1071,7 @@
   {
     TT_Face  ttface = (TT_Face)face;
 
-    FT_Int       found, win, apple;
+    int       found, win, apple;
     const char*  result = NULL;
 
 

@@ -76,9 +76,9 @@
 
 
 #define af_intToFixed( i ) \
-          ( (FT_Fixed)( (FT_UInt32)(i) << 16 ) )
+          ( (FT_Fixed)( (uint)(i) << 16 ) )
 #define af_fixedToInt( x ) \
-          ( (FT_Short)( ( (FT_UInt32)(x) + 0x8000U ) >> 16 ) )
+          ( (short)( ( (uint)(x) + 0x8000U ) >> 16 ) )
 #define af_floatToFixed( f ) \
           ( (FT_Fixed)( (f) * 65536.0 + 0.5 ) )
 
@@ -208,8 +208,8 @@
   af_loader_load_glyph( AF_Loader  loader,
                         AF_Module  module,
                         FT_Face    face,
-                        FT_UInt    glyph_index,
-                        FT_Int32   load_flags )
+                        uint    glyph_index,
+                        int   load_flags )
   {
     FT_Error  error;
 
@@ -222,7 +222,7 @@
     AF_GlyphHints          hints         = loader->hints;
     AF_ScalerRec           scaler;
     AF_StyleMetrics        style_metrics;
-    FT_UInt                style_options = AF_STYLE_NONE_DFLT;
+    uint                style_options = AF_STYLE_NONE_DFLT;
     AF_StyleClass          style_class;
     AF_WritingSystemClass  writing_system_class;
 
@@ -587,11 +587,11 @@
   {
     AF_Module  module = loader->globals->module;
 
-    FT_UShort  units_per_EM;
+    ushort  units_per_EM;
     FT_Fixed   ppem, em_ratio;
     FT_Fixed   stem_width, stem_width_per_1000, scaled_stem, darken_amount;
-    FT_Int     log_base_2;
-    FT_Int     x1, y1, x2, y2, x3, y3, x4, y4;
+    int     log_base_2;
+    int     x1, y1, x2, y2, x3, y3, x4, y4;
 
 
     ppem         = FT_MAX( af_intToFixed( 4 ),
@@ -626,8 +626,8 @@
       stem_width_per_1000 = FT_MulFix( stem_width, em_ratio );
     }
 
-    log_base_2 = FT_MSB( (FT_UInt32)stem_width_per_1000 ) +
-                 FT_MSB( (FT_UInt32)ppem );
+    log_base_2 = FT_MSB( (uint)stem_width_per_1000 ) +
+                 FT_MSB( (uint)ppem );
 
     if ( log_base_2 >= 46 )
     {
@@ -643,9 +643,9 @@
 
     else if ( scaled_stem < af_intToFixed( x2 ) )
     {
-      FT_Int  xdelta = x2 - x1;
-      FT_Int  ydelta = y2 - y1;
-      FT_Int  x      = stem_width_per_1000 -
+      int  xdelta = x2 - x1;
+      int  ydelta = y2 - y1;
+      int  x      = stem_width_per_1000 -
                        FT_DivFix( af_intToFixed( x1 ), ppem );
 
 
@@ -660,9 +660,9 @@
     {
     Try_x3:
       {
-        FT_Int  xdelta = x3 - x2;
-        FT_Int  ydelta = y3 - y2;
-        FT_Int  x      = stem_width_per_1000 -
+        int  xdelta = x3 - x2;
+        int  ydelta = y3 - y2;
+        int  x      = stem_width_per_1000 -
                          FT_DivFix( af_intToFixed( x2 ), ppem );
 
 
@@ -678,9 +678,9 @@
     {
     Try_x4:
       {
-        FT_Int  xdelta = x4 - x3;
-        FT_Int  ydelta = y4 - y3;
-        FT_Int  x      = stem_width_per_1000 -
+        int  xdelta = x4 - x3;
+        int  ydelta = y4 - y3;
+        int  x      = stem_width_per_1000 -
                          FT_DivFix( af_intToFixed( x3 ), ppem );
 
 

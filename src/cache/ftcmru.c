@@ -167,7 +167,7 @@
   fn void /* internal */
   FTC_MruList_Init( FTC_MruList       list,
                     FTC_MruListClass  clazz,
-                    FT_UInt           max_nodes,
+                    uint           max_nodes,
                     FT_Pointer        data,
                     FT_Memory         memory )
   {

@@ -50,13 +50,13 @@ FT_BEGIN_HEADER
   /* hint structure */
   typedef struct  PSH_HintRec_
   {
-    FT_Int    org_pos;
-    FT_Int    org_len;
+    int    org_pos;
+    int    org_len;
     FT_Pos    cur_pos;
     FT_Pos    cur_len;
-    FT_UInt   flags;
+    uint   flags;
     PSH_Hint  parent;
-    FT_Int    order;
+    int    order;
 
   } PSH_HintRec;
 
@@ -76,12 +76,12 @@ FT_BEGIN_HEADER
 
   typedef struct  PSH_Hint_TableRec_
   {
-    FT_UInt        max_hints;
-    FT_UInt        num_hints;
+    uint        max_hints;
+    uint        num_hints;
     PSH_Hint       hints;
     PSH_Hint*      sort;
     PSH_Hint*      sort_global;
-    FT_UInt        num_zones;
+    uint        num_zones;
     PSH_ZoneRec*   zones;
     PSH_Zone       zone;
     PS_Mask_Table  hint_masks;
@@ -154,8 +154,8 @@ FT_BEGIN_HEADER
     PSH_Point    prev;
     PSH_Point    next;
     PSH_Contour  contour;
-    FT_UInt      flags;
-    FT_UInt      flags2;
+    uint      flags;
+    uint      flags2;
     PSH_Dir      dir_in;
     PSH_Dir      dir_out;
     PSH_Hint     hint;
@@ -167,8 +167,8 @@ FT_BEGIN_HEADER
     FT_Pos       cur_x;
     FT_Pos       org_y;
     FT_Pos       cur_y;
-    FT_UInt      flags_x;
-    FT_UInt      flags_y;
+    uint      flags_x;
+    uint      flags_y;
 #endif
 
   } PSH_PointRec;
@@ -177,15 +177,15 @@ FT_BEGIN_HEADER
   typedef struct  PSH_ContourRec_
   {
     PSH_Point  start;
-    FT_UInt    count;
+    uint    count;
 
   } PSH_ContourRec;
 
 
   typedef struct  PSH_GlyphRec_
   {
-    FT_UInt            num_points;
-    FT_UInt            num_contours;
+    uint            num_points;
+    uint            num_contours;
 
     PSH_Point          points;
     PSH_Contour        contours;

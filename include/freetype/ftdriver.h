@@ -400,7 +400,7 @@ FT_BEGIN_HEADER
    *
    *   ```
    *     FT_Library  library;
-   *     FT_UInt     hinting_engine = FT_HINTING_ADOBE;
+   *     uint     hinting_engine = FT_HINTING_ADOBE;
    *
    *
    *     FT_Init_FreeType( &library );
@@ -534,7 +534,7 @@ FT_BEGIN_HEADER
    * @example:
    *   ```
    *     FT_Library  library;
-   *     FT_Int      darken_params[8] = {  500, 300,   // x1, y1
+   *     int      darken_params[8] = {  500, 300,   // x1, y1
    *                                      1000, 200,   // x2, y2
    *                                      1500, 100,   // x3, y3
    *                                      2000,   0 }; // x4, y4
@@ -803,7 +803,7 @@ FT_BEGIN_HEADER
    *   ```
    *     FT_Library  library;
    *     FT_Face     face;
-   *     FT_UInt     interpreter_version = TT_INTERPRETER_VERSION_35;
+   *     uint     interpreter_version = TT_INTERPRETER_VERSION_35;
    *
    *
    *     FT_Init_FreeType( &library );
@@ -839,7 +839,7 @@ FT_BEGIN_HEADER
    *
    *   ```
    *     FT_Library  library;
-   *     FT_Int      spread = 2;
+   *     int      spread = 2;
    *
    *
    *     FT_Init_FreeType( &library );
@@ -1128,7 +1128,7 @@ FT_BEGIN_HEADER
   typedef struct  FT_Prop_GlyphToScriptMap_
   {
     FT_Face     face;
-    FT_UShort*  map;
+    ushort*  map;
 
   } FT_Prop_GlyphToScriptMap;
 
@@ -1160,7 +1160,7 @@ FT_BEGIN_HEADER
    * @example:
    *   ```
    *     FT_Library  library;
-   *     FT_UInt     fallback_script = FT_AUTOHINTER_SCRIPT_NONE;
+   *     uint     fallback_script = FT_AUTOHINTER_SCRIPT_NONE;
    *
    *
    *     FT_Init_FreeType( &library );
@@ -1209,7 +1209,7 @@ FT_BEGIN_HEADER
    * @example:
    *   ```
    *     FT_Library  library;
-   *     FT_UInt     default_script = FT_AUTOHINTER_SCRIPT_NONE;
+   *     uint     default_script = FT_AUTOHINTER_SCRIPT_NONE;
    *
    *
    *     FT_Init_FreeType( &library );
@@ -1278,7 +1278,7 @@ FT_BEGIN_HEADER
   typedef struct  FT_Prop_IncreaseXHeight_
   {
     FT_Face  face;
-    FT_UInt  limit;
+    uint  limit;
 
   } FT_Prop_IncreaseXHeight;
 

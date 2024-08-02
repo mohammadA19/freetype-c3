@@ -72,8 +72,8 @@ FT_BEGIN_HEADER
   af_loader_load_glyph( AF_Loader  loader,
                         AF_Module  module,
                         FT_Face    face,
-                        FT_UInt    gindex,
-                        FT_Int32   load_flags );
+                        uint    gindex,
+                        int   load_flags );
 
   fn FT_Fixed /* internal */
   af_loader_compute_darkening( AF_Loader  loader,

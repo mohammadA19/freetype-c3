@@ -37,15 +37,15 @@ FT_BEGIN_HEADER
 
   fn void /* internal */
   BitOrderInvert( unsigned char*  buf,
-                  size_t          nbytes );
+                  usz          nbytes );
 
   fn void /* internal */
   TwoByteSwap( unsigned char*  buf,
-               size_t          nbytes );
+               usz          nbytes );
 
   fn void /* internal */
   FourByteSwap( unsigned char*  buf,
-                size_t          nbytes );
+                usz          nbytes );
 
 FT_END_HEADER
 

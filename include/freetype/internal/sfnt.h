@@ -71,8 +71,8 @@ FT_BEGIN_HEADER
   typedef FT_Error
   (*TT_Init_Face_Func)( FT_Stream      stream,
                         TT_Face        face,
-                        FT_Int         face_index,
-                        FT_Int         num_params,
+                        int         face_index,
+                        int         num_params,
                         FT_Parameter*  params );
 
 
@@ -113,8 +113,8 @@ FT_BEGIN_HEADER
   typedef FT_Error
   (*TT_Load_Face_Func)( FT_Stream      stream,
                         TT_Face        face,
-                        FT_Int         face_index,
-                        FT_Int         num_params,
+                        int         face_index,
+                        int         num_params,
                         FT_Parameter*  params );
 
 
@@ -219,7 +219,7 @@ FT_BEGIN_HEADER
    */
   typedef FT_Error
   (*TT_Find_SBit_Image_Func)( TT_Face          face,
-                              FT_UInt          glyph_index,
+                              uint          glyph_index,
                               FT_ULong         strike_index,
                               TT_SBit_Range   *arange,
                               TT_SBit_Strike  *astrike,
@@ -304,8 +304,8 @@ FT_BEGIN_HEADER
   typedef FT_Error
   (*TT_Load_SBit_Image_Func)( TT_Face              face,
                               FT_ULong             strike_index,
-                              FT_UInt              glyph_index,
-                              FT_UInt              load_flags,
+                              uint              glyph_index,
+                              uint              load_flags,
                               FT_Stream            stream,
                               FT_Bitmap           *amap,
                               TT_SBit_MetricsRec  *ametrics );
@@ -335,7 +335,7 @@ FT_BEGIN_HEADER
    */
   typedef FT_Error
   (*TT_Load_Svg_Doc_Func)( FT_GlyphSlot  glyph,
-                           FT_UInt       glyph_index );
+                           uint       glyph_index );
 
 
   /**************************************************************************
@@ -419,7 +419,7 @@ FT_BEGIN_HEADER
    */
   typedef FT_Error
   (*TT_Get_PS_Name_Func)( TT_Face      face,
-                          FT_UInt      idx,
+                          uint      idx,
                           FT_String**  PSname );
 
 
@@ -479,9 +479,9 @@ FT_BEGIN_HEADER
   typedef void
   (*TT_Get_Metrics_Func)( TT_Face     face,
                           FT_Bool     vertical,
-                          FT_UInt     gindex,
-                          FT_Short*   abearing,
-                          FT_UShort*  aadvance );
+                          uint     gindex,
+                          short*   abearing,
+                          ushort*  aadvance );
 
 
   /**************************************************************************
@@ -504,7 +504,7 @@ FT_BEGIN_HEADER
    */
   typedef FT_Error
   (*TT_Set_Palette_Func)( TT_Face  face,
-                          FT_UInt  idx );
+                          uint  idx );
 
 
   /**************************************************************************
@@ -545,9 +545,9 @@ FT_BEGIN_HEADER
    */
   typedef FT_Bool
   (*TT_Get_Colr_Layer_Func)( TT_Face            face,
-                             FT_UInt            base_glyph,
-                             FT_UInt           *aglyph_index,
-                             FT_UInt           *acolor_index,
+                             uint            base_glyph,
+                             uint           *aglyph_index,
+                             uint           *acolor_index,
                              FT_LayerIterator*  iterator );
 
 
@@ -577,7 +577,7 @@ FT_BEGIN_HEADER
    */
   typedef FT_Bool
   ( *TT_Get_Color_Glyph_Paint_Func )( TT_Face                   face,
-                                      FT_UInt                   base_glyph,
+                                      uint                   base_glyph,
                                       FT_Color_Root_Transform   root_transform,
                                       FT_OpaquePaint           *paint );
 
@@ -616,7 +616,7 @@ FT_BEGIN_HEADER
    */
   typedef FT_Bool
   ( *TT_Get_Color_Glyph_ClipBox_Func )( TT_Face      face,
-                                        FT_UInt      base_glyph,
+                                        uint      base_glyph,
                                         FT_ClipBox*  clip_box );
 
 
@@ -748,7 +748,7 @@ FT_BEGIN_HEADER
    */
   typedef FT_Error
   (*TT_Blend_Colr_Func)( TT_Face       face,
-                         FT_UInt       color_index,
+                         uint       color_index,
                          FT_GlyphSlot  base_glyph,
                          FT_GlyphSlot  new_glyph );
 
@@ -778,7 +778,7 @@ FT_BEGIN_HEADER
    */
   typedef FT_Error
   (*TT_Get_Name_Func)( TT_Face      face,
-                       FT_UShort    nameid,
+                       ushort    nameid,
                        FT_String**  name );
 
 
@@ -812,9 +812,9 @@ FT_BEGIN_HEADER
    */
   typedef FT_Bool
   (*TT_Get_Name_ID_Func)( TT_Face    face,
-                          FT_UShort  nameid,
-                          FT_Int    *win,
-                          FT_Int    *apple );
+                          ushort  nameid,
+                          int    *win,
+                          int    *apple );
 
 
   /**************************************************************************
@@ -880,10 +880,10 @@ FT_BEGIN_HEADER
    * @return:
    *    The kerning value in font units.
    */
-  typedef FT_Int
+  typedef int
   (*TT_Face_GetKerningFunc)( TT_Face  face,
-                             FT_UInt  left_glyph,
-                             FT_UInt  right_glyph );
+                             uint  left_glyph,
+                             uint  right_glyph );
 
 
   /**************************************************************************

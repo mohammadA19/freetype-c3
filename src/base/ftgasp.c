@@ -20,11 +20,11 @@
 #include <freetype/internal/tttypes.h>
 
 
-  FT_Int
+  int
   FT_Get_Gasp( FT_Face  face,
-               FT_UInt  ppem )
+               uint  ppem )
   {
-    FT_Int  result = FT_GASP_NO_TABLE;
+    int  result = FT_GASP_NO_TABLE;
 
 
     if ( face && FT_IS_SFNT( face ) )

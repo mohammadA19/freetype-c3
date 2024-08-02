@@ -65,7 +65,7 @@
   {
     FT_Error  error;
     FT_ULong  table_len;
-    FT_Int    shift;
+    int    shift;
 
 
     /* we need the size of the `glyf' table for malformed `loca' tables */
@@ -181,7 +181,7 @@
 
   fn FT_ULong /* internal */
   tt_face_get_location( FT_Face    face,   /* TT_Face */
-                        FT_UInt    gindex,
+                        uint    gindex,
                         FT_ULong  *asize )
   {
     TT_Face   ttface = (TT_Face)face;
@@ -342,8 +342,8 @@
       goto Exit;
 
     {
-      FT_Int32*  cur   = face->cvt;
-      FT_Int32*  limit = cur + face->cvt_size;
+      int*  cur   = face->cvt;
+      int*  limit = cur + face->cvt_size;
 
 
       for ( ; cur < limit; cur++ )
@@ -532,7 +532,7 @@
   {
     FT_Error   error;
     FT_Memory  memory = stream->memory;
-    FT_UInt    nn, num_records;
+    uint    nn, num_records;
     FT_ULong   table_size, record_size;
     FT_Byte*   p;
     FT_Byte*   limit;
@@ -634,12 +634,12 @@
    */
   fn FT_Byte* /* internal */
   tt_face_get_device_metrics( TT_Face  face,
-                              FT_UInt  ppem,
-                              FT_UInt  gindex )
+                              uint  ppem,
+                              uint  gindex )
   {
-    FT_UInt   min    = 0;
-    FT_UInt   max    = face->hdmx_record_count;
-    FT_UInt   mid;
+    uint   min    = 0;
+    uint   max    = face->hdmx_record_count;
+    uint   mid;
     FT_Byte*  result = NULL;
 
 

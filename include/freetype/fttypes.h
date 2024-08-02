@@ -54,21 +54,21 @@ FT_BEGIN_HEADER
    *   FT_Byte
    *   FT_Bytes
    *   FT_Char
-   *   FT_Int
-   *   FT_UInt
-   *   FT_Int16
-   *   FT_UInt16
-   *   FT_Int32
-   *   FT_UInt32
+   *   int
+   *   uint
+   *   short
+   *   ushort
+   *   int
+   *   uint
    *   FT_Int64
    *   FT_UInt64
-   *   FT_Short
-   *   FT_UShort
+   *   short
+   *   ushort
    *   FT_Long
    *   FT_ULong
    *   FT_Bool
    *   FT_Offset
-   *   FT_PtrDist
+   *   isz
    *   FT_String
    *   FT_Tag
    *   FT_Error
@@ -120,7 +120,7 @@ FT_BEGIN_HEADER
    *   A signed 16-bit integer used to store a distance in original font
    *   units.
    */
-  typedef signed short  FT_FWord;   /* distance in FUnits */
+  typedef short  FT_FWord;   /* distance in FUnits */
 
 
   /**************************************************************************
@@ -132,7 +132,7 @@ FT_BEGIN_HEADER
    *   An unsigned 16-bit integer used to store a distance in original font
    *   units.
    */
-  typedef unsigned short  FT_UFWord;  /* unsigned distance */
+  typedef ushort  FT_UFWord;  /* unsigned distance */
 
 
   /**************************************************************************
@@ -176,7 +176,7 @@ FT_BEGIN_HEADER
    * @description:
    *   A typedef for 32-bit tags (as used in the SFNT format).
    */
-  typedef FT_UInt32  FT_Tag;
+  typedef uint  FT_Tag;
 
 
   /**************************************************************************
@@ -193,45 +193,45 @@ FT_BEGIN_HEADER
   /**************************************************************************
    *
    * @type:
-   *   FT_Short
+   *   short
    *
    * @description:
    *   A typedef for signed short.
    */
-  typedef signed short  FT_Short;
+  typedef short  short;
 
 
   /**************************************************************************
    *
    * @type:
-   *   FT_UShort
+   *   ushort
    *
    * @description:
-   *   A typedef for unsigned short.
+   *   A typedef for ushort.
    */
-  typedef unsigned short  FT_UShort;
+  typedef ushort  ushort;
 
 
   /**************************************************************************
    *
    * @type:
-   *   FT_Int
+   *   int
    *
    * @description:
    *   A typedef for the int type.
    */
-  typedef signed int  FT_Int;
+  typedef int  int;
 
 
   /**************************************************************************
    *
    * @type:
-   *   FT_UInt
+   *   uint
    *
    * @description:
-   *   A typedef for the unsigned int type.
+   *   A typedef for the uint type.
    */
-  typedef unsigned int  FT_UInt;
+  typedef uint  uint;
 
 
   /**************************************************************************
@@ -264,7 +264,7 @@ FT_BEGIN_HEADER
    * @description:
    *   A signed 2.14 fixed-point type used for unit vectors.
    */
-  typedef signed short  FT_F2Dot14;
+  typedef short  FT_F2Dot14;
 
 
   /**************************************************************************
@@ -319,24 +319,24 @@ FT_BEGIN_HEADER
    *   FT_Offset
    *
    * @description:
-   *   This is equivalent to the ANSI~C `size_t` type, i.e., the largest
+   *   This is equivalent to the ANSI~C `size _t` type, i.e., the largest
    *   _unsigned_ integer type used to express a file size or position, or a
    *   memory block size.
    */
-  typedef size_t  FT_Offset;
+  typedef usz  FT_Offset;
 
 
   /**************************************************************************
    *
    * @type:
-   *   FT_PtrDist
+   *   isz
    *
    * @description:
-   *   This is equivalent to the ANSI~C `ptrdiff_t` type, i.e., the largest
+   *   This is equivalent to the ANSI~C `ptrdiff _t` type, i.e., the largest
    *   _signed_ integer type used to express the distance between two
    *   pointers.
    */
-  typedef ft_ptrdiff_t  FT_PtrDist;
+  typedef isz  isz;
 
 
   /**************************************************************************
@@ -416,7 +416,7 @@ FT_BEGIN_HEADER
   typedef struct  FT_Data_
   {
     const FT_Byte*  pointer;
-    FT_UInt         length;
+    uint         length;
 
   } FT_Data;
 

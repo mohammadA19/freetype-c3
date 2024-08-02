@@ -294,9 +294,9 @@
   /*************************************************************************/
 
   typedef int             Int;
-  typedef unsigned int    UInt;
+  typedef uint    UInt;
   typedef short           Short;
-  typedef unsigned short  UShort, *PUShort;
+  typedef ushort  UShort, *PUShort;
   typedef long            Long, *PLong;
   typedef unsigned long   ULong;
 

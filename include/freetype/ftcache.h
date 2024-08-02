@@ -312,8 +312,8 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Error )
   FTC_Manager_New( FT_Library          library,
-                   FT_UInt             max_faces,
-                   FT_UInt             max_sizes,
+                   uint             max_faces,
+                   uint             max_sizes,
                    FT_ULong            max_bytes,
                    FTC_Face_Requester  requester,
                    FT_Pointer          req_data,
@@ -441,11 +441,11 @@ FT_BEGIN_HEADER
   typedef struct  FTC_ScalerRec_
   {
     FTC_FaceID  face_id;
-    FT_UInt     width;
-    FT_UInt     height;
-    FT_Int      pixel;
-    FT_UInt     x_res;
-    FT_UInt     y_res;
+    uint     width;
+    uint     height;
+    int      pixel;
+    uint     x_res;
+    uint     y_res;
 
   } FTC_ScalerRec;
 
@@ -629,11 +629,11 @@ FT_BEGIN_HEADER
    *    Glyph index.  0~means 'no glyph'.
    *
    */
-  FT_EXPORT( FT_UInt )
+  FT_EXPORT( uint )
   FTC_CMapCache_Lookup( FTC_CMapCache  cache,
                         FTC_FaceID     face_id,
-                        FT_Int         cmap_index,
-                        FT_UInt32      char_code );
+                        int         cmap_index,
+                        uint      char_code );
 
 
   /*************************************************************************/
@@ -672,9 +672,9 @@ FT_BEGIN_HEADER
   typedef struct  FTC_ImageTypeRec_
   {
     FTC_FaceID  face_id;
-    FT_UInt     width;
-    FT_UInt     height;
-    FT_Int32    flags;
+    uint     width;
+    uint     height;
+    int    flags;
 
   } FTC_ImageTypeRec;
 
@@ -784,7 +784,7 @@ FT_BEGIN_HEADER
   FT_EXPORT( FT_Error )
   FTC_ImageCache_Lookup( FTC_ImageCache  cache,
                          FTC_ImageType   type,
-                         FT_UInt         gindex,
+                         uint         gindex,
                          FT_Glyph       *aglyph,
                          FTC_Node       *anode );
 
@@ -844,7 +844,7 @@ FT_BEGIN_HEADER
   FTC_ImageCache_LookupScaler( FTC_ImageCache  cache,
                                FTC_Scaler      scaler,
                                FT_ULong        load_flags,
-                               FT_UInt         gindex,
+                               uint         gindex,
                                FT_Glyph       *aglyph,
                                FTC_Node       *anode );
 
@@ -912,7 +912,7 @@ FT_BEGIN_HEADER
 
     FT_Byte   format;
     FT_Byte   max_grays;
-    FT_Short  pitch;
+    short  pitch;
     FT_Char   xadvance;
     FT_Char   yadvance;
 
@@ -1011,7 +1011,7 @@ FT_BEGIN_HEADER
   FT_EXPORT( FT_Error )
   FTC_SBitCache_Lookup( FTC_SBitCache    cache,
                         FTC_ImageType    type,
-                        FT_UInt          gindex,
+                        uint          gindex,
                         FTC_SBit        *sbit,
                         FTC_Node        *anode );
 
@@ -1072,7 +1072,7 @@ FT_BEGIN_HEADER
   FTC_SBitCache_LookupScaler( FTC_SBitCache  cache,
                               FTC_Scaler     scaler,
                               FT_ULong       load_flags,
-                              FT_UInt        gindex,
+                              uint        gindex,
                               FTC_SBit      *sbit,
                               FTC_Node      *anode );
 

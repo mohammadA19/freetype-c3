@@ -72,7 +72,7 @@
    */
   fn FT_Error /* internal */
   ps_table_new( PS_Table   table,
-                FT_Int     count,
+                int     count,
                 FT_Memory  memory )
   {
     FT_Error  error;
@@ -160,9 +160,9 @@
    */
   fn FT_Error /* internal */
   ps_table_add( PS_Table     table,
-                FT_Int       idx,
+                int       idx,
                 const void*  object,
-                FT_UInt      length )
+                uint      length )
   {
     if ( idx < 0 || idx >= table->max_elems )
     {
@@ -175,7 +175,7 @@
     {
       FT_Error    error;
       FT_Offset   new_size = table->capacity;
-      FT_PtrDist  in_offset;
+      isz  in_offset;
 
 
       in_offset = (FT_Byte*)object - table->block;
@@ -311,9 +311,9 @@
                        FT_Byte*   limit )
   {
     FT_Byte*      cur   = *acur;
-    FT_Int        embed = 0;
+    int        embed = 0;
     FT_Error      error = FT_ERR( Invalid_File_Format );
-    unsigned int  i;
+    uint  i;
 
 
     while ( cur < limit )
@@ -426,7 +426,7 @@
                   FT_Byte*   limit )
   {
     FT_Byte*  cur;
-    FT_Int    embed = 0;
+    int    embed = 0;
     FT_Error  error = FT_Err_Ok;
 
 
@@ -595,7 +595,7 @@
   {
     FT_Byte*  cur;
     FT_Byte*  limit;
-    FT_Int    embed;
+    int    embed;
 
 
     token->type  = T1_TOKEN_TYPE_NONE;
@@ -695,8 +695,8 @@
   fn void /* internal */
   ps_parser_to_token_array( PS_Parser  parser,
                             T1_Token   tokens,
-                            FT_UInt    max_tokens,
-                            FT_Int*    pnum_tokens )
+                            uint    max_tokens,
+                            int*    pnum_tokens )
   {
     T1_TokenRec  master;
 
@@ -733,7 +733,7 @@
         cur++;
       }
 
-      *pnum_tokens = (FT_Int)( cur - tokens );
+      *pnum_tokens = (int)( cur - tokens );
 
       parser->cursor = old_cursor;
       parser->limit  = old_limit;
@@ -745,14 +745,14 @@
   /* NB: `coords' can be NULL if we just want to skip the      */
   /*     array; in this case we ignore `max_coords'            */
 
-  static FT_Int
+  static int
   ps_tocoordarray( FT_Byte*  *acur,
                    FT_Byte*   limit,
-                   FT_Int     max_coords,
-                   FT_Short*  coords )
+                   int     max_coords,
+                   short*  coords )
   {
     FT_Byte*  cur   = *acur;
-    FT_Int    count = 0;
+    int    count = 0;
     FT_Byte   c, ender;
 
 
@@ -775,7 +775,7 @@
     /* now, read the coordinates */
     while ( cur < limit )
     {
-      FT_Short  dummy;
+      short  dummy;
       FT_Byte*  old_cur;
 
 
@@ -798,7 +798,7 @@
       /* call PS_Conv_ToFixed() even if coords == NULL */
       /* to properly parse number at `cur'             */
       *( coords ? &coords[count] : &dummy ) =
-        (FT_Short)( PS_Conv_ToFixed( &cur, limit, 0 ) >> 16 );
+        (short)( PS_Conv_ToFixed( &cur, limit, 0 ) >> 16 );
 
       if ( old_cur == cur )
       {
@@ -824,15 +824,15 @@
   /*                                                           */
   /* return number of successfully parsed values               */
 
-  static FT_Int
+  static int
   ps_tofixedarray( FT_Byte*  *acur,
                    FT_Byte*   limit,
-                   FT_Int     max_values,
+                   int     max_values,
                    FT_Fixed*  values,
-                   FT_Int     power_ten )
+                   int     power_ten )
   {
     FT_Byte*  cur   = *acur;
-    FT_Int    count = 0;
+    int    count = 0;
     FT_Byte   c, ender;
 
 
@@ -906,8 +906,8 @@
                FT_Memory  memory )
   {
     FT_Byte*    cur = *cursor;
-    FT_UInt     len = 0;
-    FT_Int      count;
+    uint     len = 0;
+    int      count;
     FT_String*  result;
     FT_Error    error;
 
@@ -946,7 +946,7 @@
       }
     }
 
-    len = (FT_UInt)( cur - *cursor );
+    len = (uint)( cur - *cursor );
     if ( cur >= limit || FT_QALLOC( result, len + 1 ) )
       return 0;
 
@@ -1000,14 +1000,14 @@
   ps_parser_load_field( PS_Parser       parser,
                         const T1_Field  field,
                         void**          objects,
-                        FT_UInt         max_objects,
+                        uint         max_objects,
                         FT_ULong*       pflags )
   {
     T1_TokenRec   token;
     FT_Byte*      cur;
     FT_Byte*      limit;
-    FT_UInt       count;
-    FT_UInt       idx;
+    uint       count;
+    uint       idx;
     FT_Error      error;
     T1_FieldType  type;
 
@@ -1100,11 +1100,11 @@
           break;
 
         case (16 / FT_CHAR_BIT):
-          *(FT_UShort*)q = (FT_UShort)val;
+          *(ushort*)q = (ushort)val;
           break;
 
         case (32 / FT_CHAR_BIT):
-          *(FT_UInt32*)q = (FT_UInt32)val;
+          *(uint*)q = (uint)val;
           break;
 
         default:                /* for 64-bit systems */
@@ -1116,7 +1116,7 @@
       case T1_FIELD_TYPE_KEY:
         {
           FT_Memory   memory = parser->memory;
-          FT_UInt     len    = (FT_UInt)( limit - cur );
+          uint     len    = (uint)( limit - cur );
           FT_String*  string = NULL;
 
 
@@ -1181,7 +1181,7 @@
         {
           FT_Fixed  temp[4];
           FT_BBox*  bbox = (FT_BBox*)q;
-          FT_Int    result;
+          int    result;
 
 
           result = ps_tofixedarray( &cur, limit, 4, temp, 0 );
@@ -1211,8 +1211,8 @@
         {
           FT_Memory  memory = parser->memory;
           FT_Fixed*  temp   = NULL;
-          FT_Int     result;
-          FT_UInt    i;
+          int     result;
+          uint    i;
 
 
           if ( FT_QNEW_ARRAY( temp, max_objects * 4 ) )
@@ -1220,9 +1220,9 @@
 
           for ( i = 0; i < 4; i++ )
           {
-            result = ps_tofixedarray( &cur, limit, (FT_Int)max_objects,
+            result = ps_tofixedarray( &cur, limit, (int)max_objects,
                                       temp + i * max_objects, 0 );
-            if ( result < 0 || (FT_UInt)result < max_objects )
+            if ( result < 0 || (uint)result < max_objects )
             {
               FT_ERROR(( "ps_parser_load_field:"
                          " expected %d integer%s in the %s subarray\n",
@@ -1296,12 +1296,12 @@
   ps_parser_load_field_table( PS_Parser       parser,
                               const T1_Field  field,
                               void**          objects,
-                              FT_UInt         max_objects,
+                              uint         max_objects,
                               FT_ULong*       pflags )
   {
     T1_TokenRec  elements[T1_MAX_TABLE_ELEMENTS];
     T1_Token     token;
-    FT_Int       num_elements;
+    int       num_elements;
     FT_Error     error = FT_Err_Ok;
     FT_Byte*     old_cursor;
     FT_Byte*     old_limit;
@@ -1320,8 +1320,8 @@
       error = FT_ERR( Ignore );
       goto Exit;
     }
-    if ( (FT_UInt)num_elements > field->array_max )
-      num_elements = (FT_Int)field->array_max;
+    if ( (uint)num_elements > field->array_max )
+      num_elements = (int)field->array_max;
 
     old_cursor = parser->cursor;
     old_limit  = parser->limit;
@@ -1434,17 +1434,17 @@
 
   fn FT_Fixed /* internal */
   ps_parser_to_fixed( PS_Parser  parser,
-                      FT_Int     power_ten )
+                      int     power_ten )
   {
     ps_parser_skip_spaces( parser );
     return PS_Conv_ToFixed( &parser->cursor, parser->limit, power_ten );
   }
 
 
-  fn FT_Int /* internal */
+  fn int /* internal */
   ps_parser_to_coord_array( PS_Parser  parser,
-                            FT_Int     max_coords,
-                            FT_Short*  coords )
+                            int     max_coords,
+                            short*  coords )
   {
     ps_parser_skip_spaces( parser );
     return ps_tocoordarray( &parser->cursor, parser->limit,
@@ -1452,11 +1452,11 @@
   }
 
 
-  fn FT_Int /* internal */
+  fn int /* internal */
   ps_parser_to_fixed_array( PS_Parser  parser,
-                            FT_Int     max_values,
+                            int     max_values,
                             FT_Fixed*  values,
-                            FT_Int     power_ten )
+                            int     power_ten )
   {
     ps_parser_skip_spaces( parser );
     return ps_tofixedarray( &parser->cursor, parser->limit,
@@ -1608,7 +1608,7 @@
   /* check that there is enough space for `count' more points */
   fn FT_Error /* internal */
   t1_builder_check_points( T1_Builder  builder,
-                           FT_Int      count )
+                           int      count )
   {
     return FT_GLYPHLOADER_CHECK_POINTS( builder->loader, count, 0 );
   }
@@ -1719,7 +1719,7 @@
   t1_builder_close_contour( T1_Builder  builder )
   {
     FT_Outline*  outline = builder->current;
-    FT_Int       first;
+    int       first;
 
 
     if ( !outline )
@@ -1881,7 +1881,7 @@
   /* check that there is enough space for `count' more points */
   fn FT_Error /* internal */
   cff_check_points( CFF_Builder*  builder,
-                    FT_Int        count )
+                    int        count )
   {
     return FT_GLYPHLOADER_CHECK_POINTS( builder->loader, count, 0 );
   }
@@ -1996,7 +1996,7 @@
   cff_builder_close_contour( CFF_Builder*  builder )
   {
     FT_Outline*  outline = builder->current;
-    FT_Int       first;
+    int       first;
 
 
     if ( !outline )
@@ -2168,7 +2168,7 @@
   /* check that there is enough space for `count' more points */
   fn FT_Error /* internal */
   ps_builder_check_points( PS_Builder*  builder,
-                           FT_Int       count )
+                           int       count )
   {
     return FT_GLYPHLOADER_CHECK_POINTS( builder->loader, count, 0 );
   }
@@ -2302,7 +2302,7 @@
   ps_builder_close_contour( PS_Builder*  builder )
   {
     FT_Outline*  outline = builder->current;
-    FT_Int       first;
+    int       first;
 
 
     if ( !outline )
@@ -2403,7 +2403,7 @@
       ps_decoder->hint_mode   = t1_decoder->hint_mode;
       ps_decoder->blend       = t1_decoder->blend;
 
-      ps_decoder->num_locals  = (FT_UInt)t1_decoder->num_subrs;
+      ps_decoder->num_locals  = (uint)t1_decoder->num_subrs;
       ps_decoder->locals      = t1_decoder->subrs;
       ps_decoder->locals_len  = t1_decoder->subrs_len;
       ps_decoder->locals_hash = t1_decoder->subrs_hash;
@@ -2452,7 +2452,7 @@
                    CFF_SubFont  subfont )
   {
     CFF_Private  cpriv = &subfont->private_dict;
-    FT_UInt      n, count;
+    uint      n, count;
 
 
     FT_ZERO( subfont );
@@ -2503,24 +2503,24 @@
     {
       /* If we have a face-specific seed, use it.    */
       /* If non-zero, update it to a positive value. */
-      subfont->random = (FT_UInt32)face->internal->random_seed;
+      subfont->random = (uint)face->internal->random_seed;
       if ( face->internal->random_seed )
       {
         do
         {
-          face->internal->random_seed = (FT_Int32)cff_random(
-            (FT_UInt32)face->internal->random_seed );
+          face->internal->random_seed = (int)cff_random(
+            (uint)face->internal->random_seed );
 
         } while ( face->internal->random_seed < 0 );
       }
     }
     if ( !subfont->random )
     {
-      FT_UInt32  seed;
+      uint  seed;
 
 
       /* compute random seed from some memory addresses */
-      seed = (FT_UInt32)( (FT_Offset)(char*)&seed    ^
+      seed = (uint)( (FT_Offset)(char*)&seed    ^
                           (FT_Offset)(char*)&face    ^
                           (FT_Offset)(char*)&subfont );
       seed = seed ^ ( seed >> 10 ) ^ ( seed >> 20 );
@@ -2535,7 +2535,7 @@
   fn void /* internal */
   t1_decrypt( FT_Byte*   buffer,
               FT_Offset  length,
-              FT_UShort  seed )
+              ushort  seed )
   {
     PS_Conv_EexecDecode( &buffer,
                          FT_OFFSET( buffer, length ),
@@ -2545,8 +2545,8 @@
   }
 
 
-  fn FT_UInt32 /* internal */
-  cff_random( FT_UInt32  r )
+  fn uint /* internal */
+  cff_random( uint  r )
   {
     /* a 32bit version of the `xorshift' algorithm */
     r ^= r << 13;

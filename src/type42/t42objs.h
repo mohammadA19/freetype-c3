@@ -65,8 +65,8 @@ FT_BEGIN_HEADER
   fn FT_Error /* internal */
   T42_Face_Init( FT_Stream      stream,
                  FT_Face        face,
-                 FT_Int         face_index,
-                 FT_Int         num_params,
+                 int         face_index,
+                 int         num_params,
                  FT_Parameter*  params );
 
 
@@ -99,8 +99,8 @@ FT_BEGIN_HEADER
   fn FT_Error /* internal */
   T42_GlyphSlot_Load( FT_GlyphSlot  glyph,
                       FT_Size       size,
-                      FT_UInt       glyph_index,
-                      FT_Int32      load_flags );
+                      uint       glyph_index,
+                      int      load_flags );
 
   fn void /* internal */
   T42_GlyphSlot_Done( FT_GlyphSlot  slot );

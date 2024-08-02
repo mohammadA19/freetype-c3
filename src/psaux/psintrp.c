@@ -105,9 +105,9 @@
   }
 
 
-  static size_t
+  static usz
   cf2_hintmask_setCounts( CF2_HintMask  hintmask,
-                          size_t        bitCount )
+                          usz        bitCount )
   {
     if ( bitCount > CF2_MAX_HINTS )
     {
@@ -131,9 +131,9 @@
   static void
   cf2_hintmask_read( CF2_HintMask  hintmask,
                      CF2_Buffer    charstring,
-                     size_t        bitCount )
+                     usz        bitCount )
   {
-    size_t  i;
+    usz  i;
 
 #ifndef CF2_NDEBUG
     /* these are the bits in the final mask byte that should be zero  */
@@ -172,9 +172,9 @@
 
   fn void /* internal */
   cf2_hintmask_setAll( CF2_HintMask  hintmask,
-                       size_t        bitCount )
+                       usz        bitCount )
   {
-    size_t    i;
+    usz    i;
     CF2_UInt  mask = ( 1 << ( -(CF2_Int)bitCount & 7 ) ) - 1;
 
 
@@ -497,26 +497,26 @@
     CF2_Fixed  nominalWidthX = cf2_getNominalWidthX( decoder );
 
     /* stuff for Type 1 */
-    FT_Int   known_othersubr_result_cnt = 0;
+    int   known_othersubr_result_cnt = 0;
     FT_Bool  large_int                  = FALSE;
     FT_Bool  initial_map_ready          = FALSE;
 
 #define PS_STORAGE_SIZE 3
     CF2_F16Dot16  results[PS_STORAGE_SIZE];   /* for othersubr results */
-    FT_Int        result_cnt = 0;
+    int        result_cnt = 0;
 
     /* save this for hinting seac accents */
     CF2_Fixed  hintOriginY = curY;
 
     CF2_Stack  opStack = NULL;
-    FT_UInt    stackSize;
+    uint    stackSize;
     FT_Byte    op1;                       /* first opcode byte */
 
     CF2_F16Dot16  storage[CF2_STORAGE_SIZE];    /* for `put' and `get' */
     CF2_F16Dot16  flexStore[6];                 /* for Type 1 flex     */
 
     /* instruction limit; 20,000,000 matches Avalon */
-    FT_UInt32  instructionLimit = 20000000UL;
+    uint  instructionLimit = 20000000UL;
 
     CF2_ArrStackRec  subrStack;
 
@@ -728,17 +728,17 @@
         }
 
         {
-          FT_Int  temp = cf2_stack_popInt( opStack );
+          int  temp = cf2_stack_popInt( opStack );
 
 
           if ( temp >= 0 )
-            font->vsindex = (FT_UInt)temp;
+            font->vsindex = (uint)temp;
         }
         break;
 
       case cf2_cmdBLEND:
         {
-          FT_UInt  numBlends;
+          uint  numBlends;
 
 
           FT_TRACE4(( " blend" ));
@@ -768,7 +768,7 @@
           }
 
           /* do the blend */
-          numBlends = (FT_UInt)cf2_stack_popInt( opStack );
+          numBlends = (uint)cf2_stack_popInt( opStack );
           if ( numBlends > stackSize )
           {
             lastError = FT_THROW( Invalid_Glyph_Format );
@@ -997,14 +997,14 @@
           charstring = (CF2_Buffer)
                          cf2_arrstack_getPointer(
                            &subrStack,
-                           (size_t)charstringIndex + 1 );
+                           (usz)charstringIndex + 1 );
 
           /* set up the new CFF region and pointer */
           subrNum = cf2_stack_popInt( opStack );
 
           if ( font->isT1 && decoder->locals_hash )
           {
-            size_t*  val = ft_hash_num_lookup( subrNum,
+            usz*  val = ft_hash_num_lookup( subrNum,
                                                decoder->locals_hash );
 
 
@@ -1413,8 +1413,8 @@
                       /* subglyph 1 = accent character */
                       subg->index = achar_index;
                       subg->flags = FT_SUBGLYPH_FLAG_ARGS_ARE_XY_VALUES;
-                      subg->arg1  = (FT_Int)FIXED_TO_INT( adx - asb );
-                      subg->arg2  = (FT_Int)FIXED_TO_INT( ady );
+                      subg->arg1  = (int)FIXED_TO_INT( adx - asb );
+                      subg->arg2  = (int)FIXED_TO_INT( ady );
 
                       /* set up remaining glyph fields */
                       glyph->num_subglyphs = 2;
@@ -1433,7 +1433,7 @@
                     FT_GlyphLoader_Prepare( decoder->builder.loader );
 
                     error2 = cf2_getT1SeacComponent( decoder,
-                                                     (FT_UInt)bchar_index,
+                                                     (uint)bchar_index,
                                                      &component );
                     if ( error2 )
                     {
@@ -1473,7 +1473,7 @@
                     /* the base outline           */
 
                     error2 = cf2_getT1SeacComponent( decoder,
-                                                     (FT_UInt)achar_index,
+                                                     (uint)achar_index,
                                                      &component );
                     if ( error2 )
                     {
@@ -1747,8 +1747,8 @@
 
                     case 2:                     /* add flex vectors */
                       {
-                        FT_Int  idx;
-                        FT_Int  idx2;
+                        int  idx;
+                        int  idx2;
 
 
                         if ( arg_cnt != 0 )
@@ -1834,7 +1834,7 @@
                     case 18:                    /* multiple masters */
                       {
                         PS_Blend  blend = decoder->blend;
-                        FT_UInt   num_points, nn, mm;
+                        uint   num_points, nn, mm;
                         CF2_UInt  delta;
                         CF2_UInt  values;
 
@@ -1848,9 +1848,9 @@
                           goto exit;
                         }
 
-                        num_points = (FT_UInt)subr_no - 13 +
+                        num_points = (uint)subr_no - 13 +
                                        ( subr_no == 18 );
-                        if ( arg_cnt != (FT_Int)( num_points *
+                        if ( arg_cnt != (int)( num_points *
                                                   blend->num_designs ) )
                         {
                           FT_ERROR((
@@ -1896,7 +1896,7 @@
                         cf2_stack_pop( opStack,
                                        (CF2_UInt)arg_cnt - num_points );
 
-                        known_othersubr_result_cnt = (FT_Int)num_points;
+                        known_othersubr_result_cnt = (int)num_points;
                         break;
                       }
 
@@ -1906,15 +1906,15 @@
                       /*     cvi( <idx> ) of BuildCharArray with  */
                       /*     WeightVector                         */
                       {
-                        FT_UInt   idx;
+                        uint   idx;
                         PS_Blend  blend         = decoder->blend;
-                        FT_UInt   len_buildchar = decoder->len_buildchar;
+                        uint   len_buildchar = decoder->len_buildchar;
 
 
                         if ( arg_cnt != 1 || !blend )
                           goto Unexpected_OtherSubr;
 
-                        idx = (FT_UInt)cf2_stack_popInt( opStack );
+                        idx = (uint)cf2_stack_popInt( opStack );
 
                         if ( len_buildchar < blend->num_designs       ||
                              len_buildchar - blend->num_designs < idx )
@@ -2122,7 +2122,7 @@
                     default:
                       if ( arg_cnt >= 0 && subr_no >= 0 )
                       {
-                        FT_Int  i;
+                        int  i;
 
 
                         FT_ERROR((
@@ -2903,7 +2903,7 @@
           CF2_Int  byte2 = cf2_buf_readByte( charstring );
 
 
-          v = (FT_Short)( ( byte1 << 8 ) |
+          v = (short)( ( byte1 << 8 ) |
                             byte2        );
 
           FT_TRACE4(( " %d", v ));
@@ -2966,10 +2966,10 @@
           {
             CF2_Fixed  v;
 
-            FT_UInt32  byte1 = (FT_UInt32)cf2_buf_readByte( charstring );
-            FT_UInt32  byte2 = (FT_UInt32)cf2_buf_readByte( charstring );
-            FT_UInt32  byte3 = (FT_UInt32)cf2_buf_readByte( charstring );
-            FT_UInt32  byte4 = (FT_UInt32)cf2_buf_readByte( charstring );
+            uint  byte1 = (uint)cf2_buf_readByte( charstring );
+            uint  byte2 = (uint)cf2_buf_readByte( charstring );
+            uint  byte3 = (uint)cf2_buf_readByte( charstring );
+            uint  byte4 = (uint)cf2_buf_readByte( charstring );
 
 
             v = (CF2_Fixed)( ( byte1 << 24 ) |

@@ -46,11 +46,11 @@ FT_BEGIN_HEADER
     FT_ULong   signature;
     FT_ULong   flavor;
     FT_ULong   length;
-    FT_UShort  num_tables;
-    FT_UShort  reserved;
+    ushort  num_tables;
+    ushort  reserved;
     FT_ULong   totalSfntSize;
-    FT_UShort  majorVersion;
-    FT_UShort  minorVersion;
+    ushort  majorVersion;
+    ushort  minorVersion;
     FT_ULong   metaOffset;
     FT_ULong   metaLength;
     FT_ULong   metaOrigLength;
@@ -125,8 +125,8 @@ FT_BEGIN_HEADER
   typedef struct  WOFF2_TtcFontRec_
   {
     FT_ULong    flavor;
-    FT_UShort   num_tables;
-    FT_UShort*  table_indices;
+    ushort   num_tables;
+    ushort*  table_indices;
 
   } WOFF2_TtcFontRec, *WOFF2_TtcFont;
 
@@ -155,7 +155,7 @@ FT_BEGIN_HEADER
     FT_ULong   signature;
     FT_ULong   flavor;
     FT_ULong   length;
-    FT_UShort  num_tables;
+    ushort  num_tables;
     FT_ULong   totalSfntSize;
     FT_ULong   totalCompressedSize;
     FT_ULong   metaOffset;
@@ -167,7 +167,7 @@ FT_BEGIN_HEADER
     FT_ULong   uncompressed_size;    /* uncompressed brotli stream size */
     FT_ULong   compressed_offset;    /* compressed stream offset        */
     FT_ULong   header_version;       /* version of original TTC Header  */
-    FT_UShort  num_fonts;            /* number of fonts in TTC          */
+    ushort  num_fonts;            /* number of fonts in TTC          */
     FT_ULong   actual_sfnt_size;     /* actual size of sfnt stream      */
 
     WOFF2_TtcFont  ttc_fonts;        /* metadata for fonts in a TTC     */
@@ -237,9 +237,9 @@ FT_BEGIN_HEADER
   typedef struct  WOFF2_InfoRec_
   {
     FT_ULong   header_checksum;
-    FT_UShort  num_glyphs;
-    FT_UShort  num_hmetrics;
-    FT_Short*  x_mins;
+    ushort  num_glyphs;
+    ushort  num_hmetrics;
+    short*  x_mins;
 
     WOFF2_Table  glyf_table;
     WOFF2_Table  loca_table;
@@ -297,8 +297,8 @@ FT_BEGIN_HEADER
    */
   typedef struct  WOFF2_PointRec_
   {
-    FT_Int   x;
-    FT_Int   y;
+    int   x;
+    int   y;
     FT_Bool  on_curve;
 
   } WOFF2_PointRec, *WOFF2_Point;

@@ -35,22 +35,22 @@ FT_BEGIN_HEADER
 
   fn void /* internal */
   TT_Get_HMetrics( TT_Face     face,
-                   FT_UInt     idx,
-                   FT_Short*   lsb,
-                   FT_UShort*  aw );
+                   uint     idx,
+                   short*   lsb,
+                   ushort*  aw );
 
   fn void /* internal */
   TT_Get_VMetrics( TT_Face     face,
-                   FT_UInt     idx,
+                   uint     idx,
                    FT_Pos      yMax,
-                   FT_Short*   tsb,
-                   FT_UShort*  ah );
+                   short*   tsb,
+                   ushort*  ah );
 
   fn FT_Error /* internal */
   TT_Load_Glyph( TT_Size       size,
                  TT_GlyphSlot  glyph,
-                 FT_UInt       glyph_index,
-                 FT_Int32      load_flags );
+                 uint       glyph_index,
+                 int      load_flags );
 
 
 FT_END_HEADER

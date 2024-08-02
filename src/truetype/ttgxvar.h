@@ -57,7 +57,7 @@ FT_BEGIN_HEADER
    */
   typedef struct  GX_AVarSegmentRec_
   {
-    FT_UShort              pairCount;
+    ushort              pairCount;
     GX_AVarCorrespondence  correspondence; /* array with pairCount entries */
 
   } GX_AVarSegmentRec, *GX_AVarSegment;
@@ -149,10 +149,10 @@ FT_BEGIN_HEADER
   typedef struct  GX_ValueRec_
   {
     FT_ULong   tag;
-    FT_UShort  outerIndex;
-    FT_UShort  innerIndex;
+    ushort  outerIndex;
+    ushort  innerIndex;
 
-    FT_Short  unmodified;  /* values are either FT_Short or FT_UShort */
+    short  unmodified;  /* values are either short or ushort */
 
   } GX_ValueRec, *GX_Value;
 
@@ -167,7 +167,7 @@ FT_BEGIN_HEADER
    */
   typedef struct  GX_MVarTableRec_
   {
-    FT_UShort  valueCount;
+    ushort  valueCount;
 
     GX_ItemVarStoreRec  itemStore;        /* Item Variation Store  */
     GX_Value            values;           /* Value Records         */
@@ -266,7 +266,7 @@ FT_BEGIN_HEADER
    */
   typedef struct  GX_BlendRec_
   {
-    FT_UInt         num_axis;
+    uint         num_axis;
     FT_Fixed*       coords;
     FT_Fixed*       normalizedcoords;
 
@@ -291,10 +291,10 @@ FT_BEGIN_HEADER
 
     GX_MVarTable    mvar_table;
 
-    FT_UInt         tuplecount;
+    uint         tuplecount;
     FT_Fixed*       tuplecoords;      /* tuplecoords[tuplecount][num_axis] */
 
-    FT_UInt         gv_glyphcnt;
+    uint         gv_glyphcnt;
     FT_ULong*       glyphoffsets;         /* glyphoffsets[gv_glyphcnt + 1] */
 
     FT_ULong        gvar_size;
@@ -348,17 +348,17 @@ FT_BEGIN_HEADER
 
   fn FT_Error /* internal */
   TT_Set_MM_Blend( FT_Face    face,
-                   FT_UInt    num_coords,
+                   uint    num_coords,
                    FT_Fixed*  coords );
 
   fn FT_Error /* internal */
   TT_Get_MM_Blend( FT_Face    face,
-                   FT_UInt    num_coords,
+                   uint    num_coords,
                    FT_Fixed*  coords );
 
   fn FT_Error /* internal */
   TT_Set_Var_Design( FT_Face    face,
-                     FT_UInt    num_coords,
+                     uint    num_coords,
                      FT_Fixed*  coords );
 
   fn FT_Error /* internal */
@@ -367,16 +367,16 @@ FT_BEGIN_HEADER
 
   fn FT_Error /* internal */
   TT_Get_Var_Design( FT_Face    face,
-                     FT_UInt    num_coords,
+                     uint    num_coords,
                      FT_Fixed*  coords );
 
   fn FT_Error /* internal */
   TT_Set_Named_Instance( FT_Face  face,
-                         FT_UInt  instance_index );
+                         uint  instance_index );
 
   fn FT_Error /* internal */
   TT_Get_Default_Named_Instance( FT_Face   face,
-                                 FT_UInt  *instance_index );
+                                 uint  *instance_index );
 
   fn void /* internal */
   tt_construct_ps_name( FT_Face  face );
@@ -393,13 +393,13 @@ FT_BEGIN_HEADER
 
   fn FT_Error /* internal */
   tt_hadvance_adjust( FT_Face  face,
-                      FT_UInt  gindex,
-                      FT_Int  *adelta );
+                      uint  gindex,
+                      int  *adelta );
 
   fn FT_Error /* internal */
   tt_vadvance_adjust( FT_Face  face,
-                      FT_UInt  gindex,
-                      FT_Int  *adelta );
+                      uint  gindex,
+                      int  *adelta );
 
   fn void /* internal */
   tt_apply_mvar( FT_Face  face );
@@ -419,8 +419,8 @@ FT_BEGIN_HEADER
   fn FT_ItemVarDelta /* internal */
   tt_var_get_item_delta( FT_Face          face,
                          GX_ItemVarStore  itemStore,
-                         FT_UInt          outerIndex,
-                         FT_UInt          innerIndex );
+                         uint          outerIndex,
+                         uint          innerIndex );
 
   fn void /* internal */
   tt_var_done_item_variation_store( FT_Face          face,
@@ -433,7 +433,7 @@ FT_BEGIN_HEADER
 
   fn FT_Error /* internal */
   tt_get_var_blend( FT_Face      face,
-                    FT_UInt     *num_coords,
+                    uint     *num_coords,
                     FT_Fixed*   *coords,
                     FT_Fixed*   *normalizedcoords,
                     FT_MM_Var*  *mm_var );

@@ -40,8 +40,8 @@
   /* from include/freetype/fttypes.h */
 
   typedef unsigned char  FT_Byte;
-  typedef signed int     FT_Int;
-  typedef unsigned int   FT_UInt;
+  typedef int     int;
+  typedef uint   uint;
   typedef signed long    FT_Long;
   typedef unsigned long  FT_ULong;
   typedef signed long    FT_F26Dot6;
@@ -97,7 +97,7 @@
                       FT_Long  b,
                       FT_Long  c )
   {
-    FT_Int   s;
+    int   s;
     FT_Long  d;
 
 

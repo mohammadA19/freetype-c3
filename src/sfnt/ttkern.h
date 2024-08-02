@@ -35,10 +35,10 @@ FT_BEGIN_HEADER
   fn void /* internal */
   tt_face_done_kern( TT_Face  face );
 
-  fn FT_Int /* internal */
+  fn int /* internal */
   tt_face_get_kerning( TT_Face     face,
-                       FT_UInt     left_glyph,
-                       FT_UInt     right_glyph );
+                       uint     left_glyph,
+                       uint     right_glyph );
 
 #define TT_FACE_HAS_KERNING( face )  ( (face)->kern_avail_bits != 0 )
 

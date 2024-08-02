@@ -43,8 +43,8 @@
                              OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   table_size;
-    FT_UInt   gsub_lookup_count, gpos_lookup_count;
+    uint   table_size;
+    uint   gsub_lookup_count, gpos_lookup_count;
 
     OTV_OPTIONAL_TABLE( ShrinkageEnableGSUB  );
     OTV_OPTIONAL_TABLE( ShrinkageDisableGSUB );
@@ -149,8 +149,8 @@
                            OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   table_size;
-    FT_UInt   JstfLangSysCount;
+    uint   table_size;
+    uint   JstfLangSysCount;
 
     OTV_OPTIONAL_TABLE( ExtGlyph );
     OTV_OPTIONAL_TABLE( DefJstfLangSys );
@@ -205,13 +205,13 @@
   otv_JSTF_validate( FT_Bytes      table,
                      FT_Bytes      gsub,
                      FT_Bytes      gpos,
-                     FT_UInt       glyph_count,
+                     uint       glyph_count,
                      FT_Validator  ftvalid )
   {
     OTV_ValidatorRec  otvalidrec;
     OTV_Validator     otvalid = &otvalidrec;
     FT_Bytes          p     = table;
-    FT_UInt           JstfScriptCount;
+    uint           JstfScriptCount;
 
 
     otvalid->root = ftvalid;

@@ -174,11 +174,11 @@
   static FT_Error
   check_table_dir( SFNT_Header  sfnt,
                    FT_Stream    stream,
-                   FT_UShort*   valid )
+                   ushort*   valid )
   {
     FT_Error   error;
-    FT_UShort  nn, valid_entries = 0;
-    FT_UInt    has_head = 0, has_sing = 0, has_meta = 0;
+    ushort  nn, valid_entries = 0;
+    uint    has_head = 0, has_sing = 0, has_meta = 0;
     FT_ULong   offset = sfnt->offset + 12;
 
     static const FT_Frame_Field  table_dir_entry_fields[] =
@@ -240,7 +240,7 @@
 
       if ( table.Tag == TTAG_head || table.Tag == TTAG_bhed )
       {
-        FT_UInt32  magic;
+        uint  magic;
 
 
 #ifndef TT_CONFIG_OPTION_EMBEDDED_BITMAPS
@@ -345,7 +345,7 @@
     SFNT_HeaderRec  sfnt;
     FT_Error        error;
     FT_Memory       memory = stream->memory;
-    FT_UShort       nn, valid_entries = 0;
+    ushort       nn, valid_entries = 0;
 
     static const FT_Frame_Field  offset_table_fields[] =
     {
@@ -423,7 +423,7 @@
     for ( nn = 0; nn < sfnt.num_tables; nn++ )
     {
       TT_TableRec  entry;
-      FT_UShort    i;
+      ushort    i;
       FT_Bool      duplicate;
 
 
@@ -969,8 +969,8 @@
     /* load name records */
     {
       TT_Name  entry = names;
-      FT_UInt  count = table->numNameRecords;
-      FT_UInt  valid = 0;
+      uint  count = table->numNameRecords;
+      uint  valid = 0;
 
 
       for ( ; count > 0; count-- )
@@ -1022,7 +1022,7 @@
     FT_FRAME_EXIT();
 
     /* everything went well, update face->num_names */
-    face->num_names = (FT_UShort)table->numNameRecords;
+    face->num_names = (ushort)table->numNameRecords;
 
   Exit:
     FT_FREE( names );
@@ -1439,7 +1439,7 @@
     FT_Error   error;
     FT_Memory  memory = stream->memory;
 
-    FT_UShort      j, num_ranges;
+    ushort      j, num_ranges;
     TT_GaspRange   gasp_ranges = NULL;
 
 

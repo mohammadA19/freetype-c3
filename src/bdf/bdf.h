@@ -131,8 +131,8 @@ FT_BEGIN_HEADER
 
   typedef struct  bdf_bbx_t_
   {
-    unsigned short  width;
-    unsigned short  height;
+    ushort  width;
+    ushort  height;
 
     short           x_offset;
     short           y_offset;
@@ -147,12 +147,12 @@ FT_BEGIN_HEADER
   {
     char*           name;        /* Glyph name.                          */
     unsigned long   encoding;    /* Glyph encoding.                      */
-    unsigned short  swidth;      /* Scalable width.                      */
-    unsigned short  dwidth;      /* Device width.                        */
+    ushort  swidth;      /* Scalable width.                      */
+    ushort  dwidth;      /* Device width.                        */
     bdf_bbx_t       bbx;         /* Glyph bounding box.                  */
     unsigned char*  bitmap;      /* Glyph bitmap.                        */
     unsigned long   bpr;         /* Number of bytes used per row.        */
-    unsigned short  bytes;       /* Number of bytes used for the bitmap. */
+    ushort  bytes;       /* Number of bytes used for the bitmap. */
 
   } bdf_glyph_t;
 
@@ -168,7 +168,7 @@ FT_BEGIN_HEADER
 
     int              spacing;        /* Font spacing value.                 */
 
-    unsigned short   monowidth;      /* Logical width for monowidth font.   */
+    ushort   monowidth;      /* Logical width for monowidth font.   */
 
     unsigned long    default_char;   /* Encoding of the default glyph.      */
 
@@ -192,7 +192,7 @@ FT_BEGIN_HEADER
 
     void*            internal;       /* Internal data for the font.         */
 
-    unsigned short   bpp;            /* Bits per pixel.                     */
+    ushort   bpp;            /* Bits per pixel.                     */
 
     FT_Memory        memory;
 

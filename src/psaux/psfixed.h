@@ -46,7 +46,7 @@ FT_BEGIN_HEADER
   /* rasterizer integer and fixed-point arithmetic must be 32-bit */
 
 #define   CF2_Fixed  CF2_F16Dot16
-  typedef FT_Int32   CF2_Frac;   /* 2.30 fixed-point */
+  typedef int   CF2_Frac;   /* 2.30 fixed-point */
 
 
 #define CF2_FIXED_MAX      ( (CF2_Fixed)0x7FFFFFFFL )
@@ -58,17 +58,17 @@ FT_BEGIN_HEADER
   /* implementation specific behaviour in the general case */
 
 #define cf2_intToFixed( i )                                              \
-          ( (CF2_Fixed)( (FT_UInt32)(i) << 16 ) )
+          ( (CF2_Fixed)( (uint)(i) << 16 ) )
 #define cf2_fixedToInt( x )                                              \
-          ( (FT_Short)( ( (FT_UInt32)(x) + 0x8000U ) >> 16 ) )
+          ( (short)( ( (uint)(x) + 0x8000U ) >> 16 ) )
 #define cf2_fixedRound( x )                                              \
-          ( (CF2_Fixed)( ( (FT_UInt32)(x) + 0x8000U ) & 0xFFFF0000UL ) )
+          ( (CF2_Fixed)( ( (uint)(x) + 0x8000U ) & 0xFFFF0000UL ) )
 #define cf2_doubleToFixed( f )                                           \
           ( (CF2_Fixed)( (f) * 65536.0 + 0.5 ) )
 #define cf2_fixedAbs( x )                                                \
           ( (x) < 0 ? NEG_INT32( x ) : (x) )
 #define cf2_fixedFloor( x )                                              \
-          ( (CF2_Fixed)( (FT_UInt32)(x) & 0xFFFF0000UL ) )
+          ( (CF2_Fixed)( (uint)(x) & 0xFFFF0000UL ) )
 #define cf2_fixedFraction( x )                                           \
           ( (x) - cf2_fixedFloor( x ) )
 #define cf2_fracToFixed( x )                                             \

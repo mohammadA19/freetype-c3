@@ -311,8 +311,8 @@
   fn FT_Error /* internal */
   T1_Face_Init( FT_Stream      stream,
                 FT_Face        t1face,          /* T1_Face */
-                FT_Int         face_index,
-                FT_Int         num_params,
+                int         face_index,
+                int         num_params,
                 FT_Parameter*  params )
   {
     T1_Face             face = (T1_Face)t1face;
@@ -482,16 +482,16 @@
       if ( !root->units_per_EM )
         root->units_per_EM = 1000;
 
-      root->ascender  = (FT_Short)( root->bbox.yMax );
-      root->descender = (FT_Short)( root->bbox.yMin );
+      root->ascender  = (short)( root->bbox.yMax );
+      root->descender = (short)( root->bbox.yMin );
 
-      root->height = (FT_Short)( ( root->units_per_EM * 12 ) / 10 );
+      root->height = (short)( ( root->units_per_EM * 12 ) / 10 );
       if ( root->height < root->ascender - root->descender )
-        root->height = (FT_Short)( root->ascender - root->descender );
+        root->height = (short)( root->ascender - root->descender );
 
       /* now compute the maximum advance width */
       root->max_advance_width =
-        (FT_Short)( root->bbox.xMax );
+        (short)( root->bbox.xMax );
       {
         FT_Pos  max_advance;
 
@@ -500,15 +500,15 @@
 
         /* in case of error, keep the standard width */
         if ( !error )
-          root->max_advance_width = (FT_Short)FIXED_TO_INT( max_advance );
+          root->max_advance_width = (short)FIXED_TO_INT( max_advance );
         else
           error = FT_Err_Ok;   /* clear error */
       }
 
       root->max_advance_height = root->height;
 
-      root->underline_position  = (FT_Short)info->underline_position;
-      root->underline_thickness = (FT_Short)info->underline_thickness;
+      root->underline_position  = (short)info->underline_position;
+      root->underline_thickness = (short)info->underline_thickness;
     }
 
     {
@@ -600,7 +600,7 @@
   {
     PS_Driver  driver = (PS_Driver)module;
 
-    FT_UInt32  seed;
+    uint  seed;
 
 
     /* set default property values, cf. `ftt1drv.h' */
@@ -618,12 +618,12 @@
     driver->darken_params[7] = CFF_CONFIG_OPTION_DARKENING_PARAMETER_Y4;
 
     /* compute random seed from some memory addresses */
-    seed = (FT_UInt32)( (FT_Offset)(char*)&seed          ^
+    seed = (uint)( (FT_Offset)(char*)&seed          ^
                         (FT_Offset)(char*)&module        ^
                         (FT_Offset)(char*)module->memory );
     seed = seed ^ ( seed >> 10 ) ^ ( seed >> 20 );
 
-    driver->random_seed = (FT_Int32)seed;
+    driver->random_seed = (int)seed;
     if ( driver->random_seed < 0 )
       driver->random_seed = -driver->random_seed;
     else if ( driver->random_seed == 0 )

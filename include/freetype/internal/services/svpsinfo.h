@@ -37,7 +37,7 @@ FT_BEGIN_HEADER
   (*PS_GetFontExtraFunc)( FT_Face           face,
                           PS_FontExtraRec*  afont_extra );
 
-  typedef FT_Int
+  typedef int
   (*PS_HasGlyphNamesFunc)( FT_Face  face );
 
   typedef FT_Error
@@ -47,7 +47,7 @@ FT_BEGIN_HEADER
   typedef FT_Long
   (*PS_GetFontValueFunc)( FT_Face       face,
                           PS_Dict_Keys  key,
-                          FT_UInt       idx,
+                          uint       idx,
                           void         *value,
                           FT_Long       value_len );
 

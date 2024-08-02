@@ -292,7 +292,7 @@
 
   /* get units per em from `FT_Face' */
   /* TODO: should handle font matrix concatenation? */
-  static FT_UShort
+  static ushort
   cf2_getUnitsPerEm( PS_Decoder*  decoder )
   {
     FT_ASSERT( decoder && decoder->builder.face );
@@ -462,7 +462,7 @@
 
 
   /* get maxstack value from CFF2 Top DICT */
-  fn FT_UInt /* internal */
+  fn uint /* internal */
   cf2_getMaxstack( PS_Decoder*  decoder )
   {
     FT_ASSERT( decoder && decoder->cff );
@@ -565,7 +565,7 @@
   /* the counts and verified that each is an even number                  */
   fn void /* internal */
   cf2_getBlueValues( PS_Decoder*  decoder,
-                     size_t*      count,
+                     usz*      count,
                      FT_Fixed*   *data )
   {
     FT_ASSERT( decoder && decoder->current_subfont );
@@ -578,7 +578,7 @@
 
   fn void /* internal */
   cf2_getOtherBlues( PS_Decoder*  decoder,
-                     size_t*      count,
+                     usz*      count,
                      FT_Fixed*   *data )
   {
     FT_ASSERT( decoder && decoder->current_subfont );
@@ -591,7 +591,7 @@
 
   fn void /* internal */
   cf2_getFamilyBlues( PS_Decoder*  decoder,
-                      size_t*      count,
+                      usz*      count,
                       FT_Fixed*   *data )
   {
     FT_ASSERT( decoder && decoder->current_subfont );
@@ -604,7 +604,7 @@
 
   fn void /* internal */
   cf2_getFamilyOtherBlues( PS_Decoder*  decoder,
-                           size_t*      count,
+                           usz*      count,
                            FT_Fixed*   *data )
   {
     FT_ASSERT( decoder && decoder->current_subfont );
@@ -717,7 +717,7 @@
 
   fn FT_Error /* internal */
   cf2_getT1SeacComponent( PS_Decoder*  decoder,
-                          FT_UInt      glyph_index,
+                          uint      glyph_index,
                           CF2_Buffer   buf )
   {
     FT_Data   glyph_data;
@@ -776,7 +776,7 @@
     face = (T1_Face)decoder->builder.face;
 
     data.pointer = buf->start;
-    data.length  = (FT_UInt)( buf->end - buf->start );
+    data.length  = (uint)( buf->end - buf->start );
 
     if ( face->root.internal->incremental_interface )
       face->root.internal->incremental_interface->funcs->free_glyph_data(

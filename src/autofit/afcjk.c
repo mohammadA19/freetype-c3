@@ -114,7 +114,7 @@
       glyph_index = 0;
       while ( *p )
       {
-        unsigned int  num_idx;
+        uint  num_idx;
 
 #ifdef FT_DEBUG_LEVEL_TRACE
         const char*  p_old;
@@ -183,7 +183,7 @@
         AF_CJKAxis    axis    = &metrics->axis[dim];
         AF_AxisHints  axhints = &hints->axis[dim];
         AF_Segment    seg, limit, link;
-        FT_UInt       num_widths = 0;
+        uint       num_widths = 0;
 
 
         error = af_latin_hints_compute_segments( hints,
@@ -248,7 +248,7 @@
 
 #ifdef FT_DEBUG_LEVEL_TRACE
         {
-          FT_UInt  i;
+          uint  i;
 
 
           FT_TRACE5(( "%s widths:\n",
@@ -280,8 +280,8 @@
     FT_Pos      fills[AF_BLUE_STRING_MAX_LEN];
     FT_Pos      flats[AF_BLUE_STRING_MAX_LEN];
 
-    FT_UInt     num_fills;
-    FT_UInt     num_flats;
+    uint     num_fills;
+    uint     num_flats;
 
     FT_Bool     fill;
 
@@ -357,10 +357,10 @@
       {
         FT_ULong    glyph_index;
         FT_Pos      best_pos;       /* same as points.y or points.x, resp. */
-        FT_Int      best_point;
+        int      best_point;
         FT_Vector*  points;
 
-        unsigned int  num_idx;
+        uint  num_idx;
 
 #ifdef FT_DEBUG_LEVEL_TRACE
         const char*  p_old;
@@ -416,8 +416,8 @@
         best_pos   = 0;  /* make compiler happy */
 
         {
-          FT_Int  nn;
-          FT_Int  pp, first, last;
+          int  nn;
+          int  pp, first, last;
 
 
           last = -1;
@@ -593,7 +593,7 @@
     while ( *p )
     {
       FT_ULong      glyph_index;
-      unsigned int  num_idx;
+      uint  num_idx;
 
 
       /* reject input that maps to more than a single glyph */
@@ -665,7 +665,7 @@
     FT_Fixed    scale;
     FT_Pos      delta;
     AF_CJKAxis  axis;
-    FT_UInt     nn;
+    uint     nn;
 
 
     if ( dim == AF_DIMENSION_HORZ )
@@ -821,8 +821,8 @@
     {
       AF_Point  pt   = seg->first;
       AF_Point  last = seg->last;
-      FT_UInt   f0   = pt->flags & AF_FLAG_CONTROL;
-      FT_UInt   f1;
+      uint   f0   = pt->flags & AF_FLAG_CONTROL;
+      uint   f1;
 
 
       seg->flags &= ~AF_EDGE_ROUND;
@@ -1051,7 +1051,7 @@
     {
       AF_Edge  found = NULL;
       FT_Pos   best  = 0xFFFFU;
-      FT_UInt  ee;
+      uint  ee;
 
 
       /* look for an edge corresponding to the segment */
@@ -1179,8 +1179,8 @@
       /* now compute each edge properties */
       for ( edge = edges; edge < edge_limit; edge++ )
       {
-        FT_Int  is_round    = 0;  /* does it contain round segments?    */
-        FT_Int  is_straight = 0;  /* does it contain straight segments? */
+        int  is_round    = 0;  /* does it contain round segments?    */
+        int  is_straight = 0;  /* does it contain straight segments? */
 
 
         seg = edge->first;
@@ -1319,7 +1319,7 @@
 
     for ( ; edge < edge_limit; edge++ )
     {
-      FT_UInt   bb;
+      uint   bb;
       AF_Width  best_blue = NULL;
       FT_Pos    best_dist = best_dist0;
 
@@ -1386,7 +1386,7 @@
   {
     AF_CJKMetrics   metrics = (AF_CJKMetrics)metrics_;
     FT_Render_Mode  mode;
-    FT_UInt32       scaler_flags, other_flags;
+    uint       scaler_flags, other_flags;
 
 
     af_glyph_hints_rescale( hints, (AF_StyleMetrics)metrics );
@@ -1451,10 +1451,10 @@
 
   static FT_Pos
   af_cjk_snap_width( AF_Width  widths,
-                     FT_UInt   count,
+                     uint   count,
                      FT_Pos    width )
   {
-    FT_UInt  n;
+    uint  n;
     FT_Pos   best      = 64 + 32 + 2;
     FT_Pos   reference = width;
     FT_Pos   scaled;
@@ -1502,13 +1502,13 @@
   af_cjk_compute_stem_width( AF_GlyphHints  hints,
                              AF_Dimension   dim,
                              FT_Pos         width,
-                             FT_UInt        base_flags,
-                             FT_UInt        stem_flags )
+                             uint        base_flags,
+                             uint        stem_flags )
   {
     AF_CJKMetrics  metrics  = (AF_CJKMetrics)hints->metrics;
     AF_CJKAxis     axis     = &metrics->axis[dim];
     FT_Pos         dist     = width;
-    FT_Int         sign     = 0;
+    int         sign     = 0;
     FT_Bool        vertical = FT_BOOL( dim == AF_DIMENSION_VERT );
 
     FT_UNUSED( base_flags );
@@ -1809,16 +1809,16 @@
     AF_AxisHints  axis       = &hints->axis[dim];
     AF_Edge       edges      = axis->edges;
     AF_Edge       edge_limit = FT_OFFSET( edges, axis->num_edges );
-    FT_PtrDist    n_edges;
+    isz    n_edges;
     AF_Edge       edge;
     AF_Edge       anchor   = NULL;
     FT_Pos        delta    = 0;
-    FT_Int        skipped  = 0;
+    int        skipped  = 0;
     FT_Bool       has_last_stem = FALSE;
     FT_Pos        last_stem_pos = 0;
 
 #ifdef FT_DEBUG_LEVEL_TRACE
-    FT_UInt       num_actions = 0;
+    uint       num_actions = 0;
 #endif
 
 
@@ -2274,7 +2274,7 @@
   /* Apply the complete hinting algorithm to a CJK glyph. */
 
   fn FT_Error /* internal */
-  af_cjk_hints_apply( FT_UInt          glyph_index,
+  af_cjk_hints_apply( uint          glyph_index,
                       AF_GlyphHints    hints,
                       FT_Outline*      outline,
                       AF_StyleMetrics  metrics_ )   /* AF_CJKMetrics */

@@ -167,8 +167,8 @@ FT_BEGIN_HEADER
   typedef struct  FT_BitmapGlyphRec_
   {
     FT_GlyphRec  root;
-    FT_Int       left;
-    FT_Int       top;
+    int       left;
+    int       top;
     FT_Bitmap    bitmap;
 
   } FT_BitmapGlyphRec;
@@ -294,13 +294,13 @@ FT_BEGIN_HEADER
     FT_Byte*  svg_document;
     FT_ULong  svg_document_length;
 
-    FT_UInt  glyph_index;
+    uint  glyph_index;
 
     FT_Size_Metrics  metrics;
-    FT_UShort        units_per_EM;
+    ushort        units_per_EM;
 
-    FT_UShort  start_glyph_id;
-    FT_UShort  end_glyph_id;
+    ushort  start_glyph_id;
+    ushort  end_glyph_id;
 
     FT_Matrix  transform;
     FT_Vector  delta;
@@ -546,7 +546,7 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( void )
   FT_Glyph_Get_CBox( FT_Glyph  glyph,
-                     FT_UInt   bbox_mode,
+                     uint   bbox_mode,
                      FT_BBox  *acbox );
 
 

@@ -177,7 +177,7 @@
 
     /* allocate new outline */
     error = FT_Outline_New( library,
-                            (FT_UInt)source->n_points,
+                            (uint)source->n_points,
                             source->n_contours,
                             &glyph->outline );
     if ( error )
@@ -211,7 +211,7 @@
 
 
     error = FT_Outline_New( library,
-                            (FT_UInt)source->outline.n_points,
+                            (uint)source->outline.n_points,
                             source->outline.n_contours,
                             &target->outline );
     if ( !error )
@@ -731,7 +731,7 @@
 
   void
   FT_Glyph_Get_CBox( FT_Glyph  glyph,
-                     FT_UInt   bbox_mode,
+                     uint   bbox_mode,
                      FT_BBox  *acbox )
   {
     const FT_Glyph_Class*  clazz;

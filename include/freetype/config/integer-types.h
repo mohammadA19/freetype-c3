@@ -83,23 +83,23 @@
   /**************************************************************************
    *
    * @type:
-   *   FT_Int16
+   *   short
    *
    * @description:
    *   A typedef for a 16bit signed integer type.
    */
-  typedef signed short  FT_Int16;
+  typedef short  short;
 
 
   /**************************************************************************
    *
    * @type:
-   *   FT_UInt16
+   *   ushort
    *
    * @description:
    *   A typedef for a 16bit unsigned integer type.
    */
-  typedef unsigned short  FT_UInt16;
+  typedef ushort  ushort;
 
   /* */
 
@@ -110,24 +110,24 @@
   /**************************************************************************
    *
    * @type:
-   *   FT_Int32
+   *   int
    *
    * @description:
    *   A typedef for a 32bit signed integer type.  The size depends on the
    *   configuration.
    */
-  typedef signed XXX  FT_Int32;
+  typedef signed XXX  int;
 
 
   /**************************************************************************
    *
    * @type:
-   *   FT_UInt32
+   *   uint
    *
    *   A typedef for a 32bit unsigned integer type.  The size depends on the
    *   configuration.
    */
-  typedef unsigned XXX  FT_UInt32;
+  typedef unsigned XXX  uint;
 
 
   /**************************************************************************
@@ -159,13 +159,13 @@
 
 #if FT_SIZEOF_INT == ( 32 / FT_CHAR_BIT )
 
-  typedef signed int      FT_Int32;
-  typedef unsigned int    FT_UInt32;
+  typedef int      int;
+  typedef uint    uint;
 
 #elif FT_SIZEOF_LONG == ( 32 / FT_CHAR_BIT )
 
-  typedef signed long     FT_Int32;
-  typedef unsigned long   FT_UInt32;
+  typedef signed long     int;
+  typedef unsigned long   uint;
 
 #else
 #error "no 32bit type found -- please check your configuration files"
@@ -176,7 +176,7 @@
 #if FT_SIZEOF_INT >= ( 32 / FT_CHAR_BIT )
 
   typedef int            FT_Fast;
-  typedef unsigned int   FT_UFast;
+  typedef uint   FT_UFast;
 
 #elif FT_SIZEOF_LONG >= ( 32 / FT_CHAR_BIT )
 

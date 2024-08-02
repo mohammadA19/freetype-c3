@@ -74,7 +74,7 @@ FT_BEGIN_HEADER
   typedef struct  SDF_Renderer_Module_
   {
     FT_RendererRec  root;
-    FT_UInt         spread;
+    uint         spread;
     FT_Bool         flip_sign;
     FT_Bool         flip_y;
     FT_Bool         overlaps;

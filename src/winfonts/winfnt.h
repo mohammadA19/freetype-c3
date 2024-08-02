@@ -30,19 +30,19 @@ FT_BEGIN_HEADER
 
   typedef struct  WinMZ_HeaderRec_
   {
-    FT_UShort  magic;
+    ushort  magic;
     /* skipped content */
-    FT_UShort  lfanew;
+    ushort  lfanew;
 
   } WinMZ_HeaderRec;
 
 
   typedef struct  WinNE_HeaderRec_
   {
-    FT_UShort  magic;
+    ushort  magic;
     /* skipped content */
-    FT_UShort  resource_tab_offset;
-    FT_UShort  rname_tab_offset;
+    ushort  resource_tab_offset;
+    ushort  rname_tab_offset;
 
   } WinNE_HeaderRec;
 
@@ -50,12 +50,12 @@ FT_BEGIN_HEADER
   typedef struct  WinPE32_HeaderRec_
   {
     FT_ULong   magic;
-    FT_UShort  machine;
-    FT_UShort  number_of_sections;
+    ushort  machine;
+    ushort  number_of_sections;
     /* skipped content */
-    FT_UShort  size_of_optional_header;
+    ushort  size_of_optional_header;
     /* skipped content */
-    FT_UShort  magic32;
+    ushort  magic32;
     /* skipped content */
     FT_ULong   rsrc_virtual_address;
     FT_ULong   rsrc_size;
@@ -80,10 +80,10 @@ FT_BEGIN_HEADER
   {
     FT_ULong   characteristics;
     FT_ULong   time_date_stamp;
-    FT_UShort  major_version;
-    FT_UShort  minor_version;
-    FT_UShort  number_of_named_entries;
-    FT_UShort  number_of_id_entries;
+    ushort  major_version;
+    ushort  minor_version;
+    ushort  number_of_named_entries;
+    ushort  number_of_id_entries;
 
   } WinPE_RsrcDirRec;
 
@@ -108,20 +108,20 @@ FT_BEGIN_HEADER
 
   typedef struct  WinNameInfoRec_
   {
-    FT_UShort  offset;
-    FT_UShort  length;
-    FT_UShort  flags;
-    FT_UShort  id;
-    FT_UShort  handle;
-    FT_UShort  usage;
+    ushort  offset;
+    ushort  length;
+    ushort  flags;
+    ushort  id;
+    ushort  handle;
+    ushort  usage;
 
   } WinNameInfoRec;
 
 
   typedef struct  WinResourceInfoRec_
   {
-    FT_UShort  type_id;
-    FT_UShort  count;
+    ushort  type_id;
+    ushort  count;
 
   } WinResourceInfoRec;
 

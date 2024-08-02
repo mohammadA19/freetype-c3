@@ -29,24 +29,24 @@ FT_BEGIN_HEADER
 
   const T1_Decoder_FuncsRec  t1_decoder_funcs;
 
-  fn FT_Int /* internal */
+  fn int /* internal */
   t1_lookup_glyph_by_stdcharcode_ps( PS_Decoder*  decoder,
-                                     FT_Int       charcode );
+                                     int       charcode );
 
 #ifdef T1_CONFIG_OPTION_OLD_ENGINE
   fn FT_Error /* internal */
   t1_decoder_parse_glyph( T1_Decoder  decoder,
-                          FT_UInt     glyph_index );
+                          uint     glyph_index );
 
   fn FT_Error /* internal */
   t1_decoder_parse_charstrings( T1_Decoder  decoder,
                                 FT_Byte*    base,
-                                FT_UInt     len );
+                                uint     len );
 #else
   fn FT_Error /* internal */
   t1_decoder_parse_metrics( T1_Decoder  decoder,
                             FT_Byte*    charstring_base,
-                            FT_UInt     charstring_len );
+                            uint     charstring_len );
 #endif
 
   fn FT_Error /* internal */

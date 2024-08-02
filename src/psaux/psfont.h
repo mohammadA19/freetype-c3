@@ -101,7 +101,7 @@ FT_BEGIN_HEADER
                              /* i.e. darkenX != 0 || darkenY != 0      */
     FT_Bool  stemDarkened;
 
-    FT_Int  darkenParams[8];              /* 1000 unit character space */
+    int  darkenParams[8];              /* 1000 unit character space */
 
     /* variables that depend on both FontDict and Transform */
     CF2_Fixed  stdVW;     /* in character space; depends on dict entry */

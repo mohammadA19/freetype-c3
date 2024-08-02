@@ -44,7 +44,7 @@ FT_BEGIN_HEADER
   open_face_PS_from_sfnt_stream( FT_Library     library,
                                  FT_Stream      stream,
                                  FT_Long        face_index,
-                                 FT_Int         num_params,
+                                 int         num_params,
                                  FT_Parameter  *params,
                                  FT_Face       *aface );
 
@@ -68,7 +68,7 @@ FT_BEGIN_HEADER
   /* on Darwin VFS should be grouped and skip the rest methods after   */
   /* the case the resource is opened but found to lack a font in it.   */
   fn FT_Bool /* internal */
-  ft_raccess_rule_by_darwin_vfs( FT_Library library, FT_UInt  rule_index );
+  ft_raccess_rule_by_darwin_vfs( FT_Library library, uint  rule_index );
 #endif
 
 #endif /* FT_CONFIG_OPTION_MAC_FONTS */

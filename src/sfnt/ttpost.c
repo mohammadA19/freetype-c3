@@ -55,7 +55,7 @@
 
 #include <freetype/internal/services/svpscmap.h>
 
-#define MAC_NAME( x )  (FT_String*)psnames->macintosh_name( (FT_UInt)(x) )
+#define MAC_NAME( x )  (FT_String*)psnames->macintosh_name( (uint)(x) )
 
 
 #else /* !FT_CONFIG_OPTION_POSTSCRIPT_NAMES */
@@ -158,16 +158,16 @@
   static FT_Error
   load_format_20( TT_Post_Names  names,
                   FT_Stream      stream,
-                  FT_UShort      num_glyphs,
+                  ushort      num_glyphs,
                   FT_ULong       post_len )
   {
     FT_Memory   memory = stream->memory;
     FT_Error    error;
 
-    FT_UShort   n;
-    FT_UShort   num_names = 0;
+    ushort   n;
+    ushort   num_names = 0;
 
-    FT_UShort*  glyph_indices = NULL;
+    ushort*  glyph_indices = NULL;
     FT_Byte**   name_strings  = NULL;
     FT_Byte*    q;
 
@@ -187,7 +187,7 @@
 
     for ( n = 0; n < num_glyphs; n++ )
     {
-      FT_UShort  idx = FT_NEXT_USHORT( q );
+      ushort  idx = FT_NEXT_USHORT( q );
 
 
       if ( idx > num_names )
@@ -223,7 +223,7 @@
       /* convert from Pascal- to C-strings and set pointers */
       for ( n = 0; p < p_end && n < num_names; n++ )
       {
-        FT_UInt  len = *p;
+        uint  len = *p;
 
 
         /* all names in Adobe Glyph List are shorter than 40 characters */
@@ -267,14 +267,14 @@
   static FT_Error
   load_format_25( TT_Post_Names  names,
                   FT_Stream      stream,
-                  FT_UShort      num_glyphs,
+                  ushort      num_glyphs,
                   FT_ULong       post_len )
   {
     FT_Memory  memory = stream->memory;
     FT_Error   error;
 
-    FT_UShort   n;
-    FT_UShort*  glyph_indices = NULL;
+    ushort   n;
+    ushort*  glyph_indices = NULL;
     FT_Byte*    q;
 
 
@@ -295,13 +295,13 @@
 
     for ( n = 0; n < num_glyphs; n++ )
     {
-      FT_Int  idx = n + FT_NEXT_CHAR( q );
+      int  idx = n + FT_NEXT_CHAR( q );
 
 
       if ( idx < 0 || idx > 257 )
         idx = 0;
 
-      glyph_indices[n] = (FT_UShort)idx;
+      glyph_indices[n] = (ushort)idx;
     }
 
     FT_FRAME_EXIT();
@@ -327,7 +327,7 @@
     FT_Stream  stream = face->root.stream;
     FT_Fixed   format = face->postscript.FormatType;
     FT_ULong   post_len;
-    FT_UShort  num_glyphs;
+    ushort  num_glyphs;
 
 
     /* seek to the beginning of the PS names table */
@@ -408,7 +408,7 @@
    */
   fn FT_Error /* internal */
   tt_face_get_ps_name( TT_Face      face,
-                       FT_UInt      idx,
+                       uint      idx,
                        FT_String**  PSname )
   {
     FT_Error       error;
@@ -422,7 +422,7 @@
     if ( !face )
       return FT_THROW( Invalid_Face_Handle );
 
-    if ( idx >= (FT_UInt)face->max_profile.numGlyphs )
+    if ( idx >= (uint)face->max_profile.numGlyphs )
       return FT_THROW( Invalid_Glyph_Index );
 
 #ifdef FT_CONFIG_OPTION_POSTSCRIPT_NAMES
@@ -449,9 +449,9 @@
           goto End;
       }
 
-      if ( idx < (FT_UInt)names->num_glyphs )
+      if ( idx < (uint)names->num_glyphs )
       {
-        FT_UShort  name_index = names->glyph_indices[idx];
+        ushort  name_index = names->glyph_indices[idx];
 
 
         if ( name_index < 258 )

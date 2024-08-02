@@ -31,7 +31,7 @@ FT_BEGIN_HEADER
   typedef struct  FTC_SNodeRec_
   {
     FTC_GNodeRec  gnode;
-    FT_UInt       count;
+    uint       count;
     FTC_SBitRec   sbits[FTC_SBIT_ITEMS_PER_NODE];
 
   } FTC_SNodeRec, *FTC_SNode;
@@ -41,13 +41,13 @@ FT_BEGIN_HEADER
 #define FTC_SNODE_GINDEX( x )  FTC_GNODE( x )->gindex
 #define FTC_SNODE_FAMILY( x )  FTC_GNODE( x )->family
 
-  typedef FT_UInt
+  typedef uint
   (*FTC_SFamily_GetCountFunc)( FTC_Family   family,
                                FTC_Manager  manager );
 
   typedef FT_Error
   (*FTC_SFamily_LoadGlyphFunc)( FTC_Family   family,
-                                FT_UInt      gindex,
+                                uint      gindex,
                                 FTC_Manager  manager,
                                 FT_Face     *aface );
 

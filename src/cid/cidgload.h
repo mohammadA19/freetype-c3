@@ -31,20 +31,20 @@ FT_BEGIN_HEADER
   /* Compute the maximum advance width of a font through quick parsing */
   fn FT_Error /* internal */
   cid_face_compute_max_advance( CID_Face  face,
-                                FT_Int*   max_advance );
+                                int*   max_advance );
 
 #endif /* 0 */
 
   fn FT_Error /* internal */
   cid_slot_load_glyph( FT_GlyphSlot  glyph,         /* CID_Glyph_Slot */
                        FT_Size       size,          /* CID_Size       */
-                       FT_UInt       glyph_index,
-                       FT_Int32      load_flags );
+                       uint       glyph_index,
+                       int      load_flags );
 
 
   fn FT_Error /* internal */
   cid_compute_fd_and_offsets( CID_Face   face,
-                              FT_UInt    glyph_index,
+                              uint    glyph_index,
                               FT_ULong*  fd_select_p,
                               FT_ULong*  off1_p,
                               FT_ULong*  off2_p );

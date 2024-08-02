@@ -51,13 +51,13 @@ FT_BEGIN_HEADER
   typedef FT_F26Dot6
   (*TT_Round_Func)( TT_ExecContext  exc,
                     FT_F26Dot6      distance,
-                    FT_Int          color );
+                    int          color );
 
   /* Point displacement along the freedom vector routine */
   typedef void
   (*TT_Move_Func)( TT_ExecContext  exc,
                    TT_GlyphZone    zone,
-                   FT_UShort       point,
+                   ushort       point,
                    FT_F26Dot6      distance );
 
   /* Distance projection along one of the projection vectors */
@@ -89,7 +89,7 @@ FT_BEGIN_HEADER
    */
   typedef struct  TT_CallRec_
   {
-    FT_Int   Caller_Range;
+    int   Caller_Range;
     FT_Long  Caller_IP;
     FT_Long  Cur_Count;
 
@@ -136,14 +136,14 @@ FT_BEGIN_HEADER
 
     TT_GraphicsState   GS;         /* !@ current graphics state */
 
-    FT_Int             iniRange;  /* initial code range number   */
-    FT_Int             curRange;  /* current code range number   */
+    int             iniRange;  /* initial code range number   */
+    int             curRange;  /* current code range number   */
     FT_Byte*           code;      /* current code range          */
     FT_Long            IP;        /* current instruction pointer */
     FT_Long            codeSize;  /* size of current range       */
 
     FT_Byte            opcode;    /* current opcode              */
-    FT_Int             length;    /* length of current opcode    */
+    int             length;    /* length of current opcode    */
 
     FT_Bool            step_ins;  /* true if the interpreter must */
                                   /* increment IP after ins. exec */
@@ -152,34 +152,34 @@ FT_BEGIN_HEADER
     FT_ULong           glyfCvtSize;
     FT_Long*           glyfCvt;   /* cvt working copy for glyph */
 
-    FT_UInt            glyphSize; /* ! glyph instructions buffer size */
+    uint            glyphSize; /* ! glyph instructions buffer size */
     FT_Byte*           glyphIns;  /* ! glyph instructions buffer      */
 
-    FT_UInt            numFDefs;  /* ! number of function defs         */
-    FT_UInt            maxFDefs;  /* ! maximum number of function defs */
+    uint            numFDefs;  /* ! number of function defs         */
+    uint            maxFDefs;  /* ! maximum number of function defs */
     TT_DefArray        FDefs;     /*   table of FDefs entries          */
 
-    FT_UInt            numIDefs;  /* ! number of instruction defs */
-    FT_UInt            maxIDefs;  /* ! maximum number of ins defs */
+    uint            numIDefs;  /* ! number of instruction defs */
+    uint            maxIDefs;  /* ! maximum number of ins defs */
     TT_DefArray        IDefs;     /*   table of IDefs entries     */
 
-    FT_UInt            maxFunc;   /* ! maximum function index    */
-    FT_UInt            maxIns;    /* ! maximum instruction index */
+    uint            maxFunc;   /* ! maximum function index    */
+    uint            maxIns;    /* ! maximum instruction index */
 
-    FT_Int             callTop,    /* @ top of call stack during execution */
+    int             callTop,    /* @ top of call stack during execution */
                        callSize;   /*   size of call stack                 */
     TT_CallStack       callStack;  /*   call stack                         */
 
-    FT_UShort          maxPoints;    /* capacity of this context's `pts' */
-    FT_Short           maxContours;  /* record, expressed in points and  */
+    ushort          maxPoints;    /* capacity of this context's `pts' */
+    short           maxContours;  /* record, expressed in points and  */
                                      /* contours.                        */
 
     TT_CodeRangeTable  codeRangeTable;  /* ! table of valid code ranges */
                                         /*   useful for the debugger    */
 
-    FT_UShort          storeSize;    /* ! size of current storage */
+    ushort          storeSize;    /* ! size of current storage */
     FT_Long*           storage;      /* ! storage area            */
-    FT_UShort          glyfStoreSize;
+    ushort          glyfStoreSize;
     FT_Long*           glyfStorage;  /* storage working copy for glyph */
 
     FT_F26Dot6         period;     /* values used for the */
@@ -374,18 +374,18 @@ FT_BEGIN_HEADER
 #ifdef TT_USE_BYTECODE_INTERPRETER
   fn void /* internal */
   TT_Goto_CodeRange( TT_ExecContext  exec,
-                     FT_Int          range,
+                     int          range,
                      FT_Long         IP );
 
   fn void /* internal */
   TT_Set_CodeRange( TT_ExecContext  exec,
-                    FT_Int          range,
+                    int          range,
                     void*           base,
                     FT_Long         length );
 
   fn void /* internal */
   TT_Clear_CodeRange( TT_ExecContext  exec,
-                      FT_Int          range );
+                      int          range );
 #endif /* TT_USE_BYTECODE_INTERPRETER */
 
 

@@ -32,16 +32,16 @@ FT_BEGIN_HEADER
 
   fn FT_Error /* internal */
   T1_Get_Advances( FT_Face    face,
-                   FT_UInt    first,
-                   FT_UInt    count,
-                   FT_Int32   load_flags,
+                   uint    first,
+                   uint    count,
+                   int   load_flags,
                    FT_Fixed*  advances );
 
   fn FT_Error /* internal */
   T1_Load_Glyph( FT_GlyphSlot  glyph,
                  FT_Size       size,
-                 FT_UInt       glyph_index,
-                 FT_Int32      load_flags );
+                 uint       glyph_index,
+                 int      load_flags );
 
 
 FT_END_HEADER

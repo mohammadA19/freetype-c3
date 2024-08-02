@@ -40,10 +40,10 @@ FT_BEGIN_HEADER
   {
     FT_CMapRec                cmap;
 
-    const FT_UShort*          code_to_sid;
+    const ushort*          code_to_sid;
     PS_Adobe_Std_StringsFunc  sid_to_string;
 
-    FT_UInt                   num_glyphs;
+    uint                   num_glyphs;
     const char* const*        glyph_names;
 
   } T1_CMapStdRec;
@@ -69,9 +69,9 @@ FT_BEGIN_HEADER
   typedef struct  T1_CMapCustomRec_
   {
     FT_CMapRec  cmap;
-    FT_UInt     first;
-    FT_UInt     count;
-    FT_UShort*  indices;
+    uint     first;
+    uint     count;
+    ushort*  indices;
 
   } T1_CMapCustomRec;
 

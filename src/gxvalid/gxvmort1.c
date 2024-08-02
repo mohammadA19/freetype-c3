@@ -41,8 +41,8 @@
 
   typedef struct  GXV_mort_subtable_type1_StateOptRec_
   {
-    FT_UShort  substitutionTable;
-    FT_UShort  substitutionTable_length;
+    ushort  substitutionTable;
+    ushort  substitutionTable_length;
 
   }  GXV_mort_subtable_type1_StateOptRec,
     *GXV_mort_subtable_type1_StateOptRecData;
@@ -68,18 +68,18 @@
 
 
   static void
-  gxv_mort_subtable_type1_subtable_setup( FT_UShort      table_size,
-                                          FT_UShort      classTable,
-                                          FT_UShort      stateArray,
-                                          FT_UShort      entryTable,
-                                          FT_UShort*     classTable_length_p,
-                                          FT_UShort*     stateArray_length_p,
-                                          FT_UShort*     entryTable_length_p,
+  gxv_mort_subtable_type1_subtable_setup( ushort      table_size,
+                                          ushort      classTable,
+                                          ushort      stateArray,
+                                          ushort      entryTable,
+                                          ushort*     classTable_length_p,
+                                          ushort*     stateArray_length_p,
+                                          ushort*     entryTable_length_p,
                                           GXV_Validator  gxvalid )
   {
-    FT_UShort  o[4];
-    FT_UShort  *l[4];
-    FT_UShort  buff[5];
+    ushort  o[4];
+    ushort  *l[4];
+    ushort  buff[5];
 
     GXV_mort_subtable_type1_StateOptRecData  optdata =
       (GXV_mort_subtable_type1_StateOptRecData)gxvalid->statetable.optdata;
@@ -100,13 +100,13 @@
 
   static void
   gxv_mort_subtable_type1_offset_to_subst_validate(
-    FT_Short          wordOffset,
+    short          wordOffset,
     const FT_String*  tag,
     FT_Byte           state,
     GXV_Validator     gxvalid )
   {
-    FT_UShort  substTable;
-    FT_UShort  substTable_limit;
+    ushort  substTable;
+    ushort  substTable_limit;
 
     FT_UNUSED( tag );
     FT_UNUSED( state );
@@ -116,13 +116,13 @@
       ((GXV_mort_subtable_type1_StateOptRec *)
        (gxvalid->statetable.optdata))->substitutionTable;
     substTable_limit =
-      (FT_UShort)( substTable +
+      (ushort)( substTable +
                    ((GXV_mort_subtable_type1_StateOptRec *)
                     (gxvalid->statetable.optdata))->substitutionTable_length );
 
-    gxvalid->min_gid = (FT_UShort)( ( substTable       - wordOffset * 2 ) / 2 );
-    gxvalid->max_gid = (FT_UShort)( ( substTable_limit - wordOffset * 2 ) / 2 );
-    gxvalid->max_gid = (FT_UShort)( FT_MAX( gxvalid->max_gid,
+    gxvalid->min_gid = (ushort)( ( substTable       - wordOffset * 2 ) / 2 );
+    gxvalid->max_gid = (ushort)( ( substTable_limit - wordOffset * 2 ) / 2 );
+    gxvalid->max_gid = (ushort)( FT_MAX( gxvalid->max_gid,
                                             gxvalid->face->num_glyphs ) );
 
     /* XXX: check range? */
@@ -134,32 +134,32 @@
   static void
   gxv_mort_subtable_type1_entry_validate(
     FT_Byte                         state,
-    FT_UShort                       flags,
+    ushort                       flags,
     GXV_StateTable_GlyphOffsetCPtr  glyphOffset_p,
     FT_Bytes                        table,
     FT_Bytes                        limit,
     GXV_Validator                   gxvalid )
   {
 #ifdef GXV_LOAD_UNUSED_VARS
-    FT_UShort  setMark;
-    FT_UShort  dontAdvance;
+    ushort  setMark;
+    ushort  dontAdvance;
 #endif
-    FT_UShort  reserved;
-    FT_Short   markOffset;
-    FT_Short   currentOffset;
+    ushort  reserved;
+    short   markOffset;
+    short   currentOffset;
 
     FT_UNUSED( table );
     FT_UNUSED( limit );
 
 
 #ifdef GXV_LOAD_UNUSED_VARS
-    setMark       = (FT_UShort)(   flags >> 15            );
-    dontAdvance   = (FT_UShort)( ( flags >> 14 ) & 1      );
+    setMark       = (ushort)(   flags >> 15            );
+    dontAdvance   = (ushort)( ( flags >> 14 ) & 1      );
 #endif
-    reserved      = (FT_UShort)(    flags        & 0x3FFF );
+    reserved      = (ushort)(    flags        & 0x3FFF );
 
-    markOffset    = (FT_Short)( glyphOffset_p->ul >> 16 );
-    currentOffset = (FT_Short)( glyphOffset_p->ul       );
+    markOffset    = (short)( glyphOffset_p->ul >> 16 );
+    currentOffset = (short)( glyphOffset_p->ul       );
 
     if ( 0 < reserved )
     {
@@ -185,16 +185,16 @@
                                                GXV_Validator  gxvalid )
   {
     FT_Bytes   p = table;
-    FT_UShort  num_gids = (FT_UShort)(
+    ushort  num_gids = (ushort)(
                  ((GXV_mort_subtable_type1_StateOptRec *)
                   (gxvalid->statetable.optdata))->substitutionTable_length / 2 );
-    FT_UShort  i;
+    ushort  i;
 
 
     GXV_NAME_ENTER( "validating contents of substitutionTable" );
     for ( i = 0; i < num_gids; i++ )
     {
-      FT_UShort  dst_gid;
+      ushort  dst_gid;
 
 
       GXV_LIMIT_CHECK( 2 );

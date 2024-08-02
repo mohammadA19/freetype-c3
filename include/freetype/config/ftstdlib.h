@@ -34,7 +34,7 @@
 
 #include <stddef.h>
 
-#define ft_ptrdiff_t  ptrdiff_t
+#define isz  isz
 
 
   /**************************************************************************

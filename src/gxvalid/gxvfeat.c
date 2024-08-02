@@ -50,9 +50,9 @@
 
   typedef struct  GXV_feat_DataRec_
   {
-    FT_UInt    reserved_size;
-    FT_UShort  feature;
-    FT_UShort  setting;
+    uint    reserved_size;
+    ushort  feature;
+    ushort  setting;
 
   } GXV_feat_DataRec, *GXV_feat_Data;
 
@@ -79,8 +79,8 @@
   /*************************************************************************/
 
   static void
-  gxv_feat_registry_validate( FT_UShort      feature,
-                              FT_UShort      nSettings,
+  gxv_feat_registry_validate( ushort      feature,
+                              ushort      nSettings,
                               FT_Bool        exclusive,
                               GXV_Validator  gxvalid )
   {
@@ -141,7 +141,7 @@
   {
     FT_Bytes  p = table;
 
-    FT_Short  nameIndex;
+    short  nameIndex;
 
 
     GXV_NAME_ENTER( "nameIndex" );
@@ -150,7 +150,7 @@
     nameIndex = FT_NEXT_SHORT ( p );
     GXV_TRACE(( " (nameIndex = %d)\n", nameIndex ));
 
-    gxv_sfntName_validate( (FT_UShort)nameIndex,
+    gxv_sfntName_validate( (ushort)nameIndex,
                            255,
                            32768U,
                            gxvalid );
@@ -166,7 +166,7 @@
                              GXV_Validator  gxvalid )
   {
     FT_Bytes   p = table;
-    FT_UShort  setting;
+    ushort  setting;
 
 
     GXV_NAME_ENTER( "setting" );
@@ -193,16 +193,16 @@
                           GXV_Validator  gxvalid )
   {
     FT_Bytes   p             = table;
-    FT_UInt    reserved_size = GXV_FEAT_DATA( reserved_size );
+    uint    reserved_size = GXV_FEAT_DATA( reserved_size );
 
-    FT_UShort  feature;
-    FT_UShort  nSettings;
+    ushort  feature;
+    ushort  nSettings;
     FT_ULong   settingTable;
-    FT_UShort  featureFlags;
+    ushort  featureFlags;
 
     FT_Bool    exclusive;
-    FT_Int     last_setting;
-    FT_UInt    i;
+    int     last_setting;
+    uint    i;
 
 
     GXV_NAME_ENTER( "name" );
@@ -249,10 +249,10 @@
     {
       gxv_feat_setting_validate( p, limit, exclusive, gxvalid );
 
-      if ( (FT_Int)GXV_FEAT_DATA( setting ) <= last_setting )
+      if ( (int)GXV_FEAT_DATA( setting ) <= last_setting )
         GXV_SET_ERR_IF_PARANOID( FT_INVALID_FORMAT );
 
-      last_setting = (FT_Int)GXV_FEAT_DATA( setting );
+      last_setting = (int)GXV_FEAT_DATA( setting );
       /* setting + nameIndex */
       p += ( 2 + 2 );
     }
@@ -283,10 +283,10 @@
     FT_Bytes          p     = table;
     FT_Bytes          limit = 0;
 
-    FT_UInt           featureNameCount;
+    uint           featureNameCount;
 
-    FT_UInt           i;
-    FT_Int            last_feature;
+    uint           i;
+    int            last_feature;
 
 
     gxvalid->root       = ftvalid;
@@ -325,7 +325,7 @@
     {
       gxv_feat_name_validate( p, limit, gxvalid );
 
-      if ( (FT_Int)GXV_FEAT_DATA( feature ) <= last_feature )
+      if ( (int)GXV_FEAT_DATA( feature ) <= last_feature )
         GXV_SET_ERR_IF_PARANOID( FT_INVALID_FORMAT );
 
       last_feature = GXV_FEAT_DATA( feature );

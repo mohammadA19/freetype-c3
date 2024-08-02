@@ -26,7 +26,7 @@ FT_BEGIN_HEADER
   fn FT_Error /* internal */
   pfr_slot_load_bitmap( PFR_Slot  glyph,
                         PFR_Size  size,
-                        FT_UInt   glyph_index,
+                        uint   glyph_index,
                         FT_Bool   metrics_only );
 
 FT_END_HEADER

@@ -54,7 +54,7 @@
   typedef struct  GXV_bsln_DataRec_
   {
     FT_Bytes   ctlPoints_p;
-    FT_UShort  defaultBaseline;
+    ushort  defaultBaseline;
 
   } GXV_bsln_DataRec, *GXV_bsln_Data;
 
@@ -71,12 +71,12 @@
   /*************************************************************************/
 
   static void
-  gxv_bsln_LookupValue_validate( FT_UShort            glyph,
+  gxv_bsln_LookupValue_validate( ushort            glyph,
                                  GXV_LookupValueCPtr  value_p,
                                  GXV_Validator        gxvalid )
   {
-    FT_UShort     v = value_p->u;
-    FT_UShort*    ctlPoints;
+    ushort     v = value_p->u;
+    ushort*    ctlPoints;
 
     FT_UNUSED( glyph );
 
@@ -86,7 +86,7 @@
     if ( v >= GXV_BSLN_VALUE_COUNT )
       FT_INVALID_DATA;
 
-    ctlPoints = (FT_UShort*)GXV_BSLN_DATA( ctlPoints_p );
+    ctlPoints = (ushort*)GXV_BSLN_DATA( ctlPoints_p );
     if ( ctlPoints && ctlPoints[v] == GXV_BSLN_VALUE_EMPTY )
       FT_INVALID_DATA;
 
@@ -122,19 +122,19 @@
   */
 
   static GXV_LookupValueDesc
-  gxv_bsln_LookupFmt4_transit( FT_UShort            relative_gindex,
+  gxv_bsln_LookupFmt4_transit( ushort            relative_gindex,
                                GXV_LookupValueCPtr  base_value_p,
                                FT_Bytes             lookuptbl_limit,
                                GXV_Validator        gxvalid )
   {
     FT_Bytes             p;
     FT_Bytes             limit;
-    FT_UShort            offset;
+    ushort            offset;
     GXV_LookupValueDesc  value;
 
     /* XXX: check range ? */
-    offset = (FT_UShort)( base_value_p->u +
-                          ( relative_gindex * sizeof ( FT_UShort ) ) );
+    offset = (ushort)( base_value_p->u +
+                          ( relative_gindex * sizeof ( ushort ) ) );
 
     p     = gxvalid->lookuptbl_head + offset;
     limit = lookuptbl_limit;
@@ -197,11 +197,11 @@
   {
     FT_Bytes   p = tables;
 
-    FT_UShort  stdGlyph;
-    FT_UShort  ctlPoint;
-    FT_Int     i;
+    ushort  stdGlyph;
+    ushort  ctlPoint;
+    int     i;
 
-    FT_UShort  defaultBaseline = GXV_BSLN_DATA( defaultBaseline );
+    ushort  defaultBaseline = GXV_BSLN_DATA( defaultBaseline );
 
 
     GXV_NAME_ENTER( "parts format 2" );
@@ -282,8 +282,8 @@
     FT_Bytes  limit = 0;
 
     FT_ULong   version;
-    FT_UShort  format;
-    FT_UShort  defaultBaseline;
+    ushort  format;
+    ushort  defaultBaseline;
 
     GXV_Validate_Func  fmt_funcs_table [] =
     {

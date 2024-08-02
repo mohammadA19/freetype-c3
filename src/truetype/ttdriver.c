@@ -73,7 +73,7 @@
 
     if ( !ft_strcmp( property_name, "interpreter-version" ) )
     {
-      FT_UInt  interpreter_version;
+      uint  interpreter_version;
 
 
 #ifdef FT_CONFIG_OPTION_ENVIRONMENT_PROPERTIES
@@ -82,12 +82,12 @@
         const char*  s = (const char*)value;
 
 
-        interpreter_version = (FT_UInt)ft_strtol( s, NULL, 10 );
+        interpreter_version = (uint)ft_strtol( s, NULL, 10 );
       }
       else
 #endif
       {
-        FT_UInt*  iv = (FT_UInt*)value;
+        uint*  iv = (uint*)value;
 
 
         interpreter_version = *iv;
@@ -127,12 +127,12 @@
     FT_Error   error  = FT_Err_Ok;
     TT_Driver  driver = (TT_Driver)module;
 
-    FT_UInt  interpreter_version = driver->interpreter_version;
+    uint  interpreter_version = driver->interpreter_version;
 
 
     if ( !ft_strcmp( property_name, "interpreter-version" ) )
     {
-      FT_UInt*  val = (FT_UInt*)value;
+      uint*  val = (uint*)value;
 
 
       *val = interpreter_version;
@@ -205,8 +205,8 @@
    */
   static FT_Error
   tt_get_kerning( FT_Face     face,        /* TT_Face */
-                  FT_UInt     left_glyph,
-                  FT_UInt     right_glyph,
+                  uint     left_glyph,
+                  uint     right_glyph,
                   FT_Vector*  kerning )
   {
     TT_Face       ttface = (TT_Face)face;
@@ -238,12 +238,12 @@
 
   static FT_Error
   tt_get_advances( FT_Face    face,      /* TT_Face */
-                   FT_UInt    start,
-                   FT_UInt    count,
-                   FT_Int32   flags,
+                   uint    start,
+                   uint    count,
+                   int   flags,
                    FT_Fixed  *advances )
   {
-    FT_UInt  nn;
+    uint  nn;
     TT_Face  ttface = (TT_Face)face;
 
 
@@ -260,8 +260,8 @@
 
       for ( nn = 0; nn < count; nn++ )
       {
-        FT_Short   tsb;
-        FT_UShort  ah;
+        short   tsb;
+        ushort  ah;
 
 
         /* since we don't need `tsb', we use zero for `yMax' parameter */
@@ -280,8 +280,8 @@
 
       for ( nn = 0; nn < count; nn++ )
       {
-        FT_Short   lsb;
-        FT_UShort  aw;
+        short   lsb;
+        ushort  aw;
 
 
         TT_Get_HMetrics( ttface, start + nn, &lsb, &aw );
@@ -391,7 +391,7 @@
       /* for the `MPS' bytecode instruction we need the point size */
       if ( !error )
       {
-        FT_UInt  resolution =
+        uint  resolution =
                    ttsize->metrics->x_ppem > ttsize->metrics->y_ppem
                      ? req->horiResolution
                      : req->vertResolution;
@@ -447,8 +447,8 @@
   static FT_Error
   tt_glyph_load( FT_GlyphSlot  slot,        /* TT_GlyphSlot */
                  FT_Size       size,        /* TT_Size      */
-                 FT_UInt       glyph_index,
-                 FT_Int32      load_flags )
+                 uint       glyph_index,
+                 int      load_flags )
   {
     TT_GlyphSlot  ttslot = (TT_GlyphSlot)slot;
     TT_Size       ttsize = (TT_Size)size;
@@ -466,10 +466,10 @@
       return FT_THROW( Invalid_Face_Handle );
 
 #ifdef FT_CONFIG_OPTION_INCREMENTAL
-    if ( glyph_index >= (FT_UInt)face->num_glyphs &&
+    if ( glyph_index >= (uint)face->num_glyphs &&
          !face->internal->incremental_interface   )
 #else
-    if ( glyph_index >= (FT_UInt)face->num_glyphs )
+    if ( glyph_index >= (uint)face->num_glyphs )
 #endif
       return FT_THROW( Invalid_Argument );
 

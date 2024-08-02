@@ -31,7 +31,7 @@ FT_BEGIN_HEADER
 
   fn FT_Error /* internal */
   tt_face_get_ps_name( TT_Face      face,
-                       FT_UInt      idx,
+                       uint      idx,
                        FT_String**  PSname );
 
   fn void /* internal */

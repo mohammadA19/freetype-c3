@@ -30,8 +30,8 @@ FT_BEGIN_HEADER
   typedef FT_Error
   (*FT_Face_InitFunc)( FT_Stream      stream,
                        FT_Face        face,
-                       FT_Int         typeface_index,
-                       FT_Int         num_params,
+                       int         typeface_index,
+                       int         num_params,
                        FT_Parameter*  parameters );
 
   typedef void
@@ -63,14 +63,14 @@ FT_BEGIN_HEADER
   typedef FT_Error
   (*FT_Slot_LoadFunc)( FT_GlyphSlot  slot,
                        FT_Size       size,
-                       FT_UInt       glyph_index,
-                       FT_Int32      load_flags );
+                       uint       glyph_index,
+                       int      load_flags );
 
 
   typedef FT_Error
   (*FT_Face_GetKerningFunc)( FT_Face     face,
-                             FT_UInt     left_glyph,
-                             FT_UInt     right_glyph,
+                             uint     left_glyph,
+                             uint     right_glyph,
                              FT_Vector*  kerning );
 
 
@@ -81,9 +81,9 @@ FT_BEGIN_HEADER
 
   typedef FT_Error
   (*FT_Face_GetAdvancesFunc)( FT_Face    face,
-                              FT_UInt    first,
-                              FT_UInt    count,
-                              FT_Int32   flags,
+                              uint    first,
+                              uint    count,
+                              int   flags,
                               FT_Fixed*  advances );
 
 

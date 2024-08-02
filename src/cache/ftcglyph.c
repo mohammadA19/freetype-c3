@@ -28,7 +28,7 @@
   /* create a new chunk node, setting its cache index and ref count */
   fn void /* internal */
   FTC_GNode_Init( FTC_GNode   gnode,
-                  FT_UInt     gindex,
+                  uint     gindex,
                   FTC_Family  family )
   {
     gnode->family = family;
@@ -171,7 +171,7 @@
   fn FT_Error /* internal */
   FTC_GCache_Lookup( FTC_GCache   gcache,
                      FT_Offset    hash,
-                     FT_UInt      gindex,
+                     uint      gindex,
                      FTC_GQuery   query,
                      FTC_Node    *anode )
   {

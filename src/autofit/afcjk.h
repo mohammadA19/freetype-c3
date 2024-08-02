@@ -65,7 +65,7 @@ FT_BEGIN_HEADER
   {
     AF_WidthRec  ref;
     AF_WidthRec  shoot; /* undershoot */
-    FT_UInt      flags;
+    uint      flags;
 
   } AF_CJKBlueRec, *AF_CJKBlue;
 
@@ -75,7 +75,7 @@ FT_BEGIN_HEADER
     FT_Fixed       scale;
     FT_Pos         delta;
 
-    FT_UInt        width_count;                   /* number of used widths */
+    uint        width_count;                   /* number of used widths */
     AF_WidthRec    widths[AF_CJK_MAX_WIDTHS];     /* widths array          */
     FT_Pos         edge_distance_threshold;     /* used for creating edges */
     FT_Pos         standard_width;           /* the default stem thickness */
@@ -83,7 +83,7 @@ FT_BEGIN_HEADER
 
     /* used for horizontal metrics too for CJK */
     FT_Bool        control_overshoot;
-    FT_UInt        blue_count;
+    uint        blue_count;
     AF_CJKBlueRec  blues[AF_BLUE_STRINGSET_MAX_LEN];
 
     FT_Fixed       org_scale;
@@ -95,7 +95,7 @@ FT_BEGIN_HEADER
   typedef struct  AF_CJKMetricsRec_
   {
     AF_StyleMetricsRec  root;
-    FT_UInt             units_per_em;
+    uint             units_per_em;
     AF_CJKAxisRec       axis[AF_DIMENSION_MAX];
 
   } AF_CJKMetricsRec, *AF_CJKMetrics;
@@ -115,7 +115,7 @@ FT_BEGIN_HEADER
                      AF_StyleMetrics  metrics );
 
   fn FT_Error /* internal */
-  af_cjk_hints_apply( FT_UInt          glyph_index,
+  af_cjk_hints_apply( uint          glyph_index,
                       AF_GlyphHints    hints,
                       FT_Outline*      outline,
                       AF_StyleMetrics  metrics );

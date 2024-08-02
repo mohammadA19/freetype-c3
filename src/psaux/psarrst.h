@@ -53,10 +53,10 @@ FT_BEGIN_HEADER
     FT_Memory  memory;
     FT_Error*  error;
 
-    size_t  sizeItem;       /* bytes per element             */
-    size_t  allocated;      /* items allocated               */
-    size_t  count;          /* number of elements allocated  */
-    size_t  totalSize;      /* total bytes allocated         */
+    usz  sizeItem;       /* bytes per element             */
+    usz  allocated;      /* items allocated               */
+    usz  count;          /* number of elements allocated  */
+    usz  totalSize;      /* total bytes allocated         */
 
     void*  ptr;             /* ptr to data                   */
 
@@ -67,23 +67,23 @@ FT_BEGIN_HEADER
   cf2_arrstack_init( CF2_ArrStack  arrstack,
                      FT_Memory     memory,
                      FT_Error*     error,
-                     size_t        sizeItem );
+                     usz        sizeItem );
   fn void /* internal */
   cf2_arrstack_finalize( CF2_ArrStack  arrstack );
 
   fn void /* internal */
   cf2_arrstack_setCount( CF2_ArrStack  arrstack,
-                         size_t        numElements );
+                         usz        numElements );
   fn void /* internal */
   cf2_arrstack_clear( CF2_ArrStack  arrstack );
-  fn size_t /* internal */
+  fn usz /* internal */
   cf2_arrstack_size( const CF2_ArrStack  arrstack );
 
   fn void* /* internal */
   cf2_arrstack_getBuffer( const CF2_ArrStack  arrstack );
   fn void* /* internal */
   cf2_arrstack_getPointer( const CF2_ArrStack  arrstack,
-                           size_t              idx );
+                           usz              idx );
 
   fn void /* internal */
   cf2_arrstack_push( CF2_ArrStack  arrstack,

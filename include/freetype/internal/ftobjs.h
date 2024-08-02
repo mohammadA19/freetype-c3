@@ -171,38 +171,38 @@ FT_BEGIN_HEADER
   typedef void
   (*FT_CMap_DoneFunc)( FT_CMap  cmap );
 
-  typedef FT_UInt
+  typedef uint
   (*FT_CMap_CharIndexFunc)( FT_CMap    cmap,
-                            FT_UInt32  char_code );
+                            uint  char_code );
 
-  typedef FT_UInt
+  typedef uint
   (*FT_CMap_CharNextFunc)( FT_CMap     cmap,
-                           FT_UInt32  *achar_code );
+                           uint  *achar_code );
 
-  typedef FT_UInt
+  typedef uint
   (*FT_CMap_CharVarIndexFunc)( FT_CMap    cmap,
                                FT_CMap    unicode_cmap,
-                               FT_UInt32  char_code,
-                               FT_UInt32  variant_selector );
+                               uint  char_code,
+                               uint  variant_selector );
 
-  typedef FT_Int
+  typedef int
   (*FT_CMap_CharVarIsDefaultFunc)( FT_CMap    cmap,
-                                   FT_UInt32  char_code,
-                                   FT_UInt32  variant_selector );
+                                   uint  char_code,
+                                   uint  variant_selector );
 
-  typedef FT_UInt32 *
+  typedef uint *
   (*FT_CMap_VariantListFunc)( FT_CMap    cmap,
                               FT_Memory  mem );
 
-  typedef FT_UInt32 *
+  typedef uint *
   (*FT_CMap_CharVariantListFunc)( FT_CMap    cmap,
                                   FT_Memory  mem,
-                                  FT_UInt32  char_code );
+                                  uint  char_code );
 
-  typedef FT_UInt32 *
+  typedef uint *
   (*FT_CMap_VariantCharListFunc)( FT_CMap    cmap,
                                   FT_Memory  mem,
-                                  FT_UInt32  variant_selector );
+                                  uint  variant_selector );
 
 
   typedef struct  FT_CMap_ClassRec_
@@ -357,7 +357,7 @@ FT_BEGIN_HEADER
   {
     FT_Matrix  transform_matrix;
     FT_Vector  transform_delta;
-    FT_Int     transform_flags;
+    int     transform_flags;
 
     FT_ServiceCacheRec  services;
 
@@ -366,14 +366,14 @@ FT_BEGIN_HEADER
 #endif
 
     FT_Char              no_stem_darkening;
-    FT_Int32             random_seed;
+    int             random_seed;
 
 #ifdef FT_CONFIG_OPTION_SUBPIXEL_RENDERING
     FT_LcdFiveTapFilter      lcd_weights;      /* filter weights, if any */
     FT_Bitmap_LcdFilterFunc  lcd_filter_func;  /* filtering callback     */
 #endif
 
-    FT_Int  refcount;
+    int  refcount;
 
   } FT_Face_InternalRec;
 
@@ -423,13 +423,13 @@ FT_BEGIN_HEADER
   typedef struct  FT_Slot_InternalRec_
   {
     FT_GlyphLoader  loader;
-    FT_UInt         flags;
+    uint         flags;
     FT_Bool         glyph_transformed;
     FT_Matrix       glyph_matrix;
     FT_Vector       glyph_delta;
     void*           glyph_hints;
 
-    FT_Int32        load_flags;
+    int        load_flags;
 
   } FT_GlyphSlot_InternalRec;
 
@@ -888,11 +888,11 @@ FT_BEGIN_HEADER
   {
     FT_Memory          memory;           /* library's memory manager */
 
-    FT_Int             version_major;
-    FT_Int             version_minor;
-    FT_Int             version_patch;
+    int             version_major;
+    int             version_minor;
+    int             version_patch;
 
-    FT_UInt            num_modules;
+    uint            num_modules;
     FT_Module          modules[FT_MAX_MODULES];  /* module objects  */
 
     FT_ListRec         renderers;        /* list of renderers        */
@@ -908,7 +908,7 @@ FT_BEGIN_HEADER
     FT_Vector                lcd_geometry[3];  /* RGB subpixel positions */
 #endif
 
-    FT_Int             refcount;
+    int             refcount;
 
   } FT_LibraryRec;
 
@@ -928,11 +928,11 @@ FT_BEGIN_HEADER
 
   typedef FT_Error
   (*FT_Face_GetGlyphNameFunc)( FT_Face     face,
-                               FT_UInt     glyph_index,
+                               uint     glyph_index,
                                FT_Pointer  buffer,
-                               FT_UInt     buffer_max );
+                               uint     buffer_max );
 
-  typedef FT_UInt
+  typedef uint
   (*FT_Face_GetGlyphNameIndexFunc)( FT_Face           face,
                                     const FT_String*  glyph_name );
 

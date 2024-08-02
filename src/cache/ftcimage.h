@@ -56,7 +56,7 @@ FT_BEGIN_HEADER
 
   typedef FT_Error
   (*FTC_IFamily_LoadGlyphFunc)( FTC_Family  family,
-                                FT_UInt     gindex,
+                                uint     gindex,
                                 FTC_Cache   cache,
                                 FT_Glyph   *aglyph );
 

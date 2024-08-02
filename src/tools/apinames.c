@@ -65,7 +65,7 @@ panic( const char*  fmt,
 typedef struct  NameRec_
 {
   char*         name;
-  unsigned int  hash;
+  uint  hash;
 
 } NameRec, *Name;
 
@@ -79,7 +79,7 @@ static void
 names_add( const char*  name,
            const char*  end )
 {
-  unsigned int  h;
+  uint  h;
   int           nn, len;
   Name          nm;
 
@@ -140,7 +140,7 @@ name_compare( const void*  name1,
 static void
 names_sort( void )
 {
-  qsort( the_names, (size_t)num_names,
+  qsort( the_names, (usz)num_names,
          sizeof ( the_names[0] ), name_compare );
 }
 

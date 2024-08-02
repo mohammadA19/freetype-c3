@@ -33,7 +33,7 @@ FT_BEGIN_HEADER
 
   fn FT_Error /* internal */
   tt_face_load_svg_doc( FT_GlyphSlot  glyph,
-                        FT_UInt       glyph_index );
+                        uint       glyph_index );
 
 FT_END_HEADER
 

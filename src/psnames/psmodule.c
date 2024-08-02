@@ -49,7 +49,7 @@
 
 
 #define VARIANT_BIT         0x80000000UL
-#define BASE_GLYPH( code )  ( (FT_UInt32)( (code) & ~VARIANT_BIT ) )
+#define BASE_GLYPH( code )  ( (uint)( (code) & ~VARIANT_BIT ) )
 
 
   /* Return the Unicode value corresponding to a given glyph.  Note that */
@@ -57,7 +57,7 @@
   /* the name, as in `A.swash' or `e.final'; in this case, the           */
   /* VARIANT_BIT is set in the return value.                             */
   /*                                                                     */
-  static FT_UInt32
+  static uint
   ps_unicode_value( const char*  glyph_name )
   {
     /* If the name begins with `uni', then the glyph name may be a */
@@ -72,15 +72,15 @@
       /* XXX: Add code to deal with ligatures, i.e. glyph names like */
       /*      `uniXXXXYYYYZZZZ'...                                   */
 
-      FT_Int       count;
-      FT_UInt32    value = 0;
+      int       count;
+      uint    value = 0;
       const char*  p     = glyph_name + 3;
 
 
       for ( count = 4; count > 0; count--, p++ )
       {
         char          c = *p;
-        unsigned int  d;
+        uint  d;
 
 
         d = (unsigned char)c - '0';
@@ -95,7 +95,7 @@
 
         /* Exit if a non-uppercase hexadecimal character was found   */
         /* -- this also catches character codes below `0' since such */
-        /* negative numbers cast to `unsigned int' are far too big.  */
+        /* negative numbers cast to `uint' are far too big.  */
         if ( d >= 16 )
           break;
 
@@ -108,7 +108,7 @@
         if ( *p == '\0' )
           return value;
         if ( *p == '.' )
-          return (FT_UInt32)( value | VARIANT_BIT );
+          return (uint)( value | VARIANT_BIT );
       }
     }
 
@@ -116,15 +116,15 @@
     /* hexadecimal digits, it is a hard-coded unicode character code. */
     if ( glyph_name[0] == 'u' )
     {
-      FT_Int       count;
-      FT_UInt32    value = 0;
+      int       count;
+      uint    value = 0;
       const char*  p     = glyph_name + 1;
 
 
       for ( count = 6; count > 0; count--, p++ )
       {
         char          c = *p;
-        unsigned int  d;
+        uint  d;
 
 
         d = (unsigned char)c - '0';
@@ -148,14 +148,14 @@
         if ( *p == '\0' )
           return value;
         if ( *p == '.' )
-          return (FT_UInt32)( value | VARIANT_BIT );
+          return (uint)( value | VARIANT_BIT );
       }
     }
 
     /* Look for a non-initial dot in the glyph name in order to */
     /* find variants like `A.swash', `e.final', etc.            */
     {
-      FT_UInt32    value = 0;
+      uint    value = 0;
       const char*  p     = glyph_name;
 
 
@@ -166,10 +166,10 @@
       /* `.notdef', `.null' and the empty name are short cut */
       if ( p > glyph_name )
       {
-        value = (FT_UInt32)ft_get_adobe_glyph_index( glyph_name, p );
+        value = (uint)ft_get_adobe_glyph_index( glyph_name, p );
 
         if ( *p == '.' )
-          value |= (FT_UInt32)VARIANT_BIT;
+          value |= (uint)VARIANT_BIT;
       }
 
       return value;
@@ -184,8 +184,8 @@
   {
     PS_UniMap*  map1 = (PS_UniMap*)a;
     PS_UniMap*  map2 = (PS_UniMap*)b;
-    FT_UInt32   unicode1 = BASE_GLYPH( map1->unicode );
-    FT_UInt32   unicode2 = BASE_GLYPH( map2->unicode );
+    uint   unicode1 = BASE_GLYPH( map1->unicode );
+    uint   unicode2 = BASE_GLYPH( map2->unicode );
 
 
     /* sort base glyphs before glyph variants */
@@ -215,7 +215,7 @@
 
 #define EXTRA_GLYPH_LIST_SIZE  10
 
-  static const FT_UInt32  ft_extra_glyph_unicodes[EXTRA_GLYPH_LIST_SIZE] =
+  static const uint  ft_extra_glyph_unicodes[EXTRA_GLYPH_LIST_SIZE] =
   {
     /* WGL 4 */
     0x0394,
@@ -245,7 +245,7 @@
     't','c','o','m','m','a','a','c','c','e','n','t',0
   };
 
-  static const FT_Int
+  static const int
   ft_extra_glyph_name_offsets[EXTRA_GLYPH_LIST_SIZE] =
   {
      0,
@@ -263,11 +263,11 @@
 
   static void
   ps_check_extra_glyph_name( const char*  gname,
-                             FT_UInt      glyph,
-                             FT_UInt*     extra_glyphs,
-                             FT_UInt     *states )
+                             uint      glyph,
+                             uint*     extra_glyphs,
+                             uint     *states )
   {
-    FT_UInt  n;
+    uint  n;
 
 
     for ( n = 0; n < EXTRA_GLYPH_LIST_SIZE; n++ )
@@ -289,10 +289,10 @@
 
 
   static void
-  ps_check_extra_glyph_unicode( FT_UInt32  uni_char,
-                                FT_UInt   *states )
+  ps_check_extra_glyph_unicode( uint  uni_char,
+                                uint   *states )
   {
-    FT_UInt  n;
+    uint  n;
 
 
     for ( n = 0; n < EXTRA_GLYPH_LIST_SIZE; n++ )
@@ -312,15 +312,15 @@
   static FT_Error
   ps_unicodes_init( FT_Memory             memory,
                     PS_Unicodes           table,
-                    FT_UInt               num_glyphs,
+                    uint               num_glyphs,
                     PS_GetGlyphNameFunc   get_glyph_name,
                     PS_FreeGlyphNameFunc  free_glyph_name,
                     FT_Pointer            glyph_data )
   {
     FT_Error  error;
 
-    FT_UInt  extra_glyph_list_states[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-    FT_UInt  extra_glyphs[EXTRA_GLYPH_LIST_SIZE];
+    uint  extra_glyph_list_states[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    uint  extra_glyphs[EXTRA_GLYPH_LIST_SIZE];
 
 
     /* we first allocate the table */
@@ -328,10 +328,10 @@
 
     if ( !FT_QNEW_ARRAY( table->maps, num_glyphs + EXTRA_GLYPH_LIST_SIZE ) )
     {
-      FT_UInt     n;
-      FT_UInt     count;
+      uint     n;
+      uint     count;
       PS_UniMap*  map;
-      FT_UInt32   uni_char;
+      uint   uni_char;
 
 
       map = table->maps;
@@ -375,7 +375,7 @@
       }
 
       /* now compress the table a bit */
-      count = (FT_UInt)( map - table->maps );
+      count = (uint)( map - table->maps );
 
       if ( count == 0 )
       {
@@ -408,9 +408,9 @@
   }
 
 
-  static FT_UInt
+  static uint
   ps_unicodes_char_index( PS_Unicodes  table,
-                          FT_UInt32    unicode )
+                          uint    unicode )
   {
     PS_UniMap  *result = NULL;
     PS_UniMap  *min = table->maps;
@@ -421,7 +421,7 @@
     /* Perform a binary search on the table. */
     while ( min < max )
     {
-      FT_UInt32  base_glyph;
+      uint  base_glyph;
 
 
       if ( mid->unicode == unicode )
@@ -453,20 +453,20 @@
   }
 
 
-  static FT_UInt
+  static uint
   ps_unicodes_char_next( PS_Unicodes  table,
-                         FT_UInt32   *unicode )
+                         uint   *unicode )
   {
-    FT_UInt    result    = 0;
-    FT_UInt32  char_code = *unicode + 1;
+    uint    result    = 0;
+    uint  char_code = *unicode + 1;
 
 
     {
-      FT_UInt     min = 0;
-      FT_UInt     max = table->num_maps;
-      FT_UInt     mid = min + ( ( max - min ) >> 1 );
+      uint     min = 0;
+      uint     max = table->num_maps;
+      uint     mid = min + ( ( max - min ) >> 1 );
       PS_UniMap*  map;
-      FT_UInt32   base_glyph;
+      uint   base_glyph;
 
 
       while ( min < max )
@@ -519,7 +519,7 @@
 
 
   static const char*
-  ps_get_macintosh_name( FT_UInt  name_index )
+  ps_get_macintosh_name( uint  name_index )
   {
     if ( name_index >= FT_NUM_MAC_NAMES )
       name_index = 0;
@@ -529,7 +529,7 @@
 
 
   static const char*
-  ps_get_standard_strings( FT_UInt  sid )
+  ps_get_standard_strings( uint  sid )
   {
     if ( sid >= FT_NUM_SID_NAMES )
       return 0;

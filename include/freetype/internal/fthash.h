@@ -51,7 +51,7 @@ FT_BEGIN_HEADER
 
   typedef union  FT_Hashkey_
   {
-    FT_Int       num;
+    int       num;
     const char*  str;
 
   } FT_Hashkey;
@@ -60,7 +60,7 @@ FT_BEGIN_HEADER
   typedef struct  FT_HashnodeRec_
   {
     FT_Hashkey  key;
-    size_t      data;
+    usz      data;
 
   } FT_HashnodeRec;
 
@@ -77,9 +77,9 @@ FT_BEGIN_HEADER
 
   typedef struct  FT_HashRec_
   {
-    FT_UInt  limit;
-    FT_UInt  size;
-    FT_UInt  used;
+    uint  limit;
+    uint  size;
+    uint  used;
 
     FT_Hash_LookupFunc   lookup;
     FT_Hash_CompareFunc  compare;
@@ -107,22 +107,22 @@ FT_BEGIN_HEADER
 
   FT_Error
   ft_hash_str_insert( const char*  key,
-                      size_t       data,
+                      usz       data,
                       FT_Hash      hash,
                       FT_Memory    memory );
 
   FT_Error
-  ft_hash_num_insert( FT_Int     num,
-                      size_t     data,
+  ft_hash_num_insert( int     num,
+                      usz     data,
                       FT_Hash    hash,
                       FT_Memory  memory );
 
-  size_t*
+  usz*
   ft_hash_str_lookup( const char*  key,
                       FT_Hash      hash );
 
-  size_t*
-  ft_hash_num_lookup( FT_Int   num,
+  usz*
+  ft_hash_num_lookup( int   num,
                       FT_Hash  hash );
 
 

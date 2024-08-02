@@ -303,10 +303,10 @@ FT_BEGIN_HEADER
     FT_ULong  svg_document_length;
 
     FT_Size_Metrics  metrics;
-    FT_UShort        units_per_EM;
+    ushort        units_per_EM;
 
-    FT_UShort  start_glyph_id;
-    FT_UShort  end_glyph_id;
+    ushort  start_glyph_id;
+    ushort  end_glyph_id;
 
     FT_Matrix  transform;
     FT_Vector  delta;

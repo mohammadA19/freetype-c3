@@ -37,10 +37,10 @@ FT_BEGIN_HEADER
   fn void /* internal */
   tt_face_done_gpos( TT_Face  face );
 
-  fn FT_Int /* internal */
+  fn int /* internal */
   tt_face_get_gpos_kerning( TT_Face  face,
-                            FT_UInt  left_glyph,
-                            FT_UInt  right_glyph );
+                            uint  left_glyph,
+                            uint  right_glyph );
 
 #endif /* TT_CONFIG_OPTION_GPOS_KERNING */
 

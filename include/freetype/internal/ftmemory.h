@@ -384,7 +384,7 @@ extern "C++"
   /* Return >= 1 if a truncation occurs.            */
   /* Return 0 if the source string fits the buffer. */
   /* This is *not* the same as strlcpy().           */
-  fn FT_Int /* private */
+  fn int /* private */
   ft_mem_strcpyn( char*        dst,
                   const char*  src,
                   FT_ULong     size );

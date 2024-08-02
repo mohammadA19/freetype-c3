@@ -91,7 +91,7 @@ FT_BEGIN_HEADER
    *
    *   `max_free' corresponds to `(1 << max_bits) - 256'.  Note that this
    *   value is always <= 0xFF00, which means that both `free_ent' and
-   *   `max_free' can be stored in an FT_UInt variable, even on 16-bit
+   *   `max_free' can be stored in an uint variable, even on 16-bit
    *   machines.
    *
    *   If `free_ent == max_free', you cannot add new codes to the
@@ -113,31 +113,31 @@ FT_BEGIN_HEADER
   typedef struct  FT_LzwStateRec_
   {
     FT_LzwPhase  phase;
-    FT_Int       in_eof;
+    int       in_eof;
 
     FT_Byte      buf_tab[16];
-    FT_UInt      buf_offset;
-    FT_UInt      buf_size;
+    uint      buf_offset;
+    uint      buf_size;
     FT_Bool      buf_clear;
     FT_Offset    buf_total;
 
-    FT_UInt      max_bits;    /* max code bits, from file header   */
-    FT_Int       block_mode;  /* block mode flag, from file header */
-    FT_UInt      max_free;    /* (1 << max_bits) - 256             */
+    uint      max_bits;    /* max code bits, from file header   */
+    int       block_mode;  /* block mode flag, from file header */
+    uint      max_free;    /* (1 << max_bits) - 256             */
 
-    FT_UInt      num_bits;    /* current code bit number */
-    FT_UInt      free_ent;    /* index of next free entry */
-    FT_UInt      free_bits;   /* if reached by free_ent, increment num_bits */
-    FT_UInt      old_code;
-    FT_UInt      old_char;
-    FT_UInt      in_code;
+    uint      num_bits;    /* current code bit number */
+    uint      free_ent;    /* index of next free entry */
+    uint      free_bits;   /* if reached by free_ent, increment num_bits */
+    uint      old_code;
+    uint      old_char;
+    uint      in_code;
 
-    FT_UShort*   prefix;      /* always dynamically allocated / reallocated */
+    ushort*   prefix;      /* always dynamically allocated / reallocated */
     FT_Byte*     suffix;      /* suffix = (FT_Byte*)(prefix + prefix_size)  */
-    FT_UInt      prefix_size; /* number of slots in `prefix' or `suffix'    */
+    uint      prefix_size; /* number of slots in `prefix' or `suffix'    */
 
     FT_Byte*     stack;       /* character stack */
-    FT_UInt      stack_top;
+    uint      stack_top;
     FT_Offset    stack_size;
     FT_Byte      stack_0[FT_LZW_DEFAULT_STACK_SIZE]; /* minimize heap alloc */
 

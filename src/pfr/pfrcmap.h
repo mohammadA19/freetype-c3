@@ -28,7 +28,7 @@ FT_BEGIN_HEADER
   typedef struct  PFR_CMapRec_
   {
     FT_CMapRec  cmap;
-    FT_UInt     num_chars;
+    uint     num_chars;
     PFR_Char    chars;
 
   } PFR_CMapRec, *PFR_CMap;

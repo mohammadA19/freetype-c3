@@ -38,7 +38,7 @@
                                state->buf_tab,
                                state->num_bits );  /* WHY? */
 
-    state->buf_size   = (FT_UInt)count;
+    state->buf_size   = (uint)count;
     state->buf_total += count;
     state->in_eof     = FT_BOOL( count < state->num_bits );
     state->buf_offset = 0;
@@ -56,13 +56,13 @@
   }
 
 
-  static FT_Int32
+  static int
   ft_lzwstate_get_code( FT_LzwState  state )
   {
-    FT_UInt   num_bits = state->num_bits;
-    FT_UInt   offset   = state->buf_offset;
+    uint   num_bits = state->num_bits;
+    uint   offset   = state->buf_offset;
     FT_Byte*  p;
-    FT_Int    result;
+    int    result;
 
 
     if ( state->buf_clear                    ||
@@ -76,14 +76,14 @@
           return -1;
 
         state->free_bits = state->num_bits < state->max_bits
-                           ? (FT_UInt)( ( 1UL << num_bits ) - 256 )
+                           ? (uint)( ( 1UL << num_bits ) - 256 )
                            : state->max_free + 1;
       }
 
       if ( state->buf_clear )
       {
         state->num_bits  = num_bits = LZW_INIT_BITS;
-        state->free_bits = (FT_UInt)( ( 1UL << num_bits ) - 256 );
+        state->free_bits = (uint)( ( 1UL << num_bits ) - 256 );
         state->buf_clear = 0;
       }
 
@@ -160,8 +160,8 @@
   static int
   ft_lzwstate_prefix_grow( FT_LzwState  state )
   {
-    FT_UInt    old_size = state->prefix_size;
-    FT_UInt    new_size = old_size;
+    uint    old_size = state->prefix_size;
+    uint    new_size = old_size;
     FT_Memory  memory   = state->memory;
     FT_Error   error;
 
@@ -180,7 +180,7 @@
      *
      */
     if ( FT_REALLOC_MULT( state->prefix, old_size, new_size,
-                          sizeof ( FT_UShort ) + sizeof ( FT_Byte ) ) )
+                          sizeof ( ushort ) + sizeof ( FT_Byte ) ) )
       return -1;
 
     /* now adjust `suffix' and move the data accordingly */
@@ -264,9 +264,9 @@
   {
     FT_ULong  result = 0;
 
-    FT_UInt  old_char = state->old_char;
-    FT_UInt  old_code = state->old_code;
-    FT_UInt  in_code  = state->in_code;
+    uint  old_char = state->old_char;
+    uint  old_code = state->old_code;
+    uint  in_code  = state->in_code;
 
 
     if ( out_size == 0 )
@@ -277,7 +277,7 @@
     case FT_LZW_PHASE_START:
       {
         FT_Byte   max_bits;
-        FT_Int32  c;
+        int  c;
 
 
         /* skip magic bytes, and read max_bits + block_flag */
@@ -287,7 +287,7 @@
 
         state->max_bits   = max_bits & LZW_BIT_MASK;
         state->block_mode = max_bits & LZW_BLOCK_MASK;
-        state->max_free   = (FT_UInt)( ( 1UL << state->max_bits ) - 256 );
+        state->max_free   = (uint)( ( 1UL << state->max_bits ) - 256 );
 
         if ( state->max_bits > LZW_MAX_BITS )
           goto Eof;
@@ -298,14 +298,14 @@
         in_code  = 0;
 
         state->free_bits = state->num_bits < state->max_bits
-                           ? (FT_UInt)( ( 1UL << state->num_bits ) - 256 )
+                           ? (uint)( ( 1UL << state->num_bits ) - 256 )
                            : state->max_free + 1;
 
         c = ft_lzwstate_get_code( state );
         if ( c < 0 || c > 255 )
           goto Eof;
 
-        old_code = old_char = (FT_UInt)c;
+        old_code = old_char = (uint)c;
 
         if ( buffer )
           buffer[result] = (FT_Byte)old_char;
@@ -319,8 +319,8 @@
 
     case FT_LZW_PHASE_CODE:
       {
-        FT_Int32  c;
-        FT_UInt   code;
+        int  c;
+        uint   code;
 
 
       NextCode:
@@ -328,7 +328,7 @@
         if ( c < 0 )
           goto Eof;
 
-        code = (FT_UInt)c;
+        code = (uint)c;
 
         if ( code == LZW_CLEAR && state->block_mode )
         {
@@ -397,7 +397,7 @@
 
           FT_ASSERT( state->free_ent < state->prefix_size );
 
-          state->prefix[state->free_ent] = (FT_UShort)old_code;
+          state->prefix[state->free_ent] = (ushort)old_code;
           state->suffix[state->free_ent] = (FT_Byte)  old_char;
 
           state->free_ent += 1;

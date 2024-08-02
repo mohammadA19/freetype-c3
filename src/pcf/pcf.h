@@ -92,12 +92,12 @@ FT_BEGIN_HEADER
 
   typedef struct  PCF_MetricRec_
   {
-    FT_Short  leftSideBearing;
-    FT_Short  rightSideBearing;
-    FT_Short  characterWidth;
-    FT_Short  ascent;
-    FT_Short  descent;
-    FT_Short  attributes;
+    short  leftSideBearing;
+    short  rightSideBearing;
+    short  characterWidth;
+    short  ascent;
+    short  descent;
+    short  attributes;
 
     FT_ULong  bits;  /* offset into the PCF_BITMAPS table */
 
@@ -106,13 +106,13 @@ FT_BEGIN_HEADER
 
   typedef struct  PCF_EncRec_
   {
-    FT_UShort   firstCol;
-    FT_UShort   lastCol;
-    FT_UShort   firstRow;
-    FT_UShort   lastRow;
-    FT_UShort   defaultChar;
+    ushort   firstCol;
+    ushort   lastCol;
+    ushort   firstRow;
+    ushort   lastRow;
+    ushort   defaultChar;
 
-    FT_UShort*  offset;
+    ushort*  offset;
 
   } PCF_EncRec, *PCF_Enc;
 

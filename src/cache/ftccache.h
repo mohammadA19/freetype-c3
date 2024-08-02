@@ -60,8 +60,8 @@ FT_BEGIN_HEADER
     FTC_MruNodeRec  mru;          /* circular mru list pointer           */
     FTC_Node        link;         /* used for hashing                    */
     FT_Offset       hash;         /* used for hashing too                */
-    FT_UShort       cache_index;  /* index of cache the node belongs to  */
-    FT_Short        ref_count;    /* reference count for this node       */
+    ushort       cache_index;  /* index of cache the node belongs to  */
+    short        ref_count;    /* reference count for this node       */
 
   } FTC_NodeRec;
 
@@ -158,7 +158,7 @@ FT_BEGIN_HEADER
 
     FTC_Manager        manager;
     FT_Memory          memory;
-    FT_UInt            index;       /* in manager's table     */
+    uint            index;       /* in manager's table     */
 
     FTC_CacheClass     org_class;   /* original class pointer */
 
@@ -319,12 +319,12 @@ FT_BEGIN_HEADER
 #define FTC_CACHE_TRYLOOP( cache )                           \
   {                                                          \
     FTC_Manager  _try_manager = FTC_CACHE( cache )->manager; \
-    FT_UInt      _try_count   = 4;                           \
+    uint      _try_count   = 4;                           \
                                                              \
                                                              \
     for (;;)                                                 \
     {                                                        \
-      FT_UInt  _try_done;
+      uint  _try_done;
 
 
 #define FTC_CACHE_TRYLOOP_END( list_changed )                     \

@@ -58,9 +58,9 @@
 
   static FT_Error
   t42_get_glyph_name( FT_Face     face,        /* T42_Face */
-                      FT_UInt     glyph_index,
+                      uint     glyph_index,
                       FT_Pointer  buffer,
-                      FT_UInt     buffer_max )
+                      uint     buffer_max )
   {
     T42_Face  t42face = (T42_Face)face;
 
@@ -73,12 +73,12 @@
   }
 
 
-  static FT_UInt
+  static uint
   t42_get_name_index( FT_Face           face,        /* T42_Face */
                       const FT_String*  glyph_name )
   {
     T42_Face  t42face = (T42_Face)face;
-    FT_Int    i;
+    int    i;
 
 
     for ( i = 0; i < t42face->type1.num_glyphs; i++ )
@@ -87,7 +87,7 @@
 
 
       if ( glyph_name[0] == gname[0] && !ft_strcmp( glyph_name, gname ) )
-        return (FT_UInt)ft_strtol(
+        return (uint)ft_strtol(
                           (const char *)t42face->type1.charstrings[i],
                           NULL,
                           10 );
@@ -152,7 +152,7 @@
   }
 
 
-  static FT_Int
+  static int
   t42_ps_has_glyph_names( FT_Face  face )
   {
     FT_UNUSED( face );

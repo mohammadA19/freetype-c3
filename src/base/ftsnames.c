@@ -31,7 +31,7 @@
 
   /* documentation is in ftsnames.h */
 
-  FT_UInt
+  uint
   FT_Get_Sfnt_Name_Count( FT_Face  face )
   {
     return ( face && FT_IS_SFNT( face ) ) ? ((TT_Face)face)->num_names : 0;
@@ -42,7 +42,7 @@
 
   FT_Error
   FT_Get_Sfnt_Name( FT_Face       face,
-                    FT_UInt       idx,
+                    uint       idx,
                     FT_SfntName  *aname )
   {
     FT_Error  error = FT_ERR( Invalid_Argument );
@@ -53,7 +53,7 @@
       TT_Face  ttface = (TT_Face)face;
 
 
-      if ( idx < (FT_UInt)ttface->num_names )
+      if ( idx < (uint)ttface->num_names )
       {
         TT_Name  entry = ttface->name_table.names + idx;
 
@@ -93,7 +93,7 @@
 
   FT_Error
   FT_Get_Sfnt_LangTag( FT_Face          face,
-                       FT_UInt          langID,
+                       uint          langID,
                        FT_SfntLangTag  *alangTag )
   {
     FT_Error  error = FT_ERR( Invalid_Argument );
@@ -144,7 +144,7 @@
 #else /* !TT_CONFIG_OPTION_SFNT_NAMES */
 
 
-  FT_UInt
+  uint
   FT_Get_Sfnt_Name_Count( FT_Face  face )
   {
     FT_UNUSED( face );
@@ -155,7 +155,7 @@
 
   FT_Error
   FT_Get_Sfnt_Name( FT_Face       face,
-                    FT_UInt       idx,
+                    uint       idx,
                     FT_SfntName  *aname )
   {
     FT_UNUSED( face );
@@ -168,7 +168,7 @@
 
   FT_Error
   FT_Get_Sfnt_LangTag( FT_Face          face,
-                       FT_UInt          langID,
+                       uint          langID,
                        FT_SfntLangTag  *alangTag )
   {
     FT_UNUSED( face );

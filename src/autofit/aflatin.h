@@ -80,7 +80,7 @@ FT_BEGIN_HEADER
     AF_WidthRec  shoot;
     FT_Pos       ascender;
     FT_Pos       descender;
-    FT_UInt      flags;
+    uint      flags;
 
   } AF_LatinBlueRec, *AF_LatinBlue;
 
@@ -90,14 +90,14 @@ FT_BEGIN_HEADER
     FT_Fixed         scale;
     FT_Pos           delta;
 
-    FT_UInt          width_count;                 /* number of used widths */
+    uint          width_count;                 /* number of used widths */
     AF_WidthRec      widths[AF_LATIN_MAX_WIDTHS]; /* widths array          */
     FT_Pos           edge_distance_threshold;   /* used for creating edges */
     FT_Pos           standard_width;         /* the default stem thickness */
     FT_Bool          extra_light;         /* is standard width very light? */
 
     /* ignored for horizontal metrics */
-    FT_UInt          blue_count;
+    uint          blue_count;
     AF_LatinBlueRec  blues[AF_BLUE_STRINGSET_MAX_LEN];
 
     FT_Fixed         org_scale;
@@ -109,7 +109,7 @@ FT_BEGIN_HEADER
   typedef struct  AF_LatinMetricsRec_
   {
     AF_StyleMetricsRec  root;
-    FT_UInt             units_per_em;
+    uint             units_per_em;
     AF_LatinAxisRec     axis[AF_DIMENSION_MAX];
 
   } AF_LatinMetricsRec, *AF_LatinMetrics;
@@ -170,7 +170,7 @@ FT_BEGIN_HEADER
 
   fn void /* internal */
   af_latin_hints_link_segments( AF_GlyphHints  hints,
-                                FT_UInt        width_count,
+                                uint        width_count,
                                 AF_WidthRec*   widths,
                                 AF_Dimension   dim );
 
@@ -180,7 +180,7 @@ FT_BEGIN_HEADER
 
   fn FT_Error /* internal */
   af_latin_hints_detect_features( AF_GlyphHints  hints,
-                                  FT_UInt        width_count,
+                                  uint        width_count,
                                   AF_WidthRec*   widths,
                                   AF_Dimension   dim );
 

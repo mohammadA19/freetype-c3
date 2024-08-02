@@ -41,11 +41,11 @@ in this Software without prior written authorization from The Open Group.
 
   fn void /* internal */
   BitOrderInvert( unsigned char*  buf,
-                  size_t          nbytes )
+                  usz          nbytes )
   {
     for ( ; nbytes > 0; nbytes--, buf++ )
     {
-      unsigned int  val = *buf;
+      uint  val = *buf;
 
 
       val = ( ( val >> 1 ) & 0x55 ) | ( ( val << 1 ) & 0xAA );
@@ -75,10 +75,10 @@ in this Software without prior written authorization from The Open Group.
 #else
 
 #define BSWAP16( x )                             \
-        (FT_UInt16)( ( ( ( x ) >> 8 ) & 0xff ) | \
+        (ushort)( ( ( ( x ) >> 8 ) & 0xff ) | \
                      ( ( ( x ) & 0xff ) << 8 ) )
 #define BSWAP32( x )                   \
-        (FT_UInt32)( ( ( ( x ) & 0xff000000u ) >> 24 ) | \
+        (uint)( ( ( ( x ) & 0xff000000u ) >> 24 ) | \
                      ( ( ( x ) & 0x00ff0000u ) >> 8  ) | \
                      ( ( ( x ) & 0x0000ff00u ) << 8  ) | \
                      ( ( ( x ) & 0x000000ffu ) << 24 ) )
@@ -91,9 +91,9 @@ in this Software without prior written authorization from The Open Group.
 
   fn void /* internal */
   TwoByteSwap( unsigned char*  buf,
-               size_t          nbytes )
+               usz          nbytes )
   {
-    FT_UInt16*  b = (FT_UInt16*)buf;
+    ushort*  b = (ushort*)buf;
 
 
     for ( ; nbytes >= 2; nbytes -= 2, b++ )
@@ -106,9 +106,9 @@ in this Software without prior written authorization from The Open Group.
 
   fn void /* internal */
   FourByteSwap( unsigned char*  buf,
-                size_t          nbytes )
+                usz          nbytes )
   {
-    FT_UInt32*  b = (FT_UInt32*)buf;
+    uint*  b = (uint*)buf;
 
 
     for ( ; nbytes >= 4; nbytes -= 4, b++ )

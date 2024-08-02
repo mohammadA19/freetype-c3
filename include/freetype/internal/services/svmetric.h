@@ -37,40 +37,40 @@ FT_BEGIN_HEADER
 
   typedef FT_Error
   (*FT_HAdvance_Adjust_Func)( FT_Face  face,
-                              FT_UInt  gindex,
-                              FT_Int  *avalue );
+                              uint  gindex,
+                              int  *avalue );
 
   typedef FT_Error
   (*FT_LSB_Adjust_Func)( FT_Face  face,
-                         FT_UInt  gindex,
-                         FT_Int  *avalue );
+                         uint  gindex,
+                         int  *avalue );
 
   typedef FT_Error
   (*FT_RSB_Adjust_Func)( FT_Face  face,
-                         FT_UInt  gindex,
-                         FT_Int  *avalue );
+                         uint  gindex,
+                         int  *avalue );
 
   /* VVAR */
 
   typedef FT_Error
   (*FT_VAdvance_Adjust_Func)( FT_Face  face,
-                              FT_UInt  gindex,
-                              FT_Int  *avalue );
+                              uint  gindex,
+                              int  *avalue );
 
   typedef FT_Error
   (*FT_TSB_Adjust_Func)( FT_Face  face,
-                         FT_UInt  gindex,
-                         FT_Int  *avalue );
+                         uint  gindex,
+                         int  *avalue );
 
   typedef FT_Error
   (*FT_BSB_Adjust_Func)( FT_Face  face,
-                         FT_UInt  gindex,
-                         FT_Int  *avalue );
+                         uint  gindex,
+                         int  *avalue );
 
   typedef FT_Error
   (*FT_VOrg_Adjust_Func)( FT_Face  face,
-                          FT_UInt  gindex,
-                          FT_Int  *avalue );
+                          uint  gindex,
+                          int  *avalue );
 
   /* MVAR */
 

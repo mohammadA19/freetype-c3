@@ -39,12 +39,12 @@
 
   fn FT_Error /* internal */
   cff_parser_init( CFF_Parser  parser,
-                   FT_UInt     code,
+                   uint     code,
                    void*       object,
                    FT_Library  library,
-                   FT_UInt     stackSize,
-                   FT_UShort   num_designs,
-                   FT_UShort   num_axes )
+                   uint     stackSize,
+                   ushort   num_designs,
+                   ushort   num_axes )
   {
     FT_Memory  memory = library->memory;    /* for FT_NEW_ARRAY */
     FT_Error   error;                       /* for FT_NEW_ARRAY */
@@ -97,7 +97,7 @@
                      FT_Byte*  limit )
   {
     FT_Byte*  p   = start;
-    FT_Int    v   = *p++;
+    int    v   = *p++;
     FT_Long   val = 0;
 
 
@@ -106,7 +106,7 @@
       if ( p + 2 > limit && limit >= p )
         goto Bad;
 
-      val = (FT_Short)( ( (FT_UShort)p[0] << 8 ) | p[1] );
+      val = (short)( ( (ushort)p[0] << 8 ) | p[1] );
     }
     else if ( v == 29 )
     {
@@ -186,11 +186,11 @@
                   FT_Long*  scaling )
   {
     FT_Byte*  p = start;
-    FT_Int    nib;
-    FT_UInt   phase;
+    int    nib;
+    uint   phase;
 
     FT_Long   result, number, exponent;
-    FT_Int    sign = 0, exponent_sign = 0, have_overflow = 0;
+    int    sign = 0, exponent_sign = 0, have_overflow = 0;
     FT_Long   exponent_add, integer_length, fraction_length;
 
 
@@ -223,7 +223,7 @@
       }
 
       /* Get the nibble. */
-      nib   = (FT_Int)( p[0] >> phase ) & 0xF;
+      nib   = (int)( p[0] >> phase ) & 0xF;
       phase = 4 - phase;
 
       if ( nib == 0xE )
@@ -473,16 +473,16 @@
       /* The blend value is converted to integer, with rounding; */
       /* due to the right-shift we don't need the lowest byte.   */
 #if 0
-      return (FT_Short)(
-               ( ( ( (FT_UInt32)*( d[0] + 1 ) << 24 ) |
-                   ( (FT_UInt32)*( d[0] + 2 ) << 16 ) |
-                   ( (FT_UInt32)*( d[0] + 3 ) <<  8 ) |
-                     (FT_UInt32)*( d[0] + 4 )         ) + 0x8000U ) >> 16 );
+      return (short)(
+               ( ( ( (uint)*( d[0] + 1 ) << 24 ) |
+                   ( (uint)*( d[0] + 2 ) << 16 ) |
+                   ( (uint)*( d[0] + 3 ) <<  8 ) |
+                     (uint)*( d[0] + 4 )         ) + 0x8000U ) >> 16 );
 #else
-      return (FT_Short)(
-               ( ( ( (FT_UInt32)*( d[0] + 1 ) << 16 ) |
-                   ( (FT_UInt32)*( d[0] + 2 ) <<  8 ) |
-                     (FT_UInt32)*( d[0] + 3 )         ) + 0x80U ) >> 8 );
+      return (short)(
+               ( ( ( (uint)*( d[0] + 1 ) << 16 ) |
+                   ( (uint)*( d[0] + 2 ) <<  8 ) |
+                     (uint)*( d[0] + 3 )         ) + 0x80U ) >> 8 );
 #endif
     }
 
@@ -501,10 +501,10 @@
       return cff_parse_real( *d, parser->limit, scaling, NULL );
     else if ( **d == 255 )
     {
-      FT_Fixed val = (FT_Int32)( ( ( (FT_UInt32)*( d[0] + 1 ) << 24 ) |
-                                   ( (FT_UInt32)*( d[0] + 2 ) << 16 ) |
-                                   ( (FT_UInt32)*( d[0] + 3 ) <<  8 ) |
-                                     (FT_UInt32)*( d[0] + 4 )         ) );
+      FT_Fixed val = (int)( ( ( (uint)*( d[0] + 1 ) << 24 ) |
+                                   ( (uint)*( d[0] + 2 ) << 16 ) |
+                                   ( (uint)*( d[0] + 3 ) <<  8 ) |
+                                     (uint)*( d[0] + 4 )         ) );
 
       if ( scaling )
       {
@@ -588,7 +588,7 @@
     else
     {
       FT_Long  number;
-      FT_Int   integer_length;
+      int   integer_length;
 
 
       number = cff_parse_integer( *d, parser->limit );
@@ -856,8 +856,8 @@
       }
       else
       {
-        dict->num_designs   = (FT_UShort)num_designs;
-        dict->num_axes      = (FT_UShort)( parser->top - parser->stack - 4 );
+        dict->num_designs   = (ushort)num_designs;
+        dict->num_axes      = (ushort)( parser->top - parser->stack - 4 );
 
         parser->num_designs = dict->num_designs;
         parser->num_axes    = dict->num_axes;
@@ -882,8 +882,8 @@
 
     if ( parser->top >= parser->stack + 3 )
     {
-      dict->cid_registry = (FT_UInt)cff_parse_num( parser, data++ );
-      dict->cid_ordering = (FT_UInt)cff_parse_num( parser, data++ );
+      dict->cid_registry = (uint)cff_parse_num( parser, data++ );
+      dict->cid_ordering = (uint)cff_parse_num( parser, data++ );
       if ( **data == 30 )
         FT_TRACE1(( "cff_parse_cid_ros: real supplement is rounded\n" ));
       dict->cid_supplement = cff_parse_num( parser, data );
@@ -927,7 +927,7 @@
       goto Exit;
     }
 
-    priv->vsindex = (FT_UInt)cff_parse_num( parser, data++ );
+    priv->vsindex = (uint)cff_parse_num( parser, data++ );
 
     FT_TRACE4(( " %d\n", priv->vsindex ));
 
@@ -945,7 +945,7 @@
     CFF_Private  priv = (CFF_Private)parser->object;
     CFF_SubFont  subFont;
     CFF_Blend    blend;
-    FT_UInt      numBlends;
+    uint      numBlends;
     FT_Error     error;
 
 
@@ -971,7 +971,7 @@
         goto Exit;
     }
 
-    numBlends = (FT_UInt)cff_parse_num( parser, parser->top - 1 );
+    numBlends = (uint)cff_parse_num( parser, parser->top - 1 );
     if ( numBlends > parser->stackSize )
     {
       FT_ERROR(( "cff_parse_blend: Invalid number of blends\n" ));
@@ -1008,7 +1008,7 @@
       goto Exit;
     }
 
-    dict->maxstack = (FT_UInt)cff_parse_num( parser, data++ );
+    dict->maxstack = (uint)cff_parse_num( parser, data++ );
     if ( dict->maxstack > CFF2_MAX_STACK )
       dict->maxstack = CFF2_MAX_STACK;
     if ( dict->maxstack < CFF2_DEFAULT_STACK )
@@ -1171,7 +1171,7 @@
 
     while ( p < limit )
     {
-      FT_UInt  v = *p;
+      uint  v = *p;
 
 
       /* Opcode 31 is legacy MM T2 operator, not a number.      */
@@ -1180,7 +1180,7 @@
       if ( v >= 27 && v != 31 && v != 255 )
       {
         /* it's a number; we will push its position on the stack */
-        if ( (FT_UInt)( parser->top - parser->stack ) >= parser->stackSize )
+        if ( (uint)( parser->top - parser->stack ) >= parser->stackSize )
           goto Stack_Overflow;
 
         *parser->top++ = p;
@@ -1278,7 +1278,7 @@
           FT_Long  num = *stack;
 
 
-          if ( (FT_UInt)( parser->top - parser->stack ) >= parser->stackSize )
+          if ( (uint)( parser->top - parser->stack ) >= parser->stackSize )
             goto Stack_Overflow;
 
           *parser->top++ = q;
@@ -1322,15 +1322,15 @@
         /* This is not a number, hence it's an operator.  Compute its code */
         /* and look for it in our current list.                            */
 
-        FT_UInt                   code;
-        FT_UInt                   num_args;
+        uint                   code;
+        uint                   num_args;
         const CFF_Field_Handler*  field;
 
 
-        if ( (FT_UInt)( parser->top - parser->stack ) >= parser->stackSize )
+        if ( (uint)( parser->top - parser->stack ) >= parser->stackSize )
           goto Stack_Overflow;
 
-        num_args     = (FT_UInt)( parser->top - parser->stack );
+        num_args     = (uint)( parser->top - parser->stack );
         *parser->top = p;
         code         = v;
 
@@ -1347,7 +1347,7 @@
 
         for ( field = cff_field_handlers; field->kind; field++ )
         {
-          if ( field->code == (FT_Int)code )
+          if ( field->code == (int)code )
           {
             /* we found our field's handler; read it */
             FT_Long   val;
@@ -1387,11 +1387,11 @@
                 break;
 
               case (16 / FT_CHAR_BIT):
-                *(FT_Short*)q = (FT_Short)val;
+                *(short*)q = (short)val;
                 break;
 
               case (32 / FT_CHAR_BIT):
-                *(FT_Int32*)q = (FT_Int)val;
+                *(int*)q = (int)val;
                 break;
 
               default:  /* for 64-bit systems */
@@ -1455,11 +1455,11 @@
                     break;
 
                   case (16 / FT_CHAR_BIT):
-                    *(FT_Short*)q = (FT_Short)val;
+                    *(short*)q = (short)val;
                     break;
 
                   case (32 / FT_CHAR_BIT):
-                    *(FT_Int32*)q = (FT_Int)val;
+                    *(int*)q = (int)val;
                     break;
 
                   default:  /* for 64-bit systems */

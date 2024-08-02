@@ -179,7 +179,7 @@
 
   /* documentation is in ftdebug.h */
 
-  fn FT_Int /* private */
+  fn int /* private */
   FT_Trace_Get_Count( void )
   {
     return trace_count;
@@ -189,7 +189,7 @@
   /* documentation is in ftdebug.h */
 
   fn const char * /* private */
-  FT_Trace_Get_Name( FT_Int  idx )
+  FT_Trace_Get_Name( int  idx )
   {
     int  max = FT_Trace_Get_Count();
 
@@ -317,8 +317,8 @@
 
         if ( *p == ':' && p > q )
         {
-          FT_Int  n, i, len = (FT_Int)( p - q );
-          FT_Int  level = -1, found = -1;
+          int  n, i, len = (int)( p - q );
+          int  level = -1, found = -1;
 
 
           for ( n = 0; n < trace_count; n++ )
@@ -377,7 +377,7 @@
   }
 
 
-  fn FT_Int /* private */
+  fn int /* private */
   FT_Trace_Get_Count( void )
   {
     return 0;
@@ -385,7 +385,7 @@
 
 
   fn const char * /* private */
-  FT_Trace_Get_Name( FT_Int  idx )
+  FT_Trace_Get_Name( int  idx )
   {
     FT_UNUSED( idx );
 
@@ -464,7 +464,7 @@
     if ( ft_have_newline_char )
     {
       const char*  features        = NULL;
-      size_t       features_length = 0;
+      usz       features_length = 0;
 
 
 #define FEATURES_TIMESTAMP            "[%h:%m] "
@@ -495,8 +495,8 @@
 
       if ( ft_component_flag )
       {
-        size_t  tag_length = ft_strlen( *origin->tags );
-        size_t  i;
+        usz  tag_length = ft_strlen( *origin->tags );
+        usz  i;
 
 
         /* To vertically align tracing messages we compensate the */

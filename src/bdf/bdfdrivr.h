@@ -39,7 +39,7 @@ FT_BEGIN_HEADER
   typedef struct  BDF_encoding_el_
   {
     FT_ULong   enc;
-    FT_UShort  glyph;
+    ushort  glyph;
 
   } BDF_encoding_el;
 
@@ -55,7 +55,7 @@ FT_BEGIN_HEADER
 
     BDF_encoding_el*  en_table;
 
-    FT_UInt           default_glyph;
+    uint           default_glyph;
 
   } BDF_FaceRec, *BDF_Face;
 

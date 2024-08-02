@@ -181,7 +181,7 @@ FT_BEGIN_HEADER
    *   This function may be useful if you want to access elements of the
    *   internal trace levels array by an index.
    */
-  fn FT_Int /* private */
+  fn int /* private */
   FT_Trace_Get_Count( void );
 
 
@@ -206,7 +206,7 @@ FT_BEGIN_HEADER
    *   components.
    */
   fn const char* /* private */
-  FT_Trace_Get_Name( FT_Int  idx );
+  FT_Trace_Get_Name( int  idx );
 
 
   /**************************************************************************

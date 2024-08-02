@@ -148,7 +148,7 @@
   }
 
 
-  fn FT_Int /* private */
+  fn int /* private */
   ft_validator_run( FT_Validator  valid )
   {
     /* This function doesn't work!  None should call it. */
@@ -199,7 +199,7 @@
     FT_Error   error;
     FT_Memory  memory;
     FT_Stream  stream = NULL;
-    FT_UInt    mode;
+    uint    mode;
 
 
     *astream = NULL;
@@ -269,7 +269,7 @@
 
   fn void /* private */
   FT_Stream_Free( FT_Stream  stream,
-                  FT_Int     external )
+                  int     external )
   {
     if ( stream )
     {
@@ -515,13 +515,13 @@
       pitch = width;
     }
 
-    slot->bitmap_left = (FT_Int)x_left;
-    slot->bitmap_top  = (FT_Int)y_top;
+    slot->bitmap_left = (int)x_left;
+    slot->bitmap_top  = (int)y_top;
 
     bitmap->pixel_mode = (unsigned char)pixel_mode;
     bitmap->num_grays  = 256;
-    bitmap->width      = (unsigned int)width;
-    bitmap->rows       = (unsigned int)height;
+    bitmap->width      = (uint)width;
+    bitmap->rows       = (uint)height;
     bitmap->pitch      = pitch;
 
     if ( pbox.xMin < -0x8000 || pbox.xMax > 0x7FFF ||
@@ -896,8 +896,8 @@
 
   FT_Error
   FT_Load_Glyph( FT_Face   face,
-                 FT_UInt   glyph_index,
-                 FT_Int32  load_flags )
+                 uint   glyph_index,
+                 int  load_flags )
   {
     FT_Error      error;
     FT_Driver     driver;
@@ -1044,7 +1044,7 @@
 
       {
         FT_Face_Internal  internal        = face->internal;
-        FT_Int            transform_flags = internal->transform_flags;
+        int            transform_flags = internal->transform_flags;
 
 
         /* since the auto-hinter calls FT_Load_Glyph by itself, */
@@ -1227,15 +1227,15 @@
   FT_Error
   FT_Load_Char( FT_Face   face,
                 FT_ULong  char_code,
-                FT_Int32  load_flags )
+                int  load_flags )
   {
-    FT_UInt  glyph_index;
+    uint  glyph_index;
 
 
     if ( !face )
       return FT_THROW( Invalid_Face_Handle );
 
-    glyph_index = (FT_UInt)char_code;
+    glyph_index = (uint)char_code;
     if ( face->charmap )
       glyph_index = FT_Get_Char_Index( face, char_code );
 
@@ -1274,7 +1274,7 @@
   destroy_charmaps( FT_Face    face,
                     FT_Memory  memory )
   {
-    FT_Int  n;
+    int  n;
 
 
     if ( !face )
@@ -1504,7 +1504,7 @@
              FT_Stream      *astream,
              FT_Bool        *anexternal_stream,
              FT_Long        face_index,
-             FT_Int         num_params,
+             int         num_params,
              FT_Parameter*  params,
              FT_Face       *aface )
   {
@@ -1555,7 +1555,7 @@
     if ( clazz->init_face )
       error = clazz->init_face( *astream,
                                 face,
-                                (FT_Int)face_index,
+                                (int)face_index,
                                 num_params,
                                 params );
     /* Stream may have been changed. */
@@ -1807,7 +1807,7 @@
                                FT_Bool*   is_sfnt_cid )
   {
     FT_Error   error;
-    FT_UShort  numTables;
+    ushort  numTables;
     FT_Long    pstable_index;
     FT_ULong   tag;
     int        i;
@@ -1869,7 +1869,7 @@
   open_face_PS_from_sfnt_stream( FT_Library     library,
                                  FT_Stream      stream,
                                  FT_Long        face_index,
-                                 FT_Int         num_params,
+                                 int         num_params,
                                  FT_Parameter  *params,
                                  FT_Face       *aface )
   {
@@ -2379,7 +2379,7 @@
 
     FT_Memory  memory = library->memory;
     FT_Error   error  = FT_ERR( Unknown_File_Format );
-    FT_UInt    i;
+    uint    i;
 
     char*      file_names[FT_RACCESS_N_RULES];
     FT_Long    offsets[FT_RACCESS_N_RULES];
@@ -2599,7 +2599,7 @@
       /* not all modules are drivers, so check... */
       if ( FT_MODULE_IS_DRIVER( driver ) )
       {
-        FT_Int         num_params = 0;
+        int         num_params = 0;
         FT_Parameter*  params     = NULL;
 
 
@@ -2633,7 +2633,7 @@
         /* not all modules are font drivers, so check... */
         if ( FT_MODULE_IS_DRIVER( cur[0] ) )
         {
-          FT_Int         num_params = 0;
+          int         num_params = 0;
           FT_Parameter*  params     = NULL;
 
 
@@ -2758,15 +2758,15 @@
     if ( FT_IS_SCALABLE( face ) )
     {
       if ( face->height < 0 )
-        face->height = (FT_Short)-face->height;
+        face->height = (short)-face->height;
 
       if ( !FT_HAS_VERTICAL( face ) )
-        face->max_advance_height = (FT_Short)face->height;
+        face->max_advance_height = (short)face->height;
     }
 
     if ( FT_HAS_FIXED_SIZES( face ) )
     {
-      FT_Int  i;
+      int  i;
 
 
       for ( i = 0; i < face->num_fixed_sizes; i++ )
@@ -3096,7 +3096,7 @@
                  FT_Bool          ignore_width,
                  FT_ULong*        size_index )
   {
-    FT_Int   i;
+    int   i;
     FT_Long  w, h;
 
 
@@ -3219,8 +3219,8 @@
     metrics = &face->size->metrics;
     bsize   = face->available_sizes + strike_index;
 
-    metrics->x_ppem = (FT_UShort)( ( bsize->x_ppem + 32 ) >> 6 );
-    metrics->y_ppem = (FT_UShort)( ( bsize->y_ppem + 32 ) >> 6 );
+    metrics->x_ppem = (ushort)( ( bsize->x_ppem + 32 ) >> 6 );
+    metrics->y_ppem = (ushort)( ( bsize->y_ppem + 32 ) >> 6 );
 
     if ( FT_IS_SCALABLE( face ) )
     {
@@ -3364,8 +3364,8 @@
         goto Exit;
       }
 
-      metrics->x_ppem = (FT_UShort)scaled_w;
-      metrics->y_ppem = (FT_UShort)scaled_h;
+      metrics->x_ppem = (ushort)scaled_w;
+      metrics->y_ppem = (ushort)scaled_h;
 
       ft_recompute_scaled_metrics( face, metrics );
     }
@@ -3385,7 +3385,7 @@
 
   FT_Error
   FT_Select_Size( FT_Face  face,
-                  FT_Int   strike_index )
+                  int   strike_index )
   {
     FT_Error         error = FT_Err_Ok;
     FT_Driver_Class  clazz;
@@ -3486,7 +3486,7 @@
       if ( error )
         goto Exit;
 
-      return FT_Select_Size( face, (FT_Int)strike_index );
+      return FT_Select_Size( face, (int)strike_index );
     }
     else
     {
@@ -3530,8 +3530,8 @@
   FT_Set_Char_Size( FT_Face     face,
                     FT_F26Dot6  char_width,
                     FT_F26Dot6  char_height,
-                    FT_UInt     horz_resolution,
-                    FT_UInt     vert_resolution )
+                    uint     horz_resolution,
+                    uint     vert_resolution )
   {
     FT_Size_RequestRec  req;
 
@@ -3570,8 +3570,8 @@
 
   FT_Error
   FT_Set_Pixel_Sizes( FT_Face  face,
-                      FT_UInt  pixel_width,
-                      FT_UInt  pixel_height )
+                      uint  pixel_width,
+                      uint  pixel_height )
   {
     FT_Size_RequestRec  req;
 
@@ -3608,9 +3608,9 @@
 
   FT_Error
   FT_Get_Kerning( FT_Face     face,
-                  FT_UInt     left_glyph,
-                  FT_UInt     right_glyph,
-                  FT_UInt     kern_mode,
+                  uint     left_glyph,
+                  uint     right_glyph,
+                  uint     kern_mode,
                   FT_Vector  *akerning )
   {
     FT_Error   error = FT_Err_Ok;
@@ -3688,7 +3688,7 @@
   FT_Error
   FT_Get_Track_Kerning( FT_Face    face,
                         FT_Fixed   point_size,
-                        FT_Int     degree,
+                        int     degree,
                         FT_Fixed*  akerning )
   {
     FT_Service_Kerning  service;
@@ -3792,10 +3792,10 @@
 
   /* documentation is in freetype.h */
 
-  FT_Int
+  int
   FT_Get_Charmap_Index( FT_CharMap  charmap )
   {
-    FT_Int  i;
+    int  i;
 
 
     if ( !charmap || !charmap->face )
@@ -3834,7 +3834,7 @@
       FT_Face    face   = cmap->charmap.face;
       FT_Memory  memory = FT_FACE_MEMORY( face );
       FT_Error   error;
-      FT_Int     i, j;
+      int     i, j;
 
 
       for ( i = 0; i < face->num_charmaps; i++ )
@@ -3926,11 +3926,11 @@
 
   /* documentation is in freetype.h */
 
-  FT_UInt
+  uint
   FT_Get_Char_Index( FT_Face   face,
                      FT_ULong  charcode )
   {
-    FT_UInt  result = 0;
+    uint  result = 0;
 
 
     if ( face && face->charmap )
@@ -3944,8 +3944,8 @@
         FT_TRACE1(( " 0x%lx is truncated\n", charcode ));
       }
 
-      result = cmap->clazz->char_index( cmap, (FT_UInt32)charcode );
-      if ( result >= (FT_UInt)face->num_glyphs )
+      result = cmap->clazz->char_index( cmap, (uint)charcode );
+      if ( result >= (uint)face->num_glyphs )
         result = 0;
     }
 
@@ -3957,10 +3957,10 @@
 
   FT_ULong
   FT_Get_First_Char( FT_Face   face,
-                     FT_UInt  *agindex )
+                     uint  *agindex )
   {
     FT_ULong  result = 0;
-    FT_UInt   gindex = 0;
+    uint   gindex = 0;
 
 
     /* only do something if we have a charmap, and we have glyphs at all */
@@ -3983,15 +3983,15 @@
   FT_ULong
   FT_Get_Next_Char( FT_Face   face,
                     FT_ULong  charcode,
-                    FT_UInt  *agindex )
+                    uint  *agindex )
   {
     FT_ULong  result = 0;
-    FT_UInt   gindex = 0;
+    uint   gindex = 0;
 
 
     if ( face && face->charmap && face->num_glyphs )
     {
-      FT_UInt32  code = (FT_UInt32)charcode;
+      uint  code = (uint)charcode;
       FT_CMap    cmap = FT_CMAP( face->charmap );
 
 
@@ -3999,7 +3999,7 @@
       {
         gindex = cmap->clazz->char_next( cmap, &code );
 
-      } while ( gindex >= (FT_UInt)face->num_glyphs );
+      } while ( gindex >= (uint)face->num_glyphs );
 
       result = ( gindex == 0 ) ? 0 : code;
     }
@@ -4015,7 +4015,7 @@
 
   FT_Error
   FT_Face_Properties( FT_Face        face,
-                      FT_UInt        num_properties,
+                      uint        num_properties,
                       FT_Parameter*  properties )
   {
     FT_Error  error = FT_Err_Ok;
@@ -4063,7 +4063,7 @@
       {
         if ( properties->data )
         {
-          face->internal->random_seed = *( (FT_Int32*)properties->data );
+          face->internal->random_seed = *( (int*)properties->data );
           if ( face->internal->random_seed < 0 )
             face->internal->random_seed = 0;
         }
@@ -4092,12 +4092,12 @@
 
   /* documentation is in freetype.h */
 
-  FT_UInt
+  uint
   FT_Face_GetCharVariantIndex( FT_Face   face,
                                FT_ULong  charcode,
                                FT_ULong  variantSelector )
   {
-    FT_UInt  result = 0;
+    uint  result = 0;
 
 
     if ( face                                           &&
@@ -4127,8 +4127,8 @@
         }
 
         result = vcmap->clazz->char_var_index( vcmap, ucmap,
-                                               (FT_UInt32)charcode,
-                                               (FT_UInt32)variantSelector );
+                                               (uint)charcode,
+                                               (uint)variantSelector );
       }
     }
 
@@ -4138,12 +4138,12 @@
 
   /* documentation is in freetype.h */
 
-  FT_Int
+  int
   FT_Face_GetCharVariantIsDefault( FT_Face   face,
                                    FT_ULong  charcode,
                                    FT_ULong  variantSelector )
   {
-    FT_Int  result = -1;
+    int  result = -1;
 
 
     if ( face )
@@ -4170,8 +4170,8 @@
         }
 
         result = vcmap->clazz->char_var_default( vcmap,
-                                                 (FT_UInt32)charcode,
-                                                 (FT_UInt32)variantSelector );
+                                                 (uint)charcode,
+                                                 (uint)variantSelector );
       }
     }
 
@@ -4181,10 +4181,10 @@
 
   /* documentation is in freetype.h */
 
-  FT_UInt32*
+  uint*
   FT_Face_GetVariantSelectors( FT_Face  face )
   {
-    FT_UInt32  *result = NULL;
+    uint  *result = NULL;
 
 
     if ( face )
@@ -4208,11 +4208,11 @@
 
   /* documentation is in freetype.h */
 
-  FT_UInt32*
+  uint*
   FT_Face_GetVariantsOfChar( FT_Face   face,
                              FT_ULong  charcode )
   {
-    FT_UInt32  *result = NULL;
+    uint  *result = NULL;
 
 
     if ( face )
@@ -4233,7 +4233,7 @@
         }
 
         result = vcmap->clazz->charvariant_list( vcmap, memory,
-                                                 (FT_UInt32)charcode );
+                                                 (uint)charcode );
       }
     }
     return result;
@@ -4242,11 +4242,11 @@
 
   /* documentation is in freetype.h */
 
-  FT_UInt32*
+  uint*
   FT_Face_GetCharsOfVariant( FT_Face   face,
                              FT_ULong  variantSelector )
   {
-    FT_UInt32  *result = NULL;
+    uint  *result = NULL;
 
 
     if ( face )
@@ -4267,7 +4267,7 @@
         }
 
         result = vcmap->clazz->variantchar_list( vcmap, memory,
-                                                 (FT_UInt32)variantSelector );
+                                                 (uint)variantSelector );
       }
     }
 
@@ -4277,11 +4277,11 @@
 
   /* documentation is in freetype.h */
 
-  FT_UInt
+  uint
   FT_Get_Name_Index( FT_Face           face,
                      const FT_String*  glyph_name )
   {
-    FT_UInt  result = 0;
+    uint  result = 0;
 
 
     if ( face                       &&
@@ -4307,9 +4307,9 @@
 
   FT_Error
   FT_Get_Glyph_Name( FT_Face     face,
-                     FT_UInt     glyph_index,
+                     uint     glyph_index,
                      FT_Pointer  buffer,
-                     FT_UInt     buffer_max )
+                     uint     buffer_max )
   {
     FT_Error              error;
     FT_Service_GlyphDict  service;
@@ -4417,7 +4417,7 @@
 
   FT_Error
   FT_Sfnt_Table_Info( FT_Face    face,
-                      FT_UInt    table_index,
+                      uint    table_index,
                       FT_ULong  *tag,
                       FT_ULong  *length )
   {
@@ -4692,7 +4692,7 @@
   FT_Error
   FT_Set_Renderer( FT_Library     library,
                    FT_Renderer    renderer,
-                   FT_UInt        num_params,
+                   uint        num_params,
                    FT_Parameter*  parameters )
   {
     FT_ListNode  node;
@@ -4763,11 +4763,11 @@
       {
         FT_LayerIterator  iterator;
 
-        FT_UInt  base_glyph = slot->glyph_index;
+        uint  base_glyph = slot->glyph_index;
 
         FT_Bool  have_layers;
-        FT_UInt  glyph_index;
-        FT_UInt  color_index;
+        uint  glyph_index;
+        uint  color_index;
 
 
         /* check whether we have colored glyph layers */
@@ -4788,7 +4788,7 @@
 
             do
             {
-              FT_Int32  load_flags = slot->internal->load_flags;
+              int  load_flags = slot->internal->load_flags;
 
 
               /* disable the `FT_LOAD_COLOR' flag to avoid recursion */
@@ -5078,7 +5078,7 @@
     FT_Error   error;
     FT_Memory  memory;
     FT_Module  module = NULL;
-    FT_UInt    nn;
+    uint    nn;
 
 
 #define FREETYPE_VER_FIXED  ( ( (FT_Long)FREETYPE_MAJOR << 16 ) | \
@@ -5526,13 +5526,13 @@
 
   void
   FT_Library_Version( FT_Library   library,
-                      FT_Int      *amajor,
-                      FT_Int      *aminor,
-                      FT_Int      *apatch )
+                      int      *amajor,
+                      int      *aminor,
+                      int      *apatch )
   {
-    FT_Int  major = 0;
-    FT_Int  minor = 0;
-    FT_Int  patch = 0;
+    int  major = 0;
+    int  minor = 0;
+    int  patch = 0;
 
 
     if ( library )
@@ -5587,7 +5587,7 @@
      * The order of drivers should be specified in driver_name[].
      */
     {
-      FT_UInt      m, n;
+      uint      m, n;
       const char*  driver_name[] = { "type42", NULL };
 
 
@@ -5632,7 +5632,7 @@
                         library->modules[library->num_modules - 1] );
 #else
     {
-      FT_UInt  n;
+      uint  n;
 
 
       for ( n = 0; n < library->num_modules; n++ )
@@ -5660,7 +5660,7 @@
 
   void
   FT_Set_Debug_Hook( FT_Library         library,
-                     FT_UInt            hook_index,
+                     uint            hook_index,
                      FT_DebugHook_Func  debug_hook )
   {
     if ( library && debug_hook &&
@@ -5705,11 +5705,11 @@
 
   FT_Error
   FT_Get_SubGlyph_Info( FT_GlyphSlot  glyph,
-                        FT_UInt       sub_index,
-                        FT_Int       *p_index,
-                        FT_UInt      *p_flags,
-                        FT_Int       *p_arg1,
-                        FT_Int       *p_arg2,
+                        uint       sub_index,
+                        int       *p_index,
+                        uint      *p_flags,
+                        int       *p_arg1,
+                        int       *p_arg2,
                         FT_Matrix    *p_transform )
   {
     FT_Error  error = FT_ERR( Invalid_Argument );
@@ -5740,9 +5740,9 @@
 
   FT_Bool
   FT_Get_Color_Glyph_Layer( FT_Face            face,
-                            FT_UInt            base_glyph,
-                            FT_UInt           *aglyph_index,
-                            FT_UInt           *acolor_index,
+                            uint            base_glyph,
+                            uint           *aglyph_index,
+                            uint           *acolor_index,
                             FT_LayerIterator*  iterator )
   {
     TT_Face       ttface;
@@ -5753,7 +5753,7 @@
          !aglyph_index                           ||
          !acolor_index                           ||
          !iterator                               ||
-         base_glyph >= (FT_UInt)face->num_glyphs )
+         base_glyph >= (uint)face->num_glyphs )
       return 0;
 
     if ( !FT_IS_SFNT( face ) )
@@ -5777,7 +5777,7 @@
 
   FT_Bool
   FT_Get_Color_Glyph_Paint( FT_Face                  face,
-                            FT_UInt                  base_glyph,
+                            uint                  base_glyph,
                             FT_Color_Root_Transform  root_transform,
                             FT_OpaquePaint*          paint )
   {
@@ -5808,7 +5808,7 @@
 
   FT_Bool
   FT_Get_Color_Glyph_ClipBox( FT_Face      face,
-                              FT_UInt      base_glyph,
+                              uint      base_glyph,
                               FT_ClipBox*  clip_box )
   {
     TT_Face       ttface;

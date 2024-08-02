@@ -39,8 +39,8 @@
 
   FT_Error
   FT_Get_PFR_Metrics( FT_Face    face,
-                      FT_UInt   *aoutline_resolution,
-                      FT_UInt   *ametrics_resolution,
+                      uint   *aoutline_resolution,
+                      uint   *ametrics_resolution,
                       FT_Fixed  *ametrics_x_scale,
                       FT_Fixed  *ametrics_y_scale )
   {
@@ -96,8 +96,8 @@
 
   FT_Error
   FT_Get_PFR_Kerning( FT_Face     face,
-                      FT_UInt     left,
-                      FT_UInt     right,
+                      uint     left,
+                      uint     right,
                       FT_Vector  *avector )
   {
     FT_Error               error;
@@ -125,7 +125,7 @@
 
   FT_Error
   FT_Get_PFR_Advance( FT_Face   face,
-                      FT_UInt   gindex,
+                      uint   gindex,
                       FT_Pos   *aadvance )
   {
     FT_Error               error;

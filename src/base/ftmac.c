@@ -437,7 +437,7 @@
     {
       unsigned char*  p = (unsigned char*)fond_data;
       StyleTable*     style;
-      unsigned short  string_count;
+      ushort  string_count;
       char            ps_name[256];
       unsigned char*  names[64];
       int             i;
@@ -458,7 +458,7 @@
       }
 
       {
-        size_t  ps_name_len = (size_t)names[0][0];
+        usz  ps_name_len = (usz)names[0][0];
 
 
         if ( ps_name_len != 0 )
@@ -475,12 +475,12 @@
           for ( i = 1; i <= suffixes[0]; i++ )
           {
             unsigned char*  s;
-            size_t          j = suffixes[i] - 1;
+            usz          j = suffixes[i] - 1;
 
 
             if ( j < string_count && ( s = names[j] ) != NULL )
             {
-              size_t  s_len = (size_t)s[0];
+              usz  s_len = (usz)s[0];
 
 
               if ( s_len != 0 && ps_name_len + s_len < sizeof ( ps_name ) )
@@ -503,10 +503,10 @@
   lookup_lwfn_by_fond( const UInt8*      path_fond,
                        ConstStr255Param  base_lwfn,
                        UInt8*            path_lwfn,
-                       size_t            path_size )
+                       usz            path_size )
   {
     FSRef   ref, par_ref;
-    size_t  dirname_len;
+    usz  dirname_len;
 
 
     /* Pathname for FSRef can be in various formats: HFS, HFS+, and POSIX. */
@@ -737,7 +737,7 @@
   {
     Handle     sfnt = NULL;
     FT_Byte*   sfnt_data;
-    size_t     sfnt_size;
+    usz     sfnt_size;
     FT_Error   error  = FT_Err_Ok;
     FT_Memory  memory = library->memory;
     int        is_cff, is_sfnt_ps;

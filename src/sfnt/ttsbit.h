@@ -47,8 +47,8 @@ FT_BEGIN_HEADER
   fn FT_Error /* internal */
   tt_face_load_sbit_image( TT_Face              face,
                            FT_ULong             strike_index,
-                           FT_UInt              glyph_index,
-                           FT_UInt              load_flags,
+                           uint              glyph_index,
+                           uint              load_flags,
                            FT_Stream            stream,
                            FT_Bitmap           *map,
                            TT_SBit_MetricsRec  *metrics );

@@ -98,7 +98,7 @@
   FT_Error
   af_shaper_get_coverage( AF_FaceGlobals  globals,
                           AF_StyleClass   style_class,
-                          FT_UShort*      gstyles,
+                          ushort*      gstyles,
                           FT_Bool         default_script )
   {
     hb_face_t*  face;
@@ -133,7 +133,7 @@
     /* tag or tags -- some Indic scripts like Devanagari have an old */
     /* and a new set of features.                                    */
     {
-      unsigned int  tags_count = 3;
+      uint  tags_count = 3;
       hb_tag_t      tags[3];
 
 
@@ -379,7 +379,7 @@
         continue;
 
       if ( gstyles[idx] == AF_STYLE_UNASSIGNED )
-        gstyles[idx] = (FT_UShort)style_class->style;
+        gstyles[idx] = (ushort)style_class->style;
 #ifdef FT_DEBUG_LEVEL_TRACE
       else
         FT_TRACE4(( "*" ));
@@ -414,7 +414,7 @@
           {                                               \
             {                                             \
               HB_TAG( tag1, tag2, tag3, tag4 ),           \
-              1, 0, (unsigned int)-1                      \
+              1, 0, (uint)-1                      \
             }                                             \
           };
 
@@ -460,11 +460,11 @@
   af_shaper_get_cluster( const char*      p,
                          AF_StyleMetrics  metrics,
                          void*            buf_,
-                         unsigned int*    count )
+                         uint*    count )
   {
     AF_StyleClass        style_class;
     const hb_feature_t*  feature;
-    FT_Int               upem;
+    int               upem;
     const char*          q;
     int                  len;
 
@@ -473,7 +473,7 @@
     hb_codepoint_t  dummy;
 
 
-    upem        = (FT_Int)metrics->globals->face->units_per_EM;
+    upem        = (int)metrics->globals->face->units_per_EM;
     style_class = metrics->style_class;
     feature     = features[style_class->coverage];
 
@@ -506,10 +506,10 @@
     {
       hb_buffer_t*  hb_buf = metrics->globals->hb_buf;
 
-      unsigned int      gcount;
+      uint      gcount;
       hb_glyph_info_t*  ginfo;
 
-      unsigned int      hb_gcount;
+      uint      hb_gcount;
       hb_glyph_info_t*  hb_ginfo;
 
 
@@ -527,7 +527,7 @@
 
       if ( gcount == hb_gcount )
       {
-        unsigned int  i;
+        uint  i;
 
 
         for (i = 0; i < gcount; i++ )
@@ -557,14 +557,14 @@
   FT_ULong
   af_shaper_get_elem( AF_StyleMetrics  metrics,
                       void*            buf_,
-                      unsigned int     idx,
+                      uint     idx,
                       FT_Long*         advance,
                       FT_Long*         y_offset )
   {
     hb_buffer_t*          buf = (hb_buffer_t*)buf_;
     hb_glyph_info_t*      ginfo;
     hb_glyph_position_t*  gpos;
-    unsigned int          gcount;
+    uint          gcount;
 
     FT_UNUSED( metrics );
 
@@ -590,7 +590,7 @@
   FT_Error
   af_shaper_get_coverage( AF_FaceGlobals  globals,
                           AF_StyleClass   style_class,
-                          FT_UShort*      gstyles,
+                          ushort*      gstyles,
                           FT_Bool         default_script )
   {
     FT_UNUSED( globals );
@@ -624,7 +624,7 @@
   af_shaper_get_cluster( const char*      p,
                          AF_StyleMetrics  metrics,
                          void*            buf_,
-                         unsigned int*    count )
+                         uint*    count )
   {
     FT_Face    face      = metrics->globals->face;
     FT_ULong   ch, dummy = 0;
@@ -659,7 +659,7 @@
   FT_ULong
   af_shaper_get_elem( AF_StyleMetrics  metrics,
                       void*            buf_,
-                      unsigned int     idx,
+                      uint     idx,
                       FT_Long*         advance,
                       FT_Long*         y_offset )
   {

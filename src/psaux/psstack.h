@@ -65,7 +65,7 @@ FT_BEGIN_HEADER
     FT_Error*         error;
     CF2_StackNumber*  buffer;
     CF2_StackNumber*  top;
-    FT_UInt           stackSize;
+    uint           stackSize;
 
   } CF2_StackRec, *CF2_Stack;
 
@@ -73,7 +73,7 @@ FT_BEGIN_HEADER
   fn CF2_Stack /* internal */
   cf2_stack_init( FT_Memory  memory,
                   FT_Error*  error,
-                  FT_UInt    stackSize );
+                  uint    stackSize );
   fn void /* internal */
   cf2_stack_free( CF2_Stack  stack );
 

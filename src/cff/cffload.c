@@ -39,7 +39,7 @@
 
 #if 1
 
-  static const FT_UShort  cff_isoadobe_charset[229] =
+  static const ushort  cff_isoadobe_charset[229] =
   {
       0,   1,   2,   3,   4,   5,   6,   7,
       8,   9,  10,  11,  12,  13,  14,  15,
@@ -72,7 +72,7 @@
     224, 225, 226, 227, 228
   };
 
-  static const FT_UShort  cff_expert_charset[166] =
+  static const ushort  cff_expert_charset[166] =
   {
       0,   1, 229, 230, 231, 232, 233, 234,
     235, 236, 237, 238,  13,  14,  15,  99,
@@ -97,7 +97,7 @@
     373, 374, 375, 376, 377, 378
   };
 
-  static const FT_UShort  cff_expertsubset_charset[87] =
+  static const ushort  cff_expertsubset_charset[87] =
   {
       0,   1, 231, 232, 235, 236, 237, 238,
      13,  14,  15,  99, 239, 240, 241, 242,
@@ -112,7 +112,7 @@
     340, 341, 342, 343, 344, 345, 346
   };
 
-  static const FT_UShort  cff_standard_encoding[256] =
+  static const ushort  cff_standard_encoding[256] =
   {
       0,   0,   0,   0,   0,   0,   0,   0,
       0,   0,   0,   0,   0,   0,   0,   0,
@@ -148,7 +148,7 @@
     146, 147, 148, 149,   0,   0,   0,   0
   };
 
-  static const FT_UShort  cff_expert_encoding[256] =
+  static const ushort  cff_expert_encoding[256] =
   {
       0,   0,   0,   0,   0,   0,   0,   0,
       0,   0,   0,   0,   0,   0,   0,   0,
@@ -187,10 +187,10 @@
 #endif /* 1 */
 
 
-  fn FT_UShort /* internal */
-  cff_get_standard_encoding( FT_UInt  charcode )
+  fn ushort /* internal */
+  cff_get_standard_encoding( uint  charcode )
   {
-    return (FT_UShort)( charcode < 256 ? cff_standard_encoding[charcode]
+    return (ushort)( charcode < 256 ? cff_standard_encoding[charcode]
                                        : 0 );
   }
 
@@ -218,7 +218,7 @@
 
     if ( !FT_STREAM_READ( tmp, idx->off_size ) )
     {
-      FT_Int  nn;
+      int  nn;
 
 
       for ( nn = 0; nn < idx->off_size; nn++ )
@@ -238,7 +238,7 @@
   {
     FT_Error   error;
     FT_Memory  memory = stream->memory;
-    FT_UInt    count;
+    uint    count;
 
 
     FT_ZERO( idx );
@@ -502,7 +502,7 @@
 
   fn FT_Error /* internal */
   cff_index_access_element( CFF_Index  idx,
-                            FT_UInt    element,
+                            uint    element,
                             FT_Byte**  pbytes,
                             FT_ULong*  pbyte_len )
   {
@@ -615,7 +615,7 @@
   /* get an entry from Name INDEX */
   fn FT_String* /* internal */
   cff_index_get_name( CFF_Font  font,
-                      FT_UInt   element )
+                      uint   element )
   {
     CFF_Index   idx = &font->name_index;
     FT_Memory   memory;
@@ -649,7 +649,7 @@
   /* get an entry from String INDEX */
   fn FT_String* /* internal */
   cff_index_get_string( CFF_Font  font,
-                        FT_UInt   element )
+                        uint   element )
   {
     return ( element < font->num_strings )
              ? (FT_String*)font->strings[element]
@@ -659,7 +659,7 @@
 
   fn FT_String* /* internal */
   cff_index_get_sid_string( CFF_Font  font,
-                            FT_UInt   sid )
+                            uint   sid )
   {
     /* value 0xFFFFU indicates a missing dictionary entry */
     if ( sid == 0xFFFFU )
@@ -702,13 +702,13 @@
 
   static FT_Error
   CFF_Load_FD_Select( CFF_FDSelect  fdselect,
-                      FT_UInt       num_glyphs,
+                      uint       num_glyphs,
                       FT_Stream     stream,
                       FT_ULong      offset )
   {
     FT_Error  error;
     FT_Byte   format;
-    FT_UInt   num_ranges;
+    uint   num_ranges;
 
 
     /* read format */
@@ -753,7 +753,7 @@
 
   fn FT_Byte /* internal */
   cff_fd_select_get( CFF_FDSelect  fdselect,
-                     FT_UInt       glyph_index )
+                     uint       glyph_index )
   {
     FT_Byte  fd = 0;
 
@@ -782,7 +782,7 @@
         FT_Byte*  p       = fdselect->data;
         FT_Byte*  p_limit = p + fdselect->data_size;
         FT_Byte   fd2;
-        FT_UInt   first, limit;
+        uint   first, limit;
 
 
         first = FT_NEXT_USHORT( p );
@@ -829,12 +829,12 @@
 
   static FT_Error
   cff_charset_compute_cids( CFF_Charset  charset,
-                            FT_UInt      num_glyphs,
+                            uint      num_glyphs,
                             FT_Memory    memory )
   {
     FT_Error   error   = FT_Err_Ok;
-    FT_UInt    i;
-    FT_UShort  max_cid = 0;
+    uint    i;
+    ushort  max_cid = 0;
 
 
     if ( charset->max_cid > 0 )
@@ -854,7 +854,7 @@
     /* behaviour of recent Acroread versions.  The loop stops when  */
     /* the unsigned index wraps around after reaching zero.         */
     for ( i = num_glyphs - 1; i < num_glyphs; i-- )
-      charset->cids[charset->sids[i]] = (FT_UShort)i;
+      charset->cids[charset->sids[i]] = (ushort)i;
 
     charset->max_cid    = max_cid;
     charset->num_glyphs = num_glyphs;
@@ -864,11 +864,11 @@
   }
 
 
-  fn FT_UInt /* internal */
+  fn uint /* internal */
   cff_charset_cid_to_gindex( CFF_Charset  charset,
-                             FT_UInt      cid )
+                             uint      cid )
   {
-    FT_UInt  result = 0;
+    uint  result = 0;
 
 
     if ( cid <= charset->max_cid )
@@ -904,7 +904,7 @@
 
   static FT_Error
   cff_charset_load( CFF_Charset  charset,
-                    FT_UInt      num_glyphs,
+                    uint      num_glyphs,
                     FT_Stream    stream,
                     FT_ULong     base_offset,
                     FT_ULong     offset,
@@ -912,14 +912,14 @@
   {
     FT_Memory  memory = stream->memory;
     FT_Error   error  = FT_Err_Ok;
-    FT_UShort  glyph_sid;
+    ushort  glyph_sid;
 
 
     /* If the offset is greater than 2, we have to parse the charset */
     /* table.                                                        */
     if ( offset > 2 )
     {
-      FT_UInt  j;
+      uint  j;
 
 
       charset->offset = base_offset + offset;
@@ -954,8 +954,8 @@
       case 1:
       case 2:
         {
-          FT_UInt  nleft;
-          FT_UInt  i;
+          uint  nleft;
+          uint  i;
 
 
           j = 1;
@@ -983,7 +983,7 @@
             {
               FT_ERROR(( "cff_charset_load: invalid SID range trimmed"
                          " nleft=%d -> %ld\n", nleft, 0xFFFFL - glyph_sid ));
-              nleft = ( FT_UInt )( 0xFFFFL - glyph_sid );
+              nleft = ( uint )( 0xFFFFL - glyph_sid );
             }
 
             /* Fill in the range of sids -- `nleft + 1' glyphs. */
@@ -1011,7 +1011,7 @@
 
       charset->offset = offset;  /* record charset type */
 
-      switch ( (FT_UInt)offset )
+      switch ( (uint)offset )
       {
       case 0:
         if ( num_glyphs > 229 )
@@ -1095,7 +1095,7 @@
   cff_vstore_done( CFF_VStoreRec*  vstore,
                    FT_Memory       memory )
   {
-    FT_UInt  i;
+    uint  i;
 
 
     /* free regionList and axisLists */
@@ -1130,16 +1130,16 @@
     FT_Error   error  = FT_ERR( Invalid_File_Format );
 
     FT_ULong*  dataOffsetArray = NULL;
-    FT_UInt    i, j;
+    uint    i, j;
 
 
     /* no offset means no vstore to parse */
     if ( offset )
     {
-      FT_UInt   vsOffset;
-      FT_UInt   format;
-      FT_UInt   dataCount;
-      FT_UInt   regionCount;
+      uint   vsOffset;
+      uint   format;
+      uint   dataCount;
+      uint   regionCount;
       FT_ULong  regionListOffset;
 
 
@@ -1202,7 +1202,7 @@
         {
           CFF_AxisCoords*  axis = &region->axisList[j];
 
-          FT_Int  start, peak, end;
+          int  start, peak, end;
 
 
           if ( FT_READ_SHORT( start ) ||
@@ -1296,12 +1296,12 @@
   fn FT_Error /* internal */
   cff_blend_doBlend( CFF_SubFont  subFont,
                      CFF_Parser   parser,
-                     FT_UInt      numBlends )
+                     uint      numBlends )
   {
-    FT_UInt  delta;
-    FT_UInt  base;
-    FT_UInt  i, j;
-    FT_UInt  size;
+    uint  delta;
+    uint  base;
+    uint  i, j;
+    uint  size;
 
     CFF_Blend  blend = &subFont->blend;
 
@@ -1309,8 +1309,8 @@
     FT_Error   error  = FT_Err_Ok;                   /* for FT_REALLOC */
 
     /* compute expected number of operands for this blend */
-    FT_UInt  numOperands = (FT_UInt)( numBlends * blend->lenBV );
-    FT_UInt  count       = (FT_UInt)( parser->top - 1 - parser->stack );
+    uint  numOperands = (uint)( numBlends * blend->lenBV );
+    uint  count       = (uint)( parser->top - 1 - parser->stack );
 
 
     if ( numOperands > count )
@@ -1346,7 +1346,7 @@
       if ( blend_stack_old                         &&
            subFont->blend_stack != blend_stack_old )
       {
-        FT_PtrDist  offset = subFont->blend_stack - blend_stack_old;
+        isz  offset = subFont->blend_stack - blend_stack_old;
         FT_Byte**   p;
 
 
@@ -1364,7 +1364,7 @@
 
     for ( i = 0; i < numBlends; i++ )
     {
-      const FT_Int32*  weight = &blend->BV[1];
+      const int*  weight = &blend->BV[1];
       FT_Fixed         sum;
 
 
@@ -1383,10 +1383,10 @@
       /* opcode in both CFF and CFF2 DICTs.  See `cff_parse_num' for    */
       /* decode of this, which rounds to an integer.                    */
       *subFont->blend_top++ = 255;
-      *subFont->blend_top++ = (FT_Byte)( (FT_UInt32)sum >> 24 );
-      *subFont->blend_top++ = (FT_Byte)( (FT_UInt32)sum >> 16 );
-      *subFont->blend_top++ = (FT_Byte)( (FT_UInt32)sum >>  8 );
-      *subFont->blend_top++ = (FT_Byte)( (FT_UInt32)sum );
+      *subFont->blend_top++ = (FT_Byte)( (uint)sum >> 24 );
+      *subFont->blend_top++ = (FT_Byte)( (uint)sum >> 16 );
+      *subFont->blend_top++ = (FT_Byte)( (uint)sum >>  8 );
+      *subFont->blend_top++ = (FT_Byte)( (uint)sum );
     }
 
     /* leave only numBlends results on parser stack */
@@ -1403,17 +1403,17 @@
   /* Note: lenNDV == 0 produces a default blend vector, (1,0,0,...).   */
   fn FT_Error /* internal */
   cff_blend_build_vector( CFF_Blend  blend,
-                          FT_UInt    vsindex,
-                          FT_UInt    lenNDV,
+                          uint    vsindex,
+                          uint    lenNDV,
                           FT_Fixed*  NDV )
   {
     FT_Error   error  = FT_Err_Ok;            /* for FT_REALLOC */
     FT_Memory  memory = blend->font->memory;  /* for FT_REALLOC */
 
-    FT_UInt       len;
+    uint       len;
     CFF_VStore    vs;
     CFF_VarData*  varData;
-    FT_UInt       master;
+    uint       master;
 
 
     /* protect against malformed fonts */
@@ -1457,8 +1457,8 @@
     /* outer loop steps through master designs to be blended */
     for ( master = 0; master < len; master++ )
     {
-      FT_UInt         j;
-      FT_UInt         idx;
+      uint         j;
+      uint         idx;
       CFF_VarRegion*  varRegion;
 
 
@@ -1558,8 +1558,8 @@
   /* return TRUE if blend vector needs to be built. */
   fn FT_Bool /* internal */
   cff_blend_check_vector( CFF_Blend  blend,
-                          FT_UInt    vsindex,
-                          FT_UInt    lenNDV,
+                          uint    vsindex,
+                          uint    lenNDV,
                           FT_Fixed*  NDV )
   {
     if ( !blend->builtBV                                ||
@@ -1582,7 +1582,7 @@
 
   fn FT_Error /* internal */
   cff_get_var_blend( FT_Face      face,             /* CFF_Face */
-                     FT_UInt     *num_coords,
+                     uint     *num_coords,
                      FT_Fixed*   *coords,
                      FT_Fixed*   *normalizedcoords,
                      FT_MM_Var*  *mm_var )
@@ -1625,16 +1625,16 @@
   static FT_Error
   cff_encoding_load( CFF_Encoding  encoding,
                      CFF_Charset   charset,
-                     FT_UInt       num_glyphs,
+                     uint       num_glyphs,
                      FT_Stream     stream,
                      FT_ULong      base_offset,
                      FT_ULong      offset )
   {
     FT_Error   error = FT_Err_Ok;
-    FT_UInt    count;
-    FT_UInt    j;
-    FT_UShort  glyph_sid;
-    FT_UInt    glyph_code;
+    uint    count;
+    uint    j;
+    ushort  glyph_sid;
+    uint    glyph_code;
 
 
     /* Check for charset->sids.  If we do not have this, we fail. */
@@ -1696,7 +1696,7 @@
             if ( j < num_glyphs )
             {
               /* Assign code to GID mapping. */
-              encoding->codes[glyph_code] = (FT_UShort)j;
+              encoding->codes[glyph_code] = (ushort)j;
 
               /* Assign code to SID mapping. */
               encoding->sids[glyph_code] = charset->sids[j];
@@ -1709,9 +1709,9 @@
 
       case 1:
         {
-          FT_UInt  nleft;
-          FT_UInt  i = 1;
-          FT_UInt  k;
+          uint  nleft;
+          uint  i = 1;
+          uint  k;
 
 
           encoding->count = 0;
@@ -1731,7 +1731,7 @@
             nleft++;
 
             /* compute max number of character codes */
-            if ( (FT_UInt)nleft > encoding->count )
+            if ( (uint)nleft > encoding->count )
               encoding->count = nleft;
 
             /* Fill in the range of codes/sids. */
@@ -1741,7 +1741,7 @@
               if ( k < num_glyphs && glyph_code < 256 )
               {
                 /* Assign code to GID mapping. */
-                encoding->codes[glyph_code] = (FT_UShort)k;
+                encoding->codes[glyph_code] = (ushort)k;
 
                 /* Assign code to SID mapping. */
                 encoding->sids[glyph_code] = charset->sids[k];
@@ -1764,7 +1764,7 @@
       /* Parse supplemental encodings, if any. */
       if ( encoding->format & 0x80 )
       {
-        FT_UInt  gindex;
+        uint  gindex;
 
 
         /* count supplements */
@@ -1790,7 +1790,7 @@
           {
             if ( charset->sids[gindex] == glyph_sid )
             {
-              encoding->codes[glyph_code] = (FT_UShort)gindex;
+              encoding->codes[glyph_code] = (ushort)gindex;
               break;
             }
           }
@@ -1804,7 +1804,7 @@
       /* encoding (see the note at the end of section 12 in the CFF    */
       /* specification).                                               */
 
-      switch ( (FT_UInt)offset )
+      switch ( (uint)offset )
       {
       case 0:
         /* First, copy the code to SID mapping. */
@@ -1829,8 +1829,8 @@
 
         for ( j = 0; j < 256; j++ )
         {
-          FT_UInt  sid = encoding->sids[j];
-          FT_UInt  gid = 0;
+          uint  sid = encoding->sids[j];
+          uint  gid = 0;
 
 
           if ( sid )
@@ -1838,7 +1838,7 @@
 
           if ( gid != 0 )
           {
-            encoding->codes[j] = (FT_UShort)gid;
+            encoding->codes[j] = (ushort)gid;
             encoding->count    = j + 1;
           }
           else
@@ -1870,7 +1870,7 @@
   fn FT_Error /* internal */
   cff_load_private_dict( CFF_Font     font,
                          CFF_SubFont  subfont,
-                         FT_UInt      lenNDV,
+                         uint      lenNDV,
                          FT_Fixed*    NDV )
   {
     FT_Error         error  = FT_Err_Ok;
@@ -1878,7 +1878,7 @@
     CFF_FontRecDict  top    = &subfont->font_dict;
     CFF_Private      priv   = &subfont->private_dict;
     FT_Stream        stream = font->stream;
-    FT_UInt          stackSize;
+    uint          stackSize;
 
 
     /* store handle needed to access memory, vstore for blend;    */
@@ -1977,10 +1977,10 @@
   static FT_Error
   cff_subfont_load( CFF_SubFont  subfont,
                     CFF_Index    idx,
-                    FT_UInt      font_index,
+                    uint      font_index,
                     FT_Stream    stream,
                     FT_ULong     base_offset,
-                    FT_UInt      code,
+                    uint      code,
                     CFF_Font     font,
                     CFF_Face     face )
   {
@@ -1995,7 +1995,7 @@
 
     FT_Bool  cff2      = FT_BOOL( code == CFF2_CODE_TOPDICT  ||
                                   code == CFF2_CODE_FONTDICT );
-    FT_UInt  stackSize = cff2 ? CFF2_DEFAULT_STACK
+    uint  stackSize = cff2 ? CFF2_DEFAULT_STACK
                               : CFF_MAX_STACK_DEPTH;
 
 
@@ -2101,34 +2101,34 @@
         PS_Driver  driver = (PS_Driver)FT_FACE_DRIVER( face );
 
 
-        subfont->random = (FT_UInt32)driver->random_seed;
+        subfont->random = (uint)driver->random_seed;
         if ( driver->random_seed )
         {
           do
           {
             driver->random_seed =
-              (FT_Int32)psaux->cff_random( (FT_UInt32)driver->random_seed );
+              (int)psaux->cff_random( (uint)driver->random_seed );
 
           } while ( driver->random_seed < 0 );
         }
       }
       else
       {
-        subfont->random = (FT_UInt32)face->root.internal->random_seed;
+        subfont->random = (uint)face->root.internal->random_seed;
         if ( face->root.internal->random_seed )
         {
           do
           {
             face->root.internal->random_seed =
-              (FT_Int32)psaux->cff_random(
-                (FT_UInt32)face->root.internal->random_seed );
+              (int)psaux->cff_random(
+                (uint)face->root.internal->random_seed );
 
           } while ( face->root.internal->random_seed < 0 );
         }
       }
 
       if ( !subfont->random )
-        subfont->random = (FT_UInt32)priv->initial_random_seed;
+        subfont->random = (uint)priv->initial_random_seed;
     }
 
     /* read the local subrs, if any */
@@ -2174,7 +2174,7 @@
   fn FT_Error /* internal */
   cff_font_load( FT_Library library,
                  FT_Stream  stream,
-                 FT_Int     face_index,
+                 int     face_index,
                  CFF_Font   font,
                  CFF_Face   face,
                  FT_Bool    pure_cff,
@@ -2197,7 +2197,7 @@
     FT_ULong         base_offset;
     CFF_FontRecDict  dict;
     CFF_IndexRec     string_index;
-    FT_UInt          subfont_index;
+    uint          subfont_index;
 
 
     FT_ZERO( font );
@@ -2336,7 +2336,7 @@
     if ( pure_cff )
     {
       /* well, we don't really forget the `disabled' fonts... */
-      subfont_index = (FT_UInt)( face_index & 0xFFFF );
+      subfont_index = (uint)( face_index & 0xFFFF );
 
       if ( face_index > 0 && subfont_index >= font->name_index.count )
       {
@@ -2394,7 +2394,7 @@
     {
       CFF_IndexRec  fd_index;
       CFF_SubFont   sub = NULL;
-      FT_UInt       idx;
+      uint       idx;
 
 
       /* for CFF2, read the Variation Store if available;                 */
@@ -2523,7 +2523,7 @@
   cff_font_done( CFF_Font  font )
   {
     FT_Memory  memory = font->memory;
-    FT_UInt    idx;
+    uint    idx;
 
 
     cff_index_done( &font->global_subrs_index );

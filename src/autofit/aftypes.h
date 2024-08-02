@@ -83,11 +83,11 @@ extern void*  af_debug_hints_;
 
 
   fn void /* internal */
-  af_sort_pos( FT_UInt  count,
+  af_sort_pos( uint  count,
                FT_Pos*  table );
 
   fn void /* internal */
-  af_sort_and_quantize_widths( FT_UInt*  count,
+  af_sort_and_quantize_widths( uint*  count,
                                AF_Width  widths,
                                FT_Pos    threshold );
 
@@ -125,7 +125,7 @@ extern void*  af_debug_hints_;
     FT_Pos          x_delta;     /* in 1/64 device pixels                 */
     FT_Pos          y_delta;     /* in 1/64 device pixels                 */
     FT_Render_Mode  render_mode; /* monochrome, anti-aliased, LCD, etc.   */
-    FT_UInt32       flags;       /* additional control flags, see above   */
+    uint       flags;       /* additional control flags, see above   */
 
   } AF_ScalerRec, *AF_Scaler;
 
@@ -165,7 +165,7 @@ extern void*  af_debug_hints_;
                                      AF_StyleMetrics  metrics );
 
   typedef FT_Error
-  (*AF_WritingSystem_ApplyHintsFunc)( FT_UInt          glyph_index,
+  (*AF_WritingSystem_ApplyHintsFunc)( uint          glyph_index,
                                       AF_GlyphHints    hints,
                                       FT_Outline*      outline,
                                       AF_StyleMetrics  metrics );
@@ -265,12 +265,12 @@ extern void*  af_debug_hints_;
 
   typedef struct  AF_Script_UniRangeRec_
   {
-    FT_UInt32  first;
-    FT_UInt32  last;
+    uint  first;
+    uint  last;
 
   } AF_Script_UniRangeRec;
 
-#define AF_UNIRANGE_REC( a, b ) { (FT_UInt32)(a), (FT_UInt32)(b) }
+#define AF_UNIRANGE_REC( a, b ) { (uint)(a), (uint)(b) }
 
   typedef const AF_Script_UniRangeRec*  AF_Script_UniRange;
 

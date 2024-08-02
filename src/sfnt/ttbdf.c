@@ -81,10 +81,10 @@
 
     {
       FT_Byte*   p           = bdf->table;
-      FT_UInt    version     = FT_NEXT_USHORT( p );
-      FT_UInt    num_strikes = FT_NEXT_USHORT( p );
+      uint    version     = FT_NEXT_USHORT( p );
+      uint    num_strikes = FT_NEXT_USHORT( p );
       FT_ULong   strings     = FT_NEXT_ULONG ( p );
-      FT_UInt    count;
+      uint    count;
       FT_Byte*   strike;
 
 
@@ -107,7 +107,7 @@
 
       for ( ; count > 0; count-- )
       {
-        FT_UInt  num_items = FT_PEEK_USHORT( p + 2 );
+        uint  num_items = FT_PEEK_USHORT( p + 2 );
 
         /*
          * We don't need to check the value sets themselves, since this
@@ -145,7 +145,7 @@
     FT_Size    size   = face->size;
     FT_Error   error  = FT_Err_Ok;
     FT_Byte*   p;
-    FT_UInt    count;
+    uint    count;
     FT_Byte*   strike;
     FT_Offset  property_len;
 
@@ -174,8 +174,8 @@
 
     for ( ; count > 0; count-- )
     {
-      FT_UInt  _ppem  = FT_NEXT_USHORT( p );
-      FT_UInt  _count = FT_NEXT_USHORT( p );
+      uint  _ppem  = FT_NEXT_USHORT( p );
+      uint  _count = FT_NEXT_USHORT( p );
 
 
       if ( _ppem == size->metrics.y_ppem )
@@ -192,13 +192,13 @@
     p = strike;
     for ( ; count > 0; count-- )
     {
-      FT_UInt  type = FT_PEEK_USHORT( p + 4 );
+      uint  type = FT_PEEK_USHORT( p + 4 );
 
 
       if ( ( type & 0x10 ) != 0 )
       {
-        FT_UInt32  name_offset = FT_PEEK_ULONG( p     );
-        FT_UInt32  value       = FT_PEEK_ULONG( p + 6 );
+        uint  name_offset = FT_PEEK_ULONG( p     );
+        uint  value       = FT_PEEK_ULONG( p + 6 );
 
         /* be a bit paranoid for invalid entries here */
         if ( name_offset < bdf->strings_size                    &&
@@ -224,7 +224,7 @@
 
           case 0x02:
             aprop->type      = BDF_PROPERTY_TYPE_INTEGER;
-            aprop->u.integer = (FT_Int32)value;
+            aprop->u.integer = (int)value;
             error            = FT_Err_Ok;
             goto Exit;
 

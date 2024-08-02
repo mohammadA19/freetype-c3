@@ -54,7 +54,7 @@
                         CF2_Fixed*  darkenAmount,
                         CF2_Fixed   boldenAmount,
                         FT_Bool     stemDarkened,
-                        FT_Int*     darkenParams )
+                        int*     darkenParams )
   {
     /*
      * Total darkening amount is computed in 1000 unit character space
@@ -107,7 +107,7 @@
     /* adjusting for emRatio converts darkenAmount to character */
     /* space (font units).                                      */
     CF2_Fixed  stemWidthPer1000, scaledStem;
-    FT_Int     logBase2;
+    int     logBase2;
 
 
     *darkenAmount = 0;
@@ -121,14 +121,14 @@
 
     if ( stemDarkened )
     {
-      FT_Int  x1 = darkenParams[0];
-      FT_Int  y1 = darkenParams[1];
-      FT_Int  x2 = darkenParams[2];
-      FT_Int  y2 = darkenParams[3];
-      FT_Int  x3 = darkenParams[4];
-      FT_Int  y3 = darkenParams[5];
-      FT_Int  x4 = darkenParams[6];
-      FT_Int  y4 = darkenParams[7];
+      int  x1 = darkenParams[0];
+      int  y1 = darkenParams[1];
+      int  x2 = darkenParams[2];
+      int  y2 = darkenParams[3];
+      int  x3 = darkenParams[4];
+      int  y3 = darkenParams[5];
+      int  x4 = darkenParams[6];
+      int  y4 = darkenParams[7];
 
 
       /* convert from true character space to 1000 unit character space; */
@@ -152,8 +152,8 @@
       /* is flagged as possible overflow because 0xFF.FFFF * 0xFF.FFFF = */
       /* 0xFFFF.FE00 is also 23+23.                                      */
 
-      logBase2 = FT_MSB( (FT_UInt32)stemWidthPer1000 ) +
-                   FT_MSB( (FT_UInt32)ppem );
+      logBase2 = FT_MSB( (uint)stemWidthPer1000 ) +
+                   FT_MSB( (uint)ppem );
 
       if ( logBase2 >= 46 )
         /* possible overflow */
@@ -168,9 +168,9 @@
 
       else if ( scaledStem < cf2_intToFixed( x2 ) )
       {
-        FT_Int  xdelta = x2 - x1;
-        FT_Int  ydelta = y2 - y1;
-        FT_Int  x      = stemWidthPer1000 -
+        int  xdelta = x2 - x1;
+        int  ydelta = y2 - y1;
+        int  x      = stemWidthPer1000 -
                            FT_DivFix( cf2_intToFixed( x1 ), ppem );
 
 
@@ -185,9 +185,9 @@
       {
       Try_x3:
         {
-          FT_Int  xdelta = x3 - x2;
-          FT_Int  ydelta = y3 - y2;
-          FT_Int  x      = stemWidthPer1000 -
+          int  xdelta = x3 - x2;
+          int  ydelta = y3 - y2;
+          int  x      = stemWidthPer1000 -
                              FT_DivFix( cf2_intToFixed( x2 ), ppem );
 
 
@@ -203,9 +203,9 @@
       {
       Try_x4:
         {
-          FT_Int  xdelta = x4 - x3;
-          FT_Int  ydelta = y4 - y3;
-          FT_Int  x      = stemWidthPer1000 -
+          int  xdelta = x4 - x3;
+          int  ydelta = y4 - y3;
+          int  x      = stemWidthPer1000 -
                              FT_DivFix( cf2_intToFixed( x3 ), ppem );
 
 

@@ -397,7 +397,7 @@
                  FTC_Node   node )
   {
     node->hash        = hash;
-    node->cache_index = (FT_UShort)cache->index;
+    node->cache_index = (ushort)cache->index;
     node->ref_count   = 0;
 
     ftc_node_hash_link( node, cache );

@@ -43,7 +43,7 @@
   {
     FT_ULong   substitutionTable;
     FT_ULong   substitutionTable_length;
-    FT_UShort  substitutionTable_num_lookupTables;
+    ushort  substitutionTable_num_lookupTables;
 
   }  GXV_morx_subtable_type1_StateOptRec,
     *GXV_morx_subtable_type1_StateOptRecData;
@@ -102,20 +102,20 @@
 
   static void
   gxv_morx_subtable_type1_entry_validate(
-    FT_UShort                       state,
-    FT_UShort                       flags,
+    ushort                       state,
+    ushort                       flags,
     GXV_StateTable_GlyphOffsetCPtr  glyphOffset_p,
     FT_Bytes                        table,
     FT_Bytes                        limit,
     GXV_Validator                   gxvalid )
   {
 #ifdef GXV_LOAD_TRACE_VARS
-    FT_UShort  setMark;
-    FT_UShort  dontAdvance;
+    ushort  setMark;
+    ushort  dontAdvance;
 #endif
-    FT_UShort  reserved;
-    FT_Short   markIndex;
-    FT_Short   currentIndex;
+    ushort  reserved;
+    short   markIndex;
+    short   currentIndex;
 
     GXV_morx_subtable_type1_StateOptRecData  optdata =
       (GXV_morx_subtable_type1_StateOptRecData)gxvalid->xstatetable.optdata;
@@ -126,14 +126,14 @@
 
 
 #ifdef GXV_LOAD_TRACE_VARS
-    setMark      = (FT_UShort)( ( flags >> 15 ) & 1 );
-    dontAdvance  = (FT_UShort)( ( flags >> 14 ) & 1 );
+    setMark      = (ushort)( ( flags >> 15 ) & 1 );
+    dontAdvance  = (ushort)( ( flags >> 14 ) & 1 );
 #endif
 
-    reserved = (FT_UShort)( flags & 0x3FFF );
+    reserved = (ushort)( flags & 0x3FFF );
 
-    markIndex    = (FT_Short)( glyphOffset_p->ul >> 16 );
-    currentIndex = (FT_Short)( glyphOffset_p->ul       );
+    markIndex    = (short)( glyphOffset_p->ul >> 16 );
+    currentIndex = (short)( glyphOffset_p->ul       );
 
     GXV_TRACE(( " setMark=%01d dontAdvance=%01d\n",
                 setMark, dontAdvance ));
@@ -149,16 +149,16 @@
 
     if ( optdata->substitutionTable_num_lookupTables < markIndex + 1 )
       optdata->substitutionTable_num_lookupTables =
-        (FT_UShort)( markIndex + 1 );
+        (ushort)( markIndex + 1 );
 
     if ( optdata->substitutionTable_num_lookupTables < currentIndex + 1 )
       optdata->substitutionTable_num_lookupTables =
-        (FT_UShort)( currentIndex + 1 );
+        (ushort)( currentIndex + 1 );
   }
 
 
   static void
-  gxv_morx_subtable_type1_LookupValue_validate( FT_UShort            glyph,
+  gxv_morx_subtable_type1_LookupValue_validate( ushort            glyph,
                                                 GXV_LookupValueCPtr  value_p,
                                                 GXV_Validator        gxvalid )
   {
@@ -173,19 +173,19 @@
 
   static GXV_LookupValueDesc
   gxv_morx_subtable_type1_LookupFmt4_transit(
-    FT_UShort            relative_gindex,
+    ushort            relative_gindex,
     GXV_LookupValueCPtr  base_value_p,
     FT_Bytes             lookuptbl_limit,
     GXV_Validator        gxvalid )
   {
     FT_Bytes             p;
     FT_Bytes             limit;
-    FT_UShort            offset;
+    ushort            offset;
     GXV_LookupValueDesc  value;
 
     /* XXX: check range? */
-    offset = (FT_UShort)( base_value_p->u +
-                          relative_gindex * sizeof ( FT_UShort ) );
+    offset = (ushort)( base_value_p->u +
+                          relative_gindex * sizeof ( ushort ) );
 
     p     = gxvalid->lookuptbl_head + offset;
     limit = lookuptbl_limit;
@@ -206,7 +206,7 @@
                                                       GXV_Validator  gxvalid )
   {
     FT_Bytes   p = table;
-    FT_UShort  i;
+    ushort  i;
 
     GXV_morx_subtable_type1_StateOptRecData  optdata =
       (GXV_morx_subtable_type1_StateOptRecData)gxvalid->xstatetable.optdata;

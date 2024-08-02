@@ -37,11 +37,11 @@
   /* This code is freely based on cairo-png.c.  There's so many ways */
   /* to call libpng, and the way cairo does it is defacto standard.  */
 
-  static unsigned int
-  multiply_alpha( unsigned int  alpha,
-                  unsigned int  color )
+  static uint
+  multiply_alpha( uint  alpha,
+                  uint  color )
   {
-    unsigned int  temp = alpha * color + 0x80;
+    uint  temp = alpha * color + 0x80;
 
 
     return ( temp + ( temp >> 8 ) ) >> 8;
@@ -54,7 +54,7 @@
                     png_row_infop  row_info,
                     png_bytep      data )
   {
-    unsigned int  i = 0, limit;
+    uint  i = 0, limit;
 
     /* The `vector_size' attribute was introduced in gcc 3.1, which */
     /* predates clang; the `__BYTE_ORDER__' preprocessor symbol was */
@@ -84,7 +84,7 @@
 #define vector_shuffle  __builtin_shuffle
 #endif
 
-    typedef unsigned short  v82 __attribute__(( vector_size( 16 ) ));
+    typedef ushort  v82 __attribute__(( vector_size( 16 ) ));
 
 
     if ( row_info->rowbytes > 15 )
@@ -135,7 +135,7 @@
     for ( ; i < limit; i += 4 )
     {
       unsigned char*  base  = &data[i];
-      unsigned int    alpha = base[3];
+      uint    alpha = base[3];
 
 
       if ( alpha == 0 )
@@ -143,9 +143,9 @@
 
       else
       {
-        unsigned int  red   = base[0];
-        unsigned int  green = base[1];
-        unsigned int  blue  = base[2];
+        uint  red   = base[0];
+        uint  green = base[1];
+        uint  blue  = base[2];
 
 
         if ( alpha != 0xFF )
@@ -170,7 +170,7 @@
                          png_row_infop  row_info,
                          png_bytep      data )
   {
-    unsigned int  i;
+    uint  i;
 
     FT_UNUSED( png );
 
@@ -178,9 +178,9 @@
     for ( i = 0; i < row_info->rowbytes; i += 4 )
     {
       unsigned char*  base  = &data[i];
-      unsigned int    red   = base[0];
-      unsigned int    green = base[1];
-      unsigned int    blue  = base[2];
+      uint    red   = base[0];
+      uint    green = base[1];
+      uint    blue  = base[2];
 
 
       base[0] = (unsigned char)blue;
@@ -250,13 +250,13 @@
 
   fn FT_Error /* internal */
   Load_SBit_Png( FT_GlyphSlot     slot,
-                 FT_Int           x_offset,
-                 FT_Int           y_offset,
-                 FT_Int           pix_bits,
+                 int           x_offset,
+                 int           y_offset,
+                 int           pix_bits,
                  TT_SBit_Metrics  metrics,
                  FT_Memory        memory,
                  FT_Byte*         data,
-                 FT_UInt          png_len,
+                 uint          png_len,
                  FT_Bool          populate_map_and_metrics,
                  FT_Bool          metrics_only )
   {
@@ -269,7 +269,7 @@
     png_uint_32  imgWidth, imgHeight;
 
     int         bitdepth, color_type, interlace;
-    FT_Int      i;
+    int      i;
 
     /* `rows` gets modified within a 'setjmp' scope; */
     /* we thus need the `volatile` keyword.          */
@@ -284,8 +284,8 @@
     }
 
     if ( !populate_map_and_metrics                            &&
-         ( (FT_UInt)x_offset + metrics->width  > map->width ||
-           (FT_UInt)y_offset + metrics->height > map->rows  ||
+         ( (uint)x_offset + metrics->width  > map->width ||
+           (uint)y_offset + metrics->height > map->rows  ||
            pix_bits != 32                                   ||
            map->pixel_mode != FT_PIXEL_MODE_BGRA            ) )
     {
@@ -329,8 +329,8 @@
 
     if ( error                                        ||
          ( !populate_map_and_metrics                &&
-           ( (FT_Int)imgWidth  != metrics->width  ||
-             (FT_Int)imgHeight != metrics->height ) ) )
+           ( (int)imgWidth  != metrics->width  ||
+             (int)imgHeight != metrics->height ) ) )
       goto DestroyExit;
 
     if ( populate_map_and_metrics )
@@ -342,8 +342,8 @@
         goto DestroyExit;
       }
 
-      metrics->width  = (FT_UShort)imgWidth;
-      metrics->height = (FT_UShort)imgHeight;
+      metrics->width  = (ushort)imgWidth;
+      metrics->height = (ushort)imgHeight;
 
       map->width      = metrics->width;
       map->rows       = metrics->height;
@@ -434,7 +434,7 @@
       goto DestroyExit;
     }
 
-    for ( i = 0; i < (FT_Int)imgHeight; i++ )
+    for ( i = 0; i < (int)imgHeight; i++ )
       rows[i] = map->buffer + ( y_offset + i ) * map->pitch + x_offset * 4;
 
     png_read_image( png, rows );

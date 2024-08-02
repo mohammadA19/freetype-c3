@@ -71,11 +71,11 @@ FT_BEGIN_HEADER
    */
   typedef struct  T1_EncodingRecRec_
   {
-    FT_Int       num_chars;
-    FT_Int       code_first;
-    FT_Int       code_last;
+    int       num_chars;
+    int       code_first;
+    int       code_last;
 
-    FT_UShort*         char_index;
+    ushort*         char_index;
     const FT_String**  char_name;
 
   } T1_EncodingRec, *T1_Encoding;
@@ -88,7 +88,7 @@ FT_BEGIN_HEADER
    */
   typedef struct  PS_FontExtraRec_
   {
-    FT_UShort  fs_type;
+    ushort  fs_type;
 
   } PS_FontExtraRec;
 
@@ -107,15 +107,15 @@ FT_BEGIN_HEADER
     FT_Byte*         charstrings_block;
     FT_Byte*         glyph_names_block;
 
-    FT_Int           num_subrs;
+    int           num_subrs;
     FT_Byte**        subrs;
-    FT_UInt*         subrs_len;
+    uint*         subrs_len;
     FT_Hash          subrs_hash;
 
-    FT_Int           num_glyphs;
+    int           num_glyphs;
     FT_String**      glyph_names;       /* array of glyph names       */
     FT_Byte**        charstrings;       /* array of glyph charstrings */
-    FT_UInt*         charstrings_len;
+    uint*         charstrings_len;
 
     FT_Byte          paint_type;
     FT_Byte          font_type;
@@ -131,7 +131,7 @@ FT_BEGIN_HEADER
 
   typedef struct  CID_SubrsRec_
   {
-    FT_Int     num_subrs;
+    int     num_subrs;
     FT_Byte**  code;
 
   } CID_SubrsRec, *CID_Subrs;
@@ -152,8 +152,8 @@ FT_BEGIN_HEADER
 
   typedef struct  PS_BlendRec_
   {
-    FT_UInt          num_designs;
-    FT_UInt          num_axis;
+    uint          num_designs;
+    uint          num_axis;
 
     FT_String*       axis_names[T1_MAX_MM_AXIS];
     FT_Fixed*        design_pos[T1_MAX_MM_DESIGNS];
@@ -175,8 +175,8 @@ FT_BEGIN_HEADER
     /* corresponds to default_weight_vector --                */
     /* num_default_design_vector == 0 means it is not present */
     /* in the font and associated metrics files               */
-    FT_UInt          default_design_vector[T1_MAX_MM_DESIGNS];
-    FT_UInt          num_default_design_vector;
+    uint          default_design_vector[T1_MAX_MM_DESIGNS];
+    uint          num_default_design_vector;
 
   } PS_BlendRec, *PS_Blend;
 
@@ -199,7 +199,7 @@ FT_BEGIN_HEADER
 
   typedef struct  AFM_TrackKernRec_
   {
-    FT_Int    degree;
+    int    degree;
     FT_Fixed  min_ptsize;
     FT_Fixed  min_kern;
     FT_Fixed  max_ptsize;
@@ -209,10 +209,10 @@ FT_BEGIN_HEADER
 
   typedef struct  AFM_KernPairRec_
   {
-    FT_UInt  index1;
-    FT_UInt  index2;
-    FT_Int   x;
-    FT_Int   y;
+    uint  index1;
+    uint  index2;
+    int   x;
+    int   y;
 
   } AFM_KernPairRec, *AFM_KernPair;
 
@@ -223,9 +223,9 @@ FT_BEGIN_HEADER
     FT_Fixed       Ascender;     /* optional, mind the zero */
     FT_Fixed       Descender;    /* optional, mind the zero */
     AFM_TrackKern  TrackKerns;   /* free if non-NULL */
-    FT_UInt        NumTrackKern;
+    uint        NumTrackKern;
     AFM_KernPair   KernPairs;    /* free if non-NULL */
-    FT_UInt        NumKernPair;
+    uint        NumKernPair;
 
   } AFM_FontInfoRec, *AFM_FontInfo;
 
@@ -263,12 +263,12 @@ FT_BEGIN_HEADER
     /* undocumented, optional: indices of subroutines that express      */
     /* the NormalizeDesignVector and the ConvertDesignVector procedure, */
     /* respectively, as Type 2 charstrings; -1 if keywords not present  */
-    FT_Int         ndv_idx;
-    FT_Int         cdv_idx;
+    int         ndv_idx;
+    int         cdv_idx;
 
     /* undocumented, optional: has the same meaning as len_buildchar */
     /* for Type 2 fonts; manipulated by othersubrs 19, 24, and 25    */
-    FT_UInt        len_buildchar;
+    uint        len_buildchar;
     FT_Long*       buildchar;
 
     /* since version 2.1 - interface to PostScript hinter */

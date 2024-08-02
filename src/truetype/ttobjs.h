@@ -63,9 +63,9 @@ FT_BEGIN_HEADER
    */
   typedef struct  TT_GraphicsState_
   {
-    FT_UShort      rp0;
-    FT_UShort      rp1;
-    FT_UShort      rp2;
+    ushort      rp0;
+    ushort      rp1;
+    ushort      rp2;
 
     FT_UnitVector  dualVector;
     FT_UnitVector  projVector;
@@ -73,14 +73,14 @@ FT_BEGIN_HEADER
 
     FT_Long        loop;
     FT_F26Dot6     minimum_distance;
-    FT_Int         round_state;
+    int         round_state;
 
     FT_Bool        auto_flip;
     FT_F26Dot6     control_value_cutin;
     FT_F26Dot6     single_width_cutin;
     FT_F26Dot6     single_width_value;
-    FT_UShort      delta_base;
-    FT_UShort      delta_shift;
+    ushort      delta_base;
+    ushort      delta_shift;
 
     FT_Byte        instruct_control;
     /* According to Greg Hitchcock from Microsoft, the `scan_control'     */
@@ -88,11 +88,11 @@ FT_BEGIN_HEADER
     /* integer; the high-word part holds the SCANTYPE value, the low-word */
     /* part the SCANCTRL value.  We separate it into two fields.          */
     FT_Bool        scan_control;
-    FT_Int         scan_type;
+    int         scan_type;
 
-    FT_UShort      gep0;
-    FT_UShort      gep1;
-    FT_UShort      gep2;
+    ushort      gep0;
+    ushort      gep1;
+    ushort      gep2;
 
   } TT_GraphicsState;
 
@@ -104,8 +104,8 @@ FT_BEGIN_HEADER
 
   fn FT_Error /* internal */
   tt_glyphzone_new( FT_Memory     memory,
-                    FT_UShort     maxPoints,
-                    FT_UShort     maxContours,
+                    ushort     maxPoints,
+                    ushort     maxContours,
                     TT_GlyphZone  zone );
 
 #endif /* TT_USE_BYTECODE_INTERPRETER */
@@ -157,10 +157,10 @@ FT_BEGIN_HEADER
    */
   typedef struct  TT_DefRecord_
   {
-    FT_Int    range;          /* in which code range is it located?     */
+    int    range;          /* in which code range is it located?     */
     FT_Long   start;          /* where does it start?                   */
     FT_Long   end;            /* where does it end?                     */
-    FT_UInt   opc;            /* function #, or instruction code        */
+    uint   opc;            /* function #, or instruction code        */
     FT_Bool   active;         /* is it active?                          */
 
   } TT_DefRecord, *TT_DefArray;
@@ -251,7 +251,7 @@ FT_BEGIN_HEADER
     FT_Long     x_ratio;
     FT_Long     y_ratio;
 
-    FT_UShort   ppem;               /* maximum ppem size              */
+    ushort   ppem;               /* maximum ppem size              */
     FT_Long     ratio;              /* current ratio                  */
     FT_Fixed    scale;
 
@@ -288,16 +288,16 @@ FT_BEGIN_HEADER
 
     FT_Long            point_size;    /* for the `MPS' bytecode instruction */
 
-    FT_UInt            num_function_defs; /* number of function definitions */
-    FT_UInt            max_function_defs;
+    uint            num_function_defs; /* number of function definitions */
+    uint            max_function_defs;
     TT_DefArray        function_defs;     /* table of function definitions  */
 
-    FT_UInt            num_instruction_defs;  /* number of ins. definitions */
-    FT_UInt            max_instruction_defs;
+    uint            num_instruction_defs;  /* number of ins. definitions */
+    uint            max_instruction_defs;
     TT_DefArray        instruction_defs;      /* table of ins. definitions  */
 
-    FT_UInt            max_func;
-    FT_UInt            max_ins;
+    uint            max_func;
+    uint            max_ins;
 
     TT_CodeRangeTable  codeRangeTable;
 
@@ -306,7 +306,7 @@ FT_BEGIN_HEADER
     FT_ULong           cvt_size;      /* the scaled control value table */
     FT_Long*           cvt;
 
-    FT_UShort          storage_size; /* The storage area is now part of */
+    ushort          storage_size; /* The storage area is now part of */
     FT_Long*           storage;      /* the instance                    */
 
     TT_GlyphZoneRec    twilight;     /* The instance's twilight zone    */
@@ -333,7 +333,7 @@ FT_BEGIN_HEADER
 
     TT_GlyphZoneRec  zone;     /* glyph loader points zone */
 
-    FT_UInt  interpreter_version;
+    uint  interpreter_version;
 
   } TT_DriverRec;
 
@@ -354,8 +354,8 @@ FT_BEGIN_HEADER
   fn FT_Error /* internal */
   tt_face_init( FT_Stream      stream,
                 FT_Face        ttface,      /* TT_Face */
-                FT_Int         face_index,
-                FT_Int         num_params,
+                int         face_index,
+                int         num_params,
                 FT_Parameter*  params );
 
   fn void /* internal */

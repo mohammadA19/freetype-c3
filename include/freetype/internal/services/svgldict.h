@@ -36,11 +36,11 @@ FT_BEGIN_HEADER
 
   typedef FT_Error
   (*FT_GlyphDict_GetNameFunc)( FT_Face     face,
-                               FT_UInt     glyph_index,
+                               uint     glyph_index,
                                FT_Pointer  buffer,
-                               FT_UInt     buffer_max );
+                               uint     buffer_max );
 
-  typedef FT_UInt
+  typedef uint
   (*FT_GlyphDict_NameIndexFunc)( FT_Face           face,
                                  const FT_String*  glyph_name );
 

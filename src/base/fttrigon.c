@@ -59,7 +59,7 @@
   static FT_Fixed
   ft_trig_downscale( FT_Fixed  val )
   {
-    FT_Int  s = 1;
+    int  s = 1;
 
 
     if ( val < 0 )
@@ -82,8 +82,8 @@
   static FT_Fixed
   ft_trig_downscale( FT_Fixed  val )
   {
-    FT_Int     s = 1;
-    FT_UInt32  lo1, hi1, lo2, hi2, lo, hi, i1, i2;
+    int     s = 1;
+    uint  lo1, hi1, lo2, hi2, lo, hi, i1, i2;
 
 
     if ( val < 0 )
@@ -92,8 +92,8 @@
        s = -1;
     }
 
-    lo1 = (FT_UInt32)val & 0x0000FFFFU;
-    hi1 = (FT_UInt32)val >> 16;
+    lo1 = (uint)val & 0x0000FFFFU;
+    hi1 = (uint)val >> 16;
     lo2 = FT_TRIG_SCALE & 0x0000FFFFU;
     hi2 = FT_TRIG_SCALE >> 16;
 
@@ -104,7 +104,7 @@
 
     /* Check carry overflow of i1 + i2 */
     i1 += i2;
-    hi += (FT_UInt32)( i1 < i2 ) << 16;
+    hi += (uint)( i1 < i2 ) << 16;
 
     hi += i1 >> 16;
     i1  = i1 << 16;
@@ -129,17 +129,17 @@
 
 
   /* undefined and never called for zero vector */
-  static FT_Int
+  static int
   ft_trig_prenorm( FT_Vector*  vec )
   {
     FT_Pos  x, y;
-    FT_Int  shift;
+    int  shift;
 
 
     x = vec->x;
     y = vec->y;
 
-    shift = FT_MSB( (FT_UInt32)( FT_ABS( x ) | FT_ABS( y ) ) );
+    shift = FT_MSB( (uint)( FT_ABS( x ) | FT_ABS( y ) ) );
 
     if ( shift <= FT_TRIG_SAFE_MSB )
     {
@@ -163,7 +163,7 @@
   ft_trig_pseudo_rotate( FT_Vector*  vec,
                          FT_Angle    theta )
   {
-    FT_Int           i;
+    int           i;
     FT_Fixed         x, y, xtemp, b;
     const FT_Angle  *arctanptr;
 
@@ -218,7 +218,7 @@
   ft_trig_pseudo_polarize( FT_Vector*  vec )
   {
     FT_Angle         theta;
-    FT_Int           i;
+    int           i;
     FT_Fixed         x, y, xtemp, b;
     const FT_Angle  *arctanptr;
 
@@ -377,7 +377,7 @@
   FT_Vector_Rotate( FT_Vector*  vec,
                     FT_Angle    angle )
   {
-    FT_Int     shift;
+    int     shift;
     FT_Vector  v;
 
 
@@ -396,7 +396,7 @@
 
     if ( shift > 0 )
     {
-      FT_Int32  half = (FT_Int32)1L << ( shift - 1 );
+      int  half = (int)1L << ( shift - 1 );
 
 
       vec->x = ( v.x + half - ( v.x < 0 ) ) >> shift;
@@ -416,7 +416,7 @@
   FT_Fixed
   FT_Vector_Length( FT_Vector*  vec )
   {
-    FT_Int     shift;
+    int     shift;
     FT_Vector  v;
 
 
@@ -444,7 +444,7 @@
     if ( shift > 0 )
       return ( v.x + ( 1L << ( shift - 1 ) ) ) >> shift;
 
-    return (FT_Fixed)( (FT_UInt32)v.x << -shift );
+    return (FT_Fixed)( (uint)v.x << -shift );
   }
 
 
@@ -455,7 +455,7 @@
                       FT_Fixed   *length,
                       FT_Angle   *angle )
   {
-    FT_Int     shift;
+    int     shift;
     FT_Vector  v;
 
 
@@ -473,7 +473,7 @@
     v.x = ft_trig_downscale( v.x );
 
     *length = shift >= 0 ?                      ( v.x >>  shift )
-                         : (FT_Fixed)( (FT_UInt32)v.x << -shift );
+                         : (FT_Fixed)( (uint)v.x << -shift );
     *angle  = v.y;
   }
 

@@ -31,14 +31,14 @@ FT_BEGIN_HEADER
   (*FT_CID_GetRegistryOrderingSupplementFunc)( FT_Face       face,
                                                const char*  *registry,
                                                const char*  *ordering,
-                                               FT_Int       *supplement );
+                                               int       *supplement );
   typedef FT_Error
   (*FT_CID_GetIsInternallyCIDKeyedFunc)( FT_Face   face,
                                          FT_Bool  *is_cid );
   typedef FT_Error
   (*FT_CID_GetCIDFromGlyphIndexFunc)( FT_Face   face,
-                                      FT_UInt   glyph_index,
-                                      FT_UInt  *cid );
+                                      uint   glyph_index,
+                                      uint  *cid );
 
   FT_DEFINE_SERVICE( CID )
   {

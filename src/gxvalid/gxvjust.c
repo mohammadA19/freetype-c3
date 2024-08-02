@@ -55,10 +55,10 @@
 
   typedef struct  GXV_just_DataRec_
   {
-    FT_UShort  wdc_offset_max;
-    FT_UShort  wdc_offset_min;
-    FT_UShort  pc_offset_max;
-    FT_UShort  pc_offset_min;
+    ushort  wdc_offset_max;
+    ushort  wdc_offset_min;
+    ushort  pc_offset_max;
+    ushort  pc_offset_min;
 
   } GXV_just_DataRec, *GXV_just_Data;
 
@@ -68,7 +68,7 @@
 
   /* GX just table does not define their subset of GID */
   static void
-  gxv_just_check_max_gid( FT_UShort         gid,
+  gxv_just_check_max_gid( ushort         gid,
                           const FT_String*  msg_tag,
                           GXV_Validator     gxvalid )
   {
@@ -96,8 +96,8 @@
     FT_Fixed   beforeShrinkGrowLimit;
     FT_Fixed   afterGrowLimit;
     FT_Fixed   afterShrinkGrowLimit;
-    FT_UShort  growFlags;
-    FT_UShort  shrinkFlags;
+    ushort  growFlags;
+    ushort  shrinkFlags;
 #endif
 
 
@@ -185,11 +185,11 @@
     FT_Fixed   lowerLimit;
     FT_Fixed   upperLimit;
 #ifdef GXV_LOAD_UNUSED_VARS
-    FT_UShort  order;
+    ushort  order;
 #endif
-    FT_UShort  decomposedCount;
+    ushort  decomposedCount;
 
-    FT_UInt    i;
+    uint    i;
 
 
     GXV_LIMIT_CHECK( 4 + 4 + 2 + 2 );
@@ -212,7 +212,7 @@
 
     for ( i = 0; i < decomposedCount; i++ )
     {
-      FT_UShort glyphs;
+      ushort glyphs;
 
 
       GXV_LIMIT_CHECK( 2 );
@@ -230,7 +230,7 @@
                                         GXV_Validator  gxvalid )
   {
     FT_Bytes   p = table;
-    FT_UShort  addGlyph;
+    ushort  addGlyph;
 
 
     GXV_LIMIT_CHECK( 2 );
@@ -251,8 +251,8 @@
 #ifdef GXV_LOAD_UNUSED_VARS
     FT_Fixed      substThreshhold; /* Apple misspelled "Threshhold" */
 #endif
-    FT_UShort  addGlyph;
-    FT_UShort  substGlyph;
+    ushort  addGlyph;
+    ushort  substGlyph;
 
 
     GXV_LIMIT_CHECK( 4 + 2 + 2 );
@@ -316,8 +316,8 @@
                                         GXV_Validator  gxvalid )
   {
     FT_Bytes   p = table;
-    FT_UShort  flags;
-    FT_UShort  glyph;
+    ushort  flags;
+    ushort  glyph;
 
 
     GXV_LIMIT_CHECK( 2 + 2 );
@@ -340,8 +340,8 @@
                                   GXV_Validator  gxvalid )
   {
     FT_Bytes   p = table;
-    FT_UShort  actionClass;
-    FT_UShort  actionType;
+    ushort  actionClass;
+    ushort  actionType;
     FT_ULong   actionLength;
 
 
@@ -404,7 +404,7 @@
 
 
   static void
-  gxv_just_pcTable_LookupValue_entry_validate( FT_UShort            glyph,
+  gxv_just_pcTable_LookupValue_entry_validate( ushort            glyph,
                                                GXV_LookupValueCPtr  value_p,
                                                GXV_Validator        gxvalid )
   {
@@ -465,7 +465,7 @@
   static void
   gxv_just_classTable_entry_validate(
     FT_Byte                         state,
-    FT_UShort                       flags,
+    ushort                       flags,
     GXV_StateTable_GlyphOffsetCPtr  glyphOffset_p,
     FT_Bytes                        table,
     FT_Bytes                        limit,
@@ -473,10 +473,10 @@
   {
 #ifdef GXV_LOAD_UNUSED_VARS
     /* TODO: validate markClass & currentClass */
-    FT_UShort  setMark;
-    FT_UShort  dontAdvance;
-    FT_UShort  markClass;
-    FT_UShort  currentClass;
+    ushort  setMark;
+    ushort  dontAdvance;
+    ushort  markClass;
+    ushort  currentClass;
 #endif
 
     FT_UNUSED( state );
@@ -488,10 +488,10 @@
 #ifndef GXV_LOAD_UNUSED_VARS
     FT_UNUSED( flags );
 #else
-    setMark      = (FT_UShort)( ( flags >> 15 ) & 1    );
-    dontAdvance  = (FT_UShort)( ( flags >> 14 ) & 1    );
-    markClass    = (FT_UShort)( ( flags >> 7  ) & 0x7F );
-    currentClass = (FT_UShort)(   flags         & 0x7F );
+    setMark      = (ushort)( ( flags >> 15 ) & 1    );
+    dontAdvance  = (ushort)( ( flags >> 14 ) & 1    );
+    markClass    = (ushort)( ( flags >> 7  ) & 0x7F );
+    currentClass = (ushort)(   flags         & 0x7F );
 #endif
   }
 
@@ -502,8 +502,8 @@
                                      GXV_Validator  gxvalid )
   {
     FT_Bytes   p = table;
-    FT_UShort  length;
-    FT_UShort  coverage;
+    ushort  length;
+    ushort  coverage;
     FT_ULong   subFeatureFlags;
 
 
@@ -540,7 +540,7 @@
 
 
   static void
-  gxv_just_wdcTable_LookupValue_validate( FT_UShort            glyph,
+  gxv_just_wdcTable_LookupValue_validate( ushort            glyph,
                                           GXV_LookupValueCPtr  value_p,
                                           GXV_Validator        gxvalid )
   {
@@ -587,9 +587,9 @@
      * following 3 offsets are measured from the start of `just'
      * (which table points to), not justData
      */
-    FT_UShort  justClassTableOffset;
-    FT_UShort  wdcTableOffset;
-    FT_UShort  pcTableOffset;
+    ushort  justClassTableOffset;
+    ushort  wdcTableOffset;
+    ushort  pcTableOffset;
     FT_Bytes   p = table;
 
     GXV_ODTECT( 4, odtect );
@@ -656,9 +656,9 @@
     GXV_just_Data      just = &justrec;
 
     FT_ULong           version;
-    FT_UShort          format;
-    FT_UShort          horizOffset;
-    FT_UShort          vertOffset;
+    ushort          format;
+    ushort          horizOffset;
+    ushort          vertOffset;
 
     GXV_ODTECT( 3, odtect );
 

@@ -92,7 +92,7 @@
     /* we must now build type1.encoding when we have a custom array */
     if ( type1->encoding_type == T1_ENCODING_TYPE_ARRAY )
     {
-      FT_Int  charcode, idx, min_char, max_char;
+      int  charcode, idx, min_char, max_char;
 
 
       /* OK, we do the following: for each element in the encoding   */
@@ -122,7 +122,7 @@
 
             if ( ft_strcmp( char_name, glyph_name ) == 0 )
             {
-              type1->encoding.char_index[charcode] = (FT_UShort)idx;
+              type1->encoding.char_index[charcode] = (ushort)idx;
               type1->encoding.char_name [charcode] = glyph_name;
 
               /* Change min/max encoded char only if glyph name is */
@@ -161,8 +161,8 @@
   fn FT_Error /* internal */
   T42_Face_Init( FT_Stream      stream,
                  FT_Face        t42face,       /* T42_Face */
-                 FT_Int         face_index,
-                 FT_Int         num_params,
+                 int         face_index,
+                 int         num_params,
                  FT_Parameter*  params )
   {
     T42_Face            face  = (T42_Face)t42face;
@@ -321,8 +321,8 @@
     root->max_advance_width  = face->ttf_face->max_advance_width;
     root->max_advance_height = face->ttf_face->max_advance_height;
 
-    root->underline_position  = (FT_Short)info->underline_position;
-    root->underline_thickness = (FT_Short)info->underline_thickness;
+    root->underline_position  = (short)info->underline_position;
+    root->underline_thickness = (short)info->underline_thickness;
 
     /* compute style flags */
     root->style_flags = 0;
@@ -548,7 +548,7 @@
 
     FT_Activate_Size( size->ttsize );
 
-    error = FT_Select_Size( face->ttf_face, (FT_Int)strike_index );
+    error = FT_Select_Size( face->ttf_face, (int)strike_index );
     if ( !error )
       t42size->metrics = face->ttf_face->size->metrics;
 
@@ -647,8 +647,8 @@
   fn FT_Error /* internal */
   T42_GlyphSlot_Load( FT_GlyphSlot  glyph,
                       FT_Size       size,
-                      FT_UInt       glyph_index,
-                      FT_Int32      load_flags )
+                      uint       glyph_index,
+                      int      load_flags )
   {
     FT_Error         error;
     T42_GlyphSlot    t42slot = (T42_GlyphSlot)glyph;
@@ -660,7 +660,7 @@
     FT_TRACE1(( "T42_GlyphSlot_Load: glyph index %d\n", glyph_index ));
 
     /* map T42 glyph index to embedded TTF's glyph index */
-    glyph_index = (FT_UInt)ft_strtol(
+    glyph_index = (uint)ft_strtol(
                     (const char *)t42face->type1.charstrings[glyph_index],
                     NULL, 10 );
 

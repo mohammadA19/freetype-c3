@@ -47,8 +47,8 @@
                               OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   i;
-    FT_UInt   table_size;
+    uint   i;
+    uint   table_size;
 
     OTV_OPTIONAL_TABLE( DeviceTableOffset );
 
@@ -85,10 +85,10 @@
   static void
   otv_MathItalicsCorrectionInfo_validate( FT_Bytes       table,
                                           OTV_Validator  otvalid,
-                                          FT_Int         isItalic )
+                                          int         isItalic )
   {
     FT_Bytes  p = table;
-    FT_UInt   i, cnt, table_size;
+    uint   i, cnt, table_size;
 
     OTV_OPTIONAL_TABLE( Coverage );
     OTV_OPTIONAL_TABLE( DeviceTableOffset );
@@ -108,7 +108,7 @@
     table_size = 4 + 4 * cnt;
 
     OTV_SIZE_CHECK( Coverage );
-    otv_Coverage_validate( table + Coverage, otvalid, (FT_Int)cnt );
+    otv_Coverage_validate( table + Coverage, otvalid, (int)cnt );
 
     for ( i = 0; i < cnt; i++ )
     {
@@ -136,7 +136,7 @@
                          OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   i, cnt, table_size;
+    uint   i, cnt, table_size;
 
     OTV_OPTIONAL_TABLE( DeviceTableOffset );
 
@@ -179,7 +179,7 @@
                              OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   i, j, cnt, table_size;
+    uint   i, j, cnt, table_size;
 
     OTV_OPTIONAL_TABLE( Coverage );
     OTV_OPTIONAL_TABLE( MKRecordOffset );
@@ -196,7 +196,7 @@
     table_size = 4 + 8 * cnt;
 
     OTV_SIZE_CHECK( Coverage );
-    otv_Coverage_validate( table + Coverage, otvalid, (FT_Int)cnt );
+    otv_Coverage_validate( table + Coverage, otvalid, (int)cnt );
 
     for ( i = 0; i < cnt; i++ )
     {
@@ -226,8 +226,8 @@
                               OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   MathItalicsCorrectionInfo, MathTopAccentAttachment;
-    FT_UInt   ExtendedShapeCoverage, MathKernInfo;
+    uint   MathItalicsCorrectionInfo, MathTopAccentAttachment;
+    uint   ExtendedShapeCoverage, MathKernInfo;
 
 
     OTV_NAME_ENTER( "MathGlyphInfo" );
@@ -275,8 +275,8 @@
                               OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   pcnt, table_size;
-    FT_UInt   i;
+    uint   pcnt, table_size;
+    uint   i;
 
     OTV_OPTIONAL_TABLE( DeviceTableOffset );
 
@@ -298,7 +298,7 @@
 
     for ( i = 0; i < pcnt; i++ )
     {
-      FT_UInt  gid;
+      uint  gid;
 
 
       gid = FT_NEXT_USHORT( p );
@@ -316,8 +316,8 @@
                                       OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   vcnt, table_size;
-    FT_UInt   i;
+    uint   vcnt, table_size;
+    uint   i;
 
     OTV_OPTIONAL_TABLE( GlyphAssembly );
 
@@ -334,7 +334,7 @@
 
     for ( i = 0; i < vcnt; i++ )
     {
-      FT_UInt  gid;
+      uint  gid;
 
 
       gid = FT_NEXT_USHORT( p );
@@ -356,7 +356,7 @@
                              OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   vcnt, hcnt, i, table_size;
+    uint   vcnt, hcnt, i, table_size;
 
     OTV_OPTIONAL_TABLE( VCoverage );
     OTV_OPTIONAL_TABLE( HCoverage );
@@ -378,11 +378,11 @@
 
     OTV_SIZE_CHECK( VCoverage );
     if ( VCoverage )
-      otv_Coverage_validate( table + VCoverage, otvalid, (FT_Int)vcnt );
+      otv_Coverage_validate( table + VCoverage, otvalid, (int)vcnt );
 
     OTV_SIZE_CHECK( HCoverage );
     if ( HCoverage )
-      otv_Coverage_validate( table + HCoverage, otvalid, (FT_Int)hcnt );
+      otv_Coverage_validate( table + HCoverage, otvalid, (int)hcnt );
 
     for ( i = 0; i < vcnt; i++ )
     {
@@ -414,13 +414,13 @@
 
   fn void /* internal */
   otv_MATH_validate( FT_Bytes      table,
-                     FT_UInt       glyph_count,
+                     uint       glyph_count,
                      FT_Validator  ftvalid )
   {
     OTV_ValidatorRec  otvalidrec;
     OTV_Validator     otvalid = &otvalidrec;
     FT_Bytes          p       = table;
-    FT_UInt           MathConstants, MathGlyphInfo, MathVariants;
+    uint           MathConstants, MathGlyphInfo, MathVariants;
 
 
     otvalid->root = ftvalid;

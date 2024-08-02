@@ -52,7 +52,7 @@
 
   FT_Error
   FT_Palette_Select( FT_Face     face,
-                     FT_UShort   palette_index,
+                     ushort   palette_index,
                      FT_Color*  *apalette )
   {
     FT_Error  error;
@@ -127,7 +127,7 @@
 
   FT_Error
   FT_Palette_Select( FT_Face     face,
-                     FT_UShort   palette_index,
+                     ushort   palette_index,
                      FT_Color*  *apalette )
   {
     FT_UNUSED( face );

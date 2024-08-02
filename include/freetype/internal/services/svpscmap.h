@@ -31,20 +31,20 @@ FT_BEGIN_HEADER
   /*
    * Adobe glyph name to unicode value.
    */
-  typedef FT_UInt32
+  typedef uint
   (*PS_Unicode_ValueFunc)( const char*  glyph_name );
 
   /*
    * Macintosh name id to glyph name.  `NULL` if invalid index.
    */
   typedef const char*
-  (*PS_Macintosh_NameFunc)( FT_UInt  name_index );
+  (*PS_Macintosh_NameFunc)( uint  name_index );
 
   /*
    * Adobe standard string ID to glyph name.  `NULL` if invalid index.
    */
   typedef const char*
-  (*PS_Adobe_Std_StringsFunc)( FT_UInt  string_index );
+  (*PS_Adobe_Std_StringsFunc)( uint  string_index );
 
 
   /*
@@ -52,8 +52,8 @@ FT_BEGIN_HEADER
    */
   typedef struct  PS_UniMap_
   {
-    FT_UInt32  unicode;      /* bit 31 set: is glyph variant */
-    FT_UInt    glyph_index;
+    uint  unicode;      /* bit 31 set: is glyph variant */
+    uint    glyph_index;
 
   } PS_UniMap;
 
@@ -63,7 +63,7 @@ FT_BEGIN_HEADER
   typedef struct  PS_UnicodesRec_
   {
     FT_CMapRec  cmap;
-    FT_UInt     num_maps;
+    uint     num_maps;
     PS_UniMap*  maps;
 
   } PS_UnicodesRec;
@@ -75,7 +75,7 @@ FT_BEGIN_HEADER
    */
   typedef const char*
   (*PS_GetGlyphNameFunc)( FT_Pointer  data,
-                          FT_UInt     string_index );
+                          uint     string_index );
 
   /*
    * A function used to release the glyph name returned by
@@ -88,18 +88,18 @@ FT_BEGIN_HEADER
   typedef FT_Error
   (*PS_Unicodes_InitFunc)( FT_Memory             memory,
                            PS_Unicodes           unicodes,
-                           FT_UInt               num_glyphs,
+                           uint               num_glyphs,
                            PS_GetGlyphNameFunc   get_glyph_name,
                            PS_FreeGlyphNameFunc  free_glyph_name,
                            FT_Pointer            glyph_data );
 
-  typedef FT_UInt
+  typedef uint
   (*PS_Unicodes_CharIndexFunc)( PS_Unicodes  unicodes,
-                                FT_UInt32    unicode );
+                                uint    unicode );
 
-  typedef FT_UInt
+  typedef uint
   (*PS_Unicodes_CharNextFunc)( PS_Unicodes  unicodes,
-                               FT_UInt32   *unicode );
+                               uint   *unicode );
 
 
   FT_DEFINE_SERVICE( PsCMaps )
@@ -112,8 +112,8 @@ FT_BEGIN_HEADER
 
     PS_Macintosh_NameFunc      macintosh_name;
     PS_Adobe_Std_StringsFunc   adobe_std_strings;
-    const unsigned short*      adobe_std_encoding;
-    const unsigned short*      adobe_expert_encoding;
+    const ushort*      adobe_std_encoding;
+    const ushort*      adobe_expert_encoding;
   };
 
 

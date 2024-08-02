@@ -125,24 +125,24 @@
 
   static FT_Error
   Read255UShort( FT_Stream   stream,
-                 FT_UShort*  value )
+                 ushort*  value )
   {
     const FT_Byte    oneMoreByteCode1 = 255;
     const FT_Byte    oneMoreByteCode2 = 254;
     const FT_Byte    wordCode         = 253;
-    const FT_UShort  lowestUCode      = 253;
+    const ushort  lowestUCode      = 253;
 
     FT_Error   error        = FT_Err_Ok;
     FT_Byte    code;
     FT_Byte    result_byte  = 0;
-    FT_UShort  result_short = 0;
+    ushort  result_short = 0;
 
 
     if ( FT_READ_BYTE( code ) )
       return error;
     if ( code == wordCode )
     {
-      /* Read next two bytes and store `FT_UShort' value. */
+      /* Read next two bytes and store `ushort' value. */
       if ( FT_READ_USHORT( result_short ) )
         return error;
       *value = result_short;
@@ -175,7 +175,7 @@
                FT_ULong*  value )
   {
     FT_ULong  result = 0;
-    FT_Int    i;
+    int    i;
     FT_Byte   code;
     FT_Error  error  = FT_Err_Ok;
 
@@ -290,7 +290,7 @@
     FT_ULong  checksum     = 0;
     FT_ULong  aligned_size = size & ~3UL;
     FT_ULong  i;
-    FT_Int    shift;
+    int    shift;
 
 
     for ( i = 0; i < aligned_size; i += 4 )
@@ -298,7 +298,7 @@
 
     /* remaining bytes can be shifted and added one at a time */
     for ( shift = 24; i < size; i++, shift -= 8 )
-      checksum += (FT_UInt32)FT_NEXT_BYTE( buf ) << shift;
+      checksum += (uint)FT_NEXT_BYTE( buf ) << shift;
 
     return checksum;
   }
@@ -335,10 +335,10 @@
 
   static WOFF2_Table
   find_table( WOFF2_Table*  tables,
-              FT_UShort     num_tables,
+              ushort     num_tables,
               FT_Tag        tag )
   {
-    FT_Int  i;
+    int  i;
 
 
     for ( i = 0; i < num_tables; i++ )
@@ -353,10 +353,10 @@
   /* Read `numberOfHMetrics' field from `hhea' table. */
   static FT_Error
   read_num_hmetrics( FT_Stream   stream,
-                     FT_UShort*  num_hmetrics )
+                     ushort*  num_hmetrics )
   {
     FT_Error   error = FT_Err_Ok;
-    FT_UShort  num_metrics;
+    ushort  num_metrics;
 
 
     if ( FT_STREAM_SKIP( 34 )  )
@@ -372,9 +372,9 @@
 
 
   /* An auxiliary function for overflow-safe addition. */
-  static FT_Int
+  static int
   with_sign( FT_Byte  flag,
-             FT_Int   base_val )
+             int   base_val )
   {
     /* Precondition: 0 <= base_val < 65536 (to avoid overflow). */
     return ( flag & 1 ) ? base_val : -base_val;
@@ -382,10 +382,10 @@
 
 
   /* An auxiliary function for overflow-safe addition. */
-  static FT_Int
-  safe_int_addition( FT_Int   a,
-                     FT_Int   b,
-                     FT_Int*  result )
+  static int
+  safe_int_addition( int   a,
+                     int   b,
+                     int*  result )
   {
     if ( ( ( a > 0 ) && ( b > FT_INT_MAX - a ) ) ||
          ( ( a < 0 ) && ( b < FT_INT_MIN - a ) ) )
@@ -410,16 +410,16 @@
                   WOFF2_Point     result,
                   FT_ULong*       in_bytes_used )
   {
-    FT_Int  x = 0;
-    FT_Int  y = 0;
-    FT_Int  dx;
-    FT_Int  dy;
-    FT_Int  b0, b1, b2;
+    int  x = 0;
+    int  y = 0;
+    int  dx;
+    int  dy;
+    int  b0, b1, b2;
 
     FT_ULong  triplet_index = 0;
     FT_ULong  data_bytes;
 
-    FT_UInt  i;
+    uint  i;
 
 
     if ( n_points > in_size )
@@ -517,24 +517,24 @@
   static FT_Error
   store_points( FT_ULong           n_points,
                 const WOFF2_Point  points,
-                FT_UShort          n_contours,
-                FT_UShort          instruction_len,
+                ushort          n_contours,
+                ushort          instruction_len,
                 FT_Bool            have_overlap,
                 FT_Byte*           dst,
                 FT_ULong           dst_size,
                 FT_ULong*          glyph_size )
   {
-    FT_UInt   flag_offset  = 10 + ( 2 * n_contours ) + 2 + instruction_len;
+    uint   flag_offset  = 10 + ( 2 * n_contours ) + 2 + instruction_len;
     FT_Byte   last_flag    = 0xFFU;
     FT_Byte   repeat_count = 0;
-    FT_Int    last_x       = 0;
-    FT_Int    last_y       = 0;
-    FT_UInt   x_bytes      = 0;
-    FT_UInt   y_bytes      = 0;
-    FT_UInt   xy_bytes;
-    FT_UInt   i;
-    FT_UInt   x_offset;
-    FT_UInt   y_offset;
+    int    last_x       = 0;
+    int    last_y       = 0;
+    uint   x_bytes      = 0;
+    uint   y_bytes      = 0;
+    uint   xy_bytes;
+    uint   i;
+    uint   x_offset;
+    uint   y_offset;
     FT_Byte*  pointer;
 
 
@@ -543,8 +543,8 @@
       const WOFF2_PointRec  point = points[i];
 
       FT_Byte  flag = point.on_curve ? GLYF_ON_CURVE : 0;
-      FT_Int   dx   = point.x - last_x;
-      FT_Int   dy   = point.y - last_y;
+      int   dx   = point.x - last_x;
+      int   dy   = point.y - last_y;
 
 
       if ( i == 0 && have_overlap )
@@ -617,8 +617,8 @@
 
     for ( i = 0; i < n_points; ++i )
     {
-      FT_Int  dx = points[i].x - last_x;
-      FT_Int  dy = points[i].y - last_y;
+      int  dx = points[i].x - last_x;
+      int  dy = points[i].y - last_y;
 
 
       if ( dx == 0 )
@@ -657,14 +657,14 @@
   compute_bbox( FT_ULong           n_points,
                 const WOFF2_Point  points,
                 FT_Byte*           dst,
-                FT_UShort*         src_x_min )
+                ushort*         src_x_min )
   {
-    FT_Int  x_min = 0;
-    FT_Int  y_min = 0;
-    FT_Int  x_max = 0;
-    FT_Int  y_max = 0;
+    int  x_min = 0;
+    int  y_min = 0;
+    int  x_max = 0;
+    int  y_max = 0;
 
-    FT_UInt  i;
+    uint  i;
 
     FT_ULong  offset;
     FT_Byte*  pointer;
@@ -680,8 +680,8 @@
 
     for ( i = 1; i < n_points; ++i )
     {
-      FT_Int  x = points[i].x;
-      FT_Int  y = points[i].y;
+      int  x = points[i].x;
+      int  y = points[i].y;
 
 
       x_min = FT_MIN( x, x_min );
@@ -699,7 +699,7 @@
     WRITE_SHORT( pointer, x_max );
     WRITE_SHORT( pointer, y_max );
 
-    *src_x_min = (FT_UShort)x_min;
+    *src_x_min = (ushort)x_min;
   }
 
 
@@ -712,7 +712,7 @@
     FT_Error   error        = FT_Err_Ok;
     FT_ULong   start_offset = offset;
     FT_Bool    we_have_inst = FALSE;
-    FT_UShort  flags        = FLAG_MORE_COMPONENTS;
+    ushort  flags        = FLAG_MORE_COMPONENTS;
 
 
     if ( FT_STREAM_SEEK( start_offset ) )
@@ -755,7 +755,7 @@
   static FT_Error
   store_loca( FT_ULong*  loca_values,
               FT_ULong   loca_values_size,
-              FT_UShort  index_format,
+              ushort  index_format,
               FT_ULong*  checksum,
               FT_Byte**  sfnt_bytes,
               FT_ULong*  sfnt_size,
@@ -769,7 +769,7 @@
     FT_Byte*  loca_buf = NULL;
     FT_Byte*  dst      = NULL;
 
-    FT_UInt   i = 0;
+    uint   i = 0;
     FT_ULong  loca_buf_size;
 
     const FT_ULong  offset_size = index_format ? 4 : 2;
@@ -832,14 +832,14 @@
     /* current position in stream */
     const FT_ULong  pos = FT_STREAM_POS();
 
-    FT_UInt  num_substreams = 7;
+    uint  num_substreams = 7;
 
-    FT_UShort  option_flags;
-    FT_UShort  num_glyphs;
-    FT_UShort  index_format;
+    ushort  option_flags;
+    ushort  num_glyphs;
+    ushort  index_format;
     FT_ULong   expected_loca_length;
-    FT_UInt    offset;
-    FT_UInt    i;
+    uint    offset;
+    uint    i;
     FT_ULong   points_size;
     FT_ULong   glyph_buf_size;
     FT_ULong   bbox_bitmap_offset;
@@ -853,7 +853,7 @@
     WOFF2_Substream  substreams = NULL;
 
     FT_ULong*    loca_values  = NULL;
-    FT_UShort*   n_points_arr = NULL;
+    ushort*   n_points_arr = NULL;
     FT_Byte*     glyph_buf    = NULL;
     WOFF2_Point  points       = NULL;
 
@@ -942,11 +942,11 @@
     for ( i = 0; i < num_glyphs; ++i )
     {
       FT_ULong   glyph_size = 0;
-      FT_UShort  n_contours = 0;
+      ushort  n_contours = 0;
       FT_Bool    have_bbox  = FALSE;
       FT_Byte    bbox_bitmap;
       FT_ULong   bbox_offset;
-      FT_UShort  x_min      = 0;
+      ushort  x_min      = 0;
 
 
       /* Set `have_bbox'. */
@@ -967,7 +967,7 @@
       {
         /* composite glyph */
         FT_Bool    have_instructions = FALSE;
-        FT_UShort  instruction_size  = 0;
+        ushort  instruction_size  = 0;
         FT_ULong   composite_size    = 0;
         FT_ULong   size_needed;
         FT_Byte*   pointer           = NULL;
@@ -1041,8 +1041,8 @@
       {
         /* simple glyph */
         FT_ULong   total_n_points = 0;
-        FT_UShort  n_points_contour;
-        FT_UInt    j;
+        ushort  n_points_contour;
+        uint    j;
         FT_ULong   flag_size;
         FT_ULong   triplet_size;
         FT_ULong   triplet_bytes_used;
@@ -1051,10 +1051,10 @@
         FT_ULong   overlap_offset;
         FT_Byte*   flags_buf     = NULL;
         FT_Byte*   triplet_buf   = NULL;
-        FT_UShort  instruction_size;
+        ushort  instruction_size;
         FT_ULong   size_needed;
-        FT_Int     end_point;
-        FT_UInt    contour_ix;
+        int     end_point;
+        uint    contour_ix;
 
         FT_Byte*   pointer = NULL;
 
@@ -1221,7 +1221,7 @@
       *glyf_checksum += compute_ULong_sum( glyph_buf, glyph_size );
 
       /* Store x_mins, may be required to reconstruct `hmtx'. */
-      info->x_mins[i] = (FT_Short)x_min;
+      info->x_mins[i] = (short)x_min;
     }
 
     info->glyf_table->dst_length = dest_offset - info->glyf_table->dst_offset;
@@ -1280,16 +1280,16 @@
   static FT_Error
   get_x_mins( FT_Stream     stream,
               WOFF2_Table*  tables,
-              FT_UShort     num_tables,
+              ushort     num_tables,
               WOFF2_Info    info,
               FT_Memory     memory )
   {
-    FT_UShort  num_glyphs;
-    FT_UShort  index_format;
+    ushort  num_glyphs;
+    ushort  index_format;
     FT_ULong   glyf_offset;
-    FT_UShort  glyf_offset_short;
+    ushort  glyf_offset_short;
     FT_ULong   loca_offset;
-    FT_Int     i;
+    int     i;
     FT_Error   error = FT_Err_Ok;
     FT_ULong   offset_size;
 
@@ -1379,9 +1379,9 @@
 
   static FT_Error
   reconstruct_hmtx( FT_Stream  stream,
-                    FT_UShort  num_glyphs,
-                    FT_UShort  num_hmetrics,
-                    FT_Short*  x_mins,
+                    ushort  num_glyphs,
+                    ushort  num_hmetrics,
+                    short*  x_mins,
                     FT_ULong*  checksum,
                     FT_Byte**  sfnt_bytes,
                     FT_ULong*  sfnt_size,
@@ -1395,10 +1395,10 @@
     FT_Byte   hmtx_flags;
     FT_Bool   has_proportional_lsbs, has_monospace_lsbs;
     FT_ULong  hmtx_table_size;
-    FT_Int    i;
+    int    i;
 
-    FT_UShort*  advance_widths = NULL;
-    FT_Short*   lsbs           = NULL;
+    ushort*  advance_widths = NULL;
+    short*   lsbs           = NULL;
     FT_Byte*    hmtx_table     = NULL;
     FT_Byte*    dst            = NULL;
 
@@ -1433,7 +1433,7 @@
     /* Read `advanceWidth' stream.  Always present. */
     for ( i = 0; i < num_hmetrics; i++ )
     {
-      FT_UShort  advance_width;
+      ushort  advance_width;
 
 
       if ( FT_READ_USHORT( advance_width ) )
@@ -1445,7 +1445,7 @@
     /* lsb values for proportional glyphs. */
     for ( i = 0; i < num_hmetrics; i++ )
     {
-      FT_Short  lsb;
+      short  lsb;
 
 
       if ( has_proportional_lsbs )
@@ -1462,7 +1462,7 @@
     /* lsb values for monospaced glyphs. */
     for ( i = num_hmetrics; i < num_glyphs; i++ )
     {
-      FT_Short  lsb;
+      short  lsb;
 
 
       if ( has_monospace_lsbs )
@@ -1543,13 +1543,13 @@
     /* We are reallocating memory for `sfnt', so its pointer may change. */
     FT_Byte*   sfnt = *sfnt_bytes;
 
-    FT_UShort  num_tables  = woff2->num_tables;
+    ushort  num_tables  = woff2->num_tables;
     FT_ULong   dest_offset = 12 + num_tables * 16UL;
 
     FT_ULong   checksum      = 0;
     FT_ULong   loca_checksum = 0;
-    FT_Int     nn            = 0;
-    FT_UShort  num_hmetrics  = 0;
+    int     nn            = 0;
+    ushort  num_hmetrics  = 0;
     FT_ULong   font_checksum = info->header_checksum;
     FT_Bool    is_glyf_xform = FALSE;
 
@@ -1766,12 +1766,12 @@
   fn FT_Error /* internal */
   woff2_open_font( FT_Stream  stream,
                    TT_Face    face,
-                   FT_Int*    face_instance_index,
+                   int*    face_instance_index,
                    FT_Long*   num_faces )
   {
     FT_Memory  memory = stream->memory;
     FT_Error   error  = FT_Err_Ok;
-    FT_Int     face_index;
+    int     face_index;
 
     WOFF2_HeaderRec  woff2;
     WOFF2_InfoRec    info         = { 0, 0, 0, NULL, NULL, NULL, NULL };
@@ -1780,15 +1780,15 @@
     WOFF2_Table*     temp_indices = NULL;
     WOFF2_Table      last_table;
 
-    FT_Int     nn;
+    int     nn;
     FT_ULong   j;
     FT_ULong   flags;
-    FT_UShort  xform_version;
+    ushort  xform_version;
     FT_ULong   src_offset = 0;
 
-    FT_UInt    glyf_index;
-    FT_UInt    loca_index;
-    FT_UInt32  file_offset;
+    uint    glyf_index;
+    uint    loca_index;
+    uint  file_offset;
 
     FT_Byte*   sfnt        = NULL;
     FT_Stream  sfnt_stream = NULL;
@@ -2029,7 +2029,7 @@
 
         for ( j = 0; j < ttc_font->num_tables; j++ )
         {
-          FT_UShort    table_index;
+          ushort    table_index;
           WOFF2_Table  table;
 
 
@@ -2201,9 +2201,9 @@
     {
       FT_Byte*  sfnt_header = sfnt;
 
-      FT_Int  entrySelector = FT_MSB( woff2.num_tables );
-      FT_Int  searchRange   = ( 1 << entrySelector ) * 16;
-      FT_Int  rangeShift    = woff2.num_tables * 16 - searchRange;
+      int  entrySelector = FT_MSB( woff2.num_tables );
+      int  searchRange   = ( 1 << entrySelector ) * 16;
+      int  rangeShift    = woff2.num_tables * 16 - searchRange;
 
 
       WRITE_ULONG ( sfnt_header, woff2.flavor );

@@ -34,21 +34,21 @@ FT_BEGIN_HEADER
   {
     T1_ParserRec  parser;          /* parser used to read the stream */
 
-    FT_Int        num_chars;       /* number of characters in encoding */
+    int        num_chars;       /* number of characters in encoding */
     PS_TableRec   encoding_table;  /* PS_Table used to store the       */
                                    /* encoding character names         */
 
-    FT_Int        num_glyphs;
+    int        num_glyphs;
     PS_TableRec   glyph_names;
     PS_TableRec   charstrings;
     PS_TableRec   swap_table;      /* For moving .notdef glyph to index 0. */
 
-    FT_Int        num_subrs;
+    int        num_subrs;
     PS_TableRec   subrs;
     FT_Hash       subrs_hash;
     FT_Bool       fontdata;
 
-    FT_UInt       keywords_encountered; /* T1_LOADER_ENCOUNTERED_XXX */
+    uint       keywords_encountered; /* T1_LOADER_ENCOUNTERED_XXX */
 
   } T1_LoaderRec, *T1_Loader;
 
@@ -75,31 +75,31 @@ FT_BEGIN_HEADER
 
   fn FT_Error /* internal */
   T1_Set_MM_Blend( FT_Face    face,
-                   FT_UInt    num_coords,
+                   uint    num_coords,
                    FT_Fixed*  coords );
 
   fn FT_Error /* internal */
   T1_Get_MM_Blend( FT_Face    face,
-                   FT_UInt    num_coords,
+                   uint    num_coords,
                    FT_Fixed*  coords );
 
   fn FT_Error /* internal */
   T1_Set_MM_Design( FT_Face   face,
-                    FT_UInt   num_coords,
+                    uint   num_coords,
                     FT_Long*  coords );
 
   fn FT_Error /* internal */
   T1_Reset_MM_Blend( FT_Face  face,
-                     FT_UInt  instance_index );
+                     uint  instance_index );
 
   fn FT_Error /* internal */
   T1_Get_Var_Design( FT_Face    face,
-                     FT_UInt    num_coords,
+                     uint    num_coords,
                      FT_Fixed*  coords );
 
   fn FT_Error /* internal */
   T1_Set_Var_Design( FT_Face    face,
-                     FT_UInt    num_coords,
+                     uint    num_coords,
                      FT_Fixed*  coords );
 
   fn void /* internal */
@@ -107,12 +107,12 @@ FT_BEGIN_HEADER
 
   fn FT_Error /* internal */
   T1_Set_MM_WeightVector( FT_Face    face,
-                          FT_UInt    len,
+                          uint    len,
                           FT_Fixed*  weightvector );
 
   fn FT_Error /* internal */
   T1_Get_MM_WeightVector( FT_Face    face,
-                          FT_UInt*   len,
+                          uint*   len,
                           FT_Fixed*  weightvector );
 
 #endif /* !T1_CONFIG_OPTION_NO_MM_SUPPORT */

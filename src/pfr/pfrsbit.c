@@ -38,10 +38,10 @@
   typedef struct  PFR_BitWriter_
   {
     FT_Byte*  line;      /* current line start               */
-    FT_Int    pitch;     /* line size in bytes               */
-    FT_UInt   width;     /* width in pixels/bits             */
-    FT_UInt   rows;      /* number of remaining rows to scan */
-    FT_UInt   total;     /* total number of bits to draw     */
+    int    pitch;     /* line size in bytes               */
+    uint   width;     /* width in pixels/bits             */
+    uint   rows;      /* number of remaining rows to scan */
+    uint   total;     /* total number of bits to draw     */
 
   } PFR_BitWriterRec, *PFR_BitWriter;
 
@@ -59,7 +59,7 @@
 
     if ( !decreasing )
     {
-      writer->line += writer->pitch * (FT_Int)( target->rows - 1 );
+      writer->line += writer->pitch * (int)( target->rows - 1 );
       writer->pitch = -writer->pitch;
     }
   }
@@ -70,15 +70,15 @@
                               FT_Byte*       p,
                               FT_Byte*       limit )
   {
-    FT_UInt   n, reload;
-    FT_UInt   left = writer->width;
+    uint   n, reload;
+    uint   left = writer->width;
     FT_Byte*  cur  = writer->line;
-    FT_UInt   mask = 0x80;
-    FT_UInt   val  = 0;
-    FT_UInt   c    = 0;
+    uint   mask = 0x80;
+    uint   val  = 0;
+    uint   c    = 0;
 
 
-    n = (FT_UInt)( limit - p ) * 8;
+    n = (uint)( limit - p ) * 8;
     if ( n > writer->total )
       n = writer->total;
 
@@ -124,12 +124,12 @@
                              FT_Byte*       p,
                              FT_Byte*       limit )
   {
-    FT_Int    phase, count, counts[2];
-    FT_UInt   n, reload;
-    FT_UInt   left = writer->width;
+    int    phase, count, counts[2];
+    uint   n, reload;
+    uint   left = writer->width;
     FT_Byte*  cur  = writer->line;
-    FT_UInt   mask = 0x80;
-    FT_UInt   c    = 0;
+    uint   mask = 0x80;
+    uint   c    = 0;
 
 
     n = writer->total;
@@ -148,7 +148,7 @@
         {
           if ( phase )
           {
-            FT_Int  v;
+            int  v;
 
 
             if ( p >= limit )
@@ -205,12 +205,12 @@
                              FT_Byte*       p,
                              FT_Byte*       limit )
   {
-    FT_Int    phase, count;
-    FT_UInt   n, reload;
-    FT_UInt   left = writer->width;
+    int    phase, count;
+    uint   n, reload;
+    uint   left = writer->width;
     FT_Byte*  cur  = writer->line;
-    FT_UInt   mask = 0x80;
-    FT_UInt   c    = 0;
+    uint   mask = 0x80;
+    uint   c    = 0;
 
 
     n = writer->total;
@@ -276,13 +276,13 @@
   static void
   pfr_lookup_bitmap_data( FT_Byte*   base,
                           FT_Byte*   limit,
-                          FT_UInt    count,
-                          FT_UInt*   flags,
-                          FT_UInt    char_code,
+                          uint    count,
+                          uint*   flags,
+                          uint    char_code,
                           FT_ULong*  found_offset,
                           FT_ULong*  found_size )
   {
-    FT_UInt   min, max, mid, char_len;
+    uint   min, max, mid, char_len;
     FT_Bool   two = FT_BOOL( *flags & PFR_BITMAP_2BYTE_CHARCODE );
     FT_Byte*  buff;
 
@@ -299,7 +299,7 @@
     {
       FT_Byte*  p;
       FT_Byte*  lim;
-      FT_UInt   code;
+      uint   code;
       FT_Long   prev_code;
 
 
@@ -354,7 +354,7 @@
     /* binary search */
     while ( min < max )
     {
-      FT_UInt  code;
+      uint  code;
 
 
       buff = base + mid * char_len;
@@ -405,17 +405,17 @@
                            FT_Long    scaled_advance,
                            FT_Long   *axpos,
                            FT_Long   *aypos,
-                           FT_UInt   *axsize,
-                           FT_UInt   *aysize,
+                           uint   *axsize,
+                           uint   *aysize,
                            FT_Long   *aadvance,
-                           FT_UInt   *aformat )
+                           uint   *aformat )
   {
     FT_Error  error = FT_Err_Ok;
     FT_Byte   flags;
     FT_Byte   b;
     FT_Byte*  p = *pdata;
     FT_Long   xpos, ypos, advance;
-    FT_UInt   xsize, ysize;
+    uint   xsize, ysize;
 
 
     PFR_CHECK( 1 );
@@ -537,7 +537,7 @@
   static FT_Error
   pfr_load_bitmap_bits( FT_Byte*    p,
                         FT_Byte*    limit,
-                        FT_UInt     format,
+                        uint     format,
                         FT_Bool     decreasing,
                         FT_Bitmap*  target )
   {
@@ -583,7 +583,7 @@
   fn FT_Error /* internal */
   pfr_slot_load_bitmap( PFR_Slot  glyph,
                         PFR_Size  size,
-                        FT_UInt   glyph_index,
+                        uint   glyph_index,
                         FT_Bool   metrics_only )
   {
     FT_Error     error;
@@ -601,14 +601,14 @@
     /* look up a bitmap strike corresponding to the current */
     /* character dimensions                                 */
     {
-      FT_UInt  n;
+      uint  n;
 
 
       strike = phys->strikes;
       for ( n = 0; n < phys->num_strikes; n++ )
       {
-        if ( strike->x_ppm == (FT_UInt)size->root.metrics.x_ppem &&
-             strike->y_ppm == (FT_UInt)size->root.metrics.y_ppem )
+        if ( strike->x_ppm == (uint)size->root.metrics.x_ppem &&
+             strike->y_ppm == (uint)size->root.metrics.y_ppem )
           goto Found_Strike;
 
         strike++;
@@ -622,7 +622,7 @@
 
     /* now look up the glyph's position within the file */
     {
-      FT_UInt  char_len;
+      uint  char_len;
 
 
       char_len = 4;
@@ -659,7 +659,7 @@
     /* get the bitmap metrics */
     {
       FT_Long   xpos = 0, ypos = 0, advance = 0;
-      FT_UInt   xsize = 0, ysize = 0, format = 0;
+      uint   xsize = 0, ysize = 0, format = 0;
       FT_Byte*  p;
 
 
@@ -764,7 +764,7 @@
         /* XXX: needs casts to fit FT_Bitmap.{width|rows|pitch} */
         glyph->root.bitmap.width      = xsize;
         glyph->root.bitmap.rows       = ysize;
-        glyph->root.bitmap.pitch      = (FT_Int)( xsize + 7 ) >> 3;
+        glyph->root.bitmap.pitch      = (int)( xsize + 7 ) >> 3;
         glyph->root.bitmap.pixel_mode = FT_PIXEL_MODE_MONO;
 
         /* XXX: needs casts to fit FT_Glyph_Metrics.{width|height} */
@@ -778,8 +778,8 @@
         glyph->root.metrics.vertAdvance  = size->root.metrics.height;
 
         /* XXX: needs casts fit FT_GlyphSlotRec.bitmap_{left|top} */
-        glyph->root.bitmap_left = (FT_Int)xpos;
-        glyph->root.bitmap_top  = (FT_Int)( ypos + (FT_Long)ysize );
+        glyph->root.bitmap_left = (int)xpos;
+        glyph->root.bitmap_top  = (int)( ypos + (FT_Long)ysize );
 
         if ( metrics_only )
           goto Exit1;

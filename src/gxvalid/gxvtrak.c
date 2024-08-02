@@ -73,8 +73,8 @@
      */
   typedef struct  GXV_trak_DataRec_
   {
-    FT_UShort  trackValueOffset_min;
-    FT_UShort  trackValueOffset_max;
+    ushort  trackValueOffset_min;
+    ushort  trackValueOffset_max;
 
   } GXV_trak_DataRec, *GXV_trak_Data;
 
@@ -93,15 +93,15 @@
   static void
   gxv_trak_trackTable_validate( FT_Bytes       table,
                                 FT_Bytes       limit,
-                                FT_UShort      nTracks,
+                                ushort      nTracks,
                                 GXV_Validator  gxvalid )
   {
     FT_Bytes  p = table;
 
     FT_Fixed   track, t;
-    FT_UShort  nameIndex;
-    FT_UShort  offset;
-    FT_UShort  i, j;
+    ushort  nameIndex;
+    ushort  offset;
+    ushort  i, j;
 
 
     GXV_NAME_ENTER( "trackTable" );
@@ -146,8 +146,8 @@
                                GXV_Validator  gxvalid )
   {
     FT_Bytes   p = table;
-    FT_UShort  nTracks;
-    FT_UShort  nSizes;
+    ushort  nTracks;
+    ushort  nSizes;
     FT_ULong   sizeTableOffset;
 
     GXV_ODTECT( 4, odtect );
@@ -218,10 +218,10 @@
     GXV_trak_Data     trak = &trakrec;
 
     FT_ULong   version;
-    FT_UShort  format;
-    FT_UShort  horizOffset;
-    FT_UShort  vertOffset;
-    FT_UShort  reserved;
+    ushort  format;
+    ushort  horizOffset;
+    ushort  vertOffset;
+    ushort  reserved;
 
 
     GXV_ODTECT( 3, odtect );

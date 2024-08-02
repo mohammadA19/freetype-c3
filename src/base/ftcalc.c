@@ -49,8 +49,8 @@
 
   typedef struct  FT_Int64_
   {
-    FT_UInt32  lo;
-    FT_UInt32  hi;
+    uint  lo;
+    uint  hi;
 
   } FT_Int64;
 
@@ -111,10 +111,10 @@
 
 #ifndef FT_MSB
 
-  fn FT_Int /* private */
-  FT_MSB( FT_UInt32 z )
+  fn int /* private */
+  FT_MSB( uint z )
   {
-    FT_Int  shift = 0;
+    int  shift = 0;
 
 
     /* determine msb bit index in `shift' */
@@ -176,7 +176,7 @@
              FT_Long  b_,
              FT_Long  c_ )
   {
-    FT_Int     s = 1;
+    int     s = 1;
     FT_UInt64  a, b, c, d;
     FT_Long    d_;
 
@@ -201,7 +201,7 @@
                       FT_Long  b_,
                       FT_Long  c_ )
   {
-    FT_Int     s = 1;
+    int     s = 1;
     FT_UInt64  a, b, c, d;
     FT_Long    d_;
 
@@ -227,7 +227,7 @@
   {
 #ifdef FT_MULFIX_ASSEMBLER
 
-    return FT_MULFIX_ASSEMBLER( (FT_Int32)a_, (FT_Int32)b_ );
+    return FT_MULFIX_ASSEMBLER( (int)a_, (int)b_ );
 
 #else
 
@@ -246,7 +246,7 @@
   FT_DivFix( FT_Long  a_,
              FT_Long  b_ )
   {
-    FT_Int     s = 1;
+    int     s = 1;
     FT_UInt64  a, b, q;
     FT_Long    q_;
 
@@ -267,11 +267,11 @@
 
 
   static void
-  ft_multo64( FT_UInt32  x,
-              FT_UInt32  y,
+  ft_multo64( uint  x,
+              uint  y,
               FT_Int64  *z )
   {
-    FT_UInt32  lo1, hi1, lo2, hi2, lo, hi, i1, i2;
+    uint  lo1, hi1, lo2, hi2, lo, hi, i1, i2;
 
 
     lo1 = x & 0x0000FFFFU;  hi1 = x >> 16;
@@ -284,7 +284,7 @@
 
     /* Check carry overflow of i1 + i2 */
     i1 += i2;
-    hi += (FT_UInt32)( i1 < i2 ) << 16;
+    hi += (uint)( i1 < i2 ) << 16;
 
     hi += i1 >> 16;
     i1  = i1 << 16;
@@ -298,17 +298,17 @@
   }
 
 
-  static FT_UInt32
-  ft_div64by32( FT_UInt32  hi,
-                FT_UInt32  lo,
-                FT_UInt32  y )
+  static uint
+  ft_div64by32( uint  hi,
+                uint  lo,
+                uint  y )
   {
-    FT_UInt32  r, q;
-    FT_Int     i;
+    uint  r, q;
+    int     i;
 
 
     if ( hi >= y )
-      return (FT_UInt32)0x7FFFFFFFL;
+      return (uint)0x7FFFFFFFL;
 
     /* We shift as many bits as we can into the high register, perform     */
     /* 32-bit division with modulo there, then work through the remaining  */
@@ -342,7 +342,7 @@
             FT_Int64*  y,
             FT_Int64  *z )
   {
-    FT_UInt32  lo, hi;
+    uint  lo, hi;
 
 
     lo = x->lo + y->lo;
@@ -407,15 +407,15 @@
              FT_Long  b_,
              FT_Long  c_ )
   {
-    FT_Int     s = 1;
-    FT_UInt32  a, b, c;
+    int     s = 1;
+    uint  a, b, c;
 
 
     /* XXX: this function does not allow 64-bit arguments */
 
-    FT_MOVE_SIGN( FT_UInt32, a_, a, s );
-    FT_MOVE_SIGN( FT_UInt32, b_, b, s );
-    FT_MOVE_SIGN( FT_UInt32, c_, c, s );
+    FT_MOVE_SIGN( uint, a_, a, s );
+    FT_MOVE_SIGN( uint, b_, b, s );
+    FT_MOVE_SIGN( uint, c_, c, s );
 
     if ( c == 0 )
       a = 0x7FFFFFFFUL;
@@ -451,15 +451,15 @@
                       FT_Long  b_,
                       FT_Long  c_ )
   {
-    FT_Int     s = 1;
-    FT_UInt32  a, b, c;
+    int     s = 1;
+    uint  a, b, c;
 
 
     /* XXX: this function does not allow 64-bit arguments */
 
-    FT_MOVE_SIGN( FT_UInt32, a_, a, s );
-    FT_MOVE_SIGN( FT_UInt32, b_, b, s );
-    FT_MOVE_SIGN( FT_UInt32, c_, c, s );
+    FT_MOVE_SIGN( uint, a_, a, s );
+    FT_MOVE_SIGN( uint, b_, b, s );
+    FT_MOVE_SIGN( uint, c_, c, s );
 
     if ( c == 0 )
       a = 0x7FFFFFFFUL;
@@ -505,7 +505,7 @@
      */
 
     FT_Long    sa, sb;
-    FT_UInt32  a, b;
+    uint  a, b;
 
 
     /*
@@ -531,14 +531,14 @@
     sb = ( b_ >> ( sizeof ( b_ ) * 8 - 1 ) );
     b  = ( b_ ^ sb ) - sb;
 
-    a = (FT_UInt32)a_;
-    b = (FT_UInt32)b_;
+    a = (uint)a_;
+    b = (uint)b_;
 
     if ( a + ( b >> 8 ) <= 8190UL )
       a = ( a * b + 0x8000U ) >> 16;
     else
     {
-      FT_UInt32  al = a & 0xFFFFUL;
+      uint  al = a & 0xFFFFUL;
 
 
       a = ( a >> 16 ) * b + al * ( b >> 16 ) +
@@ -552,20 +552,20 @@
 
 #else /* 0 */
 
-    FT_Int     s = 1;
-    FT_UInt32  a, b;
+    int     s = 1;
+    uint  a, b;
 
 
     /* XXX: this function does not allow 64-bit arguments */
 
-    FT_MOVE_SIGN( FT_UInt32, a_, a, s );
-    FT_MOVE_SIGN( FT_UInt32, b_, b, s );
+    FT_MOVE_SIGN( uint, a_, a, s );
+    FT_MOVE_SIGN( uint, b_, b, s );
 
     if ( a + ( b >> 8 ) <= 8190UL )
       a = ( a * b + 0x8000UL ) >> 16;
     else
     {
-      FT_UInt32  al = a & 0xFFFFUL;
+      uint  al = a & 0xFFFFUL;
 
 
       a = ( a >> 16 ) * b + al * ( b >> 16 ) +
@@ -587,15 +587,15 @@
   FT_DivFix( FT_Long  a_,
              FT_Long  b_ )
   {
-    FT_Int     s = 1;
-    FT_UInt32  a, b, q;
+    int     s = 1;
+    uint  a, b, q;
     FT_Long    q_;
 
 
     /* XXX: this function does not allow 64-bit arguments */
 
-    FT_MOVE_SIGN( FT_UInt32, a_, a, s );
-    FT_MOVE_SIGN( FT_UInt32, b_, b, s );
+    FT_MOVE_SIGN( uint, a_, a, s );
+    FT_MOVE_SIGN( uint, b_, b, s );
 
     if ( b == 0 )
     {
@@ -728,7 +728,7 @@
   {
     FT_Fixed  xx, xy, yx, yy;
     FT_Fixed  val;
-    FT_Int    shift;
+    int    shift;
     FT_ULong  temp1, temp2;
 
 
@@ -796,18 +796,18 @@
 
   /* documentation is in ftcalc.h */
 
-  fn FT_UInt32 /* private */
+  fn uint /* private */
   FT_Vector_NormLen( FT_Vector*  vector )
   {
-    FT_Int32   x_ = vector->x;
-    FT_Int32   y_ = vector->y;
-    FT_Int32   b, z;
-    FT_UInt32  x, y, u, v, l;
-    FT_Int     sx = 1, sy = 1, shift;
+    int   x_ = vector->x;
+    int   y_ = vector->y;
+    int   b, z;
+    uint  x, y, u, v, l;
+    int     sx = 1, sy = 1, shift;
 
 
-    FT_MOVE_SIGN( FT_UInt32, x_, x, sx );
-    FT_MOVE_SIGN( FT_UInt32, y_, y, sy );
+    FT_MOVE_SIGN( uint, x_, x, sx );
+    FT_MOVE_SIGN( uint, y_, y, sy );
 
     /* trivial cases */
     if ( x == 0 )
@@ -850,21 +850,21 @@
     }
 
     /* lower linear approximation for reciprocal length minus one */
-    b = 0x10000 - (FT_Int32)l;
+    b = 0x10000 - (int)l;
 
-    x_ = (FT_Int32)x;
-    y_ = (FT_Int32)y;
+    x_ = (int)x;
+    y_ = (int)y;
 
     /* Newton's iterations */
     do
     {
-      u = (FT_UInt32)( x_ + ( x_ * b >> 16 ) );
-      v = (FT_UInt32)( y_ + ( y_ * b >> 16 ) );
+      u = (uint)( x_ + ( x_ * b >> 16 ) );
+      v = (uint)( y_ + ( y_ * b >> 16 ) );
 
       /* Normalized squared length in the parentheses approaches 2^32. */
       /* On two's complement systems, converting to signed gives the   */
       /* difference with 2^32 even if the expression wraps around.     */
-      z = -(FT_Int32)( u * u + v * v ) / 0x200;
+      z = -(int)( u * u + v * v ) / 0x200;
       z = z * ( ( 0x10000 + b ) >> 8 ) / 0x10000;
 
       b += z;
@@ -877,7 +877,7 @@
     /* Conversion to signed helps to recover from likely wrap around */
     /* in calculating the prenormalized length, because it gives the */
     /* correct difference with 2^32 on two's complement systems.     */
-    l = (FT_UInt32)( 0x10000 + (FT_Int32)( u * x + v * y ) / 0x10000 );
+    l = (uint)( 0x10000 + (int)( u * x + v * y ) / 0x10000 );
     if ( shift > 0 )
       l = ( l + ( 1 << ( shift - 1 ) ) ) >> shift;
     else
@@ -889,8 +889,8 @@
 
   /* documentation is in ftcalc.h */
 
-  fn FT_UInt32 /* private */
-  FT_SqrtFixed( FT_UInt32  v )
+  fn uint /* private */
+  FT_SqrtFixed( uint  v )
   {
     if ( v == 0 )
       return 0;
@@ -904,10 +904,10 @@
     /* 64-bit computations are not desirable.                            */
     else if ( v > 0x10000U )
     {
-      FT_UInt32  r = v >> 1;
-      FT_UInt32  q = ( v & 1 ) << 15;
-      FT_UInt32  b = 0x20000000;
-      FT_UInt32  t;
+      uint  r = v >> 1;
+      uint  q = ( v & 1 ) << 15;
+      uint  b = 0x20000000;
+      uint  t;
 
 
       do
@@ -927,7 +927,7 @@
     }
     else
     {
-      FT_UInt32  r = ( v << 16 ) - 1;
+      uint  r = ( v << 16 ) - 1;
 
 #else /* FT_INT64 */
 
@@ -937,15 +937,15 @@
 
 #endif /* FT_INT64 */
 
-      FT_UInt32  q = 1 << ( ( 17 + FT_MSB( v ) ) >> 1 );
-      FT_UInt32  t;
+      uint  q = 1 << ( ( 17 + FT_MSB( v ) ) >> 1 );
+      uint  t;
 
 
       /* Babylonian method with rounded-up division */
       do
       {
         t = q;
-        q = ( t + (FT_UInt32)( r / t ) + 1 ) >> 1;
+        q = ( t + (uint)( r / t ) + 1 ) >> 1;
       }
       while ( q != t );  /* less than 6 cycles */
 
@@ -956,7 +956,7 @@
 
   /* documentation is in ftcalc.h */
 
-  fn FT_Int /* private */
+  fn int /* private */
   ft_corner_orientation( FT_Pos  in_x,
                          FT_Pos  in_y,
                          FT_Pos  out_x,
@@ -975,7 +975,7 @@
 
 #else
 
-    FT_Int  result;
+    int  result;
 
 
     if ( ADD_LONG( FT_ABS( in_x ), FT_ABS( out_y ) ) <= 131071L &&
@@ -998,8 +998,8 @@
 
 
       /* XXX: this function does not allow 64-bit arguments */
-      ft_multo64( (FT_UInt32)in_x, (FT_UInt32)out_y, &z1 );
-      ft_multo64( (FT_UInt32)in_y, (FT_UInt32)out_x, &z2 );
+      ft_multo64( (uint)in_x, (uint)out_y, &z1 );
+      ft_multo64( (uint)in_y, (uint)out_x, &z2 );
 
       if ( z1.hi > z2.hi )
         result = +1;
@@ -1022,7 +1022,7 @@
 
   /* documentation is in ftcalc.h */
 
-  fn FT_Int /* private */
+  fn int /* private */
   ft_corner_is_flat( FT_Pos  in_x,
                      FT_Pos  in_y,
                      FT_Pos  out_x,
@@ -1065,12 +1065,12 @@
   }
 
 
-  fn FT_Int32 /* private */
+  fn int /* private */
   FT_MulAddFix( FT_Fixed*  s,
-                FT_Int32*  f,
-                FT_UInt    count )
+                int*  f,
+                uint    count )
   {
-    FT_UInt   i;
+    uint   i;
     FT_Int64  temp;
 
 
@@ -1080,7 +1080,7 @@
     for ( i = 0; i < count; ++i )
       temp += (FT_Int64)s[i] * f[i];
 
-    return (FT_Int32)( ( temp + 0x8000 ) >> 16 );
+    return (int)( ( temp + 0x8000 ) >> 16 );
 #else
     temp.hi = 0;
     temp.lo = 0;
@@ -1089,15 +1089,15 @@
     {
       FT_Int64  multResult;
 
-      FT_Int     sign  = 1;
-      FT_UInt32  carry = 0;
+      int     sign  = 1;
+      uint  carry = 0;
 
-      FT_UInt32  scalar;
-      FT_UInt32  factor;
+      uint  scalar;
+      uint  factor;
 
 
-      FT_MOVE_SIGN( FT_UInt32, s[i], scalar, sign );
-      FT_MOVE_SIGN( FT_UInt32, f[i], factor, sign );
+      FT_MOVE_SIGN( uint, s[i], scalar, sign );
+      FT_MOVE_SIGN( uint, f[i], factor, sign );
 
       ft_multo64( scalar, factor, &multResult );
 
@@ -1114,7 +1114,7 @@
     }
 
     /* Shift and round value. */
-    return (FT_Int32)( ( ( temp.hi << 16 ) | ( temp.lo >> 16 ) )
+    return (int)( ( ( temp.hi << 16 ) | ( temp.lo >> 16 ) )
                                      + ( 1 & ( temp.lo >> 15 ) ) );
 
 

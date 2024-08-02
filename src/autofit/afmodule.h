@@ -35,10 +35,10 @@ FT_BEGIN_HEADER
   {
     FT_ModuleRec  root;
 
-    FT_UInt       fallback_style;
+    uint       fallback_style;
     AF_Script     default_script;
     FT_Bool       no_stem_darkening;
-    FT_Int        darken_params[8];
+    int        darken_params[8];
 
   } AF_ModuleRec, *AF_Module;
 

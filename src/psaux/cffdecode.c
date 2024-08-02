@@ -216,12 +216,12 @@
                      FT_Pos        asb,
                      FT_Pos        adx,
                      FT_Pos        ady,
-                     FT_Int        bchar,
-                     FT_Int        achar )
+                     int        bchar,
+                     int        achar )
   {
     FT_Error      error;
     CFF_Builder*  builder = &decoder->builder;
-    FT_Int        bchar_index, achar_index;
+    int        bchar_index, achar_index;
     TT_Face       face    = decoder->builder.face;
     FT_Vector     left_bearing, advance;
     FT_Byte*      charstring;
@@ -290,8 +290,8 @@
       /* subglyph 1 = accent character */
       subg->index = achar_index;
       subg->flags = FT_SUBGLYPH_FLAG_ARGS_ARE_XY_VALUES;
-      subg->arg1  = (FT_Int)( adx >> 16 );
-      subg->arg2  = (FT_Int)( ady >> 16 );
+      subg->arg1  = (int)( adx >> 16 );
+      subg->arg2  = (int)( ady >> 16 );
 
       /* set up remaining glyph fields */
       glyph->num_subglyphs = 2;
@@ -304,7 +304,7 @@
     FT_GlyphLoader_Prepare( builder->loader );
 
     /* First load `bchar' in builder */
-    error = decoder->get_glyph_callback( face, (FT_UInt)bchar_index,
+    error = decoder->get_glyph_callback( face, (uint)bchar_index,
                                          &charstring, &charstring_len );
     if ( !error )
     {
@@ -334,7 +334,7 @@
     builder->pos_y = ady;
 
     /* Now load `achar' on top of the base outline. */
-    error = decoder->get_glyph_callback( face, (FT_UInt)achar_index,
+    error = decoder->get_glyph_callback( face, (uint)achar_index,
                                          &charstring, &charstring_len );
     if ( !error )
     {
@@ -398,11 +398,11 @@
    * @Return:
    *   The bias value.
    */
-  static FT_Int
-  cff_compute_bias( FT_Int   in_charstring_type,
-                    FT_UInt  num_subrs )
+  static int
+  cff_compute_bias( int   in_charstring_type,
+                    uint  num_subrs )
   {
-    FT_Int  result;
+    int  result;
 
 
     if ( in_charstring_type == 1 )
@@ -418,12 +418,12 @@
   }
 
 
-  fn FT_Int /* internal */
+  fn int /* internal */
   cff_lookup_glyph_by_stdcharcode( CFF_Font  cff,
-                                   FT_Int    charcode )
+                                   int    charcode )
   {
-    FT_UInt    n;
-    FT_UShort  glyph_sid;
+    uint    n;
+    ushort  glyph_sid;
 
     FT_Service_CFFLoad  cffload;
 
@@ -453,12 +453,12 @@
     cffload = (FT_Service_CFFLoad)cff->cffload;
 
     /* Get code to SID mapping from `cff_standard_encoding'. */
-    glyph_sid = cffload->get_standard_encoding( (FT_UInt)charcode );
+    glyph_sid = cffload->get_standard_encoding( (uint)charcode );
 
     for ( n = 0; n < cff->num_glyphs; n++ )
     {
       if ( cff->charset.sids[n] == glyph_sid )
-        return (FT_Int)n;
+        return (int)n;
     }
 
     return -1;
@@ -506,11 +506,11 @@
     CFF_Builder*       builder = &decoder->builder;
     FT_Pos             x, y;
     FT_Fixed*          stack;
-    FT_Int             charstring_type =
+    int             charstring_type =
                          decoder->cff->top_font.font_dict.charstring_type;
-    FT_UShort          num_designs =
+    ushort          num_designs =
                          decoder->cff->top_font.font_dict.num_designs;
-    FT_UShort          num_axes =
+    ushort          num_axes =
                          decoder->cff->top_font.font_dict.num_axes;
 
     T2_Hints_Funcs  hinter;
@@ -560,8 +560,8 @@
       v = *ip++;
       if ( v >= 32 || v == 28 )
       {
-        FT_Int    shift = 16;
-        FT_Int32  val;
+        int    shift = 16;
+        int  val;
 
 
         /* this is an operand, push it on the stack */
@@ -572,31 +572,31 @@
         {
           if ( ip + 1 >= limit )
             goto Syntax_Error;
-          val = (FT_Short)( ( (FT_UShort)ip[0] << 8 ) | ip[1] );
+          val = (short)( ( (ushort)ip[0] << 8 ) | ip[1] );
           ip += 2;
         }
         else if ( v < 247 )
-          val = (FT_Int32)v - 139;
+          val = (int)v - 139;
         else if ( v < 251 )
         {
           if ( ip >= limit )
             goto Syntax_Error;
-          val = ( (FT_Int32)v - 247 ) * 256 + *ip++ + 108;
+          val = ( (int)v - 247 ) * 256 + *ip++ + 108;
         }
         else if ( v < 255 )
         {
           if ( ip >= limit )
             goto Syntax_Error;
-          val = -( (FT_Int32)v - 251 ) * 256 - *ip++ - 108;
+          val = -( (int)v - 251 ) * 256 - *ip++ - 108;
         }
         else
         {
           if ( ip + 3 >= limit )
             goto Syntax_Error;
-          val = (FT_Int32)( ( (FT_UInt32)ip[0] << 24 ) |
-                            ( (FT_UInt32)ip[1] << 16 ) |
-                            ( (FT_UInt32)ip[2] <<  8 ) |
-                              (FT_UInt32)ip[3]         );
+          val = (int)( ( (uint)ip[0] << 24 ) |
+                            ( (uint)ip[1] << 16 ) |
+                            ( (uint)ip[2] <<  8 ) |
+                              (uint)ip[3]         );
           ip += 4;
           if ( charstring_type == 2 )
             shift = 0;
@@ -604,12 +604,12 @@
         if ( decoder->top - stack >= CFF_MAX_OPERANDS )
           goto Stack_Overflow;
 
-        val             = (FT_Int32)( (FT_UInt32)val << shift );
+        val             = (int)( (uint)val << shift );
         *decoder->top++ = val;
 
 #ifdef FT_DEBUG_LEVEL_TRACE
         if ( !( val & 0xFFFFL ) )
-          FT_TRACE4(( " %hd", (FT_Short)( (FT_UInt32)val >> 16 ) ));
+          FT_TRACE4(( " %hd", (short)( (uint)val >> 16 ) ));
         else
           FT_TRACE4(( " %.5f", val / 65536.0 ));
 #endif
@@ -623,8 +623,8 @@
         /* arguments similar to a PS interpreter.                         */
 
         FT_Fixed*  args     = decoder->top;
-        FT_Int     num_args = (FT_Int)( args - decoder->stack );
-        FT_Int     req_args;
+        int     num_args = (int)( args - decoder->stack );
+        int     req_args;
 
 
         /* find operator */
@@ -893,7 +893,7 @@
             /* `glyph_width' to `nominal_width' plus number on the stack   */
             /* -- for either case.                                         */
 
-            FT_Int  set_width_ok;
+            int  set_width_ok;
 
 
             switch ( op )
@@ -1014,24 +1014,24 @@
           {
             if ( op == cff_op_hintmask )
               hinter->hintmask( hinter->hints,
-                                (FT_UInt)builder->current->n_points,
-                                (FT_UInt)decoder->num_hints,
+                                (uint)builder->current->n_points,
+                                (uint)decoder->num_hints,
                                 ip );
             else
               hinter->counter( hinter->hints,
-                               (FT_UInt)decoder->num_hints,
+                               (uint)decoder->num_hints,
                                ip );
           }
 
 #ifdef FT_DEBUG_LEVEL_TRACE
           {
-            FT_UInt  maskbyte;
+            uint  maskbyte;
 
 
             FT_TRACE4(( " (maskbytes:" ));
 
             for ( maskbyte = 0;
-                  maskbyte < (FT_UInt)( ( decoder->num_hints + 7 ) >> 3 );
+                  maskbyte < (uint)( ( decoder->num_hints + 7 ) >> 3 );
                   maskbyte++, ip++ )
               FT_TRACE4(( " 0x%02X", *ip ));
 
@@ -1095,7 +1095,7 @@
         case cff_op_hlineto:
         case cff_op_vlineto:
           {
-            FT_Int  phase = ( op == cff_op_hlineto );
+            int  phase = ( op == cff_op_hlineto );
 
 
             FT_TRACE4(( "%s\n", op == cff_op_hlineto ? " hlineto"
@@ -1133,7 +1133,7 @@
 
         case cff_op_rrcurveto:
           {
-            FT_Int  nargs;
+            int  nargs;
 
 
             FT_TRACE4(( " rrcurveto\n" ));
@@ -1170,7 +1170,7 @@
 
         case cff_op_vvcurveto:
           {
-            FT_Int  nargs;
+            int  nargs;
 
 
             FT_TRACE4(( " vvcurveto\n" ));
@@ -1218,7 +1218,7 @@
 
         case cff_op_hhcurveto:
           {
-            FT_Int  nargs;
+            int  nargs;
 
 
             FT_TRACE4(( " hhcurveto\n" ));
@@ -1266,8 +1266,8 @@
         case cff_op_vhcurveto:
         case cff_op_hvcurveto:
           {
-            FT_Int  phase;
-            FT_Int  nargs;
+            int  phase;
+            int  nargs;
 
 
             FT_TRACE4(( "%s\n", op == cff_op_vhcurveto ? " vhcurveto"
@@ -1330,8 +1330,8 @@
 
         case cff_op_rlinecurve:
           {
-            FT_Int  num_lines;
-            FT_Int  nargs;
+            int  num_lines;
+            int  nargs;
 
 
             FT_TRACE4(( " rlinecurve\n" ));
@@ -1378,8 +1378,8 @@
 
         case cff_op_rcurveline:
           {
-            FT_Int  num_curves;
-            FT_Int  nargs;
+            int  num_curves;
+            int  nargs;
 
 
             FT_TRACE4(( " rcurveline\n" ));
@@ -1530,7 +1530,7 @@
                                          /* alter use                    */
             FT_Fixed   dx = 0, dy = 0;   /* used in horizontal/vertical  */
                                          /* algorithm below              */
-            FT_Int     horizontal, count;
+            int     horizontal, count;
             FT_Fixed*  temp;
 
 
@@ -1595,7 +1595,7 @@
 
         case cff_op_flex:
           {
-            FT_UInt  count;
+            uint  count;
 
 
             FT_TRACE4(( " flex\n" ));
@@ -1622,8 +1622,8 @@
 
           error = cff_operator_seac( decoder,
                                      args[0], args[1], args[2],
-                                     (FT_Int)( args[3] >> 16 ),
-                                     (FT_Int)( args[4] >> 16 ) );
+                                     (int)( args[3] >> 16 ),
+                                     (int)( args[4] >> 16 ) );
 
           /* add current outline to the glyph slot */
           FT_GlyphLoader_Add( builder->loader );
@@ -1648,8 +1648,8 @@
 
             error = cff_operator_seac( decoder,
                                        0L, args[-4], args[-3],
-                                       (FT_Int)( args[-2] >> 16 ),
-                                       (FT_Int)( args[-1] >> 16 ) );
+                                       (int)( args[-2] >> 16 ),
+                                       (int)( args[-1] >> 16 ) );
 
             decoder->glyph_width = glyph_width;
           }
@@ -1661,7 +1661,7 @@
             if ( hinter )
             {
               if ( hinter->close( hinter->hints,
-                                  (FT_UInt)builder->current->n_points ) )
+                                  (uint)builder->current->n_points ) )
                 goto Syntax_Error;
 
               /* apply hints to the loaded glyph outline now */
@@ -1726,7 +1726,7 @@
 
         case cff_op_random:
           {
-            FT_UInt32*  randval = in_dict ? &decoder->cff->top_font.random
+            uint*  randval = in_dict ? &decoder->cff->top_font.random
                                           : &decoder->current_subfont->random;
 
 
@@ -1783,7 +1783,7 @@
 
         case cff_op_index:
           {
-            FT_Int  idx = (FT_Int)( args[0] >> 16 );
+            int  idx = (int)( args[0] >> 16 );
 
 
             FT_TRACE4(( " index\n" ));
@@ -1799,8 +1799,8 @@
 
         case cff_op_roll:
           {
-            FT_Int  count = (FT_Int)( args[0] >> 16 );
-            FT_Int  idx   = (FT_Int)( args[1] >> 16 );
+            int  count = (int)( args[0] >> 16 );
+            int  idx   = (int)( args[1] >> 16 );
 
 
             FT_TRACE4(( " roll\n" ));
@@ -1818,7 +1818,7 @@
               while ( idx > 0 )
               {
                 FT_Fixed  tmp = args[count - 1];
-                FT_Int    i;
+                int    i;
 
 
                 for ( i = count - 2; i >= 0; i-- )
@@ -1836,7 +1836,7 @@
               while ( idx < 0 )
               {
                 FT_Fixed  tmp = args[0];
-                FT_Int    i;
+                int    i;
 
 
                 for ( i = 0; i < count - 1; i++ )
@@ -1859,7 +1859,7 @@
         case cff_op_put:
           {
             FT_Fixed  val = args[0];
-            FT_UInt   idx = (FT_UInt)( args[1] >> 16 );
+            uint   idx = (uint)( args[1] >> 16 );
 
 
             FT_TRACE4(( " put\n" ));
@@ -1875,7 +1875,7 @@
 
         case cff_op_get:
           {
-            FT_UInt   idx = (FT_UInt)( args[0] >> 16 );
+            uint   idx = (uint)( args[0] >> 16 );
             FT_Fixed  val = 0;
 
 
@@ -1902,9 +1902,9 @@
           /* this operator was removed from the Type2 specification */
           /* in version 16-March-2000                               */
           {
-            FT_UInt  reg_idx = (FT_UInt)args[0];
-            FT_UInt  idx     = (FT_UInt)args[1];
-            FT_UInt  count   = (FT_UInt)args[2];
+            uint  reg_idx = (uint)args[0];
+            uint  idx     = (uint)args[1];
+            uint  count   = (uint)args[2];
 
 
             FT_TRACE4(( " load\n" ));
@@ -1916,7 +1916,7 @@
                  idx < CFF_MAX_TRANS_ELEMENTS &&
                  count <= num_axes            )
             {
-              FT_UInt  end, i;
+              uint  end, i;
 
 
               end = FT_MIN( idx + count, CFF_MAX_TRANS_ELEMENTS );
@@ -1935,7 +1935,7 @@
           /* in version 16-March-2000                               */
           if ( num_designs )
           {
-            FT_Int  num_results = (FT_Int)( args[0] >> 16 );
+            int  num_results = (int)( args[0] >> 16 );
 
 
             FT_TRACE4(( " blend\n" ));
@@ -1944,7 +1944,7 @@
               goto Syntax_Error;
 
             if ( num_results > num_args                       ||
-                 num_results * (FT_Int)num_designs > num_args )
+                 num_results * (int)num_designs > num_args )
               goto Stack_Underflow;
 
             /* since we currently don't handle interpolation of multiple */
@@ -2137,7 +2137,7 @@
 
         case cff_op_callsubr:
           {
-            FT_UInt  idx = (FT_UInt)( ( args[0] >> 16 ) +
+            uint  idx = (uint)( ( args[0] >> 16 ) +
                                       decoder->locals_bias );
 
 
@@ -2181,7 +2181,7 @@
 
         case cff_op_callgsubr:
           {
-            FT_UInt  idx = (FT_UInt)( ( args[0] >> 16 ) +
+            uint  idx = (uint)( ( args[0] >> 16 ) +
                                       decoder->globals_bias );
 
 
@@ -2353,7 +2353,7 @@
   fn FT_Error /* internal */
   cff_decoder_prepare( CFF_Decoder*  decoder,
                        CFF_Size      size,
-                       FT_UInt       glyph_index )
+                       uint       glyph_index )
   {
     CFF_Builder  *builder = &decoder->builder;
     CFF_Font      cff     = (CFF_Font)builder->face->extra.data;

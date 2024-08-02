@@ -47,7 +47,7 @@
   typedef struct FT_MemTableRec_*   FT_MemTable;
 
 
-#define FT_MEM_VAL( addr )  ( (FT_PtrDist)(FT_Pointer)( addr ) )
+#define FT_MEM_VAL( addr )  ( (isz)(FT_Pointer)( addr ) )
 
   /*
    * This structure holds statistics for a single allocation/release
@@ -69,7 +69,7 @@
 
     FT_Long       cur_max;      /* current maximum allocated size */
 
-    FT_UInt32     hash;
+    uint     hash;
     FT_MemSource  link;
 
   } FT_MemSourceRec;
@@ -149,7 +149,7 @@
    * Prime numbers are ugly to handle.  It would be better to implement
    * L-Hashing, which is 10% faster and doesn't require divisions.
    */
-  static const FT_Int  ft_mem_primes[] =
+  static const int  ft_mem_primes[] =
   {
     7,
     11,
@@ -192,7 +192,7 @@
   static FT_Long
   ft_mem_closest_prime( FT_Long  num )
   {
-    size_t  i;
+    usz  i;
 
 
     for ( i = 0;
@@ -276,14 +276,14 @@
       for ( i = 0; i < table->size; i++ )
       {
         FT_MemNode  node, next, *pnode;
-        FT_PtrDist  hash;
+        isz  hash;
 
 
         node = table->buckets[i];
         while ( node )
         {
           next  = node->link;
-          hash  = FT_MEM_VAL( node->address ) % (FT_PtrDist)new_size;
+          hash  = FT_MEM_VAL( node->address ) % (isz)new_size;
           pnode = new_buckets + hash;
 
           node->link = pnode[0];
@@ -384,12 +384,12 @@
   ft_mem_table_get_nodep( FT_MemTable  table,
                           FT_Byte*     address )
   {
-    FT_PtrDist   hash;
+    isz   hash;
     FT_MemNode  *pnode, node;
 
 
     hash  = FT_MEM_VAL( address );
-    pnode = table->buckets + ( hash % (FT_PtrDist)table->size );
+    pnode = table->buckets + ( hash % (isz)table->size );
 
     for (;;)
     {
@@ -409,14 +409,14 @@
   static FT_MemSource
   ft_mem_table_get_source( FT_MemTable  table )
   {
-    FT_UInt32     hash;
+    uint     hash;
     FT_MemSource  node, *pnode;
 
 
-    /* cast to FT_PtrDist first since void* can be larger */
-    /* than FT_UInt32 and GCC 4.1.1 emits a warning       */
-    hash  = (FT_UInt32)(FT_PtrDist)(void*)ft_debug_file_ +
-              (FT_UInt32)( 5 * ft_debug_lineno_ );
+    /* cast to isz first since void* can be larger */
+    /* than uint and GCC 4.1.1 emits a warning       */
+    hash  = (uint)(isz)(void*)ft_debug_file_ +
+              (uint)( 5 * ft_debug_lineno_ );
     pnode = &table->sources[hash % FT_MEM_SOURCE_BUCKETS];
 
     for (;;)
@@ -762,8 +762,8 @@
 
     ft_mem_table_set( table, (FT_Byte*)new_block, new_size, delta );
 
-    ft_memcpy( new_block, block, cur_size < new_size ? (size_t)cur_size
-                                                     : (size_t)new_size );
+    ft_memcpy( new_block, block, cur_size < new_size ? (usz)cur_size
+                                                     : (usz)new_size );
 
     ft_mem_table_remove( table, (FT_Byte*)block, delta );
 
@@ -900,7 +900,7 @@
       FT_MemSource*  bucket = table->sources;
       FT_MemSource*  limit  = bucket + FT_MEM_SOURCE_BUCKETS;
       FT_MemSource*  sources;
-      FT_Int         nn, count;
+      int         nn, count;
       const char*    fmt;
 
 
@@ -929,7 +929,7 @@
       }
 
       ft_qsort( sources,
-                (size_t)count,
+                (usz)count,
                 sizeof ( *sources ),
                 ft_mem_source_compare );
 

@@ -23,7 +23,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_UShort
+  ushort
   FT_Get_FSType_Flags( FT_Face  face )
   {
     TT_OS2*  os2;

@@ -162,8 +162,8 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Error )
   FT_Outline_New( FT_Library   library,
-                  FT_UInt      numPoints,
-                  FT_Int       numContours,
+                  uint      numPoints,
+                  int       numContours,
                   FT_Outline  *anoutline );
 
 

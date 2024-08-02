@@ -67,9 +67,9 @@ FT_BEGIN_HEADER
   /* hint descriptor */
   typedef struct  PS_HintRec_
   {
-    FT_Int   pos;
-    FT_Int   len;
-    FT_UInt  flags;
+    int   pos;
+    int   len;
+    uint  flags;
 
   } PS_HintRec;
 
@@ -82,8 +82,8 @@ FT_BEGIN_HEADER
   /* hints table descriptor */
   typedef struct  PS_Hint_TableRec_
   {
-    FT_UInt  num_hints;
-    FT_UInt  max_hints;
+    uint  num_hints;
+    uint  max_hints;
     PS_Hint  hints;
 
   } PS_Hint_TableRec, *PS_Hint_Table;
@@ -92,10 +92,10 @@ FT_BEGIN_HEADER
   /* hint and counter mask descriptor */
   typedef struct  PS_MaskRec_
   {
-    FT_UInt   num_bits;
-    FT_UInt   max_bits;
+    uint   num_bits;
+    uint   max_bits;
     FT_Byte*  bytes;
-    FT_UInt   end_point;
+    uint   end_point;
 
   } PS_MaskRec, *PS_Mask;
 
@@ -103,8 +103,8 @@ FT_BEGIN_HEADER
   /* masks and counters table descriptor */
   typedef struct  PS_Mask_TableRec_
   {
-    FT_UInt  num_masks;
-    FT_UInt  max_masks;
+    uint  num_masks;
+    uint  max_masks;
     PS_Mask  masks;
 
   } PS_Mask_TableRec, *PS_Mask_Table;
@@ -127,7 +127,7 @@ FT_BEGIN_HEADER
   {
     FT_Memory        memory;
     FT_Error         error;
-    FT_UInt32        magic;
+    uint        magic;
     PS_Hint_Type     hint_type;
     PS_DimensionRec  dimension[2];
 

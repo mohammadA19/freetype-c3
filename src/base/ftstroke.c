@@ -107,7 +107,7 @@
   {
     FT_Vector  d1, d2;
     FT_Angle   theta;
-    FT_Int     close1, close2;
+    int     close1, close2;
 
 
     d1.x = base[1].x - base[2].x;
@@ -202,7 +202,7 @@
   {
     FT_Vector  d1, d2, d3;
     FT_Angle   theta1, theta2;
-    FT_Int     close1, close2, close3;
+    int     close1, close2, close3;
 
 
     d1.x = base[2].x - base[3].x;
@@ -311,12 +311,12 @@
 
   typedef struct  FT_StrokeBorderRec_
   {
-    FT_UInt     num_points;
-    FT_UInt     max_points;
+    uint     num_points;
+    uint     max_points;
     FT_Vector*  points;
     FT_Byte*    tags;
     FT_Bool     movable;  /* TRUE for ends of lineto borders */
-    FT_Int      start;    /* index of current sub-path start point */
+    int      start;    /* index of current sub-path start point */
     FT_Memory   memory;
     FT_Bool     valid;
 
@@ -325,16 +325,16 @@
 
   static FT_Error
   ft_stroke_border_grow( FT_StrokeBorder  border,
-                         FT_UInt          new_points )
+                         uint          new_points )
   {
-    FT_UInt   old_max = border->max_points;
-    FT_UInt   new_max = border->num_points + new_points;
+    uint   old_max = border->max_points;
+    uint   new_max = border->num_points + new_points;
     FT_Error  error   = FT_Err_Ok;
 
 
     if ( new_max > old_max )
     {
-      FT_UInt    cur_max = old_max;
+      uint    cur_max = old_max;
       FT_Memory  memory  = border->memory;
 
 
@@ -357,8 +357,8 @@
   ft_stroke_border_close( FT_StrokeBorder  border,
                           FT_Bool          reverse )
   {
-    FT_UInt  start = (FT_UInt)border->start;
-    FT_UInt  count = border->num_points;
+    uint  start = (uint)border->start;
+    uint  count = border->num_points;
 
 
     FT_ASSERT( border->start >= 0 );
@@ -438,7 +438,7 @@
     else
     {
       /* don't add zero-length lineto, but always add moveto */
-      if ( border->num_points > (FT_UInt)border->start                     &&
+      if ( border->num_points > (uint)border->start                     &&
            FT_IS_SMALL( border->points[border->num_points - 1].x - to->x ) &&
            FT_IS_SMALL( border->points[border->num_points - 1].y - to->y ) )
         return error;
@@ -541,7 +541,7 @@
   {
     FT_Fixed   coef;
     FT_Vector  a0, a1, a2, a3;
-    FT_Int     i, arcs = 1;
+    int     i, arcs = 1;
     FT_Error   error = FT_Err_Ok;
 
 
@@ -599,7 +599,7 @@
     if ( border->start >= 0 )
       ft_stroke_border_close( border, FALSE );
 
-    border->start = (FT_Int)border->num_points;
+    border->start = (int)border->num_points;
     border->movable = FALSE;
 
     return ft_stroke_border_lineto( border, to, FALSE );
@@ -648,17 +648,17 @@
 
   static FT_Error
   ft_stroke_border_get_counts( FT_StrokeBorder  border,
-                               FT_UInt         *anum_points,
-                               FT_UInt         *anum_contours )
+                               uint         *anum_points,
+                               uint         *anum_contours )
   {
     FT_Error  error        = FT_Err_Ok;
-    FT_UInt   num_points   = 0;
-    FT_UInt   num_contours = 0;
+    uint   num_points   = 0;
+    uint   num_contours = 0;
 
-    FT_UInt     count      = border->num_points;
+    uint     count      = border->num_points;
     FT_Vector*  point      = border->points;
     FT_Byte*    tags       = border->tags;
-    FT_Int      in_contour = 0;
+    int      in_contour = 0;
 
 
     for ( ; count > 0; count--, num_points++, point++, tags++ )
@@ -709,7 +709,7 @@
 
     /* copy tags */
     {
-      FT_UInt   count = border->num_points;
+      uint   count = border->num_points;
       FT_Byte*  read  = border->tags;
       FT_Byte*  write = outline->tags + outline->n_points;
 
@@ -727,10 +727,10 @@
 
     /* copy contours */
     {
-      FT_UInt     count = border->num_points;
+      uint     count = border->num_points;
       FT_Byte*    tags  = border->tags;
-      FT_UShort*  write = outline->contours + outline->n_contours;
-      FT_UShort   idx   = outline->n_points;
+      ushort*  write = outline->contours + outline->n_contours;
+      ushort   idx   = outline->n_points;
 
 
       for ( ; count > 0; count--, tags++, idx++ )
@@ -743,7 +743,7 @@
       }
     }
 
-    outline->n_points += (FT_UShort)border->num_points;
+    outline->n_points += (ushort)border->num_points;
 
     FT_ASSERT( FT_Outline_Check( outline ) == 0 );
   }
@@ -881,7 +881,7 @@
   /* create a circular arc at a corner or cap */
   static FT_Error
   ft_stroker_arcto( FT_Stroker  stroker,
-                    FT_Int      side )
+                    int      side )
   {
     FT_Angle         total, rotate;
     FT_Fixed         radius = stroker->radius;
@@ -909,7 +909,7 @@
   static FT_Error
   ft_stroker_cap( FT_Stroker  stroker,
                   FT_Angle    angle,
-                  FT_Int      side )
+                  int      side )
   {
     FT_Error  error = FT_Err_Ok;
 
@@ -968,7 +968,7 @@
   /* process an inside corner, i.e. compute intersection */
   static FT_Error
   ft_stroker_inside( FT_Stroker  stroker,
-                     FT_Int      side,
+                     int      side,
                      FT_Fixed    line_length )
   {
     FT_StrokeBorder  border = stroker->borders + side;
@@ -1035,7 +1035,7 @@
   /* process an outside corner, i.e. compute bevel/miter/round */
   static FT_Error
   ft_stroker_outside( FT_Stroker  stroker,
-                      FT_Int      side,
+                      int      side,
                       FT_Fixed    line_length )
   {
     FT_StrokeBorder  border = stroker->borders + side;
@@ -1192,7 +1192,7 @@
   {
     FT_Error  error = FT_Err_Ok;
     FT_Angle  turn;
-    FT_Int    inside_side;
+    int    inside_side;
 
 
     turn = FT_Angle_Diff( stroker->angle_in, stroker->angle_out );
@@ -1269,7 +1269,7 @@
     FT_StrokeBorder  border;
     FT_Vector        delta;
     FT_Angle         angle;
-    FT_Int           side;
+    int           side;
     FT_Fixed         line_length;
 
 
@@ -1428,7 +1428,7 @@
         FT_Angle         theta, phi, rotate, alpha0 = 0;
         FT_Fixed         length;
         FT_StrokeBorder  border;
-        FT_Int           side;
+        int           side;
 
 
         theta  = FT_Angle_Diff( angle_in, angle_out ) / 2;
@@ -1635,7 +1635,7 @@
         FT_Angle         theta1, phi1, theta2, phi2, rotate, alpha0 = 0;
         FT_Fixed         length1, length2;
         FT_StrokeBorder  border;
-        FT_Int           side;
+        int           side;
 
 
         theta1  = FT_Angle_Diff( angle_in,  angle_mid ) / 2;
@@ -1797,16 +1797,16 @@
   {
     FT_StrokeBorder  right = stroker->borders + 0;
     FT_StrokeBorder  left  = stroker->borders + 1;
-    FT_Int           new_points;
+    int           new_points;
     FT_Error         error = FT_Err_Ok;
 
 
     FT_ASSERT( left->start >= 0 );
 
-    new_points = (FT_Int)left->num_points - left->start;
+    new_points = (int)left->num_points - left->start;
     if ( new_points > 0 )
     {
-      error = ft_stroke_border_grow( right, (FT_UInt)new_points );
+      error = ft_stroke_border_grow( right, (uint)new_points );
       if ( error )
         goto Exit;
 
@@ -1843,8 +1843,8 @@
         }
       }
 
-      left->num_points   = (FT_UInt)left->start;
-      right->num_points += (FT_UInt)new_points;
+      left->num_points   = (uint)left->start;
+      right->num_points += (uint)new_points;
 
       right->movable = FALSE;
       left->movable  = FALSE;
@@ -1932,10 +1932,10 @@
   FT_Error
   FT_Stroker_GetBorderCounts( FT_Stroker        stroker,
                               FT_StrokerBorder  border,
-                              FT_UInt          *anum_points,
-                              FT_UInt          *anum_contours )
+                              uint          *anum_points,
+                              uint          *anum_contours )
   {
-    FT_UInt   num_points = 0, num_contours = 0;
+    uint   num_points = 0, num_contours = 0;
     FT_Error  error;
 
 
@@ -1962,11 +1962,11 @@
 
   FT_Error
   FT_Stroker_GetCounts( FT_Stroker  stroker,
-                        FT_UInt    *anum_points,
-                        FT_UInt    *anum_contours )
+                        uint    *anum_points,
+                        uint    *anum_contours )
   {
-    FT_UInt   count1, count2, num_points   = 0;
-    FT_UInt   count3, count4, num_contours = 0;
+    uint   count1, count2, num_points   = 0;
+    uint   count3, count4, num_contours = 0;
     FT_Error  error;
 
 
@@ -2054,11 +2054,11 @@
 
     FT_Error    error;
 
-    FT_Int      n;         /* index of contour in outline     */
-    FT_Int      first;     /* index of first point in contour */
-    FT_Int      last;      /* index of last point in contour  */
+    int      n;         /* index of contour in outline     */
+    int      first;     /* index of first point in contour */
+    int      last;      /* index of last point in contour  */
 
-    FT_Int      tag;       /* current point's state           */
+    int      tag;       /* current point's state           */
 
 
     if ( !outline )
@@ -2272,7 +2272,7 @@
     {
       FT_OutlineGlyph  oglyph  = (FT_OutlineGlyph)glyph;
       FT_Outline*      outline = &oglyph->outline;
-      FT_UInt          num_points, num_contours;
+      uint          num_points, num_contours;
 
 
       error = FT_Stroker_ParseOutline( stroker, outline, FALSE );
@@ -2285,7 +2285,7 @@
 
       error = FT_Outline_New( glyph->library,
                               num_points,
-                              (FT_Int)num_contours,
+                              (int)num_contours,
                               outline );
       if ( error )
         goto Fail;
@@ -2348,7 +2348,7 @@
       FT_OutlineGlyph   oglyph  = (FT_OutlineGlyph)glyph;
       FT_StrokerBorder  border;
       FT_Outline*       outline = &oglyph->outline;
-      FT_UInt           num_points, num_contours;
+      uint           num_points, num_contours;
 
 
       border = FT_Outline_GetOutsideBorder( outline );
@@ -2371,7 +2371,7 @@
 
       error = FT_Outline_New( glyph->library,
                               num_points,
-                              (FT_Int)num_contours,
+                              (int)num_contours,
                               outline );
       if ( error )
         goto Fail;

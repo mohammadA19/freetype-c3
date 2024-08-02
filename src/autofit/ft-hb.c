@@ -77,7 +77,7 @@ hb_ft_face_create_ (FT_Face           ft_face,
     hb_blob_t *blob;
 
     blob = hb_blob_create ((const char *) ft_face->stream->base,
-                           (unsigned int) ft_face->stream->size,
+                           (uint) ft_face->stream->size,
                            HB_MEMORY_MODE_READONLY,
                            ft_face, destroy);
     face = hb_face_create (blob, ft_face->face_index);

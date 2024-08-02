@@ -105,8 +105,8 @@ FT_BEGIN_HEADER
   typedef struct  AF_FaceGlobalsRec_
   {
     FT_Face          face;
-    FT_UInt          glyph_count;    /* unsigned face->num_glyphs */
-    FT_UShort*       glyph_styles;
+    uint          glyph_count;    /* unsigned face->num_glyphs */
+    ushort*       glyph_styles;
 
 #ifdef FT_CONFIG_OPTION_USE_HARFBUZZ
     hb_font_t*       hb_font;
@@ -114,13 +114,13 @@ FT_BEGIN_HEADER
 #endif
 
     /* per-face auto-hinter properties */
-    FT_UInt          increase_x_height;
+    uint          increase_x_height;
 
     AF_StyleMetrics  metrics[AF_STYLE_MAX];
 
     /* Compute darkening amount once per size.  Use this to check whether */
     /* darken_{x,y} needs to be recomputed.                               */
-    FT_UShort        stem_darkening_for_ppem;
+    ushort        stem_darkening_for_ppem;
     /* Copy from e.g. AF_LatinMetrics.axis[AF_DIMENSION_HORZ] */
     /* to compute the darkening amount.                       */
     FT_Pos           standard_vertical_width;
@@ -151,8 +151,8 @@ FT_BEGIN_HEADER
 
   fn FT_Error /* internal */
   af_face_globals_get_metrics( AF_FaceGlobals    globals,
-                               FT_UInt           gindex,
-                               FT_UInt           options,
+                               uint           gindex,
+                               uint           options,
                                AF_StyleMetrics  *ametrics );
 
   fn void /* internal */
@@ -160,7 +160,7 @@ FT_BEGIN_HEADER
 
   fn FT_Bool /* internal */
   af_face_globals_is_digit( AF_FaceGlobals  globals,
-                            FT_UInt         gindex );
+                            uint         gindex );
 
   /* */
 

@@ -47,7 +47,7 @@
 #include <string.h>
 
 #ifdef __VMS
-#define UINT32 unsigned int
+#define UINT32 uint
 #else
 #include <inttypes.h>
 #define UINT32 uint32_t

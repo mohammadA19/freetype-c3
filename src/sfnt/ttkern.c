@@ -47,8 +47,8 @@
     FT_ULong   table_size;
     FT_Byte*   p;
     FT_Byte*   p_limit;
-    FT_UInt    nn, num_tables;
-    FT_UInt32  avail = 0, ordered = 0;
+    uint    nn, num_tables;
+    uint  avail = 0, ordered = 0;
 
 
     /* the kern table is optional; exit silently if it is missing */
@@ -84,9 +84,9 @@
 
     for ( nn = 0; nn < num_tables; nn++ )
     {
-      FT_UInt    num_pairs, length, coverage, format;
+      uint    num_pairs, length, coverage, format;
       FT_Byte*   p_next;
-      FT_UInt32  mask = (FT_UInt32)1UL << nn;
+      uint  mask = (uint)1UL << nn;
 
 
       if ( p + 6 > p_limit )
@@ -121,7 +121,7 @@
       p        += 6;
 
       if ( ( p_next - p ) < 6 * (int)num_pairs ) /* handle broken count */
-        num_pairs = (FT_UInt)( ( p_next - p ) / 6 );
+        num_pairs = (uint)( ( p_next - p ) / 6 );
 
       avail |= mask;
 
@@ -140,7 +140,7 @@
 
         for ( count = num_pairs - 1; count > 0; count-- )
         {
-          FT_UInt32  cur_pair;
+          uint  cur_pair;
 
 
           cur_pair = FT_NEXT_ULONG( p );
@@ -182,13 +182,13 @@
   }
 
 
-  fn FT_Int /* internal */
+  fn int /* internal */
   tt_face_get_kerning( TT_Face  face,
-                       FT_UInt  left_glyph,
-                       FT_UInt  right_glyph )
+                       uint  left_glyph,
+                       uint  right_glyph )
   {
-    FT_Int   result = 0;
-    FT_UInt  count, mask;
+    int   result = 0;
+    uint  count, mask;
 
     FT_Byte*  p;
     FT_Byte*  p_limit;
@@ -209,11 +209,11 @@
     {
       FT_Byte* base     = p;
       FT_Byte* next;
-      FT_UInt  version  = FT_NEXT_USHORT( p );
-      FT_UInt  length   = FT_NEXT_USHORT( p );
-      FT_UInt  coverage = FT_NEXT_USHORT( p );
-      FT_UInt  num_pairs;
-      FT_Int   value    = 0;
+      uint  version  = FT_NEXT_USHORT( p );
+      uint  length   = FT_NEXT_USHORT( p );
+      uint  coverage = FT_NEXT_USHORT( p );
+      uint  num_pairs;
+      int   value    = 0;
 
       FT_UNUSED( version );
 
@@ -232,7 +232,7 @@
       p        += 6;
 
       if ( ( next - p ) < 6 * (int)num_pairs )  /* handle broken count  */
-        num_pairs = (FT_UInt)( ( next - p ) / 6 );
+        num_pairs = (uint)( ( next - p ) / 6 );
 
       switch ( coverage >> 8 )
       {
@@ -243,13 +243,13 @@
 
           if ( face->kern_order_bits & mask )   /* binary search */
           {
-            FT_UInt   min = 0;
-            FT_UInt   max = num_pairs;
+            uint   min = 0;
+            uint   max = num_pairs;
 
 
             while ( min < max )
             {
-              FT_UInt   mid = ( min + max ) >> 1;
+              uint   mid = ( min + max ) >> 1;
               FT_Byte*  q   = p + 6 * mid;
               FT_ULong  key;
 
@@ -269,7 +269,7 @@
           }
           else /* linear search */
           {
-            FT_UInt  count2;
+            uint  count2;
 
 
             for ( count2 = num_pairs; count2 > 0; count2-- )

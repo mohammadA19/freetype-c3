@@ -56,8 +56,8 @@
   typedef struct  FTC_CMapQueryRec_
   {
     FTC_FaceID  face_id;
-    FT_UInt     cmap_index;
-    FT_UInt32   char_code;
+    uint     cmap_index;
+    uint   char_code;
 
   } FTC_CMapQueryRec, *FTC_CMapQuery;
 
@@ -68,9 +68,9 @@
   {
     FTC_NodeRec  node;
     FTC_FaceID   face_id;
-    FT_UInt      cmap_index;
-    FT_UInt32    first;                         /* first character in node */
-    FT_UInt16    indices[FTC_CMAP_INDICES_MAX]; /* array of glyph indices  */
+    uint      cmap_index;
+    uint    first;                         /* first character in node */
+    ushort    indices[FTC_CMAP_INDICES_MAX]; /* array of glyph indices  */
 
   } FTC_CMapNodeRec, *FTC_CMapNode;
 
@@ -78,7 +78,7 @@
 
   /* if (indices[n] == FTC_CMAP_UNKNOWN), we assume that the corresponding */
   /* glyph indices haven't been queried through FT_Get_Glyph_Index() yet   */
-#define FTC_CMAP_UNKNOWN  (FT_UInt16)~0
+#define FTC_CMAP_UNKNOWN  (ushort)~0
 
 
   /*************************************************************************/
@@ -113,7 +113,7 @@
     FT_Error       error;
     FT_Memory      memory = cache->memory;
     FTC_CMapNode   node   = NULL;
-    FT_UInt        nn;
+    uint        nn;
 
 
     if ( !FT_QNEW( node ) )
@@ -161,7 +161,7 @@
     if ( node->face_id    == query->face_id    &&
          node->cmap_index == query->cmap_index )
     {
-      FT_UInt32  offset = (FT_UInt32)( query->char_code - node->first );
+      uint  offset = (uint)( query->char_code - node->first );
 
 
       return FT_BOOL( offset < FTC_CMAP_INDICES_MAX );
@@ -226,19 +226,19 @@
 
   /* documentation is in ftcache.h */
 
-  FT_UInt
+  uint
   FTC_CMapCache_Lookup( FTC_CMapCache  cmap_cache,
                         FTC_FaceID     face_id,
-                        FT_Int         cmap_index,
-                        FT_UInt32      char_code )
+                        int         cmap_index,
+                        uint      char_code )
   {
     FTC_Cache         cache = FTC_CACHE( cmap_cache );
     FTC_CMapQueryRec  query;
     FTC_Node          node;
     FT_Error          error;
-    FT_UInt           gindex = 0;
+    uint           gindex = 0;
     FT_Offset         hash;
-    FT_Int            no_cmap_change = 0;
+    int            no_cmap_change = 0;
 
 
     if ( cmap_index < 0 )
@@ -259,10 +259,10 @@
     }
 
     query.face_id    = face_id;
-    query.cmap_index = (FT_UInt)cmap_index;
+    query.cmap_index = (uint)cmap_index;
     query.char_code  = char_code;
 
-    hash = FTC_CMAP_HASH( face_id, (FT_UInt)cmap_index, char_code );
+    hash = FTC_CMAP_HASH( face_id, (uint)cmap_index, char_code );
 
 #ifdef FTC_INLINE
     FTC_CACHE_LOOKUP_CMP( cache, ftc_cmap_node_compare, hash, &query,
@@ -312,7 +312,7 @@
 
       FTC_CMAP_NODE( node )->indices[char_code -
                                      FTC_CMAP_NODE( node )->first]
-        = (FT_UShort)gindex;
+        = (ushort)gindex;
     }
 
   Exit:

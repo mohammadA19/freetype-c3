@@ -27,12 +27,12 @@
   FT_Get_CID_Registry_Ordering_Supplement( FT_Face       face,
                                            const char*  *registry,
                                            const char*  *ordering,
-                                           FT_Int       *supplement)
+                                           int       *supplement)
   {
     FT_Error     error;
     const char*  r = NULL;
     const char*  o = NULL;
-    FT_Int       s = 0;
+    int       s = 0;
 
 
     error = FT_ERR( Invalid_Argument );
@@ -89,11 +89,11 @@
 
   FT_Error
   FT_Get_CID_From_Glyph_Index( FT_Face   face,
-                               FT_UInt   glyph_index,
-                               FT_UInt  *cid )
+                               uint   glyph_index,
+                               uint  *cid )
   {
     FT_Error  error = FT_ERR( Invalid_Argument );
-    FT_UInt   c = 0;
+    uint   c = 0;
 
 
     if ( face )

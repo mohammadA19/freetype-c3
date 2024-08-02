@@ -42,9 +42,9 @@ FT_BEGIN_HEADER
   fn void /* internal */
   tt_face_get_metrics( TT_Face     face,
                        FT_Bool     vertical,
-                       FT_UInt     gindex,
-                       FT_Short*   abearing,
-                       FT_UShort*  aadvance );
+                       uint     gindex,
+                       short*   abearing,
+                       ushort*  aadvance );
 
 FT_END_HEADER
 

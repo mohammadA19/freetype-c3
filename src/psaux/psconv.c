@@ -236,7 +236,7 @@
       if ( integral > 0x7FFF )
         have_overflow = 1;
       else
-        integral = (FT_Fixed)( (FT_UInt32)integral << 16 );
+        integral = (FT_Fixed)( (uint)integral << 16 );
     }
 
     /* read the decimal part */
@@ -365,14 +365,14 @@
 
 
 #if 0
-  fn FT_UInt /* internal */
+  fn uint /* internal */
   PS_Conv_StringDecode( FT_Byte**  cursor,
                         FT_Byte*   limit,
                         FT_Byte*   buffer,
                         FT_Offset  n )
   {
     FT_Byte*  p;
-    FT_UInt   r = 0;
+    uint   r = 0;
 
 
     for ( p = *cursor; r < n && p < limit; p++ )
@@ -460,16 +460,16 @@
 #endif /* 0 */
 
 
-  fn FT_UInt /* internal */
+  fn uint /* internal */
   PS_Conv_ASCIIHexDecode( FT_Byte**  cursor,
                           FT_Byte*   limit,
                           FT_Byte*   buffer,
                           FT_Offset  n )
   {
     FT_Byte*  p;
-    FT_UInt   r   = 0;
-    FT_UInt   w   = 0;
-    FT_UInt   pad = 0x01;
+    uint   r   = 0;
+    uint   w   = 0;
+    uint   pad = 0x01;
 
 
     n *= 2;
@@ -481,13 +481,13 @@
     if ( p >= limit )
       return 0;
 
-    if ( n > (FT_UInt)( limit - p ) )
-      n = (FT_UInt)( limit - p );
+    if ( n > (uint)( limit - p ) )
+      n = (uint)( limit - p );
 
     /* we try to process two nibbles at a time to be as fast as possible */
     for ( ; r < n; r++ )
     {
-      FT_UInt  c = p[r];
+      uint  c = p[r];
 
 
       if ( IS_PS_SPACE( c ) )
@@ -496,7 +496,7 @@
       if ( c OP 0x80 )
         break;
 
-      c = (FT_UInt)ft_char_table[c & 0x7F];
+      c = (uint)ft_char_table[c & 0x7F];
       if ( c >= 16 )
         break;
 
@@ -553,16 +553,16 @@
   }
 
 
-  fn FT_UInt /* internal */
+  fn uint /* internal */
   PS_Conv_EexecDecode( FT_Byte**   cursor,
                        FT_Byte*    limit,
                        FT_Byte*    buffer,
                        FT_Offset   n,
-                       FT_UShort*  seed )
+                       ushort*  seed )
   {
     FT_Byte*  p;
-    FT_UInt   r;
-    FT_UInt   s = *seed;
+    uint   r;
+    uint   s = *seed;
 
 
 #if 1
@@ -572,13 +572,13 @@
     if ( p >= limit )
       return 0;
 
-    if ( n > (FT_UInt)( limit - p ) )
-      n = (FT_UInt)( limit - p );
+    if ( n > (uint)( limit - p ) )
+      n = (uint)( limit - p );
 
     for ( r = 0; r < n; r++ )
     {
-      FT_UInt  val = p[r];
-      FT_UInt  b   = ( val ^ ( s >> 8 ) );
+      uint  val = p[r];
+      uint  b   = ( val ^ ( s >> 8 ) );
 
 
       s         = ( (val + s)*52845U + 22719 ) & 0xFFFFU;
@@ -586,7 +586,7 @@
     }
 
     *cursor = p + n;
-    *seed   = (FT_UShort)s;
+    *seed   = (ushort)s;
 
 #else /* 0 */
 
@@ -595,7 +595,7 @@
       FT_Byte  b = (FT_Byte)( *p ^ ( s >> 8 ) );
 
 
-      s = (FT_UShort)( ( *p + s ) * 52845U + 22719 );
+      s = (ushort)( ( *p + s ) * 52845U + 22719 );
       *buffer++ = b;
     }
     *cursor = p;

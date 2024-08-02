@@ -56,7 +56,7 @@
   cf2_arrstack_init( CF2_ArrStack  arrstack,
                      FT_Memory     memory,
                      FT_Error*     error,
-                     size_t        sizeItem )
+                     usz        sizeItem )
   {
     FT_ASSERT( arrstack );
 
@@ -92,7 +92,7 @@
   /* return false on memory error */
   static FT_Bool
   cf2_arrstack_setNumElements( CF2_ArrStack  arrstack,
-                               size_t        numElements )
+                               usz        numElements )
   {
     FT_ASSERT( arrstack );
 
@@ -100,7 +100,7 @@
       FT_Error   error  = FT_Err_Ok;        /* for FT_REALLOC */
       FT_Memory  memory = arrstack->memory; /* for FT_REALLOC */
 
-      size_t  newSize = numElements * arrstack->sizeItem;
+      usz  newSize = numElements * arrstack->sizeItem;
 
 
       if ( numElements > FT_LONG_MAX / arrstack->sizeItem )
@@ -137,7 +137,7 @@
   /* set the count, ensuring allocation is sufficient */
   fn void /* internal */
   cf2_arrstack_setCount( CF2_ArrStack  arrstack,
-                         size_t        numElements )
+                         usz        numElements )
   {
     FT_ASSERT( arrstack );
 
@@ -163,7 +163,7 @@
 
 
   /* current number of items */
-  fn size_t /* internal */
+  fn usz /* internal */
   cf2_arrstack_size( const CF2_ArrStack  arrstack )
   {
     FT_ASSERT( arrstack );
@@ -184,7 +184,7 @@
   /* return pointer to the given element */
   fn void* /* internal */
   cf2_arrstack_getPointer( const CF2_ArrStack  arrstack,
-                           size_t              idx )
+                           usz              idx )
   {
     void*  newPtr;
 
@@ -227,7 +227,7 @@
     FT_ASSERT( ptr );
 
     {
-      size_t  offset = arrstack->count * arrstack->sizeItem;
+      usz  offset = arrstack->count * arrstack->sizeItem;
       void*   newPtr = (FT_Byte*)arrstack->ptr + offset;
 
 

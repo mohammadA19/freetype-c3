@@ -59,8 +59,8 @@ FT_BEGIN_HEADER
     {
       char*     s;
       FT_Fixed  f;
-      FT_Int    i;
-      FT_UInt   u;
+      int    i;
+      uint   u;
       FT_Bool   b;
 
     } u;
@@ -69,10 +69,10 @@ FT_BEGIN_HEADER
 
 #define  AFM_MAX_ARGUMENTS  5
 
-  fn FT_Int /* internal */
+  fn int /* internal */
   afm_parser_read_vals( AFM_Parser  parser,
                         AFM_Value   vals,
-                        FT_Int      n );
+                        int      n );
 
   /* read the next key from the next line or column */
   fn char* /* internal */

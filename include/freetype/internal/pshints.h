@@ -176,7 +176,7 @@ FT_BEGIN_HEADER
    */
   typedef void
   (*T1_Hints_SetStemFunc)( T1_Hints   hints,
-                           FT_UInt    dimension,
+                           uint    dimension,
                            FT_Fixed*  coords );
 
 
@@ -210,7 +210,7 @@ FT_BEGIN_HEADER
    */
   typedef void
   (*T1_Hints_SetStem3Func)( T1_Hints   hints,
-                            FT_UInt    dimension,
+                            uint    dimension,
                             FT_Fixed*  coords );
 
 
@@ -234,7 +234,7 @@ FT_BEGIN_HEADER
    */
   typedef void
   (*T1_Hints_ResetFunc)( T1_Hints  hints,
-                         FT_UInt   end_point );
+                         uint   end_point );
 
 
   /**************************************************************************
@@ -263,7 +263,7 @@ FT_BEGIN_HEADER
    */
   typedef FT_Error
   (*T1_Hints_CloseFunc)( T1_Hints  hints,
-                         FT_UInt   end_point );
+                         uint   end_point );
 
 
   /**************************************************************************
@@ -463,8 +463,8 @@ FT_BEGIN_HEADER
    */
   typedef void
   (*T2_Hints_StemsFunc)( T2_Hints   hints,
-                         FT_UInt    dimension,
-                         FT_Int     count,
+                         uint    dimension,
+                         int     count,
                          FT_Fixed*  coordinates );
 
 
@@ -505,8 +505,8 @@ FT_BEGIN_HEADER
    */
   typedef void
   (*T2_Hints_MaskFunc)( T2_Hints        hints,
-                        FT_UInt         end_point,
-                        FT_UInt         bit_count,
+                        uint         end_point,
+                        uint         bit_count,
                         const FT_Byte*  bytes );
 
 
@@ -547,7 +547,7 @@ FT_BEGIN_HEADER
    */
   typedef void
   (*T2_Hints_CounterFunc)( T2_Hints        hints,
-                           FT_UInt         bit_count,
+                           uint         bit_count,
                            const FT_Byte*  bytes );
 
 
@@ -577,7 +577,7 @@ FT_BEGIN_HEADER
    */
   typedef FT_Error
   (*T2_Hints_CloseFunc)( T2_Hints  hints,
-                         FT_UInt   end_point );
+                         uint   end_point );
 
 
   /**************************************************************************

@@ -135,7 +135,7 @@
     FT_Hashnode*  bp;
     FT_Hashnode*  nbp;
 
-    FT_UInt   i, sz = hash->size;
+    uint   i, sz = hash->size;
     FT_Error  error = FT_Err_Ok;
 
 
@@ -166,7 +166,7 @@
              FT_Bool    is_num,
              FT_Memory  memory )
   {
-    FT_UInt   sz = INITIAL_HT_SIZE;
+    uint   sz = INITIAL_HT_SIZE;
     FT_Error  error;
 
 
@@ -213,9 +213,9 @@
   {
     if ( hash )
     {
-      FT_UInt       sz = hash->size;
+      uint       sz = hash->size;
       FT_Hashnode*  bp = hash->table;
-      FT_UInt       i;
+      uint       i;
 
 
       for ( i = 0; i < sz; i++, bp++ )
@@ -231,7 +231,7 @@
 
   static FT_Error
   hash_insert( FT_Hashkey  key,
-               size_t      data,
+               usz      data,
                FT_Hash     hash,
                FT_Memory   memory )
   {
@@ -269,7 +269,7 @@
 
   FT_Error
   ft_hash_str_insert( const char*  key,
-                      size_t       data,
+                      usz       data,
                       FT_Hash      hash,
                       FT_Memory    memory )
   {
@@ -283,8 +283,8 @@
 
 
   FT_Error
-  ft_hash_num_insert( FT_Int     num,
-                      size_t     data,
+  ft_hash_num_insert( int     num,
+                      usz     data,
                       FT_Hash    hash,
                       FT_Memory  memory )
   {
@@ -297,7 +297,7 @@
   }
 
 
-  static size_t*
+  static usz*
   hash_lookup( FT_Hashkey  key,
                FT_Hash     hash )
   {
@@ -309,7 +309,7 @@
   }
 
 
-  size_t*
+  usz*
   ft_hash_str_lookup( const char*  key,
                       FT_Hash      hash )
   {
@@ -322,8 +322,8 @@
   }
 
 
-  size_t*
-  ft_hash_num_lookup( FT_Int   num,
+  usz*
+  ft_hash_num_lookup( int   num,
                       FT_Hash  hash )
   {
     FT_Hashkey  hk;

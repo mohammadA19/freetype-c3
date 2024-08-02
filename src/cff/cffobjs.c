@@ -43,7 +43,7 @@
 #include <freetype/internal/services/svcfftl.h>
 
 #define CFF_fixedToInt( x )                          \
-          ( (FT_Short)( ( (x) + 0x8000U ) >> 16 ) )
+          ( (short)( ( (x) + 0x8000U ) >> 16 ) )
 
   /**************************************************************************
    *
@@ -97,7 +97,7 @@
       funcs = cff_size_get_globals_funcs( size );
       if ( funcs )
       {
-        FT_UInt  i;
+        uint  i;
 
 
         funcs->destroy( internal->topfont );
@@ -119,7 +119,7 @@
                          PS_Private   priv )
   {
     CFF_Private  cpriv = &subfont->private_dict;
-    FT_UInt      n, count;
+    uint      n, count;
 
 
     FT_ZERO( priv );
@@ -142,19 +142,19 @@
         CFF_fixedToInt( cpriv->family_other_blues[n] );
 
     priv->blue_scale = cpriv->blue_scale;
-    priv->blue_shift = (FT_Int)cpriv->blue_shift;
-    priv->blue_fuzz  = (FT_Int)cpriv->blue_fuzz;
+    priv->blue_shift = (int)cpriv->blue_shift;
+    priv->blue_fuzz  = (int)cpriv->blue_fuzz;
 
-    priv->standard_width[0]  = (FT_UShort)cpriv->standard_width;
-    priv->standard_height[0] = (FT_UShort)cpriv->standard_height;
+    priv->standard_width[0]  = (ushort)cpriv->standard_width;
+    priv->standard_height[0] = (ushort)cpriv->standard_height;
 
     count = priv->num_snap_widths = cpriv->num_snap_widths;
     for ( n = 0; n < count; n++ )
-      priv->snap_widths[n] = (FT_Short)cpriv->snap_widths[n];
+      priv->snap_widths[n] = (short)cpriv->snap_widths[n];
 
     count = priv->num_snap_heights = cpriv->num_snap_heights;
     for ( n = 0; n < count; n++ )
-      priv->snap_heights[n] = (FT_Short)cpriv->snap_heights[n];
+      priv->snap_heights[n] = (short)cpriv->snap_heights[n];
 
     priv->force_bold     = cpriv->force_bold;
     priv->language_group = cpriv->language_group;
@@ -176,7 +176,7 @@
 
     PS_PrivateRec priv;
 
-    FT_UInt       i;
+    uint       i;
 
     if ( !funcs )
       goto Exit;
@@ -244,7 +244,7 @@
       CFF_Internal  internal = (CFF_Internal)size->internal->module_data;
 
       FT_Long  top_upm  = (FT_Long)font->top_font.font_dict.units_per_em;
-      FT_UInt  i;
+      uint  i;
 
 
       funcs->set_scale( internal->topfont,
@@ -320,7 +320,7 @@
       CFF_Internal  internal = (CFF_Internal)size->internal->module_data;
 
       FT_Long  top_upm  = (FT_Long)font->top_font.font_dict.units_per_em;
-      FT_UInt  i;
+      uint  i;
 
 
       funcs->set_scale( internal->topfont,
@@ -424,7 +424,7 @@
   static void
   remove_subset_prefix( FT_String*  name )
   {
-    FT_UInt32  i = 0, idx = 0;
+    uint  i = 0, idx = 0;
 
 
     /* six ASCII uppercase letters followed by a plus sign */
@@ -470,8 +470,8 @@
   fn FT_Error /* internal */
   cff_face_init( FT_Stream      stream,
                  FT_Face        cffface,        /* CFF_Face */
-                 FT_Int         face_index,
-                 FT_Int         num_params,
+                 int         face_index,
+                 int         num_params,
                  FT_Parameter*  params )
   {
     CFF_Face            face        = (CFF_Face)cffface;
@@ -586,8 +586,8 @@
       CFF_Font         cff = NULL;
       CFF_FontRecDict  dict;
       FT_Memory        memory = cffface->memory;
-      FT_Int32         flags;
-      FT_UInt          i;
+      int         flags;
+      uint          i;
 
 
       if ( FT_NEW( cff ) )
@@ -640,7 +640,7 @@
 
 #ifdef FT_DEBUG_LEVEL_TRACE
       {
-        FT_UInt     idx;
+        uint     idx;
         FT_String*  s;
 
 
@@ -662,8 +662,8 @@
         {
           FT_Byte*    s1    = cff->strings[idx - 1];
           FT_Byte*    s2    = cff->strings[idx];
-          FT_PtrDist  s1len = s2 - s1 - 1; /* without the final null byte */
-          FT_PtrDist  l;
+          isz  s1len = s2 - s1 - 1; /* without the final null byte */
+          isz  l;
 
 
           FT_TRACE4(( "  %5d ", idx + 390 ));
@@ -677,8 +677,8 @@
         {
           FT_Byte*    s1    = cff->strings[cff->num_strings - 1];
           FT_Byte*    s2    = cff->string_pool + cff->string_pool_size;
-          FT_PtrDist  s1len = s2 - s1 - 1;
-          FT_PtrDist  l;
+          isz  s1len = s2 - s1 - 1;
+          isz  l;
 
 
           FT_TRACE4(( "  %5d ", cff->num_strings + 390 ));
@@ -691,7 +691,7 @@
 
 #ifdef TT_CONFIG_OPTION_GX_VAR_SUPPORT
       {
-        FT_UInt  instance_index = (FT_UInt)face_index >> 16;
+        uint  instance_index = (uint)face_index >> 16;
 
 
         if ( FT_HAS_MULTIPLE_MASTERS( cffface ) )
@@ -834,20 +834,20 @@
         cffface->bbox.xMax = ( dict->font_bbox.xMax + 0xFFFF ) >> 16;
         cffface->bbox.yMax = ( dict->font_bbox.yMax + 0xFFFF ) >> 16;
 
-        cffface->units_per_EM = (FT_UShort)( dict->units_per_em );
+        cffface->units_per_EM = (ushort)( dict->units_per_em );
 
-        cffface->ascender  = (FT_Short)( cffface->bbox.yMax );
-        cffface->descender = (FT_Short)( cffface->bbox.yMin );
+        cffface->ascender  = (short)( cffface->bbox.yMax );
+        cffface->descender = (short)( cffface->bbox.yMin );
 
-        cffface->height = (FT_Short)( ( cffface->units_per_EM * 12 ) / 10 );
+        cffface->height = (short)( ( cffface->units_per_EM * 12 ) / 10 );
         if ( cffface->height < cffface->ascender - cffface->descender )
-          cffface->height = (FT_Short)( cffface->ascender -
+          cffface->height = (short)( cffface->ascender -
                                         cffface->descender );
 
         cffface->underline_position  =
-          (FT_Short)( dict->underline_position >> 16 );
+          (short)( dict->underline_position >> 16 );
         cffface->underline_thickness =
-          (FT_Short)( dict->underline_thickness >> 16 );
+          (short)( dict->underline_thickness >> 16 );
 
         /* retrieve font family & style name */
         if ( dict->family_name )
@@ -864,7 +864,7 @@
         {
           cffface->family_name = cff_index_get_name(
                                    cff,
-                                   (FT_UInt)( face_index & 0xFFFF ) );
+                                   (uint)( face_index & 0xFFFF ) );
           if ( cffface->family_name )
             remove_subset_prefix( cffface->family_name );
         }
@@ -1011,7 +1011,7 @@
       {
         FT_CharMapRec  cmaprec;
         FT_CharMap     cmap;
-        FT_Int         nn;
+        int         nn;
         CFF_Encoding   encoding = &cff->encoding;
 
 
@@ -1132,7 +1132,7 @@
   {
     PS_Driver  driver = (PS_Driver)module;
 
-    FT_UInt32  seed;
+    uint  seed;
 
 
     /* set default property values, cf. `ftcffdrv.h' */
@@ -1150,12 +1150,12 @@
     driver->darken_params[7] = CFF_CONFIG_OPTION_DARKENING_PARAMETER_Y4;
 
     /* compute random seed from some memory addresses */
-    seed = (FT_UInt32)( (FT_Offset)(char*)&seed          ^
+    seed = (uint)( (FT_Offset)(char*)&seed          ^
                         (FT_Offset)(char*)&module        ^
                         (FT_Offset)(char*)module->memory );
     seed = seed ^ ( seed >> 10 ) ^ ( seed >> 20 );
 
-    driver->random_seed = (FT_Int32)seed;
+    driver->random_seed = (int)seed;
     if ( driver->random_seed < 0 )
       driver->random_seed = -driver->random_seed;
     else if ( driver->random_seed == 0 )

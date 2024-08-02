@@ -452,7 +452,7 @@
     FT_Bool         flip_sign;
     FT_Bool         flip_y;
 
-    FT_Int  overload_sign;
+    int  overload_sign;
 
   } SDF_Params;
 
@@ -1077,7 +1077,7 @@
   static FT_Error
   split_sdf_conic( FT_Memory     memory,
                    FT_26D6_Vec*  control_points,
-                   FT_UInt       max_splits,
+                   uint       max_splits,
                    SDF_Edge**    out )
   {
     FT_Error     error = FT_Err_Ok;
@@ -1146,7 +1146,7 @@
   static FT_Error
   split_sdf_cubic( FT_Memory     memory,
                    FT_26D6_Vec*  control_points,
-                   FT_UInt       max_splits,
+                   uint       max_splits,
                    SDF_Edge**    out )
   {
     FT_Error       error = FT_Err_Ok;
@@ -1278,7 +1278,7 @@
           {
             FT_26D6_Vec  ctrls[3];
             FT_26D6      dx, dy;
-            FT_UInt      num_splits;
+            uint      num_splits;
 
 
             ctrls[0] = edge->start_pos;
@@ -1364,12 +1364,12 @@
   static void
   sdf_shape_dump( SDF_Shape*  shape )
   {
-    FT_UInt  num_contours = 0;
+    uint  num_contours = 0;
 
-    FT_UInt  total_edges = 0;
-    FT_UInt  total_lines = 0;
-    FT_UInt  total_conic = 0;
-    FT_UInt  total_cubic = 0;
+    uint  total_edges = 0;
+    uint  total_lines = 0;
+    uint  total_conic = 0;
+    uint  total_cubic = 0;
 
     SDF_Contour*  contour_list;
 
@@ -1386,7 +1386,7 @@
 
     while ( contour_list )
     {
-      FT_UInt       num_edges = 0;
+      uint       num_edges = 0;
       SDF_Edge*     edge_list;
       SDF_Contour*  contour = contour_list;
 
@@ -1474,7 +1474,7 @@
     /* not break, so use a lookup table instead.  Or we */
     /* can use an algorithm similar to `square_root`.   */
 
-    FT_Int  v, g, c;
+    int  v, g, c;
 
 
     if ( val == 0                  ||
@@ -1529,7 +1529,7 @@
   /* The procedure can be found at                                  */
   /*                                                                */
   /*   https://mathworld.wolfram.com/QuadraticFormula.html          */
-  static FT_UShort
+  static ushort
   solve_quadratic_equation( FT_26D6   a,
                             FT_26D6   b,
                             FT_26D6   c,
@@ -1582,7 +1582,7 @@
   /* The procedure can be found at                              */
   /*                                                            */
   /*   https://mathworld.wolfram.com/CubicFormula.html          */
-  static FT_UShort
+  static ushort
   solve_cubic_equation( FT_26D6   a,
                         FT_26D6   b,
                         FT_26D6   c,
@@ -2123,8 +2123,8 @@
     FT_16D16  cross;                     /* to determine the sign         */
     FT_16D16  min      = FT_INT_MAX;     /* shortest squared distance     */
 
-    FT_UShort  num_roots;                /* number of real roots of cubic */
-    FT_UShort  i;
+    ushort  num_roots;                /* number of real roots of cubic */
+    ushort  i;
 
 
     if ( !conic || !out )
@@ -2417,8 +2417,8 @@
     FT_16D16  cross;                     /* to determine the sign         */
     FT_16D16  min        = FT_INT_MAX;   /* shortest squared distance     */
 
-    FT_UShort  iterations;
-    FT_UShort  steps;
+    ushort  iterations;
+    ushort  steps;
 
 
     if ( !conic || !out )
@@ -2731,8 +2731,8 @@
     FT_16D16  cross;                        /* to determine the sign       */
     FT_16D16  min           = FT_INT_MAX;   /* shortest distance           */
 
-    FT_UShort  iterations;
-    FT_UShort  steps;
+    ushort  iterations;
+    ushort  steps;
 
 
     if ( !cubic || !out )
@@ -3070,18 +3070,18 @@
   static FT_Error
   sdf_generate( const SDF_Params  internal_params,
                 const SDF_Shape*  shape,
-                FT_UInt           spread,
+                uint           spread,
                 const FT_Bitmap*  bitmap )
   {
     FT_Error  error = FT_Err_Ok;
 
-    FT_UInt  width = 0;
-    FT_UInt  rows  = 0;
-    FT_UInt  x     = 0;   /* used to loop in x direction, i.e., width     */
-    FT_UInt  y     = 0;   /* used to loop in y direction, i.e., rows      */
-    FT_UInt  sp_sq = 0;   /* `spread` [* `spread`] as a 16.16 fixed value */
+    uint  width = 0;
+    uint  rows  = 0;
+    uint  x     = 0;   /* used to loop in x direction, i.e., width     */
+    uint  y     = 0;   /* used to loop in y direction, i.e., rows      */
+    uint  sp_sq = 0;   /* `spread` [* `spread`] as a 16.16 fixed value */
 
-    FT_Short*  buffer;
+    short*  buffer;
 
 
     if ( !shape || !bitmap )
@@ -3098,7 +3098,7 @@
 
     width  = bitmap->width;
     rows   = bitmap->rows;
-    buffer = (FT_Short*)bitmap->buffer;
+    buffer = (short*)bitmap->buffer;
 
     if ( USE_SQUARED_DISTANCES )
       sp_sq = FT_INT_16D16( spread * spread );
@@ -3130,8 +3130,8 @@
         SDF_Signed_Distance  min_dist   = max_sdf;
         SDF_Contour*         contour_list;
 
-        FT_UInt   index;
-        FT_Short  value;
+        uint   index;
+        short  value;
 
 
         grid_point.x = FT_INT_26D6( x );
@@ -3240,14 +3240,14 @@
   static FT_Error
   sdf_generate_bounding_box( const SDF_Params  internal_params,
                              const SDF_Shape*  shape,
-                             FT_UInt           spread,
+                             uint           spread,
                              const FT_Bitmap*  bitmap )
   {
     FT_Error   error  = FT_Err_Ok;
     FT_Memory  memory = NULL;
 
-    FT_Int  width, rows, i, j;
-    FT_Int  sp_sq;            /* max value to check   */
+    int  width, rows, i, j;
+    int  sp_sq;            /* max value to check   */
 
     SDF_Contour*   contours;  /* list of all contours */
     FT_SDFFormat*  buffer;    /* the bitmap buffer    */
@@ -3286,12 +3286,12 @@
       goto Exit;
 
     contours = shape->contours;
-    width    = (FT_Int)bitmap->width;
-    rows     = (FT_Int)bitmap->rows;
+    width    = (int)bitmap->width;
+    rows     = (int)bitmap->rows;
     buffer   = (FT_SDFFormat*)bitmap->buffer;
 
     if ( USE_SQUARED_DISTANCES )
-      sp_sq = FT_INT_16D16( (FT_Int)( spread * spread ) );
+      sp_sq = FT_INT_16D16( (int)( spread * spread ) );
     else
       sp_sq = fixed_spread;
 
@@ -3316,7 +3316,7 @@
       while ( edges )
       {
         FT_CBox  cbox;
-        FT_Int   x, y;
+        int   x, y;
 
 
         /* get the control box and increase it by `spread' */
@@ -3334,7 +3334,7 @@
           {
             FT_26D6_Vec          grid_point = zero_vector;
             SDF_Signed_Distance  dist       = max_sdf;
-            FT_UInt              index      = 0;
+            uint              index      = 0;
             FT_16D16             diff       = 0;
 
 
@@ -3368,9 +3368,9 @@
               dist.distance = square_root( dist.distance );
 
             if ( internal_params.flip_y )
-              index = (FT_UInt)( y * width + x );
+              index = (uint)( y * width + x );
             else
-              index = (FT_UInt)( ( rows - y - 1 ) * width + x );
+              index = (uint)( ( rows - y - 1 ) * width + x );
 
             /* check whether the pixel is set or not */
             if ( dists[index].sign == 0 )
@@ -3398,7 +3398,7 @@
     {
       /* We assume the starting pixel of each row is outside. */
       FT_Char  current_sign = -1;
-      FT_UInt  index;
+      uint  index;
 
 
       if ( internal_params.overload_sign != 0 )
@@ -3406,7 +3406,7 @@
 
       for ( i = 0; i < width; i++ )
       {
-        index = (FT_UInt)( j * width + i );
+        index = (uint)( j * width + i );
 
         /* if the pixel is not set                     */
         /* its shortest distance is more than `spread` */
@@ -3469,7 +3469,7 @@
   static FT_Error
   sdf_generate_subdivision( const SDF_Params  internal_params,
                             SDF_Shape*        shape,
-                            FT_UInt           spread,
+                            uint           spread,
                             const FT_Bitmap*  bitmap )
   {
     /*
@@ -3547,14 +3547,14 @@
   static FT_Error
   sdf_generate_with_overlaps( SDF_Params        internal_params,
                               SDF_Shape*        shape,
-                              FT_UInt           spread,
+                              uint           spread,
                               const FT_Bitmap*  bitmap )
   {
     FT_Error  error = FT_Err_Ok;
 
-    FT_Int      num_contours;        /* total number of contours      */
-    FT_Int      i, j;                /* iterators                     */
-    FT_Int      width, rows;         /* width and rows of the bitmap  */
+    int      num_contours;        /* total number of contours      */
+    int      i, j;                /* iterators                     */
+    int      width, rows;         /* width and rows of the bitmap  */
     FT_Bitmap*  bitmaps;             /* separate bitmaps for contours */
 
     SDF_Contour*  contour;           /* temporary variable to iterate */
@@ -3585,8 +3585,8 @@
     contour           = shape->contours;
     memory            = shape->memory;
     temp_shape.memory = memory;
-    width             = (FT_Int)bitmap->width;
-    rows              = (FT_Int)bitmap->rows;
+    width             = (int)bitmap->width;
+    rows              = (int)bitmap->rows;
     num_contours      = 0;
 
     /* find the number of contours in the shape */
@@ -3598,12 +3598,12 @@
 
     /* allocate the bitmaps to generate SDF for separate contours */
     if ( FT_ALLOC( bitmaps,
-                   (FT_UInt)num_contours * sizeof ( *bitmaps ) ) )
+                   (uint)num_contours * sizeof ( *bitmaps ) ) )
       goto Exit;
 
     /* allocate array to hold orientation for all contours */
     if ( FT_ALLOC( orientations,
-                   (FT_UInt)num_contours * sizeof ( *orientations ) ) )
+                   (uint)num_contours * sizeof ( *orientations ) ) )
       goto Exit;
 
     contour = shape->contours;
@@ -3622,7 +3622,7 @@
 
       /* allocate memory for the buffer */
       if ( FT_ALLOC( bitmaps[i].buffer,
-                     bitmap->rows * (FT_UInt)bitmap->pitch ) )
+                     bitmap->rows * (uint)bitmap->pitch ) )
         goto Exit;
 
       /* determine the orientation */
@@ -3700,8 +3700,8 @@
     {
       for ( i = 0; i < width; i++ )
       {
-        FT_Int  id = j * width + i;       /* index of current pixel    */
-        FT_Int  c;                        /* contour iterator          */
+        int  id = j * width + i;       /* index of current pixel    */
+        int  c;                        /* contour iterator          */
 
         FT_SDFFormat  val_c  = 0;         /* max clockwise value       */
         FT_SDFFormat  val_ac = UCHAR_MAX; /* min counter-clockwise val */

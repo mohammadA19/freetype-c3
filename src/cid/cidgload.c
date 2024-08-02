@@ -53,7 +53,7 @@
    */
   fn FT_Error /* internal */
   cid_compute_fd_and_offsets( CID_Face   face,
-                              FT_UInt    glyph_index,
+                              uint    glyph_index,
                               FT_ULong*  fd_select_p,
                               FT_ULong*  off1_p,
                               FT_ULong*  off2_p )
@@ -62,7 +62,7 @@
 
     CID_FaceInfo  cid       = &face->cid;
     FT_Stream     stream    =  face->cid_stream;
-    FT_UInt       entry_len = cid->fd_bytes + cid->gd_bytes;
+    uint       entry_len = cid->fd_bytes + cid->gd_bytes;
 
     FT_Byte*  p;
     FT_Bool   need_frame_exit = 0;
@@ -153,7 +153,7 @@
 
   static FT_Error
   cid_load_glyph( T1_Decoder  decoder,
-                  FT_UInt     glyph_index )
+                  uint     glyph_index )
   {
     CID_Face       face = (CID_Face)decoder->builder.face;
     CID_FaceInfo   cid  = &face->cid;
@@ -230,7 +230,7 @@
     {
       CID_FaceDict  dict;
       CID_Subrs     cid_subrs = face->subrs + fd_select;
-      FT_UInt       cs_offset;
+      uint       cs_offset;
 
 
       /* Set up subrs */
@@ -249,7 +249,7 @@
       /* Decode the charstring. */
 
       /* Adjustment for seed bytes. */
-      cs_offset = decoder->lenIV >= 0 ? (FT_UInt)decoder->lenIV : 0;
+      cs_offset = decoder->lenIV >= 0 ? (uint)decoder->lenIV : 0;
       if ( cs_offset > glyph_length )
       {
         FT_TRACE0(( "cid_load_glyph: fail for glyph_index=%d, "
@@ -371,11 +371,11 @@
 
   fn FT_Error /* internal */
   cid_face_compute_max_advance( CID_Face  face,
-                                FT_Int*   max_advance )
+                                int*   max_advance )
   {
     FT_Error       error;
     T1_DecoderRec  decoder;
-    FT_Int         glyph_index;
+    int         glyph_index;
 
     PSAux_Service  psaux = (PSAux_Service)face->psaux;
 
@@ -424,8 +424,8 @@
   fn FT_Error /* internal */
   cid_slot_load_glyph( FT_GlyphSlot  cidglyph,      /* CID_GlyphSlot */
                        FT_Size       cidsize,       /* CID_Size      */
-                       FT_UInt       glyph_index,
-                       FT_Int32      load_flags )
+                       uint       glyph_index,
+                       int      load_flags )
   {
     CID_GlyphSlot  glyph = (CID_GlyphSlot)cidglyph;
     FT_Error       error;
@@ -440,7 +440,7 @@
     FT_Bool        must_finish_decoder = FALSE;
 
 
-    if ( glyph_index >= (FT_UInt)face->root.num_glyphs )
+    if ( glyph_index >= (uint)face->root.num_glyphs )
     {
       error = FT_THROW( Invalid_Argument );
       goto Exit;
@@ -569,7 +569,7 @@
       if ( ( load_flags & FT_LOAD_NO_SCALE ) == 0 || scaled )
       {
         /* scale the outline and the metrics */
-        FT_Int       n;
+        int       n;
         FT_Outline*  cur = decoder.builder.base;
         FT_Vector*   vec = cur->points;
         FT_Fixed     x_scale = glyph->x_scale;

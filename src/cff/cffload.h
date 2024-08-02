@@ -27,22 +27,22 @@
 
 FT_BEGIN_HEADER
 
-  fn FT_UShort /* internal */
-  cff_get_standard_encoding( FT_UInt  charcode );
+  fn ushort /* internal */
+  cff_get_standard_encoding( uint  charcode );
 
 
   fn FT_String* /* internal */
   cff_index_get_string( CFF_Font  font,
-                        FT_UInt   element );
+                        uint   element );
 
   fn FT_String* /* internal */
   cff_index_get_sid_string( CFF_Font  font,
-                            FT_UInt   sid );
+                            uint   sid );
 
 
   fn FT_Error /* internal */
   cff_index_access_element( CFF_Index  idx,
-                            FT_UInt    element,
+                            uint    element,
                             FT_Byte**  pbytes,
                             FT_ULong*  pbyte_len );
 
@@ -52,18 +52,18 @@ FT_BEGIN_HEADER
 
   fn FT_String* /* internal */
   cff_index_get_name( CFF_Font  font,
-                      FT_UInt   element );
+                      uint   element );
 
 
-  fn FT_UInt /* internal */
+  fn uint /* internal */
   cff_charset_cid_to_gindex( CFF_Charset  charset,
-                             FT_UInt      cid );
+                             uint      cid );
 
 
   fn FT_Error /* internal */
   cff_font_load( FT_Library  library,
                  FT_Stream   stream,
-                 FT_Int      face_index,
+                 int      face_index,
                  CFF_Font    font,
                  CFF_Face    face,
                  FT_Bool     pure_cff,
@@ -76,23 +76,23 @@ FT_BEGIN_HEADER
   fn FT_Error /* internal */
   cff_load_private_dict( CFF_Font     font,
                          CFF_SubFont  subfont,
-                         FT_UInt      lenNDV,
+                         uint      lenNDV,
                          FT_Fixed*    NDV );
 
   fn FT_Byte /* internal */
   cff_fd_select_get( CFF_FDSelect  fdselect,
-                     FT_UInt       glyph_index );
+                     uint       glyph_index );
 
   fn FT_Bool /* internal */
   cff_blend_check_vector( CFF_Blend  blend,
-                          FT_UInt    vsindex,
-                          FT_UInt    lenNDV,
+                          uint    vsindex,
+                          uint    lenNDV,
                           FT_Fixed*  NDV );
 
   fn FT_Error /* internal */
   cff_blend_build_vector( CFF_Blend  blend,
-                          FT_UInt    vsindex,
-                          FT_UInt    lenNDV,
+                          uint    vsindex,
+                          uint    lenNDV,
                           FT_Fixed*  NDV );
 
   fn void /* internal */
@@ -101,12 +101,12 @@ FT_BEGIN_HEADER
   fn FT_Error /* internal */
   cff_blend_doBlend( CFF_SubFont  subfont,
                      CFF_Parser   parser,
-                     FT_UInt      numBlends );
+                     uint      numBlends );
 
 #ifdef TT_CONFIG_OPTION_GX_VAR_SUPPORT
   fn FT_Error /* internal */
   cff_get_var_blend( FT_Face      face,
-                     FT_UInt     *num_coords,
+                     uint     *num_coords,
                      FT_Fixed*   *coords,
                      FT_Fixed*   *normalizedcoords,
                      FT_MM_Var*  *mm_var );

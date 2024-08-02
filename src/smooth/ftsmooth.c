@@ -119,7 +119,7 @@
 
     unsigned char*  dst_line = target->origin - y * target->pitch;
     unsigned char*  dst;
-    unsigned short  w;
+    ushort  w;
 
 
     for ( ; count--; spans++ )
@@ -157,7 +157,7 @@
       target.origin = bitmap->buffer;
     else
       target.origin = bitmap->buffer
-                      + ( bitmap->rows - 1 ) * (unsigned int)bitmap->pitch;
+                      + ( bitmap->rows - 1 ) * (uint)bitmap->pitch;
 
     target.pitch = bitmap->pitch;
 
@@ -353,8 +353,8 @@
 
 
     unsigned char*  dst = target->origin - ( y / SCALE ) * target->pitch;
-    unsigned short  x;
-    unsigned int    cover, sum;
+    ushort  x;
+    uint    cover, sum;
 
 
     /* When accumulating the oversampled spans we need to assure that  */
@@ -408,7 +408,7 @@
       target.origin = bitmap->buffer;
     else
       target.origin = bitmap->buffer
-                      + ( bitmap->rows - 1 ) * (unsigned int)bitmap->pitch;
+                      + ( bitmap->rows - 1 ) * (uint)bitmap->pitch;
 
     target.pitch = bitmap->pitch;
 
@@ -490,9 +490,9 @@
     x_shift = 64 * -slot->bitmap_left;
     y_shift = 64 * -slot->bitmap_top;
     if ( bitmap->pixel_mode == FT_PIXEL_MODE_LCD_V )
-      y_shift += 64 * (FT_Int)bitmap->rows / 3;
+      y_shift += 64 * (int)bitmap->rows / 3;
     else
-      y_shift += 64 * (FT_Int)bitmap->rows;
+      y_shift += 64 * (int)bitmap->rows;
 
     if ( origin )
     {

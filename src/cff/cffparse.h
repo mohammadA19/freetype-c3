@@ -57,17 +57,17 @@ FT_BEGIN_HEADER
 
     FT_Byte**   stack;
     FT_Byte**   top;
-    FT_UInt     stackSize;  /* allocated size */
+    uint     stackSize;  /* allocated size */
 
 #ifdef CFF_CONFIG_OPTION_OLD_ENGINE
     FT_ListRec  t2_strings;
 #endif /* CFF_CONFIG_OPTION_OLD_ENGINE */
 
-    FT_UInt     object_code;
+    uint     object_code;
     void*       object;
 
-    FT_UShort   num_designs; /* a copy of `CFF_FontRecDict->num_designs' */
-    FT_UShort   num_axes;    /* a copy of `CFF_FontRecDict->num_axes'    */
+    ushort   num_designs; /* a copy of `CFF_FontRecDict->num_designs' */
+    ushort   num_axes;    /* a copy of `CFF_FontRecDict->num_axes'    */
 
   } CFF_ParserRec, *CFF_Parser;
 
@@ -82,12 +82,12 @@ FT_BEGIN_HEADER
 
   fn FT_Error /* internal */
   cff_parser_init( CFF_Parser  parser,
-                   FT_UInt     code,
+                   uint     code,
                    void*       object,
                    FT_Library  library,
-                   FT_UInt     stackSize,
-                   FT_UShort   num_designs,
-                   FT_UShort   num_axes );
+                   uint     stackSize,
+                   ushort   num_designs,
+                   ushort   num_axes );
 
   fn void /* internal */
   cff_parser_done( CFF_Parser  parser );
@@ -122,11 +122,11 @@ FT_BEGIN_HEADER
   {
     int               kind;
     int               code;
-    FT_UInt           offset;
+    uint           offset;
     FT_Byte           size;
     CFF_Field_Reader  reader;
-    FT_UInt           array_max;
-    FT_UInt           count_offset;
+    uint           array_max;
+    uint           count_offset;
 
 #ifdef FT_DEBUG_LEVEL_TRACE
     const char*       id;

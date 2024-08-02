@@ -75,7 +75,7 @@ FT_BEGIN_HEADER
   typedef struct  SDF_Raster_Params_
   {
     FT_Raster_Params  root;
-    FT_UInt           spread;
+    uint           spread;
     FT_Bool           flip_sign;
     FT_Bool           flip_y;
     FT_Bool           overlaps;

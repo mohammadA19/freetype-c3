@@ -251,7 +251,7 @@
     FT_Vector*  offset  = &t42face->type1.font_offset;
     FT_Fixed    temp[6];
     FT_Fixed    temp_scale;
-    FT_Int      result;
+    int      result;
 
 
     result = T1_ToFixedArray( parser, 6, temp, 0 );
@@ -327,7 +327,7 @@
     if ( ft_isdigit( *cur ) || *cur == '[' )
     {
       T1_Encoding  encode          = &t42face->type1.encoding;
-      FT_Int       count, n;
+      int       count, n;
       PS_Table     char_table      = &loader->encoding_table;
       FT_Memory    memory          = parser->root.memory;
       FT_Error     error;
@@ -342,7 +342,7 @@
         parser->root.cursor++;
       }
       else
-        count = (FT_Int)T1_ToInt( parser );
+        count = (int)T1_ToInt( parser );
 
       /* only composite fonts (which we don't support) */
       /* can have larger values                        */
@@ -429,14 +429,14 @@
         /* check whether we have found an entry */
         if ( ft_isdigit( *cur ) || only_immediates )
         {
-          FT_Int  charcode;
+          int  charcode;
 
 
           if ( only_immediates )
             charcode = n;
           else
           {
-            charcode = (FT_Int)T1_ToInt( parser );
+            charcode = (int)T1_ToInt( parser );
             T1_Skip_Spaces( parser );
 
             /* protect against invalid charcode */
@@ -451,7 +451,7 @@
 
           if ( cur + 2 < limit && *cur == '/' && n < count )
           {
-            FT_UInt  len;
+            uint  len;
 
 
             cur++;
@@ -463,7 +463,7 @@
             if ( parser->root.error )
               return;
 
-            len = (FT_UInt)( parser->root.cursor - cur );
+            len = (uint)( parser->root.cursor - cur );
 
             parser->root.error = T1_Add_Table( char_table, charcode,
                                                cur, len + 1 );
@@ -543,7 +543,7 @@
     FT_Byte*    cur;
     FT_Byte*    limit  = parser->root.limit;
     FT_Error    error;
-    FT_Int      num_tables = 0;
+    int      num_tables = 0;
     FT_Long     ttf_count;
     FT_Long     ttf_reserved;
 
@@ -842,8 +842,8 @@
 
     FT_Byte*       cur;
     FT_Byte*       limit        = parser->root.limit;
-    FT_Int         n;
-    FT_Int         notdef_index = 0;
+    int         n;
+    int         notdef_index = 0;
     FT_Byte        notdef_found = 0;
 
 
@@ -883,7 +883,7 @@
     {
       /* We have `<< ... >>'.  Count the number of `/' in the dictionary */
       /* to get its size.                                                */
-      FT_Int  count = 0;
+      int  count = 0;
 
 
       T1_Skip_PS_Token( parser );
@@ -992,7 +992,7 @@
 
       if ( *cur == '/' || *cur == '(' )
       {
-        FT_UInt  len;
+        uint  len;
         FT_Bool  have_literal = FT_BOOL( *cur == '(' );
 
 
@@ -1004,7 +1004,7 @@
         }
 
         cur++;                              /* skip `/' */
-        len = (FT_UInt)( parser->root.cursor - cur );
+        len = (uint)( parser->root.cursor - cur );
         if ( have_literal )
           len--;
 
@@ -1039,7 +1039,7 @@
           goto Fail;
         }
 
-        len = (FT_UInt)( parser->root.cursor - cur );
+        len = (uint)( parser->root.cursor - cur );
 
         error = T1_Add_Table( code_table, n, cur, len + 1 );
         if ( error )
@@ -1140,7 +1140,7 @@
     FT_Error  error;
     void*     dummy_object;
     void**    objects;
-    FT_UInt   max_objects = 0;
+    uint   max_objects = 0;
 
 
     /* if the keyword has a dedicated callback, call it */
@@ -1257,7 +1257,7 @@
       /* look for immediates */
       else if ( *cur == '/' && cur + 2 < limit )
       {
-        FT_UInt  len;
+        uint  len;
 
 
         cur++;
@@ -1267,7 +1267,7 @@
         if ( parser->root.error )
           goto Exit;
 
-        len = (FT_UInt)( parser->root.cursor - cur );
+        len = (uint)( parser->root.cursor - cur );
 
         if ( len > 0 && len < 22 && parser->root.cursor < limit )
         {

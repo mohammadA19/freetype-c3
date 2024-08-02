@@ -211,7 +211,7 @@
     FT_Error          error;
     FT_WinFNT_Header  header = &font->header;
     FT_Bool           new_format;
-    FT_UInt           size;
+    uint           size;
 
 
     /* first of all, read the FNT header */
@@ -272,7 +272,7 @@
 
   static FT_Error
   fnt_face_get_dll_font( FNT_Face  face,
-                         FT_Int    face_instance_index )
+                         int    face_instance_index )
   {
     FT_Error         error;
     FT_Stream        stream = FT_FACE( face )->stream;
@@ -312,8 +312,8 @@
         /* good, now look into the resource table for each FNT resource */
         FT_ULong   res_offset  = mz_header.lfanew +
                                    ne_header.resource_tab_offset;
-        FT_UShort  size_shift;
-        FT_UShort  font_count  = 0;
+        ushort  size_shift;
+        ushort  font_count  = 0;
         FT_ULong   font_offset = 0;
 
 
@@ -343,7 +343,7 @@
 
         for (;;)
         {
-          FT_UShort  type_id, count;
+          ushort  type_id, count;
 
 
           type_id = FT_GET_USHORT_LE();
@@ -421,7 +421,7 @@
         WinPE_RsrcDataEntryRec  data_entry;
 
         FT_ULong   root_dir_offset, name_dir_offset, lang_dir_offset;
-        FT_UShort  i, j, k;
+        ushort  i, j, k;
 
 
         FT_TRACE2(( "PE signature found\n" ));
@@ -617,8 +617,8 @@
   typedef struct  FNT_CMapRec_
   {
     FT_CMapRec  cmap;
-    FT_UInt32   first;
-    FT_UInt32   count;
+    uint   first;
+    uint   count;
 
   } FNT_CMapRec, *FNT_CMap;
 
@@ -634,39 +634,39 @@
     FT_UNUSED( pointer );
 
 
-    fntcmap->first = (FT_UInt32)font->header.first_char;
-    fntcmap->count = (FT_UInt32)( font->header.last_char -
+    fntcmap->first = (uint)font->header.first_char;
+    fntcmap->count = (uint)( font->header.last_char -
                                   fntcmap->first + 1 );
 
     return 0;
   }
 
 
-  static FT_UInt
+  static uint
   fnt_cmap_char_index( FT_CMap    cmap,       /* FNT_CMap */
-                       FT_UInt32  char_code )
+                       uint  char_code )
   {
     FNT_CMap  fntcmap = (FNT_CMap)cmap;
-    FT_UInt   gindex  = 0;
+    uint   gindex  = 0;
 
 
     char_code -= fntcmap->first;
     if ( char_code < fntcmap->count )
       /* we artificially increase the glyph index; */
       /* FNT_Load_Glyph reverts to the right one   */
-      gindex = (FT_UInt)( char_code + 1 );
+      gindex = (uint)( char_code + 1 );
     return gindex;
   }
 
 
-  static FT_UInt
+  static uint
   fnt_cmap_char_next( FT_CMap     cmap,        /* FNT_CMap */
-                      FT_UInt32  *pchar_code )
+                      uint  *pchar_code )
   {
     FNT_CMap   fntcmap   = (FNT_CMap)cmap;
-    FT_UInt    gindex    = 0;
-    FT_UInt32  result    = 0;
-    FT_UInt32  char_code = *pchar_code + 1;
+    uint    gindex    = 0;
+    uint  result    = 0;
+    uint  char_code = *pchar_code + 1;
 
 
     if ( char_code <= fntcmap->first )
@@ -680,7 +680,7 @@
       if ( char_code < fntcmap->count )
       {
         result = fntcmap->first + char_code;
-        gindex = (FT_UInt)( char_code + 1 );
+        gindex = (uint)( char_code + 1 );
       }
     }
 
@@ -726,14 +726,14 @@
   static FT_Error
   FNT_Face_Init( FT_Stream      stream,
                  FT_Face        fntface,        /* FNT_Face */
-                 FT_Int         face_instance_index,
-                 FT_Int         num_params,
+                 int         face_instance_index,
+                 int         num_params,
                  FT_Parameter*  params )
   {
     FNT_Face   face   = (FNT_Face)fntface;
     FT_Error   error;
     FT_Memory  memory = FT_FACE_MEMORY( face );
-    FT_Int     face_index;
+    int     face_index;
 
     FT_UNUSED( num_params );
     FT_UNUSED( params );
@@ -815,11 +815,11 @@
 
       {
         FT_Bitmap_Size*  bsize = root->available_sizes;
-        FT_UShort        x_res, y_res;
+        ushort        x_res, y_res;
 
 
-        bsize->width  = (FT_Short)font->header.avg_width;
-        bsize->height = (FT_Short)( font->header.pixel_height +
+        bsize->width  = (short)font->header.avg_width;
+        bsize->height = (short)( font->header.pixel_height +
                                     font->header.external_leading );
         bsize->size   = font->header.nominal_point_size << 6;
 
@@ -1003,14 +1003,14 @@
   static FT_Error
   FNT_Load_Glyph( FT_GlyphSlot  slot,
                   FT_Size       size,
-                  FT_UInt       glyph_index,
-                  FT_Int32      load_flags )
+                  uint       glyph_index,
+                  int      load_flags )
   {
     FNT_Face    face   = (FNT_Face)size->face;
     FNT_Font    font;
     FT_Error    error  = FT_Err_Ok;
     FT_Byte*    p;
-    FT_UInt     len;
+    uint     len;
     FT_Bitmap*  bitmap = &slot->bitmap;
     FT_ULong    offset;
     FT_Bool     new_format;
@@ -1025,7 +1025,7 @@
     font = face->font;
 
     if ( !font                                                   ||
-         glyph_index >= (FT_UInt)( FT_FACE( face )->num_glyphs ) )
+         glyph_index >= (uint)( FT_FACE( face )->num_glyphs ) )
     {
       error = FT_THROW( Invalid_Argument );
       goto Exit;
@@ -1094,7 +1094,7 @@
     /* allocate and build bitmap */
     {
       FT_Memory  memory = FT_FACE_MEMORY( slot->face );
-      FT_UInt    pitch  = ( bitmap->width + 7 ) >> 3;
+      uint    pitch  = ( bitmap->width + 7 ) >> 3;
       FT_Byte*   column;
       FT_Byte*   write;
 

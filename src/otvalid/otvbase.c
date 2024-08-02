@@ -35,7 +35,7 @@
                           OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   BaseCoordFormat;
+    uint   BaseCoordFormat;
 
 
     OTV_NAME_ENTER( "BaseCoord" );
@@ -74,7 +74,7 @@
                             OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   BaseTagCount;
+    uint   BaseTagCount;
 
 
     OTV_NAME_ENTER( "BaseTagList" );
@@ -96,7 +96,7 @@
                            OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   BaseCoordCount;
+    uint   BaseCoordCount;
 
 
     OTV_NAME_ENTER( "BaseValues" );
@@ -123,8 +123,8 @@
                        OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   table_size;
-    FT_UInt   FeatMinMaxCount;
+    uint   table_size;
+    uint   FeatMinMaxCount;
 
     OTV_OPTIONAL_TABLE( MinCoord );
     OTV_OPTIONAL_TABLE( MaxCoord );
@@ -178,8 +178,8 @@
                            OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   table_size;
-    FT_UInt   BaseLangSysCount;
+    uint   table_size;
+    uint   BaseLangSysCount;
 
     OTV_OPTIONAL_TABLE( BaseValues    );
     OTV_OPTIONAL_TABLE( DefaultMinMax );
@@ -223,7 +223,7 @@
                                OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   BaseScriptCount;
+    uint   BaseScriptCount;
 
 
     OTV_NAME_ENTER( "BaseScriptList" );
@@ -253,7 +253,7 @@
                      OTV_Validator  otvalid )
   {
     FT_Bytes  p = table;
-    FT_UInt   table_size;
+    uint   table_size;
 
     OTV_OPTIONAL_TABLE( BaseTagList );
 
@@ -283,8 +283,8 @@
     OTV_ValidatorRec  otvalidrec;
     OTV_Validator     otvalid = &otvalidrec;
     FT_Bytes          p       = table;
-    FT_UInt           table_size;
-    FT_UShort         version;
+    uint           table_size;
+    ushort         version;
 
     OTV_OPTIONAL_TABLE( HorizAxis );
     OTV_OPTIONAL_TABLE( VertAxis  );

@@ -46,8 +46,8 @@
   /* all data from `CPAL' not covered in FT_Palette_Data */
   typedef struct Cpal_
   {
-    FT_UShort  version;        /* Table version number (0 or 1 supported). */
-    FT_UShort  num_colors;               /* Total number of color records, */
+    ushort  version;        /* Table version number (0 or 1 supported). */
+    ushort  num_colors;               /* Total number of color records, */
                                          /* combined for all palettes.     */
     FT_Byte*  colors;                              /* RGBA array of colors */
     FT_Byte*  color_indices; /* Index of each palette's first color record */
@@ -129,9 +129,9 @@
     if ( cpal->version == 1 )
     {
       FT_ULong    type_offset, label_offset, entry_label_offset;
-      FT_UShort*  array = NULL;
-      FT_UShort*  limit;
-      FT_UShort*  q;
+      ushort*  array = NULL;
+      ushort*  limit;
+      ushort*  q;
 
 
       if ( CPAL_V0_HEADER_BASE_SIZE             +
@@ -259,7 +259,7 @@
 
   fn FT_Error /* internal */
   tt_face_palette_set( TT_Face  face,
-                       FT_UInt  palette_index )
+                       uint  palette_index )
   {
     Cpal*  cpal = (Cpal*)face->cpal;
 
@@ -269,7 +269,7 @@
     FT_Color*  q;
     FT_Color*  limit;
 
-    FT_UShort  color_index;
+    ushort  color_index;
 
 
     if ( !cpal || palette_index >= face->palette_data.num_palettes )

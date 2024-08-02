@@ -138,7 +138,7 @@
   {
     FT_Error  error = FT_Err_Ok;
     FT_Byte*  p     = *pp;
-    FT_UInt   num_items, item_type, item_size;
+    uint   num_items, item_type, item_size;
 
 
     PFR_CHECK( 1 );
@@ -250,7 +250,7 @@
     {
       /* make a few adjustments to the header */
       header->phy_font_max_size +=
-        (FT_UInt32)header->phy_font_max_size_high << 16;
+        (uint)header->phy_font_max_size_high << 16;
     }
 
     return error;
@@ -285,12 +285,12 @@
 
   fn FT_Error /* internal */
   pfr_log_font_count( FT_Stream  stream,
-                      FT_UInt32  section_offset,
+                      uint  section_offset,
                       FT_Long   *acount )
   {
     FT_Error  error;
-    FT_UInt   count;
-    FT_UInt   result = 0;
+    uint   count;
+    uint   result = 0;
 
 
     if ( FT_STREAM_SEEK( section_offset ) ||
@@ -324,14 +324,14 @@
   fn FT_Error /* internal */
   pfr_log_font_load( PFR_LogFont  log_font,
                      FT_Stream    stream,
-                     FT_UInt      idx,
-                     FT_UInt32    section_offset,
+                     uint      idx,
+                     uint    section_offset,
                      FT_Bool      size_increment )
   {
-    FT_UInt    num_log_fonts;
-    FT_UInt    flags;
-    FT_UInt32  offset;
-    FT_UInt32  size;
+    uint    num_log_fonts;
+    uint    flags;
+    uint  offset;
+    uint  size;
     FT_Error   error;
 
 
@@ -355,7 +355,7 @@
     {
       FT_Byte*  p;
       FT_Byte*  limit;
-      FT_UInt   local;
+      uint   local;
 
 
       if ( FT_STREAM_SEEK( offset ) ||
@@ -421,7 +421,7 @@
       if ( size_increment )
       {
         PFR_CHECK( 1 );
-        log_font->phys_size += (FT_UInt32)PFR_NEXT_BYTE( p ) << 16;
+        log_font->phys_size += (uint)PFR_NEXT_BYTE( p ) << 16;
       }
     }
 
@@ -456,8 +456,8 @@
     PFR_PhyFont  phy_font = (PFR_PhyFont)phy_font_;
     FT_Memory    memory   = phy_font->memory;
     PFR_Strike   strike;
-    FT_UInt      flags0;
-    FT_UInt      n, count, size1;
+    uint      flags0;
+    uint      n, count, size1;
     FT_Error     error    = FT_Err_Ok;
 
 
@@ -470,7 +470,7 @@
     /* re-allocate when needed */
     if ( phy_font->num_strikes + count > phy_font->max_strikes )
     {
-      FT_UInt  new_max = FT_PAD_CEIL( phy_font->num_strikes + count, 4 );
+      uint  new_max = FT_PAD_CEIL( phy_font->num_strikes + count, 4 );
 
 
       if ( FT_RENEW_ARRAY( phy_font->strikes,
@@ -557,7 +557,7 @@
     PFR_PhyFont  phy_font = (PFR_PhyFont)phy_font_;
     FT_Error     error    = FT_Err_Ok;
     FT_Memory    memory   = phy_font->memory;
-    FT_UInt      len      = (FT_UInt)( limit - p );
+    uint      len      = (uint)( limit - p );
 
 
     if ( phy_font->font_id )
@@ -582,8 +582,8 @@
                                   void*     phy_font_ )
   {
     PFR_PhyFont  phy_font = (PFR_PhyFont)phy_font_;
-    FT_UInt      count, num_vert, num_horz;
-    FT_Int*      snaps    = NULL;
+    uint      count, num_vert, num_horz;
+    int*      snaps    = NULL;
     FT_Error     error    = FT_Err_Ok;
     FT_Memory    memory   = phy_font->memory;
 
@@ -659,7 +659,7 @@
     /* lookup later...                                     */
     if ( item->pair_count > 0 )
     {
-      FT_UInt   char1, char2;
+      uint   char1, char2;
       FT_Byte*  q;
 
 
@@ -733,13 +733,13 @@
    */
   static FT_Error
   pfr_aux_name_load( FT_Byte*     p,
-                     FT_UInt      len,
+                     uint      len,
                      FT_Memory    memory,
                      FT_String*  *astring )
   {
     FT_Error    error  = FT_Err_Ok;
     FT_String*  result = NULL;
-    FT_UInt     n, ok;
+    uint     n, ok;
 
 
     if ( *astring )
@@ -820,12 +820,12 @@
   fn FT_Error /* internal */
   pfr_phy_font_load( PFR_PhyFont  phy_font,
                      FT_Stream    stream,
-                     FT_UInt32    offset,
-                     FT_UInt32    size )
+                     uint    offset,
+                     uint    size )
   {
     FT_Error   error;
     FT_Memory  memory = stream->memory;
-    FT_UInt    flags;
+    uint    flags;
     FT_ULong   num_aux;
     FT_Byte*   p;
     FT_Byte*   limit;
@@ -897,7 +897,7 @@
 
       while ( num_aux > 0 )
       {
-        FT_UInt  length, type;
+        uint  length, type;
 
 
         if ( q + 4 > p )
@@ -951,7 +951,7 @@
 
     /* read the blue values */
     {
-      FT_UInt  n, count;
+      uint  n, count;
 
 
       PFR_CHECK( 1 );
@@ -975,7 +975,7 @@
 
     /* read the character descriptors */
     {
-      FT_UInt  n, count, Size;
+      uint  n, count, Size;
 
 
       phy_font->num_chars    = count = PFR_NEXT_USHORT( p );

@@ -113,8 +113,8 @@ FT_BEGIN_HEADER
 
   typedef struct  FTC_MruListRec_
   {
-    FT_UInt              num_nodes;
-    FT_UInt              max_nodes;
+    uint              num_nodes;
+    uint              max_nodes;
     FTC_MruNode          nodes;
     FT_Pointer           data;
     FTC_MruListClassRec  clazz;
@@ -126,7 +126,7 @@ FT_BEGIN_HEADER
   fn void /* internal */
   FTC_MruList_Init( FTC_MruList       list,
                     FTC_MruListClass  clazz,
-                    FT_UInt           max_nodes,
+                    uint           max_nodes,
                     FT_Pointer        data,
                     FT_Memory         memory );
 

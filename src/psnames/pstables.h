@@ -550,7 +550,7 @@
   extern
 #endif
 #endif
-  const unsigned short  t1_standard_encoding[256]
+  const ushort  t1_standard_encoding[256]
 #ifdef  DEFINE_PS_TABLES_DATA
   =
   {
@@ -583,7 +583,7 @@
   extern
 #endif
 #endif
-  const unsigned short  t1_expert_encoding[256]
+  const ushort  t1_expert_encoding[256]
 #ifdef  DEFINE_PS_TABLES_DATA
   =
   {

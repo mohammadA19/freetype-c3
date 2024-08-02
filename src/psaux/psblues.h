@@ -118,7 +118,7 @@ FT_BEGIN_HEADER
   struct  CF2_HintRec_
   {
     CF2_UInt  flags;  /* attributes of the edge            */
-    size_t    index;  /* index in original stem hint array */
+    usz    index;  /* index in original stem hint array */
                       /* (if not synthetic)                */
     CF2_Fixed  csCoord;
     CF2_Fixed  dsCoord;

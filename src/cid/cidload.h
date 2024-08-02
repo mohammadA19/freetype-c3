@@ -30,18 +30,18 @@ FT_BEGIN_HEADER
   typedef struct  CID_Loader_
   {
     CID_Parser  parser;          /* parser used to read the stream */
-    FT_Int      num_chars;       /* number of characters in encoding */
+    int      num_chars;       /* number of characters in encoding */
 
   } CID_Loader;
 
 
   fn FT_ULong /* internal */
   cid_get_offset( FT_Byte**  start,
-                  FT_UInt    offsize );
+                  uint    offsize );
 
   fn FT_Error /* internal */
   cid_face_open( CID_Face  face,
-                 FT_Int    face_index );
+                 int    face_index );
 
 
 FT_END_HEADER

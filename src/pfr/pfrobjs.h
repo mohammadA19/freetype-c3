@@ -59,8 +59,8 @@ FT_BEGIN_HEADER
   fn FT_Error /* internal */
   pfr_face_init( FT_Stream      stream,
                  FT_Face        face,           /* PFR_Face */
-                 FT_Int         face_index,
-                 FT_Int         num_params,
+                 int         face_index,
+                 int         num_params,
                  FT_Parameter*  params );
 
   fn void /* internal */
@@ -69,8 +69,8 @@ FT_BEGIN_HEADER
 
   fn FT_Error /* internal */
   pfr_face_get_kerning( FT_Face     face,       /* PFR_Face */
-                        FT_UInt     glyph1,
-                        FT_UInt     glyph2,
+                        uint     glyph1,
+                        uint     glyph2,
                         FT_Vector*  kerning );
 
 
@@ -84,8 +84,8 @@ FT_BEGIN_HEADER
   fn FT_Error /* internal */
   pfr_slot_load( FT_GlyphSlot  slot,            /* PFR_Slot */
                  FT_Size       size,            /* PFR_Size */
-                 FT_UInt       gindex,
-                 FT_Int32      load_flags );
+                 uint       gindex,
+                 int      load_flags );
 
 
 FT_END_HEADER

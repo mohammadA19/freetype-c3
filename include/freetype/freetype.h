@@ -505,8 +505,8 @@ FT_BEGIN_HEADER
    */
   typedef struct  FT_Bitmap_Size_
   {
-    FT_Short  height;
-    FT_Short  width;
+    short  height;
+    short  width;
 
     FT_Pos    size;
 
@@ -770,10 +770,10 @@ FT_BEGIN_HEADER
 #ifndef FT_ENC_TAG
 
 #define FT_ENC_TAG( value, a, b, c, d )                             \
-          value = ( ( FT_STATIC_BYTE_CAST( FT_UInt32, a ) << 24 ) | \
-                    ( FT_STATIC_BYTE_CAST( FT_UInt32, b ) << 16 ) | \
-                    ( FT_STATIC_BYTE_CAST( FT_UInt32, c ) <<  8 ) | \
-                      FT_STATIC_BYTE_CAST( FT_UInt32, d )         )
+          value = ( ( FT_STATIC_BYTE_CAST( uint, a ) << 24 ) | \
+                    ( FT_STATIC_BYTE_CAST( uint, b ) << 16 ) | \
+                    ( FT_STATIC_BYTE_CAST( uint, c ) <<  8 ) | \
+                      FT_STATIC_BYTE_CAST( uint, d )         )
 
 #endif /* FT_ENC_TAG */
 
@@ -1005,8 +1005,8 @@ FT_BEGIN_HEADER
   {
     FT_Face      face;
     FT_Encoding  encoding;
-    FT_UShort    platform_id;
-    FT_UShort    encoding_id;
+    ushort    platform_id;
+    ushort    encoding_id;
 
   } FT_CharMapRec;
 
@@ -1239,10 +1239,10 @@ FT_BEGIN_HEADER
     FT_String*        family_name;
     FT_String*        style_name;
 
-    FT_Int            num_fixed_sizes;
+    int            num_fixed_sizes;
     FT_Bitmap_Size*   available_sizes;
 
-    FT_Int            num_charmaps;
+    int            num_charmaps;
     FT_CharMap*       charmaps;
 
     FT_Generic        generic;
@@ -1252,16 +1252,16 @@ FT_BEGIN_HEADER
     /* for bitmap fonts.                                              */
     FT_BBox           bbox;
 
-    FT_UShort         units_per_EM;
-    FT_Short          ascender;
-    FT_Short          descender;
-    FT_Short          height;
+    ushort         units_per_EM;
+    short          ascender;
+    short          descender;
+    short          height;
 
-    FT_Short          max_advance_width;
-    FT_Short          max_advance_height;
+    short          max_advance_width;
+    short          max_advance_height;
 
-    FT_Short          underline_position;
-    FT_Short          underline_thickness;
+    short          underline_position;
+    short          underline_thickness;
 
     FT_GlyphSlot      glyph;
     FT_Size           size;
@@ -1973,8 +1973,8 @@ FT_BEGIN_HEADER
    */
   typedef struct  FT_Size_Metrics_
   {
-    FT_UShort  x_ppem;      /* horizontal pixels per EM               */
-    FT_UShort  y_ppem;      /* vertical pixels per EM                 */
+    ushort  x_ppem;      /* horizontal pixels per EM               */
+    ushort  y_ppem;      /* vertical pixels per EM                 */
 
     FT_Fixed   x_scale;     /* scaling values used to convert font    */
     FT_Fixed   y_scale;     /* units to 26.6 fractional pixels        */
@@ -2266,7 +2266,7 @@ FT_BEGIN_HEADER
     FT_Library        library;
     FT_Face           face;
     FT_GlyphSlot      next;
-    FT_UInt           glyph_index; /* new in 2.10; was reserved previously */
+    uint           glyph_index; /* new in 2.10; was reserved previously */
     FT_Generic        generic;
 
     FT_Glyph_Metrics  metrics;
@@ -2277,12 +2277,12 @@ FT_BEGIN_HEADER
     FT_Glyph_Format   format;
 
     FT_Bitmap         bitmap;
-    FT_Int            bitmap_left;
-    FT_Int            bitmap_top;
+    int            bitmap_left;
+    int            bitmap_top;
 
     FT_Outline        outline;
 
-    FT_UInt           num_subglyphs;
+    uint           num_subglyphs;
     FT_SubGlyph       subglyphs;
 
     void*             control_data;
@@ -2520,13 +2520,13 @@ FT_BEGIN_HEADER
    */
   typedef struct  FT_Open_Args_
   {
-    FT_UInt         flags;
+    uint         flags;
     const FT_Byte*  memory_base;
     FT_Long         memory_size;
     FT_String*      pathname;
     FT_Stream       stream;
     FT_Module       driver;
-    FT_Int          num_params;
+    int          num_params;
     FT_Parameter*   params;
 
   } FT_Open_Args;
@@ -2924,7 +2924,7 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Error )
   FT_Select_Size( FT_Face  face,
-                  FT_Int   strike_index );
+                  int   strike_index );
 
 
   /**************************************************************************
@@ -3033,8 +3033,8 @@ FT_BEGIN_HEADER
     FT_Size_Request_Type  type;
     FT_Long               width;
     FT_Long               height;
-    FT_UInt               horiResolution;
-    FT_UInt               vertResolution;
+    uint               horiResolution;
+    uint               vertResolution;
 
   } FT_Size_RequestRec;
 
@@ -3139,8 +3139,8 @@ FT_BEGIN_HEADER
   FT_Set_Char_Size( FT_Face     face,
                     FT_F26Dot6  char_width,
                     FT_F26Dot6  char_height,
-                    FT_UInt     horz_resolution,
-                    FT_UInt     vert_resolution );
+                    uint     horz_resolution,
+                    uint     vert_resolution );
 
 
   /**************************************************************************
@@ -3174,8 +3174,8 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Error )
   FT_Set_Pixel_Sizes( FT_Face  face,
-                      FT_UInt  pixel_width,
-                      FT_UInt  pixel_height );
+                      uint  pixel_width,
+                      uint  pixel_height );
 
 
   /**************************************************************************
@@ -3229,8 +3229,8 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Error )
   FT_Load_Glyph( FT_Face   face,
-                 FT_UInt   glyph_index,
-                 FT_Int32  load_flags );
+                 uint   glyph_index,
+                 int  load_flags );
 
 
   /**************************************************************************
@@ -3280,7 +3280,7 @@ FT_BEGIN_HEADER
   FT_EXPORT( FT_Error )
   FT_Load_Char( FT_Face   face,
                 FT_ULong  char_code,
-                FT_Int32  load_flags );
+                int  load_flags );
 
 
   /**************************************************************************
@@ -3611,7 +3611,7 @@ FT_BEGIN_HEADER
    *   necessary to empty the cache after a mode switch to avoid false hits.
    *
    */
-#define FT_LOAD_TARGET_( x )   ( FT_STATIC_CAST( FT_Int32, (x) & 15 ) << 16 )
+#define FT_LOAD_TARGET_( x )   ( FT_STATIC_CAST( int, (x) & 15 ) << 16 )
 
 #define FT_LOAD_TARGET_NORMAL  FT_LOAD_TARGET_( FT_RENDER_MODE_NORMAL )
 #define FT_LOAD_TARGET_LIGHT   FT_LOAD_TARGET_( FT_RENDER_MODE_LIGHT  )
@@ -4016,9 +4016,9 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Error )
   FT_Get_Kerning( FT_Face     face,
-                  FT_UInt     left_glyph,
-                  FT_UInt     right_glyph,
-                  FT_UInt     kern_mode,
+                  uint     left_glyph,
+                  uint     right_glyph,
+                  uint     kern_mode,
                   FT_Vector  *akerning );
 
 
@@ -4061,7 +4061,7 @@ FT_BEGIN_HEADER
   FT_EXPORT( FT_Error )
   FT_Get_Track_Kerning( FT_Face    face,
                         FT_Fixed   point_size,
-                        FT_Int     degree,
+                        int     degree,
                         FT_Fixed*  akerning );
 
 
@@ -4155,7 +4155,7 @@ FT_BEGIN_HEADER
    *   `charmap` belongs.  If an error occurs, -1 is returned.
    *
    */
-  FT_EXPORT( FT_Int )
+  FT_EXPORT( int )
   FT_Get_Charmap_Index( FT_CharMap  charmap );
 
 
@@ -4190,7 +4190,7 @@ FT_BEGIN_HEADER
    *   created at index~0 and whatever was there will be moved to the last
    *   index -- Type~42 fonts are considered invalid under this condition.
    */
-  FT_EXPORT( FT_UInt )
+  FT_EXPORT( uint )
   FT_Get_Char_Index( FT_Face   face,
                      FT_ULong  charcode );
 
@@ -4222,7 +4222,7 @@ FT_BEGIN_HEADER
    *
    *   ```
    *     FT_ULong  charcode;
-   *     FT_UInt   gindex;
+   *     uint   gindex;
    *
    *
    *     charcode = FT_Get_First_Char( face, &gindex );
@@ -4247,7 +4247,7 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_ULong )
   FT_Get_First_Char( FT_Face   face,
-                     FT_UInt  *agindex );
+                     uint  *agindex );
 
 
   /**************************************************************************
@@ -4285,7 +4285,7 @@ FT_BEGIN_HEADER
   FT_EXPORT( FT_ULong )
   FT_Get_Next_Char( FT_Face    face,
                     FT_ULong   char_code,
-                    FT_UInt   *agindex );
+                    uint   *agindex );
 
 
   /**************************************************************************
@@ -4352,7 +4352,7 @@ FT_BEGIN_HEADER
    *                            { 0x11, 0x44, 0x56, 0x44, 0x11 };
    *
    *     FT_Parameter         property3;
-   *     FT_Int32             random_seed = 314159265;
+   *     int             random_seed = 314159265;
    *
    *     FT_Parameter         properties[3] = { property1,
    *                                            property2,
@@ -4389,7 +4389,7 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Error )
   FT_Face_Properties( FT_Face        face,
-                      FT_UInt        num_properties,
+                      uint        num_properties,
                       FT_Parameter*  properties );
 
 
@@ -4429,7 +4429,7 @@ FT_BEGIN_HEADER
    *   It then works only for fonts that actually embed glyph names (which
    *   many recent OpenType fonts do not).
    */
-  FT_EXPORT( FT_UInt )
+  FT_EXPORT( uint )
   FT_Get_Name_Index( FT_Face           face,
                      const FT_String*  glyph_name );
 
@@ -4478,9 +4478,9 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Error )
   FT_Get_Glyph_Name( FT_Face     face,
-                     FT_UInt     glyph_index,
+                     uint     glyph_index,
                      FT_Pointer  buffer,
-                     FT_UInt     buffer_max );
+                     uint     buffer_max );
 
 
   /**************************************************************************
@@ -4598,11 +4598,11 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Error )
   FT_Get_SubGlyph_Info( FT_GlyphSlot  glyph,
-                        FT_UInt       sub_index,
-                        FT_Int       *p_index,
-                        FT_UInt      *p_flags,
-                        FT_Int       *p_arg1,
-                        FT_Int       *p_arg2,
+                        uint       sub_index,
+                        int       *p_index,
+                        uint      *p_flags,
+                        int       *p_arg1,
+                        int       *p_arg2,
                         FT_Matrix    *p_transform );
 
 
@@ -4691,7 +4691,7 @@ FT_BEGIN_HEADER
    *   2.3.8
    *
    */
-  FT_EXPORT( FT_UShort )
+  FT_EXPORT( ushort )
   FT_Get_FSType_Flags( FT_Face  face );
 
 
@@ -4785,7 +4785,7 @@ FT_BEGIN_HEADER
    *   2.3.6
    *
    */
-  FT_EXPORT( FT_UInt )
+  FT_EXPORT( uint )
   FT_Face_GetCharVariantIndex( FT_Face   face,
                                FT_ULong  charcode,
                                FT_ULong  variantSelector );
@@ -4822,7 +4822,7 @@ FT_BEGIN_HEADER
    *   2.3.6
    *
    */
-  FT_EXPORT( FT_Int )
+  FT_EXPORT( int )
   FT_Face_GetCharVariantIsDefault( FT_Face   face,
                                    FT_ULong  charcode,
                                    FT_ULong  variantSelector );
@@ -4854,7 +4854,7 @@ FT_BEGIN_HEADER
    *   2.3.6
    *
    */
-  FT_EXPORT( FT_UInt32* )
+  FT_EXPORT( uint* )
   FT_Face_GetVariantSelectors( FT_Face  face );
 
 
@@ -4888,7 +4888,7 @@ FT_BEGIN_HEADER
    *   2.3.6
    *
    */
-  FT_EXPORT( FT_UInt32* )
+  FT_EXPORT( uint* )
   FT_Face_GetVariantsOfChar( FT_Face   face,
                              FT_ULong  charcode );
 
@@ -4923,7 +4923,7 @@ FT_BEGIN_HEADER
    *   2.3.6
    *
    */
-  FT_EXPORT( FT_UInt32* )
+  FT_EXPORT( uint* )
   FT_Face_GetCharsOfVariant( FT_Face   face,
                              FT_ULong  variantSelector );
 
@@ -5211,9 +5211,9 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( void )
   FT_Library_Version( FT_Library   library,
-                      FT_Int      *amajor,
-                      FT_Int      *aminor,
-                      FT_Int      *apatch );
+                      int      *amajor,
+                      int      *aminor,
+                      int      *apatch );
 
 
   /**************************************************************************

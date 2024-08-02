@@ -49,7 +49,7 @@
 
   typedef struct  GXV_lcar_DataRec_
   {
-    FT_UShort  format;
+    ushort  format;
 
   } GXV_lcar_DataRec, *GXV_lcar_Data;
 
@@ -66,8 +66,8 @@
   /*************************************************************************/
 
   static void
-  gxv_lcar_partial_validate( FT_Short       partial,
-                             FT_UShort      glyph,
+  gxv_lcar_partial_validate( short       partial,
+                             ushort      glyph,
                              GXV_Validator  gxvalid )
   {
     GXV_NAME_ENTER( "partial" );
@@ -75,7 +75,7 @@
     if ( GXV_LCAR_DATA( format ) != 1 )
       goto Exit;
 
-    gxv_ctlPoint_validate( glyph, (FT_UShort)partial, gxvalid );
+    gxv_ctlPoint_validate( glyph, (ushort)partial, gxvalid );
 
   Exit:
     GXV_EXIT;
@@ -83,15 +83,15 @@
 
 
   static void
-  gxv_lcar_LookupValue_validate( FT_UShort            glyph,
+  gxv_lcar_LookupValue_validate( ushort            glyph,
                                  GXV_LookupValueCPtr  value_p,
                                  GXV_Validator        gxvalid )
   {
     FT_Bytes   p     = gxvalid->root->base + value_p->u;
     FT_Bytes   limit = gxvalid->root->limit;
-    FT_UShort  count;
-    FT_Short   partial;
-    FT_UShort  i;
+    ushort  count;
+    short   partial;
+    ushort  i;
 
 
     GXV_NAME_ENTER( "element in lookupTable" );
@@ -146,21 +146,21 @@
   */
 
   static GXV_LookupValueDesc
-  gxv_lcar_LookupFmt4_transit( FT_UShort            relative_gindex,
+  gxv_lcar_LookupFmt4_transit( ushort            relative_gindex,
                                GXV_LookupValueCPtr  base_value_p,
                                FT_Bytes             lookuptbl_limit,
                                GXV_Validator        gxvalid )
   {
     FT_Bytes             p;
     FT_Bytes             limit;
-    FT_UShort            offset;
+    ushort            offset;
     GXV_LookupValueDesc  value;
 
     FT_UNUSED( lookuptbl_limit );
 
     /* XXX: check range? */
-    offset = (FT_UShort)( base_value_p->u +
-                          relative_gindex * sizeof ( FT_UShort ) );
+    offset = (ushort)( base_value_p->u +
+                          relative_gindex * sizeof ( ushort ) );
     p      = gxvalid->root->base + offset;
     limit  = gxvalid->root->limit;
 

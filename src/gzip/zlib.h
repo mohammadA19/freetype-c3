@@ -1442,8 +1442,8 @@ ZEXTERN z_size_t ZEXPORT gzfread(voidp buf, z_size_t size, z_size_t nitems,
 /*
      Read and decompress up to nitems items of size size from file into buf,
    otherwise operating as gzread() does.  This duplicates the interface of
-   stdio's fread(), with size_t request and return types.  If the library
-   defines size_t, then z_size_t is identical to size_t.  If not, then z_size_t
+   stdio's fread(), with usz request and return types.  If the library
+   defines usz, then z_size_t is identical to usz.  If not, then z_size_t
    is an unsigned integer type that can contain a pointer.
 
      gzfread() returns the number of full items read of size size, or zero if
@@ -1473,8 +1473,8 @@ ZEXTERN z_size_t ZEXPORT gzfwrite(voidpc buf, z_size_t size,
                                   z_size_t nitems, gzFile file);
 /*
      Compress and write nitems items of size size from buf to file, duplicating
-   the interface of stdio's fwrite(), with size_t request and return types.  If
-   the library defines size_t, then z_size_t is identical to size_t.  If not,
+   the interface of stdio's fwrite(), with usz request and return types.  If
+   the library defines usz, then z_size_t is identical to usz.  If not,
    then z_size_t is an unsigned integer type that can contain a pointer.
 
      gzfwrite() returns the number of full items written of size size, or zero
@@ -1727,7 +1727,7 @@ ZEXTERN uLong ZEXPORT adler32(uLong adler, const Bytef *buf, uInt len);
 ZEXTERN uLong ZEXPORT adler32_z(uLong adler, const Bytef *buf,
                                 z_size_t len);
 /*
-     Same as adler32(), but with a size_t length.
+     Same as adler32(), but with a usz length.
 */
 
 /*
@@ -1763,7 +1763,7 @@ ZEXTERN uLong ZEXPORT crc32(uLong crc, const Bytef *buf, uInt len);
 ZEXTERN uLong ZEXPORT crc32_z(uLong crc, const Bytef *buf,
                               z_size_t len);
 /*
-     Same as crc32(), but with a size_t length.
+     Same as crc32(), but with a usz length.
 */
 
 /*

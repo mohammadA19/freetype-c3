@@ -56,7 +56,7 @@ FT_BEGIN_HEADER
    */
   typedef FT_Error
   (*FT_SFNT_TableInfoFunc)( FT_Face    face,
-                            FT_UInt    idx,
+                            uint    idx,
                             FT_ULong  *tag,
                             FT_ULong  *offset,
                             FT_ULong  *length );

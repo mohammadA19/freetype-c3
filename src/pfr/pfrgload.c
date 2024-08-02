@@ -79,7 +79,7 @@
   {
     FT_GlyphLoader  loader  = glyph->loader;
     FT_Outline*     outline = &loader->current.outline;
-    FT_Int          last, first;
+    int          last, first;
 
 
     if ( !glyph->path_begun )
@@ -108,7 +108,7 @@
 
     /* don't add empty contours */
     if ( last >= first )
-      outline->contours[outline->n_contours++] = (FT_UShort)last;
+      outline->contours[outline->n_contours++] = (ushort)last;
 
     glyph->path_begun = 0;
   }
@@ -142,7 +142,7 @@
     error = FT_GLYPHLOADER_CHECK_POINTS( loader, 1, 0 );
     if ( !error )
     {
-      FT_Int  n = outline->n_points;
+      int  n = outline->n_points;
 
 
       outline->points[n] = *to;
@@ -251,8 +251,8 @@
   {
     FT_Error   error  = FT_Err_Ok;
     FT_Memory  memory = glyph->loader->memory;
-    FT_UInt    flags, x_count, y_count, i, count, mask;
-    FT_Int     x;
+    uint    flags, x_count, y_count, i, count, mask;
+    int     x;
 
 
     PFR_CHECK( 1 );
@@ -292,7 +292,7 @@
     /* re-allocate array when necessary */
     if ( count > glyph->max_xy_control )
     {
-      FT_UInt  new_max = FT_PAD_CEIL( count, 8 );
+      uint  new_max = FT_PAD_CEIL( count, 8 );
 
 
       if ( FT_RENEW_ARRAY( glyph->x_control,
@@ -355,7 +355,7 @@
 
       for (;;)
       {
-        FT_UInt  format, format_low, args_format = 0, args_count, n;
+        uint  format, format_low, args_format = 0, args_count, n;
 
 
         /****************************************************************
@@ -431,8 +431,8 @@
         cur = pos;
         for ( n = 0; n < args_count; n++ )
         {
-          FT_UInt  idx;
-          FT_Int   delta;
+          uint  idx;
+          int   delta;
 
 
           /* read the X argument */
@@ -562,8 +562,8 @@
     FT_Error        error  = FT_Err_Ok;
     FT_Memory       memory = glyph->loader->memory;
     PFR_SubGlyph    subglyph;
-    FT_UInt         flags, i, count, org_count;
-    FT_Int          x_pos, y_pos;
+    uint         flags, i, count, org_count;
+    int          x_pos, y_pos;
 
 
     PFR_CHECK( 1 );
@@ -596,7 +596,7 @@
 
     if ( org_count + count > glyph->max_subs )
     {
-      FT_UInt  new_max = ( org_count + count + 3 ) & (FT_UInt)-4;
+      uint  new_max = ( org_count + count + 3 ) & (uint)-4;
 
 
       /* we arbitrarily limit the number of subglyphs */
@@ -619,7 +619,7 @@
 
     for ( i = 0; i < count; i++, subglyph++ )
     {
-      FT_UInt  format;
+      uint  format;
 
 
       x_pos = 0;
@@ -737,7 +737,7 @@
 
     if ( size > 0 && *p & PFR_GLYPH_IS_COMPOUND )
     {
-      FT_UInt         n, old_count, count;
+      uint         n, old_count, count;
       FT_GlyphLoader  loader = glyph->loader;
       FT_Outline*     base   = &loader->base.outline;
 
@@ -762,7 +762,7 @@
       /* now, load each individual glyph */
       for ( n = 0; n < count; n++ )
       {
-        FT_Int        i, old_points, num_points;
+        int        i, old_points, num_points;
         PFR_SubGlyph  subglyph;
 
 

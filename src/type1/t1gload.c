@@ -40,7 +40,7 @@
 
   static FT_Error
   T1_Parse_Glyph_And_Get_Char_String( T1_Decoder  decoder,
-                                      FT_UInt     glyph_index,
+                                      uint     glyph_index,
                                       FT_Data*    char_string,
                                       FT_Bool*    force_scaling )
   {
@@ -91,13 +91,13 @@
         error = decoder_funcs->parse_charstrings_old(
                   decoder,
                   (FT_Byte*)char_string->pointer,
-                  (FT_UInt)char_string->length );
+                  (uint)char_string->length );
 #else
       if ( decoder->builder.metrics_only )
         error = decoder_funcs->parse_metrics(
                   decoder,
                   (FT_Byte*)char_string->pointer,
-                  (FT_UInt)char_string->length );
+                  (uint)char_string->length );
 #endif
       else
       {
@@ -163,7 +163,7 @@
 
   static FT_Error
   T1_Parse_Glyph( T1_Decoder  decoder,
-                  FT_UInt     glyph_index )
+                  uint     glyph_index )
   {
     FT_Data   glyph_data;
     FT_Bool   force_scaling = FALSE;
@@ -214,7 +214,7 @@
   {
     FT_Error       error;
     T1_DecoderRec  decoder;
-    FT_Int         glyph_index;
+    int         glyph_index;
     T1_Font        type1 = &face->type1;
     PSAux_Service  psaux = (PSAux_Service)face->psaux;
 
@@ -256,7 +256,7 @@
     for ( glyph_index = 0; glyph_index < type1->num_glyphs; glyph_index++ )
     {
       /* now get load the unscaled outline */
-      (void)T1_Parse_Glyph( &decoder, (FT_UInt)glyph_index );
+      (void)T1_Parse_Glyph( &decoder, (uint)glyph_index );
       if ( glyph_index == 0 || decoder.builder.advance.x > *max_advance )
         *max_advance = decoder.builder.advance.x;
 
@@ -274,16 +274,16 @@
 
   fn FT_Error /* internal */
   T1_Get_Advances( FT_Face    t1face,        /* T1_Face */
-                   FT_UInt    first,
-                   FT_UInt    count,
-                   FT_Int32   load_flags,
+                   uint    first,
+                   uint    count,
+                   int   load_flags,
                    FT_Fixed*  advances )
   {
     T1_Face        face  = (T1_Face)t1face;
     T1_DecoderRec  decoder;
     T1_Font        type1 = &face->type1;
     PSAux_Service  psaux = (PSAux_Service)face->psaux;
-    FT_UInt        nn;
+    uint        nn;
     FT_Error       error;
 
 
@@ -346,8 +346,8 @@
   fn FT_Error /* internal */
   T1_Load_Glyph( FT_GlyphSlot  t1glyph,          /* T1_GlyphSlot */
                  FT_Size       t1size,           /* T1_Size      */
-                 FT_UInt       glyph_index,
-                 FT_Int32      load_flags )
+                 uint       glyph_index,
+                 int      load_flags )
   {
     T1_GlyphSlot            glyph = (T1_GlyphSlot)t1glyph;
     FT_Error                error;
@@ -370,10 +370,10 @@
 
 
 #ifdef FT_CONFIG_OPTION_INCREMENTAL
-    if ( glyph_index >= (FT_UInt)face->root.num_glyphs &&
+    if ( glyph_index >= (uint)face->root.num_glyphs &&
          !face->root.internal->incremental_interface   )
 #else
-    if ( glyph_index >= (FT_UInt)face->root.num_glyphs )
+    if ( glyph_index >= (uint)face->root.num_glyphs )
 #endif /* FT_CONFIG_OPTION_INCREMENTAL */
     {
       error = FT_THROW( Invalid_Argument );
@@ -536,7 +536,7 @@
         if ( ( load_flags & FT_LOAD_NO_SCALE ) == 0 || force_scaling )
         {
           /* scale the outline and the metrics */
-          FT_Int       n;
+          int       n;
           FT_Outline*  cur = decoder.builder.base;
           FT_Vector*   vec = cur->points;
           FT_Fixed     x_scale = glyph->x_scale;

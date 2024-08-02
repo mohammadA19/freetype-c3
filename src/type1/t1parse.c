@@ -67,11 +67,11 @@
 
   static FT_Error
   read_pfb_tag( FT_Stream   stream,
-                FT_UShort  *atag,
+                ushort  *atag,
                 FT_ULong   *asize )
   {
     FT_Error   error;
-    FT_UShort  tag;
+    ushort  tag;
     FT_ULong   size;
 
 
@@ -96,10 +96,10 @@
   static FT_Error
   check_type1_format( FT_Stream    stream,
                       const char*  header_string,
-                      size_t       header_length )
+                      usz       header_length )
   {
     FT_Error   error;
-    FT_UShort  tag;
+    ushort  tag;
     FT_ULong   dummy;
 
 
@@ -138,7 +138,7 @@
                  PSAux_Service  psaux )
   {
     FT_Error   error;
-    FT_UShort  tag;
+    ushort  tag;
     FT_ULong   size;
 
 
@@ -273,7 +273,7 @@
       /* segments to compute the total size of the private dictionary  */
       /* then re-read them into memory.                                */
       FT_ULong   start_pos = FT_STREAM_POS();
-      FT_UShort  tag;
+      ushort  tag;
 
 
       parser->private_len = 0;
@@ -388,11 +388,11 @@
       /* fine that are violating this limitation, so we add a heuristic  */
       /* test to stop at \r only if it is not used for EOL.              */
 
-      pos_lf  = ft_memchr( cur, '\n', (size_t)( limit - cur ) );
+      pos_lf  = ft_memchr( cur, '\n', (usz)( limit - cur ) );
       test_cr = FT_BOOL( !pos_lf                                       ||
                          pos_lf > ft_memchr( cur,
                                              '\r',
-                                             (size_t)( limit - cur ) ) );
+                                             (usz)( limit - cur ) ) );
 
       while ( cur < limit                    &&
               ( *cur == ' '                ||

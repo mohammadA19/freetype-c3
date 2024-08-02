@@ -67,7 +67,7 @@ FT_BEGIN_HEADER
   fn CFF_VStore /* internal */
   cf2_getVStore( PS_Decoder*  decoder );
 
-  fn FT_UInt /* internal */
+  fn uint /* internal */
   cf2_getMaxstack( PS_Decoder*  decoder );
 
 #ifdef TT_CONFIG_OPTION_GX_VAR_SUPPORT
@@ -91,19 +91,19 @@ FT_BEGIN_HEADER
                       CF2_Fixed*   blueFuzz );
   fn void /* internal */
   cf2_getBlueValues( PS_Decoder*  decoder,
-                     size_t*      count,
+                     usz*      count,
                      FT_Fixed*   *data );
   fn void /* internal */
   cf2_getOtherBlues( PS_Decoder*  decoder,
-                     size_t*      count,
+                     usz*      count,
                      FT_Fixed*   *data );
   fn void /* internal */
   cf2_getFamilyBlues( PS_Decoder*  decoder,
-                      size_t*      count,
+                      usz*      count,
                       FT_Fixed*   *data );
   fn void /* internal */
   cf2_getFamilyOtherBlues( PS_Decoder*  decoder,
-                           size_t*      count,
+                           usz*      count,
                            FT_Fixed*   *data );
 
   fn CF2_Int /* internal */
@@ -133,7 +133,7 @@ FT_BEGIN_HEADER
 
   fn FT_Error /* internal */
   cf2_getT1SeacComponent( PS_Decoder*  decoder,
-                          FT_UInt      glyph_index,
+                          uint      glyph_index,
                           CF2_Buffer   buf );
   fn void /* internal */
   cf2_freeT1SeacComponent( PS_Decoder*  decoder,

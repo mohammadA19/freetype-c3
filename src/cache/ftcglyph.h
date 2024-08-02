@@ -133,7 +133,7 @@ FT_BEGIN_HEADER
   typedef struct  FTC_FamilyRec_
   {
     FTC_MruNodeRec    mrunode;
-    FT_UInt           num_nodes; /* current number of nodes in this family */
+    uint           num_nodes; /* current number of nodes in this family */
     FTC_Cache         cache;
     FTC_MruListClass  clazz;
 
@@ -147,7 +147,7 @@ FT_BEGIN_HEADER
   {
     FTC_NodeRec      node;
     FTC_Family       family;
-    FT_UInt          gindex;
+    uint          gindex;
 
   } FTC_GNodeRec, *FTC_GNode;
 
@@ -157,7 +157,7 @@ FT_BEGIN_HEADER
 
   typedef struct  FTC_GQueryRec_
   {
-    FT_UInt      gindex;
+    uint      gindex;
     FTC_Family   family;
 
   } FTC_GQueryRec, *FTC_GQuery;
@@ -175,7 +175,7 @@ FT_BEGIN_HEADER
   /* must be called by derived FTC_Node_InitFunc routines */
   fn void /* internal */
   FTC_GNode_Init( FTC_GNode   node,
-                  FT_UInt     gindex,  /* glyph index for node */
+                  uint     gindex,  /* glyph index for node */
                   FTC_Family  family );
 
   /* call this function to clear a node's family -- this is necessary */
@@ -246,7 +246,7 @@ FT_BEGIN_HEADER
   fn FT_Error /* internal */
   FTC_GCache_Lookup( FTC_GCache   cache,
                      FT_Offset    hash,
-                     FT_UInt      gindex,
+                     uint      gindex,
                      FTC_GQuery   query,
                      FTC_Node    *anode );
 #endif

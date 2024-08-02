@@ -38,10 +38,10 @@ FT_BEGIN_HEADER
    */
   typedef struct  FT_SubGlyphRec_
   {
-    FT_Int     index;
-    FT_UShort  flags;
-    FT_Int     arg1;
-    FT_Int     arg2;
+    int     index;
+    ushort  flags;
+    int     arg1;
+    int     arg2;
     FT_Matrix  transform;
 
   } FT_SubGlyphRec;
@@ -52,7 +52,7 @@ FT_BEGIN_HEADER
     FT_Outline   outline;       /* outline                   */
     FT_Vector*   extra_points;  /* extra points table        */
     FT_Vector*   extra_points2; /* second extra points table */
-    FT_UInt      num_subglyphs; /* number of subglyphs       */
+    uint      num_subglyphs; /* number of subglyphs       */
     FT_SubGlyph  subglyphs;     /* subglyphs                 */
 
   } FT_GlyphLoadRec, *FT_GlyphLoad;
@@ -61,9 +61,9 @@ FT_BEGIN_HEADER
   typedef struct  FT_GlyphLoaderRec_
   {
     FT_Memory        memory;
-    FT_UInt          max_points;
-    FT_UInt          max_contours;
-    FT_UInt          max_subglyphs;
+    uint          max_points;
+    uint          max_contours;
+    uint          max_subglyphs;
     FT_Bool          use_extra;
 
     FT_GlyphLoadRec  base;
@@ -99,36 +99,36 @@ FT_BEGIN_HEADER
   /* to the glyph loader                                                 */
   fn FT_Error /* private */
   FT_GlyphLoader_CheckPoints( FT_GlyphLoader  loader,
-                              FT_UInt         n_points,
-                              FT_UInt         n_contours );
+                              uint         n_points,
+                              uint         n_contours );
 
 
 #define FT_GLYPHLOADER_CHECK_P( _loader, _count )       \
   ( (_count) == 0                                    || \
-    ( (FT_UInt)(_loader)->base.outline.n_points    +    \
-      (FT_UInt)(_loader)->current.outline.n_points +    \
-      (FT_UInt)(_count) ) <= (_loader)->max_points   )
+    ( (uint)(_loader)->base.outline.n_points    +    \
+      (uint)(_loader)->current.outline.n_points +    \
+      (uint)(_count) ) <= (_loader)->max_points   )
 
 #define FT_GLYPHLOADER_CHECK_C( _loader, _count )         \
   ( (_count) == 0                                      || \
-    ( (FT_UInt)(_loader)->base.outline.n_contours    +    \
-      (FT_UInt)(_loader)->current.outline.n_contours +    \
-      (FT_UInt)(_count) ) <= (_loader)->max_contours   )
+    ( (uint)(_loader)->base.outline.n_contours    +    \
+      (uint)(_loader)->current.outline.n_contours +    \
+      (uint)(_count) ) <= (_loader)->max_contours   )
 
 #define FT_GLYPHLOADER_CHECK_POINTS( _loader, _points, _contours ) \
   ( ( FT_GLYPHLOADER_CHECK_P( _loader, _points )   &&              \
       FT_GLYPHLOADER_CHECK_C( _loader, _contours ) )               \
     ? 0                                                            \
     : FT_GlyphLoader_CheckPoints( (_loader),                       \
-                                  (FT_UInt)(_points),              \
-                                  (FT_UInt)(_contours) ) )
+                                  (uint)(_points),              \
+                                  (uint)(_contours) ) )
 
 
   /* check that there is enough space to add `n_subs' sub-glyphs to */
   /* a glyph loader                                                 */
   fn FT_Error /* private */
   FT_GlyphLoader_CheckSubGlyphs( FT_GlyphLoader  loader,
-                                 FT_UInt         n_subs );
+                                 uint         n_subs );
 
   /* prepare a glyph loader, i.e. empty the current glyph */
   fn void /* private */

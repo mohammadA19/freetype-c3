@@ -47,44 +47,44 @@ FT_BEGIN_HEADER
 
   typedef FT_Error
   (*FT_Set_MM_Design_Func)( FT_Face   face,
-                            FT_UInt   num_coords,
+                            uint   num_coords,
                             FT_Long*  coords );
 
   /* use return value -1 to indicate that the new coordinates  */
   /* are equal to the current ones; no changes are thus needed */
   typedef FT_Error
   (*FT_Set_Var_Design_Func)( FT_Face    face,
-                             FT_UInt    num_coords,
+                             uint    num_coords,
                              FT_Fixed*  coords );
 
   /* use return value -1 to indicate that the new coordinates  */
   /* are equal to the current ones; no changes are thus needed */
   typedef FT_Error
   (*FT_Set_MM_Blend_Func)( FT_Face    face,
-                           FT_UInt    num_coords,
+                           uint    num_coords,
                            FT_Fixed*  coords );
 
   typedef FT_Error
   (*FT_Get_Var_Design_Func)( FT_Face    face,
-                             FT_UInt    num_coords,
+                             uint    num_coords,
                              FT_Fixed*  coords );
 
   typedef FT_Error
   (*FT_Set_Named_Instance_Func)( FT_Face  face,
-                                 FT_UInt  instance_index );
+                                 uint  instance_index );
 
   typedef FT_Error
   (*FT_Get_Default_Named_Instance_Func)( FT_Face   face,
-                                         FT_UInt  *instance_index );
+                                         uint  *instance_index );
 
   typedef FT_Error
   (*FT_Get_MM_Blend_Func)( FT_Face    face,
-                           FT_UInt    num_coords,
+                           uint    num_coords,
                            FT_Fixed*  coords );
 
   typedef FT_Error
   (*FT_Get_Var_Blend_Func)( FT_Face      face,
-                            FT_UInt     *num_coords,
+                            uint     *num_coords,
                             FT_Fixed*   *coords,
                             FT_Fixed*   *normalizedcoords,
                             FT_MM_Var*  *mm_var );
@@ -94,12 +94,12 @@ FT_BEGIN_HEADER
 
   typedef FT_Error
   (*FT_Set_MM_WeightVector_Func)( FT_Face    face,
-                                  FT_UInt    len,
+                                  uint    len,
                                   FT_Fixed*  weight_vector );
 
   typedef FT_Error
   (*FT_Get_MM_WeightVector_Func)( FT_Face    face,
-                                  FT_UInt*   len,
+                                  uint*   len,
                                   FT_Fixed*  weight_vector );
 
   typedef void
@@ -120,8 +120,8 @@ FT_BEGIN_HEADER
   typedef FT_ItemVarDelta
   (*FT_Var_Get_Item_Delta_Func)( FT_Face          face,
                                  GX_ItemVarStore  itemStore,
-                                 FT_UInt          outerIndex,
-                                 FT_UInt          innerIndex );
+                                 uint          outerIndex,
+                                 uint          innerIndex );
 
   typedef void
   (*FT_Var_Done_Item_Var_Store_Func)( FT_Face          face,

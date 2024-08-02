@@ -79,7 +79,7 @@ FT_BEGIN_HEADER
   fn void /* internal */
   gxv_kern_validate_classic( FT_Bytes      table,
                              FT_Face       face,
-                             FT_Int        dialect_flags,
+                             int        dialect_flags,
                              FT_Validator  valid );
 
   fn void /* internal */

@@ -150,7 +150,7 @@
 #define FT_ULONG_MAX  ULONG_MAX
 
 #define ADD_INT( a, b )                                  \
-          (int)( (unsigned int)(a) + (unsigned int)(b) )
+          (int)( (uint)(a) + (uint)(b) )
 
 #define FT_STATIC_BYTE_CAST( type, var )  (type)(unsigned char)(var)
 
@@ -161,7 +161,7 @@
 #define ft_longjmp  longjmp
 #define ft_jmp_buf  jmp_buf
 
-typedef ptrdiff_t  FT_PtrDist;
+typedef isz  isz;
 
 
 #define Smooth_Err_Ok                    0
@@ -441,7 +441,7 @@ typedef ptrdiff_t  FT_PtrDist;
    * TYPE DEFINITIONS
    */
 
-  /* don't change the following types to FT_Int or FT_Pos, since we might */
+  /* don't change the following types to int or FT_Pos, since we might */
   /* need to define them to "float" or "double" when experimenting with   */
   /* new algorithms                                                       */
 
@@ -1021,7 +1021,7 @@ typedef ptrdiff_t  FT_PtrDist;
     FT_Int64  qx, qy;
     FT_Int64  px, py;
 
-    FT_UInt  count;
+    uint  count;
 
 
     p0.x = ras.x;
@@ -1809,7 +1809,7 @@ typedef ptrdiff_t  FT_PtrDist;
 
           span[n].coverage = (unsigned char)coverage;
           span[n].x        = (short)x;
-          span[n].len      = (unsigned short)( cell->x - x );
+          span[n].len      = (ushort)( cell->x - x );
 
           if ( ++n == FT_MAX_GRAY_SPANS )
           {
@@ -1847,7 +1847,7 @@ typedef ptrdiff_t  FT_PtrDist;
 
         span[n].coverage = (unsigned char)coverage;
         span[n].x        = (short)x;
-        span[n].len      = (unsigned short)( ras.max_ex - x );
+        span[n].len      = (ushort)( ras.max_ex - x );
 
         ++n;
       }
@@ -1866,8 +1866,8 @@ typedef ptrdiff_t  FT_PtrDist;
   gray_convert_glyph( RAS_ARG )
   {
     TCell    buffer[FT_MAX_GRAY_POOL];
-    size_t   height = (size_t)( ras.cbox.yMax - ras.cbox.yMin );
-    size_t   n = FT_MAX_GRAY_POOL / 8;
+    usz   height = (usz)( ras.cbox.yMax - ras.cbox.yMin );
+    usz   n = FT_MAX_GRAY_POOL / 8;
     TCoord   y;
     TCoord   bands[32];  /* enough to accommodate bisections */
     TCoord*  band;
@@ -1917,7 +1917,7 @@ typedef ptrdiff_t  FT_PtrDist;
         for ( i = 0; i < ras.count_ey; ++i )
           ras.ycells[i] = ras.cell_null;
 
-        n = ( (size_t)ras.count_ey * sizeof ( PCell ) + sizeof ( TCell ) - 1 )
+        n = ( (usz)ras.count_ey * sizeof ( PCell ) + sizeof ( TCell ) - 1 )
               / sizeof ( TCell );
 
         ras.cell_free = buffer + n;
@@ -2020,7 +2020,7 @@ typedef ptrdiff_t  FT_PtrDist;
         ras.target.origin = target_map->buffer;
       else
         ras.target.origin = target_map->buffer
-              + ( target_map->rows - 1 ) * (unsigned int)target_map->pitch;
+              + ( target_map->rows - 1 ) * (uint)target_map->pitch;
 
       ras.target.pitch = target_map->pitch;
 

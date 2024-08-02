@@ -50,19 +50,19 @@
   gxv_compare_ushort_offset( const void*  a,
                              const void*  b )
   {
-    return  *(FT_UShort*)a - *(FT_UShort*)b;
+    return  *(ushort*)a - *(ushort*)b;
   }
 
 
   fn void /* internal */
-  gxv_set_length_by_ushort_offset( FT_UShort*     offset,
-                                   FT_UShort**    length,
-                                   FT_UShort*     buff,
-                                   FT_UInt        nmemb,
-                                   FT_UShort      limit,
+  gxv_set_length_by_ushort_offset( ushort*     offset,
+                                   ushort**    length,
+                                   ushort*     buff,
+                                   uint        nmemb,
+                                   ushort      limit,
                                    GXV_Validator  gxvalid )
   {
-    FT_UInt  i;
+    uint  i;
 
 
     for ( i = 0; i < nmemb; i++ )
@@ -72,7 +72,7 @@
       buff[i] = offset[i];
     buff[nmemb] = limit;
 
-    ft_qsort( buff, ( nmemb + 1 ), sizeof ( FT_UShort ),
+    ft_qsort( buff, ( nmemb + 1 ), sizeof ( ushort ),
               gxv_compare_ushort_offset );
 
     if ( buff[nmemb] > limit )
@@ -80,7 +80,7 @@
 
     for ( i = 0; i < nmemb; i++ )
     {
-      FT_UInt  j;
+      uint  j;
 
 
       for ( j = 0; j < nmemb; j++ )
@@ -90,7 +90,7 @@
       if ( j == nmemb )
         FT_INVALID_OFFSET;
 
-      *(length[i]) = (FT_UShort)( buff[j + 1] - buff[j] );
+      *(length[i]) = (ushort)( buff[j + 1] - buff[j] );
 
       if ( 0 != offset[i] && 0 == *(length[i]) )
         FT_INVALID_OFFSET;
@@ -127,11 +127,11 @@
   gxv_set_length_by_ulong_offset( FT_ULong*      offset,
                                   FT_ULong**     length,
                                   FT_ULong*      buff,
-                                  FT_UInt        nmemb,
+                                  uint        nmemb,
                                   FT_ULong       limit,
                                   GXV_Validator  gxvalid)
   {
-    FT_UInt  i;
+    uint  i;
 
 
     for ( i = 0; i < nmemb; i++ )
@@ -149,7 +149,7 @@
 
     for ( i = 0; i < nmemb; i++ )
     {
-      FT_UInt  j;
+      uint  j;
 
 
       for ( j = 0; j < nmemb; j++ )
@@ -208,8 +208,8 @@
   fn void /* internal */
   gxv_array_getlimits_ushort( FT_Bytes       table,
                               FT_Bytes       limit,
-                              FT_UShort*     min,
-                              FT_UShort*     max,
+                              ushort*     min,
+                              ushort*     max,
                               GXV_Validator  gxvalid )
   {
     FT_Bytes  p = table;
@@ -220,7 +220,7 @@
 
     while ( p < limit )
     {
-      FT_UShort  val;
+      ushort  val;
 
 
       GXV_LIMIT_CHECK( 2 );
@@ -244,11 +244,11 @@
 
   typedef struct  GXV_BinSrchHeader_
   {
-    FT_UShort  unitSize;
-    FT_UShort  nUnits;
-    FT_UShort  searchRange;
-    FT_UShort  entrySelector;
-    FT_UShort  rangeShift;
+    ushort  unitSize;
+    ushort  nUnits;
+    ushort  searchRange;
+    ushort  entrySelector;
+    ushort  rangeShift;
 
   } GXV_BinSrchHeader;
 
@@ -257,9 +257,9 @@
   gxv_BinSrchHeader_check_consistency( GXV_BinSrchHeader*  binSrchHeader,
                                        GXV_Validator       gxvalid )
   {
-    FT_UShort  searchRange;
-    FT_UShort  entrySelector;
-    FT_UShort  rangeShift;
+    ushort  searchRange;
+    ushort  entrySelector;
+    ushort  rangeShift;
 
 
     if ( binSrchHeader->unitSize == 0 )
@@ -282,8 +282,8 @@
       ;
 
     entrySelector--;
-    searchRange = (FT_UShort)( searchRange * binSrchHeader->unitSize );
-    rangeShift  = (FT_UShort)( binSrchHeader->nUnits * binSrchHeader->unitSize
+    searchRange = (ushort)( searchRange * binSrchHeader->unitSize );
+    rangeShift  = (ushort)( binSrchHeader->nUnits * binSrchHeader->unitSize
                                - searchRange );
 
     if ( searchRange   != binSrchHeader->searchRange   ||
@@ -326,8 +326,8 @@
   fn void /* internal */
   gxv_BinSrchHeader_validate( FT_Bytes       table,
                               FT_Bytes       limit,
-                              FT_UShort*     unitSize_p,
-                              FT_UShort*     nUnits_p,
+                              ushort*     unitSize_p,
+                              ushort*     nUnits_p,
                               GXV_Validator  gxvalid )
   {
     FT_Bytes           p = table;
@@ -424,7 +424,7 @@
                                  GXV_Validator  gxvalid )
   {
     FT_Bytes   p = table;
-    FT_UShort  i;
+    ushort  i;
 
     GXV_LookupValueDesc  value;
 
@@ -471,7 +471,7 @@
    */
   static void
   gxv_LookupTable_fmt2_skip_endmarkers( FT_Bytes       table,
-                                        FT_UShort      unitSize,
+                                        ushort      unitSize,
                                         GXV_Validator  gxvalid )
   {
     FT_Bytes  p = table;
@@ -495,13 +495,13 @@
                                  GXV_Validator  gxvalid )
   {
     FT_Bytes             p = table;
-    FT_UShort            gid;
+    ushort            gid;
 
-    FT_UShort            unitSize;
-    FT_UShort            nUnits;
-    FT_UShort            unit;
-    FT_UShort            lastGlyph;
-    FT_UShort            firstGlyph;
+    ushort            unitSize;
+    ushort            nUnits;
+    ushort            unit;
+    ushort            lastGlyph;
+    ushort            firstGlyph;
     GXV_LookupValueDesc  value;
 
 
@@ -566,13 +566,13 @@
                                  GXV_Validator  gxvalid )
   {
     FT_Bytes             p = table;
-    FT_UShort            unit;
-    FT_UShort            gid;
+    ushort            unit;
+    ushort            gid;
 
-    FT_UShort            unitSize;
-    FT_UShort            nUnits;
-    FT_UShort            lastGlyph;
-    FT_UShort            firstGlyph;
+    ushort            unitSize;
+    ushort            nUnits;
+    ushort            lastGlyph;
+    ushort            firstGlyph;
     GXV_LookupValueDesc  base_value;
     GXV_LookupValueDesc  value;
 
@@ -623,7 +623,7 @@
 
       for ( gid = firstGlyph; gid <= lastGlyph; gid++ )
       {
-        value = gxvalid->lookupfmt4_trans( (FT_UShort)( gid - firstGlyph ),
+        value = gxvalid->lookupfmt4_trans( (ushort)( gid - firstGlyph ),
                                          &base_value,
                                          limit,
                                          gxvalid );
@@ -643,7 +643,7 @@
   /* ================= Segment Table Format 6 Lookup Table =============== */
   static void
   gxv_LookupTable_fmt6_skip_endmarkers( FT_Bytes       table,
-                                        FT_UShort      unitSize,
+                                        ushort      unitSize,
                                         GXV_Validator  gxvalid )
   {
     FT_Bytes  p = table;
@@ -666,12 +666,12 @@
                                  GXV_Validator  gxvalid )
   {
     FT_Bytes             p = table;
-    FT_UShort            unit;
-    FT_UShort            prev_glyph;
+    ushort            unit;
+    ushort            prev_glyph;
 
-    FT_UShort            unitSize;
-    FT_UShort            nUnits;
-    FT_UShort            glyph;
+    ushort            unitSize;
+    ushort            nUnits;
+    ushort            glyph;
     GXV_LookupValueDesc  value;
 
 
@@ -720,11 +720,11 @@
                                  GXV_Validator  gxvalid )
   {
     FT_Bytes              p = table;
-    FT_UShort             i;
+    ushort             i;
 
     GXV_LookupValueDesc   value;
-    FT_UShort             firstGlyph;
-    FT_UShort             glyphCount;
+    ushort             firstGlyph;
+    ushort             glyphCount;
 
 
     GXV_NAME_ENTER( "LookupTable format 8" );
@@ -735,14 +735,14 @@
     glyphCount = FT_NEXT_USHORT( p );
 
     gxv_glyphid_validate( firstGlyph, gxvalid );
-    gxv_glyphid_validate( (FT_UShort)( firstGlyph + glyphCount ), gxvalid );
+    gxv_glyphid_validate( (ushort)( firstGlyph + glyphCount ), gxvalid );
 
     /* valueArray */
     for ( i = 0; i < glyphCount; i++ )
     {
       GXV_LIMIT_CHECK( 2 );
       value = GXV_LOOKUP_VALUE_LOAD( p, gxvalid->lookupval_sign );
-      gxvalid->lookupval_func( (FT_UShort)( firstGlyph + i ), &value, gxvalid );
+      gxvalid->lookupval_func( (ushort)( firstGlyph + i ), &value, gxvalid );
     }
 
     gxvalid->subtable_length = (FT_ULong)( p - table );
@@ -756,7 +756,7 @@
                             GXV_Validator  gxvalid )
   {
     FT_Bytes   p = table;
-    FT_UShort  format;
+    ushort  format;
 
     GXV_Validate_Func  fmt_funcs_table[] =
     {
@@ -808,8 +808,8 @@
   /*************************************************************************/
   /*************************************************************************/
 
-  fn FT_Int /* internal */
-  gxv_glyphid_validate( FT_UShort      gid,
+  fn int /* internal */
+  gxv_glyphid_validate( ushort      gid,
                         GXV_Validator  gxvalid )
   {
     FT_Face  face;
@@ -842,8 +842,8 @@
   /*************************************************************************/
 
   fn void /* internal */
-  gxv_ctlPoint_validate( FT_UShort      gid,
-                         FT_UShort      ctl_point,
+  gxv_ctlPoint_validate( ushort      gid,
+                         ushort      ctl_point,
                          GXV_Validator  gxvalid )
   {
     FT_Face       face;
@@ -851,7 +851,7 @@
 
     FT_GlyphSlot  glyph;
     FT_Outline    outline;
-    FT_UShort     n_points;
+    ushort     n_points;
 
 
     face = gxvalid->face;
@@ -864,7 +864,7 @@
 
     glyph    = face->glyph;
     outline  = glyph->outline;
-    n_points = (FT_UShort)outline.n_points;
+    n_points = (ushort)outline.n_points;
 
     if ( !( ctl_point < n_points ) )
       FT_INVALID_DATA;
@@ -880,14 +880,14 @@
   /*************************************************************************/
 
   fn void /* internal */
-  gxv_sfntName_validate( FT_UShort      name_index,
-                         FT_UShort      min_index,
-                         FT_UShort      max_index,
+  gxv_sfntName_validate( ushort      name_index,
+                         ushort      min_index,
+                         ushort      max_index,
                          GXV_Validator  gxvalid )
   {
     FT_SfntName  name;
-    FT_UInt      i;
-    FT_UInt      nnames;
+    uint      i;
+    uint      nnames;
 
 
     GXV_NAME_ENTER( "sfntName" );
@@ -939,15 +939,15 @@
 
   static void
   gxv_ClassTable_validate( FT_Bytes       table,
-                           FT_UShort*     length_p,
-                           FT_UShort      stateSize,
+                           ushort*     length_p,
+                           ushort      stateSize,
                            FT_Byte*       maxClassID_p,
                            GXV_Validator  gxvalid )
   {
     FT_Bytes   p     = table;
     FT_Bytes   limit = table + *length_p;
-    FT_UShort  firstGlyph;
-    FT_UShort  nGlyphs;
+    ushort  firstGlyph;
+    ushort  nGlyphs;
 
 
     GXV_NAME_ENTER( "ClassTable" );
@@ -963,12 +963,12 @@
     if ( !nGlyphs )
       goto Out;
 
-    gxv_glyphid_validate( (FT_UShort)( firstGlyph + nGlyphs ), gxvalid );
+    gxv_glyphid_validate( (ushort)( firstGlyph + nGlyphs ), gxvalid );
 
     {
       FT_Byte    nGlyphInClass[256];
       FT_Byte    classID;
-      FT_UShort  i;
+      ushort  i;
 
 
       FT_MEM_ZERO( nGlyphInClass, 256 );
@@ -996,7 +996,7 @@
           break;
         }
       }
-      *length_p = (FT_UShort)( p - table );
+      *length_p = (ushort)( p - table );
 
       /* scan max ClassID in use */
       for ( i = 0; i < stateSize; i++ )
@@ -1015,9 +1015,9 @@
 
   static void
   gxv_StateArray_validate( FT_Bytes       table,
-                           FT_UShort*     length_p,
+                           ushort*     length_p,
                            FT_Byte        maxClassID,
-                           FT_UShort      stateSize,
+                           ushort      stateSize,
                            FT_Byte*       maxState_p,
                            FT_Byte*       maxEntry_p,
                            GXV_Validator  gxvalid )
@@ -1057,7 +1057,7 @@
     GXV_TRACE(( "parsed: maxState=%d, maxEntry=%d\n",
                 *maxState_p, *maxEntry_p ));
 
-    *length_p = (FT_UShort)( p - table );
+    *length_p = (ushort)( p - table );
 
     GXV_EXIT;
   }
@@ -1067,10 +1067,10 @@
 
   static void
   gxv_EntryTable_validate( FT_Bytes       table,
-                           FT_UShort*     length_p,
+                           ushort*     length_p,
                            FT_Byte        maxEntry,
-                           FT_UShort      stateArray,
-                           FT_UShort      stateArray_length,
+                           ushort      stateArray,
+                           ushort      stateArray_length,
                            FT_Byte        maxClassID,
                            FT_Bytes       statetable_table,
                            FT_Bytes       statetable_limit,
@@ -1080,7 +1080,7 @@
     FT_Bytes  limit = table + *length_p;
     FT_Byte   entry;
     FT_Byte   state;
-    FT_Int    entrySize = 2 + 2 + GXV_GLYPHOFFSET_SIZE( statetable );
+    int    entrySize = 2 + 2 + GXV_GLYPHOFFSET_SIZE( statetable );
 
     GXV_XStateTable_GlyphOffsetDesc  glyphOffset;
 
@@ -1101,8 +1101,8 @@
 
     for ( entry = 0; entry <= maxEntry; entry++ )
     {
-      FT_UShort  newState;
-      FT_UShort  flags;
+      ushort  newState;
+      ushort  flags;
 
 
       GXV_LIMIT_CHECK( 2 + 2 );
@@ -1169,7 +1169,7 @@
                                                  gxvalid );
     }
 
-    *length_p = (FT_UShort)( p - table );
+    *length_p = (ushort)( p - table );
 
     GXV_EXIT;
   }
@@ -1178,18 +1178,18 @@
   /* =========================== State Table ============================= */
 
   fn void /* internal */
-  gxv_StateTable_subtable_setup( FT_UShort      table_size,
-                                 FT_UShort      classTable,
-                                 FT_UShort      stateArray,
-                                 FT_UShort      entryTable,
-                                 FT_UShort*     classTable_length_p,
-                                 FT_UShort*     stateArray_length_p,
-                                 FT_UShort*     entryTable_length_p,
+  gxv_StateTable_subtable_setup( ushort      table_size,
+                                 ushort      classTable,
+                                 ushort      stateArray,
+                                 ushort      entryTable,
+                                 ushort*     classTable_length_p,
+                                 ushort*     stateArray_length_p,
+                                 ushort*     entryTable_length_p,
                                  GXV_Validator  gxvalid )
   {
-    FT_UShort   o[3];
-    FT_UShort*  l[3];
-    FT_UShort   buff[4];
+    ushort   o[3];
+    ushort*  l[3];
+    ushort   buff[4];
 
 
     o[0] = classTable;
@@ -1208,14 +1208,14 @@
                            FT_Bytes       limit,
                            GXV_Validator  gxvalid )
   {
-    FT_UShort   stateSize;
-    FT_UShort   classTable;     /* offset to Class(Sub)Table */
-    FT_UShort   stateArray;     /* offset to StateArray */
-    FT_UShort   entryTable;     /* offset to EntryTable */
+    ushort   stateSize;
+    ushort   classTable;     /* offset to Class(Sub)Table */
+    ushort   stateArray;     /* offset to StateArray */
+    ushort   entryTable;     /* offset to EntryTable */
 
-    FT_UShort   classTable_length;
-    FT_UShort   stateArray_length;
-    FT_UShort   entryTable_length;
+    ushort   classTable_length;
+    ushort   stateArray_length;
+    ushort   entryTable_length;
     FT_Byte     maxClassID;
     FT_Byte     maxState;
     FT_Byte     maxEntry;
@@ -1251,7 +1251,7 @@
     else
       setup_func = gxv_StateTable_subtable_setup;
 
-    setup_func( (FT_UShort)( limit - table ),
+    setup_func( (ushort)( limit - table ),
                 classTable,
                 stateArray,
                 entryTable,
@@ -1334,7 +1334,7 @@
 
 
   static void
-  gxv_XClassTable_lookupval_validate( FT_UShort            glyph,
+  gxv_XClassTable_lookupval_validate( ushort            glyph,
                                       GXV_LookupValueCPtr  value_p,
                                       GXV_Validator        gxvalid )
   {
@@ -1374,19 +1374,19 @@
      ....
   */
   static GXV_LookupValueDesc
-  gxv_XClassTable_lookupfmt4_transit( FT_UShort            relative_gindex,
+  gxv_XClassTable_lookupfmt4_transit( ushort            relative_gindex,
                                       GXV_LookupValueCPtr  base_value_p,
                                       FT_Bytes             lookuptbl_limit,
                                       GXV_Validator        gxvalid )
   {
     FT_Bytes             p;
     FT_Bytes             limit;
-    FT_UShort            offset;
+    ushort            offset;
     GXV_LookupValueDesc  value;
 
     /* XXX: check range? */
-    offset = (FT_UShort)( base_value_p->u +
-                          relative_gindex * sizeof ( FT_UShort ) );
+    offset = (ushort)( base_value_p->u +
+                          relative_gindex * sizeof ( ushort ) );
 
     p     = gxvalid->lookuptbl_head + offset;
     limit = lookuptbl_limit;
@@ -1401,16 +1401,16 @@
   static void
   gxv_XStateArray_validate( FT_Bytes       table,
                             FT_ULong*      length_p,
-                            FT_UShort      maxClassID,
+                            ushort      maxClassID,
                             FT_ULong       stateSize,
-                            FT_UShort*     maxState_p,
-                            FT_UShort*     maxEntry_p,
+                            ushort*     maxState_p,
+                            ushort*     maxEntry_p,
                             GXV_Validator  gxvalid )
   {
     FT_Bytes   p = table;
     FT_Bytes   limit = table + *length_p;
-    FT_UShort  clazz;
-    FT_UShort  entry;
+    ushort  clazz;
+    ushort  entry;
 
     FT_UNUSED( stateSize ); /* for the non-debugging case */
 
@@ -1436,7 +1436,7 @@
       for ( clazz = 0; clazz <= maxClassID; clazz++ )
       {
         entry = FT_NEXT_USHORT( p );
-        *maxEntry_p = (FT_UShort)FT_MAX( *maxEntry_p, entry );
+        *maxEntry_p = (ushort)FT_MAX( *maxEntry_p, entry );
       }
     }
     GXV_TRACE(( "parsed: maxState=%d, maxEntry=%d\n",
@@ -1451,18 +1451,18 @@
   static void
   gxv_XEntryTable_validate( FT_Bytes       table,
                             FT_ULong*      length_p,
-                            FT_UShort      maxEntry,
+                            ushort      maxEntry,
                             FT_ULong       stateArray_length,
-                            FT_UShort      maxClassID,
+                            ushort      maxClassID,
                             FT_Bytes       xstatetable_table,
                             FT_Bytes       xstatetable_limit,
                             GXV_Validator  gxvalid )
   {
     FT_Bytes   p = table;
     FT_Bytes   limit = table + *length_p;
-    FT_UShort  entry;
-    FT_UShort  state;
-    FT_Int     entrySize = 2 + 2 + GXV_GLYPHOFFSET_SIZE( xstatetable );
+    ushort  entry;
+    ushort  state;
+    int     entrySize = 2 + 2 + GXV_GLYPHOFFSET_SIZE( xstatetable );
 
 
     GXV_NAME_ENTER( "XEntryTable" );
@@ -1473,8 +1473,8 @@
 
     for (entry = 0; entry <= maxEntry; entry++ )
     {
-      FT_UShort                        newState_idx;
-      FT_UShort                        flags;
+      ushort                        newState_idx;
+      ushort                        flags;
       GXV_XStateTable_GlyphOffsetDesc  glyphOffset;
 
 
@@ -1489,7 +1489,7 @@
         GXV_SET_ERR_IF_PARANOID( FT_INVALID_OFFSET );
       }
 
-      state = (FT_UShort)( newState_idx / ( 1 + maxClassID ) );
+      state = (ushort)( newState_idx / ( 1 + maxClassID ) );
       if ( 0 != ( newState_idx % ( 1 + maxClassID ) ) )
       {
         FT_TRACE4(( "-> new state = %d (supposed)\n",
@@ -1564,8 +1564,8 @@
     FT_ULong   classTable_length;
     FT_ULong   stateArray_length;
     FT_ULong   entryTable_length;
-    FT_UShort  maxState;
-    FT_UShort  maxEntry;
+    ushort  maxState;
+    ushort  maxEntry;
 
     GXV_XStateTable_Subtable_Setup_Func  setup_func;
 
@@ -1627,7 +1627,7 @@
     {
       /* XXX: check range? */
       gxvalid->xstatetable.maxClassID =
-        (FT_UShort)( gxvalid->xstatetable.nClasses - 1 );
+        (ushort)( gxvalid->xstatetable.nClasses - 1 );
     }
 
     if ( stateArray != 0 )
@@ -1716,7 +1716,7 @@
   gxv_odtect_validate( GXV_odtect_Range  odtect,
                        GXV_Validator     gxvalid )
   {
-    FT_UInt  i, j;
+    uint  i, j;
 
 
     GXV_NAME_ENTER( "check overlap among multi ranges" );

@@ -204,7 +204,7 @@ FT_BEGIN_HEADER
   FT_Bitmap_Convert( FT_Library        library,
                      const FT_Bitmap  *source,
                      FT_Bitmap        *target,
-                     FT_Int            alignment );
+                     int            alignment );
 
 
   /**************************************************************************

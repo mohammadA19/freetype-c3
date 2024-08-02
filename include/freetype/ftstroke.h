@@ -564,8 +564,8 @@ FT_BEGIN_HEADER
   FT_EXPORT( FT_Error )
   FT_Stroker_GetBorderCounts( FT_Stroker        stroker,
                               FT_StrokerBorder  border,
-                              FT_UInt          *anum_points,
-                              FT_UInt          *anum_contours );
+                              uint          *anum_points,
+                              uint          *anum_contours );
 
 
   /**************************************************************************
@@ -637,8 +637,8 @@ FT_BEGIN_HEADER
    */
   FT_EXPORT( FT_Error )
   FT_Stroker_GetCounts( FT_Stroker  stroker,
-                        FT_UInt    *anum_points,
-                        FT_UInt    *anum_contours );
+                        uint    *anum_points,
+                        uint    *anum_contours );
 
 
   /**************************************************************************

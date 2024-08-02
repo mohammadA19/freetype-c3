@@ -62,12 +62,12 @@
                             FT_Memory  memory )
   {
     FT_String*  string = NULL;
-    FT_UInt     len, code, n;
+    uint     len, code, n;
     FT_Byte*    read   = (FT_Byte*)entry->string;
     FT_Error    error;
 
 
-    len = (FT_UInt)entry->stringLength / 2;
+    len = (uint)entry->stringLength / 2;
 
     if ( FT_QNEW_ARRAY( string, len + 1 ) )
       return NULL;
@@ -97,12 +97,12 @@
                             FT_Memory  memory )
   {
     FT_String*  string = NULL;
-    FT_UInt     len, code, n;
+    uint     len, code, n;
     FT_Byte*    read   = (FT_Byte*)entry->string;
     FT_Error    error;
 
 
-    len = (FT_UInt)entry->stringLength;
+    len = (uint)entry->stringLength;
 
     if ( FT_QNEW_ARRAY( string, len + 1 ) )
       return NULL;
@@ -134,20 +134,20 @@
 
   fn FT_Error /* internal */
   tt_face_get_name( TT_Face      face,
-                    FT_UShort    nameid,
+                    ushort    nameid,
                     FT_String**  name )
   {
     FT_Memory   memory = face->root.memory;
     FT_Error    error  = FT_Err_Ok;
     FT_String*  result = NULL;
-    FT_UShort   n;
+    ushort   n;
     TT_Name     rec;
 
-    FT_Int  found_apple         = -1;
-    FT_Int  found_apple_roman   = -1;
-    FT_Int  found_apple_english = -1;
-    FT_Int  found_win           = -1;
-    FT_Int  found_unicode       = -1;
+    int  found_apple         = -1;
+    int  found_apple_roman   = -1;
+    int  found_apple_english = -1;
+    int  found_win           = -1;
+    int  found_unicode       = -1;
 
     FT_Bool  is_english = 0;
 
@@ -346,7 +346,7 @@
   static FT_Error
   sfnt_open_font( FT_Stream  stream,
                   TT_Face    face,
-                  FT_Int*    face_instance_index,
+                  int*    face_instance_index,
                   FT_Long*   woff2_num_faces )
   {
     FT_Memory  memory = stream->memory;
@@ -440,7 +440,7 @@
 
     if ( tag == TTAG_ttcf )
     {
-      FT_Int  n;
+      int  n;
 
 
       FT_TRACE3(( "sfnt_open_font: file is a collection\n" ));
@@ -494,14 +494,14 @@
   fn FT_Error /* internal */
   sfnt_init_face( FT_Stream      stream,
                   TT_Face        face,
-                  FT_Int         face_instance_index,
-                  FT_Int         num_params,
+                  int         face_instance_index,
+                  int         num_params,
                   FT_Parameter*  params )
   {
     FT_Error      error;
     FT_Library    library         = face->root.driver->root.library;
     SFNT_Service  sfnt;
-    FT_Int        face_index;
+    int        face_index;
     FT_Long       woff2_num_faces = 0;
 
 
@@ -604,12 +604,12 @@
       FT_ULong  version;
       FT_ULong  offset;
 
-      FT_UShort  num_axes;
-      FT_UShort  axis_size;
-      FT_UShort  num_instances;
-      FT_UShort  instance_size;
+      ushort  num_axes;
+      ushort  axis_size;
+      ushort  num_instances;
+      ushort  instance_size;
 
-      FT_Int  instance_index;
+      int  instance_index;
 
       FT_Byte*  default_values  = NULL;
       FT_Byte*  instance_values = NULL;
@@ -674,7 +674,7 @@
         FT_ULong  default_value_offset, instance_offset;
 
         FT_Byte*  p;
-        FT_UInt   i;
+        uint   i;
 
 
         default_value_offset = array_start + 8;
@@ -793,8 +793,8 @@
   fn FT_Error /* internal */
   sfnt_load_face( FT_Stream      stream,
                   TT_Face        face,
-                  FT_Int         face_instance_index,
-                  FT_Int         num_params,
+                  int         face_instance_index,
+                  int         num_params,
                   FT_Parameter*  params )
   {
     FT_Error  error;
@@ -823,7 +823,7 @@
     /* Check parameters */
 
     {
-      FT_Int  i;
+      int  i;
 
 
       for ( i = 0; i < num_params; i++ )
@@ -1190,7 +1190,7 @@
 
       /* set the encoding fields */
       {
-        FT_Int   m;
+        int   m;
 #ifdef FT_CONFIG_OPTION_POSTSCRIPT_NAMES
         FT_Bool  has_unicode = FALSE;
 #endif
@@ -1245,7 +1245,7 @@
        * depths in the FT_Bitmap_Size record.  This is a design error.
        */
       {
-        FT_UInt  count;
+        uint  count;
 
 
         count = face->sbit_num_strikes;
@@ -1253,12 +1253,12 @@
         if ( count > 0 )
         {
           FT_Memory        memory   = face->root.memory;
-          FT_UShort        em_size  = face->header.Units_Per_EM;
-          FT_Short         avgwidth = face->os2.xAvgCharWidth;
+          ushort        em_size  = face->header.Units_Per_EM;
+          short         avgwidth = face->os2.xAvgCharWidth;
           FT_Size_Metrics  metrics;
 
-          FT_UInt*  sbit_strike_map = NULL;
-          FT_UInt   strike_idx, bsize_idx;
+          uint*  sbit_strike_map = NULL;
+          uint   strike_idx, bsize_idx;
 
 
           if ( em_size == 0 || face->os2.version == 0xFFFFU )
@@ -1284,8 +1284,8 @@
             if ( error )
               continue;
 
-            bsize->height = (FT_Short)( metrics.height >> 6 );
-            bsize->width  = (FT_Short)(
+            bsize->height = (short)( metrics.height >> 6 );
+            bsize->width  = (short)(
               ( avgwidth * metrics.x_ppem + em_size / 2 ) / em_size );
 
             bsize->x_ppem = metrics.x_ppem << 6;
@@ -1309,7 +1309,7 @@
             face->sbit_strike_map = sbit_strike_map;
 
             root->face_flags     |= FT_FACE_FLAG_FIXED_SIZES;
-            root->num_fixed_sizes = (FT_Int)bsize_idx;
+            root->num_fixed_sizes = (int)bsize_idx;
           }
         }
       }
@@ -1401,8 +1401,8 @@
               }
               else
               {
-                root->ascender  =  (FT_Short)face->os2.usWinAscent;
-                root->descender = -(FT_Short)face->os2.usWinDescent;
+                root->ascender  =  (short)face->os2.usWinAscent;
+                root->descender = -(short)face->os2.usWinDescent;
                 root->height    =  root->ascender - root->descender;
               }
             }
@@ -1410,9 +1410,9 @@
         }
 
         root->max_advance_width  =
-          (FT_Short)face->horizontal.advance_Width_Max;
+          (short)face->horizontal.advance_Width_Max;
         root->max_advance_height =
-          (FT_Short)( face->vertical_info ? face->vertical.advance_Height_Max
+          (short)( face->vertical_info ? face->vertical.advance_Height_Max
                                           : root->height );
 
         /* See https://www.microsoft.com/typography/otspec/post.htm -- */

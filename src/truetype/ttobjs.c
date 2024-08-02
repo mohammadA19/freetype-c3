@@ -114,8 +114,8 @@
    */
   fn FT_Error /* internal */
   tt_glyphzone_new( FT_Memory     memory,
-                    FT_UShort     maxPoints,
-                    FT_UShort     maxContours,
+                    ushort     maxPoints,
+                    ushort     maxContours,
                     TT_GlyphZone  zone )
   {
     FT_Error  error;
@@ -250,14 +250,14 @@
   /* Printer clears the entries for subsetted subtables.  We thus have to  */
   /* recalculate the checksums  where necessary.                           */
 
-  static FT_UInt32
+  static uint
   tt_synth_sfnt_checksum( FT_Stream  stream,
                           FT_ULong   length )
   {
     FT_Error   error;
-    FT_UInt32  checksum = 0;
+    uint  checksum = 0;
     FT_Byte*   p;
-    FT_Int     shift;
+    int     shift;
 
 
     if ( FT_FRAME_ENTER( length ) )
@@ -269,7 +269,7 @@
       checksum += FT_NEXT_ULONG( p );
 
     for ( shift = 24; length > 0; length--, shift -=8 )
-      checksum += (FT_UInt32)FT_NEXT_BYTE( p ) << shift;
+      checksum += (uint)FT_NEXT_BYTE( p ) << shift;
 
     FT_FRAME_EXIT();
 
@@ -281,7 +281,7 @@
 
   static FT_ULong
   tt_get_sfnt_checksum( TT_Face    face,
-                        FT_UShort  i )
+                        ushort  i )
   {
 #if 0 /* if we believe the written value, use following part. */
     if ( face->dir_tables[i].CheckSum )
@@ -484,7 +484,7 @@
     FT_ULong   checksum;
     int        num_matched_ids[TRICK_SFNT_IDS_NUM_FACES];
     FT_Bool    has_cvt, has_fpgm, has_prep;
-    FT_UShort  i;
+    ushort  i;
     int        j, k;
 
 
@@ -590,7 +590,7 @@
     FT_ULong  asize;
     FT_ULong  i;
     FT_ULong  glyph_index = 0;
-    FT_UInt   count       = 0;
+    uint   count       = 0;
 
 
     for( i = 0; i < face->num_locations; i++ )
@@ -662,8 +662,8 @@
   fn FT_Error /* internal */
   tt_face_init( FT_Stream      stream,
                 FT_Face        ttface,      /* TT_Face */
-                FT_Int         face_index,
-                FT_Int         num_params,
+                int         face_index,
+                int         num_params,
                 FT_Parameter*  params )
   {
     FT_Error      error;
@@ -784,7 +784,7 @@
 
 #ifdef TT_CONFIG_OPTION_GX_VAR_SUPPORT
     {
-      FT_UInt  instance_index = (FT_UInt)face_index >> 16;
+      uint  instance_index = (uint)face_index >> 16;
 
 
       if ( FT_HAS_MULTIPLE_MASTERS( ttface ) )
@@ -992,7 +992,7 @@
     TT_Face         face = (TT_Face)size->root.face;
     TT_ExecContext  exec;
     FT_Error        error;
-    FT_UInt         i;
+    uint         i;
 
 
     /* Scale the cvt values to the new ppem.            */
@@ -1125,7 +1125,7 @@
     TT_Face    face = (TT_Face)ftsize->face;
     FT_Memory  memory = face->root.memory;
 
-    FT_UShort       n_twilight;
+    ushort       n_twilight;
     TT_MaxProfile*  maxp = &face->max_profile;
 
 
@@ -1246,7 +1246,7 @@
     /* rescale CVT when needed */
     if ( size->cvt_ready < 0 )
     {
-      FT_UShort  i;
+      ushort  i;
 
 
       /* all twilight points are originally zero */

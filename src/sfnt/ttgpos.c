@@ -97,9 +97,9 @@
     /* Iteration state. */
     FT_Byte*          current_lookup_table;
     gpos_lookup_type  current_lookup_type;
-    FT_UShort         subtable_count;
+    ushort         subtable_count;
     FT_Byte*          subtable_offsets;
-    FT_UInt           subtable_idx;
+    uint           subtable_idx;
 
     /* Element for the current iteration. */
     FT_Byte*          subtable;
@@ -116,7 +116,7 @@
     FT_ULong                            lookup_list_idx )
   {
     FT_Byte*   lookup_list  = gpos_table + FT_PEEK_USHORT( gpos_table + 8 );
-    FT_UInt16  lookup_count = FT_PEEK_USHORT( lookup_list );
+    ushort  lookup_count = FT_PEEK_USHORT( lookup_list );
 
 
     if ( lookup_list_idx < lookup_count )
@@ -150,7 +150,7 @@
   {
     if ( context->subtable_idx < context->subtable_count )
     {
-      FT_UShort  subtable_offset =
+      ushort  subtable_offset =
         FT_PEEK_USHORT( context->subtable_offsets +
                         2 * context->subtable_idx );
 
@@ -176,9 +176,9 @@
   }
 
 
-  static FT_Int
+  static int
   tt_gpos_get_coverage_index( FT_Byte  *coverage_table,
-                              FT_UInt   glyph )
+                              uint   glyph )
   {
     coverage_table_format_type  coverage_format =
       (coverage_table_format_type)FT_PEEK_USHORT( coverage_table );
@@ -188,21 +188,21 @@
     {
     case COVERAGE_TABLE_FORMAT_LIST:
       {
-        FT_UShort  glyph_count = FT_PEEK_USHORT( coverage_table + 2 );
+        ushort  glyph_count = FT_PEEK_USHORT( coverage_table + 2 );
 
-        FT_Int  l = 0;
-        FT_Int  r = glyph_count - 1;
-        FT_Int  m;
+        int  l = 0;
+        int  r = glyph_count - 1;
+        int  m;
 
-        FT_Int  straw;
-        FT_Int  needle = glyph;
+        int  straw;
+        int  needle = glyph;
 
 
         /* Binary search. */
         while ( l <= r )
         {
           FT_Byte   *glyph_array = coverage_table + 4;
-          FT_UShort  glyph_id;
+          ushort  glyph_id;
 
 
           m        = ( l + r ) >> 1;
@@ -221,16 +221,16 @@
 
     case COVERAGE_TABLE_FORMAT_RANGE:
       {
-        FT_UShort  range_count = FT_PEEK_USHORT( coverage_table + 2 );
+        ushort  range_count = FT_PEEK_USHORT( coverage_table + 2 );
         FT_Byte   *range_array = coverage_table + 4;
 
-        FT_Int  l = 0;
-        FT_Int  r = range_count - 1;
-        FT_Int  m;
+        int  l = 0;
+        int  r = range_count - 1;
+        int  m;
 
-        FT_Int  straw_start;
-        FT_Int  straw_end;
-        FT_Int  needle = glyph;
+        int  straw_start;
+        int  straw_end;
+        int  needle = glyph;
 
 
         /* Binary search. */
@@ -250,7 +250,7 @@
             l = m + 1;
           else
           {
-            FT_UShort start_coverage_index =
+            ushort start_coverage_index =
                         FT_PEEK_USHORT( range_record + 4 );
 
 
@@ -268,9 +268,9 @@
   }
 
 
-  static FT_Int
+  static int
   tt_gpos_get_glyph_class( FT_Byte  *class_def_table,
-                           FT_UInt   glyph )
+                           uint   glyph )
   {
     class_def_table_format_type  class_def_format =
       (class_def_table_format_type)FT_PEEK_USHORT( class_def_table );
@@ -280,30 +280,30 @@
     {
     case CLASS_DEF_TABLE_FORMAT_ARRAY:
       {
-        FT_UInt  start_glyph_id    = FT_PEEK_USHORT( class_def_table + 2 );
-        FT_UInt  glyph_count       = FT_PEEK_USHORT( class_def_table + 4 );
+        uint  start_glyph_id    = FT_PEEK_USHORT( class_def_table + 2 );
+        uint  glyph_count       = FT_PEEK_USHORT( class_def_table + 4 );
         FT_Byte  *class_value_array = class_def_table + 6;
 
 
         if ( glyph >= start_glyph_id              &&
              glyph < start_glyph_id + glyph_count )
-          return (FT_Int)FT_PEEK_USHORT( class_value_array +
+          return (int)FT_PEEK_USHORT( class_value_array +
                                          2 * ( glyph - start_glyph_id ) );
         break;
       }
 
     case CLASS_DEF_TABLE_FORMAT_RANGE_GROUPS:
       {
-        FT_UShort  class_range_count   = FT_PEEK_USHORT( class_def_table + 2 );
+        ushort  class_range_count   = FT_PEEK_USHORT( class_def_table + 2 );
         FT_Byte   *class_range_records = class_def_table + 4;
 
-        FT_Int  l = 0;
-        FT_Int  r = class_range_count - 1;
-        FT_Int  m;
+        int  l = 0;
+        int  r = class_range_count - 1;
+        int  m;
 
-        FT_Int  straw_start;
-        FT_Int  straw_end;
-        FT_Int  needle = glyph;
+        int  straw_start;
+        int  straw_end;
+        int  needle = glyph;
 
 
         while ( l <= r )
@@ -321,7 +321,7 @@
           else if ( needle > straw_end )
             l = m + 1;
           else
-            return (FT_Int)FT_PEEK_USHORT( class_range_record + 4 );
+            return (int)FT_PEEK_USHORT( class_range_record + 4 );
         }
         break;
       }
@@ -370,10 +370,10 @@
     {
       FT_Byte*   feature_list    = face->gpos_table +
                                    FT_PEEK_USHORT( face->gpos_table + 6 );
-      FT_UInt16  feature_count   = FT_PEEK_USHORT( feature_list );
+      ushort  feature_count   = FT_PEEK_USHORT( feature_list );
       FT_Byte*   feature_records = feature_list + 2;
 
-      FT_UInt  idx;
+      uint  idx;
 
 
       for ( idx = 0; idx < feature_count; idx++, feature_records += 6 )
@@ -404,15 +404,15 @@
   }
 
 
-  fn FT_Int /* internal */
+  fn int /* internal */
   tt_face_get_gpos_kerning( TT_Face  face,
-                            FT_UInt  left_glyph,
-                            FT_UInt  right_glyph )
+                            uint  left_glyph,
+                            uint  right_glyph )
   {
     FT_Byte*   feature_list;
-    FT_UInt16  feature_count;
+    ushort  feature_count;
     FT_Byte*   feature_records;
-    FT_UInt    feature_idx;
+    uint    feature_idx;
 
 
     if ( !face->gpos_kerning_available )
@@ -429,8 +429,8 @@
     {
       FT_ULong   feature_tag = FT_PEEK_ULONG( feature_records );
       FT_Byte*   feature_table;
-      FT_UInt16  lookup_idx_count;
-      FT_UInt16  lookup_idx;
+      ushort  lookup_idx_count;
+      ushort  lookup_idx;
 
 
       if ( feature_tag != TTAG_kern )
@@ -441,7 +441,7 @@
 
       for ( lookup_idx = 0; lookup_idx < lookup_idx_count; lookup_idx++ )
       {
-        FT_UInt16 lookup_list_idx =
+        ushort lookup_list_idx =
           FT_PEEK_USHORT( feature_table + 4 + 2 * lookup_idx );
         TT_GPOS_Subtable_Iterator_Context  subtable_iter;
 
@@ -458,8 +458,8 @@
           gpos_value_format_bitmask    value_format_2;
           gpos_pair_adjustment_format  format;
 
-          FT_UShort  coverage_offset;
-          FT_Int     coverage_index;
+          ushort  coverage_offset;
+          int     coverage_index;
 
 
           if ( subtable_iter.subtable_type !=
@@ -491,16 +491,16 @@
           {
           case GPOS_PAIR_ADJUSTMENT_FORMAT_GLYPH_PAIR:
             {
-              FT_Int  l, r, m;
-              FT_Int  straw, needle;
+              int  l, r, m;
+              int  straw, needle;
 
-              FT_Int  value_record_pair_size_in_bytes = 2;
+              int  value_record_pair_size_in_bytes = 2;
 
-              FT_UShort  pair_set_count = FT_PEEK_USHORT( subtable + 8 );
-              FT_UShort  pair_pos_offset;
+              ushort  pair_set_count = FT_PEEK_USHORT( subtable + 8 );
+              ushort  pair_pos_offset;
 
               FT_Byte*   pair_value_table;
-              FT_UShort  pair_value_count;
+              ushort  pair_value_count;
               FT_Byte*   pair_value_array;
 
 
@@ -521,7 +521,7 @@
               /* Binary search. */
               while ( l <= r )
               {
-                FT_UShort  second_glyph;
+                ushort  second_glyph;
                 FT_Byte*   pair_value;
 
 
@@ -537,7 +537,7 @@
                   l = m + 1;
                 else
                 {
-                  FT_Short  x_advance = FT_PEEK_SHORT( pair_value + 2 );
+                  short  x_advance = FT_PEEK_SHORT( pair_value + 2 );
 
 
                   return x_advance;
@@ -548,21 +548,21 @@
 
           case GPOS_PAIR_ADJUSTMENT_FORMAT_CLASS_PAIR:
             {
-              FT_UShort  class_def1_offset = FT_PEEK_USHORT( subtable + 8 );
-              FT_UShort  class_def2_offset = FT_PEEK_USHORT( subtable + 10 );
+              ushort  class_def1_offset = FT_PEEK_USHORT( subtable + 8 );
+              ushort  class_def2_offset = FT_PEEK_USHORT( subtable + 10 );
 
-              FT_Int  left_glyph_class =
+              int  left_glyph_class =
                 tt_gpos_get_glyph_class( subtable + class_def1_offset,
                                          left_glyph );
-              FT_Int  right_glyph_class =
+              int  right_glyph_class =
                 tt_gpos_get_glyph_class( subtable + class_def2_offset,
                                          right_glyph );
 
-              FT_UShort class1_count = FT_PEEK_USHORT( subtable + 12 );
-              FT_UShort class2_count = FT_PEEK_USHORT( subtable + 14 );
+              ushort class1_count = FT_PEEK_USHORT( subtable + 12 );
+              ushort class2_count = FT_PEEK_USHORT( subtable + 14 );
 
               FT_Byte *class1_records, *class2_records;
-              FT_Short x_advance;
+              short x_advance;
 
 
               if ( left_glyph_class < 0             ||

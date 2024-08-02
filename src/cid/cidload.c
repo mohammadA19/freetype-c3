@@ -41,7 +41,7 @@
   /* read a single offset */
   fn FT_ULong /* internal */
   cid_get_offset( FT_Byte*  *start,
-                  FT_UInt    offsize )
+                  uint    offsize )
   {
     FT_ULong  result;
     FT_Byte*  p = *start;
@@ -169,7 +169,7 @@
     {
       FT_Matrix*  matrix;
       FT_Vector*  offset;
-      FT_Int      result;
+      int      result;
 
 
       dict   = cidface->cid.font_dicts + parser->num_dict;
@@ -205,7 +205,7 @@
       if ( temp_scale != 0x10000L )
       {
         /* set units per EM based on FontMatrix values */
-        face->units_per_EM = (FT_UShort)FT_DivFix( 1000, temp_scale );
+        face->units_per_EM = (ushort)FT_DivFix( 1000, temp_scale );
 
         temp[0] = FT_DivFix( temp[0], temp_scale );
         temp[1] = FT_DivFix( temp[1], temp_scale );
@@ -286,7 +286,7 @@
 
     if ( !cid->font_dicts )
     {
-      FT_UInt  n;
+      uint  n;
 
 
       if ( FT_NEW_ARRAY( cid->font_dicts, num_dicts ) )
@@ -357,12 +357,12 @@
     if ( parser->num_dict < cidface->cid.num_dicts )
     {
       T1_TokenRec  token;
-      FT_UInt      len;
+      uint      len;
 
 
       cid_parser_to_token( parser, &token );
 
-      len = (FT_UInt)( token.limit - token.start );
+      len = (uint)( token.limit - token.start );
       if ( len )
         FT_TRACE4(( " %.*s\n", len, token.start ));
       else
@@ -457,11 +457,11 @@
         /* look for immediates */
         if ( *cur == '/' && cur + 2 < limit )
         {
-          FT_UInt  len;
+          uint  len;
 
 
           cur++;
-          len = (FT_UInt)( parser->root.cursor - cur );
+          len = (uint)( parser->root.cursor - cur );
 
           if ( len > 0 && len < 22 )
           {
@@ -513,9 +513,9 @@
     FT_Memory      memory = face->root.memory;
     FT_Stream      stream = face->cid_stream;
     FT_Error       error;
-    FT_UInt        n;
+    uint        n;
     CID_Subrs      subr;
-    FT_UInt        max_offsets = 0;
+    uint        max_offsets = 0;
     FT_ULong*      offsets = NULL;
     PSAux_Service  psaux = (PSAux_Service)face->psaux;
 
@@ -527,8 +527,8 @@
     for ( n = 0; n < cid->num_dicts; n++, subr++ )
     {
       CID_FaceDict  dict  = cid->font_dicts + n;
-      FT_Int        lenIV = dict->private_dict.lenIV;
-      FT_UInt       count, num_subrs = dict->num_subrs;
+      int        lenIV = dict->private_dict.lenIV;
+      uint       count, num_subrs = dict->num_subrs;
       FT_ULong      data_len;
       FT_Byte*      p;
 
@@ -539,7 +539,7 @@
       /* reallocate offsets array if needed */
       if ( num_subrs + 1 > max_offsets )
       {
-        FT_UInt  new_max = FT_PAD_CEIL( num_subrs + 1, 4 );
+        uint  new_max = FT_PAD_CEIL( num_subrs + 1, 4 );
 
 
         if ( new_max <= max_offsets )
@@ -616,7 +616,7 @@
         }
       }
 
-      subr->num_subrs = (FT_Int)num_subrs;
+      subr->num_subrs = (int)num_subrs;
     }
 
   Exit:
@@ -761,13 +761,13 @@
 
   fn FT_Error /* internal */
   cid_face_open( CID_Face  face,
-                 FT_Int    face_index )
+                 int    face_index )
   {
     CID_Loader   loader;
     CID_Parser*  parser;
     FT_Memory    memory = face->root.memory;
     FT_Error     error;
-    FT_UInt      n;
+    uint      n;
 
     CID_FaceInfo  cid = &face->cid;
 

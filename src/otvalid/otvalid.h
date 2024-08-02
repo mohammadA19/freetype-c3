@@ -41,17 +41,17 @@ FT_BEGIN_HEADER
   otv_GDEF_validate( FT_Bytes      table,
                      FT_Bytes      gsub,
                      FT_Bytes      gpos,
-                     FT_UInt       glyph_count,
+                     uint       glyph_count,
                      FT_Validator  valid );
 
   fn void /* internal */
   otv_GPOS_validate( FT_Bytes      table,
-                     FT_UInt       glyph_count,
+                     uint       glyph_count,
                      FT_Validator  valid );
 
   fn void /* internal */
   otv_GSUB_validate( FT_Bytes      table,
-                     FT_UInt       glyph_count,
+                     uint       glyph_count,
                      FT_Validator  valid );
 
   /* GSUB and GPOS tables should already be validated; */
@@ -60,12 +60,12 @@ FT_BEGIN_HEADER
   otv_JSTF_validate( FT_Bytes      table,
                      FT_Bytes      gsub,
                      FT_Bytes      gpos,
-                     FT_UInt       glyph_count,
+                     uint       glyph_count,
                      FT_Validator  valid );
 
   fn void /* internal */
   otv_MATH_validate( FT_Bytes      table,
-                     FT_UInt       glyph_count,
+                     uint       glyph_count,
                      FT_Validator  ftvalid );
 
 
