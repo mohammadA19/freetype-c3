@@ -148,24 +148,6 @@ FT_BEGIN_HEADER
    */
 
   /*
-   * `FT_FUNCTION_DECLARATION( type )` can be used to write a C function
-   * declaration to ensure it will have C linkage when the library is built
-   * with a C++ compiler.  The parameter is the function's return type, so a
-   * declaration would look like
-   *
-   *    FT_FUNCTION_DECLARATION( int )
-   *    foo( int x );
-   *
-   * NOTE: This requires that all uses are inside of `FT_BEGIN_HEADER ...
-   * FT_END_HEADER` blocks, which guarantees that the declarations have C
-   * linkage when the headers are included by C++ sources.
-   *
-   * NOTE: Do not use directly.  Use `FT_LOCAL`, `FT_BASE`, and `FT_EXPORT`
-   * instead.
-   */
-#define FT_FUNCTION_DECLARATION( x )  extern x
-
-  /*
    * Use `FT_LOCAL` and `FT_LOCAL_DEF` to declare and define, respectively,
    * an internal FreeType function that is only used by the sources of a
    * single `src/module/` directory.  This ensures that the functions are
@@ -180,7 +162,7 @@ FT_BEGIN_HEADER
 #else
 
 #define FT_LOCAL( x )      FT_INTERNAL_FUNCTION_ATTRIBUTE \
-                           FT_FUNCTION_DECLARATION( x )
+                           x
 #define FT_LOCAL_DEF( x )  x
 
 #endif  /* FT_MAKE_OPTION_SINGLE_OBJECT */
@@ -200,7 +182,7 @@ FT_BEGIN_HEADER
    * internal library function that is used by more than a single module.
    */
 #define FT_BASE( x )      FT_INTERNAL_FUNCTION_ATTRIBUTE \
-                          FT_FUNCTION_DECLARATION( x )
+                          x
 #define FT_BASE_DEF( x )  x
 
 
@@ -209,7 +191,7 @@ FT_BEGIN_HEADER
    * `src/smooth/ftgrays.h` to make the header more portable.
    */
 #ifndef FT_EXPORT_VAR
-#define FT_EXPORT_VAR( x )  FT_FUNCTION_DECLARATION( x )
+#define FT_EXPORT_VAR( x )  x
 #endif
 
   /*
@@ -299,7 +281,7 @@ FT_BEGIN_HEADER
 #define FT_COMPARE_DEF( x )  FT_CALLBACK_DEF( x )
 #endif
 
-#define FT_BASE_CALLBACK( x )      FT_FUNCTION_DECLARATION( x )
+#define FT_BASE_CALLBACK( x )      x
 #define FT_BASE_CALLBACK_DEF( x )  x
 
 #ifndef FT_CALLBACK_TABLE
