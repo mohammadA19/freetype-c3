@@ -980,7 +980,7 @@ FT_BEGIN_HEADER
   /* FT_Set_Raster() API.                                                  */
 
 #ifndef FT_NO_DEFAULT_RASTER
-  FT_EXPORT_VAR( FT_Raster_Funcs )  ft_default_raster;
+  FT_Raster_Funcs  ft_default_raster;
 #endif
 
 
@@ -1098,7 +1098,7 @@ FT_BEGIN_HEADER
    *   the macro is used).
    */
 #define FT_DECLARE_RENDERER( class_ )               \
-  FT_EXPORT_VAR( const FT_Renderer_Class ) class_;
+  /*const */FT_Renderer_Class class_;
 
 #define FT_DEFINE_RENDERER(                  \
           class_,                            \

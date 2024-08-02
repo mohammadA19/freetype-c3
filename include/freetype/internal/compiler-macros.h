@@ -169,13 +169,6 @@ FT_BEGIN_HEADER
 #define FT_LOCAL_ARRAY_DEF( x )  const x
 
 
-  /*
-   * NOTE: Conditionally define `FT_EXPORT_VAR` due to its definition in
-   * `src/smooth/ftgrays.h` to make the header more portable.
-   */
-#ifndef FT_EXPORT_VAR
-#define FT_EXPORT_VAR( x )  x
-#endif
 
   /*
    * The following macros are needed to compile the library with a
