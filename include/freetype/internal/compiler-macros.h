@@ -107,29 +107,6 @@ FT_BEGIN_HEADER
 #define FT_TYPEOF( type )  /* empty */
 #endif
 
-  /*
-   * Mark a function declaration as internal to the library.  This ensures
-   * that it will not be exposed by default to client code, and helps
-   * generate smaller and faster code on ELF-based platforms.  Place this
-   * before a function declaration.
-   */
-
-  /* Visual C, mingw */
-#if defined( _WIN32 )
-#define FT_INTERNAL_FUNCTION_ATTRIBUTE  /* empty */
-
-  /* gcc, clang */
-#elif ( defined( __GNUC__ ) && __GNUC__ >= 4 ) || defined( __clang__ )
-#define FT_INTERNAL_FUNCTION_ATTRIBUTE  \
-          __attribute__(( visibility( "hidden" ) ))
-
-  /* Sun */
-#elif defined( __SUNPRO_C ) && __SUNPRO_C >= 0x550
-#define FT_INTERNAL_FUNCTION_ATTRIBUTE  __hidden
-
-#else
-#define FT_INTERNAL_FUNCTION_ATTRIBUTE  /* empty */
-#endif
 
   /*
    * FreeType supports compilation of its C sources with a C++ compiler (in
