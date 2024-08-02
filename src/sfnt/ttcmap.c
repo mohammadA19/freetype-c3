@@ -58,7 +58,7 @@
   /* zero.                                                                 */
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   tt_cmap_init( FT_CMap  cmap,    /* TT_CMap */
                 void*    table_ )
   {
@@ -95,7 +95,7 @@
 
 #ifdef TT_CONFIG_CMAP_FORMAT_0
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   tt_cmap0_validate( FT_Byte*      table,
                      FT_Validator  valid )
   {
@@ -131,7 +131,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   tt_cmap0_char_index( FT_CMap    cmap,       /* TT_CMap */
                        FT_UInt32  char_code )
   {
@@ -143,7 +143,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   tt_cmap0_char_next( FT_CMap     cmap,        /* TT_CMap */
                       FT_UInt32  *pchar_code )
   {
@@ -170,7 +170,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   tt_cmap0_get_info( FT_CharMap    cmap,       /* TT_CMap */
                      TT_CMapInfo  *cmap_info )
   {
@@ -297,7 +297,7 @@
 
 #ifdef TT_CONFIG_CMAP_FORMAT_2
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   tt_cmap2_validate( FT_Byte*      table,
                      FT_Validator  valid )
   {
@@ -459,7 +459,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   tt_cmap2_char_index( FT_CMap    cmap,       /* TT_CMap */
                        FT_UInt32  char_code )
   {
@@ -499,7 +499,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   tt_cmap2_char_next( FT_CMap     cmap,       /* TT_CMap */
                       FT_UInt32  *pcharcode )
   {
@@ -587,7 +587,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   tt_cmap2_get_info( FT_CharMap    cmap,       /* TT_CMap */
                      TT_CMapInfo  *cmap_info )
   {
@@ -715,7 +715,7 @@
   } TT_CMap4Rec, *TT_CMap4;
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   tt_cmap4_init( FT_CMap  cmap,    /* TT_CMap4 */
                  void*    table_ )
   {
@@ -896,7 +896,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   tt_cmap4_validate( FT_Byte*      table,
                      FT_Validator  valid )
   {
@@ -1479,7 +1479,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   tt_cmap4_char_index( FT_CMap    cmap,       /* TT_CMap */
                        FT_UInt32  char_code )
   {
@@ -1496,7 +1496,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   tt_cmap4_char_next( FT_CMap     cmap,        /* TT_CMap */
                       FT_UInt32  *pchar_code )
   {
@@ -1530,7 +1530,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   tt_cmap4_get_info( FT_CharMap    cmap,       /* TT_CMap */
                      TT_CMapInfo  *cmap_info )
   {
@@ -1597,7 +1597,7 @@
 
 #ifdef TT_CONFIG_CMAP_FORMAT_6
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   tt_cmap6_validate( FT_Byte*      table,
                      FT_Validator  valid )
   {
@@ -1635,7 +1635,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   tt_cmap6_char_index( FT_CMap    cmap,       /* TT_CMap */
                        FT_UInt32  char_code )
   {
@@ -1658,7 +1658,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   tt_cmap6_char_next( FT_CMap     cmap,        /* TT_CMap */
                       FT_UInt32  *pchar_code )
   {
@@ -1703,7 +1703,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   tt_cmap6_get_info( FT_CharMap    cmap,       /* TT_CMap */
                      TT_CMapInfo  *cmap_info )
   {
@@ -1798,7 +1798,7 @@
 
 #ifdef TT_CONFIG_CMAP_FORMAT_8
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   tt_cmap8_validate( FT_Byte*      table,
                      FT_Validator  valid )
   {
@@ -1898,7 +1898,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   tt_cmap8_char_index( FT_CMap    cmap,       /* TT_CMap */
                        FT_UInt32  char_code )
   {
@@ -1932,7 +1932,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   tt_cmap8_char_next( FT_CMap     cmap,        /* TT_CMap */
                       FT_UInt32  *pchar_code )
   {
@@ -2000,7 +2000,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   tt_cmap8_get_info( FT_CharMap    cmap,       /* TT_CMap */
                      TT_CMapInfo  *cmap_info )
   {
@@ -2066,7 +2066,7 @@
 
 #ifdef TT_CONFIG_CMAP_FORMAT_10
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   tt_cmap10_validate( FT_Byte*      table,
                       FT_Validator  valid )
   {
@@ -2105,7 +2105,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   tt_cmap10_char_index( FT_CMap    cmap,       /* TT_CMap */
                         FT_UInt32  char_code )
   {
@@ -2133,7 +2133,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   tt_cmap10_char_next( FT_CMap     cmap,        /* TT_CMap */
                        FT_UInt32  *pchar_code )
   {
@@ -2175,7 +2175,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   tt_cmap10_get_info( FT_CharMap    cmap,       /* TT_CMap */
                       TT_CMapInfo  *cmap_info )
   {
@@ -2257,7 +2257,7 @@
   } TT_CMap12Rec, *TT_CMap12;
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   tt_cmap12_init( FT_CMap  cmap,    /* TT_CMap12 */
                   void*    table_ )
   {
@@ -2276,7 +2276,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   tt_cmap12_validate( FT_Byte*      table,
                       FT_Validator  valid )
   {
@@ -2481,7 +2481,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   tt_cmap12_char_index( FT_CMap    cmap,       /* TT_CMap */
                         FT_UInt32  char_code )
   {
@@ -2489,7 +2489,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   tt_cmap12_char_next( FT_CMap     cmap,        /* TT_CMap12 */
                        FT_UInt32  *pchar_code )
   {
@@ -2519,7 +2519,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   tt_cmap12_get_info( FT_CharMap    cmap,       /* TT_CMap */
                       TT_CMapInfo  *cmap_info )
   {
@@ -2601,7 +2601,7 @@
   } TT_CMap13Rec, *TT_CMap13;
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   tt_cmap13_init( FT_CMap  cmap,    /* TT_CMap13 */
                   void*    table_ )
   {
@@ -2620,7 +2620,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   tt_cmap13_validate( FT_Byte*      table,
                       FT_Validator  valid )
   {
@@ -2797,7 +2797,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   tt_cmap13_char_index( FT_CMap    cmap,       /* TT_CMap */
                         FT_UInt32  char_code )
   {
@@ -2805,7 +2805,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   tt_cmap13_char_next( FT_CMap     cmap,        /* TT_CMap13 */
                        FT_UInt32  *pchar_code )
   {
@@ -2835,7 +2835,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   tt_cmap13_get_info( FT_CharMap    cmap,       /* TT_CMap */
                       TT_CMapInfo  *cmap_info )
   {
@@ -2954,7 +2954,7 @@
   } TT_CMap14Rec, *TT_CMap14;
 
 
-  FT_CALLBACK_DEF( void )
+  static void
   tt_cmap14_done( FT_CMap  cmap )    /* TT_CMap14 */
   {
     TT_CMap14  ttcmap = (TT_CMap14)cmap;
@@ -2990,7 +2990,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   tt_cmap14_init( FT_CMap  cmap,    /* TT_CMap14 */
                   void*    table_ )
   {
@@ -3009,7 +3009,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   tt_cmap14_validate( FT_Byte*      table,
                       FT_Validator  valid )
   {
@@ -3132,7 +3132,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   tt_cmap14_char_index( FT_CMap    cmap,
                         FT_UInt32  char_code )
   {
@@ -3144,7 +3144,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   tt_cmap14_char_next( FT_CMap     cmap,
                        FT_UInt32  *pchar_code )
   {
@@ -3156,7 +3156,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   tt_cmap14_get_info( FT_CharMap    cmap,
                       TT_CMapInfo  *cmap_info )
   {
@@ -3270,7 +3270,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   tt_cmap14_char_var_index( FT_CMap    cmap,             /* TT_CMap */
                             FT_CMap    ucmap,            /* TT_CMap */
                             FT_UInt32  charcode,
@@ -3307,7 +3307,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Int )
+  static FT_Int
   tt_cmap14_char_var_isdefault( FT_CMap    cmap,             /* TT_CMap */
                                 FT_UInt32  charcode,
                                 FT_UInt32  variantSelector )
@@ -3338,7 +3338,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt32* )
+  static FT_UInt32*
   tt_cmap14_variants( FT_CMap    cmap,    /* TT_CMap14 */
                       FT_Memory  memory )
   {
@@ -3365,7 +3365,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt32 * )
+  static FT_UInt32 *
   tt_cmap14_char_variants( FT_CMap    cmap,      /* TT_CMap14 */
                            FT_Memory  memory,
                            FT_UInt32  charCode )
@@ -3487,7 +3487,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt32 * )
+  static FT_UInt32 *
   tt_cmap14_variant_chars( FT_CMap    cmap,             /* TT_CMap */
                            FT_Memory  memory,
                            FT_UInt32  variantSelector )
@@ -3663,7 +3663,7 @@
 
 #ifdef FT_CONFIG_OPTION_POSTSCRIPT_NAMES
 
-  FT_CALLBACK_DEF( const char * )
+  static const char *
   tt_get_glyph_name( void*    face_,   /* TT_Face */
                      FT_UInt  idx )
   {
@@ -3677,7 +3677,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   tt_cmap_unicode_init( FT_CMap     cmap,     /* PS_Unicodes */
                         FT_Pointer  pointer )
   {
@@ -3701,7 +3701,7 @@
   }
 
 
-  FT_CALLBACK_DEF( void )
+  static void
   tt_cmap_unicode_done( FT_CMap  cmap )    /* PS_Unicodes */
   {
     PS_Unicodes  unicodes = (PS_Unicodes)cmap;
@@ -3714,7 +3714,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   tt_cmap_unicode_char_index( FT_CMap    cmap,       /* PS_Unicodes */
                               FT_UInt32  char_code )
   {
@@ -3727,7 +3727,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   tt_cmap_unicode_char_next( FT_CMap     cmap,        /* PS_Unicodes */
                              FT_UInt32  *pchar_code )
   {

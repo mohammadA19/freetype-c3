@@ -80,7 +80,7 @@
 #define FTC_SIZE_NODE( x ) ( (FTC_SizeNode)( x ) )
 
 
-  FT_CALLBACK_DEF( void )
+  static void
   ftc_size_node_done( FTC_MruNode  ftcnode,
                       FT_Pointer   data )
   {
@@ -92,7 +92,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Bool )
+  static FT_Bool
   ftc_size_node_compare( FTC_MruNode  ftcnode,
                          FT_Pointer   ftcscaler )
   {
@@ -110,7 +110,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   ftc_size_node_init( FTC_MruNode  ftcnode,
                       FT_Pointer   ftcscaler,
                       FT_Pointer   ftcmanager )
@@ -211,7 +211,7 @@
 #define FTC_FACE_NODE( x ) ( ( FTC_FaceNode )( x ) )
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   ftc_face_node_init( FTC_MruNode  ftcnode,
                       FT_Pointer   ftcface_id,
                       FT_Pointer   ftcmanager )
@@ -241,7 +241,7 @@
   }
 
 
-  FT_CALLBACK_DEF( void )
+  static void
   ftc_face_node_done( FTC_MruNode  ftcnode,
                       FT_Pointer   ftcmanager )
   {
@@ -262,7 +262,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Bool )
+  static FT_Bool
   ftc_face_node_compare( FTC_MruNode  ftcnode,
                          FT_Pointer   ftcface_id )
   {

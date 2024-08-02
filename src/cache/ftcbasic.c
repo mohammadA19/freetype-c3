@@ -65,7 +65,7 @@
   } FTC_BasicFamilyRec, *FTC_BasicFamily;
 
 
-  FT_CALLBACK_DEF( FT_Bool )
+  static FT_Bool
   ftc_basic_family_compare( FTC_MruNode  ftcfamily,
                             FT_Pointer   ftcquery )
   {
@@ -77,7 +77,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   ftc_basic_family_init( FTC_MruNode  ftcfamily,
                          FT_Pointer   ftcquery,
                          FT_Pointer   ftccache )
@@ -93,7 +93,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   ftc_basic_family_get_count( FTC_Family   ftcfamily,
                               FTC_Manager  manager )
   {
@@ -126,7 +126,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   ftc_basic_family_load_bitmap( FTC_Family   ftcfamily,
                                 FT_UInt      gindex,
                                 FTC_Manager  manager,
@@ -154,7 +154,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   ftc_basic_family_load_glyph( FTC_Family  ftcfamily,
                                FT_UInt     gindex,
                                FTC_Cache   cache,
@@ -203,7 +203,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Bool )
+  static FT_Bool
   ftc_basic_gnode_compare_faceid( FTC_Node    ftcgnode,
                                   FT_Pointer  ftcface_id,
                                   FTC_Cache   cache,

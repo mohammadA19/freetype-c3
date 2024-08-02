@@ -26,7 +26,7 @@
 #include "pfrerror.h"
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   pfr_get_kerning( FT_Face     face,     /* PFR_Face */
                    FT_UInt     left,
                    FT_UInt     right,
@@ -61,7 +61,7 @@
    *
    */
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   pfr_get_advance( FT_Face   face,       /* PFR_Face */
                    FT_UInt   gindex,
                    FT_Pos   *anadvance )
@@ -94,7 +94,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   pfr_get_metrics( FT_Face    face,                 /* PFR_Face */
                    FT_UInt   *anoutline_resolution,
                    FT_UInt   *ametrics_resolution,
@@ -157,7 +157,7 @@
   };
 
 
-  FT_CALLBACK_DEF( FT_Module_Interface )
+  static FT_Module_Interface
   pfr_get_service( FT_Module         module,
                    const FT_String*  service_id )
   {

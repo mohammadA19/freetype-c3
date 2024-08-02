@@ -57,7 +57,7 @@
   /*************************************************************************/
   /*************************************************************************/
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   ft_bitmap_glyph_init( FT_Glyph      bitmap_glyph,
                         FT_GlyphSlot  slot )
   {
@@ -92,7 +92,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   ft_bitmap_glyph_copy( FT_Glyph  bitmap_source,
                         FT_Glyph  bitmap_target )
   {
@@ -108,7 +108,7 @@
   }
 
 
-  FT_CALLBACK_DEF( void )
+  static void
   ft_bitmap_glyph_done( FT_Glyph  bitmap_glyph )
   {
     FT_BitmapGlyph  glyph   = (FT_BitmapGlyph)bitmap_glyph;
@@ -119,7 +119,7 @@
   }
 
 
-  FT_CALLBACK_DEF( void )
+  static void
   ft_bitmap_glyph_bbox( FT_Glyph  bitmap_glyph,
                         FT_BBox*  cbox )
   {
@@ -157,7 +157,7 @@
   /*************************************************************************/
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   ft_outline_glyph_init( FT_Glyph      outline_glyph,
                          FT_GlyphSlot  slot )
   {
@@ -190,7 +190,7 @@
   }
 
 
-  FT_CALLBACK_DEF( void )
+  static void
   ft_outline_glyph_done( FT_Glyph  outline_glyph )
   {
     FT_OutlineGlyph  glyph = (FT_OutlineGlyph)outline_glyph;
@@ -200,7 +200,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   ft_outline_glyph_copy( FT_Glyph  outline_source,
                          FT_Glyph  outline_target )
   {
@@ -221,7 +221,7 @@
   }
 
 
-  FT_CALLBACK_DEF( void )
+  static void
   ft_outline_glyph_transform( FT_Glyph          outline_glyph,
                               const FT_Matrix*  matrix,
                               const FT_Vector*  delta )
@@ -237,7 +237,7 @@
   }
 
 
-  FT_CALLBACK_DEF( void )
+  static void
   ft_outline_glyph_bbox( FT_Glyph  outline_glyph,
                          FT_BBox*  bbox )
   {
@@ -248,7 +248,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   ft_outline_glyph_prepare( FT_Glyph      outline_glyph,
                             FT_GlyphSlot  slot )
   {
@@ -289,7 +289,7 @@
   /*************************************************************************/
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   ft_svg_glyph_init( FT_Glyph      svg_glyph,
                      FT_GlyphSlot  slot )
   {
@@ -346,7 +346,7 @@
   }
 
 
-  FT_CALLBACK_DEF( void )
+  static void
   ft_svg_glyph_done( FT_Glyph  svg_glyph )
   {
     FT_SvgGlyph  glyph  = (FT_SvgGlyph)svg_glyph;
@@ -358,7 +358,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   ft_svg_glyph_copy( FT_Glyph  svg_source,
                      FT_Glyph  svg_target )
   {
@@ -408,7 +408,7 @@
   }
 
 
-  FT_CALLBACK_DEF( void )
+  static void
   ft_svg_glyph_transform( FT_Glyph          svg_glyph,
                           const FT_Matrix*  _matrix,
                           const FT_Vector*  _delta )
@@ -460,7 +460,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   ft_svg_glyph_prepare( FT_Glyph      svg_glyph,
                         FT_GlyphSlot  slot )
   {

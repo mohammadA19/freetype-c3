@@ -383,7 +383,7 @@
     FT_SERVICE_ID_PROPERTIES, &af_service_properties )
 
 
-  FT_CALLBACK_DEF( FT_Module_Interface )
+  static FT_Module_Interface
   af_get_interface( FT_Module    module,
                     const char*  module_interface )
   {
@@ -393,7 +393,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   af_autofitter_init( FT_Module  ft_module )      /* AF_Module */
   {
     AF_Module  module = (AF_Module)ft_module;
@@ -416,7 +416,7 @@
   }
 
 
-  FT_CALLBACK_DEF( void )
+  static void
   af_autofitter_done( FT_Module  ft_module )      /* AF_Module */
   {
     FT_UNUSED( ft_module );
@@ -428,7 +428,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   af_autofitter_load_glyph( FT_AutoHinter  module_,
                             FT_GlyphSlot   slot,
                             FT_Size        size,

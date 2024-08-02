@@ -137,7 +137,7 @@ Free_VecPooled( APTR  poolHeader,
   /* <Return>                                                              */
   /*    The address of newly allocated block.                              */
   /*                                                                       */
-  FT_CALLBACK_DEF( void* )
+  static void*
   ft_alloc( FT_Memory  memory,
             long       size )
   {
@@ -169,7 +169,7 @@ Free_VecPooled( APTR  poolHeader,
   /* <Return>                                                              */
   /*    The address of the reallocated memory block.                       */
   /*                                                                       */
-  FT_CALLBACK_DEF( void* )
+  static void*
   ft_realloc( FT_Memory  memory,
               long       cur_size,
               long       new_size,
@@ -209,7 +209,7 @@ Free_VecPooled( APTR  poolHeader,
   /*                                                                       */
   /*    block   :: The address of block in memory to be freed.             */
   /*                                                                       */
-  FT_CALLBACK_DEF( void )
+  static void
   ft_free( FT_Memory  memory,
            void*      block )
   {
@@ -253,7 +253,7 @@ Free_VecPooled( APTR  poolHeader,
   /* <Input>                                                               */
   /*    stream :: A pointer to the stream object.                          */
   /*                                                                       */
-  FT_CALLBACK_DEF( void )
+  static void
   ft_amiga_stream_close( FT_Stream  stream )
   {
     struct SysFile* sysfile;
@@ -288,7 +288,7 @@ Free_VecPooled( APTR  poolHeader,
   /* <Return>                                                              */
   /*    The number of bytes actually read.                                 */
   /*                                                                       */
-  FT_CALLBACK_DEF( unsigned long )
+  static unsigned long
   ft_amiga_stream_io( FT_Stream       stream,
                       unsigned long   offset,
                       unsigned char*  buffer,

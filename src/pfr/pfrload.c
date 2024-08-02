@@ -448,7 +448,7 @@
 
 
   /* load bitmap strikes lists */
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   pfr_extra_item_load_bitmap_info( FT_Byte*  p,
                                    FT_Byte*  limit,
                                    void*     phy_font_ )
@@ -549,7 +549,7 @@
    * If no family name is present, the font ID is used instead for the
    * family.
    */
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   pfr_extra_item_load_font_id( FT_Byte*  p,
                                FT_Byte*  limit,
                                void*     phy_font_ )
@@ -576,7 +576,7 @@
 
 
   /* load stem snap tables */
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   pfr_extra_item_load_stem_snaps( FT_Byte*  p,
                                   FT_Byte*  limit,
                                   void*     phy_font_ )
@@ -621,7 +621,7 @@
 
 
   /* load kerning pair data */
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   pfr_extra_item_load_kerning_pairs( FT_Byte*  p,
                                      FT_Byte*  limit,
                                      void*     phy_font_ )

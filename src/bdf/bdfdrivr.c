@@ -59,7 +59,7 @@ THE SOFTWARE.
   } BDF_CMapRec, *BDF_CMap;
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   bdf_cmap_init( FT_CMap     bdfcmap,
                  FT_Pointer  init_data )
   {
@@ -75,7 +75,7 @@ THE SOFTWARE.
   }
 
 
-  FT_CALLBACK_DEF( void )
+  static void
   bdf_cmap_done( FT_CMap  bdfcmap )
   {
     BDF_CMap  cmap = (BDF_CMap)bdfcmap;
@@ -86,7 +86,7 @@ THE SOFTWARE.
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   bdf_cmap_char_index( FT_CMap    bdfcmap,
                        FT_UInt32  charcode )
   {
@@ -127,7 +127,7 @@ THE SOFTWARE.
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   bdf_cmap_char_next( FT_CMap     bdfcmap,
                       FT_UInt32  *acharcode )
   {
@@ -310,7 +310,7 @@ THE SOFTWARE.
   }
 
 
-  FT_CALLBACK_DEF( void )
+  static void
   BDF_Face_Done( FT_Face  face )         /* BDF_Face */
   {
     BDF_Face   bdfface = (BDF_Face)face;
@@ -337,7 +337,7 @@ THE SOFTWARE.
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   BDF_Face_Init( FT_Stream      stream,
                  FT_Face        face,        /* BDF_Face */
                  FT_Int         face_index,
@@ -717,7 +717,7 @@ THE SOFTWARE.
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   BDF_Size_Select( FT_Size   size,
                    FT_ULong  strike_index )
   {
@@ -734,7 +734,7 @@ THE SOFTWARE.
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   BDF_Size_Request( FT_Size          size,
                     FT_Size_Request  req )
   {
@@ -774,7 +774,7 @@ THE SOFTWARE.
 
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   BDF_Glyph_Load( FT_GlyphSlot  slot,
                   FT_Size       size,
                   FT_UInt       glyph_index,
@@ -869,7 +869,7 @@ THE SOFTWARE.
   *
   */
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   bdf_get_bdf_property( FT_Face           face,       /* BDF_Face */
                         const char*       prop_name,
                         BDF_PropertyRec  *aproperty )
@@ -923,7 +923,7 @@ THE SOFTWARE.
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   bdf_get_charset_id( FT_Face       face,               /* BDF_Face */
                       const char*  *acharset_encoding,
                       const char*  *acharset_registry )
@@ -959,7 +959,7 @@ THE SOFTWARE.
   };
 
 
-  FT_CALLBACK_DEF( FT_Module_Interface )
+  static FT_Module_Interface
   bdf_driver_requester( FT_Module    module,
                         const char*  name )
   {

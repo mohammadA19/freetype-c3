@@ -90,7 +90,7 @@
   /*************************************************************************/
 
 
-  FT_CALLBACK_DEF( void )
+  static void
   ftc_cmap_node_free( FTC_Node   ftcnode,
                       FTC_Cache  cache )
   {
@@ -103,7 +103,7 @@
 
 
   /* initialize a new cmap node */
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   ftc_cmap_node_new( FTC_Node   *ftcanode,
                      FT_Pointer  ftcquery,
                      FTC_Cache   cache )
@@ -133,7 +133,7 @@
 
 
   /* compute the weight of a given cmap node */
-  FT_CALLBACK_DEF( FT_Offset )
+  static FT_Offset
   ftc_cmap_node_weight( FTC_Node   cnode,
                         FTC_Cache  cache )
   {
@@ -145,7 +145,7 @@
 
 
   /* compare a cmap node to a given query */
-  FT_CALLBACK_DEF( FT_Bool )
+  static FT_Bool
   ftc_cmap_node_compare( FTC_Node    ftcnode,
                          FT_Pointer  ftcquery,
                          FTC_Cache   cache,
@@ -171,7 +171,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Bool )
+  static FT_Bool
   ftc_cmap_node_remove_faceid( FTC_Node    ftcnode,
                                FT_Pointer  ftcface_id,
                                FTC_Cache   cache,

@@ -74,7 +74,7 @@ THE SOFTWARE.
   } PCF_CMapRec, *PCF_CMap;
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   pcf_cmap_init( FT_CMap     cmap,       /* PCF_CMap */
                  FT_Pointer  init_data )
   {
@@ -90,7 +90,7 @@ THE SOFTWARE.
   }
 
 
-  FT_CALLBACK_DEF( void )
+  static void
   pcf_cmap_done( FT_CMap  cmap )         /* PCF_CMap */
   {
     PCF_CMap  pcfcmap = (PCF_CMap)cmap;
@@ -100,7 +100,7 @@ THE SOFTWARE.
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   pcf_cmap_char_index( FT_CMap    cmap,      /* PCF_CMap */
                        FT_UInt32  charcode )
   {
@@ -120,7 +120,7 @@ THE SOFTWARE.
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   pcf_cmap_char_next( FT_CMap     cmap,       /* PCF_CMap */
                       FT_UInt32  *acharcode )
   {
@@ -169,7 +169,7 @@ THE SOFTWARE.
   };
 
 
-  FT_CALLBACK_DEF( void )
+  static void
   PCF_Face_Done( FT_Face  face )    /* PCF_Face */
   {
     PCF_Face   pcfface = (PCF_Face)face;
@@ -222,7 +222,7 @@ THE SOFTWARE.
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   PCF_Face_Init( FT_Stream      stream,
                  FT_Face        face,       /* PCF_Face */
                  FT_Int         face_index,
@@ -392,7 +392,7 @@ THE SOFTWARE.
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   PCF_Size_Select( FT_Size   size,
                    FT_ULong  strike_index )
   {
@@ -409,7 +409,7 @@ THE SOFTWARE.
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   PCF_Size_Request( FT_Size          size,
                     FT_Size_Request  req )
   {
@@ -447,7 +447,7 @@ THE SOFTWARE.
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   PCF_Glyph_Load( FT_GlyphSlot  slot,
                   FT_Size       size,
                   FT_UInt       glyph_index,
@@ -569,7 +569,7 @@ THE SOFTWARE.
    *
    */
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   pcf_get_bdf_property( FT_Face           face,       /* PCF_Face */
                         const char*       prop_name,
                         BDF_PropertyRec  *aproperty )
@@ -612,7 +612,7 @@ THE SOFTWARE.
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   pcf_get_charset_id( FT_Face       face,               /* PCF_Face */
                       const char*  *acharset_encoding,
                       const char*  *acharset_registry )
@@ -638,7 +638,7 @@ THE SOFTWARE.
    * PROPERTY SERVICE
    *
    */
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   pcf_property_set( FT_Module    module,         /* PCF_Driver */
                     const char*  property_name,
                     const void*  value,
@@ -699,7 +699,7 @@ THE SOFTWARE.
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   pcf_property_get( FT_Module    module,         /* PCF_Driver */
                     const char*  property_name,
                     void*        value )
@@ -759,7 +759,7 @@ THE SOFTWARE.
   };
 
 
-  FT_CALLBACK_DEF( FT_Module_Interface )
+  static FT_Module_Interface
   pcf_driver_requester( FT_Module    module,
                         const char*  name )
   {
@@ -769,7 +769,7 @@ THE SOFTWARE.
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   pcf_driver_init( FT_Module  module )      /* PCF_Driver */
   {
 #ifdef PCF_CONFIG_OPTION_LONG_FAMILY_NAMES
@@ -785,7 +785,7 @@ THE SOFTWARE.
   }
 
 
-  FT_CALLBACK_DEF( void )
+  static void
   pcf_driver_done( FT_Module  module )      /* PCF_Driver */
   {
     FT_UNUSED( module );

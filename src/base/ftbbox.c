@@ -82,7 +82,7 @@
    * @Return:
    *   Always 0.  Needed for the interface only.
    */
-  FT_CALLBACK_DEF( int )
+  static int
   BBox_Move_To( const FT_Vector*  to,
                 void*             user_ )
   {
@@ -119,7 +119,7 @@
    * @Return:
    *   Always 0.  Needed for the interface only.
    */
-  FT_CALLBACK_DEF( int )
+  static int
   BBox_Line_To( const FT_Vector*  to,
                 void*             user_ )
   {
@@ -211,7 +211,7 @@
    *   In the case of a non-monotonous arc, we compute directly the
    *   extremum coordinates, as it is sufficiently fast.
    */
-  FT_CALLBACK_DEF( int )
+  static int
   BBox_Conic_To( const FT_Vector*  control,
                  const FT_Vector*  to,
                  void*             user_ )
@@ -419,7 +419,7 @@
    *   In the case of a non-monotonous arc, we don't compute directly
    *   extremum coordinates, we subdivide instead.
    */
-  FT_CALLBACK_DEF( int )
+  static int
   BBox_Cubic_To( const FT_Vector*  control1,
                  const FT_Vector*  control2,
                  const FT_Vector*  to,

@@ -83,7 +83,7 @@
    *
    */
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   sfnt_load_table( FT_Face    face,    /* TT_Face */
                    FT_ULong   tag,
                    FT_Long    offset,
@@ -97,7 +97,7 @@
   }
 
 
-  FT_CALLBACK_DEF( void* )
+  static void*
   get_sfnt_table( FT_Face      face,  /* TT_Face */
                   FT_Sfnt_Tag  tag )
   {
@@ -144,7 +144,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   sfnt_table_info( FT_Face    face,    /* TT_Face */
                    FT_UInt    idx,
                    FT_ULong  *tag,
@@ -189,7 +189,7 @@
    *
    */
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   sfnt_get_glyph_name( FT_Face     face,
                        FT_UInt     glyph_index,
                        FT_Pointer  buffer,
@@ -207,7 +207,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   sfnt_get_name_index( FT_Face           face,
                        const FT_String*  glyph_name )
   {
@@ -623,7 +623,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Bool )
+  static FT_Bool
   sfnt_get_name_id( TT_Face    face,
                     FT_UShort  id,
                     FT_Int    *win,
@@ -1066,7 +1066,7 @@
 #endif /* TT_CONFIG_OPTION_GX_VAR_SUPPORT */
 
 
-  FT_CALLBACK_DEF( const char* )
+  static const char*
   sfnt_get_ps_name( FT_Face  face )    /* TT_Face */
   {
     TT_Face  ttface = (TT_Face)face;
@@ -1219,7 +1219,7 @@
 #endif
 
 
-  FT_CALLBACK_DEF( FT_Module_Interface )
+  static FT_Module_Interface
   sfnt_get_interface( FT_Module    module,
                       const char*  module_interface )
   {

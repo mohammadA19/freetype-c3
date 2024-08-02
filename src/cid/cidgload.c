@@ -151,7 +151,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   cid_load_glyph( T1_Decoder  decoder,
                   FT_UInt     glyph_index )
   {

@@ -23,7 +23,7 @@
 #include "pfrerror.h"
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   pfr_cmap_init( FT_CMap     cmap,     /* PFR_CMap */
                  FT_Pointer  pointer )
   {
@@ -58,7 +58,7 @@
   }
 
 
-  FT_CALLBACK_DEF( void )
+  static void
   pfr_cmap_done( FT_CMap  cmap )    /* PFR_CMap */
   {
     PFR_CMap  pfrcmap = (PFR_CMap)cmap;
@@ -69,7 +69,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   pfr_cmap_char_index( FT_CMap    cmap,       /* PFR_CMap */
                        FT_UInt32  char_code )
   {
@@ -101,7 +101,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   pfr_cmap_char_next( FT_CMap     cmap,        /* PFR_CMap */
                       FT_UInt32  *pchar_code )
   {

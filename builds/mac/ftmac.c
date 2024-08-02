@@ -440,7 +440,7 @@ typedef short ResourceIndex;
 #define STREAM_FILE( stream )  ( (FT_FILE*)stream->descriptor.pointer )
 
 
-  FT_CALLBACK_DEF( void )
+  static void
   ft_FSp_stream_close( FT_Stream  stream )
   {
     ft_fclose( STREAM_FILE( stream ) );
@@ -451,7 +451,7 @@ typedef short ResourceIndex;
   }
 
 
-  FT_CALLBACK_DEF( unsigned long )
+  static unsigned long
   ft_FSp_stream_io( FT_Stream       stream,
                     unsigned long   offset,
                     unsigned char*  buffer,

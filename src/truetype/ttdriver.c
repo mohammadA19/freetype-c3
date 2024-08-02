@@ -57,7 +57,7 @@
    * PROPERTY SERVICE
    *
    */
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   tt_property_set( FT_Module    module,         /* TT_Driver */
                    const char*  property_name,
                    const void*  value,
@@ -119,7 +119,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   tt_property_get( FT_Module    module,         /* TT_Driver */
                    const char*  property_name,
                    void*        value )
@@ -203,7 +203,7 @@
    *
    *   They can be implemented by format-specific interfaces.
    */
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   tt_get_kerning( FT_Face     face,        /* TT_Face */
                   FT_UInt     left_glyph,
                   FT_UInt     right_glyph,
@@ -236,7 +236,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   tt_get_advances( FT_Face    face,      /* TT_Face */
                    FT_UInt    start,
                    FT_UInt    count,
@@ -308,7 +308,7 @@
 
 #ifdef TT_CONFIG_OPTION_EMBEDDED_BITMAPS
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   tt_size_select( FT_Size   size,
                   FT_ULong  strike_index )
   {
@@ -345,7 +345,7 @@
 #endif /* TT_CONFIG_OPTION_EMBEDDED_BITMAPS */
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   tt_size_request( FT_Size          size,
                    FT_Size_Request  req )
   {
@@ -444,7 +444,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   tt_glyph_load( FT_GlyphSlot  slot,        /* TT_GlyphSlot */
                  FT_Size       size,        /* TT_Size      */
                  FT_UInt       glyph_index,
@@ -613,7 +613,7 @@
 #endif
 
 
-  FT_CALLBACK_DEF( FT_Module_Interface )
+  static FT_Module_Interface
   tt_get_interface( FT_Module    driver,    /* TT_Driver */
                     const char*  tt_interface )
   {

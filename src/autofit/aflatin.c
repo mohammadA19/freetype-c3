@@ -1505,7 +1505,7 @@
   /* Extract standard_width from writing system/script specific */
   /* metrics class.                                             */
 
-  FT_CALLBACK_DEF( void )
+  static void
   af_latin_get_standard_widths( AF_StyleMetrics  metrics_, /* AF_LatinMetrics */
                                 FT_Pos*          stdHW,
                                 FT_Pos*          stdVW )

@@ -48,7 +48,7 @@
    *
    */
 
-  FT_CALLBACK_DEF( const char* )
+  static const char*
   cid_get_postscript_name( FT_Face  face )    /* CID_Face */
   {
     CID_Face     cidface = (CID_Face)face;
@@ -73,7 +73,7 @@
    *
    */
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   cid_ps_get_font_info( FT_Face          face,        /* CID_Face */
                         PS_FontInfoRec*  afont_info )
   {
@@ -83,7 +83,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   cid_ps_get_font_extra( FT_Face           face,         /* CID_Face */
                          PS_FontExtraRec*  afont_extra )
   {
@@ -110,7 +110,7 @@
    * CID INFO SERVICE
    *
    */
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   cid_get_ros( FT_Face       face,        /* CID_Face */
                const char*  *registry,
                const char*  *ordering,
@@ -133,7 +133,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   cid_get_is_cid( FT_Face   face,    /* CID_Face */
                   FT_Bool  *is_cid )
   {
@@ -154,7 +154,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   cid_get_cid_from_glyph_index( FT_Face   face,        /* CID_Face */
                                 FT_UInt   glyph_index,
                                 FT_UInt  *cid )
@@ -219,7 +219,7 @@
   };
 
 
-  FT_CALLBACK_DEF( FT_Module_Interface )
+  static FT_Module_Interface
   cid_get_interface( FT_Module    module,
                      const char*  cid_interface )
   {

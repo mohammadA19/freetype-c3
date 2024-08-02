@@ -31,7 +31,7 @@
   /*************************************************************************/
   /*************************************************************************/
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   cff_cmap_encoding_init( FT_CMap     cmap,
                           FT_Pointer  pointer )
   {
@@ -49,7 +49,7 @@
   }
 
 
-  FT_CALLBACK_DEF( void )
+  static void
   cff_cmap_encoding_done( FT_CMap  cmap )
   {
     CFF_CMapStd  cffcmap = (CFF_CMapStd)cmap;
@@ -59,7 +59,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   cff_cmap_encoding_char_index( FT_CMap    cmap,
                                 FT_UInt32  char_code )
   {
@@ -74,7 +74,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   cff_cmap_encoding_char_next( FT_CMap     cmap,
                                FT_UInt32  *pchar_code )
   {
@@ -123,7 +123,7 @@
   /*************************************************************************/
   /*************************************************************************/
 
-  FT_CALLBACK_DEF( const char* )
+  static const char*
   cff_sid_to_glyph_name( void*    face_,  /* TT_Face */
                          FT_UInt  idx )
   {
@@ -137,7 +137,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   cff_cmap_unicode_init( FT_CMap      cmap,     /* PS_Unicodes */
                          FT_Pointer   pointer )
   {
@@ -168,7 +168,7 @@
   }
 
 
-  FT_CALLBACK_DEF( void )
+  static void
   cff_cmap_unicode_done( FT_CMap  cmap )    /* PS_Unicodes */
   {
     PS_Unicodes  unicodes = (PS_Unicodes)cmap;
@@ -181,7 +181,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   cff_cmap_unicode_char_index( FT_CMap    cmap,       /* PS_Unicodes */
                                FT_UInt32  char_code )
   {
@@ -195,7 +195,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   cff_cmap_unicode_char_next( FT_CMap     cmap,        /* PS_Unicodes */
                               FT_UInt32  *pchar_code )
   {

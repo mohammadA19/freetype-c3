@@ -36,7 +36,7 @@
 
 
   /* finalize module */
-  FT_CALLBACK_DEF( void )
+  static void
   ps_hinter_done( FT_Module  module_ )    /* PS_Hinter_Module */
   {
     PS_Hinter_Module  module = (PS_Hinter_Module)module_;
@@ -50,7 +50,7 @@
 
 
   /* initialize module, create hints recorder and the interface */
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   ps_hinter_init( FT_Module  module_ )    /* PS_Hinter_Module */
   {
     PS_Hinter_Module  module = (PS_Hinter_Module)module_;
@@ -74,7 +74,7 @@
 
 
   /* returns global hints interface */
-  FT_CALLBACK_DEF( PSH_Globals_Funcs )
+  static PSH_Globals_Funcs
   pshinter_get_globals_funcs( FT_Module  module )
   {
     return &((PS_Hinter_Module)module)->globals_funcs;
@@ -82,7 +82,7 @@
 
 
   /* return Type 1 hints interface */
-  FT_CALLBACK_DEF( T1_Hints_Funcs )
+  static T1_Hints_Funcs
   pshinter_get_t1_funcs( FT_Module  module )
   {
     return &((PS_Hinter_Module)module)->t1_funcs;
@@ -90,7 +90,7 @@
 
 
   /* return Type 2 hints interface */
-  FT_CALLBACK_DEF( T2_Hints_Funcs )
+  static T2_Hints_Funcs
   pshinter_get_t2_funcs( FT_Module  module )
   {
     return &((PS_Hinter_Module)module)->t2_funcs;

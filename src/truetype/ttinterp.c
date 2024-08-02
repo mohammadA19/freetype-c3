@@ -1419,14 +1419,14 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Long )
+  static FT_Long
   Current_Ppem( TT_ExecContext  exc )
   {
     return exc->tt_metrics.ppem;
   }
 
 
-  FT_CALLBACK_DEF( FT_Long )
+  static FT_Long
   Current_Ppem_Stretched( TT_ExecContext  exc )
   {
     return FT_MulFix( exc->tt_metrics.ppem, Current_Ratio( exc ) );
@@ -1440,7 +1440,7 @@
    */
 
 
-  FT_CALLBACK_DEF( FT_F26Dot6 )
+  static FT_F26Dot6
   Read_CVT( TT_ExecContext  exc,
             FT_ULong        idx )
   {
@@ -1448,7 +1448,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_F26Dot6 )
+  static FT_F26Dot6
   Read_CVT_Stretched( TT_ExecContext  exc,
                       FT_ULong        idx )
   {
@@ -1478,7 +1478,7 @@
   }
 
 
-  FT_CALLBACK_DEF( void )
+  static void
   Write_CVT( TT_ExecContext  exc,
              FT_ULong        idx,
              FT_F26Dot6      value )
@@ -1491,7 +1491,7 @@
   }
 
 
-  FT_CALLBACK_DEF( void )
+  static void
   Write_CVT_Stretched( TT_ExecContext  exc,
                        FT_ULong        idx,
                        FT_F26Dot6      value )
@@ -1504,7 +1504,7 @@
   }
 
 
-  FT_CALLBACK_DEF( void )
+  static void
   Move_CVT( TT_ExecContext  exc,
             FT_ULong        idx,
             FT_F26Dot6      value )
@@ -1517,7 +1517,7 @@
   }
 
 
-  FT_CALLBACK_DEF( void )
+  static void
   Move_CVT_Stretched( TT_ExecContext  exc,
                       FT_ULong        idx,
                       FT_F26Dot6      value )

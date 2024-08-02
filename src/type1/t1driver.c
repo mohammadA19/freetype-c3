@@ -56,7 +56,7 @@
    *
    */
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   t1_get_glyph_name( FT_Face     face,        /* T1_Face */
                      FT_UInt     glyph_index,
                      FT_Pointer  buffer,
@@ -71,7 +71,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   t1_get_name_index( FT_Face           face,        /* T1_Face */
                      const FT_String*  glyph_name )
   {
@@ -683,7 +683,7 @@
   };
 
 
-  FT_CALLBACK_DEF( FT_Module_Interface )
+  static FT_Module_Interface
   Get_Interface( FT_Module         module,
                  const FT_String*  t1_interface )
   {

@@ -241,7 +241,7 @@
     FT_SERVICE_ID_PROPERTIES, &ft_svg_service_properties )
 
 
-  FT_CALLBACK_DEF( FT_Module_Interface )
+  static FT_Module_Interface
   ft_svg_get_interface( FT_Module    module,
                         const char*  ft_svg_interface )
   {

@@ -56,7 +56,7 @@
    *
    */
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   t42_get_glyph_name( FT_Face     face,        /* T42_Face */
                       FT_UInt     glyph_index,
                       FT_Pointer  buffer,
@@ -73,7 +73,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   t42_get_name_index( FT_Face           face,        /* T42_Face */
                       const FT_String*  glyph_name )
   {
@@ -110,7 +110,7 @@
    *
    */
 
-  FT_CALLBACK_DEF( const char* )
+  static const char*
   t42_get_ps_font_name( FT_Face  face )    /* T42_Face */
   {
     T42_Face  t42face = (T42_Face)face;
@@ -132,7 +132,7 @@
    *
    */
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   t42_ps_get_font_info( FT_Face          face,
                         PS_FontInfoRec*  afont_info )
   {
@@ -142,7 +142,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   t42_ps_get_font_extra( FT_Face           face,
                          PS_FontExtraRec*  afont_extra )
   {
@@ -152,7 +152,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Int )
+  static FT_Int
   t42_ps_has_glyph_names( FT_Face  face )
   {
     FT_UNUSED( face );
@@ -189,7 +189,7 @@
   };
 
 
-  FT_CALLBACK_DEF( FT_Module_Interface )
+  static FT_Module_Interface
   T42_Get_Interface( FT_Module         module,
                      const FT_String*  t42_interface )
   {

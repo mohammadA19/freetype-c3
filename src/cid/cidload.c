@@ -154,7 +154,7 @@
   }
 
 
-  FT_CALLBACK_DEF( void )
+  static void
   cid_parse_font_matrix( FT_Face  face,     /* CID_Face */
                          void*    parser_ )
   {
@@ -237,7 +237,7 @@
   }
 
 
-  FT_CALLBACK_DEF( void )
+  static void
   parse_fd_array( FT_Face  face,     /* CID_Face */
                   void*    parser_ )
   {
@@ -318,7 +318,7 @@
   /* and CID_FaceDictRec (both are public header files and can't  */
   /* be thus changed).  We simply copy the value.                 */
 
-  FT_CALLBACK_DEF( void )
+  static void
   parse_expansion_factor( FT_Face  face,    /* CID_Face */
                           void*    parser_ )
   {
@@ -345,7 +345,7 @@
   /* `FontName' keyword.  FreeType doesn't need it, but it is nice */
   /* to catch it for producing better trace output.                */
 
-  FT_CALLBACK_DEF( void )
+  static void
   parse_font_name( FT_Face  face,     /* CID_Face */
                    void*    parser_ )
   {

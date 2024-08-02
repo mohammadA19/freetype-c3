@@ -107,7 +107,7 @@
    *
    *   They can be implemented by format-specific interfaces.
    */
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   cff_get_kerning( FT_Face     face,          /* CFF_Face */
                    FT_UInt     left_glyph,
                    FT_UInt     right_glyph,
@@ -157,7 +157,7 @@
    * @Return:
    *   FreeType error code.  0 means success.
    */
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   cff_glyph_load( FT_GlyphSlot  slot,        /* CFF_GlyphSlot */
                   FT_Size       size,        /* CFF_Size      */
                   FT_UInt       glyph_index,
@@ -198,7 +198,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   cff_get_advances( FT_Face    face,
                     FT_UInt    start,
                     FT_UInt    count,
@@ -312,7 +312,7 @@
    *
    */
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   cff_get_glyph_name( FT_Face     face,        /* CFF_Face */
                       FT_UInt     glyph_index,
                       FT_Pointer  buffer,
@@ -377,7 +377,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_UInt )
+  static FT_UInt
   cff_get_name_index( FT_Face           face,        /* CFF_Face */
                       const FT_String*  glyph_name )
   {
@@ -452,14 +452,14 @@
    *
    */
 
-  FT_CALLBACK_DEF( FT_Int )
+  static FT_Int
   cff_ps_has_glyph_names( FT_Face  face )
   {
     return ( face->face_flags & FT_FACE_FLAG_GLYPH_NAMES ) > 0;
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   cff_ps_get_font_info( FT_Face          face,        /* CFF_Face */
                         PS_FontInfoRec*  afont_info )
   {
@@ -510,7 +510,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   cff_ps_get_font_extra( FT_Face           face,         /* CFF_Face */
                          PS_FontExtraRec*  afont_extra )
   {
@@ -607,7 +607,7 @@
    *
    */
 
-  FT_CALLBACK_DEF( const char* )
+  static const char*
   cff_get_ps_name( FT_Face  face )    /* CFF_Face */
   {
     CFF_Face      cffface = (CFF_Face)face;
@@ -654,7 +654,7 @@
    * Otherwise call the service function in the sfnt module.
    *
    */
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   cff_get_cmap_info( FT_CharMap    charmap,
                      TT_CMapInfo  *cmap_info )
   {
@@ -696,7 +696,7 @@
    * CID INFO SERVICE
    *
    */
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   cff_get_ros( FT_Face       face,        /* FT_Face */
                const char*  *registry,
                const char*  *ordering,
@@ -754,7 +754,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   cff_get_is_cid( FT_Face   face,    /* CFF_Face */
                   FT_Bool  *is_cid )
   {
@@ -778,7 +778,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   cff_get_cid_from_glyph_index( FT_Face   face,        /* CFF_Face */
                                 FT_UInt   glyph_index,
                                 FT_UInt  *cid )
@@ -848,7 +848,7 @@
    *
    */
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   cff_set_mm_blend( FT_Face    face,        /* CFF_Face */
                     FT_UInt    num_coords,
                     FT_Fixed*  coords )
@@ -861,7 +861,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   cff_get_mm_blend( FT_Face    face,       /* CFF_Face */
                     FT_UInt    num_coords,
                     FT_Fixed*  coords )
@@ -874,7 +874,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   cff_set_mm_weightvector( FT_Face    face,          /* CFF_Face */
                            FT_UInt    len,
                            FT_Fixed*  weightvector )
@@ -887,7 +887,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   cff_get_mm_weightvector( FT_Face    face,          /* CFF_Face */
                            FT_UInt*   len,
                            FT_Fixed*  weightvector )
@@ -900,7 +900,7 @@
   }
 
 
-  FT_CALLBACK_DEF( void )
+  static void
   cff_construct_ps_name( FT_Face  face )  /* CFF_Face */
   {
     CFF_Face                 cffface = (CFF_Face)face;
@@ -911,7 +911,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   cff_get_mm_var( FT_Face      face,    /* CFF_Face */
                   FT_MM_Var*  *master )
   {
@@ -923,7 +923,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   cff_set_var_design( FT_Face    face,       /* CFF_Face */
                       FT_UInt    num_coords,
                       FT_Fixed*  coords )
@@ -936,7 +936,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   cff_get_var_design( FT_Face    face,       /* CFF_Face */
                       FT_UInt    num_coords,
                       FT_Fixed*  coords )
@@ -949,7 +949,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   cff_set_named_instance( FT_Face   face,            /* CFF_Face */
                           FT_UInt   instance_index )
   {
@@ -961,7 +961,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   cff_get_default_named_instance( FT_Face   face,            /* CFF_Face */
                                   FT_UInt  *instance_index )
   {
@@ -973,7 +973,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   cff_load_item_variation_store( FT_Face          face,       /* CFF_Face */
                                  FT_ULong         offset,
                                  GX_ItemVarStore  itemStore )
@@ -986,7 +986,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   cff_load_delta_set_index_mapping( FT_Face            face,   /* CFF_Face */
                                     FT_ULong           offset,
                                     GX_DeltaSetIdxMap  map,
@@ -1002,7 +1002,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Int )
+  static FT_Int
   cff_get_item_delta( FT_Face          face,        /* CFF_Face */
                       GX_ItemVarStore  itemStore,
                       FT_UInt          outerIndex,
@@ -1016,7 +1016,7 @@
   }
 
 
-  FT_CALLBACK_DEF( void )
+  static void
   cff_done_item_variation_store( FT_Face          face,       /* CFF_Face */
                                  GX_ItemVarStore  itemStore )
   {
@@ -1028,7 +1028,7 @@
   }
 
 
-  FT_CALLBACK_DEF( void )
+  static void
   cff_done_delta_set_index_map( FT_Face            face,       /* CFF_Face */
                                 GX_DeltaSetIdxMap  deltaSetIdxMap )
   {
@@ -1081,7 +1081,7 @@
    *
    */
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   cff_hadvance_adjust( FT_Face   face,    /* CFF_Face */
                        FT_UInt   gindex,
                        FT_Int   *avalue )
@@ -1095,7 +1095,7 @@
   }
 
 
-  FT_CALLBACK_DEF( void )
+  static void
   cff_metrics_adjust( FT_Face  face )    /* CFF_Face */
   {
     CFF_Face  cffface = (CFF_Face)face;
@@ -1184,7 +1184,7 @@
 #endif
 
 
-  FT_CALLBACK_DEF( FT_Module_Interface )
+  static FT_Module_Interface
   cff_get_interface( FT_Module    driver,       /* CFF_Driver */
                      const char*  module_interface )
   {

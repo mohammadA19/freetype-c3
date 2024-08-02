@@ -104,7 +104,7 @@
    * @Return:
    *   The address of newly allocated block.
    */
-  FT_CALLBACK_DEF( void* )
+  static void*
   ft_alloc( FT_Memory  memory,
             long       size )
   {
@@ -138,7 +138,7 @@
    * @Return:
    *   The address of the reallocated memory block.
    */
-  FT_CALLBACK_DEF( void* )
+  static void*
   ft_realloc( FT_Memory  memory,
               long       cur_size,
               long       new_size,
@@ -166,7 +166,7 @@
    *   block ::
    *     The address of block in memory to be freed.
    */
-  FT_CALLBACK_DEF( void )
+  static void
   ft_free( FT_Memory  memory,
            void*      block )
   {
@@ -208,7 +208,7 @@
    * @Input:
    *   stream :: A pointer to the stream object.
    */
-  FT_CALLBACK_DEF( void )
+  static void
   ft_close_stream_by_munmap( FT_Stream  stream )
   {
     munmap( (MUNMAP_ARG_CAST)stream->descriptor.pointer, stream->size );
@@ -230,7 +230,7 @@
    * @Input:
    *   stream :: A pointer to the stream object.
    */
-  FT_CALLBACK_DEF( void )
+  static void
   ft_close_stream_by_free( FT_Stream  stream )
   {
     ft_free( stream->memory, stream->descriptor.pointer );

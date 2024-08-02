@@ -67,7 +67,7 @@
    * @Return:
    *   The address of newly allocated block.
    */
-  FT_CALLBACK_DEF( void* )
+  static void*
   ft_alloc( FT_Memory  memory,
             long       size )
   {
@@ -101,7 +101,7 @@
    * @Return:
    *   The address of the reallocated memory block.
    */
-  FT_CALLBACK_DEF( void* )
+  static void*
   ft_realloc( FT_Memory  memory,
               long       cur_size,
               long       new_size,
@@ -129,7 +129,7 @@
    *   block ::
    *     The address of block in memory to be freed.
    */
-  FT_CALLBACK_DEF( void )
+  static void
   ft_free( FT_Memory  memory,
            void*      block )
   {
@@ -173,7 +173,7 @@
    *   stream ::
    *     A pointer to the stream object.
    */
-  FT_CALLBACK_DEF( void )
+  static void
   ft_ansi_stream_close( FT_Stream  stream )
   {
     ft_fclose( STREAM_FILE( stream ) );
@@ -210,7 +210,7 @@
    *   the function is used for seeking), a non-zero return value
    *   indicates an error.
    */
-  FT_CALLBACK_DEF( unsigned long )
+  static unsigned long
   ft_ansi_stream_io( FT_Stream       stream,
                      unsigned long   offset,
                      unsigned char*  buffer,

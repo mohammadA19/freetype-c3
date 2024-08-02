@@ -161,7 +161,7 @@
   }
 
 
-  FT_CALLBACK_DEF( FT_Error )
+  static FT_Error
   T1_Parse_Glyph( T1_Decoder  decoder,
                   FT_UInt     glyph_index )
   {

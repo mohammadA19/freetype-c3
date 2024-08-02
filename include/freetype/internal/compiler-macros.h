@@ -92,38 +92,6 @@ FT_BEGIN_HEADER
    * C++ compiler and with 16bit compilers.
    */
 
-  /*
-   * This is special.  Within C++, you must specify `extern "C"` for
-   * functions which are used via function pointers, and you also
-   * must do that for structures which contain function pointers to
-   * assure C linkage -- it's not possible to have (local) anonymous
-   * functions which are accessed by (global) function pointers.
-   *
-   *
-   * FT_CALLBACK_DEF is used to _define_ a callback function,
-   * located in the same source code file as the structure that uses
-   * it.  FT_COMPARE_DEF, in addition, ensures the `cdecl` calling
-   * convention on x86, required by the C library function `qsort`.
-   *
-   * FT_BASE_CALLBACK and FT_BASE_CALLBACK_DEF are used to declare
-   * and define a callback function, respectively, in a similar way
-   * as FT_BASE and FT_BASE_DEF work.
-   *
-   * FT_CALLBACK_TABLE is used to _declare_ a constant variable that
-   * contains pointers to callback functions.
-   *
-   * FT_CALLBACK_TABLE_DEF is used to _define_ a constant variable
-   * that contains pointers to callback functions.
-   *
-   *
-   * Some 16bit compilers have to redefine these macros to insert
-   * the infamous `_cdecl` or `__fastcall` declarations.
-   */
-#ifdef __cplusplus
-#define FT_CALLBACK_DEF( x )  extern "C"  x
-#else
-#define FT_CALLBACK_DEF( x )  static  x
-#endif
 
 #if defined( __GNUC__ ) && defined( __i386__ )
 #define FT_COMPARE_DEF( x )  FT_CALLBACK_DEF( x ) __attribute__(( cdecl ))
