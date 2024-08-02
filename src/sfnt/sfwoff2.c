@@ -103,7 +103,7 @@
   }
 
 
-  FT_COMPARE_DEF( int )
+  static int
   compare_tags( const void*  a,
                 const void*  b )
   {

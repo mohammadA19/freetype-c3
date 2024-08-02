@@ -167,7 +167,7 @@
   }
 
 
-  FT_COMPARE_DEF( int )
+  static int
   ft_raccess_sort_ref_by_id( const void*  a,
                              const void*  b )
   {

@@ -69,7 +69,7 @@
   }
 
 
-  FT_COMPARE_DEF( int )
+  static int
   compare_offsets( const void*  a,
                    const void*  b )
   {

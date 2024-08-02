@@ -499,7 +499,7 @@
   }
 
 
-  FT_COMPARE_DEF( int )
+  static int
   compare_ppem( const void*  a,
                 const void*  b )
   {

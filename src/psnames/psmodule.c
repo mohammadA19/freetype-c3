@@ -178,7 +178,7 @@
 
 
   /* ft_qsort callback to sort the unicode map */
-  FT_COMPARE_DEF( int )
+  static int
   compare_uni_maps( const void*  a,
                     const void*  b )
   {

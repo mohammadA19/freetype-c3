@@ -86,23 +86,6 @@ FT_BEGIN_HEADER
 #endif  /* FT_MAKE_OPTION_SINGLE_OBJECT */
 
 
-
-  /*
-   * The following macros are needed to compile the library with a
-   * C++ compiler and with 16bit compilers.
-   */
-
-
-#if defined( __GNUC__ ) && defined( __i386__ )
-#define FT_COMPARE_DEF( x )  FT_CALLBACK_DEF( x ) __attribute__(( cdecl ))
-#elif defined( _MSC_VER ) && defined( _M_IX86 )
-#define FT_COMPARE_DEF( x )  FT_CALLBACK_DEF( x ) __cdecl
-#elif defined( __WATCOMC__ ) && __WATCOMC__ >= 1240
-#define FT_COMPARE_DEF( x )  FT_CALLBACK_DEF( x ) __watcall
-#else
-#define FT_COMPARE_DEF( x )  FT_CALLBACK_DEF( x )
-#endif
-
 FT_END_HEADER
 
 #endif  /* INTERNAL_COMPILER_MACROS_H_ */

@@ -715,7 +715,7 @@
 
 
   /* compare two kerning pairs */
-  FT_COMPARE_DEF( int )
+  static int
   afm_compare_kern_pairs( const void*  a,
                           const void*  b )
   {
