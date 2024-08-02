@@ -166,18 +166,6 @@ FT_BEGIN_HEADER
 #define FT_FUNCTION_DECLARATION( x )  extern x
 
   /*
-   * Same as `FT_FUNCTION_DECLARATION`, but for function definitions instead.
-   *
-   * NOTE: Do not use directly.  Use `FT_LOCAL_DEF`, `FT_BASE_DEF`, and
-   * `FT_EXPORT_DEF` instead.
-   */
-#ifdef __cplusplus
-#define FT_FUNCTION_DEFINITION( x )  extern "C" x
-#else
-#define FT_FUNCTION_DEFINITION( x )  x
-#endif
-
-  /*
    * Use `FT_LOCAL` and `FT_LOCAL_DEF` to declare and define, respectively,
    * an internal FreeType function that is only used by the sources of a
    * single `src/module/` directory.  This ensures that the functions are
@@ -193,7 +181,7 @@ FT_BEGIN_HEADER
 
 #define FT_LOCAL( x )      FT_INTERNAL_FUNCTION_ATTRIBUTE \
                            FT_FUNCTION_DECLARATION( x )
-#define FT_LOCAL_DEF( x )  FT_FUNCTION_DEFINITION( x )
+#define FT_LOCAL_DEF( x )  x
 
 #endif  /* FT_MAKE_OPTION_SINGLE_OBJECT */
 
@@ -205,7 +193,7 @@ FT_BEGIN_HEADER
    */
 #define FT_LOCAL_ARRAY( x )      FT_INTERNAL_FUNCTION_ATTRIBUTE \
                                  extern const x
-#define FT_LOCAL_ARRAY_DEF( x )  FT_FUNCTION_DEFINITION( const x )
+#define FT_LOCAL_ARRAY_DEF( x )  const x
 
   /*
    * `Use FT_BASE` and `FT_BASE_DEF` to declare and define, respectively, an
@@ -213,7 +201,7 @@ FT_BEGIN_HEADER
    */
 #define FT_BASE( x )      FT_INTERNAL_FUNCTION_ATTRIBUTE \
                           FT_FUNCTION_DECLARATION( x )
-#define FT_BASE_DEF( x )  FT_FUNCTION_DEFINITION( x )
+#define FT_BASE_DEF( x )  x
 
 
   /*
@@ -261,7 +249,7 @@ FT_BEGIN_HEADER
    */
 
   /* See `freetype/config/public-macros.h` for the `FT_EXPORT` definition */
-#define FT_EXPORT_DEF( x )  FT_FUNCTION_DEFINITION( x )
+#define FT_EXPORT_DEF( x )  x
 
   /*
    * The following macros are needed to compile the library with a
@@ -312,7 +300,7 @@ FT_BEGIN_HEADER
 #endif
 
 #define FT_BASE_CALLBACK( x )      FT_FUNCTION_DECLARATION( x )
-#define FT_BASE_CALLBACK_DEF( x )  FT_FUNCTION_DEFINITION( x )
+#define FT_BASE_CALLBACK_DEF( x )  x
 
 #ifndef FT_CALLBACK_TABLE
 #ifdef __cplusplus
