@@ -122,7 +122,7 @@
 
 
   /* This function is deprecated because FSSpec is deprecated in Mac OS X  */
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_GetFile_From_Mac_Name( const char*  fontName,
                             FSSpec*      pathSpec,
                             FT_Long*     face_index )
@@ -218,7 +218,7 @@
   }
 
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_GetFilePath_From_Mac_ATS_Name( const char*  fontName,
                                     UInt8*       path,
                                     UInt32       maxPathSize,
@@ -243,7 +243,7 @@
 
 
   /* This function is deprecated because FSSpec is deprecated in Mac OS X  */
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_GetFile_From_Mac_ATS_Name( const char*  fontName,
                                 FSSpec*      pathSpec,
                                 FT_Long*     face_index )
@@ -858,7 +858,7 @@
 
   /* documentation is in ftmac.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_New_Face_From_FOND( FT_Library  library,
                          Handle      fond,
                          FT_Long     face_index,
@@ -974,7 +974,7 @@
    *   accepts pathnames to Mac suitcase files.  For further
    *   documentation see the original FT_New_Face() in freetype.h.
    */
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_New_Face( FT_Library   library,
                const char*  pathname,
                FT_Long      face_index,
@@ -1016,7 +1016,7 @@
    * This function is deprecated because Carbon data types (FSRef)
    * are not cross-platform, and thus not suitable for the FreeType API.
    */
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_New_Face_From_FSRef( FT_Library    library,
                           const FSRef*  ref,
                           FT_Long       face_index,
@@ -1061,7 +1061,7 @@
    *
    * This function is deprecated because FSSpec is deprecated in Mac OS X
    */
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_New_Face_From_FSSpec( FT_Library     library,
                            const FSSpec*  spec,
                            FT_Long        face_index,

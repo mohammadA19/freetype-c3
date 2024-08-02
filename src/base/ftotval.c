@@ -24,7 +24,7 @@
 
   /* documentation is in ftotval.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_OpenType_Validate( FT_Face    face,
                         FT_UInt    validation_flags,
                         FT_Bytes  *BASE_table,
@@ -71,7 +71,7 @@
   }
 
 
-  FT_EXPORT_DEF( void )
+  void
   FT_OpenType_Free( FT_Face   face,
                     FT_Bytes  table )
   {

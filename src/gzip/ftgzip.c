@@ -604,7 +604,7 @@
 
   /* documentation is in ftgzip.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Stream_OpenGzip( FT_Stream  stream,
                       FT_Stream  source )
   {
@@ -707,7 +707,7 @@
 
   /* documentation is in ftgzip.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Gzip_Uncompress( FT_Memory       memory,
                       FT_Byte*        output,
                       FT_ULong*       output_len,
@@ -772,7 +772,7 @@
 
 #else /* !FT_CONFIG_OPTION_USE_ZLIB */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Stream_OpenGzip( FT_Stream  stream,
                       FT_Stream  source )
   {
@@ -783,7 +783,7 @@
   }
 
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Gzip_Uncompress( FT_Memory       memory,
                       FT_Byte*        output,
                       FT_ULong*       output_len,

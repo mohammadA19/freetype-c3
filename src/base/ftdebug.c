@@ -548,7 +548,7 @@
 
   /* documentation is in ftlogging.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Trace_Set_Level( const char*  level )
   {
     ft_component_flag     = FALSE;
@@ -561,7 +561,7 @@
 
   /* documentation is in ftlogging.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Trace_Set_Default_Level( void )
   {
     ft_component_flag     = FALSE;
@@ -580,7 +580,7 @@
 
   /* documentation is in ftlogging.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Set_Log_Handler( FT_Custom_Log_Handler  handler )
   {
     custom_output_handler = handler;
@@ -589,7 +589,7 @@
 
   /* documentation is in ftlogging.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Set_Default_Log_Handler( void )
   {
     custom_output_handler = NULL;
@@ -611,28 +611,28 @@
 
 #else /* !FT_DEBUG_LOGGING */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Trace_Set_Level( const char*  level )
   {
     FT_UNUSED( level );
   }
 
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Trace_Set_Default_Level( void )
   {
     /* nothing */
   }
 
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Set_Log_Handler( FT_Custom_Log_Handler  handler )
   {
     FT_UNUSED( handler );
   }
 
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Set_Default_Log_Handler( void )
   {
     /* nothing */

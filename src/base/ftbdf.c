@@ -24,7 +24,7 @@
 
   /* documentation is in ftbdf.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Get_BDF_Charset_ID( FT_Face       face,
                          const char*  *acharset_encoding,
                          const char*  *acharset_registry )
@@ -58,7 +58,7 @@
 
   /* documentation is in ftbdf.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Get_BDF_Property( FT_Face           face,
                        const char*       prop_name,
                        BDF_PropertyRec  *aproperty )

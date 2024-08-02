@@ -76,7 +76,7 @@
 
   /* documentation is in ftmodapi.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Add_Default_Modules( FT_Library  library )
   {
     FT_Error                       error;
@@ -108,7 +108,7 @@
 
   /* documentation is in ftmodapi.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Set_Default_Properties( FT_Library  library )
   {
     const char*  env;
@@ -184,7 +184,7 @@
 
 #else
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Set_Default_Properties( FT_Library  library )
   {
     FT_UNUSED( library );
@@ -195,7 +195,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Init_FreeType( FT_Library  *alibrary )
   {
     FT_Error   error;
@@ -235,7 +235,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Done_FreeType( FT_Library  library )
   {
     FT_Memory  memory;

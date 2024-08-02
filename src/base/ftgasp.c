@@ -20,7 +20,7 @@
 #include <freetype/internal/tttypes.h>
 
 
-  FT_EXPORT_DEF( FT_Int )
+  FT_Int
   FT_Get_Gasp( FT_Face  face,
                FT_UInt  ppem )
   {

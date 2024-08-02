@@ -37,7 +37,7 @@
 
   /* documentation is in ftpfr.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Get_PFR_Metrics( FT_Face    face,
                       FT_UInt   *aoutline_resolution,
                       FT_UInt   *ametrics_resolution,
@@ -94,7 +94,7 @@
 
   /* documentation is in ftpfr.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Get_PFR_Kerning( FT_Face     face,
                       FT_UInt     left,
                       FT_UInt     right,
@@ -123,7 +123,7 @@
 
   /* documentation is in ftpfr.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Get_PFR_Advance( FT_Face   face,
                       FT_UInt   gindex,
                       FT_Pos   *aadvance )

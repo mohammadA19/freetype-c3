@@ -239,7 +239,7 @@
 
   /* documentation is in ftlist.h */
 
-  FT_EXPORT_DEF( FT_ListNode )
+  FT_ListNode
   FT_List_Find( FT_List  list,
                 void*    data )
   {
@@ -264,7 +264,7 @@
 
   /* documentation is in ftlist.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_List_Add( FT_List      list,
                FT_ListNode  node )
   {
@@ -290,7 +290,7 @@
 
   /* documentation is in ftlist.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_List_Insert( FT_List      list,
                   FT_ListNode  node )
   {
@@ -316,7 +316,7 @@
 
   /* documentation is in ftlist.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_List_Remove( FT_List      list,
                   FT_ListNode  node )
   {
@@ -343,7 +343,7 @@
 
   /* documentation is in ftlist.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_List_Up( FT_List      list,
               FT_ListNode  node )
   {
@@ -376,7 +376,7 @@
 
   /* documentation is in ftlist.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_List_Iterate( FT_List           list,
                    FT_List_Iterator  iterator,
                    void*             user )
@@ -408,7 +408,7 @@
 
   /* documentation is in ftlist.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_List_Finalize( FT_List             list,
                     FT_List_Destructor  destroy,
                     FT_Memory           memory,

@@ -547,7 +547,7 @@
 
   /* documentation is in ftglyph.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Glyph_Copy( FT_Glyph   source,
                  FT_Glyph  *target )
   {
@@ -638,7 +638,7 @@
 
   /* documentation is in ftglyph.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Get_Glyph( FT_GlyphSlot  slot,
                 FT_Glyph     *aglyph )
   {
@@ -696,7 +696,7 @@
 
   /* documentation is in ftglyph.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Glyph_Transform( FT_Glyph          glyph,
                       const FT_Matrix*  matrix,
                       const FT_Vector*  delta )
@@ -729,7 +729,7 @@
 
   /* documentation is in ftglyph.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Glyph_Get_CBox( FT_Glyph  glyph,
                      FT_UInt   bbox_mode,
                      FT_BBox  *acbox )
@@ -776,7 +776,7 @@
 
   /* documentation is in ftglyph.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Glyph_To_Bitmap( FT_Glyph*         the_glyph,
                       FT_Render_Mode    render_mode,
                       const FT_Vector*  origin,
@@ -891,7 +891,7 @@
 
   /* documentation is in ftglyph.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Done_Glyph( FT_Glyph  glyph )
   {
     if ( glyph )

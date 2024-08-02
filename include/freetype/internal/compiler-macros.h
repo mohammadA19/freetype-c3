@@ -195,45 +195,6 @@ FT_BEGIN_HEADER
 #endif
 
   /*
-   * When compiling FreeType as a DLL or DSO with hidden visibility,
-   * some systems/compilers need a special attribute in front OR after
-   * the return type of function declarations.
-   *
-   * Two macros are used within the FreeType source code to define
-   * exported library functions: `FT_EXPORT` and `FT_EXPORT_DEF`.
-   *
-   * - `FT_EXPORT( return_type )`
-   *
-   *   is used in a function declaration, as in
-   *
-   *   ```
-   *     FT_EXPORT( FT_Error )
-   *     FT_Init_FreeType( FT_Library*  alibrary );
-   *   ```
-   *
-   * - `FT_EXPORT_DEF( return_type )`
-   *
-   *   is used in a function definition, as in
-   *
-   *   ```
-   *     FT_EXPORT_DEF( FT_Error )
-   *     FT_Init_FreeType( FT_Library*  alibrary )
-   *     {
-   *       ... some code ...
-   *       return FT_Err_Ok;
-   *     }
-   *   ```
-   *
-   * You can provide your own implementation of `FT_EXPORT` and
-   * `FT_EXPORT_DEF` here if you want.
-   *
-   * To export a variable, use `FT_EXPORT_VAR`.
-   */
-
-  /* See `freetype/config/public-macros.h` for the `FT_EXPORT` definition */
-#define FT_EXPORT_DEF( x )  x
-
-  /*
    * The following macros are needed to compile the library with a
    * C++ compiler and with 16bit compilers.
    */

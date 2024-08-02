@@ -470,7 +470,7 @@
 
   /* documentation is in ftbbox.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Outline_Get_BBox( FT_Outline*  outline,
                        FT_BBox     *abbox )
   {

@@ -39,7 +39,7 @@
 
   /* documentation is in ftoutln.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Outline_Decompose( FT_Outline*              outline,
                         const FT_Outline_Funcs*  func_interface,
                         void*                    user )
@@ -300,7 +300,7 @@
 
   /* documentation is in ftoutln.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Outline_New( FT_Library   library,
                   FT_UInt      numPoints,
                   FT_Int       numContours,
@@ -348,7 +348,7 @@
 
   /* documentation is in ftoutln.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Outline_Check( FT_Outline*  outline )
   {
     if ( outline )
@@ -395,7 +395,7 @@
 
   /* documentation is in ftoutln.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Outline_Copy( const FT_Outline*  source,
                    FT_Outline        *target )
   {
@@ -434,7 +434,7 @@
 
   /* documentation is in ftoutln.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Outline_Done( FT_Library   library,
                    FT_Outline*  outline )
   {
@@ -466,7 +466,7 @@
 
   /* documentation is in ftoutln.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Outline_Get_CBox( const FT_Outline*  outline,
                        FT_BBox           *acbox )
   {
@@ -516,7 +516,7 @@
 
   /* documentation is in ftoutln.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Outline_Translate( const FT_Outline*  outline,
                         FT_Pos             xOffset,
                         FT_Pos             yOffset )
@@ -541,7 +541,7 @@
 
   /* documentation is in ftoutln.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Outline_Reverse( FT_Outline*  outline )
   {
     FT_UShort  n;
@@ -602,7 +602,7 @@
 
   /* documentation is in ftoutln.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Outline_Render( FT_Library         library,
                      FT_Outline*        outline,
                      FT_Raster_Params*  params )
@@ -665,7 +665,7 @@
 
   /* documentation is in ftoutln.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Outline_Get_Bitmap( FT_Library        library,
                          FT_Outline*       outline,
                          const FT_Bitmap  *abitmap )
@@ -692,7 +692,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Vector_Transform( FT_Vector*        vector,
                        const FT_Matrix*  matrix )
   {
@@ -715,7 +715,7 @@
 
   /* documentation is in ftoutln.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Outline_Transform( const FT_Outline*  outline,
                         const FT_Matrix*   matrix )
   {
@@ -903,7 +903,7 @@
 
   /* documentation is in ftoutln.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Outline_Embolden( FT_Outline*  outline,
                        FT_Pos       strength )
   {
@@ -913,7 +913,7 @@
 
   /* documentation is in ftoutln.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Outline_EmboldenXY( FT_Outline*  outline,
                          FT_Pos       xstrength,
                          FT_Pos       ystrength )
@@ -1047,7 +1047,7 @@
 
   /* documentation is in ftoutln.h */
 
-  FT_EXPORT_DEF( FT_Orientation )
+  FT_Orientation
   FT_Outline_Get_Orientation( FT_Outline*  outline )
   {
     FT_BBox     cbox = { 0, 0, 0, 0 };

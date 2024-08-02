@@ -24,7 +24,7 @@
 
   /* documentation is in t1tables.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Get_PS_Font_Info( FT_Face          face,
                        PS_FontInfoRec*  afont_info )
   {
@@ -51,7 +51,7 @@
 
   /* documentation is in t1tables.h */
 
-  FT_EXPORT_DEF( FT_Int )
+  FT_Int
   FT_Has_PS_Glyph_Names( FT_Face  face )
   {
     FT_Int             result = 0;
@@ -72,7 +72,7 @@
 
   /* documentation is in t1tables.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Get_PS_Font_Private( FT_Face         face,
                           PS_PrivateRec*  afont_private )
   {
@@ -99,7 +99,7 @@
 
   /* documentation is in t1tables.h */
 
-  FT_EXPORT_DEF( FT_Long )
+  FT_Long
   FT_Get_PS_Font_Value( FT_Face       face,
                         PS_Dict_Keys  key,
                         FT_UInt       idx,

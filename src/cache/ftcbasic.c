@@ -271,7 +271,7 @@
 
   /* documentation is in ftcache.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FTC_ImageCache_New( FTC_Manager      manager,
                       FTC_ImageCache  *acache )
   {
@@ -282,7 +282,7 @@
 
   /* documentation is in ftcache.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FTC_ImageCache_Lookup( FTC_ImageCache  cache,
                          FTC_ImageType   type,
                          FT_UInt         gindex,
@@ -345,7 +345,7 @@
 
   /* documentation is in ftcache.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FTC_ImageCache_LookupScaler( FTC_ImageCache  cache,
                                FTC_Scaler      scaler,
                                FT_ULong        load_flags,
@@ -449,7 +449,7 @@
 
   /* documentation is in ftcache.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FTC_SBitCache_New( FTC_Manager     manager,
                      FTC_SBitCache  *acache )
   {
@@ -460,7 +460,7 @@
 
   /* documentation is in ftcache.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FTC_SBitCache_Lookup( FTC_SBitCache  cache,
                         FTC_ImageType  type,
                         FT_UInt        gindex,
@@ -528,7 +528,7 @@
 
   /* documentation is in ftcache.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FTC_SBitCache_LookupScaler( FTC_SBitCache  cache,
                               FTC_Scaler     scaler,
                               FT_ULong       load_flags,

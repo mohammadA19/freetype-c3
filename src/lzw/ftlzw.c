@@ -338,7 +338,7 @@
   }
 
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Stream_OpenLZW( FT_Stream  stream,
                      FT_Stream  source )
   {
@@ -398,7 +398,7 @@
 #else  /* !FT_CONFIG_OPTION_USE_LZW */
 
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Stream_OpenLZW( FT_Stream  stream,
                      FT_Stream  source )
   {

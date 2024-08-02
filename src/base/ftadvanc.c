@@ -70,7 +70,7 @@
 
   /* documentation is in ftadvanc.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Get_Advance( FT_Face    face,
                   FT_UInt    gindex,
                   FT_Int32   flags,
@@ -108,7 +108,7 @@
 
   /* documentation is in ftadvanc.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Get_Advances( FT_Face    face,
                    FT_UInt    start,
                    FT_UInt    count,

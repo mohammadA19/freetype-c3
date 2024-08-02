@@ -159,7 +159,7 @@
 
   /* documentation is in ftcache.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FTC_Manager_LookupSize( FTC_Manager  manager,
                           FTC_Scaler   scaler,
                           FT_Size     *asize )
@@ -287,7 +287,7 @@
 
   /* documentation is in ftcache.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FTC_Manager_LookupFace( FTC_Manager  manager,
                           FTC_FaceID   face_id,
                           FT_Face     *aface )
@@ -332,7 +332,7 @@
 
   /* documentation is in ftcache.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FTC_Manager_New( FT_Library          library,
                    FT_UInt             max_faces,
                    FT_UInt             max_sizes,
@@ -399,7 +399,7 @@
 
   /* documentation is in ftcache.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FTC_Manager_Done( FTC_Manager  manager )
   {
     FT_Memory  memory;
@@ -434,7 +434,7 @@
 
   /* documentation is in ftcache.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FTC_Manager_Reset( FTC_Manager  manager )
   {
     if ( !manager )
@@ -639,7 +639,7 @@
 
   /* documentation is in ftcache.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FTC_Manager_RemoveFaceID( FTC_Manager  manager,
                             FTC_FaceID   face_id )
   {
@@ -663,7 +663,7 @@
 
   /* documentation is in ftcache.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FTC_Node_Unref( FTC_Node     node,
                   FTC_Manager  manager )
   {

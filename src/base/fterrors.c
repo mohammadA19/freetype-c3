@@ -22,7 +22,7 @@
 
   /* documentation is in fterrors.h */
 
-  FT_EXPORT_DEF( const char* )
+  const char*
   FT_Error_String( FT_Error  error_code )
   {
     if ( error_code <  0                                ||

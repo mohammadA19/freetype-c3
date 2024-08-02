@@ -479,7 +479,7 @@
 
   /* documentation is in ttinterp.h */
 
-  FT_EXPORT_DEF( TT_ExecContext )
+  TT_ExecContext
   TT_New_Context( TT_Driver  driver )
   {
     FT_Memory  memory;
@@ -6924,7 +6924,7 @@
 
   /* documentation is in ttinterp.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   TT_RunIns( void*  exec )
   {
     TT_ExecContext  exc = (TT_ExecContext)exec;

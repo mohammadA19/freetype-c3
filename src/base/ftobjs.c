@@ -764,7 +764,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Set_Transform( FT_Face     face,
                     FT_Matrix*  matrix,
                     FT_Vector*  delta )
@@ -815,7 +815,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Get_Transform( FT_Face     face,
                     FT_Matrix*  matrix,
                     FT_Vector*  delta )
@@ -894,7 +894,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Load_Glyph( FT_Face   face,
                  FT_UInt   glyph_index,
                  FT_Int32  load_flags )
@@ -1224,7 +1224,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Load_Char( FT_Face   face,
                 FT_ULong  char_code,
                 FT_Int32  load_flags )
@@ -1602,7 +1602,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_New_Face( FT_Library   library,
                const char*  pathname,
                FT_Long      face_index,
@@ -1627,7 +1627,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_New_Memory_Face( FT_Library      library,
                       const FT_Byte*  file_base,
                       FT_Long         file_size,
@@ -2512,7 +2512,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Open_Face( FT_Library           library,
                 const FT_Open_Args*  args,
                 FT_Long              face_index,
@@ -2854,7 +2854,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Attach_File( FT_Face      face,
                   const char*  filepathname )
   {
@@ -2876,7 +2876,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Attach_Stream( FT_Face              face,
                     const FT_Open_Args*  parameters )
   {
@@ -2920,7 +2920,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Reference_Face( FT_Face  face )
   {
     if ( !face )
@@ -2934,7 +2934,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Done_Face( FT_Face  face )
   {
     FT_Error     error;
@@ -2975,7 +2975,7 @@
 
   /* documentation is in ftobjs.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_New_Size( FT_Face   face,
                FT_Size  *asize )
   {
@@ -3042,7 +3042,7 @@
 
   /* documentation is in ftobjs.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Done_Size( FT_Size  size )
   {
     FT_Error     error;
@@ -3383,7 +3383,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Select_Size( FT_Face  face,
                   FT_Int   strike_index )
   {
@@ -3441,7 +3441,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Request_Size( FT_Face          face,
                    FT_Size_Request  req )
   {
@@ -3526,7 +3526,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Set_Char_Size( FT_Face     face,
                     FT_F26Dot6  char_width,
                     FT_F26Dot6  char_height,
@@ -3568,7 +3568,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Set_Pixel_Sizes( FT_Face  face,
                       FT_UInt  pixel_width,
                       FT_UInt  pixel_height )
@@ -3606,7 +3606,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Get_Kerning( FT_Face     face,
                   FT_UInt     left_glyph,
                   FT_UInt     right_glyph,
@@ -3685,7 +3685,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Get_Track_Kerning( FT_Face    face,
                         FT_Fixed   point_size,
                         FT_Int     degree,
@@ -3716,7 +3716,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Select_Charmap( FT_Face      face,
                      FT_Encoding  encoding )
   {
@@ -3759,7 +3759,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Set_Charmap( FT_Face     face,
                   FT_CharMap  charmap )
   {
@@ -3792,7 +3792,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Int )
+  FT_Int
   FT_Get_Charmap_Index( FT_CharMap  charmap )
   {
     FT_Int  i;
@@ -3926,7 +3926,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_UInt )
+  FT_UInt
   FT_Get_Char_Index( FT_Face   face,
                      FT_ULong  charcode )
   {
@@ -3955,7 +3955,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_ULong )
+  FT_ULong
   FT_Get_First_Char( FT_Face   face,
                      FT_UInt  *agindex )
   {
@@ -3980,7 +3980,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_ULong )
+  FT_ULong
   FT_Get_Next_Char( FT_Face   face,
                     FT_ULong  charcode,
                     FT_UInt  *agindex )
@@ -4013,7 +4013,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Face_Properties( FT_Face        face,
                       FT_UInt        num_properties,
                       FT_Parameter*  properties )
@@ -4092,7 +4092,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_UInt )
+  FT_UInt
   FT_Face_GetCharVariantIndex( FT_Face   face,
                                FT_ULong  charcode,
                                FT_ULong  variantSelector )
@@ -4138,7 +4138,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Int )
+  FT_Int
   FT_Face_GetCharVariantIsDefault( FT_Face   face,
                                    FT_ULong  charcode,
                                    FT_ULong  variantSelector )
@@ -4181,7 +4181,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_UInt32* )
+  FT_UInt32*
   FT_Face_GetVariantSelectors( FT_Face  face )
   {
     FT_UInt32  *result = NULL;
@@ -4208,7 +4208,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_UInt32* )
+  FT_UInt32*
   FT_Face_GetVariantsOfChar( FT_Face   face,
                              FT_ULong  charcode )
   {
@@ -4242,7 +4242,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_UInt32* )
+  FT_UInt32*
   FT_Face_GetCharsOfVariant( FT_Face   face,
                              FT_ULong  variantSelector )
   {
@@ -4277,7 +4277,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_UInt )
+  FT_UInt
   FT_Get_Name_Index( FT_Face           face,
                      const FT_String*  glyph_name )
   {
@@ -4305,7 +4305,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Get_Glyph_Name( FT_Face     face,
                      FT_UInt     glyph_index,
                      FT_Pointer  buffer,
@@ -4342,7 +4342,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( const char* )
+  const char*
   FT_Get_Postscript_Name( FT_Face  face )
   {
     const char*  result = NULL;
@@ -4371,7 +4371,7 @@
 
   /* documentation is in tttables.h */
 
-  FT_EXPORT_DEF( void* )
+  void*
   FT_Get_Sfnt_Table( FT_Face      face,
                      FT_Sfnt_Tag  tag )
   {
@@ -4392,7 +4392,7 @@
 
   /* documentation is in tttables.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Load_Sfnt_Table( FT_Face    face,
                       FT_ULong   tag,
                       FT_Long    offset,
@@ -4415,7 +4415,7 @@
 
   /* documentation is in tttables.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Sfnt_Table_Info( FT_Face    face,
                       FT_UInt    table_index,
                       FT_ULong  *tag,
@@ -4440,7 +4440,7 @@
 
   /* documentation is in tttables.h */
 
-  FT_EXPORT_DEF( FT_ULong )
+  FT_ULong
   FT_Get_CMap_Language_ID( FT_CharMap  charmap )
   {
     FT_Service_TTCMaps  service;
@@ -4464,7 +4464,7 @@
 
   /* documentation is in tttables.h */
 
-  FT_EXPORT_DEF( FT_Long )
+  FT_Long
   FT_Get_CMap_Format( FT_CharMap  charmap )
   {
     FT_Service_TTCMaps  service;
@@ -4488,7 +4488,7 @@
 
   /* documentation is in ftsizes.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Activate_Size( FT_Size  size )
   {
     FT_Face  face;
@@ -4677,7 +4677,7 @@
 
   /* documentation is in ftrender.h */
 
-  FT_EXPORT_DEF( FT_Renderer )
+  FT_Renderer
   FT_Get_Renderer( FT_Library       library,
                    FT_Glyph_Format  format )
   {
@@ -4689,7 +4689,7 @@
 
   /* documentation is in ftrender.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Set_Renderer( FT_Library     library,
                    FT_Renderer    renderer,
                    FT_UInt        num_params,
@@ -4996,7 +4996,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Render_Glyph( FT_GlyphSlot    slot,
                    FT_Render_Mode  render_mode )
   {
@@ -5071,7 +5071,7 @@
 
   /* documentation is in ftmodapi.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Add_Module( FT_Library              library,
                  const FT_Module_Class*  clazz )
   {
@@ -5184,7 +5184,7 @@
 
   /* documentation is in ftmodapi.h */
 
-  FT_EXPORT_DEF( FT_Module )
+  FT_Module
   FT_Get_Module( FT_Library   library,
                  const char*  module_name )
   {
@@ -5274,7 +5274,7 @@
 
   /* documentation is in ftmodapi.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Remove_Module( FT_Library  library,
                     FT_Module   module )
   {
@@ -5402,7 +5402,7 @@
 
   /* documentation is in ftmodapi.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Property_Set( FT_Library        library,
                    const FT_String*  module_name,
                    const FT_String*  property_name,
@@ -5419,7 +5419,7 @@
 
   /* documentation is in ftmodapi.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Property_Get( FT_Library        library,
                    const FT_String*  module_name,
                    const FT_String*  property_name,
@@ -5471,7 +5471,7 @@
 
   /* documentation is in ftmodapi.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Reference_Library( FT_Library  library )
   {
     if ( !library )
@@ -5485,7 +5485,7 @@
 
   /* documentation is in ftmodapi.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_New_Library( FT_Memory    memory,
                   FT_Library  *alibrary )
   {
@@ -5524,7 +5524,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Library_Version( FT_Library   library,
                       FT_Int      *amajor,
                       FT_Int      *aminor,
@@ -5555,7 +5555,7 @@
 
   /* documentation is in ftmodapi.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Done_Library( FT_Library  library )
   {
     FT_Memory  memory;
@@ -5658,7 +5658,7 @@
 
   /* documentation is in ftmodapi.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Set_Debug_Hook( FT_Library         library,
                      FT_UInt            hook_index,
                      FT_DebugHook_Func  debug_hook )
@@ -5672,7 +5672,7 @@
 
   /* documentation is in ftmodapi.h */
 
-  FT_EXPORT_DEF( FT_TrueTypeEngineType )
+  FT_TrueTypeEngineType
   FT_Get_TrueType_Engine_Type( FT_Library  library )
   {
     FT_TrueTypeEngineType  result = FT_TRUETYPE_ENGINE_TYPE_NONE;
@@ -5703,7 +5703,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Get_SubGlyph_Info( FT_GlyphSlot  glyph,
                         FT_UInt       sub_index,
                         FT_Int       *p_index,
@@ -5738,7 +5738,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Bool )
+  FT_Bool
   FT_Get_Color_Glyph_Layer( FT_Face            face,
                             FT_UInt            base_glyph,
                             FT_UInt           *aglyph_index,
@@ -5775,7 +5775,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Bool )
+  FT_Bool
   FT_Get_Color_Glyph_Paint( FT_Face                  face,
                             FT_UInt                  base_glyph,
                             FT_Color_Root_Transform  root_transform,
@@ -5806,7 +5806,7 @@
 
   /* documentation is in ftcolor.h */
 
-  FT_EXPORT_DEF( FT_Bool )
+  FT_Bool
   FT_Get_Color_Glyph_ClipBox( FT_Face      face,
                               FT_UInt      base_glyph,
                               FT_ClipBox*  clip_box )
@@ -5835,7 +5835,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Bool )
+  FT_Bool
   FT_Get_Paint_Layers( FT_Face            face,
                        FT_LayerIterator*  layer_iterator,
                        FT_OpaquePaint*    paint )
@@ -5862,7 +5862,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Bool )
+  FT_Bool
   FT_Get_Paint( FT_Face face,
                 FT_OpaquePaint  opaque_paint,
                 FT_COLR_Paint*  paint )
@@ -5889,7 +5889,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Bool )
+  FT_Bool
   FT_Get_Colorline_Stops ( FT_Face                face,
                            FT_ColorStop *         color_stop,
                            FT_ColorStopIterator  *iterator )

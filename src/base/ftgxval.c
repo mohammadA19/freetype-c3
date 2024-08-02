@@ -33,7 +33,7 @@
 
   /* documentation is in ftgxval.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_TrueTypeGX_Validate( FT_Face   face,
                           FT_UInt   validation_flags,
                           FT_Bytes  tables[FT_VALIDATE_GX_LENGTH],
@@ -70,7 +70,7 @@
   }
 
 
-  FT_EXPORT_DEF( void )
+  void
   FT_TrueTypeGX_Free( FT_Face   face,
                       FT_Bytes  table )
   {
@@ -86,7 +86,7 @@
   }
 
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_ClassicKern_Validate( FT_Face    face,
                            FT_UInt    validation_flags,
                            FT_Bytes  *ckern_table )
@@ -121,7 +121,7 @@
   }
 
 
-  FT_EXPORT_DEF( void )
+  void
   FT_ClassicKern_Free( FT_Face   face,
                        FT_Bytes  table )
   {

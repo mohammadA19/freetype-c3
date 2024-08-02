@@ -23,7 +23,7 @@
 
   /* documentation is in ftfntfmt.h */
 
-  FT_EXPORT_DEF( const char* )
+  const char*
   FT_Get_Font_Format( FT_Face  face )
   {
     const char*  result = NULL;
@@ -38,7 +38,7 @@
 
   /* deprecated function name; retained for ABI compatibility */
 
-  FT_EXPORT_DEF( const char* )
+  const char*
   FT_Get_X11_Font_Format( FT_Face  face )
   {
     const char*  result = NULL;

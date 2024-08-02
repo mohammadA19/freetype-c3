@@ -31,7 +31,7 @@
 
   /* documentation is in ftstroke.h */
 
-  FT_EXPORT_DEF( FT_StrokerBorder )
+  FT_StrokerBorder
   FT_Outline_GetInsideBorder( FT_Outline*  outline )
   {
     FT_Orientation  o = FT_Outline_Get_Orientation( outline );
@@ -44,7 +44,7 @@
 
   /* documentation is in ftstroke.h */
 
-  FT_EXPORT_DEF( FT_StrokerBorder )
+  FT_StrokerBorder
   FT_Outline_GetOutsideBorder( FT_Outline*  outline )
   {
     FT_Orientation  o = FT_Outline_Get_Orientation( outline );
@@ -786,7 +786,7 @@
 
   /* documentation is in ftstroke.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Stroker_New( FT_Library   library,
                   FT_Stroker  *astroker )
   {
@@ -819,7 +819,7 @@
 
   /* documentation is in ftstroke.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Stroker_Set( FT_Stroker           stroker,
                   FT_Fixed             radius,
                   FT_Stroker_LineCap   line_cap,
@@ -848,7 +848,7 @@
 
   /* documentation is in ftstroke.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Stroker_Rewind( FT_Stroker  stroker )
   {
     if ( stroker )
@@ -861,7 +861,7 @@
 
   /* documentation is in ftstroke.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Stroker_Done( FT_Stroker  stroker )
   {
     if ( stroker )
@@ -1261,7 +1261,7 @@
 
   /* documentation is in ftstroke.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Stroker_LineTo( FT_Stroker  stroker,
                      FT_Vector*  to )
   {
@@ -1337,7 +1337,7 @@
 
   /* documentation is in ftstroke.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Stroker_ConicTo( FT_Stroker  stroker,
                       FT_Vector*  control,
                       FT_Vector*  to )
@@ -1539,7 +1539,7 @@
 
   /* documentation is in ftstroke.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Stroker_CubicTo( FT_Stroker  stroker,
                       FT_Vector*  control1,
                       FT_Vector*  control2,
@@ -1756,7 +1756,7 @@
 
   /* documentation is in ftstroke.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Stroker_BeginSubPath( FT_Stroker  stroker,
                            FT_Vector*  to,
                            FT_Bool     open )
@@ -1858,7 +1858,7 @@
   /* documentation is in ftstroke.h */
 
   /* there's a lot of magic in this function! */
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Stroker_EndSubPath( FT_Stroker  stroker )
   {
     FT_Error  error = FT_Err_Ok;
@@ -1929,7 +1929,7 @@
 
   /* documentation is in ftstroke.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Stroker_GetBorderCounts( FT_Stroker        stroker,
                               FT_StrokerBorder  border,
                               FT_UInt          *anum_points,
@@ -1960,7 +1960,7 @@
 
   /* documentation is in ftstroke.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Stroker_GetCounts( FT_Stroker  stroker,
                         FT_UInt    *anum_points,
                         FT_UInt    *anum_contours )
@@ -2002,7 +2002,7 @@
 
   /* documentation is in ftstroke.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Stroker_ExportBorder( FT_Stroker        stroker,
                            FT_StrokerBorder  border,
                            FT_Outline*       outline )
@@ -2024,7 +2024,7 @@
 
   /* documentation is in ftstroke.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Stroker_Export( FT_Stroker   stroker,
                      FT_Outline*  outline )
   {
@@ -2039,7 +2039,7 @@
    * The following is very similar to FT_Outline_Decompose, except
    * that we do support opened paths, and do not scale the outline.
    */
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Stroker_ParseOutline( FT_Stroker   stroker,
                            FT_Outline*  outline,
                            FT_Bool      opened )
@@ -2242,7 +2242,7 @@
 
   /* documentation is in ftstroke.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Glyph_Stroke( FT_Glyph    *pglyph,
                    FT_Stroker   stroker,
                    FT_Bool      destroy )
@@ -2316,7 +2316,7 @@
 
   /* documentation is in ftstroke.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Glyph_StrokeBorder( FT_Glyph    *pglyph,
                          FT_Stroker   stroker,
                          FT_Bool      inside,

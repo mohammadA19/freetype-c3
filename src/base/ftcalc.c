@@ -85,7 +85,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Fixed )
+  FT_Fixed
   FT_RoundFix( FT_Fixed  a )
   {
     return ( ADD_LONG( a, 0x8000L - ( a < 0 ) ) ) & ~0xFFFFL;
@@ -94,7 +94,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Fixed )
+  FT_Fixed
   FT_CeilFix( FT_Fixed  a )
   {
     return ( ADD_LONG( a, 0xFFFFL ) ) & ~0xFFFFL;
@@ -103,7 +103,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Fixed )
+  FT_Fixed
   FT_FloorFix( FT_Fixed  a )
   {
     return a & ~0xFFFFL;
@@ -171,7 +171,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Long )
+  FT_Long
   FT_MulDiv( FT_Long  a_,
              FT_Long  b_,
              FT_Long  c_ )
@@ -221,7 +221,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Long )
+  FT_Long
   FT_MulFix( FT_Long  a_,
              FT_Long  b_ )
   {
@@ -242,7 +242,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Long )
+  FT_Long
   FT_DivFix( FT_Long  a_,
              FT_Long  b_ )
   {
@@ -402,7 +402,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Long )
+  FT_Long
   FT_MulDiv( FT_Long  a_,
              FT_Long  b_,
              FT_Long  c_ )
@@ -487,7 +487,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Long )
+  FT_Long
   FT_MulFix( FT_Long  a_,
              FT_Long  b_ )
   {
@@ -583,7 +583,7 @@
 
   /* documentation is in freetype.h */
 
-  FT_EXPORT_DEF( FT_Long )
+  FT_Long
   FT_DivFix( FT_Long  a_,
              FT_Long  b_ )
   {
@@ -633,7 +633,7 @@
 
   /* documentation is in ftglyph.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Matrix_Multiply( const FT_Matrix*  a,
                       FT_Matrix        *b )
   {
@@ -661,7 +661,7 @@
 
   /* documentation is in ftglyph.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Matrix_Invert( FT_Matrix*  matrix )
   {
     FT_Pos  delta, xx, yy;

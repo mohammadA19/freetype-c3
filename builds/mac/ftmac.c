@@ -174,7 +174,7 @@ typedef short ResourceIndex;
 
 #if !HAVE_QUICKDRAW_CARBON  /* QuickDraw is deprecated since Mac OS X 10.4 */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_GetFile_From_Mac_Name( const char*  fontName,
                             FSSpec*      pathSpec,
                             FT_Long*     face_index )
@@ -188,7 +188,7 @@ typedef short ResourceIndex;
 
 #else
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_GetFile_From_Mac_Name( const char*  fontName,
                             FSSpec*      pathSpec,
                             FT_Long*     face_index )
@@ -356,7 +356,7 @@ typedef short ResourceIndex;
 
 #if !HAVE_ATS
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_GetFilePath_From_Mac_ATS_Name( const char*  fontName,
                                     UInt8*       path,
                                     UInt32       maxPathSize,
@@ -372,7 +372,7 @@ typedef short ResourceIndex;
 
 #else
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_GetFilePath_From_Mac_ATS_Name( const char*  fontName,
                                     UInt8*       path,
                                     UInt32       maxPathSize,
@@ -397,7 +397,7 @@ typedef short ResourceIndex;
 
 #if !HAVE_FSSPEC || !HAVE_ATS
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_GetFile_From_Mac_ATS_Name( const char*  fontName,
                                 FSSpec*      pathSpec,
                                 FT_Long*     face_index )
@@ -412,7 +412,7 @@ typedef short ResourceIndex;
 #else
 
   /* This function is deprecated because FSSpec is deprecated in Mac OS X. */
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_GetFile_From_Mac_ATS_Name( const char*  fontName,
                                 FSSpec*      pathSpec,
                                 FT_Long*     face_index )
@@ -1225,7 +1225,7 @@ typedef short ResourceIndex;
 
   /* documentation is in ftmac.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_New_Face_From_FOND( FT_Library  library,
                          Handle      fond,
                          FT_Long     face_index,
@@ -1384,7 +1384,7 @@ typedef short ResourceIndex;
   /*    accepts pathnames to Mac suitcase files.  For further              */
   /*    documentation see the original FT_New_Face() in freetype.h.        */
   /*                                                                       */
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_New_Face( FT_Library   library,
                const char*  pathname,
                FT_Long      face_index,
@@ -1424,7 +1424,7 @@ typedef short ResourceIndex;
   /*                                                                       */
   /* This function is deprecated because Carbon data types (FSRef)         */
   /* are not cross-platform, and thus not suitable for the FreeType API.   */
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_New_Face_From_FSRef( FT_Library    library,
                           const FSRef*  ref,
                           FT_Long       face_index,
@@ -1482,7 +1482,7 @@ typedef short ResourceIndex;
   /*                                                                       */
   /* This function is deprecated because Carbon data types (FSSpec)        */
   /* are not cross-platform, and thus not suitable for the FreeType API.   */
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_New_Face_From_FSSpec( FT_Library     library,
                            const FSSpec*  spec,
                            FT_Long        face_index,

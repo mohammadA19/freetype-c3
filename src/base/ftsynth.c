@@ -43,7 +43,7 @@
 
   /* documentation is in ftsynth.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_GlyphSlot_Oblique( FT_GlyphSlot  slot )
   {
     /* Value '0x0366A' corresponds to a shear angle of about 12 degrees. */
@@ -53,7 +53,7 @@
 
   /* documentation is in ftsynth.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_GlyphSlot_Slant( FT_GlyphSlot  slot,
                       FT_Fixed      xslant,
                       FT_Fixed      yslant )
@@ -95,14 +95,14 @@
 
   /* documentation is in ftsynth.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_GlyphSlot_Embolden( FT_GlyphSlot  slot )
   {
     FT_GlyphSlot_AdjustWeight( slot, 0x0AAA, 0x0AAA );
   }
 
 
-  FT_EXPORT_DEF( void )
+  void
   FT_GlyphSlot_AdjustWeight( FT_GlyphSlot  slot,
                              FT_Fixed      xdelta,
                              FT_Fixed      ydelta )

@@ -286,7 +286,7 @@
 
   /* documentation in ftlcdfil.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Library_SetLcdFilterWeights( FT_Library      library,
                                   unsigned char  *weights )
   {
@@ -305,7 +305,7 @@
 
   /* documentation in ftlcdfil.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Library_SetLcdFilter( FT_Library    library,
                            FT_LcdFilter  filter )
   {
@@ -355,7 +355,7 @@
   }
 
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Library_SetLcdGeometry( FT_Library  library,
                              FT_Vector   sub[3] )
   {
@@ -392,7 +392,7 @@
   }
 
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Library_SetLcdFilterWeights( FT_Library      library,
                                   unsigned char  *weights )
   {
@@ -403,7 +403,7 @@
   }
 
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Library_SetLcdFilter( FT_Library    library,
                            FT_LcdFilter  filter )
   {
@@ -416,7 +416,7 @@
 
   /* documentation in ftlcdfil.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Library_SetLcdGeometry( FT_Library  library,
                              FT_Vector   sub[3] )
   {

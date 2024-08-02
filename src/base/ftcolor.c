@@ -30,7 +30,7 @@
 
   /* documentation is in ftcolor.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Palette_Data_Get( FT_Face           face,
                        FT_Palette_Data  *apalette_data )
   {
@@ -50,7 +50,7 @@
 
   /* documentation is in ftcolor.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Palette_Select( FT_Face     face,
                      FT_UShort   palette_index,
                      FT_Color*  *apalette )
@@ -90,7 +90,7 @@
 
   /* documentation is in ftcolor.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Palette_Set_Foreground_Color( FT_Face   face,
                                    FT_Color  foreground_color )
   {
@@ -113,7 +113,7 @@
 
 #else /* !TT_CONFIG_OPTION_COLOR_LAYERS */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Palette_Data_Get( FT_Face           face,
                        FT_Palette_Data  *apalette_data )
   {
@@ -125,7 +125,7 @@
   }
 
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Palette_Select( FT_Face     face,
                      FT_UShort   palette_index,
                      FT_Color*  *apalette )
@@ -139,7 +139,7 @@
   }
 
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Palette_Set_Foreground_Color( FT_Face   face,
                                    FT_Color  foreground_color )
   {

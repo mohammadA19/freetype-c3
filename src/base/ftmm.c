@@ -92,7 +92,7 @@
 
   /* documentation is in ftmm.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Get_Multi_Master( FT_Face           face,
                        FT_Multi_Master  *amaster )
   {
@@ -119,7 +119,7 @@
 
   /* documentation is in ftmm.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Get_MM_Var( FT_Face      face,
                  FT_MM_Var*  *amaster )
   {
@@ -146,7 +146,7 @@
 
   /* documentation is in ftmm.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Done_MM_Var( FT_Library  library,
                   FT_MM_Var*  amaster )
   {
@@ -165,7 +165,7 @@
 
   /* documentation is in ftmm.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Set_MM_Design_Coordinates( FT_Face   face,
                                 FT_UInt   num_coords,
                                 FT_Long*  coords )
@@ -208,7 +208,7 @@
 
   /* documentation is in ftmm.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Set_MM_WeightVector( FT_Face    face,
                           FT_UInt    len,
                           FT_Fixed*  weightvector )
@@ -249,7 +249,7 @@
   }
 
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Get_MM_WeightVector( FT_Face    face,
                           FT_UInt*   len,
                           FT_Fixed*  weightvector )
@@ -277,7 +277,7 @@
 
   /* documentation is in ftmm.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Set_Var_Design_Coordinates( FT_Face    face,
                                  FT_UInt    num_coords,
                                  FT_Fixed*  coords )
@@ -349,7 +349,7 @@
 
   /* documentation is in ftmm.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Get_Var_Design_Coordinates( FT_Face    face,
                                  FT_UInt    num_coords,
                                  FT_Fixed*  coords )
@@ -377,7 +377,7 @@
 
   /* documentation is in ftmm.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Set_MM_Blend_Coordinates( FT_Face    face,
                                FT_UInt    num_coords,
                                FT_Fixed*  coords )
@@ -452,7 +452,7 @@
   /* This is exactly the same as the previous function.  It exists for */
   /* orthogonality.                                                    */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Set_Var_Blend_Coordinates( FT_Face    face,
                                 FT_UInt    num_coords,
                                 FT_Fixed*  coords )
@@ -524,7 +524,7 @@
 
   /* documentation is in ftmm.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Get_MM_Blend_Coordinates( FT_Face    face,
                                FT_UInt    num_coords,
                                FT_Fixed*  coords )
@@ -555,7 +555,7 @@
   /* This is exactly the same as the previous function.  It exists for */
   /* orthogonality.                                                    */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Get_Var_Blend_Coordinates( FT_Face    face,
                                 FT_UInt    num_coords,
                                 FT_Fixed*  coords )
@@ -583,7 +583,7 @@
 
   /* documentation is in ftmm.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Get_Var_Axis_Flags( FT_MM_Var*  master,
                          FT_UInt     axis_index,
                          FT_UInt*    flags )
@@ -607,7 +607,7 @@
 
   /* documentation is in ftmm.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Set_Named_Instance( FT_Face  face,
                          FT_UInt  instance_index )
   {
@@ -675,7 +675,7 @@
 
   /* documentation is in ftmm.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Get_Default_Named_Instance( FT_Face   face,
                                  FT_UInt  *instance_index )
   {

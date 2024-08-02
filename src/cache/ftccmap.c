@@ -214,7 +214,7 @@
 
   /* documentation is in ftcache.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FTC_CMapCache_New( FTC_Manager     manager,
                      FTC_CMapCache  *acache )
   {
@@ -226,7 +226,7 @@
 
   /* documentation is in ftcache.h */
 
-  FT_EXPORT_DEF( FT_UInt )
+  FT_UInt
   FTC_CMapCache_Lookup( FTC_CMapCache  cmap_cache,
                         FTC_FaceID     face_id,
                         FT_Int         cmap_index,

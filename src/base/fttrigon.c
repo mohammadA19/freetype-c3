@@ -293,7 +293,7 @@
 
   /* documentation is in fttrigon.h */
 
-  FT_EXPORT_DEF( FT_Fixed )
+  FT_Fixed
   FT_Cos( FT_Angle  angle )
   {
     FT_Vector  v;
@@ -307,7 +307,7 @@
 
   /* documentation is in fttrigon.h */
 
-  FT_EXPORT_DEF( FT_Fixed )
+  FT_Fixed
   FT_Sin( FT_Angle  angle )
   {
     FT_Vector  v;
@@ -321,7 +321,7 @@
 
   /* documentation is in fttrigon.h */
 
-  FT_EXPORT_DEF( FT_Fixed )
+  FT_Fixed
   FT_Tan( FT_Angle  angle )
   {
     FT_Vector  v = { 1 << 24, 0 };
@@ -335,7 +335,7 @@
 
   /* documentation is in fttrigon.h */
 
-  FT_EXPORT_DEF( FT_Angle )
+  FT_Angle
   FT_Atan2( FT_Fixed  dx,
             FT_Fixed  dy )
   {
@@ -356,7 +356,7 @@
 
   /* documentation is in fttrigon.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Vector_Unit( FT_Vector*  vec,
                   FT_Angle    angle )
   {
@@ -373,7 +373,7 @@
 
   /* documentation is in fttrigon.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Vector_Rotate( FT_Vector*  vec,
                     FT_Angle    angle )
   {
@@ -413,7 +413,7 @@
 
   /* documentation is in fttrigon.h */
 
-  FT_EXPORT_DEF( FT_Fixed )
+  FT_Fixed
   FT_Vector_Length( FT_Vector*  vec )
   {
     FT_Int     shift;
@@ -450,7 +450,7 @@
 
   /* documentation is in fttrigon.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Vector_Polarize( FT_Vector*  vec,
                       FT_Fixed   *length,
                       FT_Angle   *angle )
@@ -480,7 +480,7 @@
 
   /* documentation is in fttrigon.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Vector_From_Polar( FT_Vector*  vec,
                         FT_Fixed    length,
                         FT_Angle    angle )
@@ -497,7 +497,7 @@
 
   /* documentation is in fttrigon.h */
 
-  FT_EXPORT_DEF( FT_Angle )
+  FT_Angle
   FT_Angle_Diff( FT_Angle  angle1,
                  FT_Angle  angle2 )
   {

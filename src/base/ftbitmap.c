@@ -39,7 +39,7 @@
 
   /* documentation is in ftbitmap.h */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Bitmap_Init( FT_Bitmap  *abitmap )
   {
     if ( abitmap )
@@ -49,7 +49,7 @@
 
   /* deprecated function name; retained for ABI compatibility */
 
-  FT_EXPORT_DEF( void )
+  void
   FT_Bitmap_New( FT_Bitmap  *abitmap )
   {
     if ( abitmap )
@@ -59,7 +59,7 @@
 
   /* documentation is in ftbitmap.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Bitmap_Copy( FT_Library        library,
                   const FT_Bitmap  *source,
                   FT_Bitmap        *target)
@@ -279,7 +279,7 @@
 
   /* documentation is in ftbitmap.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Bitmap_Embolden( FT_Library  library,
                       FT_Bitmap*  bitmap,
                       FT_Pos      xStrength,
@@ -487,7 +487,7 @@
 
   /* documentation is in ftbitmap.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Bitmap_Convert( FT_Library        library,
                      const FT_Bitmap  *source,
                      FT_Bitmap        *target,
@@ -762,7 +762,7 @@
 
   /* documentation is in ftbitmap.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Bitmap_Blend( FT_Library        library,
                    const FT_Bitmap*  source_,
                    const FT_Vector   source_offset_,
@@ -1094,7 +1094,7 @@
 
   /* documentation is in ftbitmap.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_GlyphSlot_Own_Bitmap( FT_GlyphSlot  slot )
   {
     if ( slot && slot->format == FT_GLYPH_FORMAT_BITMAP   &&
@@ -1119,7 +1119,7 @@
 
   /* documentation is in ftbitmap.h */
 
-  FT_EXPORT_DEF( FT_Error )
+  FT_Error
   FT_Bitmap_Done( FT_Library  library,
                   FT_Bitmap  *bitmap )
   {
