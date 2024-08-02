@@ -272,10 +272,10 @@ FT_BEGIN_HEADER
           ft_validator_error( gxvalid->root, FT_THROW( _error ) )
 
 #define GXV_LIMIT_CHECK( _count )                                       \
-          FT_BEGIN_STMNT                                                \
+          {|                                                \
             if ( p + _count > ( limit? limit : gxvalid->root->limit ) ) \
               FT_INVALID_TOO_SHORT;                                     \
-          FT_END_STMNT
+          |}
 
 
 #ifdef FT_DEBUG_LEVEL_TRACE
@@ -283,19 +283,19 @@ FT_BEGIN_HEADER
 #define GXV_INIT  gxvalid->debug_indent = 0
 
 #define GXV_NAME_ENTER( name )                                \
-          FT_BEGIN_STMNT                                      \
+          {|                                      \
             gxvalid->debug_indent += 2;                       \
             FT_TRACE4(( "%*.s", gxvalid->debug_indent, "" )); \
             FT_TRACE4(( "%s table\n", name ));                \
-          FT_END_STMNT
+          |}
 
 #define GXV_EXIT  gxvalid->debug_indent -= 2
 
 #define GXV_TRACE( s )                                        \
-          FT_BEGIN_STMNT                                      \
+          {|                                      \
             FT_TRACE4(( "%*.s", gxvalid->debug_indent, "" )); \
             FT_TRACE4( s );                                   \
-          FT_END_STMNT
+          |}
 
 #else /* !FT_DEBUG_LEVEL_TRACE */
 
@@ -317,12 +317,12 @@ FT_BEGIN_HEADER
   /*************************************************************************/
 
 #define GXV_32BIT_ALIGNMENT_VALIDATE( a ) \
-          FT_BEGIN_STMNT                  \
+          {|                  \
             {                             \
               if ( (a) & 3 )              \
                 FT_INVALID_OFFSET;        \
             }                             \
-          FT_END_STMNT
+          |}
 
 
   /*************************************************************************/
@@ -334,7 +334,7 @@ FT_BEGIN_HEADER
   /*************************************************************************/
 
 #define GXV_TRACE_HEXDUMP( p, len )                     \
-          FT_BEGIN_STMNT                                \
+          {|                                \
             {                                           \
               FT_Bytes  b;                              \
                                                         \
@@ -342,10 +342,10 @@ FT_BEGIN_HEADER
               for ( b = p; b < (FT_Bytes)p + len; b++ ) \
                 FT_TRACE1(("\\x%02x", *b));             \
             }                                           \
-          FT_END_STMNT
+          |}
 
 #define GXV_TRACE_HEXDUMP_C( p, len )                   \
-          FT_BEGIN_STMNT                                \
+          {|                                \
             {                                           \
               FT_Bytes  b;                              \
                                                         \
@@ -356,7 +356,7 @@ FT_BEGIN_HEADER
                 else                                    \
                   FT_TRACE1(("\\x%02x", *b));           \
             }                                           \
-          FT_END_STMNT
+          |}
 
 #define GXV_TRACE_HEXDUMP_SFNTNAME( n )               \
           GXV_TRACE_HEXDUMP( n.string, n.string_len )
@@ -504,17 +504,17 @@ FT_BEGIN_HEADER
 
 
 #define GXV_SUBTABLE_OFFSET_CHECK( _offset )          \
-          FT_BEGIN_STMNT                              \
+          {|                              \
             if ( (_offset) > gxvalid->subtable_length ) \
               FT_INVALID_OFFSET;                      \
-          FT_END_STMNT
+          |}
 
 #define GXV_SUBTABLE_LIMIT_CHECK( _count )                  \
-          FT_BEGIN_STMNT                                    \
+          {|                                    \
             if ( ( p + (_count) - gxvalid->subtable_start ) > \
                    gxvalid->subtable_length )                 \
               FT_INVALID_TOO_SHORT;                         \
-          FT_END_STMNT
+          |}
 
 #define GXV_STATETABLE_HEADER_SIZE  ( 2 + 2 + 2 + 2 )
 #define GXV_STATEHEADER_SIZE        GXV_STATETABLE_HEADER_SIZE
@@ -564,11 +564,11 @@ FT_BEGIN_HEADER
           GXV_odtect_Range     odtect = NULL
 
 #define GXV_ODTECT_INIT( odtect )                      \
-          FT_BEGIN_STMNT                               \
+          {|                               \
             odtect ## _rec.nRanges = 0;                \
             odtect ## _rec.range   = odtect ## _range; \
             odtect                 = & odtect ## _rec; \
-          FT_END_STMNT
+          |}
 
 
  /* */

@@ -22,40 +22,6 @@
 
 FT_BEGIN_HEADER
 
-  /*
-   * When defining a macro that expands to a non-trivial C statement, use
-   * FT_BEGIN_STMNT and FT_END_STMNT to enclose the macro's body.  This
-   * ensures there are no surprises when the macro is invoked in conditional
-   * branches.
-   *
-   * Example:
-   *
-   *   #define  LOG( ... )        \
-   *     FT_BEGIN_STMNT           \
-   *       if ( logging_enabled ) \
-   *         log( __VA_ARGS__ );  \
-   *     FT_END_STMNT
-   */
-#define FT_BEGIN_STMNT  do {
-#define FT_END_STMNT    } while ( 0 )
-
-  /*
-   * FT_DUMMY_STMNT expands to an empty C statement.  Useful for
-   * conditionally defined statement macros.
-   *
-   * Example:
-   *
-   *   #ifdef BUILD_CONFIG_LOGGING
-   *   #define  LOG( ... )         \
-   *      FT_BEGIN_STMNT           \
-   *        if ( logging_enabled ) \
-   *          log( __VA_ARGS__ );  \
-   *      FT_END_STMNT
-   *   #else
-   *   #  define LOG( ... )  FT_DUMMY_STMNT
-   *   #endif
-   */
-#define FT_DUMMY_STMNT  FT_BEGIN_STMNT FT_END_STMNT
 
 #ifdef __UINTPTR_TYPE__
   /*

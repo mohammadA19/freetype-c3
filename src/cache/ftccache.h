@@ -215,7 +215,7 @@ FT_BEGIN_HEADER
 #ifdef FTC_INLINE
 
 #define FTC_CACHE_LOOKUP_CMP( cache, nodecmp, hash, query, node, error ) \
-  FT_BEGIN_STMNT                                                         \
+  {|                                                         \
     FTC_Node             *_bucket, *_pnode, _node;                       \
     FTC_Cache             _cache   = FTC_CACHE( cache );                 \
     FT_Offset             _hash    = (FT_Offset)(hash);                  \
@@ -287,15 +287,15 @@ FT_BEGIN_HEADER
                                                                          \
   Ok_:                                                                   \
     node = _node;                                                        \
-  FT_END_STMNT
+  |}
 
 #else /* !FTC_INLINE */
 
 #define FTC_CACHE_LOOKUP_CMP( cache, nodecmp, hash, query, node, error ) \
-  FT_BEGIN_STMNT                                                         \
+  {|                                                         \
     error = FTC_Cache_Lookup( FTC_CACHE( cache ), hash, query,           \
                               (FTC_Node*)&(node) );                      \
-  FT_END_STMNT
+  |}
 
 #endif /* !FTC_INLINE */
 

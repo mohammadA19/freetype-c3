@@ -248,13 +248,13 @@
 
 
 #define FTLZW_STACK_PUSH( c )                        \
-  FT_BEGIN_STMNT                                     \
+  {|                                     \
     if ( state->stack_top >= state->stack_size &&    \
          ft_lzwstate_stack_grow( state ) < 0   )     \
       goto Eof;                                      \
                                                      \
     state->stack[state->stack_top++] = (FT_Byte)(c); \
-  FT_END_STMNT
+  |}
 
 
   fn FT_ULong /* internal */

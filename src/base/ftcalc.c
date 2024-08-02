@@ -70,7 +70,7 @@
   /* transfer sign, leaving a positive number;                        */
   /* we need an unsigned value to safely negate INT_MIN (or LONG_MIN) */
 #define FT_MOVE_SIGN( utype, x, x_unsigned, s ) \
-  FT_BEGIN_STMNT                                \
+  {|                                \
     if ( x < 0 )                                \
     {                                           \
       x_unsigned = 0U - (utype)x;               \
@@ -78,7 +78,7 @@
     }                                           \
     else                                        \
       x_unsigned = (utype)x;                    \
-  FT_END_STMNT
+  |}
 
   /* The following three functions are available regardless of whether */
   /* FT_INT64 is defined.                                              */

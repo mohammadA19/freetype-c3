@@ -76,25 +76,25 @@ FT_BEGIN_HEADER
                                         FT_Bytes   _table ## _p
 
 #define OTV_OPTIONAL_OFFSET( _offset )           \
-          FT_BEGIN_STMNT                         \
+          {|                         \
             _offset ## _p = p;                   \
             _offset       = FT_NEXT_USHORT( p ); \
-          FT_END_STMNT
+          |}
 
 #define OTV_OPTIONAL_OFFSET32( _offset )        \
-          FT_BEGIN_STMNT                        \
+          {|                        \
             _offset ## _p = p;                  \
             _offset       = FT_NEXT_ULONG( p ); \
-          FT_END_STMNT
+          |}
 
 #define OTV_LIMIT_CHECK( _count )                      \
-          FT_BEGIN_STMNT                               \
+          {|                               \
             if ( p + (_count) > otvalid->root->limit ) \
               FT_INVALID_TOO_SHORT;                    \
-          FT_END_STMNT
+          |}
 
 #define OTV_SIZE_CHECK( _size )                                     \
-          FT_BEGIN_STMNT                                            \
+          {|                                            \
             if ( _size > 0 && _size < table_size )                  \
             {                                                       \
               if ( otvalid->root->level == FT_VALIDATE_PARANOID )   \
@@ -114,10 +114,10 @@ FT_BEGIN_HEADER
                 _size = pp[0] = pp[1] = 0;                          \
               }                                                     \
             }                                                       \
-          FT_END_STMNT
+          |}
 
 #define OTV_SIZE_CHECK32( _size )                                   \
-          FT_BEGIN_STMNT                                            \
+          {|                                            \
             if ( _size > 0 && _size < table_size )                  \
             {                                                       \
               if ( otvalid->root->level == FT_VALIDATE_PARANOID )   \
@@ -137,7 +137,7 @@ FT_BEGIN_HEADER
                 _size = pp[0] = pp[1] = pp[2] = pp[3] = 0;          \
               }                                                     \
             }                                                       \
-          FT_END_STMNT
+          |}
 
 
 #define  OTV_NAME_(x)  #x
@@ -149,23 +149,23 @@ FT_BEGIN_HEADER
 #ifdef FT_DEBUG_LEVEL_TRACE
 
 #define OTV_NEST1( x )                                       \
-          FT_BEGIN_STMNT                                     \
+          {|                                     \
             otvalid->nesting_level          = 0;             \
             otvalid->func[0]                = OTV_FUNC( x ); \
             otvalid->debug_function_name[0] = OTV_NAME( x ); \
-          FT_END_STMNT
+          |}
 
 #define OTV_NEST2( x, y )                                    \
-          FT_BEGIN_STMNT                                     \
+          {|                                     \
             otvalid->nesting_level          = 0;             \
             otvalid->func[0]                = OTV_FUNC( x ); \
             otvalid->func[1]                = OTV_FUNC( y ); \
             otvalid->debug_function_name[0] = OTV_NAME( x ); \
             otvalid->debug_function_name[1] = OTV_NAME( y ); \
-          FT_END_STMNT
+          |}
 
 #define OTV_NEST3( x, y, z )                                 \
-          FT_BEGIN_STMNT                                     \
+          {|                                     \
             otvalid->nesting_level          = 0;             \
             otvalid->func[0]                = OTV_FUNC( x ); \
             otvalid->func[1]                = OTV_FUNC( y ); \
@@ -173,55 +173,55 @@ FT_BEGIN_HEADER
             otvalid->debug_function_name[0] = OTV_NAME( x ); \
             otvalid->debug_function_name[1] = OTV_NAME( y ); \
             otvalid->debug_function_name[2] = OTV_NAME( z ); \
-          FT_END_STMNT
+          |}
 
 #define OTV_INIT  otvalid->debug_indent = 0
 
 #define OTV_ENTER                                                                \
-          FT_BEGIN_STMNT                                                         \
+          {|                                                         \
             otvalid->debug_indent += 2;                                          \
             FT_TRACE4(( "%*.s", otvalid->debug_indent, "" ));                    \
             FT_TRACE4(( "%s table\n",                                            \
                         otvalid->debug_function_name[otvalid->nesting_level] )); \
-          FT_END_STMNT
+          |}
 
 #define OTV_NAME_ENTER( name )                                \
-          FT_BEGIN_STMNT                                      \
+          {|                                      \
             otvalid->debug_indent += 2;                       \
             FT_TRACE4(( "%*.s", otvalid->debug_indent, "" )); \
             FT_TRACE4(( "%s table\n", name ));                \
-          FT_END_STMNT
+          |}
 
 #define OTV_EXIT  otvalid->debug_indent -= 2
 
 #define OTV_TRACE( s )                                        \
-          FT_BEGIN_STMNT                                      \
+          {|                                      \
             FT_TRACE4(( "%*.s", otvalid->debug_indent, "" )); \
             FT_TRACE4( s );                                   \
-          FT_END_STMNT
+          |}
 
 #else   /* !FT_DEBUG_LEVEL_TRACE */
 
 #define OTV_NEST1( x )                              \
-          FT_BEGIN_STMNT                            \
+          {|                            \
             otvalid->nesting_level = 0;             \
             otvalid->func[0]       = OTV_FUNC( x ); \
-          FT_END_STMNT
+          |}
 
 #define OTV_NEST2( x, y )                           \
-          FT_BEGIN_STMNT                            \
+          {|                            \
             otvalid->nesting_level = 0;             \
             otvalid->func[0]       = OTV_FUNC( x ); \
             otvalid->func[1]       = OTV_FUNC( y ); \
-          FT_END_STMNT
+          |}
 
 #define OTV_NEST3( x, y, z )                        \
-          FT_BEGIN_STMNT                            \
+          {|                            \
             otvalid->nesting_level = 0;             \
             otvalid->func[0]       = OTV_FUNC( x ); \
             otvalid->func[1]       = OTV_FUNC( y ); \
             otvalid->func[2]       = OTV_FUNC( z ); \
-          FT_END_STMNT
+          |}
 
 #define OTV_INIT                do { } while ( 0 )
 #define OTV_ENTER               do { } while ( 0 )

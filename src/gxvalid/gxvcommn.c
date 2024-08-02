@@ -399,7 +399,7 @@
 
 
 #define GXV_UNITSIZE_VALIDATE( FORMAT, UNITSIZE, NUNITS, CORRECTSIZE ) \
-          FT_BEGIN_STMNT                                               \
+          {|                                               \
             if ( UNITSIZE != CORRECTSIZE )                             \
             {                                                          \
               FT_ERROR(( "unitSize=%d differs from"                    \
@@ -414,7 +414,7 @@
               else                                                     \
                 FT_ERROR(( " forcibly continues\n" ));                 \
             }                                                          \
-          FT_END_STMNT
+          |}
 
 
   /* ================= Simple Array Format 0 Lookup Table ================ */

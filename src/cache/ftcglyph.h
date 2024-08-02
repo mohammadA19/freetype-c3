@@ -264,7 +264,7 @@ FT_BEGIN_HEADER
 
 #define FTC_GCACHE_LOOKUP_CMP( cache, famcmp, nodecmp, hash,                \
                                gindex, query, node, error )                 \
-  FT_BEGIN_STMNT                                                            \
+  {|                                                            \
     FTC_GCache               _gcache   = FTC_GCACHE( cache );               \
     FTC_GQuery               _gquery   = (FTC_GQuery)( query );             \
     FTC_MruNode_CompareFunc  _fcompare = (FTC_MruNode_CompareFunc)(famcmp); \
@@ -288,19 +288,19 @@ FT_BEGIN_HEADER
       if ( --_gqfamily->num_nodes == 0 )                                    \
         FTC_FAMILY_FREE( _gqfamily, _gcache );                              \
     }                                                                       \
-  FT_END_STMNT
+  |}
   /* */
 
 #else /* !FTC_INLINE */
 
 #define FTC_GCACHE_LOOKUP_CMP( cache, famcmp, nodecmp, hash,          \
                                gindex, query, node, error )           \
-   FT_BEGIN_STMNT                                                     \
+   {|                                                     \
                                                                       \
      error = FTC_GCache_Lookup( FTC_GCACHE( cache ), hash, gindex,    \
                                 FTC_GQUERY( query ), &node );         \
                                                                       \
-   FT_END_STMNT
+   |}
 
 #endif /* !FTC_INLINE */
 

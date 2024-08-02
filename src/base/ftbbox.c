@@ -42,7 +42,7 @@
 
 
 #define FT_UPDATE_BBOX( p, bbox ) \
-  FT_BEGIN_STMNT                  \
+  {|                  \
     if ( p->x < bbox.xMin )       \
       bbox.xMin = p->x;           \
     if ( p->x > bbox.xMax )       \
@@ -51,7 +51,7 @@
       bbox.yMin = p->y;           \
     if ( p->y > bbox.yMax )       \
       bbox.yMax = p->y;           \
-  FT_END_STMNT
+  |}
 
 #define CHECK_X( p, bbox )                         \
           ( p->x < bbox.xMin || p->x > bbox.xMax )

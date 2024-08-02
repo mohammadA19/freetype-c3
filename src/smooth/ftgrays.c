@@ -111,8 +111,8 @@
 #define FT_ERR_XCAT( x, y )  x ## y
 #define FT_ERR_CAT( x, y )   FT_ERR_XCAT( x, y )
 
-#define FT_BEGIN_STMNT  do {
-#define FT_END_STMNT    } while ( 0 )
+#define {|  do {
+#define |}    } while ( 0 )
 
 #define FT_MIN( a, b )  ( (a) < (b) ? (a) : (b) )
 #define FT_MAX( a, b )  ( (a) > (b) ? (a) : (b) )
@@ -352,7 +352,7 @@ typedef ptrdiff_t  FT_PtrDist;
   /* the remainder is always positive.  We use the remainder to keep   */
   /* track of accumulating errors and compensate for them.             */
 #define FT_DIV_MOD( type, dividend, divisor, quotient, remainder ) \
-  FT_BEGIN_STMNT                                                   \
+  {|                                                   \
     (quotient)  = (type)( (dividend) / (divisor) );                \
     (remainder) = (type)( (dividend) % (divisor) );                \
     if ( (remainder) < 0 )                                         \
@@ -360,7 +360,7 @@ typedef ptrdiff_t  FT_PtrDist;
       (quotient)--;                                                \
       (remainder) += (type)(divisor);                              \
     }                                                              \
-  FT_END_STMNT
+  |}
 
 #if defined( __GNUC__ ) && __GNUC__ < 7 && defined( __arm__ )
   /* Work around a bug specific to GCC which make the compiler fail to */
@@ -370,7 +370,7 @@ typedef ptrdiff_t  FT_PtrDist;
   /*  https://gcc.gnu.org/bugzilla/show_bug.cgi?id=43721               */
 #undef FT_DIV_MOD
 #define FT_DIV_MOD( type, dividend, divisor, quotient, remainder ) \
-  FT_BEGIN_STMNT                                                   \
+  {|                                                   \
     (quotient)  = (type)( (dividend) / (divisor) );                \
     (remainder) = (type)( (dividend) - (quotient) * (divisor) );   \
     if ( (remainder) < 0 )                                         \
@@ -378,7 +378,7 @@ typedef ptrdiff_t  FT_PtrDist;
       (quotient)--;                                                \
       (remainder) += (type)(divisor);                              \
     }                                                              \
-  FT_END_STMNT
+  |}
 #endif /* __arm__ */
 
 
@@ -407,19 +407,19 @@ typedef ptrdiff_t  FT_PtrDist;
   /* bytes are either clamped for the non-zero-rule or discarded    */
   /* later for the even-odd rule.                                   */
 #define FT_FILL_RULE( coverage, area, fill )                \
-  FT_BEGIN_STMNT                                            \
+  {|                                            \
     coverage = (int)( area >> ( PIXEL_BITS * 2 + 1 - 8 ) ); \
     if ( coverage & fill )                                  \
       coverage = ~coverage;                                 \
     if ( coverage > 255 && fill & INT_MIN )                 \
       coverage = 255;                                       \
-  FT_END_STMNT
+  |}
 
 
   /* It is faster to write small spans byte-by-byte than calling     */
   /* `memset'.  This is mainly due to the cost of the function call. */
 #define FT_GRAY_SET( d, s, count )                   \
-  FT_BEGIN_STMNT                                     \
+  {|                                     \
     unsigned char* q = d;                            \
     switch ( count )                                 \
     {                                                \
@@ -433,7 +433,7 @@ typedef ptrdiff_t  FT_PtrDist;
       case 0: break;                                 \
       default: FT_MEM_SET( d, s, count );            \
     }                                                \
-  FT_END_STMNT
+  |}
 
 
   /**************************************************************************
